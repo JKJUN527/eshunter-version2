@@ -1,0 +1,8 @@
+/*分页*/
+.Page{width:100%; margin:25px auto 10px; font-size: 16px; text-align:center; height:32px;}
+.Page a{ display:inline-block; min-width:24px; width: auto; height:24px; line-height: 24px; padding: 0px 3px; margin:0px 5px; 
+    color:#7e7e7e; background: #fff; border: 1px solid #999; border-radius: 5px;}
+.Page a.show{ background:#d32f2f; color:#fff; border: 1px solid #D32F2F;}
+.Page a:hover{ /*border: 1px solid #32b16c;*/ color: #D32F2F;}
+.Page a.show:hover{ color: #fff;}
+.Page a.page_up,.Page a.page_down{ width:66px;}

@@ -1,0 +1,16 @@
+.pagination {width: 100%; overflow: hidden; text-align: center; font-size: 16px;}        
+.pagination a {display: inline-block; padding:2px 9px; margin:0 5px; color:#7E7E7E;}
+
+.pagination span{display: inline-block; padding:2px 9px; margin:0 5px;cursor: pointer;}
+
+.pagination .current {
+    background: #32b16c;
+    color: #fff;
+	border: solid 1px #32b16c;
+}
+
+.pagination .current.prev, .pagination .current.next,.pagination a {
+	color:#7e7e7e;
+	border:1px solid #999;
+	background:#fff;
+}

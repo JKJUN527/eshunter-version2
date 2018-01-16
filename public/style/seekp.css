@@ -1,0 +1,44 @@
+/*找回密码*/
+.seekpassword{ width: 1024px; *width: 1022px; background: #fff; margin: 35px auto 0; 
+	*border: 1px solid #cdcdcd; padding-top: 35px; box-shadow: 0px 0px 3px 1px #cdcdcd;}
+.mima_center{ width: 650px; margin: 0 auto;/* background: #d1d1d1; height: 200px;*/}
+.mima_center form{ margin-top: 20px;}
+.mima_img{ width: 100%; overflow: hidden; text-align: center;}
+.input_zhmm{ font-size: 16px; color: #777;  float: left;
+	 padding: 9px 0px; clear: right; text-indent: 5px; border: 1px solid #999; width: 300px;}
+.zh_password{ width: 100%; overflow: hidden; margin-top: 30px;}
+.zh_password button{ margin-left: 90px; margin-bottom: 15px; padding: 10px 0px; width: 150px;
+ text-align: center; background: #32b16c; border:none; color: #fff; cursor: pointer; font-size: 16px;}
+.reset_mima{ font-size: 18px; width: 100%;overflow: hidden;}
+.reset_mima a{ color: #319897;}
+.shoujian_ts{ margin-top: 15px; color: #999; font-size: 14px; text-indent: 10px;}
+.go_email{ float: left; padding: 10px 15px; color: #fff; cursor: pointer; margin: 30px 0px 20px 192px; 
+	font-size: 18px; background: #32b16c; }
+.go_email:hover{ color: #fff; }
+.mima_center ul{ width: 650px; overflow: hidden; margin-top: 10px;}
+.mima_center ul li{ width: 128px; text-align: center; float: left; color: #555; font-size: 16px; margin-right: 46px;}
+.mima_center ul li:last-child{ margin-right: 0px;}
+.tab_title{width: 100%; display: inline-block;}
+.tab_title span{ color: #666; font-size: 18px; padding: 10px; border: 1px solid #e9e9e9;
+	float: left; border-bottom: none; cursor: pointer;
+}
+.tab_title span.active{box-shadow: 0px 0px 2px 1px #d9d9d9; padding: 12px 10px; color: #000;}
+.tab_title span:first-child{ margin-right: 24px; margin-left: 70px;}
+.tabcons{width: 100%; display: inline-block; background: #fff;  margin-top: 40px; }
+.find_password_submit{width: 674px; font-family: '宋体'; position: relative; z-index: 0; box-shadow: 0px 0px 2px 1px #d9d9d9;
+ padding: 70px; padding-left: 280px; overflow: hidden; background: url(../images/msg.jpg) 70px 70px no-repeat}
+.find_password_bg{background: url(../images/seek_phone.png) 100px 70px no-repeat}
+.find_password_submit span{ float: left; font-size: 18px; line-height: 40px; color: #3e3e3e;
+ font-family: '黑体'; }
+.p_password_tishi{ line-height: 40px; font-size: 14px; text-indent: 25px; color: #ff671d;
+ float: left; margin-left: 10px; background: url(../images/mis_alert.jpg) 8px center no-repeat;}
+.seek_for{ width: 100%;overflow: hidden; margin-bottom: 27px;}
+.seek_tishi{ font-size: 14px; color: #999; line-height: 20px; float: left; margin-left: 18px;
+ width: 200px;}
+.modity_yes{ font-size: 24px; color: #000; font-family: '黑体'; text-indent: 90px; margin-bottom: 45px;
+ background: url(../images/modity_yes.png) 55px center no-repeat;}
+.send_2wma{ width: 100%; overflow: hidden; }
+.send_2wma em{ font-size: 18px; color: #32b16c; font-family:'黑体'; float: left; 
+font-style: normal; line-height: 40px; cursor: pointer; display: none; margin-left:92px; }
+.send_2wma span{ float: left; color: #999; line-height: 40px; margin-left:92px;}
+.stepTwo,.message,.four_steap{display: none;}

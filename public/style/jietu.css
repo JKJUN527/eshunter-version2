@@ -1,0 +1,88 @@
+/* 规范行高25px */
+.standard_line_height25{line-height: 25px;}
+.standard_line_height55{line-height: 55px;}
+/* 规范 div_01 :字体大小18px ,行高25px */
+.standard_div_01{font-size: 18px;}
+.standard_div_02{font-size: 20px; font-weight: bold; color: #fff; text-indent: 28px;}
+/* 规范 a_01 :字体大小18px ,行高25px */
+.standard_a_01{
+	width: 105px;
+	height: 34px;
+	line-height: 34px;
+	background: #ef867f;
+	color: #fff;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.standard_a_01:hover{
+	background: #e85349;
+}
+.standard_a_02{
+	padding: 0px;
+	width: 80px;
+	text-align: center;
+	height: 32px;
+	line-height: 32px;
+	background: #ef867f;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	float: left;
+	color: #FFF;
+	font-size: 14px;
+}
+.standard_a_01_qx{
+	background: #afafaf;
+}
+.standard_a_01_qx:hover{
+	background: #979797;
+}
+#tixing{
+	width: 465px;
+	padding-left: 35px;
+	float: left;
+	margin-bottom: 10px;
+}
+/* 规范 div 之间的上下间距 :上下10px  */
+.standard_margin_top10{margin-top: 10px;}
+/* 规范 div 之间的左右间距 :左右15  */
+.standard_margin_left15{margin-left: 15px; margin-right: 15px;}
+/* 规范 取消浮动 */
+.tstandard_float{float:none;}
+.bdsc_bri{font-size: 14px;color: #777; float: left; line-height: 32px; margin-left: 30px;}
+.jietuqu{height:330px;}
+.images_left{
+	background: none repeat scroll 0% 0% #424242;
+	width: 300px;height: 300px;
+	text-align:center;}
+	
+.images_right{width: 180px;height:180px; overflow: hidden;}
+.images_right img{
+	width: 180px;
+	height: 180px;	
+}
+.tanchu_logo_li{
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	background: #17b385;
+	position: relative;
+	z-index: 1;
+}
+.tanchu_logo_li .close_btn{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 17px;
+	right: 15px;
+	background: #000;
+	background: url(../images/jietu_close.png) -32px 0px no-repeat;
+	cursor: pointer;
+}
+.tanchu_logo_li .close_btn:hover{
+	background: url(../images/jietu_close.png) 0px 0px no-repeat;
+}

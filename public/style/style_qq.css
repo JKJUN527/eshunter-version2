@@ -1,0 +1,45 @@
+
+/* Required Stylesheets */
+.wheel-button {  position: relative;}
+.wheel {  margin: 0;  padding: 0;  list-style: none;
+  width: 200px; /* this will determine the diameter of the circle  */
+  height: 200px; /* this will determine the diameter of the circle  */
+  visibility: hidden;  position: relative;  display: none;}
+.wheel li {  overflow: hidden;  float:left;}
+.wheel li a {  display: block;}
+.wheel-button, .wheel-button:visited {
+  width: 70px;
+  height: 130px;
+  display: block;
+  margin-left: 55px;
+}
+.wheel li a{
+  color: #fff; 
+  text-decoration: none;
+  border-radius: 50px;
+  text-align: center;  
+  line-height: 20px;
+  height: 40px;
+  padding: 5px 0;
+  width: 50px;
+  -moz-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.wheel li a.ts{ 
+  background: #ff7e7e;
+}
+.wheel li a.bj{   
+  background: #f0be75;
+}
+.wheel li a.sss{
+  
+  background: #79d48f;
+}
+.wheel li a.wk{  
+  background: #6dbfff;
+}
+
+
+

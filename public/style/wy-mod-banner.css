@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* wy-mod-banner */
+.wy-mod-banner{height:419px; width:100%; position:relative; overflow: hidden; z-index: 0;}
+.wy-mod-banner .banners{width:2000px; height:419px;  position:absolute;
+	left:50%; margin-left:-1000px;}
+.wy-mod-banner .banner{width:1440px; height:419px; position:absolute;cursor:pointer;left:50%; margin-left:-720px;}
+.wy-mod-banner .banner .info{width:410px;height:230px;position:absolute;right:50%;margin-right:-480px;background:url(../images/txt1.png) no-repeat;top:230px;}
+/*.wy-mod-banner .banner2 .info{background-image:url(../images/txt2.png);}
+.wy-mod-banner .banner3 .info{background-image:url(../images/txt3.png);}
+.wy-mod-banner .banner4 .info{background-image:url(../images/txt4.png);}*/
+.wy-mod-banner .info .link-download{width:148px;height:40px;overflow:hidden;position:absolute;bottom:-70px;right:0px;cursor:pointer;text-decoration:none;}
+.wy-mod-banner .info .link-download span{position:absolute;display:block;left:10px;cursor:pointer;font-size:28px;line-height:50px;color:white;font-weight:500; font-family:"Microsoft YaHei"}
+.wy-mod-banner .banner1 .info .link-download span,
+.wy-mod-banner .banner2 .info .link-download span {color:#3091f2;}
+.wy-mod-banner .info .link-download .bor_c{position:absolute;width:14px;height:26px;right:0px;top:14px;background-image:url(../images/ico_bule.32.png);_background-image:url(../images/ico_bule.png); }
+.wy-mod-banner .banner3 .info .link-download .bor_c,
+.wy-mod-banner .banner4 .info .link-download .bor_c{background-image:url(../images/ico_white.32.png);_background-image:url(../images/ico_white.png);}
+
+.wy-mod-banner .banner .info h3{display:none;}
+.wy-mod-banner .banner .info p{display:none;}

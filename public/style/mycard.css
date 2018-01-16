@@ -1,0 +1,121 @@
+.myCard{ width: 100%;  background: #fff; margin-top: 7px; padding-bottom: 60px; 
+	display: inline-block; box-shadow: 2px 2px 3px #cbcbcb; 
+	-moz-box-shadow: 2px 2px 3px #cbcbcb; -webkit-box-shadow: 2px 2px 3px #cbcbcb;}
+.mycard_title{ width: 100%; display: inline-block;}
+.item_title{ width:145px;  ; height: 45px; line-height: 45px; overflow: hidden; float: left; 
+ margin-top: -7px; margin-left: 27px;}
+.item_title em{ float: left; width: 5px; height: 45px; background: url(../images/card_jiao.png) 0px 0px no-repeat;}
+.item_title span{ width: 100px; float: left; background: #67c391; color: #fff; 
+	font-size: 18px; text-align: center;}
+/*我的名片主要内容*/
+.myCard_con{ width: 788px; margin: 0 auto;  
+	padding-top: 35px;}
+.myCard_cons{ width: 270px;float: left; margin-right: 20px;}
+.myCard_list{ width: 100%; overflow: hidden;}
+.myCard_list em{color: #e84b4b; font-style: normal; float: left;}
+.mis_alert{ display: none;}
+.bitian_save{ display: inline-block; width: 100px; margin-top: 40px; height: 36px;
+ line-height: 36px; background: #67c391; color: #fff; text-align: center; font-size: 20px;}
+.photo_left{float: left; width: 132px;}
+.seles_work_time{ width: 115px;}
+.seles_work_time .seles_hide{ width: 115px; overflow: auto;}
+
+/*生成的名片*/
+.build_card{ width: 880px; background: #fff; position: absolute; z-index: 100; left: 50%; margin-left: -440px; top: 50%; margin-top: -230px; display: none;}
+.card_Con{ padding: 40px 70px; color: #020202; position: relative; z-index: 10;}
+.card_Con img{width: 160px; height: 160px; overflow: hidden; position: absolute; top: 40px; right: 70px;}
+.line_name { width: 100%; overflow: hidden; height: 50px; margin-bottom: 15px;}
+.line_name span{float: left; }
+.line_name span.name{ font-size: 36px;}
+.line_name span.pos{ font-size: 24px; margin-left: 20px; margin-top: 14px; }
+.build_list{ width: 100%; overflow: hidden; margin-bottom: 10px;}
+.build_list span,.build_list div{ float: left; margin-right: 20px; font-size: 24px;}
+.build_list span{ color: #999;}
+.continue{ width: 100%; overflow: hidden; text-align: center; margin-top: 60px;}
+.continue a{  width: 161px; height: 47px; line-height: 47px; display: inline-block; color: #fff; font-size: 20px;}
+.continue a.continue_go{ background: url(../images/continue.png);}
+.continue a.continue_suitable{ background: url(../images/shihe.png); margin-left: 37px;}
+
+/*了解内聘网*/
+.know_NP{ width: 300px; float: left; margin-left: 30px; height: 300px; padding-top: 20px;}
+.know_NP_title{ font-size: 24px; color: #1e1e1e; width: 100%; margin-bottom: 30px;}
+.know_NP_list{ /*width: 100%;*/ overflow: hidden; margin-top: 30px;}
+.know_NP_list p{font-size: 18px; text-indent: 50px;  height: 32px; line-height: 32px;}
+.know_NP_list div{ font-size: 16px; color: #616161; margin-top: 6px; margin-left: 50px;}
+.NPbg1{ background: url(../images/NPbg.png) 0px -9px no-repeat;}
+.NPbg2{ background: url(../images/NPbg.png) 0px -95px no-repeat;}
+.NPbg3{ background: url(../images/NPbg.png) 2px -188px no-repeat;}
+.NPu1{ background: url(../images/g_1.png) 0px 0px no-repeat;}
+.NPu2{ background: url(../images/g_2.png) 0px 0px no-repeat;}
+.NPu3{ background: url(../images/g_3.png) 0px 0px no-repeat;}
+/*hr注册必填项*/ 
+.hr_myCard_Left{ width: 360px; float: left;}
+.edit_list input[type='text'].gsmc{ width: 325px;}
+.hr_selesjob_part{ width: 340px;}
+.selesjob_hr{ width: 157px;} 
+.selesjob_hr .seles_hide{ width: 157px;}
+.lingyu_shuru{ width: 310px;}
+#lingyu{ width: 214px;}
+.edit_list input[type='text'].short{ width: 142px;}
+/*头像上传*/
+.hr_head{ width: 160px; float: right; }
+.hr_head img{width: 160px; height:160px;}
+.hr_head div{ width: 100%; overflow: hidden; margin-top: 10px; }
+.hr_head div span{ float: left; width: 100%; overflow: hidden; text-align: center; color: #bfbfbf; font-size: 15px;}
+.regist_sucess{ width: 500px; height: 320px; display: none; position: fixed; z-index: 20; top: 50%; margin-top: -160px; left: 50%; margin-left: -250px; background:url(../images/bitian_bg.jpg);}
+.sucess_title{ width: 100%; height: 51px; line-height: 51px; }
+.sucess_title span{ width: 100px; text-align: center; float: left;}
+.sucess_title i{width: 40px; height: 40px; margin-top: 5px; margin-right: 5px; float: right; cursor: pointer; background: url(../images/tanchu_close.png) center center no-repeat;}
+.sucess_title i:hover{ background: url(../images/tanchu_redclose.png) center center no-repeat; }
+/*.sucess_con{ font-size: 30px; color: #32b16c; font-weight: bold; width: 100%; text-align: center; padding: 60px 0px 50px;}*/
+.sucess_then{width: 100%; overflow: hidden; font-size: 18px; text-align: center; font-family: 'SimHei';}
+/*.sucess_then div{width: 50%; float: left;}*/
+.sucess_then a.dowell{ color: #fff; background: #ff7979; display: inline-block; width: 80px; 
+	height: 36px; text-align: center; line-height: 36px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+.sucess_then a.dowell:hover{background: #e75349;}
+/*.sucess_then a.wanshan{background: #ff7979;}
+.sucess_then a.wanshan:hover{background: #ff6453;}
+.sucess_then a:hover{ background: #32b16c;}*/
+
+
+/*上传头像-用户端*/
+.sc_image{ width: 180px;  float: right;  text-align: center; font-family: '黑体';}
+#tanchu_logo{width: 180px; overflow: hidden; border: 1px solid #ededed; float: left;
+  cursor: pointer;}
+#tanchu_logo img{ width: 180px; height: 180px;}
+.sc_image div.please{ color: #696969; width: 100%; overflow: hidden; padding: 10px 0 15px; font-size: 16px;}
+.sc_image ul{ color: #999; line-height: 22px;}
+
+/*保存成功*/
+.save_window{ width: 500px; height: 320px; position: fixed; top: 50%; left: 50%; 
+	margin-left: -250px; margin-top: -160px; background: #fff; z-index: 20;background: url(../images/bitian_bg.jpg);}
+.save_window_til{ height: 51px; }
+.save_window_til span{ float: left; color: #32b16c;}
+.save_window_til em{ background: url("../images/tanchu_close.png") no-repeat  center center;
+ float: right; height: 51px; width: 30px; margin-right: 10px;cursor: pointer;}
+.save_window_til em:hover{background: url("../images/tanchu_redclose.png") no-repeat  center center;}
+.save_window_yes{width: 100%; overflow: hidden; text-align: center; 
+ 	/*padding-bottom: 30px;*/ color: #fff; font-size: 18px;}
+.save_window_yes .save_window_left{float:left; width: 50%;}
+.save_window_yes .save_window_left div{ margin-top:10px; font-size: 18px;}
+.save_window_yes .save_window_left img.ma{ width: 120px;height: 120px;}
+.save_window_yes .save_window_left dd{font-size: 16px; font-family: '黑体'; line-height: 22px;}
+.connex{ width: 100%; padding-top: 10px; text-align: center; padding-top: 48px;}
+.connex div{width: 50%; float: left;}
+.connex a{ display: inline-block; width: 120px; height: 34px; line-height: 34px; 
+	font-size: 18px; background: #59c58a; color: #fff;}
+.connex a.go{background: #ff7979;}
+.connex a.go:hover{background: #ff6453;}
+.connex a:hover{ background: #32b16c;}
+.sao_part{width: 130px; overflow: hidden; text-align: center; color: #fff; margin: 0 auto;}
+/*.sao_part div{width: 50%;float: left;}*/
+.sao_part div span{width: 94px; height: 73px; background:url(../images/topbrid.png); display: block; float: left; margin-left: 84px; margin-top: 34px;}
+.sao_part dl{float: left;width: 100%; margin-bottom: 18px;}
+.sao_part dt{margin-bottom: 7px;}
+.sao_part dd{font-size: 16px; font-family: '黑体'; line-height: 22px;}
+.sao_part img{width: 130px; height: 130px;}
+
+/*覆盖的*/
+.save_window{ width: 500px; height: 320px; position: fixed; top: 50%; left: 50%; 
+	margin-left: -250px; margin-top: -160px; background: #fff; z-index: 20; background: url(../images/bitian_bg.jpg); display: block;}
+

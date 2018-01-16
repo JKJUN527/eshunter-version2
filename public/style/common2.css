@@ -1,0 +1,2 @@
+.back_to_top{ width: 28px; height: 64px; overflow: hidden; background: url(../images/backtop.png) 0px 0px no-repeat; position: fixed; bottom: 100px; right: 80px; -moz-transition:color 1s; -webkit-transition:color 1s; -o-transition:color 1s;}
+.back_to_top:hover{ background: url(../images/backtop.png) -28px 0px no-repeat; }

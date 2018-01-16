@@ -1,0 +1,107 @@
+
+.containter{ width: 1024px; margin: 0 auto; position: relative; z-index: 1;}
+.tag_cloud{ width: 100%; display: inline-block; background: #f1f1f1;}
+.tag_cloud_title{ width: 100%; overflow: hidden;}
+.tag_cloud_title span{ width: 125px; height: 30px; line-height: 30px; float: left; text-align: center; font-size: 18px; background: #32b16c; color: #fff;}
+.tag_cloud p.yag_jieshao{ width: 100%; overflow: hidden; color: #727272; font-size: 18px; text-indent: 20px; margin: 20px 0px; line-height: 22px;}
+.tag_con{padding:20px; display: inline-block;}
+.tag_left{ width: 45px; height: 435px; background: url(../images/tag_left.png); float: left; margin-right: 20px; margin-top: 50px;}
+.tag_right{ width: 919px; float: left;}
+
+.tag_right{
+
+background: -moz-linear-gradient(top, #32b16c 0%, #72cfff 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#32b16c), color-stop(100%,#72cfff)); 
+background: -webkit-linear-gradient(top, #32b16c 0%,#72cfff 100%); 
+background: -o-linear-gradient(top, #32b16c 0%,#72cfff 100%); 
+background: -ms-linear-gradient(top, #32b16c 0%,#72cfff 100%); 
+background: linear-gradient(to bottom, #32b16c 0%,#72cfff 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#32b16c', endColorstr='#72cfff',GradientType=0 ); 
+:root .gradient{filter:none;} 
+
+}
+.online_span{ width: 24px; text-align: center; float: left; height: 96px; 
+	word-break:break-all; /*支持IE，chrome，FF不支持*/ word-wrap:break-word;/*支持IE，chrome，FF*/ 
+	font-size: 18px; color: #fff; background: #259d5c; padding: 72px 5px;}
+.online_advertise{width: 100%; display: inline-block;}
+.online_advertise_con{ float: left; width: 860px; height: 229px; margin: 10px 20px 0px 5px;  border-bottom: 1px solid #bde8f3;}
+.online_span_two{padding: 52px 5px; background: #47ada9;}
+#my_O2O{ height: 189px;}
+.online_span_three{ padding: 32px 5px; background: #59b9e7;}
+#my_3{ height: 150px;}
+
+/*匹配职位和在线简历*/
+.recommed_jisu{ width: 100%; display: inline-block;}
+.mate_job{ float: left; width: 563px; display: inline-block; background: #fafafa; -moz-box-shadow: 1px 1px 3px #d0d0d0;            
+-webkit-box-shadow:1px 1px 3px #d0d0d0; box-shadow:1px 1px 3px #d0d0d0; height: 968px;
+ padding-bottom: 15px;}
+.mate_job_title{ width: 100%; height: 32px; display: inline-block; margin-bottom: 10px;}
+.mate_job_title .column{width: 190px; float: left; margin-top: -2px; margin-left: -5px;}
+.mate_job_title .column em{ float: left; width: 5px; height: 32px; background: url(../images/left_jiao.png) left 0px no-repeat;}
+.mate_job_title .column span{ background: #32b16c; width: 185px; height: 32px; line-height: 32px; text-align: center; color: #fff; float: left; font-size: 18px;}
+
+.filter_job{ float: left; height: 20px; line-height: 20px; margin-top: 10px; margin-left: 18px;}
+.filter_job label{ color: #9b9a9a; margin-left: 8px; font-size: 14px;}
+
+/*tab切换*/
+.tab_mate{ width: 100%; display: inline-block;}
+.tab_mate_title{ width: 100%; display: inline-block; background: #f2f2f2; height: 36px;}
+.tab_mate_list{ float: left; width: 90px; cursor: pointer; border-right: 1px solid #fff; height: 36px; color: #757575;}
+.tab_mate_list span{ width: 90px; text-align: center; overflow: hidden; display: inline-block; height: 34px; line-height: 34px; border-top: 2px solid #f2f2f2; }
+.tab_mate_list span.active{ border-top: 2px solid #32b16c; background: #fff;}
+.tab_mate_con{ width: 100%; display: inline-block;}
+
+.mate_Cons{width: 100%; display: inline-block;}
+.mate_Cons_list{ width: 100%;display: inline-block;}
+.mate_Cons_list li{ padding: 20px 8px 15px 5px; display: inline-block; position: relative; z-index: 0;}
+/*.mate_Cons_list li:hover{ box-shadow: -2px -2px 2px #cbcbcb; border-bottom: 1px solid #e1e1e1;}*/
+.mate_list_left{ width: 290px; margin-right: 10px; display: inline-block;}
+.mate_list_left a.zw_name{ float: left; max-width: 125px; color: #32b16c; font-size: 16px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; margin-right: 10px;}
+.mate_list_left p,.mate_list_right p{ font-size: 14px;}
+.mate_list_right p.ac a{ color: #55c88a;}
+.mate_list_left p{ width: 100%; overflow: hidden; color: #626262;}
+.mate_list_left .brif,.mate_list_right .brif{ padding: 10px 0; color: #999; }
+.mate_list_left .brif span,.mate_list_right .brif span{ color: #626262; margin: 0px 5px;}
+.mate_list_left .brif span.orange,.mate_list_right .brif span.orange{color: #ff6000;}
+.mate_list_right{ width: 250px; margin-top: 30px;}
+.orange{ color: #ff6000;}
+.div_s{ color: #666;  width: 100%; overflow: hidden;}
+.div_s span{ padding: 0 10px;}
+.div_s .suqiu{ float: left; color: #626262; line-height: 22px; width: 148px;}
+.div_s .suqiu div{overflow: hidden; width: 100%; white-space: nowrap; text-overflow:ellipsis;}
+.div_s ul{ float: left; color: #aba9ac; font-size: 12px;}
+.div_s label{  color: #aba9ac; margin-right: 10px; height: 22px; line-height: 22px; float: left; }
+.liuran_numbers{  width: 100%;  overflow: hidden; display: inline-block; margin-top: 5px; color: #9b9b9b;}
+.liuran_numbers span{ float: right; margin-right: 10px;}
+.liuran_numbers .sp3{ background: url(../images/time.png) 0px 4px no-repeat; text-indent: 18px;}
+.matedegree_left{ width: 60px; float: left;}
+.matedegree_right{ width: 230px; height: 137px; float: right;}
+
+/*进度条*/
+.resumeScore{ width: 60px; position: relative; z-index: 1;}
+.scoreVal{position: absolute; top: 7px; left: 8px; height: 45px; width: 45px; text-align: center;
+line-height: 45px; background:url(../images/scoreValBg.png) 0px 0px no-repeat; color: #fff; 
+font-size: 10px;}
+.scoreVal span{ font-size: 13px;}
+.resumeScore_50 .scoreVal{ background: #efbb3a;}
+.resumeScore_75 .scoreVal{ background: #48acf2;}
+.resumeScore_100 .scoreVal{ background: #fc7372;}
+.gray_seap{position: absolute; top: 60px; width: 2px; background: #dcdcdc; height: 110px; margin-left: 30px;}
+
+/*右边在线简历*/
+.online_resume{ width:443px; float: right; background: #fafafa; z-index: 20;
+	box-shadow: 1px 1px 3px #d0d0d0; -moz-box-shadow: 1px 1px 3px #d0d0d0; 
+	-webkit-box-shadow: 1px 1px 3px #d0d0d0;}
+.online_title{ width: 100%; display: inline-block; height: 32px;}
+.online_title .column{ float: left; width: 170px; margin-top: -2px; margin-left: -5px;}
+.online_title .column em{ float: left; width: 5px; height: 32px; background: url(../images/left_jiao.png) left 0px no-repeat;}
+.online_title .column span{background: #32b16c; width: 165px; height: 32px; line-height: 32px; 
+	text-align: center; color: #fff; float: left; font-size: 18px;}
+.index_add{float: left; line-height: 32px; color: #999; font-size: 14px; margin-left: 18px;}
+.resume_include{ width: 100%; overflow: hidden; margin-top: 20px;}
+.resume_include iframe{border:none; width: 100%; height: 931px; overflow:scroll;overflow-x:hidden}
+
+
+/*用户端极速推荐未有职位匹配*/
+.js_noJob{ width: 100%; overflow: hidden;  text-align: center; padding-top: 90px; height: 893px;}
+.js_noJob div{ font-size: 18px; color: #636363; margin-top: 50px;}

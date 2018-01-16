@@ -1,0 +1,112 @@
+/*账号设置*/
+.account_left{ width: 243px; display: inline-block; background: #fff; text-align: center;
+box-shadow: 1px 1px 3px #d0d0d0; -moz-box-shadow: 1px 1px 3px #d0d0d0; -webkit-box-shadow: 1px 1px 3px #d0d0d0;}
+.account_left_T{ font-size: 24px; color: #010101;  line-height: 60px;}
+.account_left p{ line-height: 40px; background: #c8c8c8; color: #fff; font-size: 18px; margin-bottom: 12px;
+cursor: pointer;}
+.account_left p.active{ background: #32b16b;}
+.account_left p a{color: #fff;}
+.account_right{ width: 683px; display: inline-block; float: right;background: #fff;padding: 40px;
+box-shadow: 1px 1px 3px #d0d0d0; -moz-box-shadow: 1px 1px 3px #d0d0d0; -webkit-box-shadow: 1px 1px 3px #d0d0d0;}
+
+.change_div{ width: 100%; overflow: hidden; height: 40px; line-height: 40px;}
+.change_div span{ float: left; font-size:24px; color: #aaa; cursor: pointer;}
+.change_div span.active{ color: #4b4848;}
+.change_div em{ float: left; width: 2px; height: 30px; background: #32b16c; margin: 5px 12px 0px 12px;}
+.change_Con{ width: 100%; overflow: hidden;}
+.changecon{ width: 100%; overflow: hidden;}
+.mailcon{ width: 500px; margin-top: 10px; float: left;}
+.mail_list{font-size: 18px; color: #4b4848; width: 100%; overflow: hidden; margin-top: 20px;
+line-height: 32px;}
+.mail_list span{ float: left; width: 170px; text-align: right;}
+.mail_list label{ float: left; text-indent: 20px; font-size: 16px; margin-right: 20px; cursor: pointer;
+ background: url(../images/chose_a.gif) 0px center no-repeat;}
+.mail_list label.active{background: url(../images/chose_b.gif) 0px center no-repeat;}
+.mail_list input{ float: left; border: 1px solid #c8c8c8; font-size: 18px; width: 300px;
+	font-family: 'Aril'; height: auto; padding: 3px 5px;}
+.mail_list input.mistake{ border: 1px solid #ff6000;}
+.mistake_alert{width: 100%; overflow: hidden; color: #ff6000; font-size: 14px; text-indent: 170px; margin-top: 5px;}
+.submit_box{ width: 100%; overflow: hidden; text-align: center; margin-top: 32px;}
+.submit_box a{ width: 112px; text-align: center; height: 40px; line-height: 40px; background: #32b16c; 
+	color: #fff;display: inline-block; font-size: 20px;}
+
+/*修改密码弹出*/
+.msg_send{ width: 500px; height: 300px; position: fixed; z-index: 20; top: 50%; margin-top: -150px; 
+	left: 50%; margin-left: -250px; background: #fff;  display: none; }
+.msg_sendCon{width: 100%; overflow: hidden; text-align: center;}
+.msg_sendCon img{ margin-top: 20px;}
+.msg_sendCon div{ font-size: 30px; color: #616161; margin: 70px auto;}
+.msg_sendCon p{ height: 40px; line-height: 40px; font-size: 18px; text-align: center; 
+	margin-top: 40px; font-family: '黑体';}
+.msg_sendCon p.tishiyu{ color: #ff5a00; margin-top: 0px;}
+.msg_sendCon p.tishiyu_next{ color: #7a7a7a; margin-top: 10px; cursor: pointer;
+	background: url(../images/chose_a.gif) 175px 13px no-repeat;}
+.msg_sendCon p.active{background: url(../images/chose_b.gif) 175px 13px no-repeat;}
+.msg_sendCon p span{ display:inline-block; width: 90px; height: 40px; background: #44b879; 
+	color: #fff; cursor: pointer; margin-left: 100px;}
+.msg_sendCon p a{ display:inline-block; color: #44b879; margin-left: 15px;}
+.e_sure{ width: 84px; text-align: center; line-height: 32px; height: 32px; background: #32b16c;
+	color: #fff; display: inline-block; font-size: 18px; margin-top: 15px;}
+.reason_noheshi_til{ height: 45px; line-height: 45px; background: #32b16c; color: #fff; font-size: 20px; text-indent: 25px;}
+.reason_noheshi_til em{ float: right; width: 30px; height: 45px; background: url(../images/no_close.gif) center center no-repeat; cursor: pointer; margin-right: 10px;}
+
+
+/*极速推荐申请流程部分*/
+.flow_til{ width: 100%; overflow: hidden; font-size: 14px; color: #8d8d8d; line-height: 28px;}
+.flow_apply{ width: 100%; height: 368px; overflow: hidden; background: url(../images/jian_banner.gif);}
+.apply_list{ width: 250px; background: #fff; float: right; margin-right: 70px; margin-top: 45px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+.apply_til{ height: 34px; line-height: 34px; color: #fff; text-indent: 10px; font-size: 18px;
+ background: #ff6060; border-top-left-radius: 5px; -moz-border-top-left-radius: 5px; 
+ -webkit-border-top-left-radius: 5px; border-top-right-radius: 5px; -moz-border-top-right-radius: 5px; 
+ -webkit-border-top-right-radius: 5px;}
+ .applyCon{padding: 10px 17px 15px; overflow: hidden; }
+.applyCon input{ font-size: 18px; padding: 5px; overflow: hidden; margin-top: 15px; 
+	border: 1px solid #c8c8c8; color: #ada6a6;}
+.applyCon p{width: 100%; overflow: hidden; font-size: 14px; color: #9a9a9a; text-indent: 1em;
+	line-height: 22px;}
+.applyCon a{ width: 112px; text-align: center; height: 34px; line-height: 34px; 
+	display: inline-block; background: #ff6060; color: #fff; font-size: 18px; 
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin-top: 20px;margin-left: 50px;}
+/*申请流程*/
+.apply_flow{ padding: 30px 40px; overflow: hidden; background: #fff; box-shadow: 1px 1px 3px #d0d0d0; -moz-box-shadow: 1px 1px 3px #d0d0d0; -webkit-box-shadow: 1px 1px 3px #d0d0d0;}
+.af_til{ width: 100%; overflow: hidden; font-size: 24px; color: #242424;}
+.steaps{ width: 650px; margin:20px auto 10px; background: url(../images/stp1.png) center 0px no-repeat;}
+.steaps2{ background: url(../images/stp2.png) center 0px no-repeat;}
+.steaps3{ background: url(../images/stp3.png) center 0px no-repeat;}
+.steaps4{ background: url(../images/stp4.png) center 0px no-repeat;}
+.steaps ul{ width: 100%; overflow: hidden; padding-top: 40px;}
+.steaps ul li{ width: 128px; text-align: center; float: left; color: #555; font-size: 16px; margin-right: 46px;}
+.steaps ul li:last-child{ margin-right: 0px;}
+.div_ul{ width: 100%; overflow: hidden; color: #999; margin-top: 5px;}
+.div_li{width: 128px; float: left; margin-right: 46px; overflow: hidden; text-align: center;}
+.div_li:last-child{ margin-right: 0;}
+
+/*推荐示例*/
+.tuijian_example{ width: 100%; overflow: hidden; background: #fff; box-shadow: 1px 1px 3px #d0d0d0; 
+	-moz-box-shadow: 1px 1px 3px #d0d0d0; -moz-box-shadow: 1px 1px 3px #d0d0d0; 
+	margin-top: 20px; padding-bottom: 40px;}
+.example_til{ width: 100%; overflow: hidden; height: 36px; line-height: 36px;}
+.example_til span{ width: 130px; text-align: center; height: 36px; line-height: 36px; 
+	background: #32b16c; display: inline-block; font-size: 18px;color: #fff;}
+
+/*关于我们*/
+.ma_num{ width: 100%; overflow: hidden; text-align: center; margin-bottom: 20px;}
+.ma_num div{ font-size: 20px; color: #363636; line-height: 36px; text-indent: 50px; 
+	background: url(../images/wx_bottom.png) 70px center no-repeat;}
+.about_til{ font-size: 24px; color: #363636; line-height: 32px;}
+.about_til span{ width: 6px; height: 26px; background: #c8c8c8; float: left; margin-top: 3px; margin-right: 8px;}
+.about_con{ padding: 24px; overflow: hidden; font-size: 16px; color: #828181;
+ line-height: 40px;}
+.about_list{ width: 100%; overflow: hidden; margin-bottom: 30px;}
+.about_list dl{ width: 200px; text-align: center;}
+.about_list dl img{ border-radius: 100px; -moz-border-radius: 100px; -webkit-border-radius: 100px;}
+.about_list dd{color: #424242; margin-top: 15px;}
+
+/*加入我们*/
+.join_us{font-size: 24px; color: #585858; text-align: center; margin-bottom: 30px;}
+.join_us span{  border-bottom: 1px solid #c8c8c8; padding: 5px 10px;}
+.Job_con{ padding: 24px; overflow: hidden; font-size: 16px; color: #525151; line-height: 32px;}
+.Job_con P{ color: #171717;}
+.ps_la{width: 100%;overflow: hidden; text-align: center; font-size: 24px; color: #585858;
+ line-height: 40px;}
+.about_con span{ color: #525151; float: left; width: 105px; text-align: right;}
