@@ -1,0 +1,71 @@
+.btn-default{
+	text-shadow: none;
+}
+
+.container{width: 76%;}
+.main-header{margin: 20px 0px;}
+
+.widget {
+    margin-bottom: 30px;
+    margin-top: 10px;
+    overflow: inherit;
+}
+
+.post {
+    padding: 20px 30px;
+    background: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: auto;
+}
+.modal{
+	/*margin: 200px auto;*/
+}
+.main-content{
+	overflow: inherit;
+}
+.img-detail{
+    display: block;
+    margin: auto;
+    width: 450px;
+    margin-bottom: 20px;
+}
+.modal-dialog{
+    width: 850px;
+}
+.contact-us{
+    width: 500px;
+    height: 120px;
+}
+.modal-body ul{
+    margin-top: 1rem;
+    padding: initial;
+
+    display: block;
+}
+.modal-body ul li {
+    list-style: none;
+    display: block;
+}
+.look-detail-modal-body {
+    position: relative;
+    padding: 15px 5rem;
+}
+.pagination a{
+    vertical-align: baseline;
+}
+.pagination{
+    padding-right: 5rem;
+}
+.publish-text{
+    /*height:7rem !important;*/
+}
+.form-file{
+    margin-top: .5rem;
+}
+.btn{
+    background-color: #00ada7 !important;
+}
+.btn:hover{
+    background-color: rgb(255, 64, 129) !important;
+}
