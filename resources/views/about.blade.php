@@ -19,6 +19,7 @@
 @endsection
 
 @section('footer')
+   @include('components.myfooter')
 @endsection
 
 @section('custom-script')

@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('style/iconfont.css')}}"/>
     <link href="{{asset('style/animation.css?v=2.32')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/style.css?v=2.43')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
     <script src="js/hm.js?e57ac2e0d645c16f50e241abc140f59f"></script>
         <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="{{asset('js/constants.js?v=2.32')}}" type="text/javascript"></script>

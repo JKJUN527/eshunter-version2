@@ -3,8 +3,7 @@
 
 
 @section('custom-style')
-    <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
-    <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
+    
 @endsection
 
 
