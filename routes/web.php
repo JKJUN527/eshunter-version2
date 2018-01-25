@@ -1,14 +1,17 @@
 <?php
 
 Route::any('/', function(){
-	return view('index');
+	return view('index/index');
 });
 Route::any('index', function(){
-	return view('index');
+	return view('index/index');
+});
+Route::any('index/index', function(){
+	return view('index/index');
 });
 
 Route::any('about', function(){
-	return view('about');
+	return view('about/about');
 });
 Route::any('news/news_center', function(){
 	return view('news/news_center');

@@ -13,7 +13,7 @@
 
 
 @section('header-tab')
-   @include('components.headerTab')
+   @include('components.headerTab',['activeIndex' => 'index','type' => 0])
 @endsection
 
 
@@ -27,7 +27,7 @@
 
             <!--这是加载AJAX的动态转图-->
             <div style="left:50%; float:left; position:fixed; top:50%; z-index:100009; display:none;" id="home_loading">
-                <img src="images/anim_loading_75x75.gif">
+                <img src="../images/anim_loading_75x75.gif">
             </div>
             <div class="containter">  
                 <!-- 左边结束  -->
@@ -51,13 +51,13 @@
                         <!-- banner 轮播-->
                         <div class="m_banner">
                             <div style="cursor:pointer;" class="banner banner1">
-                                <img src="images/banner.jpg" width="800" height="241"/>
+                                <img src="../images/banner.jpg" width="800" height="241"/>
                             </div>  
                             <div style="display:none; cursor:pointer;" class="banner banner2">
-                                <img src="images/banner3.jpg" width="800" height="241"/>
+                                <img src="../images/banner3.jpg" width="800" height="241"/>
                             </div>          
                             <div style="display:none; cursor:pointer;" class="banner banner3">
-                                <img src="images/banner2.jpg" width="800" height="241"/>
+                                <img src="../images/banner2.jpg" width="800" height="241"/>
                             </div>          
                             <a class="prev" href="javascript:void(0);" style="display: none;"></a>
                             <a class="next" href="javascript:void(0);" style="display: none;"></a>
@@ -123,7 +123,7 @@
                 
                              <div class="pli_btm">
                                 <a href="#" class="left">
-                                    <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
                                 </a>
                                 <div class="bottom-right">
                                     <div class="company_name wordCut">
@@ -162,7 +162,7 @@
                              </div>
                              <div class="pli_btm">
                                 <a href="#" class="left">
-                                    <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
+                                    <img src="../images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
                                 </a>
                                 <div class="bottom-right">
                                     <div class="company_name wordCut">
@@ -201,7 +201,7 @@
                              </div>
                              <div class="pli_btm">
                                 <a href="#" class="left">
-                                    <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
                                 </a>
                                 <div class="bottom-right">
                                     <div class="company_name wordCut">
@@ -242,7 +242,7 @@
                              </div>
                              <div class="pli_btm">
                                 <a href="#" class="left">
-                                    <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
+                                    <img src="../images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
                                 </a>
                                 <div class="bottom-right">
                                     <div class="company_name wordCut">
@@ -281,7 +281,7 @@
                              </div>
                              <div class="pli_btm">
                                 <a href="#" class="left">
-                                    <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
                                 </a>
                                 <div class="bottom-right">
                                     <div class="company_name wordCut">
@@ -320,7 +320,7 @@
                              </div>
                              <div class="pli_btm">
                                 <a href="#" class="left">
-                                    <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
+                                    <img src="../images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
                                 </a>
                                 <div class="bottom-right">
                                     <div class="company_name wordCut">
@@ -345,7 +345,7 @@
                     <ul class="ad_company_list clearfix hot-company">
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic1.jpg" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic1.jpg" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">霖感电竞</a>
                                 </p>
@@ -357,7 +357,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic2.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic2.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">正心文化</a>
                                 </p>
@@ -370,7 +370,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic3.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic3.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">LGD</a>
                                 </p>
@@ -383,7 +383,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic4.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic4.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">GHG</a>
                                 </p>
@@ -396,7 +396,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic5.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic5.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">兔玩电竞</a>
                                 </p>
@@ -409,7 +409,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic1.jpg" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic1.jpg" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a hhref="detail_company.html" target="_blank">霖感电竞</a>
                                 </p>
@@ -421,7 +421,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic2.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic2.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">正心文化</a>
                                 </p>
@@ -434,7 +434,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic3.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic3.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">LGD</a>
                                 </p>
@@ -447,7 +447,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic4.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic4.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">GHG</a>
                                 </p>
@@ -460,7 +460,7 @@
                         </li>
                         <li class="company_item">
                             <div class="item_top">
-                                <p><a href="detail_company.html" target="_blank"><img src="images/pic5.png" alt="" width="193" height="100"/></a></p>
+                                <p><a href="detail_company.html" target="_blank"><img src="../images/pic5.png" alt="" width="193" height="100"/></a></p>
                                 <p class="company-name wordCut">
                                     <a href="detail_company.html" target="_blank">兔玩电竞</a>
                                 </p>
