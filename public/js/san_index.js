@@ -58,7 +58,7 @@ $(function(){
 //    });
 });
 
-//热门职位
+// //热门职位
 // function hotjobs(){
 // 	jQuery.ajax({   
 //         type: 'post',   

@@ -1,11 +1,21 @@
 /* CSS Document */
 @charset "utf-8";
-*{margin: 0; padding: 0;}
+*{margin: 0; padding: 0;outline: 0;}
 img{ border:none;vertical-align: top;display: inline-block;}
 li{ list-style:none;}
 body,html{height: 100%;}
 body{ font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;  background: #fff; font-size: 14px; color: #424242;}
 a{ text-decoration: none;background-color: transparent;color: #666;}
+dl, dt, dd {
+    margin: 0;
+}
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
 a:focus { outline: 0;}
 a,input,button{ outline:none;}
 ::-moz-focus-inner{border:0px;}
@@ -232,3 +242,70 @@ display: -webkit-box;
 -webkit-line-clamp: 3;
 -webkit-box-orient: vertical;}
 
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+h1, h2, h3, h4 {
+    font-weight: 400;
+}
+a {
+    color: #555;
+}
+em, i {
+    font-style: normal;
+}
+img {
+    border: 0;
+    vertical-align: top;
+    display: inline-block;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+label, select, button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox], input[type=file] {
+    cursor: pointer;
+}
+input[type=text], input[type=password], textarea {
+    font-family: "Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ededed;
+    border-radius: 0;
+    font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+}
+b, strong {
+    font-weight: 700;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ededed;
+    border-radius: 0;
+    font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+}

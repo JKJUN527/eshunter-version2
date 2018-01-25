@@ -1,8 +1,6 @@
 li{list-style: none}
 img{border: none;}
 a{text-decoration: none;}
-.left{ float: left;}
-.right{float: right;}
 body{font-size:14px; font-family:'微软雅黑';}
 body{ background: #fff;}
 button,input,textarea{outline: none; font-family:'微软雅黑';}

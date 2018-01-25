@@ -1,0 +1,505 @@
+#container_content {
+    width: 1200px;
+    margin: 35px auto 0;
+    padding-bottom: 15px;
+}
+.new_section {
+    width: 870px;
+}
+.new_section>dl {
+    background-color: #fafafa;
+    margin-bottom: 15px;
+}
+.new_section>dl dt {
+    background: #fafafa;
+    height: 50px;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+    padding: 10px 0 0 20px;
+}
+.new_section>dl dt h1 {
+    font-size: 24px;
+    color: #555;
+}
+
+.new_section h1 {
+    font-weight: 400;
+    line-height: 42px;
+    margin: 0 0 20px;
+}
+.select_input {
+    position: absolute;
+    width: 128px;
+    height: 32px;
+    left: 196px;
+    top: 14px;
+    border: 1px solid #dce4e6;
+    border-radius: 1px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    cursor: pointer;
+}
+.select_input span {
+    position: absolute;
+    left: 14px;
+    top: 6px;
+}
+.select_input i {
+    position: absolute;
+    width: 11px;
+    height: 6px;
+    right: 10px;
+    top: 12px;
+    background: url(../images/dropdown1.png) no-repeat;
+}
+.select_options {
+    position: absolute;
+    width: 128px;
+    height: 40px;
+    left: 196px;
+    top: 50px;
+    border: 1px solid #e7e7e7;
+    border-radius: 2px;
+    box-shadow: 2px 2px 3px 0 #e7e7e7;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    cursor: pointer;
+}
+.dn {
+    display: none;
+}
+.select_options span {
+    position: absolute;
+    left: 14px;
+    top: 10px;
+}
+.d_refresh {
+    font-size: 18px;
+    color: #555;
+    background: url(../images/refresh_w.png) left center no-repeat;
+    padding-left: 20px;
+    position: absolute;
+    right: 35px;
+    top: 16px;
+}
+.new_section>dl dd {
+    min-height: 300px;
+    padding: 20px 0;
+    clear: both;
+}
+.delivery_tabs {
+    background-color: #f2f2f2;
+    padding: 0;
+}
+.delivery_tabs ul {
+    margin-left: 30px;
+    font-size: 0;
+}
+.delivery_tabs li.current {
+    border-bottom: 2px solid #00b38a;
+}
+.delivery_tabs li {
+    position: relative;
+    font-size: 0;
+    padding: 16px 0 13px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.delivery_tabs li.current a, .delivery_tabs li:hover a {
+    color: #00b38a;
+}
+
+.delivery_tabs li a.all_border {
+    border: 0;
+}
+
+.delivery_tabs li a {
+    display: block;
+    padding: 0 26px 0 25px;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 16px;
+    color: #777;
+    border-left: 1px solid #d8d8d8;
+}
+.delivery_tabs li.last a {
+    border-right: 0;
+}
+ul.my_delivery {
+    margin: 20px 34px 20px 29px;
+}
+.my_delivery li {
+    margin-bottom: 30px;
+    background: #fff;
+    position: relative;
+}
+.my_delivery .d_item {
+    border-left: 3px solid #91cebe;
+    padding: 3px 12px;
+}
+.my_delivery .d_job {
+    margin: 0;
+    padding: 5px 0;
+    font-weight: 400;
+}
+.my_delivery .d_job .d_job_name {
+    font-size: 18px;
+    color: #0d9572;
+}
+.my_delivery .d_job .d_job_salary {
+    font-size: 16px;
+    color: #e6775c;
+}
+.my_delivery .d_company {
+    margin: 5px 0;
+    font-size: 16px;
+}
+.my_delivery .d_company a {
+    color: #555;
+}
+.my_delivery .d_company span {
+    color: #999;
+}
+.my_delivery .d_resume {
+    margin: 5px 0;
+    color: #999;
+}
+.my_delivery .d_resume_type {
+    color: #333;
+}
+.btn_showprogress {
+    position: relative;
+    float: right;
+    margin-left: 5px;
+    padding-right: 15px;
+    font-size: 14px;
+    color: #555;
+}
+.btn_showprogress i {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-width: 6px 6px 0;
+    border-style: solid dashed;
+    border-color: #019875 transparent transparent;
+    -webkit-transition: all .4s ease 0s;
+    -moz-transition: all .4s ease 0s;
+    -ms-transition: all .4s ease 0s;
+    transition: all .4s ease 0s;
+}
+.btn_showprogress i.transform {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-transition: all .4s ease 0s;
+    -moz-transition: all .4s ease 0s;
+    -ms-transition: all .4s ease 0s;
+    transition: all .4s ease 0s;
+}
+.my_delivery .d_time {
+    float: right;
+    color: #999;
+}
+.progress_status {
+    border-top: 1px dashed #ccc;
+    border-bottom: 2px solid #91cebe;
+    padding: 25px 35px;
+    position: relative;
+    zoom: 1;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.progress_status ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.status_steps .status_1 {
+    margin-left: 20px;
+}
+
+.status_steps .status_done {
+    width: 28px;
+    height: 28px;
+    background: url(../images/status_bg.png) left top no-repeat;
+}
+
+.status_steps li {
+    float: left;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    margin-bottom: 0;
+}
+.status_steps .status_line {
+    width: 120px;
+    margin-top: 12px;
+}
+.status_steps .status_line_grey span {
+    display: block;
+    height: 4px;
+    background: #dadada;
+}
+.progress_status .status_text {
+    position: relative;
+    margin-bottom: 30px;
+    height: 60px;
+}
+.status_text li {
+    position: absolute;
+    width: 148px;
+    text-align: center;
+    top: 32px;
+    left: -42px;
+    color: #333;
+    font-size: 16px;
+    line-height: 28px;
+}
+.status_text .status_text_2 {
+    left: 104px;
+}
+.status_text .status_text_3 {
+    left: 256px;
+}
+.status_text .status_text_4 {
+    left: 405px;
+}
+.status_steps .status_grey {
+    width: 28px;
+    height: 28px;
+    background: url(../images/status_bg.png) left bottom no-repeat;
+}
+.status_list li {
+    margin: 0;
+}
+.status_list .list_time {
+    font-size: 12.5px;
+    color: #999;
+    padding-left: 20px;
+    position: relative;
+}
+.status_list .top1 .list_time em {
+    background-position: left top;
+}
+.status_list .list_time em {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 10px;
+    height: 11px;
+    background: url(../images/status_dot.png) left bottom no-repeat;
+}
+.status_list .top1 .list_body {
+    border-left: 0;
+}
+
+.status_list .list_body {
+    color: #555;
+    border-left: 2px solid #d0d0d0;
+    padding: 2px 0 20px 12px;
+    margin-left: 4px;
+    font-size: 16px;
+    line-height: 28px;
+}
+.status_list .top .list_body>img, .status_list .top1 .list_body>img {
+    height: 60px;
+    width: 60px;
+}
+.status_list h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #555;
+}
+.btn_closeprogress {
+    position: absolute;
+    right: 35px;
+    bottom: 30px;
+    width: 44px;
+    height: 44px;
+    background: url(../images/progress_close.png) no-repeat;
+}
+.content_r {
+    float: left;
+    width: 282px;
+    margin-left: 42px;
+}
+.mr_r_nav {
+    margin-bottom: 18px;
+}
+.mr_r_nav ul, .mr_r_nav ol {
+    list-style: none;
+    padding: 0;
+}
+.mr_r_nav ul {
+    margin-top: 0;
+}
+.mr_r_nav li {
+    float: left;
+    width: 66px;
+    height: 66px;
+    margin-right: 3px;
+    border: 1px solid #f2f2f2;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.mr_r_nav li a {
+    position: relative;
+    display: block;
+    padding-top: 40px;
+    height: 26px;
+    text-align: center;
+    background-color: #fafafa;
+}
+.mr_r_nav li a .td {
+    background-position: 0 -316px;
+}
+.mr_r_nav li a i {
+    position: absolute;
+    left: 50%;
+    margin-left: -14px;
+    top: 12px;
+    width: 30px;
+    height: 25px;
+    background: url(../images/icons_mr.png) no-repeat;
+}
+.mr_r_nav li a em.count1 {
+    width: 18px;
+    background-position: -173px -190px;
+}
+
+.mr_r_nav li a em {
+    position: absolute;
+    left: 44px;
+    top: 2px;
+    height: 18px;
+    line-height: 18px;
+    background: url(../images/icons_mr.png) no-repeat;
+    color: #fff;
+    font-size: 12px;
+}
+.mr_r_nav li a .yq {
+    background-position: -101px -316px;
+}
+
+.mr_r_nav li a i {
+    position: absolute;
+    left: 50%;
+    margin-left: -14px;
+    top: 12px;
+    width: 30px;
+    height: 25px;
+    background: url(../images/icons_mr.png) no-repeat;
+}
+.position_head {
+    list-style-type: none;
+    border-bottom: 2px solid #e9e9e9;
+    padding: 0;
+    margin: 1em 0;
+}
+.position_head li {
+    display: inline-block;
+    padding: 0 10px 7px;
+    margin-right: -4px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: -2px;
+    font-weight: 700;
+}
+
+.guess_selected {
+    border-bottom: 2px solid #00a881;
+    color: #333;
+}
+.position_detail_content .guess_like {
+    width: 280px;
+    margin-top: -12px;
+}
+.guess_like_list_item {
+    width: 280px;
+    vertical-align: top;
+    border-bottom: 1px dashed #e5e5e5;
+    position: relative;
+}
+.guess_like_list_item a {
+    display: block;
+    width: 280px;
+    margin: 12px 0 12px 12px;
+}
+.guess_like_list_item_logo {
+    margin-right: 12px;
+    border: 2px solid #f2f2f2;
+}
+.guess_like_list_item_logo, .guess_like_list_item_pos {
+    float: left;
+}
+.guess_like_list_item_logo img {
+    vertical-align: middle;
+    display: block;
+}
+.guess_like_list_item_pos h2 {
+    width: 160px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.guess_like_list_item_pos h2 {
+    margin: 0;
+    color: #333;
+    padding: 0;
+    font-size: 16px;
+}
+.guess_like_list_item_pos p {
+    color: #e6775c;
+    margin: -2px 0 0 0;
+    padding: 0;
+    font-size: 16px;
+}
+.guess_like_list_item_pos .company_name {
+    font-size: 12px;
+    color: #999;
+}
+
+.guess_like_list_item_pos p {
+    color: #e6775c;
+    margin: -2px 0 0 0;
+    padding: 0;
+    font-size: 16px;
+}
+.guess_like_list_item_pos .company_name .company_name_span {
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100px;
+    display: block;
+    float: left;
+}
+.guess_like_list_item_pos .company_name .company_position_span {
+    position: absolute;
+    right: 0;
+}
+.similar_position_footer {
+    display: block;
+    color: #555;
+    height: 35px;
+    line-height: 35px;
+    background: #fafafa url(../images/similar_position_triangle.png) no-repeat 205px 10px;
+    margin-bottom: 10px;
+    margin-top: 12px;
+    text-align: center;
+}

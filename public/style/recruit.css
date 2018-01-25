@@ -1,0 +1,541 @@
+#ext_header_tips, #main-content-wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+#main-content-wrapper .container .head, .container .head-son {
+    height: 24px;
+    line-height: 24px;
+}
+#main-content-wrapper .container .head {
+    padding: 10px 0;
+    border-bottom: 1px solid #d5dadf;
+}
+body.auth-restrict .container .head {
+    padding-top: 30px;
+}
+.container .head .title, .container .head-son .title {
+    font-size: 18px;
+    float: left;
+}
+.container .head-son {
+    padding: 16px 0 10px 0;
+}
+
+.container .head, .container .head-son {
+    height: 24px;
+    line-height: 24px;
+}
+.set-tab {
+    height: 24px;
+    font-size: 16px;
+}
+.set-tab .active {
+    color: #00b38a;
+}
+
+.set-tab .menu-item {
+    font-size: 16px;
+    cursor: pointer;
+}
+.set-tab .divider {
+    display: inline-block;
+    width: 1px;
+    height: 17px;
+    margin: 0 15px;
+    vertical-align: middle;
+    overflow: hidden;
+    background: #e2ebe8;
+}
+.set-tab a {
+    color: #555555;
+}
+.set-tab .menu-item {
+    font-size: 16px;
+    cursor: pointer;
+}
+.setting-container {
+    border: 1px solid #d5dadf;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+.setting-item:first-child {
+    padding-top: 25px;
+}
+.form-item .label-pic {
+    line-height: 20px;
+}
+
+.form-item label {
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 46px;
+    line-height: 46px;
+    margin-right: 20px;
+    padding-left: 17px;
+    text-align: right;
+    font-size: 16px;
+    color: #555555;
+    cursor: text;
+}
+.form-item .upload-img {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    margin-left: 5px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+}
+.form-item .upload-img .show_img {
+    height: 120px;
+    width: 120px;
+    margin-left: 0px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.form-item .upload-img .upload-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    z-index: 2;
+}
+.form-item .upload-img input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 98px;
+    height: 20px;
+}
+.form-item .upload-img-des {
+    margin-left: 20px;
+    padding-top: 30px;
+}
+.form-item .upload-img-des p {
+    font-size: 14px;
+    color: #777777;
+    line-height: 1.5;
+    margin-top: 0;
+}
+.form-item + .form-item {
+    margin-top: 20px;
+}
+.form-item label {
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 46px;
+    line-height: 46px;
+    margin-right: 20px;
+    padding-left: 17px;
+    text-align: right;
+    font-size: 16px;
+    color: #555555;
+    cursor: text;
+}
+.form-item .name-info:before, .form-item .phone-info:before, .form-item .hrName4JD:before {
+    content: "*";
+    position: absolute;
+    margin-top: 4px;
+    margin-left: -8px;
+    color: red;
+}
+.form-item .form-input {
+    display: inline-block;
+}
+
+.form-input {
+    position: relative;
+}
+.form-item .input {
+    width: 334px;
+    border-color: #d5dadf;
+    background-color: #ffffff;
+}
+input[type="text"], textarea {
+    outline: none;
+}
+.input {
+    font-size: 14px;
+    line-height: 44px;
+    position: relative;
+    z-index: 1;
+    height: 44px;
+    width: 300px;
+    line-height: 44px\9;
+    padding-right: 13px;
+    padding-left: 13px;
+    vertical-align: middle;
+    color: #333;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    outline: 0;
+}
+.form-input > .input-tips.hrName {
+    left: 250px;
+}
+
+.form-input > .input-tips {
+    font-size: 12px;
+    color: rgba(166, 166, 166, 0.73);
+    position: absolute;
+}
+.form-input > .input-tips.email-input-tips, .form-input > .input-tips.phone-input-tips {
+    left: 275px;
+}
+.form-item .btn_green {
+    margin-bottom: 30px;
+}
+
+.btn_green:hover, .btn_green.btn_active {
+    color: #ffffff;
+    border-color: #00b38a;
+    background-color: #00b38a;
+}
+.footer-menu {
+    background-color: #fbfbfc;
+    border-top: 1px solid #eceff1;
+    height: 55px;
+    padding-left: 20px;
+}
+.footer-menu .set-tab {
+    margin-top: 15px;
+}
+.set-tab .menu-item:hover {
+    color: #00b38a;
+}
+.footer-menu .menu-item {
+    font-size: 14px;
+}
+.footer-menu .mds-setting-quot {
+    display: inline-block;
+    width: 10px;
+    height: 12px;
+    margin-left: 12px;
+    background: url(https://img.lagou.com/mds/static/settings/modules/img/d_arrow_25dcc2e.png) right center no-repeat;
+}
+.setting-item:first-child {
+    padding-top: 25px;
+}
+.setting-content {
+    width: 1200px;
+    padding-bottom: 126px;
+}
+#pIdContent {
+    display: inline-block;
+    width: 564px;
+    padding-left: 36px;
+    vertical-align: top;
+}
+#pIdContent .headline span.green {
+    width: 3px;
+    height: 16px;
+    background: #00b38a;
+}
+
+#pIdContent .headline span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#pIdContent .headline span.headline_name {
+    font-size: 16px;
+    color: #555;
+    margin-left: 7px;
+}
+#pIdContent .person_content {
+    padding-bottom: 30px;
+}
+#pIdContent .person_content .head_img {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    margin: 34px auto;
+}
+#pIdContent .person_content .head_img img {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+}
+#pIdContent .person_content .head_img .p_sign_nopass {
+    display: block;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    background: #FF6A6A;
+    border-radius: 3px;
+    margin: 14px auto 0;
+    padding: 0px 5px;
+}
+#pIdContent .person_content ul.info_list {
+    width: 250px;
+    margin: 72px auto 50px;
+    padding-left: 100px;
+}
+#pIdContent .person_content ul.info_list li {
+    margin-bottom: 24px;
+}
+#pIdContent .person_content ul.info_list span {
+    display: inline-block;
+    vertical-align: top;
+}
+#pIdContent .person_content ul.info_list li span {
+    display: inline-block;
+    font-size: 14px;
+}
+#pIdContent .person_content ul.info_list li span.li_title {
+    color: #555;
+    margin-right: 20px;
+}
+#pIdContent .person_content ul.info_list li span.li_word {
+    color: #333;
+    max-width: 182px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#pIdContent .person_content .button_bd {
+    position: relative;
+}
+#pIdContent .person_content .button_bd a {
+    display: inline-block;
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    border-radius: 3px;
+    background: #00b38a;
+    color: #fff;
+    text-align: center;
+    margin-left: 206px;
+    padding: 0px 36px;
+    cursor: pointer;
+}
+#pIdContent .person_content .button_bd div.tip_list {
+    display: inline-block;
+    position: relative;
+}
+#pIdContent .person_content .button_bd span {
+    display: inline-block;
+}
+#pIdContent .person_content .button_bd span.tip_icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-left: 16px;
+    color: #fff;
+    line-height: 12px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+#pIdContent .person_content .button_bd div.tip_list span.list_arrow {
+    display: none;
+    position: absolute;
+    left: 40px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border: #E3EBE9 solid 1px;
+    border-left: 0;
+    border-bottom: 0;
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg);
+    background: #fff;
+    z-index: 2;
+}
+#pIdContent .person_content .button_bd div.tip_list ul {
+    display: none;
+    position: absolute;
+    left: 46px;
+    top: -14px;
+    width: 100px;
+    height: 66px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #E3EBE9;
+    border-radius: 3px;
+    background: #fff;
+}
+#pIdContent .person_content .button_bd div.tip_list ul li span.point {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00b38a;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+#pIdContent .person_content .button_bd div.tip_list ul li span.lists {
+    font-size: 14px;
+    color: #777;
+    vertical-align: middle;
+}
+#companyContent {
+    display: inline-block;
+    width: 584px;
+    vertical-align: top;
+}
+#companyContent .headline {
+    padding-left: 30px;
+}
+#companyContent .headline span.green {
+    width: 3px;
+    height: 16px;
+    background: #00b38a;
+}
+
+#companyContent .headline span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#companyContent .headline span.headline_name {
+    font-size: 16px;
+    color: #555;
+    margin-left: 7px;
+}
+
+#companyContent .headline span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#companyContent .company_content {
+    border-left: 1px solid #F0EFF5;
+    padding-bottom: 30px;
+}
+#companyContent .company_content .head_img {
+    width: 82px;
+    height: 82px;
+    margin: 34px auto 0;
+    border: 1px solid #ccc;
+}
+#companyContent .company_content .head_img img {
+    width: 82px;
+    height: 82px;
+}
+#companyContent .company_content .head_img .p_sign {
+    display: block;
+    width: 52px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    background: #999;
+    border-radius: 3px;
+    margin: 14px auto 0;
+}
+#companyContent .company_content ul.info_list {
+    width: 274px;
+    margin: 72px auto 36px;
+    padding-left: 30px;
+}
+#companyContent .company_content ul.info_list li {
+    margin-bottom: 24px;
+}
+#companyContent .company_content ul.info_list li span.li_title {
+    color: #555;
+    margin-right: 20px;
+}
+#companyContent .company_content ul.info_list li span {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: top;
+}
+#companyContent .company_content ul.info_list li span.li_word {
+    color: #333;
+    max-width: 196px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#companyContent .company_content .button_bd {
+    position: relative;
+}
+#companyContent .company_content .button_bd a.not_complete {
+    margin-left: 175px;
+    background: #e4e4e4;
+}
+
+#companyContent .company_content .button_bd a {
+    display: inline-block;
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    border-radius: 3px;
+    background: #00b38a;
+    color: #fff;
+    text-align: center;
+    margin-left: 236px;
+    padding: 0px 36px;
+    cursor: pointer;
+}
+#companyContent .company_content .button_bd div.tip_list {
+    display: inline-block;
+    position: relative;
+}
+#companyContent .company_content .button_bd span.tip_icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-left: 16px;
+    color: #fff;
+    line-height: 12px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+#companyContent .company_content .button_bd div.tip_list span.list_arrow {
+    display: none;
+    position: absolute;
+    left: 40px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border: #E3EBE9 solid 1px;
+    border-left: 0;
+    border-bottom: 0;
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg);
+    z-index: 2;
+    background: #fff;
+}
+#companyContent .company_content .button_bd div.tip_list ul {
+    display: none;
+    position: absolute;
+    left: 46px;
+    top: -14px;
+    width: 138px;
+    height: 66px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #E3EBE9;
+    border-radius: 3px;
+    background: #fff;
+}
+#companyContent .company_content .button_bd div.tip_list ul li span.point {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00b38a;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+#companyContent .company_content .button_bd span {
+    display: inline-block;
+}
+#companyContent .company_content .button_bd div.tip_list ul li span.lists {
+    font-size: 14px;
+    color: #777;
+    vertical-align: middle;
+}
