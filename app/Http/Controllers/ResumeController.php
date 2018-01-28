@@ -45,6 +45,7 @@ class ResumeController extends Controller {
                 $data['msg'] = "简历数大于上限";
             } else {
                 $resume->save();
+
                 $intention = new Intention();
                 $intention->rid = $resume->rid;
                 $intention->uid = $uid;
@@ -54,6 +55,9 @@ class ResumeController extends Controller {
                 $intention->region = -1;
                 $intention->salary = -1;
                 $intention->save();
+
+                $updateresume = Resumes::where('rid',$resume->rid)
+                    ->update(['inid'=>$intention->inid]);
 
                 $data['status'] = 200;
                 $data['rid'] = $resume->rid;
@@ -100,7 +104,9 @@ class ResumeController extends Controller {
         $data['project'] = $this->getProjectexp();
         $person = new InfoController();
         $data['personInfo'] = $person->getPersonInfo();
-        $data['region'] = Region::all();
+        //查询工作地区
+        $data['province'] = Region::where('parent_id',0)->get();
+        $data['city'] = Region::where('parent_id','!=',0)->get();
         $data['industry'] = Industry::all();
         $data['occupation'] = Occupation::orderBy('updated_at','asc')->get();
         $data['egame'] = Egame::all();
