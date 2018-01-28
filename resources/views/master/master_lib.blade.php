@@ -12,7 +12,7 @@
 
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 'master','type' => 0])
+   @include('components.headerTab',['activeIndex' => 6,'type' => 0])
 @endsection
 
 @section('content')

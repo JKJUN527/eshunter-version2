@@ -10,7 +10,7 @@
     <link media="all" href="{{asset('../style/style.css?v=2.35')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('../style/pub.css?v=2.33')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('../style/webindex.css?v=2.35')}}" type="text/css" rel="stylesheet">
-    <link href="{{asset('../style/tao.css?v=2.61')}}" type="text/css" rel="stylesheet">
+    
     <link rel="stylesheet" type="text/css" href="{{asset('../style/iconfont.css')}}"/>
     <link href="{{asset('../style/animation.css?v=2.32')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('../style/style.css?v=2.43')}}" type="text/css" rel="stylesheet">

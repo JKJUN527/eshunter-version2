@@ -3,7 +3,7 @@
 
 
 @section('custom-style')
-    
+    <link href="{{asset('../style/tao.css?v=2.61')}}" type="text/css" rel="stylesheet">
 @endsection
 
 
@@ -13,7 +13,7 @@
 
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 'index','type' => 0])
+   @include('components.headerTab',['activeIndex' => 1,'type' => 0])
 @endsection
 
 

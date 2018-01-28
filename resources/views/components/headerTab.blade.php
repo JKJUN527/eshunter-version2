@@ -6,14 +6,14 @@
       <span style="padding-left:10px;font-size:12px;color:#999;display: inline-block;margin-top: 25px;">电竞猎人 - 做专业的竞技游戏职业招聘网站</span></div>
     <ul class="nav_ul">
       <li id="cuan">
-        @if($activeIndex === 'index')
+        @if($activeIndex === 1)
             <a class="home home_active" title="电竞猎人" href="/index/index">首页</a>
         @else
             <a class="home" title="电竞猎人" href="/index/index">首页</a>
         @endif
       </li>
       <li id="company">
-        @if($activeIndex === 'jobs')
+        @if($activeIndex === 3)
             <a class="qiye home_active" title="" href="/jobs/jobs_search" rel="nofollow">职位搜索</a>
         @else
             <a class="qiye" title="" href="/jobs/jobs_search" rel="nofollow">职位搜索</a>
@@ -21,7 +21,7 @@
         
       </li>
       <li class="pos_relative" id="xiu">
-        @if($activeIndex === 'master')
+        @if($activeIndex === 6)
             <a class="xiu home_active" title="精准推荐" href="/master/master_lib" rel="nofollow">大神库</a>
         @else
             <a class="xiu" title="精准推荐" href="/master/master_lib" rel="nofollow">大神库</a>
@@ -29,29 +29,28 @@
         
       </li>
       <li id="cuan">
-        @if($activeIndex === 'news')
+        @if($activeIndex === 4)
             <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">资讯中心</a>
         @else
             <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">资讯中心</a>
         @endif
       </li>
-      @if($type === 1)
-        <li id="person_center">
-          @if($activeIndex === 'person')
-              <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">个人中心</a>
+ 
+      <li id="person_center">
+        @if($activeIndex === 2)
+              @if($type === 1)
+                  <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">个人中心</a>
+              @elseif($type ===2)
+                  <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">企业中心</a>
+              @endif
           @else
-              <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">个人中心</a>
+              @if($type === 1)
+                  <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">个人中心</a>
+              @elseif($type ===2)
+                  <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">企业中心</a>
+              @endif
           @endif
         </li>
-
-        <li id="qiye_center">
-          @if($activeIndex === 'company')
-              <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">企业中心</a>
-          @else
-              <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">企业中心</a>
-          @endif
-        </li>
-      @endif
     </ul>
   </div>
 </div>

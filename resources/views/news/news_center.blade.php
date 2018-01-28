@@ -3,7 +3,7 @@
 
 @section('custom-style')
    <link media="all" href="{{asset('../style/news.css')}}" type="text/css" rel="stylesheet">
-  @endsection
+@endsection
 
 
 @section('header-nav')
@@ -12,7 +12,7 @@
 
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 'news','type' => 0])
+   @include('components.headerTab',['activeIndex' => 4,'type' => 0])
 @endsection
 
 @section('content')
