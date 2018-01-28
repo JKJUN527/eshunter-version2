@@ -35,7 +35,7 @@
                 <div class="index_con">
                     <div id="all_divclass" class="all_divclass">
                         <div class="all_divcon">
-                            <img src="./images/dh.png" alt="">
+                            <img src="../images/dh.png" alt="">
                         </div>
                     </div>      
                     <div class="jieshao">

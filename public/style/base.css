@@ -60,7 +60,7 @@ em.msg_amount {
 .header_con{width: 1200px; height: 77px; /*overflow: hidden;*/ zoom:1; margin: 0 auto;}
 .logo-con{ float: left; margin-top: 23px;}
 .beta{ position: absolute; top: 0px; right: 0px;}
-.nav_ul{overflow: hidden;  float: left; font-size: 18px; height: 100%; margin-left: 353px;}
+.nav_ul{overflow: hidden;  float: right; font-size: 18px; height: 100%;}
 .nav_ul li{ float: left; height: 100%; overflow: hidden; }
 .nav_ul li.pos_relative{
 	position: relative;
