@@ -18,9 +18,9 @@
     line-height: 40px;
 }
 .user_sideBarmenu li a.hover_ac, .user_sideBarmenu li a:hover {
-    border-right: 2px solid #00b38a;
+    border-right: 2px solid #D32F2F;
     padding-right: 28px;
-    color: #00b38a;
+    color: #D32F2F;
 }
 
 .user_sideBarmenu li a {
@@ -245,7 +245,7 @@ input[type=text], input[type=password] {
     border-bottom: 1px dashed #D9D9D9;
 }
 .c_section .operate {
-    color: #019875;
+    color: #D32F2F;
     cursor: pointer;
 }
 .c_section>dd {
@@ -274,7 +274,7 @@ input[type=text], input[type=password] {
     padding-left: 0;
 }
 .user_thirdLogin dd a {
-    color: #019875;
+    color: #D32F2F;
 }
 
 /*账号绑定弹窗*/
@@ -699,7 +699,7 @@ input.input {
     display: inline-block;
     vertical-align: bottom;
     margin-left: -8px;
-    background: #00b38a;
+    background: #D32F2F;
     font-size: 16px;
     color: #fff;
     border-radius: 5px;
@@ -728,7 +728,7 @@ input.input {
 }
 .switch_resume ul.select_content li .company_list li i {
     margin-left: 22px;
-    color: #00b38a;
+    color: #D32F2F;
     cursor: pointer;
     font-size: 14px;
 }

@@ -908,6 +908,10 @@ p.file_success .icon-glyph-success {
     font-size: 60px;
     color: #D32F2F;
 }
+p.file_success .icon-glyph-fail {
+    font-size: 60px;
+    color: #D32F2F;
+}
 .file_check li.file_line1 {
     font-size: 24px;
     color: #333;

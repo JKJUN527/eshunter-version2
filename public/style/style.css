@@ -359,3 +359,146 @@ margin-top: 7px; margin-right: 6px;}
 .back-face div{ font-size: 16px; text-align: left; padding: 6px;}
 .major-list li a{overflow:hidden}
 .major-list li:hover a .back-face{z-index:3;}
+
+/*关于我们*/
+.content_wrap {
+    width: 1024px;
+    margin: 35px auto 0;
+}
+.content {
+    position: relative;
+    width: 720px;
+    margin: 0 auto;
+    padding: 0 60px;
+    background-color: #fafafa;
+}
+.content h2 {
+    float: left;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+    height: 43px;
+    background: #91cebe;
+    margin: -8px 0 10px 40px;
+    padding: 0 20px;
+    line-height: 43px;
+    position: absolute;
+    z-index: 2;
+}
+.content h2 em {
+    background: url(../images/title_arrow_d475769.png) 0 0 no-repeat;
+    width: 6px;
+    height: 8px;
+    position: absolute;
+    left: -6px;
+    top: 0;
+}
+.aboutus dd {
+    padding: 80px 25px;
+}
+
+.content dd {
+    color: #555;
+    padding: 50px 25px 20px;
+    clear: both;
+}
+.aboutus dd img.photo {
+    position: absolute;
+    width: 186px;
+    height: 215px;
+}
+.aboutus dd .intro {
+    margin-left: 196px;
+    height: 175px;
+    padding: 20px 30px;
+    background: #D32F2F;
+}
+.aboutus dd .intro p {
+    color: #fff;
+    text-indent: 2em;
+}
+.aboutus ul li {
+    float: left;
+    margin-top: 10px;
+    padding: 5px 7px;
+    font-size: 14px;
+    color: #fff;
+    background: #D32F2F;
+}
+.aboutus ul li.cli1 {
+    width: 182px;
+    height: 66px;
+    margin-right: 10px;
+}
+.aboutus ul li h3 {
+    font-size: 14px;
+}
+.aboutus ul li a {
+    color: #fff;
+}
+.aboutus ul li.cli2 {
+    width: 450px;
+    height: 66px;
+}
+.aboutus ul li h3 {
+    font-size: 14px;
+}
+.aboutus ul li .service {
+    float: left;
+    width: 210px;
+    margin-right: 10px;
+}
+.aboutus ul li .service_fr {
+    margin-right: 0;
+}
+.aboutus ul li.cli3 {
+    width: 656px;
+    height: auto;
+    color: #fff;
+}
+.aboutus ul li.cli4 {
+    position: relative;
+    width: 656px;
+    height: 56px;
+    overflow: hidden;
+}
+.aboutus ul li.cli4 img {
+    position: absolute;
+    margin-top: 2px;
+    width: 52px;
+    height: 52px;
+}
+.aboutus ul li.cli4 p {
+    margin-left: 59px;
+    margin-top: 8px;
+    font-size: 24px;
+}
+.aboutus ul li.cli4 span {
+    margin-left: 59px;
+    color: #B7E7DB;
+}
+.aboutus ul li.cli4 .telephone {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    height: 56px;
+}
+.aboutus ul li.cli4 .telephone p {
+    font-weight: 700;
+}
+.aboutus ul li.cli4 .telephone span {
+    position: absolute;
+    right: 0;
+    color: #83d5bf;
+}
+.aboutus ul li.cli5 {
+    width: 656px;
+    height: 56px;
+    margin-top: -4px;
+    color: #C3C0B9;
+    text-align: right;
+    background-color: #FAFAF9;
+}
+.aboutus ul li.cli5 a {
+    color: #C3C0B9;
+}

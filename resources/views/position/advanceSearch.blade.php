@@ -3,6 +3,19 @@
 
 @section('custom-style')
    <link media="all" href="{{asset('../style/tao_company.css')}}" type="text/css" rel="stylesheet">
+   <style>
+    .jieshao_list li {
+        border-bottom: none;
+            margin-bottom: 0px;
+    }
+    .jieshao_list li:last-child {
+            border: 1px solid #dcdcdc;
+    }
+    .jieshao_list li:hover{
+        border: 1px solid #D32F2F;
+    }
+
+   </style>
 @endsection
 
 

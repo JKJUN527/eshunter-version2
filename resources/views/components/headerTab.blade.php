@@ -39,15 +39,15 @@
       <li id="person_center">
         @if($activeIndex === 2)
               @if($type === 1)
-                  <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">个人中心</a>
+                  <a class="post_Jb home_active" title="" href="/account" rel="nofollow">个人中心</a>
               @elseif($type ===2)
-                  <a class="post_Jb home_active" title="" href="/news/news_center" rel="nofollow">企业中心</a>
+                  <a class="post_Jb home_active" title="" href="/account" rel="nofollow">企业中心</a>
               @endif
           @else
               @if($type === 1)
-                  <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">个人中心</a>
+                  <a class="post_Jb" title="" href="/account" rel="nofollow">个人中心</a>
               @elseif($type ===2)
-                  <a class="post_Jb" title="" href="/news/news_center" rel="nofollow">企业中心</a>
+                  <a class="post_Jb" title="" href="/account" rel="nofollow">企业中心</a>
               @endif
           @endif
         </li>
