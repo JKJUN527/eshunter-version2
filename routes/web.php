@@ -56,6 +56,9 @@ Route::any('account/personinfo/edit', ['uses' => 'AccountController@personinfoEd
 Route::any('account/enprinfo/edit', ['uses' => 'AccountController@enprinfoEdit']);
 
 Route::any('account/', ['uses' => 'PersonCenterController@index']);
+// Route::get('account/', function () {
+//    return view('account/index');
+// });
 Route::any('account/index', ['uses' => 'PersonCenterController@index']);
 //简历模块
 Route::get('resume/add', ['uses' => 'ResumeController@getIndex']);

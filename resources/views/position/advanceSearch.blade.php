@@ -164,4 +164,63 @@
 @endsection
 
 @section('custom-script')
+<script defer="defer" type="text/javascript">
+var page = 1;
+ var page2 = 1;
+ var page3 = 1;
+
+    function more(){
+      var param = new Object();
+      param.param1 = "16801";
+      jQuery.ajax({   
+                    type: 'post',   
+                    contentType : 'application/json; charset=utf-8',   
+                    dataType: 'json',   
+                    url:'/ajax/moreport.do', 
+                    data: JSON.stringify(param),   
+                    success: function(data){
+                       $(".baodao").html("");
+                       $(".moreA").hide();
+                       $.each(data.result.reports,function(index,report){
+                          var str ='<li>'+
+                                       ' <a rel="nofollow" target="_blank" href="' +report.report_url+ '" title="" class="bd">' +report.report_title+ '</a>'+
+                                       '</li>';
+                           $('.baodao').append(str);
+                       });
+                    }
+      });
+    
+         
+    }
+//  点赞
+    $(function(){
+        $('.praise').live('click',function(){
+            if($(this).hasClass('active')){
+               return;
+            }else{
+               var param = new Object();
+               param.param1 = "16801";
+               jQuery.ajax({   
+                    type: 'post',   
+                    contentType : 'application/json; charset=utf-8',   
+                    dataType: 'json',   
+                    url:'/ajax/praise.do', 
+                    data: JSON.stringify(param),   
+                    success: function(data){
+                       var praise = "0";
+                       if(praise == null || praise == ""){
+                          praise = 0;
+                       }else{
+                          praise = "0";
+                       }
+                       praise ++;
+                       $('.dianzan span').text("已有" +praise+ "人认为该公司值得加入");
+                       $('.praise').addClass('active');
+                    }
+                    
+                });
+            }
+        })
+    })
+</script>
 @endsection
