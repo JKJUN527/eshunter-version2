@@ -107,7 +107,7 @@ $(document).ready(function(){
         if(param.emailAddr == "手机号/邮箱" || param.emailAddr.replace(/(^\s*)|(\s*$)/g,"") == "")
         {
             //$(".username_msg").show();
-            $(".username_msg").html("请填写用户名");
+            $(".username_msg").html("请填写手机号/邮箱");
             flag = 1;
         }else{
             //$(".username_msg").hide();
@@ -122,53 +122,43 @@ $(document).ready(function(){
             //$(".password_msg").hide();
             $(".password_msg").html("");
         }
-        
+        if(!/^[0-9a-z][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}[0-9a-z]\.){1,4}[a-z]{2,4}$/.test(param.emailAddr)
+          &&!/^1[34578]\d{9}$/.test(param.emailAddr)
+          ){
+          $(".username_msg").html("请填写正确的手机号/邮箱");
+            flag = 1;
+        }    
         if(flag == 1){
            return;        
         }
-        jQuery.ajax({   
-                type: 'post',   
-                contentType : 'application/json; charset=utf-8',   
-                dataType: 'json',   
-                url: '/ajax/login.do', 
-                data: JSON.stringify(param),   
-                success: function(data){
-                   if(data.ret == "0")
-                   {
-                       var verifyflg=data.verifyflg;
-                       if(verifyflg<0){
-                            //需要进行激活
-                            window.location.href = BaseJSURL + "/p/registActivation?email="+param.emailAddr;
-                            return;
-                       }
-                       if(data.invite == 1){
-                            window.location.href = "/invite/?invite=1";
-                       }else if(my_tou==1){
-                             if("http://www.neipin.com/j/45588.html" == window.location.href){
-                                window.location.href = "/?type=1";
-                             }else{
-                                window.location.href="http://www.neipin.com/j/45588.html";
-                             }
-                       }else{
-                            window.location.href = "/?type=1";
-                       }
-                   }
-                   else if(data.ret == -1)
-                   {
-                        $(".password_msg").show();
-                        $(".password_msg").html("用户名不存在或密码错误");
-                   }
-                   else if(data.ret == -3){
-                        window.location.href = "/disable/";
-                   }
-                   else
-                   {
-                        $(".password_msg").show();
-                        $(".password_msg").html("登录失败，请稍候重试");
-                   }
+        var formData = new FormData();
+        if(!/^1[34578]\d{9}$/.test(param.emailAddr)){
+          formData.append("email", param.emailAddr);
+        }else{
+          formData.append("phone",  param.emailAddr);
+        }
+        formData.append("password", param.passwd);
+        $.ajax({
+                url: "/account/login",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    //console.log(data);
+                    var result = JSON.parse(data);
+                    // checkResultWithLocation(result.status, "登录成功，正在跳转", result.msg, "/index");
+                    if(result.status == 200){
+                      window.location.href="/";
+                    }else{
+                      $(".username_msg").html(result.msg);
+                    }
+                    
                 }
-           });
-    });
+            });
+
 })
 
      function SetFocus() {
@@ -193,9 +183,6 @@ $(document).ready(function(){
             document.getElementById("btnRegist").click();
         }
      }      
-      
-      function jump(){
-      
-      }
+})
 </script>
 @endsection
