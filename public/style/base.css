@@ -32,7 +32,7 @@ input[type=text]:focus, input[type=submit]:focus, input[type=password]:focus, te
 #es_tbar .inner .es_tbar_l{float:left;padding-left: 100px; height: 30px;line-height: 30px;}
 #es_tbar .inner .es_tbar_l span {color: #D32F2F;font-size: 18px;}
 #es_tbar .inner .es_tbar_l .es_app{color: #D32F2F;}
-#es_tbar .inner .es_tbar_l .es_os{color:#fff;border-left: 1px solid #fff;padding-left:12px;}
+#es_tbar .inner .es_tbar_l .es_os{color:#fff;/* border-left: 1px solid #fff; */padding-left:12px;}
 #es_tbar .inner .es_tbar_r{float: right;}
 #es_tbar .inner .es_tbar_r li{float: left;display:list-item;height: 30px;line-height:30px;text-align: center;}
 em.msg_amount {
@@ -209,7 +209,7 @@ em.msg_amount {
 
 /*有事点我*/
 .QQ_each{ width: 200px; height: 200px;  display: block; 
-	 position: fixed; 	z-index: 14; top: 50%; margin-top: -100px; margin-left: 1060px;}
+	 position: fixed; 	z-index: 14; top: 50%; margin-top: -100px; margin-left: 1160px;}
 .float_qq{ width: 70px; height: 130px; overflow: hidden; display: block; 
 	background: url(../images/float_qq.png?v=20150514) right center no-repeat; 
 	}
