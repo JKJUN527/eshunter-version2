@@ -1,0 +1,573 @@
+.sso_header {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    background-color: #E85349;
+}
+.sso_header .logo {
+    position: absolute;
+    z-index: 9999;
+    top: 76px;
+    left: 50%;
+    margin-left: -350px;
+    width: 112px;
+    height: 42px;
+    background: url(../images/logo-black.png) no-repeat;
+    background-size: contain;
+}
+.content_box {
+    width: 552px;
+    margin: 100px auto 60px;
+    padding: 62px 70px 68px 78px;
+    background-color: #fff;
+    display: table;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #dce1e6;
+}
+
+.content_box {
+    position: relative;
+    z-index: 1;
+}
+.form_head {
+    position: relative;
+    z-index: 1;
+    height: 33px;
+    margin-bottom: 29px;
+    border-bottom: 1px solid #ebebeb;
+}
+.form_head li.active {
+    color: #D32F2F;
+}
+
+.form_head li {
+    font-size: 16px;
+    line-height: 24px;
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 33px;
+    cursor: pointer;
+    text-align: center;
+    color: #333;
+}
+.content_box .tab_active {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    z-index: 1;
+    background-color: #D32F2F;
+    width: 150px;
+    height: 1px;
+}
+.content_box .tab_active:before, .content_box .tab_active:after {
+    position: absolute;
+    z-index: 2;
+    top: -12px;
+    left: 50%;
+    margin-left: -3px;
+    content: "";
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 6px solid transparent;
+    border-bottom-color: #D32F2F;
+}
+.content_box .tab_active:after {
+    z-index: 3;
+    top: -11px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 6px solid transparent;
+    border-bottom-color: #fff;
+}
+
+.content_box .input_item {
+    position: relative;
+}
+.input_item:first-child {
+    z-index: 2;
+}
+.content_box .input {
+    box-sizing: border-box;
+    width: 290px;
+    border-radius: 0;
+}
+.content_box .input_white, .content_box .dropbtn_white {
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-color: #ededed;
+    background: 0 0;
+}
+.input, .dropbtn {
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    height: 44px;
+    line-height: 44px\9;
+    vertical-align: middle;
+    color: #333;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+}
+.input_white, .dropbtn_white {
+    border-color: #f8f8f8;
+    background-color: #f8f8f8;
+}
+.area_code_list+input {
+    padding-left: 72px;
+}
+.content_box .input_item+.input_item {
+    margin-top: 20px;
+}
+.area_code:after {
+    position: absolute;
+    right: 8px;
+    top: 19px;
+    display: block;
+    content: "";
+    width: 10px;
+    height: 5px;
+    background: url(../images/code86_a209722.png) no-repeat;
+}
+.content_box [data-propertyname=request_form_verifyCode] input[type=text] {
+    padding-right: 130px;
+}
+.content_box .yzm {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    z-index: 1;
+    width: 98px;
+    line-height: 38px;
+    color: #777;
+}
+.content_box .reflash {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    z-index: 2;
+    height: 40px;
+    width: 98px;
+}
+.content_box .forgot_pwd {
+    position: relative;
+    float: right;
+    font-size: 14px;
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    color: #D32F2F;
+    margin-top: -5px;
+    z-index: 3;
+}
+.content_box .input_item.btn_group {
+    margin-top: 24px;
+}
+.btn_green:hover, .btn_green.btn_active {
+    color: #fff;
+    border-color: #D32F2F;
+    background-color: #D32F2F;
+}
+.btn:hover, .btn.btn_active {
+    text-decoration: none;
+    color: #D32F2F;
+    background-color: #fff;
+}
+.btn_block {
+    display: block;
+    width: 100%;
+}
+
+.btn_lg {
+    font-size: 18px;
+    line-height: 46px;
+    height: 46px;
+}
+
+.area_code {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    float: left;
+    width: 50px;
+    height: 44px;
+    padding-right: 22px;
+    line-height: 44px;
+    cursor: default;
+}
+.area_code_list {
+    position: absolute;
+    left: 0;
+    top: 46px;
+    z-index: 10;
+    display: none;
+    width: 200px;
+    max-height: 288px;
+    border: 1px solid #eee;
+    overflow-y: scroll;
+    background-color: #fff;
+}
+.area_code_list dl {
+    line-height: 36px;
+    cursor: default;
+}
+.area_code_list dt {
+    padding: 0 12px;
+    color: #999;
+    background-color: #FBFBFB;
+}
+.area_code_list dd {
+    padding: 0 12px;
+    color: #555;
+}
+.area_code_list .tips {
+    color: #B5B5B5;
+    padding: 40px 12px;
+}
+.content_box .input_group>input.first_child {
+    padding-right: 80px;
+}
+.input_group>input:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.content_box .input_group>input.last_child {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    height: 43px;
+    font-size: 14px;
+    padding: 0;
+    border: 0;
+}
+.content_box .verify_tips .verify_tips_main, .content_box .verify_tips .verify_tips_count_down {
+    display: none;
+}
+.content_box .verify_tips .auto_phone {
+    outline: 0;
+    text-decoration: none;
+    color: #00b389;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    font-size: 14px;
+}
+.content_box .divider {
+    position: relative;
+    border-left: 1px dashed #ededed;
+    height: 274px;
+    color: #d8d8d8;
+    margin: 0 52px;
+}
+.content_box .divider:after {
+    position: absolute;
+    content: "or";
+    left: 50%;
+    top: 50%;
+    padding: 2px;
+    background-color: #fff;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.content_box .right_area {
+    width: 150px;
+    padding-top: 26px;
+    color: #777;
+}
+.content_box .right_area h5 {
+    margin: 44px 0 8px;
+    color: #555;
+}
+.area_code_list dd span {
+    float: right;
+}
+.content_box .right_area .register_now {
+    display: inline-block;
+    height: 22px;
+    font-size: 16px;
+    color: #D32F2F;
+    padding-right: 23px;
+}
+.icon-youjiantou{
+    display: inline-block;
+    height: 22px;
+    font-size: 16px;
+    color: #D32F2F;
+    
+}
+.vender_login {
+    margin-top: 12px;
+    text-align: center;
+}
+.vender_login li {
+    display: block;
+    margin-left: 22px;
+    float: left;
+}
+.vender_login li:first-child {
+    margin: 0;
+}
+.vender_login li .vender_icon {
+    display: inline-block;
+    width: 20px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.vender_login li .icon_sina {
+    background-image: url(../images/icon-sina_e161002.png);
+}
+.vender_login li .icon_wechat {
+    background-image: url(../images/icon-wechat_823d4eb.png);
+}
+.vender_login li .icon_tencent {
+    background-image: url(../images/icon-tencent_c85c20a.png);
+}
+
+/*注册页面*/
+.lp_login {
+    background: #fff;
+    border-radius: 4px;
+    padding: 30px 44px 44px;
+}
+.lp_login .tab {
+    margin-bottom: 20px;
+}
+.lp_login .tab i {
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background-color: #D32F2F;
+}
+.lp_login .tab span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #333;
+    font-weight: 700;
+}
+form ul {
+    margin-bottom: 35px;
+}
+form li {
+    position: relative;
+    margin-top: 20px;
+}
+form input[type=text] {
+    display: block;
+    width: 100%;
+    height: 47px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #999;
+    border: 0;
+    border-bottom: 1px solid #e6e6e6;
+    outline: 0;
+}
+.area_code_list+input {
+    padding-left: 72px;
+}
+.yzm {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    z-index: 1;
+    width: 98px;
+    line-height: 38px;
+    color: #777;
+}
+.reflash {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    z-index: 2;
+    height: 40px;
+    width: 98px;
+}
+.getcode {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    height: 46px;
+    font-size: 14px;
+    line-height: 46px;
+    color: #D32F2F;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.verify_tips {
+    margin: 12px 0 -8px;
+    color: #777;
+}
+.verify_tips_main, .verify_tips_count_down {
+    display: none;
+}
+.verify_tips .voice_btn {
+    outline: 0;
+    text-decoration: none;
+    color: #00b389;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    font-size: 14px;
+}
+.submitBtn {
+    display: block;
+    height: 46px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 46px;
+    color: #fff;
+    border-radius: 3px;
+    background: #D32F2F;
+    text-align: center;
+}
+.lp_agreeNotice_box {
+    font-size: 12px;
+    line-height: 20px;
+    color: #999;
+    text-align: center;
+}
+.lp_agreeNotice_box p {
+    font-size: 14px;
+    color: #999;
+}
+.lp_agreeNotice_box p a {
+    color: #D32F2F;
+}
+.login_btn {
+    text-align: center;
+    margin-top: 20px;
+}
+.login_btn a {
+    font-size: 14px;
+    color: #D32F2F;
+    text-decoration: underline;
+}
+/*忘记密码*/
+.change_way {
+    position: absolute;
+    right: 25px;
+    top: 27px;
+    z-index: 3;
+    margin: 0;
+    color: #e5e5e5;
+    font-weight: 300;
+}
+.change_way a {
+    font-size: 14px;
+    display: inline-block;
+    text-decoration: none;
+    color: #D32F2F;
+}
+.change_way .separate {
+    display: inline-block;
+    width: 21px;
+    text-align: center;
+}
+.change_way a.go_mail, .change_way a.go_phone {
+    padding-right: 23px;
+}
+.form_head, .form_head2 {
+    height: 50px;
+    margin-bottom: 47px;
+}
+.form_head li.active, .form_head2 li.active {
+    color: #555;
+}
+.form_head li, .form_head2 li {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #b5b5b5;
+}
+
+.form_head .icon_step, .form_head2 .icon_step {
+    display: block;
+    width: 26px;
+    height: 22px;
+    margin: 0 auto;
+    margin-bottom: 7px;
+}
+.form_head .step1, .form_head2 .step1 {
+    background: url(//img.lagou.com/passport/static/pc/modules/common/img/step1-active_f1b815a.png) left top no-repeat;
+}
+.form_head .step2, .form_head2 .step2 {
+    background: url(//img.lagou.com/passport/static/pc/modules/common/img/step2_496fb31.png) left top no-repeat;
+}
+.form_head li.active .step2, .form_head2 li.active .step2 {
+    background: url(//img.lagou.com/passport/static/pc/modules/common/img/step2-active_d53855e.png) left top no-repeat;
+}
+/*邮箱找回*/
+.form_head1{
+    height: 50px;
+    margin-bottom: 47px;
+}
+.form_head1 li.active {
+    color: #555;
+}
+
+.form_head1 li {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #b5b5b5;
+}
+.form_head1 .step1{
+    background: url(//img.lagou.com/passport/static/pc/modules/common/img/step1-active_f1b815a.png) left top no-repeat;
+}
+
+.form_head1 .icon_step{
+    display: block;
+    width: 26px;
+    height: 22px;
+    margin: 0 auto;
+    margin-bottom: 7px;
+}
+.form_head1 li span{
+    position: relative;
+}
+.form_head1 li, .form_head2 li {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #b5b5b5;
+}
+#findPwd2 .line {
+    width: 100px;
+	margin-left: 130px;
+    padding-left: 18px;
+}
+.form_head1 .step2 {
+    background: url(//img.lagou.com/passport/static/pc/modules/common/img/step2_496fb31.png) left top no-repeat;
+}
+.form_head1 .step3{
+    background: url(//img.lagou.com/passport/static/pc/modules/common/img/step3_518695d.png) left top no-repeat;
+}
+.reset_mail {
+    text-align: center;
+    margin: 0;
+}
+.reset_mail .des_mail {
+    display: block;
+}
+.reset_tips {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}

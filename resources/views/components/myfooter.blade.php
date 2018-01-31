@@ -3,7 +3,7 @@
                     <div class="footer_top">
                         <div class="about_Us">
                             <div class="contact_left">
-                                <div><img src="../images/logo-black.png" style="height:43px;width:132px"></div> 
+                                <div><img src="../images/logo-white.png" style="height:43px;width:132px"></div> 
                                 <p>电竞猎人 - 做专业的竞技游戏职业招聘网站</p>
                             </div>
                             

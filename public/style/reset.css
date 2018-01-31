@@ -63,21 +63,21 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin-bottom: -89px;
+  margin-bottom: -80px;
 }
 #layout #layout_footer {
-  height: 89px;
+  height: 80px;
 }
  
 #footer {
   clear: both;
   position: relative;
-  height: 89px;
+  height: 80px;
 }
  
 #header {
   /*background: #999999;*/
-  /*height: 89px;*/
+  /*height: 80px;*/
 }
  
 #footer {

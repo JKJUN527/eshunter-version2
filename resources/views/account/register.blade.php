@@ -5,8 +5,15 @@
     <link media="all" href="{{asset('../style/sub.css?v=2.39')}}" type="text/css" rel="stylesheet">
     <style>
         #header{height:auto;}
-        #layout_footer{
+        #layout{
                 background-color: #242d3c;
+        }
+        .denglu_pages_left input{
+          width: 375px;
+          height:24px;
+        }
+        .see_password{
+          right:34px;
         }
     </style>
 @endsection
@@ -24,7 +31,7 @@
     <div class="body_center">
     <div class="logo_con">
       <div class="logo_conCenter">
-        <a href="index.html"><img alt="" src="images/logo-black.png" height="50"></a>
+        <a href="index.html"><img alt="" src="../images/logo-white.png" height="50"></a>
         <span style="padding-left:10px;font-size:12px;color:#999;display: inline-block;border:none;margin-top: 20px;margin-left: 0;">电竞猎人 - 做专业的竞技游戏职业招聘网站</span>
         <span>注册</span>
       </div>
@@ -33,7 +40,7 @@
       <div class="denglu_pages_left left">
         <div class="emil_alert">
           <span>◆</span>
-          <div>亲，请填写企业邮箱喔，目前主流企业邮箱服务商腾讯、网易等都提供免费版企业邮箱服务~如仍有问题，请联系客服：010-53518091</div>
+          <div>亲，如果是企业用户，请填写企业邮箱喔，目前主流企业邮箱服务商腾讯、网易等都提供免费版企业邮箱服务~如仍有问题，请联系客服：021-63339866</div>
         </div>
         <form accept-charset="utf-8">
           <div class="have_phone">
@@ -62,7 +69,7 @@
                 <i style="height:19px;margin-right:1px;" id="xieyi_label" class="add_i"></i>
                 <label for="mm">我已阅读并同意</label>
               </span>
-              <a style="color: #17b385; float: none; margin-right:0px;" target="_blank" href="/ua/">《电竞猎人用户协议》</a>
+              <a style="color: #17b385; float: none; margin-right:0px;" target="_blank" href="/account/privacy">《电竞猎人用户协议》</a>
               </div>
             </div>
           </div>
@@ -71,7 +78,7 @@
       </div>
       <div class="denglu_pages_right right" id="">
         <div class="zhuce">已有账号直接登录</div>
-        <div class="zhuce"><a title="" href="login.html">登录</a></div>
+        <div class="zhuce"><a title="" href="/account/login">登录</a></div>
       </div>
      
     </div>
@@ -93,7 +100,7 @@
     var my_tou="1";
     var regist_flag = 0;
 </script>
-<script src="js/regist.js?v=2.35" type="text/javascript"></script>  
+<script src="{{asset('js/regist.js?v=2.35')}}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     // $('.denglu_pages_left input').click(function(){
