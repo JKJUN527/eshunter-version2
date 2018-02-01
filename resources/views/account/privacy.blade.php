@@ -2,16 +2,16 @@
 @section('title', '用户协议')
 
 @section('custom-style')
-    <link media="all" href="{{asset('../style/privacy.css}}" type="text/css" rel="stylesheet">
-    
-@endsection
-
-@section('header-nav')
-    @include('components.headerNav')
+    <link media="all" href="{{asset('style/privacy.css')}}" type="text/css" rel="stylesheet">
+    <style>
+      .main-content{
+        height:auto;
+      }
+    </style>
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 10,'type' =>$data['type']])
+    @include('components.headerTab', ['activeIndex' => 10,'type' =>0])
 @endsection
 
 @section('content')

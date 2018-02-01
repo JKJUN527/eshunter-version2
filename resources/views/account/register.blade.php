@@ -31,7 +31,7 @@
     <div class="body_center">
     <div class="logo_con">
       <div class="logo_conCenter">
-        <a href="index.html"><img alt="" src="../images/logo-white.png" height="50"></a>
+        <a href="/"><img alt="" src="../images/logo-white.png" height="50"></a>
         <span style="padding-left:10px;font-size:12px;color:#999;display: inline-block;border:none;margin-top: 20px;margin-left: 0;">电竞猎人 - 做专业的竞技游戏职业招聘网站</span>
         <span>注册</span>
       </div>

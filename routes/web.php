@@ -24,8 +24,8 @@ Route::any('account/sendemail', ['uses' => 'ValidationController@sendemail']);
 //验证邮箱
 Route::any('validate_email', ['uses' => 'ValidationController@verifyEmailCode']);
 
-Route::get('/account/privacy', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('/account/privacy');
+Route::get('account/privacy', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
+   return view('account/privacy');
 });
 Route::get('/account/updatePwd', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
    return view('/account/updatePwd');

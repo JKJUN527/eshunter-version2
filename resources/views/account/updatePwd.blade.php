@@ -2,7 +2,7 @@
 @section('title', '账号设置')
 
 @section('custom-style')
-    <link media="all" href="{{asset('../style/user_style.css')}}" type="text/css" rel="stylesheet">
+    <link media="all" href="{{asset('style/user_style.css')}}" type="text/css" rel="stylesheet">
 @endsection
 
 @section('header-nav')
@@ -14,7 +14,7 @@
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 2,'type' => $data['type']])
+    @include('components.headerTab', ['activeIndex' => 2,'type' => 0])
 @endsection
 
 @section('content')
