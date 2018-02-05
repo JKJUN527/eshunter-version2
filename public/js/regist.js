@@ -316,7 +316,7 @@ $(document).ready(function(){
 	$("#btnRegist").live("click",function(){
 		//先判断协议是否选择
 		if(!$("#xieyi_label").hasClass("add_i")){
-			alert('请遵守《内聘网用户协议》');
+			alert('请遵守《电竞猎人用户协议》');
 			return;
 		}
 		if(regist_flag == 1){
