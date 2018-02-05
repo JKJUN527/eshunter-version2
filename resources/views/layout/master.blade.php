@@ -16,16 +16,6 @@
     <link href="{{asset('../style/style.css?v=2.43')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('../style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('../style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
-    <script src="../js/hm.js?e57ac2e0d645c16f50e241abc140f59f"></script>
-        <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="{{asset('../js/constants.js?v=2.32')}}" type="text/javascript"></script>
-        <script src="{{asset('../js/index_bo.js')}}" type="text/javascript"></script>
-        <script src="{{asset('../js/common.js?v=2.34')}}" type="text/javascript"></script>  
-        <script src="{{asset('../js/json2.js')}}" type="text/javascript"></script>
-        <script src="{{asset('../js/base.js?v=2.32')}}" type="text/javascript"></script>
-        <script src="{{asset('../js/choose.js?v=2.33')}}" type="text/javascript"></script>
-        <script src="{{asset('../js/placeholder.js?v=2.32')}}" type="text/javascript"></script>
-        <script src="{{asset('../js/san_index.js?v=1.02')}}" type="text/javascript"></script>
     @section('custom-style')
     @show
   
@@ -54,7 +44,17 @@
 	  </div>
 	</div>
 
-	@section('custom-script')
+    <script src="../js/hm.js?e57ac2e0d645c16f50e241abc140f59f"></script>
+    <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="{{asset('../js/constants.js?v=2.32')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/index_bo.js')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/common.js?v=2.34')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/json2.js')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/base.js?v=2.32')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/choose.js?v=2.33')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/placeholder.js?v=2.32')}}" type="text/javascript"></script>
+    <script src="{{asset('../js/san_index.js?v=1.02')}}" type="text/javascript"></script>
+    @section('custom-script')
 	@show
 </body>
 </html>

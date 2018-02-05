@@ -21,7 +21,7 @@
     <div style="display:none" class="tishi">
                 <span id="tishi_msg"></span>
                 <div style="top:5px; right:5px;" class="close_X">X</div>
-            </div>
+    </div>
             <div class="hsbj"></div>
             <div style="display:none;" class="whitebg"></div>
 
@@ -67,7 +67,6 @@
                     </div> 
                     
                 </div>
-                <script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
                 <!-- <div class="QQ_each">
                     <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
                     <ul class="wheel" id="wheel">
@@ -85,14 +84,7 @@
                 </div> -->
                 <a style="display:none" class="back_to_top" title="" href="#"></a>
 
-                <script type="text/javascript">
-                                                            $(".wheel-button").wheelmenu({
-                                                    // alert(1);
-                                                    trigger: "hover",
-                                                            animation: "fly",
-                                                            angle: [0, 360]
-                                                    });
-                </script>
+
                 <div class="jieshao_tb">
                     <span v="0" class="active">热门职位</span>
                     <span v="1">最新职位</span>          
@@ -559,106 +551,107 @@
 
 
 @section('custom-script')
-     <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
+    <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
     <script charset="utf-8" type="text/javascript" src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js"></script>
+    <script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
     <script type="text/javascript">
+        $(".wheel-button").wheelmenu({
+                    // alert(1);
+                    trigger: "hover",
+                    animation: "fly",
+                    angle: [0, 360]
+        });
 
-                                     function tou_jobresult(id){
-                                                                window.open("/j/" + id + ".html");
-                                                                }
+        function tou_jobresult(id){
+            window.open("/j/" + id + ".html");
+        }
 
-                                                        $(document).ready(function(){
+        $(document).ready(function(){
 
-                                                        $("._pel").load("/job/personalinformation");
-                                                                var xian = "";
-                                                                if (xian == 1){
-                                                        $('#search_list').slideDown();
-                                                        }
+            $("._pel").load("/job/personalinformation");
+            var xian = "";
+            if (xian == 1){
+                $('#search_list').slideDown();
+            }
+            $(".btn_ss").live("click", function(){
+                var keywd = $("#keywd").val();
+                if (keywd != "" && keywd != undefined)
+                {
+                    window.location.href = BaseJSURL + "/job/?kwd=" + keywd;
+                }
+            });
+            //下拉导航
+            $('.user_names').click(function(event){
+                var e = window.event || event;
+                if (e.stopPropagation){
+                    e.stopPropagation();
+                } else{
+                    e.cancelBubble = true;
+                }
+                $('.user_names_con').show();
+            });
+            $('.user_names_con').click(function(event){
+                var e = window.event || event;
+                if (e.stopPropagation){
+                    e.stopPropagation();
+                } else{
+                    e.cancelBubble = true;
+                }
+            });
+            document.onclick = function(){
 
-
-                                                        $(".btn_ss").live("click", function(){
-                                                        var keywd = $("#keywd").val();
-                                                                if (keywd != "" && keywd != undefined)
-                                                        {
-                                                        window.location.href = BaseJSURL + "/job/?kwd=" + keywd;
-                                                        }
-                                                        });
-                                                                //下拉导航
-                                                                $('.user_names').click(function(event){
-                                                        var e = window.event || event;
-                                                                if (e.stopPropagation){
-                                                        e.stopPropagation();
-                                                        } else{
-                                                        e.cancelBubble = true;
-                                                        }
-                                                        $('.user_names_con').show();
-                                                        })
-                                                                $('.user_names_con').click(function(event){
-                                                        var e = window.event || event;
-                                                                if (e.stopPropagation){
-                                                        e.stopPropagation();
-                                                        } else{
-                                                        e.cancelBubble = true;
-                                                        }
-                                                        })
-                                                                document.onclick = function(){
-
-                                                                $(".user_names_con").hide();
-                                                                        $('.seles_hide').hide();
-                                                                };
-                                                                $('.hr_sao span').click(function(){
-                                                        $(this).parent('.hr_sao').hide();
-                                                                $('.hsbj').hide();
-                                                        });
-                                                        })
+                $(".user_names_con").hide();
+                $('.seles_hide').hide();
+            };
+            $('.hr_sao span').click(function(){
+                $(this).parent('.hr_sao').hide();
+                $('.hsbj').hide();
+            });
+        });
 
 
-                                                                function jiazerwm()
-                                                                {
-                                                                jQuery.ajax({
-                                                                type: 'get',
-                                                                        contentType : 'application/json; charset=utf-8',
-                                                                        dataType: 'json',
-                                                                        url: '/qcode/bind',
-                                                                        data: '',
-                                                                        success: function(data){
-                                                                        $('.hsbj').show();
-                                                                                $("#erweima").attr("src", "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + data.ticket);
-                                                                                $('.hr_sao').show();
-                                                                        }
-                                                                });
-                                                                }
-                                                        $(document).ready(function(){
-                                                        var erweima_flag = "";
-                                                                if (erweima_flag == "0")
-                                                        {
-                                                        setTimeout("jiazerwm();", 2000);
-                                                        }
+        function jiazerwm()
+        {
+            jQuery.ajax({
+                type: 'get',
+                contentType : 'application/json; charset=utf-8',
+                dataType: 'json',
+                url: '/qcode/bind',
+                data: '',
+                success: function(data){
+                    $('.hsbj').show();
+                    $("#erweima").attr("src", "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + data.ticket);
+                    $('.hr_sao').show();
+                }
+            });
+        }
+        $(document).ready(function(){
+            var erweima_flag = "";
+            if (erweima_flag == "0")
+            {
+                setTimeout("jiazerwm();", 2000);
+            }
 
-                                                        });
-            </script> 
-            <script>
-                var jianlistatustype = "";
-                var tui_user_pro = '';
-                var res_tuijian = '';
-                var uname = "";
-                var ukbn = "";
-                var isIE7 = false;
-                //验证标识
-                var verifyflg = "";
+        });
+        var jianlistatustype = "";
+        var tui_user_pro = '';
+        var res_tuijian = '';
+        var uname = "";
+        var ukbn = "";
+        var isIE7 = false;
+        //验证标识
+        var verifyflg = "";
 
-                // F
-
-                $(document).ready(function() {
-                    //底部tab切换
-                    $('.contact_Con .contactCon').hide();
-                    $('.contact_Con .contactCon').eq(0).show();
-                    $('.contact_tab span').click(function() {
-                        $(this).addClass('active');
-                        $(this).siblings().removeClass('active');
-                        $('.contact_Con .contactCon').hide();
-                        $('.contact_Con .contactCon').eq($(this).index()).show();
-                    })
+        $(document).ready(function() {
+            //底部tab切换
+            $('.contact_Con .contactCon').hide();
+            $('.contact_Con .contactCon').eq(0).show();
+            $('.contact_tab span').click(function() {
+                $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+                $('.contact_Con .contactCon').hide();
+                $('.contact_Con .contactCon').eq($(this).index()).show();
+            });
 
                     //判断是否为ie6
                     var isIE = !!window.ActiveXObject;
@@ -900,7 +893,7 @@
                 }
 
                 //登录结束 
-                </script>
+    </script>
 @endsection
 
 
