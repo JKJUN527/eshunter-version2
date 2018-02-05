@@ -29,7 +29,7 @@
 	border-bottom: none;}
 .form_div{ height: 38px; overflow: hidden; width: 508px;}
 .taoyige input[type='text']{ width:480px; overflow: hidden; border: none; color: #5e5e5e; 
-	font-size: 14px; font-family: 'Microsoft YaHei'; height: 100%; text-indent: 13px;  float: left;}
+	font-size: 14px; font-family: 'Microsoft YaHei'; height: 100%; padding: 6px 15px;  float: left;}
 
 #chakan{ width: 104px; overflow: hidden; height: 40px; float: left; -webkit-border-top-right-radius: 4px; -moz-border-top-right-radius: 4px; border-top-right-radius: 4px; -moz-border-bottom-right-radius: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px;
 	line-height: 40px;  background: #D32F2F; border: none; color: #fff; font-size: 18px; font-family: 'Microsoft Yahei'; cursor: pointer;}
@@ -370,68 +370,29 @@
 .enter_company{background: url(../images/companyenter.png) 0px 0px repeat;}
 /*全部职位分类*/
 .all_divlist_border{
-	width: 100%;
-	display: inline-block;	
-	border-top: 1px solid #fff;
-	border-bottom: 1px solid #fff;
-	/*position: relative;*/
-	/*z-index: 1000;*/
-	background: #fff;
+	position: relative;
+    padding: 13px 0 10px;
 }
-.all_divlist_border1{
-	height: 31px;
-}
-.all_divlist_border2{
-	height: 31px;
-}
-.all_divlist_border3{
-	height: 31px;
-}
+
 .all_divlist_active{
-	border-top: 1px solid #bdc0c5;
-	border-bottom: 1px solid #bdc0c5;
+	box-shadow: 0 0 4px 2px rgba(0,0,0,.09);
 }
 .all_divlist_two{
 	position: absolute;
-	border: 1px solid #bdc0c5;
+	box-shadow: 0 0 4px 2px rgba(0,0,0,.09);
 	padding: 25px 10px 15px 20px;
 	background: #fff;
-	left: 239px;
+	left: 340px;
 	display: none;
 	position: absolute;
 	top: 0px;
 	z-index: 10;
 	overflow: hidden;
 }
-
 .all_divlist_two1{
-	top: 34px;
+	top: -1px;
+}
 
-}
-.all_divlist_two2{
-	top: 67px;
-}
-.all_divlist_two3{
-	top: 100px;
-}
-.all_divlist_two4{
-	top: 133px;
-}
-.all_divlist_two5{
-	top: 166px;
-}
-.all_divlist_two6{
-	top: 199px;
-}
-.all_divlist_two7{
-	top: 232px;
-}
-.all_divlist_two8{
-	top: 265px;
-}
-.all_divlist_two9{
-	top: 298px;
-}
 .all_divlist_two > div{
 	width: 400px;
 	overflow: hidden;
@@ -477,12 +438,43 @@
 	color: #D32F2F;
 }
 .all_divclass{ width: 240px; float: left; height:auto/*position: absolute; z-index: 100;*/}
-.all_divcon{ width: 240px;     padding: 16px 10px; background: #fff; -moz-border-radius: 4px; 
+.all_divcon{ width: 340px;     padding: 16px 10px; background: #fff; -moz-border-radius: 4px; 
 	-webkit-border-radius: 4px; border-radius: 4px; padding-bottom: 10px; position: absolute;}
 .all_divcon p.til{ line-height: 34px; height: 34px; background: #D32F2F; font-size: 16px; text-align: center; color: #fff; border-top-right-radius: 4px; border-top-left-radius: 4px;}
-.all_divlist{ width: 210px;  border-bottom: 1px dashed #d6d7d7; text-align:left;overflow: hidden; position: absolute; z-index: 100; left: 15px; background: #fff;}
-.all_divlist span{font-size:16px;font-weight: 400; color: #555; width: 100%; margin-top: 10px; line-height: 30px; padding-right: 10px;}
-.all_divlist .iconfont {color: #D32F2F;margin-left: 60px;font-weight: bold;}
+.all_divlist{ 
+	width: 330px; 
+	position: relative;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    border-right: 0;
+}
+.all_divlist h2{
+	display: inline-block;
+    padding-left: 15px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+	}
+.all_divlist a{
+	margin: 0 5px 5px 0;
+    padding: 0 8px;
+    white-space: nowrap;
+}
+
+.all_divlist a:hover{
+	color: #D32F2F;
+	text-decoration:underline ;
+}
+.all_divlist i.arrow{
+	position: absolute;
+    right: 0;
+    top: 6px;
+    width: 6px;
+    height: 11px;
+    margin-right: 8px;
+    background: url(../images/arrow_92b8589.png) 0 0 no-repeat;
+    }
 .all_divlist div{ line-height: 26px; padding-bottom: 10px;}
 .all_divlist div a{color: #363636; margin-right: 15px;}
 .all_divlist div a:hover{ color: #5ccaa9;}

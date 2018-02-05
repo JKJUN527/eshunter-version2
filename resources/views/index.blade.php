@@ -4,6 +4,122 @@
 
 @section('custom-style')
     <link href="{{asset('../style/tao.css?v=2.61')}}" type="text/css" rel="stylesheet">
+    <script>
+            var openid = "";
+            $(function() {
+                //加载index_xianxing内容，推荐状况的实时展示
+                
+                // 气球客服
+                // if($('.QQ_each').offset().top<489){
+                //   $('.QQ_each').css({'top':'489px','margin-top':'0'});
+                //   }
+                // 鼠标滑过banner，箭头出现
+                $('.m_banner').mouseover(function() {
+                    $('.m_banner a').show();
+                })
+                $('.m_banner').mouseleave(function() {
+                        $('.m_banner a').hide();
+                    })
+                    // 城市部分鼠标滑过
+                $('.city_chooseCon').mouseover(function() {
+                    $('.choosing').stop(true, true).slideDown(150);
+                })
+                $('.city_chooseCon').mouseleave(function() {
+                    $('.choosing').stop(true, true).slideUp(150);
+                })
+
+                // 职位tab
+                $('.jieshao_list').hide();
+                $('.jieshao_list').eq(0).show();
+                $('.jieshao_tb span').click(function() {
+                    $(this).addClass('active');
+                    $('.jieshao_list').eq($(this).index()).show();
+                    $(this).siblings('span').removeClass('active');
+                    $('.jieshao_list').eq($(this).index()).siblings('ul').hide();
+                    var v = $(this).attr('v');
+                })
+                $('.gongsi_tb span').click(function() {
+                    $(this).addClass('active').siblings('span').removeClass('active');
+                    $(this).index() === 0 && $('.gongsi_list').find('.hot-company').show().siblings('.tuijian-company').hide()
+                    $(this).index() === 1 && $('.gongsi_list').find('.tuijian-company').show().siblings('.hot-company').hide()
+                    var v = $(this).attr('v');
+                })
+
+
+                // 鼠标滑过边框变色
+                $('.jieshao_list li').live('mouseover', function() {
+                    // $(this).addClass('greenborder_li');
+                    //         $(this).siblings().removeClass('greenborder_li');
+                    // })
+                    //         $('.jieshao_list li').live('mouseleave', function(){
+                    // $(this).removeClass('greenborder_li');
+                    // })
+                    // 定位导航
+                    $(document).scroll(function() {
+                        var window_height = $(window).height();
+                        var to_bottom = $(document).height() - $(window).height() - $(document).scrollTop();
+                        if (window_height > 660 && window_height < 920) {
+                            if ($(document).scrollTop() >= 200) {
+                                $('#all_divclass').addClass('all_static');
+                                if (to_bottom > 230) {
+                                    $('#all_divclass').removeClass('all_static').removeClass('all_absolute').addClass('all_fixed');
+                                } else {
+                                    $('#all_divclass').removeClass('all_static').removeClass('all_fixed').addClass('all_absolute');
+                                }
+                            }
+                            if ($(document).scrollTop() < 100) {
+                                $('#all_divclass').addClass('all_static');
+                            }
+                        }
+
+                        // 屏幕可以放下左边导航和底部的情况
+                        if (window_height > 920) {
+                            if ($(document).scrollTop() >= 200) {
+                                $('#all_divclass').removeClass('all_static').addClass('all_fixed');
+                            } else {
+                                $('#all_divclass').removeClass('all_fixed').addClass('all_static');
+                            }
+                        }
+                    })
+
+
+                    $('.banner1').live('click', function() {
+                        window.open("#");
+                    });
+                    $('.banner2').live('click', function() {
+                        window.open("#");
+                    });
+                    $('.banner3').live('click', function() {
+                        window.open("#");
+                    });
+                    // 二级导航  
+                    $('.all_divlist_border').live('mouseover', function() {
+                        $(this).addClass('all_divlist_active');
+                        $(this).find('.all_divlist').css({
+                           
+                        });
+                        $(this).prev().find('.all_divlist').css({
+                            
+                        });
+                        $(this).siblings('.all_divlist_border').removeClass('all_divlist_active');
+                        $(this).find('.all_divlist_two').show();
+                    })
+
+                    $('.all_divlist_border').live('mouseout', function() {
+                        $(this).removeClass('all_divlist_active');
+                        $(this).find('.all_divlist_two').hide();
+                        $(this).find('.all_divlist').css({
+                           
+                        });
+                        $(this).prev().find('.all_divlist').css({
+                            
+                        });
+                    })
+                })
+
+                
+            })
+        </script>
 @endsection
 
 
@@ -35,9 +151,176 @@
                 <div class="index_con">
                     <div id="all_divclass" class="all_divclass">
                         <div class="all_divcon">
-                            <img src="../images/dh.png" alt="">
+                            <p class="til">全部职位分类</p>   
+                            
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">俱乐部</h2>
+                                    <a href="#">LGD</a>
+                                    <a href="#">WDG</a>
+                                    <a href="#">WE</a>
+                                    <a href="#">SKT</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">EDG</a>  
+                                            <a href="#">LGD</a>  
+                                            <a href="#">QG</a>  
+                                            <a href="#">SKT</a>  
+                                            <a href="#">Longzhu</a>  
+                                            <a href="#">WE</a>  
+                                            <a href="#">Snake</a>  
+                                            <a href="#">NB</a>  
+                                            <a href="#">RNG</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">赛事方</h2>
+                                    <a href="#">腾讯</a>
+                                    <a href="#">百度</a>
+                                    <a href="#">拳头</a>
+                                    <a href="#">网易</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">腾讯</a>
+                                            <a href="#">百度</a>
+                                            <a href="#">拳头</a>
+                                            <a href="#">网易</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">电竞传媒</h2>
+                                    <a href="#">斗鱼</a>
+                                    <a href="#">龙珠</a>
+                                    <a href="#">熊猫</a>
+                                    <a href="#">虎牙</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">斗鱼</a>
+                                            <a href="#">龙珠</a>
+                                            <a href="#">熊猫</a>
+                                            <a href="#">虎牙</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">游戏开发</h2>
+                                    <a href="#">腾讯</a>
+                                    <a href="#">网易</a>
+                                    <a href="#">百度</a>
+                                    <a href="#">拳头</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">EDG</a>  
+                                            <a href="#">LGD</a>  
+                                            <a href="#">QG</a>  
+                                            <a href="#">SKT</a>  
+                                            <a href="#">Longzhu</a>  
+                                            <a href="#">WE</a>  
+                                            <a href="#">Snake</a>  
+                                            <a href="#">NB</a>  
+                                            <a href="#">RNG</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">电竞门户</h2>
+                                    <a href="#">LGD</a>
+                                    <a href="#">EDG</a>
+                                    <a href="#">WE</a>
+                                    <a href="#">OMGG</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">EDG</a>  
+                                            <a href="#">LGD</a>  
+                                            <a href="#">QG</a>  
+                                            <a href="#">SKT</a>  
+                                            <a href="#">Longzhu</a>  
+                                            <a href="#">WE</a>  
+                                            <a href="#">Snake</a>  
+                                            <a href="#">NB</a>  
+                                            <a href="#">RNG</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">电竞协会</h2>
+                                    <a href="#">LGD</a>
+                                    <a href="#">SKT</a>
+                                    <a href="#">Longzhu</a>
+                                    <a href="#">QG</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">EDG</a>  
+                                            <a href="#">LGD</a>  
+                                            <a href="#">QG</a>  
+                                            <a href="#">SKT</a>  
+                                            <a href="#">Longzhu</a>  
+                                            <a href="#">WE</a>  
+                                            <a href="#">Snake</a>  
+                                            <a href="#">NB</a>  
+                                            <a href="#">RNG</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_divlist_border all_divlist_border1">
+                                <div class="all_divlist">
+                                    <h2 class="jlb">其他</h2>
+                                    <a href="#">NBA2K</a>
+                                    <a href="#">FIFA</a>
+                                    <a href="#">WC</a>
+                                    <a href="#">FFW</a>
+                                    <i class="arrow"></i>
+                                </div>
+                                <div class="all_divlist_two all_divlist_two1">
+                                    <div>
+                                        <div>
+                                            <a href="#">EDG</a>  
+                                            <a href="#">LGD</a>  
+                                            <a href="#">QG</a>  
+                                            <a href="#">SKT</a>  
+                                            <a href="#">Longzhu</a>  
+                                            <a href="#">WE</a>  
+                                            <a href="#">Snake</a>  
+                                            <a href="#">NB</a>  
+                                            <a href="#">RNG</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>      
+                    </div>     
                     <div class="jieshao">
                         <div class="taoyige">
                             <div class="left form_div">
@@ -561,346 +844,7 @@
 @section('custom-script')
      <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
     <script charset="utf-8" type="text/javascript" src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js"></script>
-    <script type="text/javascript">
 
-                                     function tou_jobresult(id){
-                                                                window.open("/j/" + id + ".html");
-                                                                }
-
-                                                        $(document).ready(function(){
-
-                                                        $("._pel").load("/job/personalinformation");
-                                                                var xian = "";
-                                                                if (xian == 1){
-                                                        $('#search_list').slideDown();
-                                                        }
-
-
-                                                        $(".btn_ss").live("click", function(){
-                                                        var keywd = $("#keywd").val();
-                                                                if (keywd != "" && keywd != undefined)
-                                                        {
-                                                        window.location.href = BaseJSURL + "/job/?kwd=" + keywd;
-                                                        }
-                                                        });
-                                                                //下拉导航
-                                                                $('.user_names').click(function(event){
-                                                        var e = window.event || event;
-                                                                if (e.stopPropagation){
-                                                        e.stopPropagation();
-                                                        } else{
-                                                        e.cancelBubble = true;
-                                                        }
-                                                        $('.user_names_con').show();
-                                                        })
-                                                                $('.user_names_con').click(function(event){
-                                                        var e = window.event || event;
-                                                                if (e.stopPropagation){
-                                                        e.stopPropagation();
-                                                        } else{
-                                                        e.cancelBubble = true;
-                                                        }
-                                                        })
-                                                                document.onclick = function(){
-
-                                                                $(".user_names_con").hide();
-                                                                        $('.seles_hide').hide();
-                                                                };
-                                                                $('.hr_sao span').click(function(){
-                                                        $(this).parent('.hr_sao').hide();
-                                                                $('.hsbj').hide();
-                                                        });
-                                                        })
-
-
-                                                                function jiazerwm()
-                                                                {
-                                                                jQuery.ajax({
-                                                                type: 'get',
-                                                                        contentType : 'application/json; charset=utf-8',
-                                                                        dataType: 'json',
-                                                                        url: '/qcode/bind',
-                                                                        data: '',
-                                                                        success: function(data){
-                                                                        $('.hsbj').show();
-                                                                                $("#erweima").attr("src", "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + data.ticket);
-                                                                                $('.hr_sao').show();
-                                                                        }
-                                                                });
-                                                                }
-                                                        $(document).ready(function(){
-                                                        var erweima_flag = "";
-                                                                if (erweima_flag == "0")
-                                                        {
-                                                        setTimeout("jiazerwm();", 2000);
-                                                        }
-
-                                                        });
-            </script> 
-            <script>
-                var jianlistatustype = "";
-                var tui_user_pro = '';
-                var res_tuijian = '';
-                var uname = "";
-                var ukbn = "";
-                var isIE7 = false;
-                //验证标识
-                var verifyflg = "";
-
-                // F
-
-                $(document).ready(function() {
-                    //底部tab切换
-                    $('.contact_Con .contactCon').hide();
-                    $('.contact_Con .contactCon').eq(0).show();
-                    $('.contact_tab span').click(function() {
-                        $(this).addClass('active');
-                        $(this).siblings().removeClass('active');
-                        $('.contact_Con .contactCon').hide();
-                        $('.contact_Con .contactCon').eq($(this).index()).show();
-                    })
-
-                    //判断是否为ie6
-                    var isIE = !!window.ActiveXObject;
-                    var isIE6 = isIE && !window.XMLHttpRequest;
-                    var isIE8 = isIE && !!document.documentMode;
-                    var isIE7 = isIE && !isIE6 && !isIE8;
-                    if (isIE) {
-                        isIE7 = true;
-                        if (isIE6) {
-                            $('.bsie').show();
-                        }
-                    }
-                    $('.closeBtn').click(function() {
-                        $('.a_box').hide();
-                    })
-
-                    //底部二维码
-                    $('.about_Us span.ma_img').mouseover(function() {
-                        $(this).find('img').show();
-                    })
-                    $('.about_Us span.ma_img').mouseout(function() {
-                            $(this).find('img').hide();
-                        })
-                        //点击登录
-                    $('#login_click').live("click", function() {
-                        my_login();
-                    });
-                    if (ukbn == 1) {
-                        getSelectHrJobJianLi();
-                    }
-                    //点击导航的登录 
-                    $('#dl_span').live("click", function() {
-                        window.location.href = 'login.html.html';
-                    });
-                    // 账号的回车事件
-                    $('#myusername').keydown(function(event) {
-                        if (13 == event.keyCode || 13 == event.which) {
-                            my_login();
-                        }
-                    });
-                    //密码的回车事件
-                    $('#mypassword').keydown(function(event) {
-                        if (13 == event.keyCode || 13 == event.which) {
-                            my_login();
-                        }
-                    });
-                    // 搜索职位的回车事件 
-                    $('#my_job_form').keydown(function(event) {
-                        if (13 == event.keyCode || 13 == event.which) {
-                            headtijiao();
-                        }
-                    });
-                    //登录框隐藏与显示
-                    //$('.dl_hide').hide();
-                    $('.pos_dl').mouseenter(function() {
-                        $('.dl_hide').show();
-                    });
-                    $('.pos_dl').mouseleave(function() {
-                        $('.dl_hide').hide();
-                    });
-                    //鼠标滑过2维码显示
-                    $('.wx_pos').mouseover(function() {
-                        $(this).find('img').show();
-                    })
-
-                    $('.wx_pos').mouseleave(function() {
-                        $(this).find('img').hide();
-                    })
-                    if (uname != "" && uname != null) {
-                        // 调用此方法 
-                        getSelectProfileJobJianLi();
-                    }
-
-                    // 事件关闭
-                    $('.event_top span').click(function() {
-                        $(this).parent().slideUp();
-                    })
-
-                    $('.event_top').click(function() {
-                        window.open("/act");
-                    })
-
-
-
-                    if (uname != "" && uname != null && ukbn == 1) {
-                        getHrNewJianliNum();
-                    }
-
-                });
-                // 查询职位方法 
-                function headtijiao() {
-                    var xinkeywd = encodeURIComponent($("#my_job_form").val());
-                    window.location.href = '/job/?mkwd=' + xinkeywd;
-                }
-                //查询职位方法结束 
-
-                // 登录方法 
-                function my_login() {
-                    $("#herders_cuowu").hide();
-                    var param = new Object();
-                    param.emailAddr = $("#myusername").val();
-                    param.passwd = $("#mypassword").val();
-                    if (param.emailAddr == "") {
-                        $("#herders_cuowu").html("请填写用户名");
-                        $("#herders_cuowu").show();
-                        return;
-                    }
-                    if (param.passwd == "") {
-                        $("#herders_cuowu").html("请填写密码");
-                        $("#herders_cuowu").show();
-                        return;
-                    }
-
-                    // jQuery.ajax({
-                    //     type: 'post',
-                    //     contentType: 'application/json; charset=utf-8',
-                    //     dataType: 'json',
-                    //     url: '/ajax/login.do',
-                    //     data: JSON.stringify(param),
-                    //     success: function(data) {
-                    //         if (data.ret == "0") {
-                    //             if (data.ukbn == 1) {
-                    //                 //window.location.href = "/hr/";
-                    //                 window.location.href = "/job.html";
-                    //             } else {
-                    //                 window.location.href = "/job.html";
-                    //             }
-                    //         } else if (data.ret == -1) {
-                    //             $("#herders_cuowu").html("用户不存在或密码错误");
-                    //             $("#herders_cuowu").show();
-                    //         } else {
-                    //             $("#herders_cuowu").html("登录失败，请稍候重试");
-                    //             $("#herders_cuowu").show();
-                    //         }
-                    //     }
-                    // });
-                };
-                //查询普通用户没有回复hr面试通知的数量
-                function getSelectProfileJobJianLi() {
-                    var param = new Object();
-                    var total = 0;
-                    // jQuery.ajax({
-                    //     type: 'post',
-                    //     contentType: 'application/json; charset=utf-8',
-                    //     dataType: 'json',
-                    //     url: '/ajax/getSelectProfileJobJianLi.do',
-                    //     data: JSON.stringify(param),
-                    //     success: function(data) {
-                    //         if (data.np.number0 > 0) {
-                    //             total = total + data.np.number0;
-                    //             //$("#profile_jianli_number").text(data.np.number0);
-                    //             //$("#profile_jianli_number").show();
-                    //             $("#profile_jianli_number2").text(data.np.number0);
-                    //             $("#profile_jianli_number2").show();
-                    //         }
-                    //         if (jianlistatustype == 0) {
-                    //             if (data.np.number1 > 0) {
-                    //                 $("#profile_jianli_number_1").text(data.np.number1);
-                    //                 $("#profile_jianli_number_1").show();
-                    //             }
-                    //             if (data.np.number2 > 0) {
-                    //                 $("#profile_jianli_number_2").text(data.np.number2);
-                    //                 $("#profile_jianli_number_2").show();
-                    //             }
-                    //             if (data.np.number3 > 0) {
-                    //                 $("#profile_jianli_number_3").text(data.np.number3);
-                    //                 $("#profile_jianli_number_3").show();
-                    //             }
-
-                    //         }
-                    //         if (jianlistatustype == 1) {
-                    //             if (data.np.number3 > 0) {
-                    //                 $("#profile_jianli_number_1").text(data.np.number4);
-                    //                 $("#profile_jianli_number_1").show();
-                    //             }
-                    //             if (data.np.number4 > 0) {
-                    //                 $("#profile_jianli_number_2").text(data.np.number5);
-                    //                 $("#profile_jianli_number_2").show();
-                    //             }
-                    //             if (data.np.number5 > 0) {
-                    //                 $("#profile_jianli_number_3").text(data.np.number6);
-                    //                 $("#profile_jianli_number_3").show();
-                    //             }
-
-                    //         }
-                    //         var jk = parseInt(data.np.number1) + parseInt(data.np.number2) + parseInt(data.np.number3);
-                    //         var jk1 = parseInt(data.np.number4) + parseInt(data.np.number5) + parseInt(data.np.number6);
-                    //         if (jk > 0) {
-                    //             $("#profile_jianli_number_4").text(jk);
-                    //             $("#profile_jianli_number_4").show();
-                    //         }
-                    //         if (jk1 > 0) {
-                    //             $("#profile_jianli_number_5").text(jk1);
-                    //             $("#profile_jianli_number_5").show();
-                    //         }
-                    //         total = total + jk + jk1;
-                    //         if (total > 0) {
-                    //             $("#jianli_status").append('<em>' + total + '</em>');
-                    //         }
-                    //     }
-                    // });
-                };
-                //查询hr没有回复数量 
-                function getSelectHrJobJianLi() {
-                    // jQuery.ajax({
-                    //     type: 'post',
-                    //     contentType: 'application/json; charset=utf-8',
-                    //     dataType: 'json',
-                    //     url: '/ajax/getSelectHrJobJianLi.do',
-                    //     data: JSON.stringify(new Object()),
-                    //     success: function(data) {
-                    //         if (data.np.number1 > 0) {
-                    //             $("#hr_mei_jianli").append("<em>" + data.np.number1 + "</em>");
-                    //             $("#shou").append("<em>" + data.np.number1 + "</em>");
-                    //         }
-                    //         if (data.np.number2 > 0) {
-                    //             $("#hr_tong_jianli").append("<em>" + data.np.number2 + "</em>");
-                    //         }
-                    //     }
-                    // });
-                };
-                //查询Hr新简历数
-                function getHrNewJianliNum() {
-                    // jQuery.ajax({
-                    //     type: 'post',
-                    //     contentType: 'application/json; charset=utf-8',
-                    //     dataType: 'json',
-                    //     url: '/ajax/newnum.do',
-                    //     data: JSON.stringify(new Object()),
-                    //     success: function(data) {
-                    //         if (data.newnum > 0) {
-                    //             $('.num').show();
-                    //             $('.num').text(data.newnum);
-                    //         } else {
-                    //             $('.num').hide();
-                    //         }
-                    //     }
-                    // });
-                }
-
-                //登录结束 
-                </script>
 @endsection
 
 
