@@ -2,7 +2,7 @@
 @section('title', '电竞猎人|首页')
 
 @section('header-nav')
-   @include('components.headerNav')
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
