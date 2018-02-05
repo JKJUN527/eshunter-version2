@@ -3,23 +3,23 @@
                     <div class="footer_top">
                         <div class="about_Us">
                             <div class="contact_left">
-                                <div><img src="../images/logo-white.png" style="height:43px;width:132px"></div> 
+                                <a href="/"><img src="../images/logo-white.png" style="height:43px;width:132px"></a> 
                                 <p>电竞猎人 - 做专业的竞技游戏职业招聘网站</p>
                             </div>
                             
                         </div>
                         <div class="foot_list">
                             <div class="foot_list_item">
-                                <span class="about_left"><a title="" href="#">简历指导</a></span>
-                                <span class="about_left"><a title="" href="#">关于我们</a></span>
-                                <span class="about_left"><a title="" href="#">联系我们</a></span>
-                                <span class="about_left"><a title="" href="#">网站地图</a></span>
-                                <span class="about_left"><a title="" href="#">免责申明</a></span>
-                                <span class="about_left"><a title="" href="http://weibo.com/neipin2013" rel="nofollow" >微博</a></span>
+                                <span class="about_left"><a title="" href="/about">简历指导</a></span>
+                                <span class="about_left"><a title="" href="/about">关于我们</a></span>
+                                <span class="about_left"><a title="" href="/about">联系我们</a></span>
+                                <span class="about_left"><a title="" href="/about">网站地图</a></span>
+                                <span class="about_left"><a title="" href="/about">免责申明</a></span>
+                                <!-- <span class="about_left"><a title="" href="http://weibo.com/neipin2013" rel="nofollow" >微博</a></span>
                                 <span class="about_left wx_pos">
                                     <a title="" href="javascript:void(0)">微信服务号</a>
                                     <img src="../images/yujia.jpg">
-                                </span>
+                                </span> -->
                             
                             </div>
                             <p style="margin-top:10px;" class="seap">

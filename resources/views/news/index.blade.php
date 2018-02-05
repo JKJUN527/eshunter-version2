@@ -3,6 +3,7 @@
 
 @section('custom-style')
    <link media="all" href="{{asset('../style/news.css')}}" type="text/css" rel="stylesheet">
+   <link media="all" href="{{asset('../style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
 @endsection
 
 
@@ -16,7 +17,6 @@
 @endsection
 
 @section('content')
-	<link href="css/fenyestyle.css?v=2.33" type="text/css" rel="stylesheet">
             
             <div class="containter" style="margin-top: 20px;">
                 <div class="news" id="news">

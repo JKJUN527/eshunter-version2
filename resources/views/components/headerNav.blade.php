@@ -13,6 +13,13 @@
             <!-- <li><a href="#">收藏夹</a></li> -->
             <li class="user_dropdown">
                 <a href="#">用户<span></span></a>
+                <!-- @if($username['username'] != null)
+                    {{$username['username']}}
+                @else
+                    用户
+                @endif -->
+                
+                <!-- <span></span></a> -->
                 <ul>
                     <!-- <li><a href="">我的订阅</a></li> -->
                     <!-- <li><a href="">职位邀请</a></li> -->
