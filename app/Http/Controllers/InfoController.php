@@ -53,14 +53,24 @@ class InfoController extends Controller {
             return null;
 
         $user = User::where("uid", $uid)->first();
+        $personCenter = new PersonCenterController();
         if($user->type==1){
-            $photo = Personinfo::where('uid',$uid)->select('photo')->first();
-            $data['photo']=$photo->photo;
+//            $photo = Personinfo::where('uid',$uid)->select('photo')->first();
+//            $data['photo']=$photo->photo;
+
+            //获取未读消息个数
+            $data['messageNum'] = $personCenter->getMessageNum();
+            //投递职位个数
+            $data['deliveredNum'] = $personCenter->getDeliveredNum();
         }elseif ($user->type==2){
-            $photo = Enprinfo::where('uid',$uid)->select('elogo')->first();
-            $data['photo']=$photo->elogo;
+//            $photo = Enprinfo::where('uid',$uid)->select('elogo')->first();
+//            $data['photo']=$photo->elogo;
+
+            //获取未读消息个数
+            $data['messageNum'] = $personCenter->getMessageNum();
         }
         $data['username']=$user->username;
+
         return $data;
     }
 
