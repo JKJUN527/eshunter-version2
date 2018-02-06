@@ -9,48 +9,32 @@
         min-height: auto;
         height: auto !important;
         height: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
+    }
+    .advantage,.descrition{
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .work_addr,.job_advantage p {
+        margin: 1em 0;
+        margin-left: 20px;
+    }
+    .job_bt p {
+        margin-left: 20px;  
     }
  </style>
 @endsection
 
 @section('header-nav')
-   @include('components.headerNav')
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 4,'type' =>$data['type']])
+   @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
 @endsection
 
 @section('content')
 
-<script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
-<div class="QQ_each">
-        <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
-        <ul class="wheel" id="wheel">
-            <li class="item"><a href="404.html"></a></li>
-            <li class="item"><a href="404.html"></a></li>
-            <li class="item"><a href="404.html"></a></li>
-            <li class="item"><a href="404.html"></a></li>
-            <!--<li class="item"><a target="_blank" href="404.html" class='sss'>沙僧</a></li>-->
-            <li class="item"><a class="bj" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1538590175&amp;site=qq&amp;menu=yes" target="_blank">求职<br>服务</a></li>
-            <li class="item"><a class="wk" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3078167392&amp;site=qq&amp;menu=yes" target="_blank">招聘<br>服务</a></li>
-            <li class="item"><a class="ts" href="http://wpa.qq.com/msgrd?v=3&amp;uin=6281927&amp;site=qq&amp;menu=yes" target="_blank">bug<br>反馈</a></li>      
-            <li class="item"><a href="404.html"></a></li>
-            <li class="item"><a href="404.html"></a></li>
-            <li class="item"><a href="404.html"></a></li>
-        </ul>
-    </div>
-<a style="display: none;" class="back_to_top" title="" href="404.html"></a>
-
-<script type="text/javascript">
-$(".wheel-button").wheelmenu({
-    // alert(1);
-    trigger: "hover",
-    animation: "fly",
-    angle: [0, 360]
-});
-</script>
 
 </div>
 <div class="position-head" data-companyid="304142">
@@ -130,34 +114,21 @@ $(".wheel-button").wheelmenu({
                 <p>五险一金,包三餐,双休,健身房</p>
             </dd>
             <dd class="job_bt">
-                <h3 class="descrition">职位描述:</h3>
+                <h3 class="descrition">岗位介绍:</h3>
                 <div>
-                    <p>职位描述：</p>
-                    <p><br></p>
                     <p>1、负责公司相关产品的界面UI设计、优化以及规范管理，活动页面设计；</p>
-                    <p><br></p>
                     <p>2、参与制定项目UI的详细设计规范，整理详细功能的设计规范文档；</p>
-                    <p><br></p>
                     <p>3、参与公司产品及功能的创意设计的更新迭代。</p>
-                    <p><br></p>
                     <p>4、有逻辑的思考，对产品界面进行持续的设计优化，提升用户体验并做到极致；</p>
-                    <p><br></p>
                     <p>5、配合同事根据需求完成有效的设计。</p>
-                    <p><br></p>
-                    <p><br></p>
-                    <p>任职要求：</p>
-                    <p><br></p>
+                </div>
+                <h3 class="descrition">岗位介绍:</h3>
+                <div>
                     <p>1、本科及以上学历，美术及设计等相关专业；</p>
-                    <p><br></p>
                     <p>2、3年以上网站或APP等界面设计经验，有成功的项目设计作品和案例；</p>
-                    <p><br></p>
                     <p>3、精通使用Photoshop、Illustrator，会插画，卡通形象，动画设计者优先；</p>
-                    <p><br></p>
                     <p>4、对从用户出发的设计理念有深刻的理解，能准确把握用户需求，出色的设计语言表达能力；</p>
-                    <p><br></p>
                     <p>5、具有良好的沟通能力和团队合作精神，能在高强度的环境下准时、高效的完成工作。</p>
-                    <p><br></p>
-                    <p><br></p>
                     <p>注：我们想要年轻有活力、有创造力的设计师，经验和学历都不是重点，但愿能看到你的设计灵魂。（请随简历附上代表作品或相关链接）</p>
                 </div>
             </dd>
@@ -335,6 +306,7 @@ $(".wheel-button").wheelmenu({
 
 @section('footer')
    @include('components.myfooter')
+   @include('components.wheelmenu')
 @endsection
 
 
