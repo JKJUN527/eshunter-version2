@@ -2,12 +2,23 @@
 @if($data["type"] == 1)
     @section('title', '个人中心')
     @section('custom-style')
-       <link media="all" href="{{asset('../style/ResumePreview.css?v=2.40')}}" type="text/css" rel="stylesheet">
-       <link media="all" href="{{asset('../style/onlineresume.css?v=2.40')}}" type="text/css" rel="stylesheet">
-       <link href="{{asset('../style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
-        <link href="{{asset('../style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
-        <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
-        <script charset="utf-8" type="text/javascript" src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js"></script>
+       <link media="all" href="{{asset('style/ResumePreview.css?v=2.40')}}" type="text/css" rel="stylesheet">
+       <link media="all" href="{{asset('style/onlineresume.css?v=2.40')}}" type="text/css" rel="stylesheet">
+       <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
+        <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
+        <script src="{{asset('js/')}}" type="text/javascript"></script> 
+        <script src="{{asset('js/choose.js?v=2.33')}}" type="text/javascript"></script>
+        <script src="{{asset('js/placeholder.js?v=2.32')}}" type="text/javascript"></script>
+        <script src="{{asset('js/progressbar.js?v=2.32')}}" type="text/javascript"></script>
+        <script defer="defer" src="{{asset('js/constants.js?v=2.32')}}" type="text/javascript"></script>
+        <script src="{{asset('js/onlineresume.js?v=2.38')}}" charset="utf-8" type="text/javascript"></script>
+        <script defer="defer" src="{{asset('js/ajaxfileupload.js?v=2.32')}}" type="text/javascript"></script>
+        <script defer="defer" src="{{asset('js/common.js?v=2.34')}}" type="text/javascript"></script>
+        <script defer="defer" src="{{asset('js/selectphoto.js?v=2.32')}}" type="text/javascript"></script>
+        <script defer="defer" src="{{asset('js/jquery.imgareaselect.pack.js')}}" type="text/javascript"></script>
+        <script defer="defer" src="{{asset('js/loading.js?v=2.32')}}" type="text/javascript"></script>
+
+        <script defer="defer" src="{{asset('js/center.js?v=2.32')}}" type="text/javascript"></script> 
         <style>
         .containter{    
             width: 1200px;
@@ -19,7 +30,6 @@
     @endsection
     @section('content')
             
-    <script defer="defer" src="js/center.js?v=2.32" type="text/javascript"></script> 
     <script type="text/javascript">
       var tu=1;
       var x1="";
@@ -64,7 +74,7 @@
       var default_jianli = "";
       var jianli_flag = "";
       $(function(){
-         updatebar();
+         // updatebar();
         // 去掉简历完整度
         if($.browser.msie) { 
           $('.myhidden').hide();
@@ -1732,21 +1742,21 @@
 
 
        //更新完整度
-       function updatebar(){
-            //var param = new Object();
-            //param.param1 = barnum;
-            jQuery.ajax({   
-                    type: 'post',   
-                  contentType : 'application/json; charset=utf-8',   
-                  dataType: 'json',   
-                  url: '/ro/updatebar', 
-                  data: {},   
-                  success: function(data){
-                    $('.progressbar').attr('data-perc',data.bar_num);
-                   progressbar();
-                  }
-         })
-       }
+       // function updatebar(){
+       //      //var param = new Object();
+       //      //param.param1 = barnum;
+       //      jQuery.ajax({   
+       //              type: 'post',   
+       //            contentType : 'application/json; charset=utf-8',   
+       //            dataType: 'json',   
+       //            url: '/ro/updatebar', 
+       //            data: {},   
+       //            success: function(data){
+       //              $('.progressbar').attr('data-perc',data.bar_num);
+       //             progressbar();
+       //            }
+       //   })
+       // }
 
 
       function delebarnum(){
@@ -2000,24 +2010,24 @@
              
        }
        
-       function deletes(flag){
-             var param = new Object();
-             param.param1 = flag;
-             jQuery.ajax({   
-                    type: 'post',   
-                  contentType : 'application/json; charset=utf-8',   
-                  dataType: 'json',   
-                  url: '/ro/deletes', 
-                  data: JSON.stringify(param),   
-                  success: function(date){
-                     if(date.ret == 0)
-                     {
-                         updatebar();
-                         myfun();
-                     }
-                  }
-              });
-       }
+       // function deletes(flag){
+       //       var param = new Object();
+       //       param.param1 = flag;
+       //       jQuery.ajax({   
+       //              type: 'post',   
+       //            contentType : 'application/json; charset=utf-8',   
+       //            dataType: 'json',   
+       //            url: '/ro/deletes', 
+       //            data: JSON.stringify(param),   
+       //            success: function(date){
+       //               if(date.ret == 0)
+       //               {
+       //                   updatebar();
+       //                   myfun();
+       //               }
+       //            }
+       //        });
+       // }
        
        $(function(){
               $('.close_btn').live("click",function(){
@@ -2026,11 +2036,7 @@
                 $(".imgareaselect-selection").parent().css({"display":"none"});
                 $(".imgareaselect-outer").css({"display":"none"});
               });
-          if($.browser.msie) {
-               $(".tanchu_logo").load("/job/jiettu");
-            }else{
-               $(".tanchu_logo").load("/job/jietu");
-            }
+          
         
            if($.browser.msie) { 
               //$('.fileInput').css({'background':'none','width':'220px','padding-top':'10px'})
@@ -2508,7 +2514,7 @@
       })  
       if(uname!=""&&uname!=null){
         // 调用此方法 
-        getSelectProfileJobJianLi();
+        // getSelectProfileJobJianLi();
       }
       
       // 事件关闭
@@ -4534,33 +4540,6 @@
             </div>
           </div>
 
-    <!-- <script src="js/jquery.wheelmenu.js" type="text/javascript"></script> -->
-    <div class="QQ_each">
-            <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
-            <ul class="wheel" id="wheel">
-                <li class="item"><a href="404.html"></a></li>
-                <li class="item"><a href="404.html"></a></li>
-                <li class="item"><a href="404.html"></a></li>
-                <li class="item"><a href="404.html"></a></li>
-                <!--<li class="item"><a target="_blank" href="404.html" class='sss'>沙僧</a></li>-->
-                <li class="item"><a class="bj" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1538590175&amp;site=qq&amp;menu=yes" target="_blank">求职<br>服务</a></li>
-                <li class="item"><a class="wk" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3078167392&amp;site=qq&amp;menu=yes" target="_blank">招聘<br>服务</a></li>
-                <li class="item"><a class="ts" href="http://wpa.qq.com/msgrd?v=3&amp;uin=6281927&amp;site=qq&amp;menu=yes" target="_blank">bug<br>反馈</a></li>      
-                <li class="item"><a href="404.html"></a></li>
-                <li class="item"><a href="404.html"></a></li>
-                <li class="item"><a href="404.html"></a></li>
-            </ul>
-        </div>
-    <a style="display: none;" class="back_to_top" title="" href="404.html"></a>
-
-    <!-- <script type="text/javascript">
-    $(".wheel-button").wheelmenu({
-        // alert(1);
-        trigger: "hover",
-        animation: "fly",
-        angle: [0, 360]
-    });
-    </script> -->
 
     </div>
     <div class="online_right right">
@@ -4629,7 +4608,7 @@
             
                //简历完成度
                $('.progressbar').attr('data-perc',20);
-           progressbar();
+           // progressbar();
       
             //性别
              $(".gender").addClass("boy");
@@ -5753,15 +5732,11 @@
 
 
 @section('header-nav')
-    @if($data['uid'] === 0)
-        @include('components.headerNav', ['isLogged' => false])
-    @else
-        @include('components.headerNav', ['isLogged' => true, 'username' => $data['username']])
-    @endif
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 2,'type' =>$data['type']])
+   @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
 @endsection
 
 @section('footer')

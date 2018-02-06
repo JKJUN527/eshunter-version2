@@ -2,18 +2,17 @@
 @section('title', '电竞猎人|资讯中心')
 
 @section('custom-style')
-   <link media="all" href="{{asset('../style/news.css')}}" type="text/css" rel="stylesheet">
-   <link media="all" href="{{asset('../style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
+   <link media="all" href="{{asset('style/news.css')}}" type="text/css" rel="stylesheet">
+   <link media="all" href="{{asset('style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
 @endsection
 
 
 @section('header-nav')
-   @include('components.headerNav')
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
-
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 4,'type' => 0])
+   @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
 @endsection
 
 @section('content')
@@ -131,7 +130,7 @@
                     </div>
                     </div>
                 </div>
-                <script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
+                <script src="{{asset('js/jquery.wheelmenu.js')}}" type="text/javascript"></script>
                 <div class="QQ_each">
                     <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
                     <ul class="wheel" id="wheel">

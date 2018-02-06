@@ -1,8 +1,9 @@
 @extends('layout.master')
-@section('title', '电竞猎人|首页')
+@section('title', '电竞猎人|职位搜索')
 
 @section('custom-style')
-   <link media="all" href="{{asset('../style/tao_company.css')}}" type="text/css" rel="stylesheet">
+   <link media="all" href="{{asset('style/tao_company.css')}}" type="text/css" rel="stylesheet">
+   <link href="{{asset('style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
    <style>
     .jieshao_list li {
         border-bottom: none;
@@ -20,16 +21,15 @@
 
 
 @section('header-nav')
-   @include('components.headerNav')
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
-
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 3,'type' => 0])
+   @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
 @endsection
 
 @section('content')
-	<link href="css/fenyestyle.css?v=2.33" type="text/css" rel="stylesheet">
+	
             <div class="containter">
                 <div style="width:100%; overflow:hidden;">
                     <div style="padding-bottom:0px; float:left;" class="jieshao">
@@ -141,39 +141,13 @@
                         <a target="_blank" href="http://old.ui.cn/joblist.php"><img style="margin-top:20px;" src="../images/UIchina.jpg"></a>
                     </div>   
                 </div>
-                <script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
-                <div class="QQ_each">
-                    <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
-                    <ul class="wheel" id="wheel">
-                        <li class="item"><a href="#"></a></li>
-                        <li class="item"><a href="#"></a></li>
-                        <li class="item"><a href="#"></a></li>
-                        <li class="item"><a href="#"></a></li>
-                        <!--<li class="item"><a target="_blank" href="#" class='sss'>沙僧</a></li>-->
-                        <li class="item"><a class="bj" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1538590175&amp;site=qq&amp;menu=yes" target="_blank">寻找<br>工作</a></li>
-                        <li class="item"><a class="wk" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3078167392&amp;site=qq&amp;menu=yes" target="_blank">发布<br>职位</a></li>
-                        <li class="item"><a class="ts" href="http://wpa.qq.com/msgrd?v=3&amp;uin=6281927&amp;site=qq&amp;menu=yes" target="_blank">联系<br>我们</a></li>      
-                        <li class="item"><a href="#"></a></li>
-                        <li class="item"><a href="#"></a></li>
-                        <li class="item"><a href="#"></a></li>
-                    </ul>
-                </div>
-                <a style="display:none" class="back_to_top" title="" href="#"></a>
-
-                <script type="text/javascript">
-                                                $(".wheel-button").wheelmenu({
-                                        // alert(1);
-                                        trigger: "hover",
-                                                animation: "fly",
-                                                angle: [0, 360]
-                                                });
-                </script>
-
+                
             </div>
 @endsection
 
 @section('footer')
    @include('components.myfooter')
+   @include('components.wheelmenu')
 @endsection
 
 @section('custom-script')

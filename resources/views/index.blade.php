@@ -6,7 +6,7 @@
 @endsection
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 1,'type' => 0])
+   @include('components.headerTab',['activeIndex' => 1,'type' => $data['type']])
 @endsection
 
 @section('custom-style')
@@ -102,7 +102,6 @@
                     
                 </div>
 
-                <a style="display:none" class="back_to_top" title="" href="#"></a>
                 <div class="jieshao_tb">
                     <span v="0" class="active">热门职位</span>
                     <span v="1">最新职位</span>          
@@ -366,25 +365,20 @@
             </div>
             <div class="more_box"><a href="/news" class="list_more">查看更多</a></div>
             </div>
+            @include('components.wheelmenu')
 @endsection
 
 
 @section('footer')
     @include('components.myfooter')
+    
 @endsection
 
 
 @section('custom-script')
-    <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
-    <script charset="utf-8" type="text/javascript" src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js"></script>
-    <script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
+    <script charset="utf-8" type="text/javascript" src="{{asset('js/header.js?v=1.00')}}"></script>
     <script>
-        $(".wheel-button").wheelmenu({
-                    // alert(1);
-            trigger: "hover",
-            animation: "fly",
-            angle: [0, 360]
-        });
+        
         var openid = "";
         $(function() {
             //加载index_xianxing内容，推荐状况的实时展示
@@ -427,13 +421,8 @@
 
 
             // 鼠标滑过边框变色
-            $('.jieshao_list li').live('mouseover', function() {
-                // $(this).addClass('greenborder_li');
-                //         $(this).siblings().removeClass('greenborder_li');
-                // })
-                //         $('.jieshao_list li').live('mouseleave', function(){
-                // $(this).removeClass('greenborder_li');
-                // })
+            $('.all_divclass').on('mouseover', function() {
+                
                 // 定位导航
                 $(document).scroll(function() {
                     var window_height = $(window).height();
