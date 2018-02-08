@@ -641,20 +641,20 @@ class PositionController extends Controller {
         //根据pid号返回职位信息
         if ($request->has('pid')) {
             $pid = $request->input('pid');//获取前台传来的pid
-            $data['detail1'] = Position::find($pid);
-            $data['detail1']->view_count += 1;
-            $data['detail1']->save();
+            $detail1 = Position::find($pid);
+            $detail1->view_count += 1;
+            $detail1->save();
             $data['detail'] = DB::table('jobs_position')
                 ->leftjoin('jobs_occupation', 'jobs_position.occupation', '=', 'jobs_occupation.id')
                 ->select('jobs_position.pid','jobs_position.eid','jobs_position.title','jobs_position.tag','jobs_position.pdescribe','jobs_position.salary','salary_max','jobs_position.region','work_nature','jobs_position.occupation','jobs_position.industry','jobs_position.experience','jobs_position.education','jobs_position.total_num','jobs_position.max_age','jobs_position.workplace','jobs_position.position_status','jobs_position.view_count','jobs_position.created_at','name')
                 ->where('pid', '=', $pid)
                 ->first();
 
-            $data['region'] = Region::where('id', '=', $data['detail1']['attributes']['region'])->first();
+            $data['region'] = Region::where('id', '=', $detail1['attributes']['region'])->first();
 
             $data['dcount'] = Delivered::where('pid', '=', $pid)
                 ->count();
-            $eid = $data['detail1']['attributes']['eid'];
+            $eid = $detail1['attributes']['eid'];
 
             $data['industry'] = Industry::all();
 
@@ -730,7 +730,7 @@ class PositionController extends Controller {
         //return $data;
 
         $data['position'] = DB::table('jobs_position')
-            ->select('pid', 'title', 'ename','byname' ,'salary','salary_max','jobs_region.name','position_status')
+            ->select('pid', 'title','tag','ename','byname','ebrief','salary','salary_max','jobs_region.name','position_status')
             ->leftjoin('jobs_enprinfo', 'jobs_enprinfo.eid', '=', 'jobs_position.eid')
             ->leftjoin('jobs_region', 'jobs_region.id', '=', 'jobs_position.region')
             //关闭企业职位有效期
@@ -817,6 +817,7 @@ class PositionController extends Controller {
         $data['username'] = InfoController::getUsername();
         $data['type'] = AuthController::getType();
         $data['industry'] = Industry::all();
+        $data['occupation'] = Occupation::all();
         $data['region-pro'] = Region::where('parent_id',0)
             ->orderBy('created_at','asc')
             ->get();

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '新闻详情')
+@section('title', '职位详情')
 
 @section('custom-style')
  <link media="all" href="{{asset('../style/zhiwei.css')}}" type="text/css" rel="stylesheet">
@@ -34,26 +34,60 @@
 @endsection
 
 @section('content')
-
-
-</div>
 <div class="position-head" data-companyid="304142">
     <div class="position-content ">
         <div class="position-content-l">
-            <div class="job-name" title="产品助理实习生">
-                                <div class="company">原链科技产品部招聘</div>
-                                <span class="name">产品助理实习生</span>
-                                <span class="outline_tag">（该职位已下线）</span>
-                                <div class="marEdit">
-                                    </div>
+            <div class="job-name" title="{{$data['detail']->title}}">
+                <div class="company">{{$data['enprinfo'][0]->ename}}招聘</div>
+                <span class="name">{{$data['detail']->title}}</span>
+                <span class="outline_tag">
+                    @if($data['detail']->position_status == 1)
+                        该职位正在招聘中
+                    @elseif($data['detail']->position_status == 2)
+                        该职位已过有效期
+                    @elseif($data['detail']->position_status == 3)
+                        该职位已下架
+                    @else
+                        临时职位
+                    @endif
+                </span>
+                <div class="marEdit"></div>
             </div>
             <dd class="job_request">
                 <p>
-                    <span class="salary">2k-3k </span>
-                    <span>/成都 /</span>
+                    <span class="salary">
+                        @if($data['detail']->salary <= 0)
+                            月薪面议
+                        @else
+                            {{$data['detail']->salary/1000}}k-
+                            @if($data['detail']->salary_max ==0) 无上限
+                            @else {{$data['detail']->salary_max/1000}}k
+                            @endif
+                            元/月
+                        @endif
+                    </span>
+                    <span>/{{$data['detail']->name}}/</span>
                     <span>经验应届毕业生 /</span>
-                    <span>大专及以上 /</span>
-                    <span>实习</span>
+                    <span>
+                        @if($data['detail']->education == 0)
+                            高中及以上
+                        @elseif($data['detail']->education == 3)
+                            专科及以上
+                        @elseif($data['detail']->education == 1)
+                            本科以上
+                        @elseif($data['detail']->education == 2)
+                            研究生及以上
+                        @endif
+                    /</span>
+                    <span>
+                        @if($data['detail']->work_nature == 0)
+                            兼职
+                        @elseif($data['detail']->work_nature == 1)
+                            实习
+                        @elseif($data['detail']->work_nature == 2)
+                            全职
+                        @endif
+                    </span>
                 </p>
                 <!-- 职位标签 -->
                 <ul class="position-label clearfix">
@@ -102,8 +136,8 @@
         </div>
 
     </div>
-
 </div>
+
 <div class="info_container clearfix">
     <div class="content_l left">
 
