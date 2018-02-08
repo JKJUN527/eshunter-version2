@@ -4,20 +4,21 @@
 @section('custom-style')
    <link media="all" href="{{asset('style/tao_company.css')}}" type="text/css" rel="stylesheet">
    <link href="{{asset('style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
+   <link href="{{asset('style/icon-font/iconfont.css')}}" type="text/css" rel="stylesheet">
    <style>
-    .jieshao_list li {
+    .companydiv li {
         /*border-bottom: none;*/
             margin-bottom: 16px;
     }
-    .jieshao_list li:nth-child(odd) {
+    .companydiv li:nth-child(odd) {
         float: left;
             border: 1px solid #dcdcdc;
     }
-    .jieshao_list li:nth-child(even) {
+    .companydiv li:nth-child(even) {
             border: 1px solid #dcdcdc;
             float: right;
     }
-    .jieshao_list li:hover{
+    .companydiv li:hover{
         border: 1px solid #D32F2F;
     }
     .gsdiv {
@@ -46,6 +47,42 @@
     #publish-position:hover{
         background: #6F6969;
     }
+    nav#page_tools ul li:hover,nav#page_tools ul li.active{
+      background-color: #03A9F4;
+      color: #fff!important;
+    }
+    nav#page_tools ul li:hover a{
+      color: #fff!important;
+    }
+    nav#page_tools ul li {
+      display:inline-block;
+          margin-bottom: 0px;
+          cursor: pointer;
+    }
+    nav#page_tools{
+      margin: 20px auto;
+      text-align: center;
+    }
+    .gs_rank_item span.active {
+      background: none;
+      color: #D32F2F;
+      font-weight: bold;
+    }
+    .gsdiv .brif .toujianli{
+          float: right;
+      padding: 4px 6px;
+      margin-top: -26px;
+      background-color: #03A9F4;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+    }
+    .gs_rank_item {
+    padding: 6px 17px;
+    background: #919191;
+    overflow: hidden;
+    font-size: 15px;
+}
    </style>
 @endsection
 
@@ -76,9 +113,42 @@
                             <div class="gs_rank">
                                 <div style="display:block" class="gs_rank_item">
                                     <div>排序：</div>
-                                    <span class="sort-item" data-content="0" id="sort-hotness">热度</span>
-                                    <span class="sort-item" data-content="1" id="sort-salary">薪水</span>
-                                    <span class="sort-item" data-content="0" id="sort-publish-time">发布时间</span>
+                                    @if(!isset($data['result']['orderBy']))
+                                        <span class="sort-item" data-content="0" id="sort-hotness">热度<i class="iconfont icon-paixu-down"></i></span>
+                                        <span class="sort-item" data-content="0" id="sort-salary">薪水<i class="iconfont icon-paixu-down"></i></span>
+                                        <span class="sort-item active" data-content="1" id="sort-publish--time">发布时间<i class="iconfont icon-paixu-down"></i></span>
+                                    @elseif($data['result']['orderBy'] == 0)
+                                        @if($data['result']['desc'] == 1)
+                                            <span class="sort-item active" data-content="1" id="sort-hotness">热度<i class="iconfont icon-paixu-down"></i></span>
+                                        @else
+                                            <span class="sort-item active" data-content="2" id="sort-hotness">热度<i class="iconfont icon-paixu"></i></span>
+                                        @endif
+                                        <span class="sort-item" data-content="0" id="sort-salary">薪水<i
+                                                    class="material-icons"></i></span>
+                                        <span class="sort-item" data-content="0" id="sort-publish--time">发布时间<i
+                                                    class="material-icons"></i></span>
+                                    @elseif($data['result']['orderBy'] == 1)
+                                        <span class="sort-item" data-content="0" id="sort-hotness">热度<i
+                                                    class="material-icons"></i></span>
+                                        @if($data['result']['desc'] == 1)
+                                            <span class="sort-item active" data-content="1" id="sort-salary">薪水<i class="iconfont icon-paixu-down"></i></span>
+                                        @else
+                                            <span class="sort-item active" data-content="2" id="sort-salary">薪水<i class="iconfont icon-paixu"></i></span>
+                                        @endif
+                                        <span class="sort-item" data-content="0" id="sort-publish--time">发布时间<i
+                                                    class="material-icons"></i></span>
+                                    @elseif($data['result']['orderBy'] == 2)
+                                        <span class="sort-item" data-content="0" id="sort-hotness">热度<i
+                                                    class="material-icons"></i></span>
+                                        <span class="sort-item" data-content="0" id="sort-salary">薪水<i
+                                                    class="material-icons"></i></span>
+
+                                        @if($data['result']['desc'] == 1)
+                                            <span class="sort-item active" data-content="1" id="sort-publish--time">发布时间<i class="iconfont icon-paixu-down"></i></span>
+                                        @else
+                                            <span class="sort-item active" data-content="2" id="sort-publish--time">发布时间<i class="iconfont icon-paixu"></i></span>
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -237,13 +307,15 @@
                                               @endforeach
                                           @endif
                                       </div>
-                                    <div class="brif"></div>
+                                    <div class="brif">
+                                      <button class="toujianli">投简历</button>
+                                    </div>
                                   </div>
                                 </li>
                             @endforeach
                           </ul>
                           {{--<div class="Page" id="pagination">--}}
-                              <nav>
+                              <nav id="page_tools">
                                   {!! $data['result']['position']->appends($data['condition'])->render() !!}
                               </nav>
                           {{--</div>--}}
