@@ -66,8 +66,8 @@
                             元/月
                         @endif
                     </span>
-                    <span>/{{$data['detail']->name}}/</span>
-                    <span>经验应届毕业生 /</span>
+                    <span>/{{$data['region']->name}}/</span>
+                    <span>年龄要求：35/</span>
                     <span>
                         @if($data['detail']->education == 0)
                             高中及以上
