@@ -589,7 +589,7 @@
     font-weight: 700;
     cursor: pointer;
 }
-.jobs_similar_header span:after {
+/*.jobs_similar_header span:after {
     content: "";
     position: absolute;
     top: 11px;
@@ -597,7 +597,7 @@
     display: inline-block;
     width: 162px;
     border-bottom: 1px solid #e8e8e8;
-}
+}*/
 .jobs_similar_detail .similar_list {
     margin-top: -12px;
 }
@@ -651,6 +651,7 @@
     white-space: nowrap;
     font-size: 12px;
     color: #999;
+    
 }
 
 .nodata_similar_list {

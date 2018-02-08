@@ -18,7 +18,7 @@
     <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
 
     <script src="{{asset('js/hm.js?e57ac2e0d645c16f50e241abc140f59f')}}"></script>
-    <script src="{{asset('js/jquery-1.7.2.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/constants.js?v=2.32')}}" type="text/javascript"></script>
     <script src="{{asset('js/index_bo.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/common.js?v=2.34')}}" type="text/javascript"></script>

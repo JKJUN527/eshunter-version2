@@ -9,7 +9,7 @@ $(function(){
         }
     });
 
-    $('#chakan').live("click",function(){
+    $('#chakan').on("click",function(){
     	var xinkeywd = $("#xinkeywd").val();
     	if(xinkeywd=="请输入关键词，如：运营策划" || xinkeywd==""){
     		xinkeywd="";
@@ -28,13 +28,13 @@ $(function(){
     	window.location.href =BaseJSURL + "/jc/?mkwd=" + xinkeywd;
     });
     
-//   $('.choosing li').live("click",function(){
+//   $('.choosing li').on("click",function(){
 //	   var area = $(this).text();
 //	   window.location.href =BaseJSURL + "/jc/?area=" + area;
 //   });
 	
 	//热门职位搜索
-//    $('.taoyige_hotsearch a').live('click',function(){
+//    $('.taoyige_hotsearch a').on('click',function(){
 //    	 var keywd = $(this).text();
 //    	 if(keywd == "c++" || keywd == "C++"){
 //    		 keywd =keywd.substring(0,1) +  "jiajia";
@@ -46,7 +46,7 @@ $(function(){
 //    });
 	
 	//左边分类点击
-//    $('.myzhuanhuang').live('click',function(){
+//    $('.myzhuanhuang').on('click',function(){
 //   	     var keywd = $(this).text();
 //	   	 if(keywd == "c++" || keywd == "C++"){
 //	   		keywd =keywd.substring(0,1) +  "jiajia";

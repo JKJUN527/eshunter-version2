@@ -7,7 +7,7 @@ $(function(){
       $('#yebz').hide();
       $('.hsbj').hide();
     })
-  $('.close_X').live("click",function(){
+  $('.close_X').on("click",function(){
     $('.cuowutishi').hide();
     $('.tishiwanshan').hide();
     $('.tishiwanshan').hide();
@@ -18,7 +18,7 @@ $(function(){
     /*
      * 关闭错误提醒的
      */
-	$('.close_X_1').live("click",function(){
+	$('.close_X_1').on("click",function(){
         $('.cuowutishi').hide();
 	});
   // 文本框
@@ -196,7 +196,7 @@ $(function(){
 
 
     // 弹出层显示
-    $('.close_btn').live('click', function() {
+    $('.close_btn').on('click', function() {
       $('.hsbj').hide();
       $('.jianliyulan').hide();
       $("#frame_yulanjianli").remove();
@@ -244,8 +244,8 @@ $(function(){
       }
   }
 
-  $(".tx img").live( "click", showLayer );
-  $(".resumes_right_a").live( "click", function(){
+  $(".tx img").on( "click", showLayer );
+  $(".resumes_right_a").on( "click", function(){
 	  if($(this).parent().attr("online_jianli") == 1)
 	  {
 		  return;
@@ -256,8 +256,8 @@ $(function(){
 	  }
   } );
 
-  $(".close_btn").live( "click", hideLayer );
-  $(".downloadjianli").live( "click", hideLayer );
+  $(".close_btn").on( "click", hideLayer );
+  $(".downloadjianli").on( "click", hideLayer );
   // 鼠标滚轮事件
   $(document).bind('mousewheel', function(event) {
         scrollEvent(event);

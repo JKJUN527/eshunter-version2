@@ -1,5 +1,5 @@
 $(function(){
-	$('.seles_choose').live("click",function(event){
+	$('.seles_choose').on("click",function(event){
       $('.seles_choose').parent().css({"z-index":"0"});
       $(this).parents('li').siblings('li').find('.seles').css({"z-index":"0"});
       
@@ -21,7 +21,7 @@ $(function(){
       e.stopPropagation;
     });
     
-    $('.seles_hide').live("click",function(event){  
+    $('.seles_hide').on("click",function(event){  
     	if(document.getElementById("p_node") 
     			&& document.getElementById("p_node") != undefined 
     			&& document.getElementById("p_node")!=""
@@ -75,7 +75,7 @@ $(function(){
      })
 
      //下拉里点击项目
-     $('.seles_hide li').live("click",function(){
+     $('.seles_hide li').on("click",function(){
       
       $('.seles_hide').hide();
       // $('.qtss').hide();
@@ -96,17 +96,17 @@ $(function(){
       }
       $(this).parent(".seles_hide").siblings(".seles_choose").addClass("colors");
     })
-     $('.seles_hide_city li').live("click",function(){
+     $('.seles_hide_city li').on("click",function(){
        $('.qita_input').hide();
       
 
      })
-    $('.seles_hide li.eee').live("click",function(){
+    $('.seles_hide li.eee').on("click",function(){
       $('.qita_input').show().focus();
     })
     
     // 期望领域
-    $('.lingyu div').live('click',function(){
+    $('.lingyu div').on('click',function(){
   	    var lingyuCon = $(this).parents('.labels_con').siblings('.lingyu_shuru').text().replace(/(^\s*)|(\s*$)/g,"");
   	    var lingyuCd = $(this).parent().siblings('.input_hide').val();
   	    var str = lingyuCon.split(" ");
@@ -162,7 +162,7 @@ $(function(){
 	
 	
 	  // 期望职位
-	  $('.seles_xiala').live('click',function(){
+	  $('.seles_xiala').on('click',function(){
 	    $(this).find('.labels_con').show();
 	  });
 

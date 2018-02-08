@@ -5,6 +5,8 @@
    <link media="all" href="{{asset('style/tao_company.css')}}" type="text/css" rel="stylesheet">
    <link href="{{asset('style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
    <link href="{{asset('style/icon-font/iconfont.css')}}" type="text/css" rel="stylesheet">
+   <link media="all" href="{{asset('../style/modal.css')}}" type="text/css" rel="stylesheet">
+ <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
    <style>
     .companydiv li {
         /*border-bottom: none;*/
@@ -308,7 +310,7 @@
                                           @endif
                                       </div>
                                     <div class="brif">
-                                      <button class="toujianli">投简历</button>
+                                      <button class="deliver-resume toujianli" data-toggle="modal" data-target="#myModalToujianli">投简历</button>
                                     </div>
                                   </div>
                                 </li>
@@ -332,6 +334,32 @@
                 </div>
                 
             </div>
+
+            <!-- 模态框（Modal） -->
+<div class="modal fade" id="myModalToujianli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    选择简历
+                </h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div> -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 @endsection
 
 @section('footer')
@@ -412,4 +440,97 @@
         $searchForm.submit();
     }
 </script>
+<script type="text/javascript">
+        $(".deliver-resume").click(function () {
+
+            var $pid = $(this).attr("data-content");
+
+            $.ajax({
+                url: "/resume/getResumeList",
+                type: "get",
+                success: function (data) {
+
+                    var html = "<ul class='resume-list'>";
+                    if (data.length === 0) {
+                        html = "<button onclick='addResume()' " +
+                            "class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky'>" +
+                            "没有简历，点击添加 </button>"
+                    } else {
+                        for (var item in data) {
+
+                            var resumeName = data[item]['resume_name'] === null ? "未命名的简历" : data[item]['resume_name'];
+                            html += "<li class='resume-item' data-content='" + data[item]['rid'] + "' onclick='resumeChosen(this, " + $pid + ")'>" +
+                                "<p>" + resumeName + "</p>" +
+                                "</li>";
+                        }
+
+                        html += "</ul>";
+                    }
+
+                    $(".modal-body").html(html);
+                }
+            })
+        });
+
+        function resumeChosen(element, pid) {
+            $("#chooseResumeModal").modal('hide');
+
+            var rid = $(element).attr("data-content");
+
+            var formData = new FormData();
+            formData.append('rid', rid);
+            formData.append('pid', pid);
+
+            $.ajax({
+                url: "/delivered/add",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    console.log(result);
+
+                    checkResult(result.status, "简历投递成功", result.msg, null);
+                }
+            })
+
+        }
+
+        function addResume() {
+            $.ajax({
+                url: "/resume/addResume",
+                type: "get",
+                success: function (data) {
+                    if (data['status'] === 200) {
+                        self.location = "/resume/add?rid=" + data['rid'];
+                    } else if (data['status'] === 400) {
+                        alert(data['msg']);
+                    }
+                }
+            });
+        }
+
+        $(".position-view").click(function () {
+            self.location = '/position/detail?pid=' + $(this).attr("data-content");
+        });
+            var look_more = $('#look_more')
+            var company_text = look_more.prev().text()
+            if (company_text.length<100) {
+                look_more.hide()
+            }else{
+                look_more.prev().text(company_text.substr(0,99)+"...") 
+                look_more.on('click', function() {
+                    if (look_more.prev().text().length!=102) {
+                        look_more.prev().text(company_text.substr(0,99)+"...") 
+                        look_more.text("查看更多>>")
+                    }else{
+                     look_more.prev().text(company_text)
+                     look_more.text("点击收起")
+                    }
+                });
+            }
+    </script>
 @endsection
