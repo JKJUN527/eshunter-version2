@@ -22,6 +22,9 @@
     .job_bt p {
         margin-left: 20px;  
     }
+     .dn{
+         display: block;
+     }
  </style>
 @endsection
 
@@ -67,9 +70,20 @@
                         @endif
                     </span>
                     <span>/{{$data['region']->name}}/</span>
-                    <span>年龄要求：35/</span>
-                    <span>
-                        @if($data['detail']->education == 0)
+                </p>
+                <!-- 职位标签 -->
+                <ul class="position-label clearfix">
+                    <li class="labels">
+                        @if($data['detail']->max_age == -1 ||$data['detail']->max_age == 0)
+                            无年龄要求
+                        @else
+                            {{$data['detail']->max_age}}岁以下
+                        @endif
+                    </li>
+                    <li class="labels">
+                        @if($data['detail']->education < 0)
+                            无学历要求
+                        @elseif($data['detail']->education == 0)
                             高中及以上
                         @elseif($data['detail']->education == 3)
                             专科及以上
@@ -78,8 +92,8 @@
                         @elseif($data['detail']->education == 2)
                             研究生及以上
                         @endif
-                    /</span>
-                    <span>
+                    </li>
+                    <li class="labels">
                         @if($data['detail']->work_nature == 0)
                             兼职
                         @elseif($data['detail']->work_nature == 1)
@@ -87,28 +101,26 @@
                         @elseif($data['detail']->work_nature == 2)
                             全职
                         @endif
-                    </span>
-                </p>
-                <!-- 职位标签 -->
-                <ul class="position-label clearfix">
-                                        <li class="labels">产品经理</li>
-                                        <li class="labels">实习生</li>
-                                        <li class="labels">市场分析</li>
-                                    </ul>
-                <p class="publish_time">2017-12-25&nbsp; 发布于电竞猎人</p>
+                    </li>
+                </ul>
+                <p class="publish_time">{{substr($data['detail']->created_at,0,10)}}  发布于电竞猎人</p>
             </dd>
         </div>
 
         <div class="position-content-r clearfix">
             <div class="position-deal clearfix">
                 <div class="resume-deliver">
-                <!-- <a rel="nofollow" href="javascript:;" class="btn fr btn_sended">已下线</a> -->
-                <a rel="nofollow" href="javascript:;" class="send-CV-btn s-send-btn fr gray" style="display: none;">已下线</a>
-                <a rel="nofollow" class="send-CV-btn s-send-btn fr"  href="javascript:;" >投个简历</a>
+                {{--<a rel="nofollow" href="javascript:;" class="btn fr btn_sended">已下线</a>--}}
+                    @if($data['detail']->position_status == 3)
+                        <a rel="nofollow" href="javascript:;" class="send-CV-btn s-send-btn fr gray" style="display: block;">已下线</a>
+                    @else
+                        <a rel="nofollow" class="send-CV-btn s-send-btn fr"  href="javascript:;" >投个简历</a>
+                    @endif
                 </div>
-                <div class="jd_collection  job-collection " data-lg-tj-id="9500" data-lg-tj-no="0001" data-lg-tj-cid="idnull">
-                    <i class="iconfont icon-star"> </i>收藏
-                </div>
+                <!--收藏按钮-->
+                {{--<div class="jd_collection  job-collection " data-lg-tj-id="9500" data-lg-tj-no="0001" data-lg-tj-cid="idnull">--}}
+                    {{--<i class="iconfont icon-star"> </i>收藏--}}
+                {{--</div>--}}
             </div>
 
             <!-- 简历状态 -->            
@@ -145,118 +157,134 @@
             <dt class="clearfix join_tc_icon"></dt>
             <dd class="job_advantage">
                 <span class="advantage">职位诱惑:</span>
-                <p>五险一金,包三餐,双休,健身房</p>
+                <p>{{$data['detail']->tag}}</p>
             </dd>
             <dd class="job_bt">
                 <h3 class="descrition">岗位介绍:</h3>
                 <div>
-                    <p>1、负责公司相关产品的界面UI设计、优化以及规范管理，活动页面设计；</p>
-                    <p>2、参与制定项目UI的详细设计规范，整理详细功能的设计规范文档；</p>
-                    <p>3、参与公司产品及功能的创意设计的更新迭代。</p>
-                    <p>4、有逻辑的思考，对产品界面进行持续的设计优化，提升用户体验并做到极致；</p>
-                    <p>5、配合同事根据需求完成有效的设计。</p>
+                    <p>{!! $data['detail']->pdescribe !!}</p>
                 </div>
-                <h3 class="descrition">岗位介绍:</h3>
+            </dd>
+            <dd class="job_bt">
+                <h3 class="descrition">职位要求:</h3>
                 <div>
-                    <p>1、本科及以上学历，美术及设计等相关专业；</p>
-                    <p>2、3年以上网站或APP等界面设计经验，有成功的项目设计作品和案例；</p>
-                    <p>3、精通使用Photoshop、Illustrator，会插画，卡通形象，动画设计者优先；</p>
-                    <p>4、对从用户出发的设计理念有深刻的理解，能准确把握用户需求，出色的设计语言表达能力；</p>
-                    <p>5、具有良好的沟通能力和团队合作精神，能在高强度的环境下准时、高效的完成工作。</p>
-                    <p>注：我们想要年轻有活力、有创造力的设计师，经验和学历都不是重点，但愿能看到你的设计灵魂。（请随简历附上代表作品或相关链接）</p>
+                    <p>
+                        @if(empty($data['detail']->experience))
+                            无经验要求
+                        @else
+                            {!! $data['detail']->experience !!}
+                        @endif
+                    </p>
                 </div>
             </dd>
             <dd class="job_address clearfix">
                 <h3 class="address">工作地址</h3>
                 <div class="work_addr">
-                    <a href="#" rel="nofollow">成都</a>-
-                    <a href="#" rel="nofollow">武侯区</a>-创业路49号
-                    <a href="javascript:;" id="mapPreview" rel="nofollow">查看地图</a>
-                </div>
-            </dd> 
-            <dd class="job_publisher">
-                <h3>职位发布:</h3>
-                <div class="border_c clearfix">
-                    <img src="../images/pic0.jpg" width="60" height="60"/>
-                    <div class="publisher_name">
-                        <a title="LGD">
-                            <span class="name">一lomo</span>
-                            <span class="chat_me"></span>
-                        </a>    
-                        <span class="pos">HR</span>
-                    </div>
-                    <div class="publisher_data">
-                        <div>
-                            <span class="data_title">
-                                聊天意愿
-                                <i></i>
-                            </span>
-                            <span class="tip_text">1个月内职位发布者回复聊天的占比</span>
-                            <span class="data">很弱</span>
-                            <span class="tip_s">
-                                回复率
-                                <i>--</i>
-                                &nbsp;用时
-                                <i class="light_tip">13</i>分钟
-                            </span>
-                        </div>
-                        <em></em>
-                        <div>
-                            <span class="data_title">
-                                简历处理
-                                <i></i>
-                            </span>
-                            <span class="tip_text">7日内职位发布者简历处理效率</span>
-                            <span class="data">超快</span>
-                            <span class="tip_s">
-                                处理率
-                                <i>--</i>
-                                &nbsp;用时
-                                <i class="light_tip">1</i>天
-                            </span>
-                        </div>
-                        <em></em>
-                        <div>
-                            <span class="data_title">
-                                活跃时段
-                                <i></i>
-                            </span>
-                            <span class="tip_text">1个月内职位发布者最活跃时段统计</span>
-                            <span class="data">下午</span>
-                            <span class="tip_s">
-                                <i class="light_tip">2</i>点最活跃
-                            </span>
-                        </div>
-                    </div>
+                    <a href="#" rel="nofollow">
+                        @if($data['detail']->workplace =="-1" ||strlen($data['detail']->workplace)==0)
+                            上班地址待定
+                        @else
+                            {{--{{str_replace(array('</br>','</br','</b>','</b'),"",$data['detail']->workplace)}}--}}
+                            {!! $data['detail']->workplace!!}
+                        @endif
+                    </a>
+                    {{--<a href="javascript:;" id="mapPreview" rel="nofollow">查看地图</a>--}}
                 </div>
             </dd>
+            <!--简历处理情况展示-->
+            {{--<dd class="job_publisher">--}}
+                {{--<h3>职位发布:</h3>--}}
+                {{--<div class="border_c clearfix">--}}
+                    {{--<img src="../images/pic0.jpg" width="60" height="60"/>--}}
+                    {{--<div class="publisher_name">--}}
+                        {{--<a title="LGD">--}}
+                            {{--<span class="name">一lomo</span>--}}
+                            {{--<span class="chat_me"></span>--}}
+                        {{--</a>    --}}
+                        {{--<span class="pos">HR</span>--}}
+                    {{--</div>--}}
+                    {{--<div class="publisher_data">--}}
+                        {{--<div>--}}
+                            {{--<span class="data_title">--}}
+                                {{--聊天意愿--}}
+                                {{--<i></i>--}}
+                            {{--</span>--}}
+                            {{--<span class="tip_text">1个月内职位发布者回复聊天的占比</span>--}}
+                            {{--<span class="data">很弱</span>--}}
+                            {{--<span class="tip_s">--}}
+                                {{--回复率--}}
+                                {{--<i>--</i>--}}
+                                {{--&nbsp;用时--}}
+                                {{--<i class="light_tip">13</i>分钟--}}
+                            {{--</span>--}}
+                        {{--</div>--}}
+                        {{--<em></em>--}}
+                        {{--<div>--}}
+                            {{--<span class="data_title">--}}
+                                {{--简历处理--}}
+                                {{--<i></i>--}}
+                            {{--</span>--}}
+                            {{--<span class="tip_text">7日内职位发布者简历处理效率</span>--}}
+                            {{--<span class="data">超快</span>--}}
+                            {{--<span class="tip_s">--}}
+                                {{--处理率--}}
+                                {{--<i>--</i>--}}
+                                {{--&nbsp;用时--}}
+                                {{--<i class="light_tip">1</i>天--}}
+                            {{--</span>--}}
+                        {{--</div>--}}
+                        {{--<em></em>--}}
+                        {{--<div>--}}
+                            {{--<span class="data_title">--}}
+                                {{--活跃时段--}}
+                                {{--<i></i>--}}
+                            {{--</span>--}}
+                            {{--<span class="tip_text">1个月内职位发布者最活跃时段统计</span>--}}
+                            {{--<span class="data">下午</span>--}}
+                            {{--<span class="tip_s">--}}
+                                {{--<i class="light_tip">2</i>点最活跃--}}
+                            {{--</span>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</dd>--}}
+
         </dl>
-        <dl class="interview_experience module-container">
-            <div class="module-title" id="review_anchor">
-                面试评价
-            </div>
-            <a href="" class="checkAll" style="display: none;">查看该公司全部面试评价</a>
-            <div class="reviews-area">
-                <div class="list-empty">
-                    <i></i>
-                    <span>该职位尚未收到面试评价</span>
-                    <span class="list_empty_tips">
-                        <a href="" target="_blank" class="list_empty_link">其他职位的面试评价</a>
-                    </span>
-                </div>
-            </div>
-        </dl>
+
+        {{--<dl class="interview_experience module-container">--}}
+            {{--<div class="module-title" id="review_anchor">--}}
+                {{--面试评价--}}
+            {{--</div>--}}
+            {{--<a href="" class="checkAll" style="display: none;">查看该公司全部面试评价</a>--}}
+            {{--<div class="reviews-area">--}}
+                {{--<div class="list-empty">--}}
+                    {{--<i></i>--}}
+                    {{--<span>该职位尚未收到面试评价</span>--}}
+                    {{--<span class="list_empty_tips">--}}
+                        {{--<a href="" target="_blank" class="list_empty_link">其他职位的面试评价</a>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</dl>--}}
+
     </div>
     <div class="content_r">
         <dl class="job_company" id="job_company">
             <dt>
                 <a href="#" target="_blank">
-                    <img  class="b2" src="../images/pic0.jpg" width="96" height="96"/>
+                    @if($data['enprinfo'][0]->elogo == null)
+                        <img  class="b2" src="../images/pic0.jpg" width="96" height="96"/>
+                    @else
+                        <img  class="b2" src="{{$data['enprinfo'][0]->elogo}}" width="96" height="96"/>
+                    @endif
                     <div>
                         <h2 class="left">
-                            成都市米彩科技有限公司
+                            <b>{{$data['enprinfo'][0]->ename or "公司名称未填写"}}</b>
                         </h2>
-                        <span class="dn">电竞猎人认证企业</span>
+                        <h2 class="left">
+                            {{$data['enprinfo'][0]->byname or "公司别名未填写"}}
+                        </h2>
+                        <span class="dn">电竞猎人已认证</span>
                     </div>
                 </a>
             </dt>
@@ -264,74 +292,113 @@
                 <ul class="c_feature">
                     <li>
                         <i class="iconfont icon-qita1"></i>
-                        电竞运营，教育
+                        @foreach($data['industry'] as $item)
+                            @if($data['enprinfo'][0]->industry == $item->id)
+                                {{$item->name}}
+                                @break
+                            @endif
+                        @endforeach
                         <span class="hovertips">领域</span>
                     </li>
                     <li>
                         <i class="iconfont icon-zhexiantu"></i>
-                         不需要融资
+                        @if($data['enprinfo'][0]->enature == null || $data['enprinfo'][0]->enature == 0)
+                            企业类型未知
+                        @elseif($data['enprinfo'][0]->enature == 1)
+                            国有企业
+                        @elseif($data['enprinfo'][0]->enature == 2)
+                            民营企业
+                        @elseif($data['enprinfo'][0]->enature == 3)
+                            中外合资企业
+                        @elseif($data['enprinfo'][0]->enature == 4)
+                            外资企业
+                        @elseif($data['enprinfo'][0]->enature == 5)
+                            社会团体
+                        @endif
                         <span class="hovertips">发展阶段</span>
                     </li>
                     <li>
                         <i class="iconfont icon-ren"></i>
-                         50-150人
+                        @if($data['enprinfo'][0]->escale == null)
+                            规模未知
+                        @elseif($data['enprinfo'][0]->escale == 0)
+                            10人以下
+                        @elseif($data['enprinfo'][0]->escale == 1)
+                            10～50人
+                        @elseif($data['enprinfo'][0]->escale == 2)
+                            50～100人
+                        @elseif($data['enprinfo'][0]->escale == 3)
+                            100～500人
+                        @elseif($data['enprinfo'][0]->escale == 4)
+                            500～1000人
+                        @elseif($data['enprinfo'][0]->escale == 5)
+                            1000人以上
+                        @endif
                         <span class="hovertips">规模</span>
                     </li>
                     <li>
                         <i class="iconfont icon-zhuye"></i>
-                        <a href="#" target="_blank" title="#" rel="nofollow">http://www.mgm.com/</a>
+                        <a href="{{$data['enprinfo'][0]->home_page}}" target="_blank" rel="nofollow">
+                            @if($data['enprinfo'][0]->home_page =="" ||$data['enprinfo'][0]->home_page ==null)
+                                未填写公司主页
+                            @else
+                                {{$data['enprinfo'][0]->home_page}}
+                            @endif
+                        </a>
                         <span class="hovertips">公司主页</span>
                     </li>
                 </ul>
             </dd>
         </dl>
         <div class="jobs_similar" id="jobs_similar">
+            <?php
+            $index = 0;
+            $count = count($data['position']);
+            ?>
             <h4 class="jobs_similar_header">
-                <span>相似职位</span>
+                <span>其他职位</span>
+                <span>{{$count}}</span>
             </h4>
-            <div class="jobs_similar_content" id="jobs_similar_content" style="display: none;">
+            @if($count >0)
+            <div class="jobs_similar_content" id="jobs_similar_content" style="display: block;">
                 <div class="jobs_similar_detail" id="jobs_similar_detail">
                     <ul class="similar_list reset">
-                        <li class="similar_list_item  clearfix">
-                            <a href="#" class="position_link clearfix" target="_blank">
-                                <div class="similar_list_item_logo">
-                                    <img src="../images//pic0.jpg"/ width="56" height="56" style="display: block;">
-                                </div>
-                                <div class="similar_list_item_pos">
-                                    <h2 title="">王者荣耀职业玩家</h2>
-                                    <p>7k-10k</p>
-                                    <p class="similar_company_name">EDG俱乐部[成都-华阳]</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="similar_list_item  clearfix">
-                            <a href="#" class="position_link clearfix" target="_blank">
-                                <div class="similar_list_item_logo">
-                                    <img src="../images//pic0.jpg"/ width="56" height="56" style="display: block;">
-                                </div>
-                                <div class="similar_list_item_pos">
-                                    <h2 title="">王者荣耀职业玩家</h2>
-                                    <p>7k-10k</p>
-                                    <p class="similar_company_name">EDG俱乐部[成都-华阳]</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="similar_list_item  clearfix">
-                            <a href="#" class="position_link clearfix" target="_blank">
-                                <div class="similar_list_item_logo">
-                                    <img src="../images//pic0.jpg"/ width="56" height="56" style="display: block;">
-                                </div>
-                                <div class="similar_list_item_pos">
-                                    <h2 title="">王者荣耀职业玩家</h2>
-                                    <p>7k-10k</p>
-                                    <p class="similar_company_name">EDG俱乐部[成都-华阳]</p>
-                                </div>
-                            </a>
-                        </li>
+                        @foreach($data['position'] as $position)
+                            @if(++$index <= 4)
+                            <li class="similar_list_item  clearfix">
+                                <a href="/position/detail?pid={{$position->pid}}" class="position_link clearfix" target="_blank">
+                                    {{--<div class="similar_list_item_logo">--}}
+                                        {{--<img src="../images//pic0.jpg"/ width="56" height="56" style="display: block;">--}}
+                                    {{--</div>--}}
+                                    <div class="similar_list_item_pos">
+                                        <h2 title="">
+                                            @if(empty($position->title))
+                                                没有填写职位名称
+                                            @else
+                                                {{mb_substr($position->title, 0, 15, 'utf-8')}}
+                                            @endif
+                                        </h2>
+                                        <p>薪资：
+                                            @if($position->salary <= 0)
+                                                月薪面议
+                                            @else
+                                                {{$position->salary}}元/月
+                                            @endif
+                                        </p>
+                                        <p class="similar_company_name">工作地区：
+                                            {{$position->name}}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
             </div>
+            @else
             <div class="nodata_similar_list"></div>
+            @endif
         </div>
     </div>
 </div>
