@@ -281,9 +281,9 @@ Route::any('m/resume', ['uses' => 'mobile\ResumeController@resumeList']);//跳�
 Route::get('m/resume/add', ['uses' => 'mobile\ResumeController@getIndex']);//简历编辑界面
 Route::get('m/resume/preview', ['uses' => 'mobile\ResumeController@previewResume']); //简历预览
 Route::get('m/resume/addResume', ['uses' => 'mobile\ResumeController@addResume']);//增加简历操作
-Route::any('resume/getRegion', ['uses' => 'ResumeController@getRegion']);
-Route::any('resume/getIndustry', ['uses' => 'ResumeController@getIndustry']);
-Route::get('resume/getResumeList', ['uses' => 'ResumeController@getResumeList']);
+//Route::any('resume/getRegion', ['uses' => 'ResumeController@getRegion']);
+//Route::any('resume/getIndustry', ['uses' => 'ResumeController@getIndustry']);
+//Route::get('resume/getResumeList', ['uses' => 'ResumeController@getResumeList']);
 Route::any('m/delivered/add', ['uses' => 'DeliveredController@delivered']);
 Route::post('m/resume/rename', ['uses' => 'mobile\ResumeController@rename']);//简历重命名
 

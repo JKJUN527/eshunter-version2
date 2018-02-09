@@ -16,6 +16,7 @@
     <link href="{{asset('style/style.css?v=2.43')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('plugins/sweetalert/sweetalert.css')}}" type="text/css" rel="stylesheet">
 
     <script src="{{asset('js/hm.js?e57ac2e0d645c16f50e241abc140f59f')}}"></script>
     <script src="{{asset('plugins/jquery/jquery.min.js')}}" type="text/javascript"></script>
@@ -28,7 +29,10 @@
     <script src="{{asset('js/placeholder.js?v=2.32')}}" type="text/javascript"></script>
     <script src="{{asset('js/san_index.js?v=1.02')}}" type="text/javascript"></script>
 
-    @section('custom-style')
+    <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/master.js')}}" type="text/javascript"></script>
+
+@section('custom-style')
     @show
     
 </head>
@@ -56,8 +60,24 @@
 	  </div>
 	</div>
 
-    
-    @section('custom-script')
-	@show
+<script type="text/javascript">
+        $("*[to]").click(function () {
+            self.location = $(this).attr('to');
+        });
+        window.onload = function(){
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    top.location='http://eshunter.com/m/';
+                    break;
+                }
+            }
+        }
+</script>
+@section('custom-script')
+@show
 </body>
 </html>

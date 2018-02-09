@@ -80,11 +80,36 @@
       border-radius: 3px;
     }
     .gs_rank_item {
-    padding: 6px 17px;
-    background: #919191;
-    overflow: hidden;
-    font-size: 15px;
-}
+        padding: 6px 17px;
+        background: #919191;
+        overflow: hidden;
+        font-size: 15px;
+    }
+    .resume-list {
+        width: 100%;
+        display: block;
+    }
+
+    .resume-item {
+        border: 1px solid #ebebeb;
+        display: block;
+        padding: 8px 16px;
+        margin-bottom: 16px;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        cursor: pointer;
+    }
+
+    .resume-item:hover {
+        background-color: #03A9F4;
+        color: #ffffff;
+    }
+
+    .resume-item p {
+        margin: 0;
+    }
    </style>
 @endsection
 
@@ -116,9 +141,9 @@
                                 <div style="display:block" class="gs_rank_item">
                                     <div>排序：</div>
                                     @if(!isset($data['result']['orderBy']))
-                                        <span class="sort-item" data-content="0" id="sort-hotness">热度<i class="iconfont icon-paixu-down"></i></span>
-                                        <span class="sort-item" data-content="0" id="sort-salary">薪水<i class="iconfont icon-paixu-down"></i></span>
-                                        <span class="sort-item active" data-content="1" id="sort-publish--time">发布时间<i class="iconfont icon-paixu-down"></i></span>
+                                        <span class="sort-item" data-content="0" id="sort-hotness">热度<i class="material-icons"></i></span>
+                                        <span class="sort-item" data-content="0" id="sort-salary">薪水<i class="material-icons"></i></span>
+                                        <span class="sort-item active" data-content="1" id="sort-publish-time">发布时间<i class="iconfont icon-paixu-down"></i></span>
                                     @elseif($data['result']['orderBy'] == 0)
                                         @if($data['result']['desc'] == 1)
                                             <span class="sort-item active" data-content="1" id="sort-hotness">热度<i class="iconfont icon-paixu-down"></i></span>
@@ -127,7 +152,7 @@
                                         @endif
                                         <span class="sort-item" data-content="0" id="sort-salary">薪水<i
                                                     class="material-icons"></i></span>
-                                        <span class="sort-item" data-content="0" id="sort-publish--time">发布时间<i
+                                        <span class="sort-item" data-content="0" id="sort-publish-time">发布时间<i
                                                     class="material-icons"></i></span>
                                     @elseif($data['result']['orderBy'] == 1)
                                         <span class="sort-item" data-content="0" id="sort-hotness">热度<i
@@ -137,7 +162,7 @@
                                         @else
                                             <span class="sort-item active" data-content="2" id="sort-salary">薪水<i class="iconfont icon-paixu"></i></span>
                                         @endif
-                                        <span class="sort-item" data-content="0" id="sort-publish--time">发布时间<i
+                                        <span class="sort-item" data-content="0" id="sort-publish-time">发布时间<i
                                                     class="material-icons"></i></span>
                                     @elseif($data['result']['orderBy'] == 2)
                                         <span class="sort-item" data-content="0" id="sort-hotness">热度<i
@@ -146,9 +171,9 @@
                                                     class="material-icons"></i></span>
 
                                         @if($data['result']['desc'] == 1)
-                                            <span class="sort-item active" data-content="1" id="sort-publish--time">发布时间<i class="iconfont icon-paixu-down"></i></span>
+                                            <span class="sort-item active" data-content="1" id="sort-publish-time">发布时间<i class="iconfont icon-paixu-down"></i></span>
                                         @else
-                                            <span class="sort-item active" data-content="2" id="sort-publish--time">发布时间<i class="iconfont icon-paixu"></i></span>
+                                            <span class="sort-item active" data-content="2" id="sort-publish-time">发布时间<i class="iconfont icon-paixu"></i></span>
                                         @endif
                                     @endif
                                 </div>
@@ -310,7 +335,14 @@
                                           @endif
                                       </div>
                                     <div class="brif">
-                                      <button class="deliver-resume toujianli" data-toggle="modal" data-target="#myModalToujianli">投简历</button>
+                                        @if($data['type']==0)
+                                            <button class="deliver-resume toujianli" to="/account/login">投简历</button>
+                                        @elseif($position->position_status==1 ||$position->position_status==4)
+                                            <button class="deliver-resume toujianli" data-content="{{$position->pid}}"
+                                                    data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
+                                        @else
+                                            <button class="deliver-resume toujianli">无法投递</button>
+                                        @endif
                                     </div>
                                   </div>
                                 </li>
@@ -336,7 +368,7 @@
             </div>
 
             <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModalToujianli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="chooseResumeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -350,13 +382,13 @@
             <div class="modal-body">
                 
             </div>
-            <!-- <div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-primary">
-                    提交更改
-                </button>
-            </div> -->
+                {{--<button type="button" class="btn btn-primary">--}}
+                    {{--提交更改--}}
+                {{--</button>--}}
+            </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
@@ -372,6 +404,46 @@
     var sortHotness = $("#sort-hotness");
     var sortSalary = $("#sort-salary");
     var sortTime = $("#sort-publish-time");
+
+    function resetSort() {
+        sortHotness.attr('data-content', 0);
+        sortSalary.attr('data-content', 0);
+        sortTime.attr('data-content', 0);
+
+        sortHotness.find("i").attr("class","material-icons");
+        sortSalary.find("i").attr("class","material-icons");
+        sortTime.find("i").attr("class","material-icons");
+
+        sortHotness.removeClass("active");
+        sortSalary.removeClass("active");
+        sortTime.removeClass("active");
+    }
+
+
+    $(".sort-item").click(function () {
+
+        if ($(this).attr('data-content') === '0') {
+            resetSort();
+            $(this).attr('data-content', 1);
+            $(this).find('i').attr("class","iconfont icon-paixu-down");
+            if (!$(this).hasClass('active'))
+                $(this).addClass('active');
+        } else if ($(this).attr('data-content') === '1') {
+            resetSort();
+            $(this).attr('data-content', 2);
+            $(this).find('i').attr("class","iconfont icon-paixu");
+            if (!$(this).hasClass('active'))
+                $(this).addClass('active');
+        } else if ($(this).attr('data-content') === '2') {
+            resetSort();
+            $(this).attr('data-content', 1);
+            $(this).find('i').attr("class","iconfont icon-paixu-down");
+            if (!$(this).hasClass('active'))
+                $(this).addClass('active');
+        }
+
+        goSearch();
+    });
 
     $('#publish-position').click(function (event) {
         event.preventDefault();
@@ -439,8 +511,6 @@
         $searchForm.action = '/position/advanceSearch';
         $searchForm.submit();
     }
-</script>
-<script type="text/javascript">
         $(".deliver-resume").click(function () {
 
             var $pid = $(this).attr("data-content");
@@ -491,7 +561,7 @@
                 data: formData,
                 success: function (data) {
                     var result = JSON.parse(data);
-                    console.log(result);
+//                    console.log(result);
 
                     checkResult(result.status, "简历投递成功", result.msg, null);
                 }
@@ -504,33 +574,15 @@
                 url: "/resume/addResume",
                 type: "get",
                 success: function (data) {
+//                    console.log(data);
                     if (data['status'] === 200) {
                         self.location = "/resume/add?rid=" + data['rid'];
                     } else if (data['status'] === 400) {
-                        alert(data['msg']);
+//                        swal("",data['msg'],"error");
+                        checkResult(data['status'], "", data['msg'], null);
                     }
                 }
             });
         }
-
-        $(".position-view").click(function () {
-            self.location = '/position/detail?pid=' + $(this).attr("data-content");
-        });
-            var look_more = $('#look_more')
-            var company_text = look_more.prev().text()
-            if (company_text.length<100) {
-                look_more.hide()
-            }else{
-                look_more.prev().text(company_text.substr(0,99)+"...") 
-                look_more.on('click', function() {
-                    if (look_more.prev().text().length!=102) {
-                        look_more.prev().text(company_text.substr(0,99)+"...") 
-                        look_more.text("查看更多>>")
-                    }else{
-                     look_more.prev().text(company_text)
-                     look_more.text("点击收起")
-                    }
-                });
-            }
     </script>
 @endsection

@@ -102,7 +102,7 @@
                             元/月
                         @endif
                     </span>
-                    <span>/{{$data['region']->name}}/</span>
+                    <span>[{{$data['region']->name}}]</span>
                 </p>
                 <!-- 职位标签 -->
                 <ul class="position-label clearfix">
@@ -144,10 +144,16 @@
             <div class="position-deal clearfix">
                 <div class="resume-deliver">
                 {{--<a rel="nofollow" href="javascript:;" class="btn fr btn_sended">已下线</a>--}}
-                    @if($data['detail']->position_status == 3)
-                        <a rel="nofollow" href="javascript:;" class="send-CV-btn s-send-btn fr gray" style="display: block;">已下线</a>
+                    @if($data['type']==0)
+                        <a href="/account/login" rel="nofollow" class="send-CV-btn s-send-btn fr gray" style="display: block;">投个简历</a>
                     @else
-                        <a rel="nofollow" class="deliver-resume send-CV-btn s-send-btn fr"  data-toggle="modal" data-target="#myModalToujianli">投个简历</a>
+                        @if($data['detail']->position_status == 3)
+                            <a rel="nofollow"  class="send-CV-btn s-send-btn fr gray" style="display: block;">已下线</a>
+                        @elseif($data['detail']->position_status ==1 ||$data['detail']->position_status == 4)
+                            <a rel="nofollow" class="deliver-resume send-CV-btn s-send-btn fr"  data-toggle="modal" data-target="#chooseResumeModal">投个简历</a>
+                        @else
+                            <a rel="nofollow"  class="send-CV-btn s-send-btn fr gray" style="display: block;">无法投递</a>
+                        @endif
                     @endif
                 </div>
                 <!--收藏按钮-->
@@ -417,7 +423,7 @@
 
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModalToujianli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="chooseResumeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -519,15 +525,15 @@
                     if (data['status'] === 200) {
                         self.location = "/resume/add?rid=" + data['rid'];
                     } else if (data['status'] === 400) {
-                        alert(data['msg']);
+                        checkResult(data['status'], "", data['msg'], null);
                     }
                 }
             });
         }
 
-        $(".position-view").click(function () {
-            self.location = '/position/detail?pid=' + $(this).attr("data-content");
-        });
+//        $(".position-view").click(function () {
+//            self.location = '/position/detail?pid=' + $(this).attr("data-content");
+//        });
             var look_more = $('#look_more')
             var company_text = look_more.prev().text()
             if (company_text.length<100) {

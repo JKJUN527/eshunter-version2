@@ -76,25 +76,25 @@ function checkResult(status, succeedInfo, failedInfo, element) {
             location.reload()
         }, 1000);
 
-        showNotification(
-            "alert-success",
-            succeedInfo,
-            "top",
-            "right",
-            "animated fadeInRight",
-            "animated fadeOutRight"
-        );
+        swal({
+            title: "",
+            type: "success",
+            text: succeedInfo,
+            cancelButtonText: "关闭",
+            showCancelButton: true,
+            showConfirmButton: false
+        });
 
         if (element !== null) element.hide();
     } else if (status === 400) {
-        showNotification(
-            "alert-danger",
-            failedInfo,
-            "top",
-            "right",
-            "animated fadeInRight",
-            "animated fadeOutRight"
-        );
+        swal({
+            title: "",
+            type: "error",
+            text: failedInfo,
+            cancelButtonText: "关闭",
+            showCancelButton: true,
+            showConfirmButton: false
+        });
     }
 }
 
@@ -104,22 +104,22 @@ function checkResultWithLocation(status, succeedInfo, failedInfo, url) {
             self.location = url;
         }, 1000);
 
-        showNotification(
-            "alert-success",
-            succeedInfo,
-            "top",
-            "right",
-            "animated fadeInRight",
-            "animated fadeOutRight"
-        );
+        swal({
+            title: "成功",
+            type: "success",
+            text: succeedInfo,
+            cancelButtonText: "关闭",
+            showCancelButton: true,
+            showConfirmButton: false
+        });
     } else if (status === 400) {
-        showNotification(
-            "alert-danger",
-            failedInfo,
-            "top",
-            "right",
-            "animated fadeInRight",
-            "animated fadeOutRight"
-        );
+        swal({
+            title: "失败",
+            type: "error",
+            text: failedInfo,
+            cancelButtonText: "关闭",
+            showCancelButton: true,
+            showConfirmButton: false
+        });
     }
 }

@@ -77,18 +77,16 @@
 
 @section('custom-script')
     <script type="text/javascript">
-var my_tou="1";
-var my_tou_url="http://www.neipin.com/j/45588.html";
-$(document).ready(function(){
+    $(document).ready(function(){
 
-  if($.browser.msie) { 
-    if($('#tbPassword').val()!=='') 
-     {
-      $("#pwdPlaceholder").hide();
-      $('#tbPassword').show();
-    
-      } 
-}
+//  if($.browser.msie) {
+//    if($('#tbPassword').val()!=='')
+//     {
+//      $("#pwdPlaceholder").hide();
+//      $('#tbPassword').show();
+//
+//      }
+//    }
   // 鼠标获得焦点边框变色
     // $('.bsie7').click(function(){
 
@@ -102,9 +100,9 @@ $(document).ready(function(){
 
     $('.zidong_choose').click(function(){
       $(this).find('i').toggleClass('add_i');
-    })
+    });
 
-    $("#btnRegist").live("click",function(){
+    $("#btnRegist").click(function(){
         $(".baocuo").html("");
         var param = new Object();
         param.emailAddr = $("#tbUserName").val();
@@ -169,7 +167,7 @@ $(document).ready(function(){
                 }
             });
 
-})
+});
 
      function SetFocus() {
          document.getElementById('tbUserName').focus();
