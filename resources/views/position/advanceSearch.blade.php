@@ -56,6 +56,10 @@
     nav#page_tools ul li:hover a{
       color: #fff!important;
     }
+    nav#page_tools ul li a,nav#page_tools ul li span{
+        display: inline-block;
+        padding: 15px;
+    }
     nav#page_tools ul li {
       display:inline-block;
           margin-bottom: 0px;
@@ -109,6 +113,12 @@
 
     .resume-item p {
         margin: 0;
+    }
+    .gsdiv .div_s {
+        height: 48px;
+    }
+    #page_tools li{
+        padding: 0;
     }
    </style>
 @endsection
