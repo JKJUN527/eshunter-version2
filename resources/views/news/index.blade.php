@@ -37,6 +37,29 @@
             background-color: #08c!important;
             color: #fff;
         }
+        nav#page_tools ul li:hover,nav#page_tools ul li.active{
+            background-color: #03A9F4;
+            color: #fff!important;
+        }
+        nav#page_tools ul li:hover a{
+            color: #fff!important;
+        }
+        nav#page_tools ul li a,nav#page_tools ul li span{
+            display: inline-block;
+            padding: 15px;
+        }
+        nav#page_tools ul li {
+            display:inline-block;
+            margin-bottom: 0px;
+            cursor: pointer;
+        }
+        nav#page_tools{
+            margin: 20px auto;
+            text-align: center;
+        }
+        #page_tools li{
+            padding: 0;
+        }
     </style>
 @endsection
 
@@ -53,148 +76,99 @@
             <div class="containter" style="margin-top: 20px;">
                 <div class="news_tab news" id="newsTab">
                   <ul>
-                    <li class="active">综合电竞</li>
-                    <li>赛事资讯</li>
-                    <li>游戏快讯</li>
-                    <li>八卦趣闻</li>
-                    <li>职场鸡汤</li></ul>
+                    <li @if(isset($data['newtype']) &&$data['newtype'] == 1)
+                        class="active"
+                        @endif
+                        data-content="1" ><a href="#typography"><i class="icon-chevron-right"></i> 综合电竞</a></li>
+                      <li @if(isset($data['newtype']) &&$data['newtype'] == 3)
+                          class="active"
+                          @endif
+                          data-content="3"><a href="#tables"><i class="icon-chevron-right"></i> 赛事资讯</a></li>
+                      <li @if(isset($data['newtype']) &&$data['newtype'] == 4)
+                          class="active"
+                          @endif
+                          data-content="4"><a href="#forms"><i class="icon-chevron-right"></i> 游戏快讯</a></li>
+                      <li @if(isset($data['newtype']) &&$data['newtype'] == 2)
+                          class="active"
+                          @endif
+                          data-content="2"><a href="#code"><i class="icon-chevron-right"></i>八卦趣闻</a></li>
+                      <li @if(isset($data['newtype']) &&$data['newtype'] == 5)
+                          class="active"
+                          @endif
+                          data-content="5"><a href="#buttons"><i class="icon-chevron-right"></i> 职场鸡汤</a></li>
+                  </ul>
                 </div>
               <div class="news_info_left info_panel left ">
                 <div class="mdl_card_title">
                   <h5 class="mdl_card_title_text">最新</h5></div>
                 <div class="mdl-card info-card">
-                  <div class="news-body">
-                    <div class="news-aside">
-                      <a href="news_detail.html">
-                        <img src="../images/news1.jpg" /></a>
-                    </div>
-                    <div class="news-content">
-                      <h3>
-                        <a href="news_detail.html">工作第一年，什么比薪水更重要？</a></h3>
-                      <div class="content-body">见过很多这样的论调：情怀、发展什么的都是虚的，钱才是实打实的。永远不要相信老板对</div>
-                      <small class="content-appendix">
-                        <span>责任编辑: admin</span>
-                        <span>新闻来源:插坐学院</span>
-                        <span>发布时间: 2018-01-17</span></small>
-                    </div>
-                  </div>
-                  <div class="news-body" data-content="291">
-                    <div class="news-aside">
-                      <a href="news.html">
-                        <img src="../images/news2.jpg" /></a>
-                    </div>
-                    <div class="news-content">
-                      <h3>
-                        <a href="news_detail.html">人年轻的时候应该多跳槽吗？</a></h3>
-                      <div class="content-body">知乎上曾经有个热门问题，“人年轻的时候就该多跳槽吗？”;</div>
-                      <small class="content-appendix">
-                        <span>责任编辑: admin</span>
-                        <span>新闻来源:馒头商学院</span>
-                        <span>发布时间: 2018-01-15</span></small>
-                    </div>
-                  </div>
-                  <div class="news-body" data-content="291">
-                    <div class="news-aside">
-                      <a href="">
-                        <img src="../images/news1.jpg" /></a>
-                    </div>
-                    <div class="news-content">
-                      <h3>
-                        <a href="#">人年轻的时候应该多跳槽吗？</a></h3>
-                      <div class="content-body">知乎上曾经有个热门问题，“人年轻的时候就该多跳槽吗？”;</div>
-                      <small class="content-appendix">
-                        <span>责任编辑: admin</span>
-                        <span>新闻来源:馒头商学院</span>
-                        <span>发布时间: 2018-01-15</span></small>
-                    </div>
-                  </div><div class="news-body" data-content="291">
-                    <div class="news-aside">
-                      <a href="">
-                        <img src="../images/news1.jpg" /></a>
-                    </div>
-                    <div class="news-content">
-                      <h3>
-                        <a href="#">人年轻的时候应该多跳槽吗？</a></h3>
-                      <div class="content-body">知乎上曾经有个热门问题，“人年轻的时候就该多跳槽吗？”;</div>
-                      <small class="content-appendix">
-                        <span>责任编辑: admin</span>
-                        <span>新闻来源:馒头商学院</span>
-                        <span>发布时间: 2018-01-15</span></small>
-                    </div>
-                  </div><div class="news-body" data-content="291">
-                    <div class="news-aside">
-                      <a href="">
-                        <img src="../images/news1.jpg" /></a>
-                    </div>
-                    <div class="news-content">
-                      <h3>
-                        <a href="#">人年轻的时候应该多跳槽吗？</a></h3>
-                      <div class="content-body">知乎上曾经有个热门问题，“人年轻的时候就该多跳槽吗？”;</div>
-                      <small class="content-appendix">
-                        <span>责任编辑: admin</span>
-                        <span>新闻来源:馒头商学院</span>
-                        <span>发布时间: 2018-01-15</span></small>
-                    </div>
-                  </div>
-                  <div class="news-body" data-content="291">
-                    <div class="news-aside">
-                      <a href="">
-                        <img src="../images/news2.jpg" /></a>
-                    </div>
-                    <div class="news-content">
-                      <h3>
-                        <a href="#">人年轻的时候应该多跳槽吗？</a></h3>
-                      <div class="content-body">知乎上曾经有个热门问题，“人年轻的时候就该多跳槽吗？”;</div>
-                      <small class="content-appendix">
-                        <span>责任编辑: admin</span>
-                        <span>新闻来源:馒头商学院</span>
-                        <span>发布时间: 2018-01-15</span></small>
-                    </div>
-                  </div>
-                  <div class="Page" id="pagination">
-                    <a href="javascript:void(0)" goto="1" class="show gopage">1</a>
-                    <a href="javascript:void(0)" goto="2" class="gopage">2</a>
-                    <a href="javascript:void(0)" goto="3" class="gopage">3</a>
-                    <a href="javascript:void(0)" goto="4" class="gopage">4</a>
-                    <a href="javascript:void(0)" goto="5" class="gopage">5</a>
-                    <a href="javascript:void(0)" goto="6" class="gopage">6</a>
-                    <a href="javascript:void(0)" goto="7" class="gopage">7</a>
-                    <a href="javascript:void(0)" goto="8" class="gopage">8</a>
-                    <a href="javascript:void(0)" target="_self" flg="down" class="page_down pageup">下一页</a></div>
+                    @foreach($data['newest'] as $news)
+                      <div class="news-body" data-content="{{$news->nid}}">
+                          @if($news->picture != null)
+                              <?php
+                              $pics = explode(';', $news->picture);
+                              $baseurl = explode('@', $pics[0])[0];
+                              $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
+                              $imagepath = explode('@', $pics[0])[1];
+                              ?>
+                              <div class="news-aside">
+                                  <img src="{{$baseurl}}{{$imagepath}}"/>
+                              </div>
+                          @else
+                              <div class="news-aside">
+                                  <img src="{{asset('images/lamian.jpg')}}"/>
+                              </div>
+                          @endif
+                        <div class="news-content">
+                          <h3><b>
+                            {{mb_substr($news->title, 0, 30)}}</b></h3>
+                          <div class="content-body">
+                              {{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 40)}}
+                          </div>
+                          <small class="content-appendix">
+                            <span>责任编辑: admin</span>
+                            <span>新闻来源:{{$news->quote}}</span>
+                            <span>发布时间:{{mb_substr($news->created_at,0,10,'utf-8')}}</span>
+                          </small>
+                        </div>
+                      </div>
+                    @endforeach
+                      <nav id="page_tools">
+                          {!! $data['newest']->appends(['newtype' => $data['newtype']])->render() !!}
+                      </nav>
                 </div>
               </div>
               <div class="news_info_right info_panel right  ">
                 <div class="mdl_card_title">
                   <h5 class="mdl_card_title_text">最热</h5></div>
                 <div class="mdl-card info-card">
-                  <div class="hot-news-body" data-content="181">
-                    <div class="hot-news-aside">
-                      <a href="news_detail.html">
-                        <img src="../images/news2.jpg" /></a>
-                    </div>
-                    <div class="hot-news-content">
-                      <h3>
-                        <a href="news_detail.html">想进入电竞行业工</a></h3>
-                      <div class="content-body">想要从事电子竞技，并不是凭一腔热血。对游戏的热爱固然可贵，但更重要的是</div>
-                      <small class="content-appendix">
-                        <span>发布时间: 2017-12-13</span></small>
-                    </div>
-                  </div>
-                  <div class="mdl-card info-card">
-                    <div class="hot-news-body" data-content="181">
-                      <div class="hot-news-aside">
-                        <a href="news_detail.html">
-                          <img src="../images/news1.jpg" /></a>
+                    @foreach($data['hottest'] as $news)
+                      <div class="hot-news-body" data-content="{{$news->nid}}">
+                          @if($news->picture != null)
+                              <?php
+                              $pics = explode(';', $news->picture);
+                              $baseurl = explode('@', $pics[0])[0];
+                              $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
+                              $imagepath = explode('@', $pics[0])[1];
+                              ?>
+                            <div class="hot-news-aside">
+                                <img src="{{$baseurl}}{{$imagepath}}" />
+                            </div>
+                          @else
+                              <div class="news-aside">
+                                  <img src="{{asset('images/lamian.jpg')}}"/>
+                              </div>
+                          @endif
+                        <div class="hot-news-content">
+                          <h3><b>{{mb_substr($news->title, 0, 8)}}</</h3>
+                          <div class="content-body">
+                              {{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 35)}}
+                          </div>
+                          <small class="content-appendix">
+                            <span>发布时间: {{mb_substr($news->created_at,0,10,'utf-8')}}</span></small>
+                        </div>
                       </div>
-                      <div class="hot-news-content">
-                        <h3>
-                          <a href="news_detail.html">想进入电竞行业工</a></h3>
-                        <div class="content-body">想要从事电子竞技，并不是凭一腔热血。对游戏的热爱固然可贵，但更重要的是</div>
-                        <small class="content-appendix">
-                          <span>发布时间: 2017-12-13</span></small>
-                      </div>
-                    </div>
-                  </div>
+                    @endforeach
                 </div>
               </div>
 
@@ -208,10 +182,17 @@
 
 @section('custom-script')
     <script>
+        $(".news-body").click(function () {
+            self.location = "/news/detail?nid=" + $(this).attr('data-content');
+        });
+
+        $(".hot-news-body").click(function () {
+            self.location = "/news/detail?nid=" + $(this).attr('data-content');
+        });
         $('.news_tab ul').on('click', 'li', function(event) {
             event.preventDefault();
             $(this).addClass('active').siblings('li').removeClass('active');
-            // self.location = "/news?newtype=" + $(this).attr('data-content');
+             self.location = "/news?newtype=" + $(this).attr('data-content');
         });
         $(document).ready(function(){
             if (/*document.body.clientWidth < 1400 &&*/ $('.news_tab').offset().top-$(document).scrollTop() <10) {
