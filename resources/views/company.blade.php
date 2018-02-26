@@ -359,7 +359,7 @@ var page = 1;
     }
 //  点赞
     $(function(){
-        $('.praise').live('click',function(){
+        $('.praise').on('click',function(){
             if($(this).hasClass('active')){
                return;
             }else{

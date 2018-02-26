@@ -46,7 +46,7 @@
 @endsection
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
+   @include('components.headerTab',['activeIndex' => 4,'type' => $data['type']])
 @endsection
 
 @section('content')

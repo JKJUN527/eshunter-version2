@@ -34,14 +34,14 @@ $(function(){
 		$(this).siblings(".highlight_tip").find("span").eq((page3-1)).addClass("current").siblings().removeClass("current"); 	
 	});	
 	//	点击小图弹出大图
-	$('.pic_lists img').live('click',function(){
+	$('.pic_lists img').on('click',function(){
 		$('.popCon').show();
 		$('.hsbj').show();
 		var num = $(this).attr("v");
 		move(num);
 	});
 	//	点击关闭
-	$('.pop_close').live('click',function(){
+	$('.pop_close').on('click',function(){
 		$(this).parents('.popCon').hide();
 		$('.hsbj').hide();
 	});

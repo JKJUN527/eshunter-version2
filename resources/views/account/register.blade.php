@@ -132,7 +132,7 @@ $(document).ready(function(){
     };
 
   // 重新获取短信验证码
-  $('.cuocuo a.sms_repeat').live('click',function(){
+  $('.cuocuo a.sms_repeat').on('click',function(){
     $('.send_yzm').click();
   })
 

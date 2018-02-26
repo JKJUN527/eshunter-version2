@@ -175,7 +175,7 @@ $(document).ready(function(){
 		});
 		
 		//立即登录
-		$('#login').live("click",function(){
+		$('#login').on("click",function(){
 			window.location.href = BaseJSURL +'login.html';
 		});
 		

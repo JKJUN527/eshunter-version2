@@ -514,7 +514,7 @@ ul.my_delivery {
 .guess_like_list_item_pos p {
     color: #e6775c;
     margin: -2px 0 0 0;
-    padding: 0;
+    padding: 5px 0;
     font-size: 16px;
 }
 .guess_like_list_item_pos .company_name .company_name_span {

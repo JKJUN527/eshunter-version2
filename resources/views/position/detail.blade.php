@@ -57,7 +57,46 @@
     }
     .jobs_similar_header {
     border-bottom: 1px solid #eee;
-}
+    }
+    #jobs_similar .company-intr{
+        padding: 0 8px 8px 8px;
+            color: rgba(0, 0, 0, 0.54);
+        font-size: 1rem;
+        line-height: 20px;
+        overflow: hidden;
+    }
+    #jobs_similar #look_more{
+        font-size: 12px;
+    color: cornflowerblue;
+    cursor: pointer;
+    float: right;
+   margin-right: 5px;
+    }
+    .resume-list {
+        width: 100%;
+        display: block;
+    }
+
+    .resume-item {
+        border: 1px solid #ebebeb;
+        display: block;
+        padding: 8px 16px;
+        margin-bottom: 16px;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        cursor: pointer;
+    }
+
+    .resume-item:hover {
+        background-color: #03A9F4;
+        color: #ffffff;
+    }
+
+    .resume-item p {
+        margin: 0;
+    }
  </style>
 @endsection
 
@@ -368,6 +407,16 @@
             </dd>
         </dl>
         <div class="jobs_similar" id="jobs_similar">
+            <h4 class="jobs_similar_header">
+                <span>公司简介</span>
+                
+            </h4>
+            <article class="company-intr">
+                佛山市狮王互娱文化传播有限公司是由电竞爱好者共同成立的电竞企业，以佛山市电竞产业基地为原点，依托于石湾古镇文创园和中国陶都，推动发展佛山市电子竞技协会，以电竞文化融合、电竞人才培养和创业、电竞产业整合、电竞旅游模式推动为四大战略，致力于推动佛山市电子竞技产业发展。公司总部设在广东佛山禅城。现打造了石湾文创园1000平方电竞产业基地，引入世界大学生电子竞技大赛等官方赛事，策划组织佛山电子竞技高校联赛，极力推动佛山电竞产业发展。
+            </article>
+            <span id="look_more">查看更多>></span>
+        </div>
+        <div class="jobs_similar" id="jobs_similar">
             <?php
             $index = 0;
             $count = count($data['position']);
@@ -453,7 +502,6 @@
 
 @section('footer')
    @include('components.myfooter')
-   @include('components.wheelmenu')
 @endsection
 
 
@@ -550,5 +598,6 @@
                     }
                 });
             }
+
     </script>
 @endsection

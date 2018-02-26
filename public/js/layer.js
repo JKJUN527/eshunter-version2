@@ -10,7 +10,7 @@
 	var oBindBtn = oFormLayer.find('input.bind-btn');
 	var aHide = oFormLayer.find('li.hide');
 
-	oCloseLayer.live('click', function() {
+	oCloseLayer.on('click', function() {
 		oMask.animate({opacity: 0}, 300, function() {
 			oMask.hide();
 		});
@@ -21,7 +21,7 @@
 		});
 	});
 	
-	oCloseLayer2.live('click', function() {
+	oCloseLayer2.on('click', function() {
 		oMask.animate( function() {
 			oMask.hide();
 		});
@@ -32,7 +32,7 @@
 		});
 	});
 	
-	oBindBtn.live('click', function() {
+	oBindBtn.on('click', function() {
 		$(this).parents('li').hide();
 		aHide.show();
 		var iTop = oFormLayer.outerHeight()/2;

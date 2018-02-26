@@ -112,11 +112,11 @@
                                         var totalPage = 0;
                                         $(function(){
                                         // 鼠标滑过边框变色
-                                        $('.jieshao_list li').live('mouseover', function(){
+                                        $('.jieshao_list li').on('mouseover', function(){
                                         $(this).addClass('greenborder_li');
                                                 $(this).siblings().removeClass('greenborder_li');
                                         });
-                                                $('.jieshao_list li').live('mouseleave', function(){
+                                                $('.jieshao_list li').on('mouseleave', function(){
                                         $(this).removeClass('greenborder_li');
                                         });
 //                                                loadHotCompany();

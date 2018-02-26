@@ -22,7 +22,7 @@ $(function() {
       $(this).removeClass('greenborder_li');
     });	
 	//公司地点
-	$('.stander_div1').find('div').live('click',function(){
+	$('.stander_div1').find('div').on('click',function(){
 		 if($(this).hasClass('active')){
 			 $(this).removeClass('active');
 			 area = "";
@@ -36,7 +36,7 @@ $(function() {
 	
 	
 	//发展阶段
-	$('.stander_div2').find('div').live('click',function(){
+	$('.stander_div2').find('div').on('click',function(){
 		 if($(this).hasClass('active')){
 			 $(this).removeClass('active');
 			 jieduan = "";
@@ -49,7 +49,7 @@ $(function() {
 	});
 	
 	//行业领域
-	$('.stander_div3').find('div').live('click',function(){
+	$('.stander_div3').find('div').on('click',function(){
 		 if($(this).hasClass('active')){
 			 $(this).removeClass('active');
 			 techtag = "";
@@ -68,7 +68,7 @@ $(function() {
         }
     });
 
-    $('#chakan').live("click",function(){
+    $('#chakan').on("click",function(){
     	xinkeywd = $('#xinkeywd').val();
     	area = "";
         techtag = "";
@@ -78,7 +78,7 @@ $(function() {
     });
     
     //热门职位搜索
-    $('.taoyige_hotsearch a').live('click',function(){
+    $('.taoyige_hotsearch a').on('click',function(){
     	xinkeywd = $(this).text();
     	$('#xinkeywd').val(xinkeywd);
     	area = "";
