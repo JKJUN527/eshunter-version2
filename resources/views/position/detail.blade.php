@@ -424,7 +424,7 @@
             <h4 class="jobs_similar_header">
                 <span>其他职位</span>
                 <span style="color: #D32F2F;font-size: 14px;">{{$count}}</span>
-                <span class="look-more">查看更多>></span>
+                <span class="look-more"><a href="/company">查看更多>></a></span>
             </h4>
             @if($count >0)
             <div class="jobs_similar_content" id="jobs_similar_content" style="display: block;">
