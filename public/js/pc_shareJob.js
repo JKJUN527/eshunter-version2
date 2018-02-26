@@ -1,6 +1,6 @@
 $(document).ready(
 		function() {
-			$('.sucess_title i').live('click', function() {
+			$('.sucess_title i').on('click', function() {
 				$(this).parents('.sucess_yes').hide();
 				uploadsuccess();
 				$('.hsbj').hide();
@@ -86,7 +86,7 @@ $(document).ready(
 			}
 
 			// 投递简历之前判断用户是否上传简历
-			$('.toEmplay').live('click', function() {
+			$('.toEmplay').on('click', function() {
 				if (uname == null || uname == "") {
 					// 返回登录
 					window.location.href = BaseJSURL + "login.html";
@@ -135,7 +135,7 @@ $(document).ready(
 			});
 
 			// 上传用户信息
-			$("#queren_user").live("click", function() {
+			$("#queren_user").on("click", function() {
 				$("#errMsg").hide();
 				var param = new Object();
 				param.param1 = $("#username").val();

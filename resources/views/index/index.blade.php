@@ -573,7 +573,7 @@
             if (xian == 1){
                 $('#search_list').slideDown();
             }
-            $(".btn_ss").live("click", function(){
+            $(".btn_ss").on("click", function(){
                 var keywd = $("#keywd").val();
                 if (keywd != "" && keywd != undefined)
                 {
@@ -676,14 +676,14 @@
                             $(this).find('img').hide();
                         })
                         //点击登录
-                    $('#login_click').live("click", function() {
+                    $('#login_click').on("click", function() {
                         my_login();
                     });
                     if (ukbn == 1) {
                         getSelectHrJobJianLi();
                     }
                     //点击导航的登录 
-                    $('#dl_span').live("click", function() {
+                    $('#dl_span').on("click", function() {
                         window.location.href = 'login.html.html';
                     });
                     // 账号的回车事件

@@ -76,7 +76,7 @@
       $(function(){
          // updatebar();
         // 去掉简历完整度
-        if($.browser.msie) { 
+        if(navigator.userAgent.indexOf('Trident') !== -1) { 
           $('.myhidden').hide();
         }
         else{
@@ -94,7 +94,7 @@
         })
             
             //工作经历编辑按钮
-        $('.gzjl_div .edit_i').live('click',function(){
+        $('.gzjl_div .edit_i').on('click',function(){
             var workid = $(this).attr("id");
             $(".work_id").val(workid);
             //公司名称
@@ -147,7 +147,7 @@
         });
         
           // 更多经历点击添加经历
-         $('.more_jl').live("click",function(){
+         $('.more_jl').on("click",function(){
          
               $(".work_id").val("");
               //公司名称
@@ -174,7 +174,7 @@
             //职位描述
             $('#c_description').val("");
               $('#gzjl2').show();
-              if($.browser.msie) { 
+              if(navigator.userAgent.indexOf('Trident') !== -1) { 
                 $('#company_name').val("公司名称");     
             $('#position_name').val("职位名称");        
             $('#c_description').val("请具体描述你的工作内容，有助于公司全面了解你的工作能力哦~");
@@ -184,7 +184,7 @@
          
          
          //删除工作经历
-         $('.gzjl_div .del_i').live('click',function(){
+         $('.gzjl_div .del_i').on('click',function(){
               var workId = $(this).attr("id");
               var param = new Object();
               param.param1 = workId;
@@ -237,7 +237,7 @@
            
         
         //项目经验编辑
-        $('.xmjy_div .edit_i').live('click',function(){
+        $('.xmjy_div .edit_i').on('click',function(){
               var projectid = $(this).attr("id");
             $(".project_id").val(projectid);
             //项目名称
@@ -299,7 +299,7 @@
             });
             
              // 更多项目经验
-         $('.more_xm').live("click",function(){
+         $('.more_xm').on("click",function(){
             $(".project_id").val("");
             //项目名称
             $('#project_name_jy').val("");
@@ -320,7 +320,7 @@
               
               $('#item_exprience2').show();
               
-              if($.browser.msie) { 
+              if(navigator.userAgent.indexOf('Trident') !== -1) { 
                 $('#project_name_jy').val("项目名称");        
             $('#position_name_jy').val("职务名称");       
             $('#jy_description').val("请具体描述你的项目内容，有助于公司全面了解你哦~");
@@ -329,7 +329,7 @@
          });
          
          //项目经验删除
-        $('.xmjy_div .del_i').live('click',function(){
+        $('.xmjy_div .del_i').on('click',function(){
               var projectId = $(this).attr("id");
               var param = new Object();
               param.param1 = projectId;
@@ -375,7 +375,7 @@
         
         
         //教育背景编辑
-        $('.jybj_div .edit_i').live('click',function(){
+        $('.jybj_div .edit_i').on('click',function(){
               var educationid = $(this).attr("id");
             $(".education_id").val(educationid);
             //学校名称
@@ -407,7 +407,7 @@
             });
             
              // 更多项目
-         $('.more_xl').live("click",function(){
+         $('.more_xl').on("click",function(){
             $(".education_id").val("");
             //学校名称
             $('#school_name').val("");
@@ -427,7 +427,7 @@
               
               $('#edu2').show();
 
-              if($.browser.msie) { 
+              if(navigator.userAgent.indexOf('Trident') !== -1) { 
                 $('#school_name').val("学校名称");      
             $('#zhuanye_name').val("专业名称");       
             $('#ed_description').val("请填写你的专业学习情况、社团实践活动、论文发表等，有助于公司全面了解你的学习和专业能力哦~");
@@ -437,7 +437,7 @@
          });
          
          //教育背景删除
-        $('.jybj_div .del_i').live('click',function(){
+        $('.jybj_div .del_i').on('click',function(){
               var educationId = $(this).attr("id");
               var param = new Object();
               param.param1 = educationId;
@@ -490,7 +490,7 @@
         
         //专业技能
       
-          if($.browser.msie) { 
+          if(navigator.userAgent.indexOf('Trident') !== -1) { 
             $('.upload_jianli').show();
             $('.upload_jianliie').show();
             $('.upload_jianli').click(function(){
@@ -504,7 +504,7 @@
           } 
           
           //添加社交帐号
-          $('.add_social span').live('click',function(){
+          $('.add_social span').on('click',function(){
                 var num = document.getElementsByName("site_num").length;
                 if(num > 2){
                   alert("只能添加三个社交帐号");
@@ -532,7 +532,7 @@
           
            
             //删除社交帐号
-            $('.wb_right font').live('click',function(){
+            $('.wb_right font').on('click',function(){
                 $(this).parent().parent().remove();
             });
         
@@ -767,7 +767,7 @@
         })
         
         // 保存期望工作
-        $('.qwgz_save').live("click",function(){
+        $('.qwgz_save').on("click",function(){
               var param = new Object();
               //期望职位
               param.param1 ="";
@@ -942,7 +942,7 @@
         })
         
         
-        $('#lizhiyear li').live('click',function(){
+        $('#lizhiyear li').on('click',function(){
              var name = $(this).attr('v');
              if(name == "至今"){
                 $('#end_month').parent().hide();
@@ -953,7 +953,7 @@
         });
         
         // 工作经历保存
-        $('.gzjy_save').live("click",function(){
+        $('.gzjy_save').on("click",function(){
               
               var param = new Object();
               //公司名称
@@ -1146,7 +1146,7 @@
         })
         
         
-        $('#jieshuyear li').live('click',function(){
+        $('#jieshuyear li').on('click',function(){
              var name = $(this).attr('v');
              if(name == "至今"){
                 $('#end_month_jy').parent().hide();
@@ -1157,7 +1157,7 @@
         });
         
         // 项目经验保存
-        $('.xmjy_save').live("click",function(){
+        $('.xmjy_save').on("click",function(){
               var param = new Object();
               //公司名称
               param.param1 = $("#project_name_jy").val();
@@ -1305,7 +1305,7 @@
         })
         
         // 教育背景保存
-        $('.jybj_save').live("click",function(){
+        $('.jybj_save').on("click",function(){
           
               var param = new Object();
               //学校名称
@@ -1441,7 +1441,7 @@
         })
         
         //自我描述
-         $('.zwms_save').live("click",function(){
+         $('.zwms_save').on("click",function(){
               var param = new Object();
               param.param1 = $("#my_description").val().replace(reg,"<br>"); 
              
@@ -1470,7 +1470,7 @@
                });
         })
         
-        $('.zwms_cancel').live("click",function(){
+        $('.zwms_cancel').on("click",function(){
               
               var str = $("#self_des").text(); 
               if(str == ""){
@@ -1485,7 +1485,7 @@
           });
         
         //保存专业技能
-        $(".zyjn_save").live("click",function(){
+        $(".zyjn_save").on("click",function(){
               var param = new Object();
               param.param1 = "";
                 
@@ -1530,13 +1530,13 @@
         
         
       // 上传作品删除
-      $('#zuopin li').live('mouseover',function(){
+      $('#zuopin li').on('mouseover',function(){
         $(this).find('i').show();
       })
-      $('#zuopin li').live('mouseout',function(){
+      $('#zuopin li').on('mouseout',function(){
         $(this).find('i').hide();
       })
-      $('.zuopin i').live('click',function(){
+      $('.zuopin i').on('click',function(){
           var param = new Object();
           param.param1 = $(this).attr("v");
           
@@ -1561,7 +1561,7 @@
       
         
       }) 
-       $('.zyjn_cancel').live('click',function(){
+       $('.zyjn_cancel').on('click',function(){
                 var h = $('.jineng_div').html();
                 if(h.replace(/(^\s*)|(\s*$)/g,"") == ""){
                     $('#zyjn2').hide();
@@ -1574,7 +1574,7 @@
        });
         
         //上传
-        $(".upFileBtn").live("click",function(){
+        $(".upFileBtn").on("click",function(){
             var nodes = document.getElementById("zuopin").getElementsByTagName("a");
             if(nodes.length >= 6){
                alert("最多上传六个作品");
@@ -1583,16 +1583,16 @@
             document.getElementById('f_product').click();
         })
     //    我的标签鼠标滑过编辑按钮显示
-        $('.labelBox').live('mouseover',function(){
+        $('.labelBox').on('mouseover',function(){
           if($('.labelAdd').is(":visible")==false){
             $(this).find('.edit_pen').show();       
           }
         })
-        $('.labelBox').live('mouseout',function(){
+        $('.labelBox').on('mouseout',function(){
           $(this).find('.edit_pen').hide();
         })
         // 我的标签保存
-        $('.my_labels_save').live('click',function(){
+        $('.my_labels_save').on('click',function(){
               var param = new Object();
               param.param1 = "";
               var nodes = document.getElementById("label_box").getElementsByTagName("span");
@@ -1641,21 +1641,21 @@
             $('.labelBox').show();
         })
         
-        $('.jianli').live('click',function(){
+        $('.jianli').on('click',function(){
             downloadjianli();
         })
         // 作品展示鼠标滑过添加加号
-        $('#dragDiv7').live('mouseover',function(){
+        $('#dragDiv7').on('mouseover',function(){
           if($('.default_work').is(":visible")==false){
             $('.upload_works').show();
           }
         })
-        $('#dragDiv7').live('mouseout',function(){
+        $('#dragDiv7').on('mouseout',function(){
           $('.upload_works').hide();
         })
         
         //删除附件简历
-        $('.delete_fujian').live('click',function(){
+        $('.delete_fujian').on('click',function(){
              jQuery.ajax({   
                       type: 'post',   
                     contentType : 'application/json; charset=utf-8',   
@@ -1828,7 +1828,7 @@
                            stop();
                            if(date.ret == 0)
                            {
-                              if($.browser.msie) { 
+                              if(navigator.userAgent.indexOf('Trident') !== -1) { 
                                   $('.ie_success').text("上传成功！");
                                }
                            
@@ -2030,7 +2030,7 @@
        // }
        
        $(function(){
-              $('.close_btn').live("click",function(){
+              $('.close_btn').on("click",function(){
                 $(".hsbj").hide();
                 $(".tanchu_logo").hide();
                 $(".imgareaselect-selection").parent().css({"display":"none"});
@@ -2038,17 +2038,17 @@
               });
           
         
-           if($.browser.msie) { 
+           if(navigator.userAgent.indexOf('Trident') !== -1) { 
               //$('.fileInput').css({'background':'none','width':'220px','padding-top':'10px'})
               //$('.fileInput').empty();
               //$('.fileInput').append('<input type="file" onchange="javascript:upload();" name="f_jianli"  id="f_jianli" style="width:70px"/>');
            } 
         
             // 组件鼠标滑过
-            $(".search_ul li").live("mousemove",function(event){
+            $(".search_ul li").on("mousemove",function(event){
                   $(this).css("background","#eee");
               });
-            $(".search_ul li").live("mouseout",function(event){
+            $(".search_ul li").on("mouseout",function(event){
                   currentSelIndex = -1;
                   oldSelIndex = -1;
                   $(this).css("background","#fff");
@@ -2131,7 +2131,7 @@
           })
         
          // 点击提交到input
-         $('.tab_con i').live('click',function(event){
+         $('.tab_con i').on('click',function(event){
               $(this).parent().addClass('active');
               var e=window.event || event;
               if(e.stopPropagation){
@@ -2160,7 +2160,7 @@
           })
         
           // 删除自定义的标签
-          $('.tab_con .list_em').live('click',function(event){
+          $('.tab_con .list_em').on('click',function(event){
              var param = new Object();
               param.param1 = $(this).siblings('#delete_id').val();
               var node = $(this).parent();
@@ -2180,7 +2180,7 @@
               
            });
         
-          $('.search_ul li').live('click',function(event){
+          $('.search_ul li').on('click',function(event){
             var e=window.event || event;
               if(e.stopPropagation){
                e.stopPropagation();
@@ -2206,22 +2206,22 @@
         if ($('#add').has('li')) {
           $('#add_ci code').hide();
         };
-          $('.label_s code').live('click',function(){
+          $('.label_s code').on('click',function(){
               $('#add_ci code').hide();
               $('.tab_list').slideDown();
           })
         
-          $('.tab_li font').live('click',function(){
+          $('.tab_li font').on('click',function(){
                $('.tab_list').slideUp();
           })
-          $('.add_cons em').live('click',function(){
+          $('.add_cons em').on('click',function(){
               $(this).parents('li').remove();
               var heig = $('#add_ci').height();
               $('.tab_list').css({'top':heig});
           })
         
           //添加自定义
-          $('.add_tj a').live('click',function(){
+          $('.add_tj a').on('click',function(){
               $('.hsbj').show();
               $('.add_new_label').show();
               var cal = $('#add_ci input').val();
@@ -2232,12 +2232,12 @@
           $('.add_new_label').hide();
           $('.hsbj').hide();
       })
-      $('.que_xiao .no').live('click',function(){
+      $('.que_xiao .no').on('click',function(){
         $('.add_new_label').hide();
         $('.hsbj').hide();
       })
 
-      $('.que_xiao .sure').live('click',function(){
+      $('.que_xiao .sure').on('click',function(){
         $('.add_new_label').hide();
         $('.hsbj').hide();
         var param = new Object();
@@ -2274,23 +2274,23 @@
                });
       })
     //简历预览删除显示
-    $('.yishangchuan_pos').live('mouseover',function(){
+    $('.yishangchuan_pos').on('mouseover',function(){
         if(jianli_flag != "" && jianli_flag != null){
            $(this).find('.yishangchuan_hover').show();
         }
     })
-    $('.yishangchuan_pos').live('mouseout',function(){
+    $('.yishangchuan_pos').on('mouseout',function(){
       $(this).find('.yishangchuan_hover').hide();
     })
 
     //加号显示
-    $('.dragDiv').live('mouseover',function(){
+    $('.dragDiv').on('mouseover',function(){
       if($('#item_exprience2').is(":visible")==false || $('#gzjl2').is(":visible")==false){
         $(this).find('.more_experience').show();
       } 
       
     })
-    $('.dragDiv').live('mouseout',function(){
+    $('.dragDiv').on('mouseout',function(){
       $(this).find('.more_experience').hide();
     })
 
@@ -2461,7 +2461,7 @@
       $(this).find('img').hide();
       })
       //点击登录
-      $('#login_click').live("click",function(){
+      $('#login_click').on("click",function(){
         my_login();
       });
       
@@ -2469,7 +2469,7 @@
         getSelectHrJobJianLi();
       }
       //点击导航的登录 
-      $('#dl_span').live("click",function(){
+      $('#dl_span').on("click",function(){
         window.location.href='login.html.html';
       });
       
@@ -5740,5 +5740,5 @@
 @endsection
 
 @section('footer')
-       @include('components.myfooter')
-    @endsection
+   @include('components.myfooter')
+@endsection

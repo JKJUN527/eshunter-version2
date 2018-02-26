@@ -25,7 +25,7 @@ $(document).ready(function(){
 	  });
 	  
 	// 点击获取验证码
-	$('.send_yzm').live('click',function(){
+	$('.send_yzm').on('click',function(){
 		//清空验证码的数据
 		$('#verifycd').val('');
 		//显示语音提示
@@ -35,7 +35,7 @@ $(document).ready(function(){
 	});
 	
 	// 语音获取
-	$('.cuocuo a.yuyin').live('click', function() {
+	$('.cuocuo a.yuyin').on('click', function() {
 		clearMsg();
 		flag = "yuyin";
 		sendYzm();
@@ -313,7 +313,7 @@ $(document).ready(function(){
 	});
 
 	//注册
-	$("#btnRegist").live("click",function(){
+	$("#btnRegist").on("click",function(){
 		//先判断协议是否选择
 		if(!$("#xieyi_label").hasClass("add_i")){
 			alert('请遵守《电竞猎人用户协议》');

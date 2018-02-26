@@ -8,11 +8,11 @@
 @endsection
 
 @section('header-nav')
-   @include('components.headerNav')
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 4,'type' =>$data['type']])
+   @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
 @endsection
 
 @section('content')
@@ -290,34 +290,6 @@
                 </ul>
             </div>
         </div>           
-<script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
-<div class="QQ_each">
-        <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
-        <ul class="wheel" id="wheel">
-            <li class="item"><a href="#"></a></li>
-            <li class="item"><a href="#"></a></li>
-            <li class="item"><a href="#"></a></li>
-            <li class="item"><a href="#"></a></li>
-            <!--<li class="item"><a target="_blank" href="#" class='sss'>沙僧</a></li>-->
-            <li class="item"><a class="bj" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1538590175&amp;site=qq&amp;menu=yes" target="_blank">求职<br>服务</a></li>
-            <li class="item"><a class="wk" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3078167392&amp;site=qq&amp;menu=yes" target="_blank">招聘<br>服务</a></li>
-            <li class="item"><a class="ts" href="http://wpa.qq.com/msgrd?v=3&amp;uin=6281927&amp;site=qq&amp;menu=yes" target="_blank">bug<br>反馈</a></li>      
-            <li class="item"><a href="#"></a></li>
-            <li class="item"><a href="#"></a></li>
-            <li class="item"><a href="#"></a></li>
-        </ul>
-    </div>
-<a style="display: none;" class="back_to_top" title="" href="#"></a>
-
-<script type="text/javascript">
-$(".wheel-button").wheelmenu({
-    // alert(1);
-    trigger: "hover",
-    animation: "fly",
-    angle: [0, 360]
-});
-</script>
-
     </div>
 </div>
 @endsection
@@ -334,32 +306,9 @@ var page = 1;
  var page2 = 1;
  var page3 = 1;
 
-    function more(){
-      var param = new Object();
-      param.param1 = "16801";
-      jQuery.ajax({   
-                    type: 'post',   
-                    contentType : 'application/json; charset=utf-8',   
-                    dataType: 'json',   
-                    url:'/ajax/moreport.do', 
-                    data: JSON.stringify(param),   
-                    success: function(data){
-                       $(".baodao").html("");
-                       $(".moreA").hide();
-                       $.each(data.result.reports,function(index,report){
-                          var str ='<li>'+
-                                       ' <a rel="nofollow" target="_blank" href="' +report.report_url+ '" title="" class="bd">' +report.report_title+ '</a>'+
-                                       '</li>';
-                           $('.baodao').append(str);
-                       });
-                    }
-      });
-    
-         
-    }
 //  点赞
     $(function(){
-        $('.praise').live('click',function(){
+        $('.praise').on('click',function(){
             if($(this).hasClass('active')){
                return;
             }else{

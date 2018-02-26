@@ -40,12 +40,12 @@ function fenye(){
     	$("#pagination").html("");
     } 
 }
-$(".gopage").live("click",function(){
+$(".gopage").on("click",function(){
     var page = $(this).attr("goto");
     loaddata(page);
 });
 
-$(".pageup").live("click",function(){
+$(".pageup").on("click",function(){
     var flg = $(this).attr("flg");
     var page;
     if(flg == "up")

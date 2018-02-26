@@ -25,7 +25,7 @@ $(document).ready(function(){
    }
   
   //关闭弹出上传头像
-  $('.close_btn').live("click",function(){
+  $('.close_btn').on("click",function(){
       $(".hsbj").hide();
       $(".tanchu_logo").hide();
       $(".imgareaselect-selection").parent().css({"display":"none"});

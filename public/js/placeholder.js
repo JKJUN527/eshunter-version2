@@ -16,11 +16,11 @@ if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
                 function(){  
                     if($(this).val()=="" && $(this).attr("placeholder")!=""){  
                         $(this).val($(this).attr("placeholder"));  
-                        $(this).live('focus',function(){
+                        $(this).on('focus',function(){
                             if($(this).val()==$(this).attr("placeholder")) 
                             	$(this).val("");  
                         });  
-                        $(this).live('blur',function(){
+                        $(this).on('blur',function(){
                             if($(this).val()=="") $(this).val($(this).attr("placeholder"));  
                         });  
                     }  
@@ -30,11 +30,11 @@ if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
                 function(){  
                     if($(this).val()=="" && $(this).attr("placeholder")!=""){  
                         $(this).val($(this).attr("placeholder"));  
-                        $(this).live('focus',function(){  
+                        $(this).on('focus',function(){  
                             if($(this).val()==$(this).attr("placeholder")) 
                                 $(this).val("");  
                         });  
-                        $(this).live('blur',function(){
+                        $(this).on('blur',function(){
                             if($(this).val()=="") $(this).val($(this).attr("placeholder"));  
                         });  
                     }  

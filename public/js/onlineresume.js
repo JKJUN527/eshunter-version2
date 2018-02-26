@@ -1,7 +1,7 @@
 // 在线简历
 $(function() {
 	// 性别选择
-	$('.sex_choose span').live("click", function() {
+	$('.sex_choose span').on("click", function() {
 		gender = $(this).attr("v");
 		if (gender == 1) {
 			$(this).addClass('boyChoosed');
@@ -14,7 +14,7 @@ $(function() {
 	});
 
 	// 基本信息取消
-	$('.self_info .cancel').live("click", function() {
+	$('.self_info .cancel').on("click", function() {
 		$('#self_info1').show();
 		$('#self_info2').hide();
 
@@ -37,7 +37,7 @@ $(function() {
 
 	// 期望工作
 	// 默认点击
-	$('#expect_con3 .default').live("click", function() {
+	$('#expect_con3 .default').on("click", function() {
 		$('#expect_con3').hide();
 		$('#expect_con2').show();
 		var seap_h1 = $('#dragDiv1').height() - 58;
@@ -47,16 +47,16 @@ $(function() {
         myfun();
 	});
 	// 鼠标滑过点击出现
-	$('#expect_con1').live('mouseover', function() {
+	$('#expect_con1').on('mouseover', function() {
 		$('#expect_con1 .span_edit').show();
 	});
 
-	$('#expect_con1').live('mouseout', function() {
+	$('#expect_con1').on('mouseout', function() {
 		$('#expect_con1 .span_edit').hide();
 	});
 
 	// 编辑期望工作
-	$('#expect_con1 .span_edit').live("click", function() {
+	$('#expect_con1 .span_edit').on("click", function() {
 		$('#expect_con1').hide();
 		$('#expect_con2').show();
 		var seap_h1 = $('#dragDiv1').height() - 58;
@@ -120,7 +120,7 @@ $(function() {
 	});
 
 	// 期望工作 取消
-	$('.qwgz_cancel').live("click", function() {
+	$('.qwgz_cancel').on("click", function() {
 		$('#expect_con2').hide();
 		$('#expect_con1').show();
 
@@ -138,13 +138,13 @@ $(function() {
 	});
 
 	// 工作经历默认没有情况
-	$('#gzjl3 .default').live("click", function() {
+	$('#gzjl3 .default').on("click", function() {
 		$('#gzjl3').hide();
 		$('#gzjl2').show();
 		myfun();
 	});
 	// 工作经历取消
-	$('.gzjy_cancel').live("click",function() {
+	$('.gzjy_cancel').on("click",function() {
 				if (document.getElementById('gzjl_div').innerHTML.replace(
 						/(^\s*)|(\s*$)/g, "") == "") {
 					$('#gzjl2').hide();
@@ -202,38 +202,38 @@ $(function() {
 				myfun();
 			});
 	// 鼠标滑过点击出现
-	$('#gzjl1').live('mouseover', function() {
+	$('#gzjl1').on('mouseover', function() {
 		$('#gzjl1 .span_edit').show();
 		$('#gzjl1 .span_del').show();
 	});
 
-	$('#gzjl1').live('mouseout', function() {
+	$('#gzjl1').on('mouseout', function() {
 		$('#gzjl1 .span_edit').hide();
 		$('#gzjl1 .span_del').hide();
 	});
 	// 编辑和删除
-	// $('#gzjl1 .span_edit').live("click",function(){
+	// $('#gzjl1 .span_edit').on("click",function(){
 	// $('#gzjl3').hide();
 	// $('#gzjl2').show();
 	// });
-	// $('#gzjl1 .span_del').live("click",function(){
+	// $('#gzjl1 .span_del').on("click",function(){
 	// $('#gzjl1').hide();
 	// $('#gzjl2').show();
 	// });
 
-	$('#gzjl .cancel').live("click", function() {
+	$('#gzjl .cancel').on("click", function() {
 		$('#gzjl2').hide();
 		myfun();
 	});
 
 	// 项目经验默认
-	$('#item_exprience3 .default').live("click", function() {
+	$('#item_exprience3 .default').on("click", function() {
 		$('#item_exprience3').hide();
 		$('#item_exprience2').show();
 		myfun();
 	});
 	// 项目经验取消
-	$('.xmjy_cancel').live("click",function() {
+	$('.xmjy_cancel').on("click",function() {
 				if (document.getElementById('xmjy_div').innerHTML.replace(
 						/(^\s*)|(\s*$)/g, "") == "") {
 					$('#item_exprience2').hide();
@@ -272,7 +272,7 @@ $(function() {
 			});
 
 	// 教育背景默认
-	$('#edu3 .default').live("click", function() {
+	$('#edu3 .default').on("click", function() {
 		$('#edu3').hide();
 		$('#edu2').show();
 		var seap_h2 = $('#dragDiv4').height() - 58;
@@ -282,7 +282,7 @@ $(function() {
         myfun();
 	});
 	// 教育背景取消
-	$('.jybj_cancel').live("click",function() {
+	$('.jybj_cancel').on("click",function() {
 				if (document.getElementById('jybj_div').innerHTML.replace(
 						/(^\s*)|(\s*$)/g, "") == "") {
 					$('#edu2').hide();
@@ -329,23 +329,23 @@ $(function() {
 			});
 
 	// 自我描述默认
-	$('#self_description3 .default').live("click", function() {
+	$('#self_description3 .default').on("click", function() {
 		$('#self_description3').hide();
 		$('#self_description2').show();
 		myfun();
 	});
 	// 鼠标滑过点击出现
-	$('#self_description1').live('mouseover', function() {
+	$('#self_description1').on('mouseover', function() {
 		$('#self_description1 .span_edit').show();
 		$('#self_description1 .span_del').show();
 	});
 
-	$('#self_description1').live('mouseout', function() {
+	$('#self_description1').on('mouseout', function() {
 		$('#self_description1 .span_edit').hide();
 		$('#self_description1 .span_del').hide();
 	});
 	// 自我描述编辑
-	$('#self_description1 .span_edit').live("click", function() {
+	$('#self_description1 .span_edit').on("click", function() {
 		var text = $("#self_des").html().replace(reg2, '\n');
 		$('#my_description').val(text);
 		$('#self_description1').hide();
@@ -353,7 +353,7 @@ $(function() {
 		myfun();
 	});
 	// 删除
-	$('#self_description1 .span_del').live("click", function() {
+	$('#self_description1 .span_del').on("click", function() {
 		$('#self_description3').show();
 		$('#self_description1').hide();
 		$('.self_description').html('');
@@ -366,13 +366,13 @@ $(function() {
 	// 学历下拉处理2015-02-05
 
 	// 个人资料
-	$('#self_info1').live('mouseover', function() {
+	$('#self_info1').on('mouseover', function() {
 		$('#self_info1 .edit_pen').show();
 	});
-	$('#self_info1').live('mouseout', function() {
+	$('#self_info1').on('mouseout', function() {
 		$('#self_info1 .edit_pen').hide();
 	});
-	$('#self_info1 .edit_pen').live("click", function() {
+	$('#self_info1 .edit_pen').on("click", function() {
 		$('#self_info1').hide();
 		$('#self_info2').show();
 		// 姓名
@@ -468,27 +468,27 @@ $(function() {
 	});
 
 	// 保存
-	$('.zpzs_save').live("click", function() {
+	$('.zpzs_save').on("click", function() {
 		$('#works2').hide();
 		$('#works1').show();
 	});
 	// 取消
-	$('.zpzs_cancel').live("click", function() {
+	$('.zpzs_cancel').on("click", function() {
 		$('#works2').hide();
 		$('#works1').show();
 	});
 
 	// 更多作品
-	$('.more_works').live("click", function() {
+	$('.more_works').on("click", function() {
 		$('#works2').show();
 	});
 
 	// 右侧点击标签删除
-	$('.label_box span').live('click', function() {
+	$('.label_box span').on('click', function() {
 		$(this).remove();
 	});
 
-	$('.add_span span').live("click",function() {
+	$('.add_span span').on("click",function() {
 				var inputCON = $('.add_span input').val();
 				if (inputCON.length > 7) {
 					alert("不能超过七个字");
@@ -509,7 +509,7 @@ $(function() {
 					$('.add_span input').val("");
 				}
 			});
-	$('.box_mb_labels div').live(
+	$('.box_mb_labels div').on(
 			'click',
 			function() {
 				var con = $(this).text().replace(/(^\s*)|(\s*$)/g, "");
@@ -530,36 +530,36 @@ $(function() {
 			});
 
 	// 单个编辑
-	$('.experience_list').live('mouseover', function() {
+	$('.experience_list').on('mouseover', function() {
 		$(this).find('.experience_con p i').show();
 	});
-	$('.experience_list').live('mouseout', function() {
+	$('.experience_list').on('mouseout', function() {
 		$(this).find('.experience_con p i').hide();
 	});
 
 	// 教育背景鼠标滑过显示删除修改按钮
-	$('.experience_con_jybj').live('mouseover', function() {
+	$('.experience_con_jybj').on('mouseover', function() {
 		$(this).find('i').show();
 	});
-	$('.experience_con_jybj').live('mouseout', function() {
+	$('.experience_con_jybj').on('mouseout', function() {
 		$(this).find('i').hide();
 	});
 	// 项目经验鼠标滑过显示删除修改按钮
-	$('.xiangmujingyan').live('mouseover', function() {
+	$('.xiangmujingyan').on('mouseover', function() {
 		$(this).find('i').show();
 	});
-	$('.xiangmujingyan').live('mouseout', function() {
+	$('.xiangmujingyan').on('mouseout', function() {
 		$(this).find('i').hide();
 	});
 
 	// 我的标签取消
-	$('.my_labels .cancel').live('click', function() {
+	$('.my_labels .cancel').on('click', function() {
 		$('.my_labels_edit').hide();
 		$('.labelBox').show();
 		myfun();
 	});
 
-	$('.labelBox .edit_pen').live('click', function() {
+	$('.labelBox .edit_pen').on('click', function() {
 		if (tags != null && tags != "") {
 			$('.label_box').html("");
 			var ts = tags.split(',');
@@ -572,13 +572,13 @@ $(function() {
 		$('.my_labels_edit').show();
 		myfun();
 	});
-	$('.labelAdd a').live('click', function() {
+	$('.labelAdd a').on('click', function() {
 		$('.labelBox').hide();
 		$('.my_labels_edit').show();
 	});
 
 	// 添加技能
-	$('#zyjn3 .default').live('click', function() {
+	$('#zyjn3 .default').on('click', function() {
 		$('#add').html("");
 		$('#zyjn3').hide();
 		$('#zyjn2').show();
@@ -586,17 +586,17 @@ $(function() {
 	});
 
 	// 技能编辑删除
-	$('#zyjn1').live('mouseover', function() {
+	$('#zyjn1').on('mouseover', function() {
 		$('#zyjn1 .span_edit ').show();
 		$('#zyjn1 .span_del ').show();
 	});
-	$('#zyjn1').live('mouseout', function() {
+	$('#zyjn1').on('mouseout', function() {
 		$('#zyjn1 .span_edit ').hide();
 		$('#zyjn1 .span_del').hide();
 	});
 
 	// 编辑专业技能
-	$('#zyjn1 .span_edit').live('click',function() {
+	$('#zyjn1 .span_edit').on('click',function() {
 		$('.add_cons').html('');
 		$(".jineng_div .jineng_label").each(function() {
 			var str = $(this).text();
@@ -610,7 +610,7 @@ $(function() {
 		myfun();
 	});
 
-	$('#zyjn1 .span_del ').live('click', function() {
+	$('#zyjn1 .span_del ').on('click', function() {
 		$('#zyjn1').hide();
 		$('#zyjn3').show();
 		$('.jineng_div').html('');
@@ -619,11 +619,11 @@ $(function() {
 	});
 
 	// 自我描述鼠标滑过
-	$('#self_description1').live('mouseover', function() {
+	$('#self_description1').on('mouseover', function() {
 		$('#self_description1 .span_edit ').show();
 		$('#self_description1 .span_del ').show();
 	});
-	$('#self_description1').live('mouseout', function() {
+	$('#self_description1').on('mouseout', function() {
 		$('#self_description1 .span_edit ').hide();
 		$('#self_description1 .span_del').hide();
 	});
@@ -633,7 +633,7 @@ $(function() {
 		$('.gsmc_la ul').slideDown();
 	});
 
-	$('.gsmc_la li').live('click', function() {
+	$('.gsmc_la li').on('click', function() {
 		var liCon = $(this).text();
 		$('.gsmc_la input').val(liCon);
 		$('.gsmc_la ul').hide();
@@ -649,7 +649,7 @@ $(function() {
 	// });
 
 	// 删除不要的项目
-	$('.show_wb font').live('click', function() {
+	$('.show_wb font').on('click', function() {
 		$(this).parent().remove();
 	});
 
@@ -662,7 +662,7 @@ $(function() {
 	// });
 
 	// 期望职位相关
-	$('.li_div').live(
+	$('.li_div').on(
 			'mouseover',
 			function() {
 				$(this).css({
@@ -681,7 +681,7 @@ $(function() {
 						.find('.li_div').find('ul').hide();
 			});
 
-	$('.li_div').live('mouseout', function() {
+	$('.li_div').on('mouseout', function() {
 		$(this).css({
 			'z-index' : '0'
 		}).find('span').removeClass('bg');
@@ -690,7 +690,7 @@ $(function() {
 	});
 
 	// 期望职位点击
-	$('.li_div span').live("click", function() {
+	$('.li_div span').on("click", function() {
 		var spancon = $(this).text().replace(/(^\s*)|(\s*$)/g, "");
 		var vacon = $('.hope_job').val();
 		var str = vacon.split(" ");
@@ -712,7 +712,7 @@ $(function() {
 		$('.hope_job').val(vacon);
 	});
 
-	$('.li_div ul li').live("click", function() {
+	$('.li_div ul li').on("click", function() {
 		var spancon = $(this).text().replace(/(^\s*)|(\s*$)/g, "");
 		var vacon = $('.hope_job').val();
 		var str = vacon.split(" ");
@@ -735,7 +735,7 @@ $(function() {
 	});
 	
 	//设置默认简历
-	$('.default_jianli li').live('click',function(){
+	$('.default_jianli li').on('click',function(){
 		var text =  $('.default_jianli').siblings('span').text();
 		var v = $(this).attr('v');
 		if(v == 1){
@@ -773,7 +773,7 @@ $(function() {
         $('.hsbj').hide();
     });
 	
-	$('.Resume_three a').live('click',function(){
+	$('.Resume_three a').on('click',function(){
 		var str = $(this).attr('v');
 		if(str.indexOf('http://') < 0){
 			str = "http://" + str;
@@ -781,12 +781,12 @@ $(function() {
 		window.open(str);
 	});
 	
-	$('.a2').live('click',function(){
+	$('.a2').on('click',function(){
 		$('.qiujian').show();
 		$('.online_left').hide();
 	});
 	
-	$('.upload_a').live('click',function(){
+	$('.upload_a').on('click',function(){
 		if(jianli_flag != "" && jianli_flag != null){
 		  
 		}else{

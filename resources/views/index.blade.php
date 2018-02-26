@@ -452,17 +452,17 @@
                 })
 
 
-                $('.banner1').live('click', function() {
+                $('.banner1').on('click', function() {
                     window.open("#");
                 });
-                $('.banner2').live('click', function() {
+                $('.banner2').on('click', function() {
                     window.open("#");
                 });
-                $('.banner3').live('click', function() {
+                $('.banner3').on('click', function() {
                     window.open("#");
                 });
                 // 二级导航
-                $('.all_divlist_border').live('mouseover', function() {
+                $('.all_divlist_border').on('mouseover', function() {
                     $(this).addClass('all_divlist_active');
                     $(this).find('.all_divlist').css({
 
@@ -474,7 +474,7 @@
                     $(this).find('.all_divlist_two').show();
                 })
 
-                $('.all_divlist_border').live('mouseout', function() {
+                $('.all_divlist_border').on('mouseout', function() {
                     $(this).removeClass('all_divlist_active');
                     $(this).find('.all_divlist_two').hide();
                     $(this).find('.all_divlist').css({
