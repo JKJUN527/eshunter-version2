@@ -95,6 +95,7 @@ class PersonCenterController extends Controller {
 //                        ->orWhere('occupation', '=', $item->occupation );
                 })
                 ->orderBy('view_count','desc')
+                ->take(5)
                 ->get();
             foreach ($result as $item1){
                 if(in_array($item1['pid'],$pid)){
@@ -117,6 +118,7 @@ class PersonCenterController extends Controller {
             }
             $result3= Position::where('position_status', '=', 1)
                 ->orderBy('view_count','desc')
+                ->take(5)
                 ->get();
 
             foreach ($result3 as $item){
@@ -134,8 +136,9 @@ class PersonCenterController extends Controller {
                 continue;
             }
             $eid[] = $item['eid'];
-            $data['enprinfo'][$item['eid']] = Enprinfo::select('ename','byname')->find($item['eid']);
+            $data['enprinfo'][$item['eid']] = Enprinfo::select('ename','byname','elogo')->find($item['eid']);
         }
+
         return $data;
     }
 

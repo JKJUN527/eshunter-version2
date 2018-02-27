@@ -32,9 +32,11 @@ class PositionController extends Controller {
         if ($data['uid'] == 0) {
             return redirect('index');
         }
+        $personCenter = new PersonCenterController;
         $data['applylist'] = $this->getPersonApplyList($data['uid']);
+        $data['recommendPosition'] = $personCenter->recommendPosition();
 
-        //return $data;
+//        return $data;
         return view('position/applyList', ['data' => $data]);
     }
 
@@ -45,10 +47,11 @@ class PositionController extends Controller {
 
         $result['list'] = DB::table('jobs_delivered')
             ->join('jobs_position','jobs_delivered.pid','=','jobs_position.pid')
-            ->select('jobs_position.title','jobs_position.eid','jobs_delivered.status','jobs_delivered.created_at','fbinfo')
+            ->leftjoin('jobs_resumes','jobs_resumes.rid','=','jobs_delivered.rid')
+            ->select('jobs_position.title','jobs_position.eid','jobs_delivered.pid','jobs_position.salary','jobs_position.salary_max','jobs_resumes.resume_name','jobs_delivered.status','jobs_delivered.created_at','jobs_delivered.updated_at','fbinfo')
             ->where('jobs_delivered.created_at','>=',$dateLimt)
             ->where('jobs_delivered.uid',$uid)
-            ->orderBy('jobs_delivered.created_at','desc')
+            ->orderBy('jobs_delivered.updated_at','desc')
             ->paginate(9);
         //查询企业信息
         $eid = array();
@@ -58,7 +61,7 @@ class PositionController extends Controller {
         }
 //        return $eid;
         foreach ($eid as $item) {
-            $result['ename'][$item['eid']] = Enprinfo::where('eid', $item['eid'])->select('ename')->first();
+            $result['ename'][$item['eid']] = Enprinfo::where('eid', $item['eid'])->select('ename','elogo')->first();
         }
 //        $result['enprinfo'] =
 
