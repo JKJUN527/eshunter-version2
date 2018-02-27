@@ -372,100 +372,100 @@ $(function() {
 	$('#self_info1').on('mouseout', function() {
 		$('#self_info1 .edit_pen').hide();
 	});
-	$('#self_info1 .edit_pen').on("click", function() {
-		$('#self_info1').hide();
-		$('#self_info2').show();
-		// 姓名
-		$("#online_name").val($(".Resume_conCenter em").text());
-		// 性别
-		if (gender_cd == "1") {
-			$(".sex_choose .boy").addClass("boyChoosed");
-			$(".sex_choose .girl").removeClass("girlChoosed");
-		} else if (gender_cd == "2") {
-			$(".sex_choose .boy").removeClass("boyChoosed");
-			$(".sex_choose .girl").addClass("girlChoosed");
-		}
+	// $('#self_info1 .edit_pen').on("click", function() {
+	// 	$('#self_info1').hide();
+	// 	$('#self_info2').show();
+	// 	// 姓名
+	// 	$("#online_name").val($(".Resume_conCenter em").text());
+	// 	// 性别
+	// 	if (gender_cd == "1") {
+	// 		$(".sex_choose .boy").addClass("boyChoosed");
+	// 		$(".sex_choose .girl").removeClass("girlChoosed");
+	// 	} else if (gender_cd == "2") {
+	// 		$(".sex_choose .boy").removeClass("boyChoosed");
+	// 		$(".sex_choose .girl").addClass("girlChoosed");
+	// 	}
 
-		var str = "";
-		// 学历
-		str = $(".p_educate").text();
-		if (str == "") {
-			str = "学历";
-		}
-		$("#max_xueli").text(str);
-		$("#xueli").val(college_level);
-		// 经验
+	// 	var str = "";
+	// 	// 学历
+	// 	str = $(".p_educate").text();
+	// 	if (str == "") {
+	// 		str = "学历";
+	// 	}
+	// 	$("#max_xueli").text(str);
+	// 	$("#xueli").val(college_level);
+	// 	// 经验
 
-		if (workyears == "0") {
-			str = "应届生";
-		} else if (workyears == "10") {
-			str = "10年以上";
-		} else if (workyears != "") {
-			str = workyears + "年";
-		}
-		$("#work_time").text(str);
-		$("#workyears").val(workyears);
+	// 	if (workyears == "0") {
+	// 		str = "应届生";
+	// 	} else if (workyears == "10") {
+	// 		str = "10年以上";
+	// 	} else if (workyears != "") {
+	// 		str = workyears + "年";
+	// 	}
+	// 	$("#work_time").text(str);
+	// 	$("#workyears").val(workyears);
 
-		// 当前状态
-		$(".current_state").text($(".currentstate").text());
-		$("#state").val(currentstate);
-		// 电话
-		$("#phone").val($(".phone").text());
-		// 邮箱
-		$("#email").val($(".email").text());
-		// 生日
-		if (birthday_year != "") {
-			$("#year").val(birthday_year);
-			$("#year").siblings(".seles_choose").text(birthday_year);
-		} else {
-			$("#year").val("");
-			$("#year").siblings(".seles_choose").text("出生年");
-		}
-		if (birthday_month != "") {
-			$("#month").val(birthday_month);
-			$("#month").siblings(".seles_choose").text(birthday_month);
-		} else {
-			$("#month").val("");
-			$("#month").siblings(".seles_choose").text("出生月");
-		}
-		if (birthday_day != "") {
-			$("#day").val(birthday_day);
-			$("#day").siblings(".seles_choose").text(birthday_day);
-		} else {
-			$("#day").val("");
-			$("#day").siblings(".seles_choose").text("出生日");
-		}
+	// 	// 当前状态
+	// 	$(".current_state").text($(".currentstate").text());
+	// 	$("#state").val(currentstate);
+	// 	// 电话
+	// 	$("#phone").val($(".phone").text());
+	// 	// 邮箱
+	// 	$("#email").val($(".email").text());
+	// 	// 生日
+	// 	if (birthday_year != "") {
+	// 		$("#year").val(birthday_year);
+	// 		$("#year").siblings(".seles_choose").text(birthday_year);
+	// 	} else {
+	// 		$("#year").val("");
+	// 		$("#year").siblings(".seles_choose").text("出生年");
+	// 	}
+	// 	if (birthday_month != "") {
+	// 		$("#month").val(birthday_month);
+	// 		$("#month").siblings(".seles_choose").text(birthday_month);
+	// 	} else {
+	// 		$("#month").val("");
+	// 		$("#month").siblings(".seles_choose").text("出生月");
+	// 	}
+	// 	if (birthday_day != "") {
+	// 		$("#day").val(birthday_day);
+	// 		$("#day").siblings(".seles_choose").text(birthday_day);
+	// 	} else {
+	// 		$("#day").val("");
+	// 		$("#day").siblings(".seles_choose").text("出生日");
+	// 	}
 
-		// 生日状态
-		$("#birthday_flag").val(birthday_flag);
-		var str2 = "";
-		if (birthday_flag == "0") {
-			str2 = "公开,完整显示";
-		} else if (birthday_flag == "1") {
-			str2 = "只显示星座";
-		} else if (birthday_flag == "2") {
-			str2 = "只显示月日";
-		} else if (birthday_flag == "3") {
-			str2 = "保密哦";
-		}
-		$("#birthday_flag").siblings(".seles_choose").text(str2);
+	// 	// 生日状态
+	// 	$("#birthday_flag").val(birthday_flag);
+	// 	var str2 = "";
+	// 	if (birthday_flag == "0") {
+	// 		str2 = "公开,完整显示";
+	// 	} else if (birthday_flag == "1") {
+	// 		str2 = "只显示星座";
+	// 	} else if (birthday_flag == "2") {
+	// 		str2 = "只显示月日";
+	// 	} else if (birthday_flag == "3") {
+	// 		str2 = "保密哦";
+	// 	}
+	// 	$("#birthday_flag").siblings(".seles_choose").text(str2);
 
-		// 站点
-		var weibo = $('.Resume_three_wb').attr('v');
-		var github = $('.Resume_three_cat').attr('v');
-		var zhanku = $('.Resume_three_zk').attr('v');
-		if (weibo != "" && weibo != null) {
-			$('.weibo').val(weibo);
-		}
-		if (github != "" && github != null) {
-			$('.github').val(github);
-		}
-		if (zhanku != "" && zhanku != null) {
-			$('.zhanku').val(zhanku);
-		}
+	// 	// 站点
+	// 	var weibo = $('.Resume_three_wb').attr('v');
+	// 	var github = $('.Resume_three_cat').attr('v');
+	// 	var zhanku = $('.Resume_three_zk').attr('v');
+	// 	if (weibo != "" && weibo != null) {
+	// 		$('.weibo').val(weibo);
+	// 	}
+	// 	if (github != "" && github != null) {
+	// 		$('.github').val(github);
+	// 	}
+	// 	if (zhanku != "" && zhanku != null) {
+	// 		$('.zhanku').val(zhanku);
+	// 	}
 		
-		myfun();
-	});
+	// 	myfun();
+	// });
 
 	// 保存
 	$('.zpzs_save').on("click", function() {
