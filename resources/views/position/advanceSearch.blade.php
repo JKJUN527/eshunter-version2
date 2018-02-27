@@ -120,6 +120,14 @@
     #page_tools li{
         padding: 0;
     }
+    .major-list li{
+        width: 116px;
+        height: 92px;
+    }
+    .major-list li a{
+        width: 116px;
+        height: 92px;
+    }
    </style>
 @endsection
 
@@ -369,9 +377,21 @@
                     <div style="float:right; height: 730px;" class="all_divclass">
                         <div style="margin-top:0px" class="banner_con"> 
                             <div class="num_part"><span>热招企业</span></div>
-                            <ul id="hotCompanyList" class="slides major-list"><li class="major-item"><a href="/c/1857.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/fi3RGYQKoEdhBcAF.jpg&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>小说阅读网</h2><div>中文阅读与移动阅读领域的领导者</div></span></a></li><li class="major-item"><a href="/c/16862.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/d74lhzYaXNG1BH2V.jpg&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>一米兼职</h2><div>基于地理位置的移动互联网兼职服务产品</div></span></a></li><li class="major-item"><a href="/c/15257.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/1slNcb4CzP5GcOsP.jpg&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>微投</h2><div>金融大咖和技术达人的同台好戏</div></span></a></li><li class="major-item"><a href="/c/16841.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/idWeDQsTM5dEnkaD.jpg&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>陌陌</h2><div>总有新奇在身边</div></span></a></li><li class="major-item"><a href="/c/16808.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/mSCzYMVoEoeLM3k7.png&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>ETM</h2><div>专注提供早期教育管理产品与解决方案</div></span></a></li><li class="major-item"><a href="/c/16662.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/XB6SmGeRsuQQsD3w.png&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>Viscovery</h2><div>亚洲领先的图像及动态影像辨识技术</div></span></a></li><li class="major-item"><a href="/c/16755.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/FAkSs0BoUbrGsIBM.png&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>百度</h2><div>百度一下，你就知道</div></span></a></li><li class="major-item"><a href="/c/16757.html" target="_blank"><span style="background: rgba(0, 0, 0, 0) url(&quot;http://f.neipin.com/photo/company/bitZ3zap6ND3Uk5D.png&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 114px;" class="tongyong_loge"></span><span class="back-face"><h2>小猪短租</h2><div>有人情味的住宿</div></span></a></li></ul>
+                            <ul id="hotCompanyList" class="slides major-list">
+                                @foreach($data['hot-ad-company'] as $company)
+                                    <li class="major-item">
+                                        <a href="/company?eid={{$company->eid}}" target="_blank">
+                                            <span style="background: rgba(0, 0, 0, 0) url(&quot;{{$company->picture or asset('images/house.jpg')}}&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 90px;" class="tongyong_loge">
+                                            </span>
+                                            <span class="back-face">
+                                                <h2>{{$company->title}}</h2>
+                                                <div>{{$company->content}}</div>
+                                            </span>
+                                        </a>
+                                    </li>
+                                @endforeach
                         </div>
-                        <a target="_blank" href="http://old.ui.cn/joblist.php"><img style="margin-top:20px;" src="../images/UIchina.jpg"></a>
+                        {{--<a target="_blank" href="http://old.ui.cn/joblist.php"><img style="margin-top:20px;" src="../images/UIchina.jpg"></a>--}}
                     </div>   
                 </div>
                 
