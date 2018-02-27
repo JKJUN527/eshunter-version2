@@ -3,6 +3,12 @@
 
 @section('custom-style')
     <link media="all" href="{{asset('../style/user_style.css')}}" type="text/css" rel="stylesheet">
+    <style>
+        .form-title{
+            font-size: 17px;
+    color: #000;
+        }
+    </style>
 @endsection
 
 @section('header-nav')
@@ -116,21 +122,47 @@
                                     <input type="hidden" name="" value="">
                                 </div>
                                 <input type="file" class="avatar_upload" id="avatarUpload" name="headPic" defaultvalue="" title="支持jpg、jpeg、gif、png格式，文件小于10M">
+                                <div class="form-title">用户名</div>
                                 <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入常用昵称" value="" maxlength="15" data-maxlength="15">
+                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入用户名" value="" maxlength="15" data-maxlength="15">
                                 </div>
+                                <div class="form-title">名字</div>
+                                <div class="username input_box">
+                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入名字" value="" maxlength="15" data-maxlength="15">
+                                </div>
+                                <div class="form-title">居住地</div>
+                                <div class="username input_box">
+                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入居住地" value="" maxlength="15" data-maxlength="15">
+                                </div>
+                                <div class="form-title">户口所在地</div>
+                                <div class="username input_box">
+                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入户口所在地" value="" maxlength="15" data-maxlength="15">
+                                </div>
+                                <div class="form-title">联系电话</div>
+                                <div class="username input_box">
+                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入联系电话" value="" maxlength="15" data-maxlength="15">
+                                </div>
+                                <div class="form-title">联系邮箱</div>
+                                <div class="username input_box">
+                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入联系邮箱" value="" maxlength="15" data-maxlength="15">
+                                </div>
+                                <div class="form-title">性别</div>
                                 <div class="userinfo_sex input_box">
                                     <input type="radio" class="magic-radio" id="userinfoEditSexMale" name="sex" value="MALE" checked="checked">
                                     <label for="userinfoEditSexMale">男</label>
                                     <input type="radio" class="magic-radio" id="userinfoEditSexFemale" name="sex" value="FEMALE">
-                                    <input type="radio" class="magic-radio" id="userinfoEditSexFemale" name="sex" value="FEMALE">
+                                    <label for="userinfoEditSexFemale">女</label>
                                 </div>
-                                <div class="userinfo_job input_box">
-                                    <input type="text" id="userinfoEditPositionName" name="positionName" placeholder="请输入职业" value="学生·成都理工大学" maxlength="70" data-maxlength="70">
+                                <div class="form-title">婚姻</div>
+                                <div class="userinfo_sex input_box">
+                                    <input type="radio" class="magic-radio" id="userinfoEditMarriageY" name="marriage" value="YES" checked="checked">
+                                    <label for="userinfoEditMarriageY">已婚</label>
+                                    <input type="radio" class="magic-radio" id="userinfoEditMarriageN" name="marriage" value="NO">
+                                    <label for="userinfoEditMarriageN">未婚</label>
+                                    <input type="radio" class="magic-radio" id="userinfoEditMarriage" name="marriage" value="NONEED">
+                                    <label for="userinfoEditMarriage">未填写</label>
                                 </div>
-                                <div class="userinfo_intro input_box">
-                                    <input id="userinfoEditIntroduce" type="text" name="introduce" placeholder="个人介绍" value="我还没填写个人介绍">
-                                </div>
+                                
                                 <div class="toolbar">
                                     <a class="btn userinfo_save" href="javascript:;" >保存</a>
                                 </div>

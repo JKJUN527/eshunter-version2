@@ -2785,7 +2785,7 @@
                     <div class='self_list'><div class='phone'>18005151538</div><div class='email'>416148489@qq.com</div></div>
                     <div class='self_list'><div class='currentstate'>我暂时不想找工作</div></div>
                   </div>-->
-                  <a href="/account/edit"><div class="edit_pen" style="display: none;"></div></a>
+                  <div class="edit_pen" style="display: none;"></div>
                   <div class="Resume_con">
                     <div class="Resume_conLeft">
                       <p class="p_educate">大专</p>
@@ -2821,7 +2821,7 @@
                   <div class="self_edit">
                     <div class="self_edit_left left">
                       <div class="edit_list edit_list_fff">
-                        <span class="span_fff"><em>*</em>用户名</span>
+                        <span class="span_fff"><em>*</em>姓名</span>
                         <input type="text" id="online_name" value="黄金">
                         <div class="sex_choose">
                           <span class="girl" v="2"></span>
@@ -2830,7 +2830,7 @@
                       </div>
                       <div class="mis_alert username_msg"></div>
                       <div class="edit_list edit_list_fff">
-                        <span class="span_fff"><em>*</em>最高学历</span>
+                        <span class="span_fff"><em>*</em>学历</span>
                         <div class="seles seles_xl">
                           <span id="max_xueli" class="seles_choose">大专</span>
                           <ul class="seles_hide">
@@ -2976,12 +2976,12 @@
                     </div>
                     <div class="self_edit_right right"> 
                       <div class="edit_list edit_list_fff">
-                        <span class="span_fff"><em>*</em>联系电话</span>
+                        <span class="span_fff"><em>*</em>电话</span>
                         <input type="text" style="width:225px;" placeholder="手机号码" value="18005151538" id="phone">
                       </div>
                       <div class="mis_alert phone_msg"></div>                   
                       <div class="edit_list edit_list_fff">
-                        <span class="span_fff"><em>*</em>联系邮箱</span>
+                        <span class="span_fff"><em>*</em>邮箱</span>
                         <input type="text" placeholder="您接收面试通知的邮箱" value="416148489@qq.com" id="email">
                       </div>
                       <div class="mis_alert email_msg"></div>
@@ -4435,7 +4435,7 @@
                        <div class="labels">
                        </div>
                           <div class="labelAdd"><a href="javascript:void(0);">给自己加点标签，我就是我，骄傲的我!爱咋地咋地！</a></div>
-                          <div style="display:none" class="edit_pen" ></div>
+                          <div style="display:none" class="edit_pen"></div>
                        
                   </div>
                   <div class="my_labels_edit">
