@@ -33,9 +33,11 @@
             top: 0;
         }
 
+        .news_tab .active  a{
+            color: #fff!important;
+        }
         .news_tab .active {
             background-color: #08c!important;
-            color: #fff;
         }
         nav#page_tools ul li:hover,nav#page_tools ul li.active{
             background-color: #03A9F4;
@@ -177,7 +179,6 @@
 
 @section('footer')
    @include('components.myfooter')
-   @include('components.wheelmenu')
 @endsection
 
 @section('custom-script')

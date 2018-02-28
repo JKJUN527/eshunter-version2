@@ -417,7 +417,7 @@ width:320px; height:22px; padding: 8px 9px; *margin-left:-5px; overflow:hidden;}
 .denglu_pages_left form{ width: 100%; *margin-top: -20px;}
 .form_dv{width: 100%; display: inline-block;}
 .form_dv .add_number{color: #555; font-family: 'SimHei'; line-height: 50px; font-size: 14px; margin-left: 3px;}
-.form_dv span{ float: left; width: 70px; text-align: right; margin-right: 15px; line-height: 50px; font-size: 16px; color: #555;}
+.form_dv span{ float: left; width: 80px; text-align: right; margin-right: 15px; line-height: 50px; font-size: 16px; color: #555;}
 .form_dv em{width: 18px; height: 50px; float: left; margin-left: 15px;}
 .form_dv em.yes{background: url(../images/alert_icon.png) 0 15px no-repeat}
 .form_dv em.no{background: url(../images/alert_icon.png) 0 -64px no-repeat}
@@ -430,7 +430,7 @@ background: url(../images/close_eye.png) center center no-repeat;}
 .nosee_password{background:  url(../images/noclose_eye.png) center center no-repeat;}
 .denglu_pages_left input{ width: 400px; padding: 12px 34px 12px 0px; float: left; padding-left: 10px;
  overflow: hidden; border:1px solid #cbcbcb; color: #5e5e5e; font-size: 14px; height: auto; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
-.denglu_pages_left input.text_pos{ position: absolute; top: 0; left: 85px; display: none;}
+.denglu_pages_left input.text_pos{ position: absolute; top: 0; left: 95px; display: none;}
 /*.denglu_pages_left input.addBorder{background: url(../images/border_focus.jpg) 0 0 no-repeat;border: none; width: 295px; padding: 13px 34px 13px 11px;}
 */.denglu_pages_left input.addBorder_cuo{background: url(../images/border_false.jpg) 0 0 no-repeat; border: none; width: 294px; padding: 13px 34px 13px 0; padding-left: 11px;}
 .denglu_pages_left input#mm{ padding-top: 0;}
@@ -467,7 +467,7 @@ background: url(../images/close_eye.png) center center no-repeat;}
 .imgHide img{ width: 150px; border:1px solid #fff; margin-bottom: 10px;}
 .imgHide s{position:absolute;top:208px;*top:208px;left:-20px;display:block;height:0;width:0;font-size: 0; line-height: 0;border-color: transparent #cbcbcb transparent  transparent;border-style: dashed solid dashed  dashed;border-width:10px;}
 .imgHide i{ position:absolute; top:-10px; *top:-10px; left:-9px;display:block;height:0;width:0;font-size: 0;line-height: 0;border-color:transparent #eee transparent  transparent;border-style:dashed  solid  dashed dashed;border-width:10px;}
-.login_button{width: 340px; padding-left: 85px;float: left;}
+.login_button{width: 340px; padding-left: 95px;float: left;}
 .zidong{ line-height: 18px; height: 19px; font-size: 14px; color: #555; width: 100%;
  overflow: hidden; padding-top: 5px;}
 .zidong_choose{width:110px; overflow:hidden; margin-left: 7px;}
