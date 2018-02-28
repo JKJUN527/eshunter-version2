@@ -67,19 +67,19 @@
                         <div class="delivery_tabs">
                             <ul class="reset">
                                 <li class="current li_one">
-                                    <a href="#" class="all_border tabs_all">全部</a>
+                                    <a  class="all_border tabs_all">全部</a>
                                 </li>
                                 <li class="li_two">
-                                    <a href="#" class="tabs_delivery_success">投递成功</a>
+                                    <a  class="tabs_delivery_success">投递成功</a>
                                 </li>
                                 <li class="li_three">
-                                    <a href="#" class="tabs_look" >被查看</a>
+                                    <a  class="tabs_look" >被查看</a>
                                 </li>
                                 <li class="li_four">
-                                    <a href="#" class="tabs_say">已录用</a>
+                                    <a  class="tabs_say">已录用</a>
                                 </li>
                                 <li class="li_five">
-                                    <a href="#" class="tabs_review">未录用</a>
+                                    <a  class="tabs_review">未录用</a>
                                 </li>
                                 {{--<li class="last li_six">--}}
                                     {{--<a href="#" class="tabs_nosuit">失效</a>--}}
@@ -616,12 +616,12 @@
 @endsection
 @section('custom-script')
 <script type="text/javascript">
-    $(".wheel-button").wheelmenu({
-        // alert(1);
-        trigger: "hover",
-        animation: "fly",
-        angle: [0, 360]
-    });
+//    $(".wheel-button").wheelmenu({
+//        // alert(1);
+//        trigger: "hover",
+//        animation: "fly",
+//        angle: [0, 360]
+//    });
     function show_progress(id) {
         $(".progress_status_one"+id).toggle();
     }
@@ -653,6 +653,7 @@
 
         });
         $(".tabs_delivery_success").click(function(){
+            alert(123);
             $(".deliverySuccess").show();
             $(".deliveryAll").hide();
             $(".deliveryLook").hide();
