@@ -58,9 +58,9 @@
     </style>
 @endsection
 
-@section('header-nav')
-    @include('components.headerNav', ['isLogged' => false])
-@endsection
+{{--@section('header-nav')--}}
+    {{--@include('components.headerNav', ['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])--}}
+{{--@endsection--}}
 
 @section('content')
 

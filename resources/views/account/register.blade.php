@@ -23,21 +23,21 @@
           font-size: 16px;
         }
         .per-com-res input{
-          width: 30px;
-    float: unset;
-    vertical-align: middle;
+            width: 30px;
+            float: unset;
+            vertical-align: middle;
         }
         .sms #send-SMS{
-              width: 121px!important;
-    font-size: 17px!important;
-    margin-top: 0;
-    margin-left: 4px;
+            width: 121px!important;
+            font-size: 17px!important;
+            margin-top: 0;
+            margin-left: 4px;
         }
         .sms #register-verify-code{
-          width: 249px!important;
+            width: 249px!important;
         }
        .denglu_pages{
-        margin-bottom: 20px;
+            margin-bottom: 20px;
        }
     </style>
 @endsection
@@ -71,7 +71,7 @@
             <div class=" phone_text phone">
               <div class="form_dv">
                 <span>手机号：</span>
-                <input type="text" id="phone" onkeydown="enterregist()" placeholder="请填写手机号" value="" name="" class="number bsie7 phone_hrResist">
+                <input type="text" id="phone" placeholder="请填写手机号" name="tel" class="number bsie7 phone_hrResist">
                 
                 <div for="phone" class="baocuo error error_msg_1" style="display: inline-block;width: 60%;"></div>
               </div>
@@ -79,7 +79,7 @@
             <div class=" phone_text email" style="display: none;">
               <div class="form_dv">
                 <span>邮箱：</span>
-                <input type="text" onkeydown="enterregist()" placeholder="请填写邮箱" value="" name="" class="number bsie7 emil_hrResist" id="email">
+                <input type="text" id="mail" placeholder="请填写邮箱"  name="mail" class="number bsie7 emil_hrResist">
                 
                 <div for="email" class="baocuo error error_msg_1" ></div>
               </div>
@@ -94,9 +94,10 @@
             </div>
             <div class="form_dv form_pos">
               <span>密码：</span>
-              <input type="password" class="bsie7 password password_falg hr_password" onkeydown="enterregist()" placeholder="请输入6-16个字符，建议字母加数字的组合" value="" name="" id="password">
+              <input type="password" class="bsie7 password password_falg hr_password" placeholder="请输入6-16个字符，建议字母加数字的组合"
+                     name="password" id="password" value="">
               
-              <input type="text" class="bsie7 text_pos password_falg2 password hr_password2" onkeydown="enterregist()" placeholder="请输入6-16个字符，建议字母加数字的组合">
+              {{--<input type="password" class="bsie7 text_pos password_falg2 password hr_password2" placeholder="请输入6-16个字符，建议字母加数字的组合" id="conform-password" name="passwordConfirm">--}}
               <!-- <div class="see_password"></div> -->
             </div>
             
@@ -104,18 +105,19 @@
           </div>
           <div class="form_dv form_pos">
               <span>确认密码：</span>
-              <input type="password" class="bsie7  password_falg hr_password" onkeydown="enterregist()" placeholder="请确认密码" value="" name="" id="conform-password">
+              <input type="password" class="bsie7  password_falg hr_password" placeholder="请确认密码"
+                     value="" id="conform-password" name="passwordConfirm">
               
-              <input type="text" class="bsie7 text_pos password_falg2 password hr_password2" onkeydown="enterregist()" placeholder="请确认密码">
+              {{--<input type="text" class="bsie7 text_pos password_falg2 password hr_password2" placeholder="请确认密码">--}}
               <!-- <div class="see_password"></div> -->
             
             
             <div for="conform-password" class="baocuo error error_msg_3"></div>
           </div>
           <div class="login_button per-com-res">
-              <input name="type" type="radio" id="personal" class="radio-col-light-blue" value="1" checked="">
+              <input name="type" type="radio" id="personal" class="radio-col-light-blue" value="1" checked/>
               <label for="personal">个人用户注册</label>&nbsp;&nbsp;&nbsp;&nbsp;
-              <input name="type" type="radio" id="enterprise" class="radio-col-light-blue" value="2">
+              <input name="type" type="radio" id="enterprise" class="radio-col-light-blue" value="2"/>
               <label for="enterprise">企业用户注册</label>
           </div>
           <div class="login_button">
@@ -123,7 +125,7 @@
             <div style=" padding-top:15px;" class="zidong">
               <div style="width:100%; margin-left:0;" class="left">
               <span class="zidong_choose">
-                <i style="height:19px;margin-right:1px;" id="xieyi_label" class="add_i"></i>
+                <i style="height:19px;margin-right:1px;" id="user_agreeent" class="add_i"></i>
                 <label for="mm">我已阅读并同意</label>
               </span>
               <a style="color: #17b385; float: none; margin-right:0px;" target="_blank" href="/account/privacy">《电竞猎人用户协议》</a>
@@ -172,24 +174,36 @@
             $(this.parentNode).removeClass("focused");
         });
 
-        function switchRegisterType(type) {
-            if (type === 0) {
-                $("a[for='phone-form']").hide();
-                $("a[for='email-form']").fadeIn(500);
-                $("#email-form").hide();
-                $("#phone-form").fadeIn(500);
-                $("#phone-verify-code").fadeIn(500);
-                $("#phone").val("");
+        function switchRegisterType(e,type) {
+            $(e).hide().siblings().show();
+            if (type===0) {
+                $('.use-type span').text('邮箱');
+                $('.have_phone .phone,.sms').show().siblings('.have_phone .email').hide();
                 registerType = 0;
-            } else if (type === 1) {
-                $("a[for='phone-form']").fadeIn(500);
-                $("a[for='email-form']").hide();
-                $("#email-form").fadeIn(500);
-                $("#phone-form").hide();
-                $("#phone-verify-code").hide();
-                $("#email").val("");
+            }else{
+                $('.use-type span').text('手机号');
+                $('.have_phone .phone,.sms').hide().siblings('.have_phone .email').show();
                 registerType = 1;
             }
+//            if (type === 0) {
+//                alert("tel");
+//                $("a[for='phone-form']").hide();
+//                $("a[for='email-form']").fadeIn(500);
+//                $("#email-form").hide();
+//                $("#phone-form").fadeIn(500);
+//                $("#phone-verify-code").fadeIn(500);
+//                $("#phone").val("");
+//
+//            } else if (type === 1) {
+//                alert("email");
+//                $("a[for='phone-form']").fadeIn(500);
+//                $("a[for='email-form']").hide();
+//                $("#email-form").fadeIn(500);
+//                $("#phone-form").hide();
+//                $("#phone-verify-code").hide();
+//                $("#email").val("");
+//                registerType = 1;
+//            }
         }
 function setError(element, forStr, errorStr) {
     element.parent().addClass('error');
@@ -266,7 +280,7 @@ function removeError(element, forStr) {
             event.preventDefault();
 
             var phone = $('#phone');
-            var email = $('#email');
+            var email = $('#mail');
             var code = $('#register-verify-code');
             var pwd = $('#password');
             var conformPwd = $('#conform-password');
@@ -318,6 +332,7 @@ function removeError(element, forStr) {
             }
 
             var formData = new FormData();
+
             if (registerType === 0) {
                 formData.append("phone", phone.val());
                 formData.append("code", code.val());
@@ -424,86 +439,14 @@ function removeError(element, forStr) {
                 obj.value = buttonDefaultValue;
             }
         }
-        if($('#user_agreeent').attr('checked')){
-            $('#register-btn').attr('disabled',false)
-        }
-        $('#user_agreeent').click(function () {
-            var chk = $("#user_agreeent");
-            var checked = chk.is(':checked');
-            if (checked) {
-                $('#register-btn').attr('disabled',false)
-            } else {
-                $('#register-btn').attr('disabled',true)
-            }
+        $("#user_agreeent").click(function () {
+           if($('#user_agreeent').attr('class')=="add_i"){
+               $('#register-btn').css("background","whitesmoke");
+               $('#register-btn').attr("disabled","disabled");
+           }else{
+               $('#register-btn').css("background","#45c29d");
+               $('#register-btn').attr("disabled",false);
+           }
         });
     </script>
-    <script type="text/javascript">
-    var my_tou="1";
-    var ukbn = "1";
-    var password_flag = 1;//0 明文显示密码  1 隐藏显示密码
-    var my_tou="1";
-    var regist_flag = 0;
-</script>
-<script src="{{asset('js/regist.js?v=2.35')}}"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-
-    $('.shibie').click(function(event) {  
-        var e=window.event || event;
-        if(e.stopPropagation){
-         e.stopPropagation();
-        }else{
-         e.cancelBubble = true;
-        }        
-         $('.imgHide').show();
-    });
-    $('.imgHide').click(function(event) {
-       var e=window.event || event;
-    if(e.stopPropagation){
-         e.stopPropagation();
-      }else{
-         e.cancelBubble = true;
-      }
-    });
-    document.onclick = function(){
-      $(".imgHide").hide();
-    };
-
-  // 重新获取短信验证码
-  $('.cuocuo a.sms_repeat').on('click',function(){
-    $('.send_yzm').click();
-  })
-  $('#xieyi_label').on('click',function(){
-    if ($(this).hasClass('add_i')) {
-      $('#btnRegist').removeAttr('disabled').css('background-color', '#eee');
-    }else{
-      $('#btnRegist').attr('disabled','disabled').css('background-color', '#17b385');
-    }
-    
-  })
-})
-function SetFocus() {
-    document.getElementById('tbUserName').focus();
-}
-function switchRegisterType(e,a){
-      $(e).hide().siblings().show()
-      if (a===0) {
-        $('.use-type span').text('邮箱')
-        $('.have_phone .phone,.sms').show().siblings('.have_phone .email').hide()
-
-      }else{
-        $('.use-type span').text('手机号')
-        $('.have_phone .phone,.sms').hide().siblings('.have_phone .email').show()
-      }
-    }
-function checkEnter(event) {
-  if (event.keyCode == 13) {
-    if (document.getElementById("tbPassword").value == '') {
-       document.getElementById("tbPassword").focus();
-       return false;
-    }
-  }
-         return true;
-}     
-</script>
 @endsection

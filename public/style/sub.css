@@ -451,7 +451,7 @@ background: url(../images/close_eye.png) center center no-repeat;}
  margin-top: 10px; background: #45c29d; color: #fff; text-align: center;
   display: inline-block; border: none;}
 .denglu_pages_left input[type='button']:hover{background: #17b385;}
-.denglu_pages_right{ width: 160px; overflow: hidden; font-size: 14px; padding-left: 110px; border-left: 2px solid #e1e1e1;}
+.denglu_pages_right{ width: 200px; overflow: hidden; font-size: 14px; padding-left: 80px; border-left: 2px solid #e1e1e1;}
 .denglu_til{ font-size: 18px; color: #666;  line-height: 40px; font-weight: bold; width: 100%; text-align: center; background: url(../images/logo_login.png) 5px 5px no-repeat;}
 .denglu_text,.denglu_password{ width: 230px; margin: 0 auto; margin-top: 15px; background: #fff;}
 .denglu_text input,.denglu_password input{ width: 230px; height: 20px; padding: 5px 0px; border:1px solid #cbcbcb; text-indent: 35px; border-radius: 5px;  -moz-border-radius: 5px; -webkit-border-radius: 5px;}
