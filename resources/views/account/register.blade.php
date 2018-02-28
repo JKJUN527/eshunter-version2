@@ -81,7 +81,7 @@
                 <span>邮箱：</span>
                 <input type="text" onkeydown="enterregist()" placeholder="请填写邮箱" value="" name="" class="number bsie7 emil_hrResist" id="email">
                 
-                <div for="email" class="baocuo error error_msg_1" style="display: inline-block;width: 60%;"></div>
+                <div for="email" class="baocuo error error_msg_1" ></div>
               </div>
             </div>
 
