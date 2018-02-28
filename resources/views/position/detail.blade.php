@@ -324,10 +324,10 @@
         {{--</dl>--}}
 
     </div>
-    <div class="content_r">
+    <div class="content_r" >
         <dl class="job_company" id="job_company">
             <dt>
-                <a href="#" target="_blank">
+                <a href="/company" target="_blank">
                     @if($data['enprinfo'][0]->elogo == null)
                         <img  class="b2" src="../images/pic0.jpg" width="96" height="96"/>
                     @else
