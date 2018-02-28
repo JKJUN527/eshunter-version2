@@ -82,6 +82,9 @@
 .userinfo_edit .hadInfo .man {
     background: url(../images/icon-man.png) no-repeat;
 }
+.userinfo_edit .hadInfo .woman{
+    background: url(../images/icongril.png) no-repeat;
+}
 .userinfo_edit .hadInfo .icon-gender {
     display: inline-block;
     width: 16px;
@@ -118,6 +121,11 @@
 .userinfo_edit .input_box {
     margin-bottom: 20px;
     position: relative;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #ededed;
+    transition: border .2s ease-in 0s;
 }
 .userinfo_edit input[type=text], .userinfo_edit textarea {
     display: block;
@@ -128,11 +136,18 @@
     padding: 12px 0;
     font-size: 14px;
     color: #555;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 1px solid #ededed;
+    border: 0px;
+    /*border-left: 0;*/
+    /*border-top: 0;*/
+    /*border-right: 0;*/
+    /*border-bottom: 1px solid #ededed;*/
     transition: border .2s ease-in 0s;
+}
+.input_box .help-info{
+    float: right;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #999;
 }
 
 input[type=text], input[type=password], textarea {
@@ -152,6 +167,8 @@ input[type=text], input[type=password] {
 .userinfo_edit .userinfo_sex {
     height: 26px;
     line-height: 26px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .magic-radio, .magic-checkbox {
     position: absolute;
@@ -293,26 +310,26 @@ input[type=text], input[type=password] {
     height: 13px;
     background: #3a3a3a;
     opacity: .5;
-    filter: alpha(opacity=50;);
+    filter: alpha(opacity=50);
 }
 #cboxTopCenter {
     height: 13px;
     background: #3a3a3a;
     opacity: .5;
-    filter: alpha(opacity=50;);
+    filter: alpha(opacity=50);
 }
 #cboxTopRight {
     width: 13px;
     height: 13px;
     background: #3a3a3a;
     opacity: .5;
-    filter: alpha(opacity=50;);
+    filter: alpha(opacity=50);
 }
 #cboxMiddleLeft {
     width: 13px;
     background: #3a3a3a;
     opacity: .5;
-    filter: alpha(opacity=50;);
+    filter: alpha(opacity=50);
 }
 
 #cboxMiddleLeft, #cboxBottomLeft {
