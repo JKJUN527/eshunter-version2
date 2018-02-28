@@ -20,13 +20,17 @@
 <div class="containter_box">
     <div style="margin-top: 0; padding-bottom: 0;" class="containter">
             <div class="crumbs">
-                <a title="" href="company.html?techtag=8">移动互联网</a><strong>></strong>
+                <a href="http://eshunter.com">电竞猎人</a><strong>></strong>
                 <span>公司信息</span>
             </div>
         <div class="gsxxi_top">
             <div style="margin-right:15px; margin-left:30px;" class="left">
                 <div class="gs_logoimg">
-                    <img class="left logo" alt="摩天轮" title="摩天轮" onerror="javascript:this.src='images/gsLOGO.jpg'" src="../images/GO6VtZ1mlfTspfgS.png">
+                    @if($data['enprinfo']->elogo == null)
+                        <img class="left logo" src="{{asset('images/default-img.png')}}">
+                    @else
+                        <img class="left logo" src="{{$data['enprinfo']->elogo}}">
+                    @endif
                 </div>
             </div>
             <div class="left gsxxi_con">                
@@ -36,28 +40,63 @@
                         <i class="praise "></i>
                     </div>
                     <div style=" width:100%; overflow: hidden;">
-                        <h2>摩天轮</h2>
-                        <h3>广州市摩天轮网络科技有限公司</h3>
+                        <h2>{{$data['enprinfo']->byname or "公司别名未填写"}}</h2>
+                        <h3>{{$data['enprinfo']->ename or "公司名称未填写"}}</h3>
                     </div>                  
                 </div>
                 <div style="margin:25px 0 5px;  width:100%; overflow:hidden;">
                     <div class="onetalk">
-                        电竞传媒 | 民营企业 | 10～50人
+                        @if($data['enprinfo']->industry == null)
+                            行业未知
+                        @else
+                            @foreach($data['industry'] as $item)
+                                @if($data['enprinfo']->industry == $item->id)
+                                    {{$item->name}}
+                                @endif
+                            @endforeach
+                        @endif |
+
+                        @if($data['enprinfo']->enature == null || $data['enprinfo']->enature == 0)
+                                企业类型未知
+                        @elseif($data['enprinfo']->enature == 1)
+                                国有企业
+                        @elseif($data['enprinfo']->enature == 2)
+                                民营企业
+                        @elseif($data['enprinfo']->enature == 3)
+                                中外合资企业
+                        @elseif($data['enprinfo']->enature == 4)
+                                外资企业
+                        @elseif($data['enprinfo']->enature == 5)
+                                社会团体
+                        @endif|
+
+                            @if($data['enprinfo']->escale == null)
+                                规模未知
+                            @elseif($data['enprinfo']->escale == 0)
+                                10人以下
+                            @elseif($data['enprinfo']->escale == 1)
+                                10～50人
+                            @elseif($data['enprinfo']->escale == 2)
+                                50～100人
+                            @elseif($data['enprinfo']->escale == 3)
+                                100～500人
+                            @elseif($data['enprinfo']->escale == 4)
+                                500～1000人
+                            @elseif($data['enprinfo']->escale == 5)
+                                1000人以上
+                            @endif
                     </div>
                 </div>
                 <div class="welfare">
-                     <label class="c1"><i>股票期权</i><em></em></label>
-                     <label class="c2"><i>提升快</i><em></em></label>
-                     <label class="c3"><i>年度游玩</i><em></em></label>
-                     <label class="c4"><i>五险一金</i><em></em></label>
-                     <label class="c1"><i>弹性工作</i><em></em></label>
-                     <label class="c2"><i>节日礼物</i><em></em></label>
-                     <label class="c3"><i>年终奖金</i><em></em></label>
-                     <label class="c4"><i>年度分红</i><em></em></label>
-                     <label class="c1"><i>带薪年假</i><em></em></label>
-                     <label class="c2"><i>专项奖金</i><em></em></label>
-                     <label class="c3"><i>美女多</i><em></em></label>
-                     <label class="c4"><i>帅哥多</i><em></em></label>
+                    @foreach($data['tag'] as $tag)
+                        <label class="c1"><i>
+                                @if($tag == '')
+                                    暂无标签
+                                @else
+                                    {{$tag}}
+                                @endif
+                            </i><em></em></label>
+                    @endforeach
                </div>
             </div>
         </div>
@@ -67,7 +106,7 @@
                 <div class="company_presentation">
                     <p class="p_Label"><span>公司介绍</span></p>
                     <div class="company_presentation_con">
-                      我们：<br><br>大家可能都用过QQ、微信、facebook,它们无一例外都是拥有庞大的用户量。几亿的用户里面有多少人跟我们存在联系？多少人认识我？多少人愿意帮助我？多少人我愿意帮助他？也许只有几十人甚至更少，那如此大的用户量跟我又有什么关系呢？ <br>很多普通人并不优秀但是他们还是非常乐观的消费着各种各样的东西，但是很多商品很多服务他们根本消费不起，于是他们选择了信用卡预支消费变成卡奴，背负着各种压力生活着。 <br><br>摩天轮-互筹社交：让每一个人帮助别人，让每一个人帮助你。 
+                        {!! $data['enprinfo']->ebrief or "公司简介暂无" !!}
                     </div>
                 </div>
                 <!-- 公司实拍 -->
@@ -75,206 +114,101 @@
                 <div class="product_presentation">
                 </div>              
                 <div class="The_job">
-                    <p class="p_Label"><span>在招职位</span><font>该公司近一个月共发布5个招聘职位</font></p>
+                    <p class="p_Label"><span>在招职位</span><font>该公司共发布{!! $data['position']->total() !!}个招聘职位</font></p>
                     <div class="The_job_con">
                         <ul class="jieshao_list hotjobs" style="display: block;">
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="#">王者荣耀职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                            @foreach($data['position'] as $position)
+                            <li>
+                                <div class="jieshao_list_left left">
+                                    <div class="list_top">
+                                        <div class="clearfix pli_top">
+                                            <div class="position_name left">
+                                                <h2 class="dib">
+                                                    <a href="/position/detail?pid={{$position->pid}}">
+                                                        {{mb_substr($position->title,0,11,'utf-8')}}
+                                                    </a>
+                                                </h2>
+                                                <span class="create_time">[{{substr($position->updated_at,0,10)}}]</span>
+                                            </div>
+                                            <span class="salary right">
+                                                @if($position->salary == -1)
+                                                    工资面议
+                                                @else
+                                                    {{$position->salary/1000}}K-
+                                                    @if($position->salary_max == -1)
+                                                        无上限
+                                                    @else
+                                                        {{$position->salary_max/1000}}K
+                                                    @endif
+                                                @endif
+                                            </span>
+                                        </div>
+                                        <div class="position_main_info">
+                                           <span>
+                                               @if($position->work_nature == 0)
+                                                   兼职
+                                               @elseif($position->work_nature == 1)
+                                                   实习
+                                               @else
+                                                   全职
+                                               @endif
+                                            </span>
+                                            <span>
+                                                @if($position->education == -1)
+                                                    无学历要求
+                                                @elseif($position->education == 0)
+                                                    高中及以上
+                                                @elseif($position->education == 3)
+                                                    专科及以上
+                                                @elseif($position->education == 1)
+                                                    本科及以上
+                                                @elseif($position->education == 2)
+                                                    研究生及以上
+                                                @endif
+                                            </span>
+                                        </div>
+                                        <div class="lebel">
+                                            <div class="lebel_item">
+                                                @if($position->tag ==="" || $position->tag ===null)
+                                                    <span class="wordCut">无标签</span>
+                                                @else
+                                                    @foreach(preg_split("/(,| |、|;)/",$position->tag) as $tag)
+                                                        <span class="wordCut">{{$tag}}</span>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="salary right">10K-20k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>无经验</span>
-                                    <span>不限</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
-                             </div>
-                
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="#">EDG俱乐部</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏服务、游戏运营</span>
-                                        <span>未融资</span>
-                                        <span>成都-高新pli-btm</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="#">NB2K职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">5K-7k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>经验1年左右</span>
-                                    <span>高中</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
-                             </div>
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="../images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="#">斗鱼俱乐部</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏直播</span>
-                                        <span>A轮</span>
-                                        <span>上海</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">10K-15k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>经验3-5年</span>
-                                    <span>本科</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
+
+                                    <div class="pli_btm">
+                                        <a href="/company?eid={{$position->eid}}" class="left">
+                                            <img
+                                                    @if($position->elogo === "" ||$position->elogo === null)
+                                                    src="../images/pic0.jpg"
+                                                    @else
+                                                    src="{{$position->elogo}}"
+                                                    @endif
+                                                    alt="公司logo" class="company-logo" width="40" height="40">
+                                        </a>
+                                        <div class="bottom-right">
+                                            <div class="company_name wordCut">
+                                                <a href="/company?eid={{$position->eid}}">
+                                                    @if($position->byname != "")
+                                                        {{$position->byname}}
+                                                    @else
+                                                        {{$position->ename}}
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <div class="industry wordCut">
+                                                <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                             </div>
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="#">蓝洞游戏公司</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏服务</span>
-                                        <span>上市</span>
-                                        <span>美国</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">10K-15k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>经验3-5年</span>
-                                    <span>本科</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
-                             </div>
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="#">蓝洞游戏公司</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏服务</span>
-                                        <span>上市</span>
-                                        <span>美国</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">10K-15k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>经验3-5年</span>
-                                    <span>本科</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
-                             </div>
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="../images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="#">蓝洞游戏公司</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏服务</span>
-                                        <span>上市</span>
-                                        <span>美国</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
-                </ul>
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div> 
