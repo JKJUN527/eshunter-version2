@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '新闻详情')
+@section('title', '公司详情')
 
 @section('custom-style')
  <link media="all" href="{{asset('../style/gsxx.css?v=2.40')}}" type="text/css" rel="stylesheet">
@@ -41,7 +41,9 @@
                     </div>                  
                 </div>
                 <div style="margin:25px 0 5px;  width:100%; overflow:hidden;">
-                    <div class="onetalk"></div>
+                    <div class="onetalk">
+                        电竞传媒 | 民营企业 | 10～50人
+                    </div>
                 </div>
                 <div class="welfare">
                      <label class="c1"><i>股票期权</i><em></em></label>
@@ -277,7 +279,7 @@
                 </div>
             </div> 
             <!-- 公司信息 -->
-            <div class="gs_part right">             
+            <!-- <div class="gs_part right">             
                 <ul class="company_brief">
                     <p class="p_Label p_Label_pos"><span class="gray">公司信息</span></p> 
                     <li><span class="liwai">城市：</span><em>广州</em></li>
@@ -288,7 +290,7 @@
                         <span class="liwai">融资：</span><em>天使轮</em>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>           
     </div>
 </div>
