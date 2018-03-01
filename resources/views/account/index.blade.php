@@ -4,6 +4,7 @@
     @section('custom-style')
        <link media="all" href="{{asset('style/ResumePreview.css?v=2.40')}}" type="text/css" rel="stylesheet">
        <link media="all" href="{{asset('style/onlineresume.css?v=2.40')}}" type="text/css" rel="stylesheet">
+       <link media="all" href="{{asset('style/tao.css')}}" type="text/css" rel="stylesheet">
        <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
         <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
         <script src="{{asset('js/')}}" type="text/javascript"></script> 
@@ -25,6 +26,35 @@
             margin: 0 auto;
             padding-bottom: 15px;
             margin-top: 36px;
+        }
+        .jieshao_list li {
+            width: 31.77%;
+        }
+        .position_name {
+            min-width: 230px;
+        }
+        .mdl-card__actions .resume-item p {
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 7px;
+    margin-left: -10px;
+    cursor: pointer;
+}
+        .mdl-card__actions .resume-item{
+            margin:10px auto;
+            display: inline-block;
+            width: 49%;
+        }
+        .mdl-card__actions span.myhidden{
+            font-size: 20px;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+        }
+        .mdl-card__actions{
+            /*text-align: center;*/
+            color: #fff;
         }
         </style>
     @endsection
@@ -67,105 +97,234 @@
                     </div>
                 </div>
             </div>
-            <div class="jieshao_list">
-    <!-- 职位改之后 -->
-    <p>推荐职位</p>
-    <ul class="jieshao_list companydiv">
-        <li>
-            <div class="gsdiv">
-                <p class="b7">
-                    <a href="/position/detail?pid=194" target="_blank" class="zw_name">
-                                                                                        绝地求生男选手
-                                                                                </a> [长沙]
-                </p>
-                <div class="brif">
-                    <font style="color: #fd5f39;font-size: 15px">
-                        3k- 15k 元/月
-                    </font>
-                    <span>|</span>GHG电子竞技俱乐部成立于20
-                </div>
-                <div class="div_s">
-                    <span>个人保险</span>
-                </div>
-                <div class="brif">
-                    <button class="deliver-resume toujianli" data-content="194" data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
+            <!-- <div class="my-resume">
+                <p class="p_Label"><span>我的简历</span></p>
+                <div class="mdl-card__actions mdl-card--border resume-panel">
+                    <div class="resume-item resume-bg">
+                        <a to="/resume/add?rid=18"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                        <p>简历2</p>
+                    </div>
+                    <div class="resume-item">
+                        <a to="/resume/add?rid=19"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                        <p>未命名简历</p>
+                    </div>
+                    <div class="resume-item">
+                        <a to="/resume/add?rid=196"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                        <p>未命名简历</p>
+                    </div>
                 </div>
             </div>
-        </li>
-        <li>
-            <div class="gsdiv">
-                <p class="b7">
-                    <a href="/position/detail?pid=193" target="_blank" class="zw_name">
-                                                                                        资深媒介
-                                                                                </a> [上海]
-                </p>
-                <div class="brif">
-                    <font style="color: #fd5f39;font-size: 15px">
-                        月薪面议
-                    </font>
-                    <span>|</span>
-                </div>
-                <div class="div_s">
-                    <span>五险一金，带薪假期</span>
-                </div>
-                <div class="brif">
-                    <button class="deliver-resume toujianli" data-content="193" data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
+ -->            <div class="The_job">
+                <p class="p_Label"><span>为你推荐</span></p>
+                <div class="The_job_con">
+                    <ul class="jieshao_list hotjobs" style="display: block;">
+                        <li>
+                            <div class="jieshao_list_left left">
+                                <div class="list_top">
+                                    <div class="clearfix pli_top">
+                                        <div class="position_name left">
+                                            <h2 class="dib"><a href="#">王者荣耀职业玩家</a></h2>
+                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                        </div>
+                                        <span class="salary right">10K-20k</span>
+                                    </div>
+                                    <div class="position_main_info">
+                                        <span>无经验</span>
+                                        <span>不限</span>
+                                    </div>
+                                    <div class="lebel">
+                                        <div class="lebel_item">
+                                            <span class="wordCut">包吃住</span>
+                                            <span class="wordCut">陪玩</span>
+                                            <span class="wordCut">代打</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pli_btm">
+                                    <a href="#" class="left">
+                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                            </a>
+                                    <div class="bottom-right">
+                                        <div class="company_name wordCut">
+                                            <a href="#">EDG俱乐部</a>
+                                        </div>
+                                        <div class="industry wordCut">
+                                            <span>游戏服务、游戏运营</span>
+                                            <span>未融资</span>
+                                            <span>成都-高新pli-btm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jieshao_list_left left">
+                                <div class="list_top">
+                                    <div class="clearfix pli_top">
+                                        <div class="position_name left">
+                                            <h2 class="dib"><a href="#">NB2K职业玩家</a></h2>
+                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                        </div>
+                                        <span class="salary right">5K-7k</span>
+                                    </div>
+                                    <div class="position_main_info">
+                                        <span>经验1年左右</span>
+                                        <span>高中</span>
+                                    </div>
+                                    <div class="lebel">
+                                        <div class="lebel_item">
+                                            <span class="wordCut">包吃住</span>
+                                            <span class="wordCut">陪玩</span>
+                                            <span class="wordCut">代打</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pli_btm">
+                                    <a href="#" class="left">
+                                                <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
+                                            </a>
+                                    <div class="bottom-right">
+                                        <div class="company_name wordCut">
+                                            <a href="#">斗鱼俱乐部</a>
+                                        </div>
+                                        <div class="industry wordCut">
+                                            <span>游戏直播</span>
+                                            <span>A轮</span>
+                                            <span>上海</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jieshao_list_left left">
+                                <div class="list_top">
+                                    <div class="clearfix pli_top">
+                                        <div class="position_name left">
+                                            <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
+                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                        </div>
+                                        <span class="salary right">10K-15k</span>
+                                    </div>
+                                    <div class="position_main_info">
+                                        <span>经验3-5年</span>
+                                        <span>本科</span>
+                                    </div>
+                                    <div class="lebel">
+                                        <div class="lebel_item">
+                                            <span class="wordCut">包吃住</span>
+                                            <span class="wordCut">陪玩</span>
+                                            <span class="wordCut">代打</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pli_btm">
+                                    <a href="#" class="left">
+                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                            </a>
+                                    <div class="bottom-right">
+                                        <div class="company_name wordCut">
+                                            <a href="#">蓝洞游戏公司</a>
+                                        </div>
+                                        <div class="industry wordCut">
+                                            <span>游戏服务</span>
+                                            <span>上市</span>
+                                            <span>美国</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jieshao_list_left left">
+                                <div class="list_top">
+                                    <div class="clearfix pli_top">
+                                        <div class="position_name left">
+                                            <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
+                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                        </div>
+                                        <span class="salary right">10K-15k</span>
+                                    </div>
+                                    <div class="position_main_info">
+                                        <span>经验3-5年</span>
+                                        <span>本科</span>
+                                    </div>
+                                    <div class="lebel">
+                                        <div class="lebel_item">
+                                            <span class="wordCut">包吃住</span>
+                                            <span class="wordCut">陪玩</span>
+                                            <span class="wordCut">代打</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pli_btm">
+                                    <a href="#" class="left">
+                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                            </a>
+                                    <div class="bottom-right">
+                                        <div class="company_name wordCut">
+                                            <a href="#">蓝洞游戏公司</a>
+                                        </div>
+                                        <div class="industry wordCut">
+                                            <span>游戏服务</span>
+                                            <span>上市</span>
+                                            <span>美国</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jieshao_list_left left">
+                                <div class="list_top">
+                                    <div class="clearfix pli_top">
+                                        <div class="position_name left">
+                                            <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
+                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                        </div>
+                                        <span class="salary right">10K-15k</span>
+                                    </div>
+                                    <div class="position_main_info">
+                                        <span>经验3-5年</span>
+                                        <span>本科</span>
+                                    </div>
+                                    <div class="lebel">
+                                        <div class="lebel_item">
+                                            <span class="wordCut">包吃住</span>
+                                            <span class="wordCut">陪玩</span>
+                                            <span class="wordCut">代打</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pli_btm">
+                                    <a href="#" class="left">
+                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+                                            </a>
+                                    <div class="bottom-right">
+                                        <div class="company_name wordCut">
+                                            <a href="#">蓝洞游戏公司</a>
+                                        </div>
+                                        <div class="industry wordCut">
+                                            <span>游戏服务</span>
+                                            <span>上市</span>
+                                            <span>美国</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </li>
-        <li>
-            <div class="gsdiv">
-                <p class="b7">
-                    <a href="/position/detail?pid=192" target="_blank" class="zw_name">
-                                                                                        产品助理
-                                                                                </a> [上海]
-                </p>
-                <div class="brif">
-                    <font style="color: #fd5f39;font-size: 15px">
-                        月薪面议
-                    </font>
-                    <span>|</span>
-                </div>
-                <div class="div_s">
-                    <span>五险一金，带薪假期，工作时间自由</span>
-                </div>
-                <div class="brif">
-                    <button class="deliver-resume toujianli" data-content="192" data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="gsdiv">
-                <p class="b7">
-                    <a href="/position/detail?pid=191" target="_blank" class="zw_name">
-                                                                                        PHP工程师
-                                                                                </a> [上海]
-                </p>
-                <div class="brif">
-                    <font style="color: #fd5f39;font-size: 15px">
-                        月薪面议
-                    </font>
-                    <span>|</span>高手电竞是专门为电竞爱好者学习
-                </div>
-                <div class="div_s">
-                    <span>无标签</span>
-                </div>
-                <div class="brif">
-                    <button class="deliver-resume toujianli" data-content="191" data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
         </div>
         <div class="online_right right">
             <div class="wodebiaoqian">
                 <div class="tdfk1">
-                    <a class="a1" href="/mr/">投递反馈</a>
-                    <a class="a2" href="javascript:void(0);">求推荐</a>
+                    <a class="a1" href="/message"  target="_blank">未读消息</a>
+                    <a class="a2" href="/position/advanceSearch">推荐职位</a>
                     <!--<a href="javascript:void(0);" class="a3" onclick="document.getElementById('f_jianli').click()" class="upload_jianli">上传简历</a>-->
                     <div class="yishangchuan_pos">
-                        <a class="upload_a upload_jianli a3" href="javascript:void(0);">上传简历</a>
+                        <a class="upload_a upload_jianli a3" href="/position/applyList" target="_blank">申请记录</a>
                         <!--鼠标滑过预览和删除-->
                         <div class="yishangchuan_hover" style="display: none;">
                             <span></span>
@@ -175,23 +334,38 @@
                     </div>
                 </div>
                 <div class="default_send">
-                    <div>默认投递：</div>
+                    <!-- <div>默认投递：</div>
                     <div class="seles ">
                         <span class="seles_choose ">请选择</span>
                         <ul class="seles_hide moren default_jianli">
                             <li v="0">在线简历</li>
                             <li v="1">附件简历</li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="my_labels my_labelsie">
-                    <div class="compete_percent"><span style="" class="myhidden">在线简历完整度</span><a class="xz_a" href="/ro/downloadR/335729/profile/黄金/pdf" target="_blank">下载</a><a target="_blank" href="/ro/selfyulan">预览</a></div>
+                <div class="mdl-card__actions mdl-card--border resume-panel">
+                    <span style="" class="myhidden">我的简历</span>
+                    <div class="resume-item resume-bg">
+                        <a to="/resume/add?rid=18"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                        <p>简历2</p>
+                    </div>
+                    <div class="resume-item">
+                        <a to="/resume/add?rid=19"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                        <p>未命名简历</p>
+                    </div>
+                    <div class="resume-item">
+                        <a to="/resume/add?rid=196"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                        <p>未命名简历</p>
+                    </div>
+                </div>
+                    <!-- <div class="compete_percent"><span style="" class="myhidden">在线简历完整度</span><a class="xz_a" href="/ro/downloadR/335729/profile/黄金/pdf" target="_blank">下载</a><a target="_blank" href="/ro/selfyulan">预览</a></div>
                     <div style="" data-perc="20" class="progressbar myhidden">
                         <div class="bar" style="width: 41px;"><span></span></div>
                         <div class="label">
                             <div class="perc">20%</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="display: none;" class="my_labels">
                     <p>附件简历</p>
@@ -210,10 +384,8 @@
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+
+
 
     @endsection
 
