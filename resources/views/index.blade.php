@@ -117,15 +117,14 @@
                                             <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
                                         </div>
                                         <span class="salary right">
-                                        @if($position->salary == -1)
-                                                工资面议
+                                        @if($position->salary <= 0)
+                                                月薪面议
                                             @else
-                                                {{$position->salary/1000}}K-
-                                                @if($position->salary_max == -1)
-                                                    无上限
-                                                @else
-                                                    {{$position->salary_max/1000}}K
+                                                {{$position->salary/1000}}k-
+                                                @if($position->salary_max ==0) 无上限
+                                                @else {{$position->salary_max/1000}}k
                                                 @endif
+                                                元/月
                                             @endif
                                     </span>
                                     </div>

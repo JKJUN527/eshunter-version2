@@ -78,12 +78,18 @@ class PersonCenterController extends Controller {
         $pid = array();
 //        return $degree['education'];
         foreach ($intentions as $item) {
-            $result = Position::where('position_status', '=', 1)
+            $result = DB::table('jobs_position')
+                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->where(function ($query){//职位状态
+                    $query->where('position_status',1)
+                        ->orwhere('position_status',4);
+                })
                 ->where(function($query) use ($item,$degree){
-                    $query->where('work_nature', '=', $item->work_nature )
-                        ->orwhere('education', '<=', $degree['education'])
-                        ->orwhere('industry', '=', $item->industry)
-                        ->orwhere('occupation', '=', $item->occupation );
+                    $query->where('jobs_position.work_nature', '=', $item->work_nature )
+                        ->orwhere('jobs_position.education', '<=', $degree['education'])
+                        ->orwhere('jobs_position.industry', '=', $item->industry)
+                        ->orwhere('jobs_position.occupation', '=', $item->occupation );
 //                        ->orWhere(function ($query) use ($degree,$item){
 //                            $query->where('education', '<=', $degree['education'])
 //                                ->orWhere(function ($query) use($item){
@@ -98,45 +104,57 @@ class PersonCenterController extends Controller {
                 ->take(5)
                 ->get();
             foreach ($result as $item1){
-                if(in_array($item1['pid'],$pid)){
+                if(in_array($item1->pid,$pid)){
                     continue;
                 }
-                $pid[] = $item1['pid'];
+                $pid[] = $item1->pid;
                 $data['position'][] = $item1;
             }
 
         }
-            $result2= Position::where('position_status', '=', 1)
+            $result2=DB::table('jobs_position')
+                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->where(function ($query){//职位状态
+                    $query->where('position_status',1)
+                        ->orwhere('position_status',4);
+                })
                 ->where('is_urgency', '=', 1)
                 ->get();
             foreach ($result2 as $item){
-                if(in_array($item['pid'],$pid)){
+                if(in_array($item->pid,$pid)){
                     continue;
                 }
-                $pid[] = $item['pid'];
+                $pid[] = $item->pid;
                 $data['position'][] = $item;
             }
-            $result3= Position::where('position_status', '=', 1)
+            $result3= DB::table('jobs_position')
+                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->where(function ($query){//职位状态
+                    $query->where('position_status',1)
+                        ->orwhere('position_status',4);
+                })
                 ->orderBy('view_count','desc')
                 ->take(5)
                 ->get();
 
             foreach ($result3 as $item){
-                if(in_array($item['pid'],$pid)){
+                if(in_array($item->pid,$pid)){
                     continue;
                 }
-                $pid[] = $item['pid'];
+                $pid[] = $item->pid;
                 $data['position'][] = $item;
             }
         //需要让多维数组变成一维数组
         //返回相关企业名称
         $eid = array();
         foreach ($data['position'] as $item){
-            if(in_array($item['eid'],$eid)){
+            if(in_array($item->eid,$eid)){
                 continue;
             }
-            $eid[] = $item['eid'];
-            $data['enprinfo'][$item['eid']] = Enprinfo::select('ename','byname','elogo')->find($item['eid']);
+            $eid[] = $item->eid;
+            $data['enprinfo'][$item->eid] = Enprinfo::select('ename','byname','elogo')->find($item->eid);
         }
 
         return $data;

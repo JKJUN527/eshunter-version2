@@ -56,6 +56,12 @@
             /*text-align: center;*/
             color: #fff;
         }
+        .resume-bg {
+            border-radius: 2px;
+            background-color: #03A9F4;
+            color: #ffffff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        }
         </style>
     @endsection
     @section('content')
@@ -80,239 +86,145 @@
                 </a>
                 <div class="Resume_con">
                     <div class="Resume_conLeft">
-                        <p class="p_educate">大专</p>
-                        <p class="p_gzjy">1年工作经验</p>
+                        <p class="p_educate">
+                            @if($data['personInfo'][0]->education == 9)
+                                未填写最高学历
+                            @elseif($data['personInfo'][0]->education == 0)
+                                高中
+                            @elseif($data['personInfo'][0]->education == 1)
+                                本科
+                            @elseif($data['personInfo'][0]->education == 2)
+                                研究生及以上
+                            @elseif($data['personInfo'][0]->education == 3)
+                                大专
+                            @endif
+                        </p>
+                        <p class="p_gzjy">
+                            @if($data['personInfo'][0]->work_year == "" ||$data['personInfo'][0]->work_year == null)
+                                未填写工作经验
+                            @else
+                                {{date('Y')-$data['personInfo'][0]->work_year}}年工作经验
+                            @endif
+                        </p>
                         <p class="p_brithday"></p>
                     </div>
                     <div class="Resume_conCenter">
                         <dl>
-                            <dt><img onerror="javascript:this.src='images/d_default.png'" src="images/d_default.png"></dt>
-                            <dd><em>黄金</em><span class="gender boy"></span></dd>
+                            <dt>
+                                @if($data['personInfo'][0]->photo == null)
+                                    <img  src="{{asset('images/default-img.png')}}">
+                                @else
+                                    <img src="{{$data['personInfo'][0]->photo}}">
+                                @endif
+                            </dt>
+                            <dd><em>{{$data['personInfo'][0]->pname or "姓名未填写"}}</em><span class="gender @if($data['personInfo'][0]->sex == 1) boy @else woman @endif"></span></dd>
                         </dl>
                     </div>
                     <div class="Resume_conRight">
-                        <p class="p_phone phone">18005151538</p>
-                        <p class="p_emil email">416148489@qq.com</p>
-                        <p class="p_now currentstate">暂时不想找工作</p>
+                        <p class="p_phone phone">{{$data['personInfo'][0]->tel or "手机号未填写"}}</p>
+                        <p class="p_emil email"> {{$data['personInfo'][0]->mail or "邮箱未填写"}}</p>
+                        <p class="p_now currentstate">{{$data['personInfo'][0]->self_evalu or "自我评价未填写"}}</p>
                     </div>
                 </div>
             </div>
-            <!-- <div class="my-resume">
-                <p class="p_Label"><span>我的简历</span></p>
-                <div class="mdl-card__actions mdl-card--border resume-panel">
-                    <div class="resume-item resume-bg">
-                        <a to="/resume/add?rid=18"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
-                        <p>简历2</p>
-                    </div>
-                    <div class="resume-item">
-                        <a to="/resume/add?rid=19"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
-                        <p>未命名简历</p>
-                    </div>
-                    <div class="resume-item">
-                        <a to="/resume/add?rid=196"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
-                        <p>未命名简历</p>
-                    </div>
-                </div>
-            </div>
- -->            <div class="The_job">
+          <div class="The_job">
                 <p class="p_Label"><span>为你推荐</span></p>
                 <div class="The_job_con">
                     <ul class="jieshao_list hotjobs" style="display: block;">
+                        <?php
+                        $index = 0;
+                        ?>
+
+                        @foreach($data["recommendPosition"]["position"] as $position)
+                            @if(++$index <= 9)
                         <li>
                             <div class="jieshao_list_left left">
                                 <div class="list_top">
                                     <div class="clearfix pli_top">
                                         <div class="position_name left">
-                                            <h2 class="dib"><a href="#">王者荣耀职业玩家</a></h2>
-                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                            <h2 class="dib"><a href="/position/detail?pid={{$position->pid}}">{{mb_substr($position->title,0,9,'utf-8')}}</a></h2>
+                                            <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
                                         </div>
-                                        <span class="salary right">10K-20k</span>
+                                        <span class="salary right">
+                                        @if($position->salary <= 0)
+                                                月薪面议
+                                            @else
+                                                {{$position->salary/1000}}k-
+                                                @if($position->salary_max ==0) 无上限
+                                                @else {{$position->salary_max/1000}}k
+                                                @endif
+                                                元/月
+                                            @endif
+                                    </span>
                                     </div>
                                     <div class="position_main_info">
-                                        <span>无经验</span>
-                                        <span>不限</span>
+                                    <span>
+                                        @if($position->work_nature == 0)
+                                            兼职
+                                        @elseif($position->work_nature == 1)
+                                            实习
+                                        @else
+                                            全职
+                                        @endif
+                                    </span>
+                                        <span>
+                                        @if($position->education == -1)
+                                                无学历要求
+                                            @elseif($position->education == 0)
+                                                高中及以上
+                                            @elseif($position->education == 3)
+                                                专科及以上
+                                            @elseif($position->education == 1)
+                                                本科及以上
+                                            @elseif($position->education == 2)
+                                                研究生及以上
+                                            @endif
+                                    </span>
                                     </div>
                                     <div class="lebel">
                                         <div class="lebel_item">
-                                            <span class="wordCut">包吃住</span>
-                                            <span class="wordCut">陪玩</span>
-                                            <span class="wordCut">代打</span>
+                                            @if($position->tag ==="" || $position->tag ===null)
+                                                <span class="wordCut">无标签</span>
+                                            @else
+                                                @foreach(preg_split("/(,| |、)/",$position->tag) as $tag)
+                                                    <span class="wordCut">{{$tag}}</span>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="pli_btm">
-                                    <a href="#" class="left">
-                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                            </a>
+                                    <a href="/company?eid={{$position->eid}}" class="left">
+                                        <img
+                                                @if($position->elogo === "" ||$position->elogo === null)
+                                                src="../images/pic0.jpg"
+                                                @else
+                                                src="{{$position->elogo}}"
+                                                @endif
+                                                alt="公司logo" class="company-logo" width="40" height="40">
+                                    </a>
                                     <div class="bottom-right">
                                         <div class="company_name wordCut">
-                                            <a href="#">EDG俱乐部</a>
+                                            <a href="/company?eid={{$position->eid}}">
+                                                @if($position->byname != "")
+                                                    {{$position->byname}}
+                                                @else
+                                                    {{$position->ename}}
+                                                @endif
+                                            </a>
                                         </div>
                                         <div class="industry wordCut">
-                                            <span>游戏服务、游戏运营</span>
-                                            <span>未融资</span>
-                                            <span>成都-高新pli-btm</span>
+                                            <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
+                                            {{--<span>未融资</span>--}}
+                                            {{--<span>成都-高新pli-btm</span>--}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="jieshao_list_left left">
-                                <div class="list_top">
-                                    <div class="clearfix pli_top">
-                                        <div class="position_name left">
-                                            <h2 class="dib"><a href="#">NB2K职业玩家</a></h2>
-                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                        </div>
-                                        <span class="salary right">5K-7k</span>
-                                    </div>
-                                    <div class="position_main_info">
-                                        <span>经验1年左右</span>
-                                        <span>高中</span>
-                                    </div>
-                                    <div class="lebel">
-                                        <div class="lebel_item">
-                                            <span class="wordCut">包吃住</span>
-                                            <span class="wordCut">陪玩</span>
-                                            <span class="wordCut">代打</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pli_btm">
-                                    <a href="#" class="left">
-                                                <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
-                                            </a>
-                                    <div class="bottom-right">
-                                        <div class="company_name wordCut">
-                                            <a href="#">斗鱼俱乐部</a>
-                                        </div>
-                                        <div class="industry wordCut">
-                                            <span>游戏直播</span>
-                                            <span>A轮</span>
-                                            <span>上海</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jieshao_list_left left">
-                                <div class="list_top">
-                                    <div class="clearfix pli_top">
-                                        <div class="position_name left">
-                                            <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                        </div>
-                                        <span class="salary right">10K-15k</span>
-                                    </div>
-                                    <div class="position_main_info">
-                                        <span>经验3-5年</span>
-                                        <span>本科</span>
-                                    </div>
-                                    <div class="lebel">
-                                        <div class="lebel_item">
-                                            <span class="wordCut">包吃住</span>
-                                            <span class="wordCut">陪玩</span>
-                                            <span class="wordCut">代打</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pli_btm">
-                                    <a href="#" class="left">
-                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                            </a>
-                                    <div class="bottom-right">
-                                        <div class="company_name wordCut">
-                                            <a href="#">蓝洞游戏公司</a>
-                                        </div>
-                                        <div class="industry wordCut">
-                                            <span>游戏服务</span>
-                                            <span>上市</span>
-                                            <span>美国</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jieshao_list_left left">
-                                <div class="list_top">
-                                    <div class="clearfix pli_top">
-                                        <div class="position_name left">
-                                            <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                        </div>
-                                        <span class="salary right">10K-15k</span>
-                                    </div>
-                                    <div class="position_main_info">
-                                        <span>经验3-5年</span>
-                                        <span>本科</span>
-                                    </div>
-                                    <div class="lebel">
-                                        <div class="lebel_item">
-                                            <span class="wordCut">包吃住</span>
-                                            <span class="wordCut">陪玩</span>
-                                            <span class="wordCut">代打</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pli_btm">
-                                    <a href="#" class="left">
-                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                            </a>
-                                    <div class="bottom-right">
-                                        <div class="company_name wordCut">
-                                            <a href="#">蓝洞游戏公司</a>
-                                        </div>
-                                        <div class="industry wordCut">
-                                            <span>游戏服务</span>
-                                            <span>上市</span>
-                                            <span>美国</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jieshao_list_left left">
-                                <div class="list_top">
-                                    <div class="clearfix pli_top">
-                                        <div class="position_name left">
-                                            <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                            <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                        </div>
-                                        <span class="salary right">10K-15k</span>
-                                    </div>
-                                    <div class="position_main_info">
-                                        <span>经验3-5年</span>
-                                        <span>本科</span>
-                                    </div>
-                                    <div class="lebel">
-                                        <div class="lebel_item">
-                                            <span class="wordCut">包吃住</span>
-                                            <span class="wordCut">陪玩</span>
-                                            <span class="wordCut">代打</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pli_btm">
-                                    <a href="#" class="left">
-                                                <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                            </a>
-                                    <div class="bottom-right">
-                                        <div class="company_name wordCut">
-                                            <a href="#">蓝洞游戏公司</a>
-                                        </div>
-                                        <div class="industry wordCut">
-                                            <span>游戏服务</span>
-                                            <span>上市</span>
-                                            <span>美国</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                            @endif
+                            @endforeach
                     </ul>
                 </div>
             </div>
@@ -320,18 +232,10 @@
         <div class="online_right right">
             <div class="wodebiaoqian">
                 <div class="tdfk1">
-                    <a class="a1" href="/message"  target="_blank">未读消息</a>
-                    <a class="a2" href="/position/advanceSearch">推荐职位</a>
+                    <a class="a1" href="/message"  target="_blank">站内信</a>
+                    <a class="a2" href="/position/advanceSearch">查找职位</a>
                     <!--<a href="javascript:void(0);" class="a3" onclick="document.getElementById('f_jianli').click()" class="upload_jianli">上传简历</a>-->
-                    <div class="yishangchuan_pos">
                         <a class="upload_a upload_jianli a3" href="/position/applyList" target="_blank">申请记录</a>
-                        <!--鼠标滑过预览和删除-->
-                        <div class="yishangchuan_hover" style="display: none;">
-                            <span></span>
-                            <div><a href="javascript:yulan();">预览</a><a href="javascript:deleteresume();">删除</a><a onclick="document.getElementById('f_jianli').click()" href="javascript:void(0);">上传</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="default_send">
                     <!-- <div>默认投递：</div>
@@ -346,18 +250,20 @@
                 <div class="my_labels my_labelsie">
                 <div class="mdl-card__actions mdl-card--border resume-panel">
                     <span style="" class="myhidden">我的简历</span>
-                    <div class="resume-item resume-bg">
-                        <a to="/resume/add?rid=18"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
-                        <p>简历2</p>
-                    </div>
-                    <div class="resume-item">
-                        <a to="/resume/add?rid=19"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
-                        <p>未命名简历</p>
-                    </div>
-                    <div class="resume-item">
-                        <a to="/resume/add?rid=196"><img src="http://eshunter.com/images/resume.png" width="100px"></a>
-                        <p>未命名简历</p>
-                    </div>
+                    @foreach($data['resumeList'] as $resume)
+                        <div class="resume-item">
+                            <a to="/resume/add?rid={{$resume->rid}}">
+                                <img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                            <p>{{$resume->resume_name}}</p>
+                        </div>
+                    @endforeach
+                    @if(count($data['resumeList']) < 3)
+                        <div class="resume-item">
+                            <a id="add-resume">
+                                <img src="{{asset('images/resume_add.png')}}" width="100px"/></a>
+                            <p>添加简历</p>
+                        </div>
+                    @endif
                 </div>
                     <!-- <div class="compete_percent"><span style="" class="myhidden">在线简历完整度</span><a class="xz_a" href="/ro/downloadR/335729/profile/黄金/pdf" target="_blank">下载</a><a target="_blank" href="/ro/selfyulan">预览</a></div>
                     <div style="" data-perc="20" class="progressbar myhidden">
@@ -390,7 +296,27 @@
     @endsection
 
     @section('custom-script')
-      
+      <script>
+          $('.resume-item').mouseenter(function () {
+              $(this).addClass("resume-bg");
+          }).mouseleave(function () {
+              $(this).removeClass("resume-bg");
+          });
+
+          $("#add-resume").click(function () {
+              $.ajax({
+                  url: "/resume/addResume",
+                  type: "get",
+                  success: function (data) {
+                      if (data['status'] === 200) {
+                          self.location = "/resume/add?rid=" + data['rid'];
+                      } else if (data['status'] === 400) {
+                          alert(data['msg']);
+                      }
+                  }
+              });
+          });
+      </script>
     @endsection
 @endif
 @if($data["type"] == 2)
@@ -1311,7 +1237,7 @@
                     $(".add_btn_wrap").hide();
                     $(".item_content_one_edit").show();
                     $(".item_cancel_add").show();
-                    
+
                 });
                 $(".cancel_add_one,.cancel_btn_one").click(function(){
                     $(".item_content_one").show();
@@ -1390,28 +1316,28 @@
                     $("tags_wrap_one").show();
                     $(".tags_wrap_one").show();
                 });
-                
+
                 /********/
                 $(function(){
                     $(".eventUlOne li").bind("click",function(){
-                        
+
                         selectedItem(this);
                     });
                 });
-                    
+
                 function selectedItem(obj){
                     var $elemThis = $(obj);
                     var txt_this = $elemThis.text();
                     $(".eventTipOne").text(txt_this);
                 };
-                
+
                 $(function(){
                     $(".info_ul_invest li").bind("click",function(){
-                        
+
                         selectedItem(this);
                     });
                 });
-                    
+
                 function selectedItem(obj){
                     var $elemThis = $(obj);
                     var txt_this = $elemThis.text();
@@ -1419,11 +1345,11 @@
                 };
                 $(function(){
                     $(".info_ul_people li").bind("click",function(){
-                        
+
                         selectedItem(this);
                     });
                 });
-                    
+
                 function selectedItem(obj){
                     var $elemThis = $(obj);
                     var txt_this = $elemThis.text();

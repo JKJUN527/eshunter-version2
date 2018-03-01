@@ -114,7 +114,7 @@
                             </div>
                             <div class="form-title">用户名</div>
                             <div class="username input_box">
-                                <input type="text" id="username" name="userName" placeholder="用户名"
+                                <input type="text" id="username" name="username" placeholder="用户名"
                                        value="{{$data['personinfo']['username']->username}}" maxlength="15" data-maxlength="15">
                                 <div class="help-info">选填，将显示在登陆界面</div>
                             </div>
@@ -257,7 +257,7 @@
 
 
                             <div class="toolbar">
-                                <a class="btn userinfo_save" href="javascript:;" >保存</a>
+                                <a class="btn userinfo_save" id="personal-info--change_button" >确认修改</a>
                             </div>
                         </form>
                         <p class="tips">* 请认真填写，该信息将同步到简历中</p>
@@ -452,5 +452,100 @@
                 }
             }
         }
+    $("#personal-info--change_button").click(function (event) {
+        event.preventDefault();
+
+        var file = $("#input-head--img");
+
+        var pname = $("input[name='pname']");
+        var username = $("input[name='username']");
+        var residence = $("input[name='residence']");
+        var registerPlace = $("input[name='register_place']");
+        var tel = $("input[name='tel']");
+        var mail = $("input[name='mail']");
+
+        // optional
+        var gender = $("input[name='sex']:checked").val();
+        var marriage = $("input[name='is_marry']:checked").val();
+        var birthday = $("input[name='birthday']").val();
+        var workYear = $("input[name='work_year']").val();
+        var political = $("select[name='political']").val();
+        var degree = $("select[name='education']").val();
+        var selfEvaluation = $("textarea[name='self_evalu']");
+
+        if (pname.val() === "") {
+            swal("","姓名不能为空","error");
+            return;
+        }
+
+        if (residence.val() === "") {
+            swal("","居住地不能为空","error");
+            return;
+        }
+
+        if (registerPlace.val() === "") {
+            swal("","户口所在地不能为空","error");
+            return;
+        }
+
+        if (tel.val() === "") {
+            swal("","联系电话不能为空","error");
+            return;
+        }
+
+        if (mail.val() === "") {
+            swal("","邮箱不能为空","error");
+            return;
+        }
+
+        if (selfEvaluation.val().length > 500) {
+            setError(selfEvaluation, "self-evaluation", "自我评价应少于500个字符");
+            return;
+        } else {
+            removeError(selfEvaluation, "self-evaluation");
+        }
+
+        var formData = new FormData();
+        formData.append("username", username.val());
+        formData.append("pname", pname.val());
+        formData.append("residence", residence.val());
+        formData.append("register_place", registerPlace.val());
+        formData.append("tel", tel.val());
+        formData.append("mail", mail.val());
+        formData.append("sex", gender);
+        formData.append("is_marry", marriage);
+        formData.append("birthday", birthday);
+        formData.append("work_year", workYear);
+        formData.append("political", political);
+        formData.append("education", degree);
+        formData.append("self_evalu", selfEvaluation.val());
+
+
+        if (file.prop("files")[0] === undefined) {
+            console.log("file is empty");
+            //formData.append('photo', "");
+        } else {
+
+            formData.append('photo', file.prop("files")[0]);
+        }
+
+        $.ajax({
+            url: "/account/personinfo/edit",
+            type: 'post',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+                console.log(data);
+                var result = JSON.parse(data);
+                checkResult(result.status, "资料已修改", result.msg, null);
+//                    window.history.back(-1);
+                self.location='/account';
+                //window.location.href="http://www.eshunter.com/account";
+            }
+        })
+    });
     </script>
 @endsection
