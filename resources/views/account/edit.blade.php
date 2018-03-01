@@ -2,6 +2,8 @@
 @section('title', '账号设置')
 
 @section('custom-style')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link media="all" href="{{asset('../style/user_style.css')}}" type="text/css" rel="stylesheet">
     <style>
         .form-title{
@@ -10,6 +12,24 @@
             font-weight: 700;
             max-width: 100%;
             margin-bottom: 5px;
+        }
+        .dropdown-toggle{
+                background-color: #fff;
+            color: #555;
+                }
+                .userinfo_edit input[type=text], .userinfo_edit textarea {
+            height: auto
+            }
+            .input-group-addon {
+             background-color: #fff; 
+             border-color:#fff;
+             cursor: pointer; 
+        }
+        #birthday{
+         background-color: #fff;   
+        }
+        .form-line{
+            width: 100%;
         }
     </style>
 @endsection
@@ -154,14 +174,20 @@
                             </div>
                             <div class="form-title">出生日期</div>
                             <div class="username input_box">
-                                <input size="16" type="text"  readonly id="birthday" name="birthday"
-                                       @if($data['personinfo']->birthday != null)
-                                       value="{{$data['personinfo']->birthday}}"
-                                       @endif
-                                       placeholder="不能为空">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                <div class="help-info">将用于职位推荐</div>
+                                <div class="form-group">
+                                    <div class="form-line input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                        <input size="16" type="text"  readonly id="birthday" name="birthday" class="form-control"
+                                               @if($data['personinfo']->birthday != null)
+                                                value="{{$data['personinfo']->birthday}}"
+                                               @endif
+                                               placeholder="不能为空">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    
+                                    <div class="help-info">将用于职位推荐</div>
+                                    <label class="error" for="birthday"></label>
+                                </div>
                             </div>
                             <div class="form-title">工作年份（4位数字）</div>
                             <div class="username input_box">
@@ -169,8 +195,8 @@
                                        @if($data['personinfo']->work_year != null) value="{{$data['personinfo']->work_year}}"
                                        @endif
                                        placeholder="开始工作的年份，例如：2008">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span> -->
                                 <div class="help-info">将用于职位推荐</div>
                             </div>
                             <div class="form-title">政治面貌</div>
@@ -313,7 +339,26 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+<script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('plugins/bootstrap-datapicker/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('plugins/bootstrap-datapicker/locales/bootstrap-datetimepicker.zh-CN.js')}}"></script>
     <script type="text/javascript">
+    $('.form_date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+        $(".form-control").focus(function () {
+            $(this.parentNode).addClass("focused");
+        }).blur(function () {
+            $(this.parentNode).removeClass("focused");
+        });
         $(document).ready(function(){
             $("#edit_link").click(function(){
                 $(".hadInfo").hide();
