@@ -27,9 +27,9 @@ Route::any('validate_email', ['uses' => 'ValidationController@verifyEmailCode'])
 Route::get('account/privacy', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
    return view('account/privacy');
 });
-Route::get('/account/updatePwd', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('/account/updatePwd');
-});
+
+Route::get('account/updatePwd', ['uses' => 'ForgetPwController@updateView']);//修改密码
+Route::post('account/updatePwd', ['uses' => 'ForgetPwController@updatePwd']);//修改密码
 
 Route::get('account/findPassword', ['uses' => 'ForgetPwController@view']);
 Route::post('account/findPassword/{option}', ['uses' => 'ForgetPwController@index'])->where('option', '[0-2]{1}');

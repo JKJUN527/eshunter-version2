@@ -11,9 +11,64 @@ namespace App\Http\Controllers;
 use APP\Tempemail;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ForgetPwController extends Controller {
+    public function updateView() {
+        $data = array();
+        $data['uid'] = AuthController::getUid();
+        $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
+
+        $data['userinfo'] = User::where('uid',$data['uid'])
+            ->select('tel','mail','tel_vertify','email_vertify')
+            ->first();
+//        return $data;
+        return view('/account/updatePwd', ["data" => $data]);
+    }
+    public function updatePwd(Request $request) {
+        $data = array();
+        $uid = AuthController::getUid();
+        $data['status']=400;
+        if($uid == 0){
+            $data['msg'] = "未登录用户";
+            return $data;
+        }
+        if($request->has('old_pwd') && $request->has('new_pwd') &&$request->has('comfirm_pwd')){
+            $old_pwd = $request->input('old_pwd');
+            $new_pwd = $request->input('new_pwd');
+            $comfirm_pwd = $request->input('comfirm_pwd');
+            //判断新密码确认正确
+            if($new_pwd != $comfirm_pwd){
+                $data['msg'] = "两次密码输入不同";
+                return $data;
+            }
+            //验证旧密码
+            if (Auth::attempt(array('uid' => $uid, 'password' => $old_pwd))) {
+                $uid_attempt = Auth::user()->uid;
+                if($uid_attempt == $uid){
+                    $update = User::where('uid',$uid)
+                        ->update([
+                            'password'=>bcrypt($new_pwd)
+                        ]);
+                    if($update){
+                        $data['status'] = 200;
+                    }else{
+                        $data['msg'] = "密码更新失败";
+                    }
+                    return $data;
+                }
+            }
+//            $is_right = User::where('uid',$uid)
+//                ->where('password',bcrypt($old_pwd))
+//                ->count();
+            $data['msg'] = "原密码错误";
+            return $data;
+        }
+        $data['msg'] = "参数错误";
+        return $data;
+    }
     public function view() {
         $data = array();
         $data['uid'] = AuthController::getUid();
