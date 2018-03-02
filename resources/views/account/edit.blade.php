@@ -31,6 +31,36 @@
         .form-line{
             width: 100%;
         }
+        span.verify-flag {
+            width: 150px;
+            display: inline-block;
+            margin: 2px 8px 2px 16px;
+            vertical-align: top;
+            cursor: pointer;
+            position: relative;
+        }
+
+        span.verified {
+            color: #4CAF50;
+        }
+
+        span.unverified {
+            color: #aaaaaa;
+        }
+
+        span.verify-flag > i {
+            position: absolute;
+            top: 4px;
+
+        }
+
+        span.verify-flag > span {
+            position: absolute;
+            top: 6px;
+            left: 24px;
+            font-size: 14px;
+            font-weight: 400;
+        }
     </style>
 @endsection
 
@@ -264,72 +294,194 @@
                     </div>
                 @endif
                 @if($data['type'] == 2)
-                     <div class="userinfo_edit">
-                         <div class="hadInfo">
+                        <div class="userinfo_edit">
+                            @if($data['enprinfo']->is_verification != 1)
+                                <div class="hadInfo">
+                                    <h3><i class="material-icons">verified_user</i>企业号尚未通过审核</h3>
+                                    <p>企业号审核通过后即可修改资料
+                                        <br>
+                                        <br>
+                                        @if($data['enprinfo']->is_verification == 0)
+                                            <button style="margin-top: 12px;" to="#"
+                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
+                                                待审核
+                                            </button>
+                                        @endif
+                                        @if($data['enprinfo']->is_verification == -1)
+                                            <button style="margin-top: 12px;" to="/account/enterpriseVerify"
+                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
+                                                点击立即审核
+                                            </button>
+                                        @endif
+                                        @if($data['enprinfo']->is_verification == 2)
+                                            <button style="margin-top: 12px;" to="/account/enterpriseVerify"
+                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
+                                                审核失败-重新提交
+                                            </button>
+                                        @endif
+                                        <button to="/account/" style="margin-top: 12px; margin-left: 16px;"
+                                                class="mdl-button mdl-js-button mdl-js-ripple-effect button-link">
+                                            返回企业中心
+                                        </button>
+                                    </p>
+                                </div>
+                            @else
+                            <div class="hadInfo">
                                 <span class="edit_link" id="edit_link">编辑</span>
                                 <div class="view_avatar">
-                                    <img class="avatar_img" src="../images/pic0.jpg" width="100" height="100">
+                                    @if($data['enprinfo']->elogo != null && $data['enprinfo']->elogo != "")
+                                        <img class="avatar_img"  src="{{$data['enprinfo']->elogo}}" width="100" height="100"><br>
+                                    @else
+                                        <img class="avatar_img"  src="{{asset('images/default-img.png')}}" width="100" height="100"><br>
+                                    @endif
                                 </div>
                                 <div class="view_nickname">
-                                    <span>某某</span>
-                                    <i class="icon-gender man"></i>
+                                    <span>{{$data['enprinfo']->ename}}</span>
+                                    <span class="verify-flag
+                                        @if($data['enprinfo']->is_verification == 1) verified @endif
+                                        @if($data['enprinfo']->is_verification == 0) unverified @endif">
+                                        <i class="material-icons">verified_user</i>
+                                        <span>@if($data['enprinfo']->is_verification === 1) &nbsp;已认证 @elseif($data['enprinfo']->is_verification === 0) 待审核 @else 点击进行认证 @endif</span>
+                                    </span>
                                 </div>
-                                <div class="view_position">学生·成都理工大学</div>
-                                <div class="view_introduce">我还没填写个人介绍</div>
+                                <div class="view_position">
+                                    @if($data['enprinfo']->industry == null)
+                                        行业未知
+                                    @else
+                                        @foreach($data['industry'] as $item)
+                                            @if($data['enprinfo']->industry == $item->id)
+                                                {{$item->name}}
+                                            @endif
+                                        @endforeach
+                                    @endif|
+                                        @if($data['enprinfo']->enature == null || $data['enprinfo']->enature == 0)
+                                            企业类型未知
+                                        @elseif($data['enprinfo']->enature == 1)
+                                            国有企业
+                                        @elseif($data['enprinfo']->enature == 2)
+                                            民营企业
+                                        @elseif($data['enprinfo']->enature == 3)
+                                            中外合资企业
+                                        @elseif($data['enprinfo']->enature == 4)
+                                            外资企业
+                                        @elseif($data['enprinfo']->enature == 5)
+                                            社会团体
+                                        @endif|
+
+                                        @if($data['enprinfo']->escale == null)
+                                            规模未知
+                                        @elseif($data['enprinfo']->escale == 0)
+                                            10人以下
+                                        @elseif($data['enprinfo']->escale == 1)
+                                            10～50人
+                                        @elseif($data['enprinfo']->escale == 2)
+                                            50～100人
+                                        @elseif($data['enprinfo']->escale == 3)
+                                            100～500人
+                                        @elseif($data['enprinfo']->escale == 4)
+                                            500～1000人
+                                        @elseif($data['enprinfo']->escale == 5)
+                                            1000人以上
+                                        @endif
+                                </div>
                             </div>
-                         <form id="userinfoEditForm">
+                            @endif
+                            <form id="userinfoEditForm" onkeydown="if(event.keyCode==13){return false;}">
                                 <div class="avatar">
-                                    <img class="avatar_img" src="../images/pic0.jpg" width="100" height="100" >
-                                    <input type="hidden" name="" value="">
+                                    @if($data['enprinfo']->elogo != null && $data['enprinfo']->elogo != "")
+                                        <img class="avatar_img" id="head-img" src="{{$data['enprinfo']->elogo}}" width="100" height="100">
+                                    @else
+                                        <img class="avatar_img" id="head-img" src="{{asset('images/default-img.png')}}" width="100" height="100">
+                                    @endif
+                                    <input type="file" hidden name="head-img" id="input-head--img"
+                                           onchange="showPreview(this)">
                                 </div>
-                                <input type="file" class="avatar_upload" id="avatarUpload" name="headPic" defaultvalue="" title="支持jpg、jpeg、gif、png格式，文件小于10M">
-                                <div class="form-title">用户名</div>
+                                <div class="form-title">公司名称</div>
                                 <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入用户名" value="" maxlength="15" data-maxlength="15">
+                                    <input type="text" id="name" name="ename" placeholder="用户名"
+                                           value="{{$data['enprinfo']->ename}}"
+                                           disabled="disabled">
+                                    <div class="help-info">公司名称只有在企业审核时修改</div>
                                 </div>
-                                <div class="form-title">名字</div>
+                                <div class="form-title">职位发布显示名称</div>
                                 <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入名字" value="" maxlength="15" data-maxlength="15">
+                                    <input type="text" id="by_name" name="byname" placeholder="可选，Ex: XXX俱乐部"
+                                           value="{{$data['enprinfo']->byname}}">
+                                    <div class="help-info">选填,公司别名便于个人用户了解公司业务</div>
                                 </div>
-                                <div class="form-title">居住地</div>
+                                <div class="form-title">公司联系电话</div>
                                 <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入居住地" value="" maxlength="15" data-maxlength="15">
+                                    <input type="text" id="enterprise-phone" name="etel"
+                                           placeholder="必填，Ex: (999)999999"
+                                           value="{{$data['enprinfo']->etel}}">
+                                    <div class="help-info">必填项</div>
                                 </div>
-                                <div class="form-title">户口所在地</div>
+                                <div class="form-title">公司联系邮箱</div>
                                 <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入户口所在地" value="" maxlength="15" data-maxlength="15">
-                                </div>
-                                <div class="form-title">联系电话</div>
-                                <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入联系电话" value="" maxlength="15" data-maxlength="15">
-                                </div>
-                                <div class="form-title">联系邮箱</div>
-                                <div class="username input_box">
-                                    <input type="text" id="userinfoEditUserName" name="userName" placeholder="请输入联系邮箱" value="" maxlength="15" data-maxlength="15">
-                                </div>
-                                <div class="form-title">性别</div>
-                                <div class="userinfo_sex input_box">
-                                    <input type="radio" class="magic-radio" id="userinfoEditSexMale" name="sex" value="MALE" checked="checked">
-                                    <label for="userinfoEditSexMale">男</label>
-                                    <input type="radio" class="magic-radio" id="userinfoEditSexFemale" name="sex" value="FEMALE">
-                                    <label for="userinfoEditSexFemale">女</label>
-                                </div>
-                                <div class="form-title">婚姻</div>
-                                <div class="userinfo_sex input_box">
-                                    <input type="radio" class="magic-radio" id="userinfoEditMarriageY" name="marriage" value="YES" checked="checked">
-                                    <label for="userinfoEditMarriageY">已婚</label>
-                                    <input type="radio" class="magic-radio" id="userinfoEditMarriageN" name="marriage" value="NO">
-                                    <label for="userinfoEditMarriageN">未婚</label>
-                                    <input type="radio" class="magic-radio" id="userinfoEditMarriage" name="marriage" value="NONEED">
-                                    <label for="userinfoEditMarriage">未填写</label>
+                                    <input type="text" id="enterprise-email" name="email" placeholder="必填，Ex: example@example.com"
+                                           value="{{$data['enprinfo']->email}}">
+                                    <div class="help-info">必填项</div>
                                 </div>
 
+                                <div class="form-title">企业地址</div>
+                                <div class="username input_box">
+                                    <div class="form-line">
+                                        <textarea rows="3" class="form-control" name="address" id="enterprise-address"
+                                                  placeholder="必填，Ex: xx省 xx市 xx区/县  xxx街道xxx号">
+                                            {{$data['enprinfo']->address}}
+                                        </textarea>
+                                    </div>
+                                    <div class="help-info">必填项</div>
+                                </div>
+                                <div class="form-title">公司官网</div>
+                                <div class="username input_box">
+                                    <input type="text" id="enterprise-url" name="home_page"
+                                           placeholder="可选，Ex：www.example.com"
+                                           value="{{$data['enprinfo']->home_page}}">
+                                    <div class="help-info">将显示在已发布的职位详情中，请以 http://, https://开头</div>
+                                </div>
+                                <div class="form-title">企业规模</div>
+                                <div class="username input_box">
+                                    <select class="form-control show-tick selectpicker" id="enterprise-scale"
+                                            name="scale">
+                                        <option value="0" @if($data['enprinfo']->escale == null) selected @endif>
+                                            请选择企业规模
+                                        </option>
+                                        <option value="1" @if($data['enprinfo']->escale == 1) selected @endif>
+                                            少于50人
+                                        </option>
+                                        <option value="2" @if($data['enprinfo']->escale == 2) selected @endif>
+                                            50人至200人
+                                        </option>
+                                        <option value="3" @if($data['enprinfo']->escale == 3) selected @endif>
+                                            200至500人
+                                        </option>
+                                        <option value="4" @if($data['enprinfo']->escale == 4) selected @endif>
+                                            500人至1000人
+                                        </option>
+                                        <option value="5" @if($data['enprinfo']->escale == 5) selected @endif>
+                                            1000人以上
+                                        </option>
+                                    </select>
+                                    <div class="help-info">将显示在已发布的职位详情中</div>
+                                </div>
+
+                                <div class="form-title">公司简介</div>
+                                <div class="username input_box">
+                                    <div class="form-line">
+                                <textarea rows="3" class="form-control" name="description" id="description"
+                                          placeholder="可选">{{$data['enprinfo']->ebrief}}</textarea>
+                                    </div>
+                                    <div class="help-info">将显示在已发布的职位详情中</div>
+                                </div>
+
+
                                 <div class="toolbar">
-                                    <a class="btn userinfo_save" href="javascript:;" >保存</a>
+                                    <a class="btn userinfo_save" id="enterprise-info--change_button" >确认修改</a>
                                 </div>
                             </form>
-                         <p class="tips">* 此信息用于站内言职社区功能，不会同步修改简历</p>
-                     </div>
+                            <p class="tips">* 请认真填写，该信息将同步到企业信息中</p>
+                        </div>
                 @endif
             </div>
         </div>
@@ -544,6 +696,85 @@
 //                    window.history.back(-1);
                 self.location='/account';
                 //window.location.href="http://www.eshunter.com/account";
+            }
+        })
+    });
+    $("#enterprise-info--change_button").click(function (event) {
+        event.preventDefault();
+        var file = $("#input-head--img");
+
+        var ename = $("input[name='ename']");
+        var byname = $("input[name='byname']");
+        var etel = $("input[name='etel']");
+        var email = $("input[name='email']");
+        var address = $("textarea[name='address']");
+
+        var homePage = $("input[name='home_page']").val();
+        var scale = $("select[name='scale']").val();
+        var description = $("textarea[name='description']").val();
+
+        if (ename.val === "") {
+            swal("","公司名称不能为空","error");
+            return;
+        }
+//            if (byname.val === "") {
+//                setError(byname, "byname", "不能为空");
+//                return;
+//            } else {
+//                removeError(byname, "byname");
+//            }
+
+        if (etel.val() === "") {
+            swal("","公司电话不能为空","error");
+            return;
+        }
+
+        if (email.val() === "") {
+            swal("","公司邮箱不能为空","error");
+            return;
+        } else {
+            var re=/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            if (re.test(email.val()) != true) {
+                swal("","邮箱格式不正确","error");
+                return;
+            }
+        }
+
+        if (address.val() === "") {
+            swal("","企业地址不能为空","error");
+            return;
+        }
+        var formData = new FormData();
+
+        formData.append("byname", byname.val());
+        formData.append("email", email.val());
+        formData.append("etel", etel.val());
+        formData.append("address", address.val());
+
+        formData.append("ebrief", description);
+        formData.append("home_page", homePage);
+        formData.append("escale", scale);
+
+        if (file.prop("files")[0] === undefined) {
+            console.log("file is empty");
+            //formData.append('photo', "");
+        } else {
+            formData.append('elogo', file.prop("files")[0]);
+        }
+
+        $.ajax({
+            url: "/account/enprinfo/edit",
+            type: 'post',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+//                console.log(data);
+                var result = JSON.parse(data);
+                checkResult(result.status, "资料已修改", result.msg, null);
+                self.location='/account';
             }
         })
     });

@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Enprinfo;
+use App\Industry;
 use App\Personinfo;
 use App\User;
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ class InfoController extends Controller {
         }else if($type == 2){
             //返回企业修改基本资料的企业信息资料
             $data['enprinfo'] = Enprinfo::where('uid',$uid)->first();
+            $data['industry'] = Industry::all();
         }
 //        return $data;
         return view('account.edit',[

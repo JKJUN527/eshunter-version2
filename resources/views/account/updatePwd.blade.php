@@ -19,7 +19,7 @@
         <div class="user_bindSidebar">
             <ul class="user_sideBarmenu">
                 <li>
-                    <a href="/account/edit" class="hover_ac" >
+                    <a href="/account/edit" >
                         @if($data['type'] == 1)
                             个人信息
                         @elseif($data['type'] == 2)
@@ -34,7 +34,7 @@
                     <a href="#" >隐私设置</a>
                 </li> -->
                 <li>
-                    <a href="/account/updatePwd" >修改密码</a>
+                    <a href="/account/updatePwd" class="hover_ac">修改密码</a>
                 </li>
             </ul>
         </div>
