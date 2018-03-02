@@ -11,12 +11,14 @@ namespace App\Http\Controllers;
 use APP\Tempemail;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ForgetPwController extends Controller {
     public function view() {
         $data = array();
         $data['uid'] = AuthController::getUid();
         $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
 
         return view('account/findPassword', ["data" => $data]);
     }
@@ -29,12 +31,23 @@ class ForgetPwController extends Controller {
                 if ($request->has('tel')) {//手机重置逻辑
                     $tel = $request->input('tel');
                     $uid = User::where('tel', '=', $tel)->first();
+                    if(count($uid) <= 0){
+                        $data['status'] = 400;
+                        $data['msg'] = "该账号未注册";
+                        return $data;
+                    }
                     $data = ValidationController::regSMS($request,$tel, 1);
+                    $data['status'] = 200;
                     $data['uid'] = $uid['uid'];
                     return $data;
                 } else if ($request->has('email')) {
                     $mail = $request->input('email');
                     $uid = User::where('mail', '=', $mail)->get();
+                    if(count($uid) <= 0){
+                        $data['status'] = 400;
+                        $data['msg'] = "该邮箱未注册";
+                        return $data;
+                    }
                     $temp = ValidationController::sendForgetMail($mail, $uid[0]['uid']);
                     if ($temp == -1) {
                         $data['status'] = 400;
@@ -69,7 +82,8 @@ class ForgetPwController extends Controller {
 //                    $uid = Users::where('mail', '=', $mail)->get();
                     $uid = $request->input('uid');
                     //验证邮箱验证码是否正确
-                    $num = Tempemail::where('uid', '=', $uid)
+                    $num = DB::table('jobs_tempemail')
+                        ->where('uid', '=', $uid)
                         ->where('type', '=', 1)
                         ->where('code', '=', $code)
                         ->where('deadline', '>=', date('Y-m-d H-i-s'))

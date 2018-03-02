@@ -183,12 +183,15 @@ class ValidationController extends Controller
     //忘记密码逻辑,发送邮箱验证码
     public static function sendForgetMail($mail, $uid) {
         if($mail != "" && $uid != "") {
-            $res = Tempemail::where('uid', '=', md5($uid))
+            $res = Tempemail::where('uid', '=', $uid)
                 ->where('type','=',1)
-                ->get();
-            if ($res->count()) {
-                if ($res->deadline >= date('Y-m-d H-i-s')) {
-                    return 0;
+                ->count();
+            if ($res) {
+                $update_temp = Tempemail::where('uid', '=', $uid)
+                    ->where('type','=',1)
+                    ->first();
+                if ($update_temp->deadline >= date('Y-m-d H-i-s')) {
+                    return 1;
                 }
             }
             $ecode = ValidationController::generate_rand(4);
@@ -207,10 +210,13 @@ class ValidationController extends Controller
             });
             //保存已发送的邮箱验证码
             //还未考虑同一用户重复多次发送邮件验证，或已经失效后重新发送邮件。
-            if ($res->count()) {
-                $res->code = $ecode;
-                $res->deadline = date('Y-m-d H:i:s', strtotime('+1 day'));
-                $bool = $res->save();
+            if ($res) {
+                $update_temp = Tempemail::where('uid', '=', $uid)
+                    ->where('type','=',1)
+                    ->update([
+                        'code'=>$ecode,
+                        'deadline'=>date('Y-m-d H:i:s', strtotime('+1 day'))
+                    ]);
                 return 1;
             }
             $temp = new Tempemail();
