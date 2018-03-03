@@ -6,6 +6,20 @@
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link media="all" href="{{asset('../style/user_style.css')}}" type="text/css" rel="stylesheet">
     <style>
+        ol,ul{
+            margin-bottom: 0px;
+        }
+        .nav_ul li a {
+            text-decoration: none;
+        }
+        .logo-con {
+            float: left;
+            margin-top: 5px;
+        }
+        .userinfo_edit .userinfo_sex {
+            height: 46px;
+            line-height: 46px;
+        }
         .form-title{
             font-size: 17px;
             color: #000;
@@ -25,9 +39,7 @@
              border-color:#fff;
              cursor: pointer; 
         }
-        #birthday{
-         background-color: #fff;   
-        }
+        
         .form-line{
             width: 100%;
         }
@@ -60,6 +72,15 @@
             left: 24px;
             font-size: 14px;
             font-weight: 400;
+        }
+        .input-group-addon{
+            padding: 3px;
+        }
+        #birthday{
+            background-color: #fff;   
+            /*padding: 3px;*/
+            line-height: 26px;
+            text-indent: 10px;      
         }
     </style>
 @endsection
@@ -178,7 +199,7 @@
                                        value="{{$data['personinfo']->mail}}">
                                 <div class="help-info">必填，将显示在简历中</div>
                             </div>
-                            <div style="height: 100px;"></div>
+                            <!-- <div style="height: 100px;"></div> -->
                             <div class="form-title">性别</div>
                             <div class="userinfo_sex input_box">
                                 <input type="radio" class="magic-radio" id="male" name="sex" value="1" @if($data['personinfo']->sex == 1) checked @endif />
@@ -187,9 +208,9 @@
                                 <label for="female">女</label>
                                 <input type="radio" class="magic-radio" id="sex-question" name="sex" value="0" @if($data['personinfo']->sex != 1 && $data['personinfo']->sex != 2) checked @endif />
                                 <label for="sex-question">未填写</label>
-                                <div class="help-info">将显示在简历中</div>
+                                <div class="help-info" style="margin-top: 34px;">将显示在简历中</div>
                             </div>
-                            <div class="form-title">婚姻</div>
+                            <div class="form-title" style="padding-top: 10px;">婚姻</div>
                             <div class="userinfo_sex input_box">
                                 <input type="radio" class="magic-radio" id="unmarried" name="is_marry"
                                        value="1" checked="checked" @if($data['personinfo']->is_marry == 1) checked @endif/>
@@ -200,10 +221,10 @@
                                 <input type="radio" class="magic-radio" id="question-marry" name="is_marry"
                                        value="0" @if($data['personinfo']->is_marry != 1 && $data['personinfo']->is_marry != 2) checked @endif/>
                                 <label for="question-marry">未填写</label>
-                                <div class="help-info">将显示在简历中</div>
+                                <div class="help-info" style="margin-top: -11px;">将显示在简历中</div>
                             </div>
-                            <div class="form-title">出生日期</div>
-                            <div class="username input_box">
+                            <div class="form-title" style="padding-top: 21px;">出生日期</div>
+                            <div class="username input_box" style="height: 54px;">
                                 <div class="form-group">
                                     <div class="form-line input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                                         <input size="16" type="text"  readonly id="birthday" name="birthday" class="form-control"
