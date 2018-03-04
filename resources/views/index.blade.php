@@ -251,7 +251,7 @@
                                             @if($position->tag ==="" || $position->tag ===null)
                                                 <span class="wordCut">无标签</span>
                                             @else
-                                                @foreach(preg_split("/(,| |、|;)/",$position->tag) as $tag)
+                                                @foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)
                                                     <span class="wordCut">{{$tag}}</span>
                                                 @endforeach
                                             @endif

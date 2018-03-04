@@ -392,7 +392,7 @@
                                 </a>
                                 <h1>
                                     <a href="http://{{str_replace(array('http://','https://'),'',$data['enterpriseInfo']->home_page)}}" class="hovertips" target="_blank" rel="nofollow">
-                                        店小二餐饮连锁公司
+                                        {{$data['enterpriseInfo']->ename}}
                                     </a>
                                 </h1>
                                 <a href="http://{{str_replace(array('http://','https://'),'',$data['enterpriseInfo']->home_page)}}" class="icon-wrap" target="_blank" rel="nofollow" >
@@ -487,7 +487,7 @@
                                 <a href="javascript:;" class="company_index">公司主页</a>
                             </li>
                             <li class="li_two">
-                                <a href="javascript:;" class="recruit_job">招聘职位（{{$data['positionNum']}}）</a>
+                                <a href="/position/publishList" class="recruit_job">招聘职位（{{$data['positionNum']}}）</a>
                             </li>
                             {{--<li class="li_three">--}}
                                 {{--<a href="javascript:;" class="company_ask">公司问答</a>--}}
@@ -577,18 +577,23 @@
                                                 </li>
                                                 @endforeach
                                             </ul>
-                                            <div class="more_box"><a href="/position/publishList" class="list_more">查看全部</a></div> 
                                         </div>
-                                        <p class="item_empty_desc">
-                                            简洁有趣的职位介绍，能让求职者最快速度了解公司职位任务。把需要的职位展示出来吸引人才围观吧！
-                                        </p>
-                                        <p class="item_empty_add item_add disabled">
-                                            <em class="item_ropeiconp"></em>
-                                            <a href="/position/publish">
-                                                <span class="item_ropetext add_product">新增职位发布</span>
-                                                
-                                            </a>
-                                        </p>
+                                        @if(count($data['positionList']) ==0)
+                                            <p class="item_empty_desc">
+                                                简洁有趣的职位介绍，能让求职者最快速度了解公司职位任务。把需要的职位展示出来吸引人才围观吧！
+                                            </p>
+                                            <p class="item_empty_add item_add disabled">
+                                                <em class="item_ropeiconp"></em>
+                                                <a href="/position/publish">
+                                                    <span class="item_ropetext add_product">新增职位发布</span>
+                                                </a>
+                                            </p>
+                                        @else
+                                            <div class="more_box">
+                                                <a href="/position/publishList" class="list_more">查看全部</a>
+                                            </div>
+                                        @endif
+
                                     </div>
                                 </div>
                                
@@ -632,10 +637,16 @@
                                             </li>
                                           @endforeach
                                       </ul>
-                                      <div class="more_box"><a href="/position/deliverList" class="list_more">查看全部</a></div> 
                                     </form>
-                                    <span class="empty_icon"></span>
-                                    <span class="empty_text">该公司最近收到过(未处理)申请记录</span>
+                                    @if(count($data['applyList']) ==0)
+                                        <span class="empty_icon"></span>
+                                        <span class="empty_text">最近没有收到过(未处理)申请记录</span>
+                                    @endif
+                                    <div class="more_box">
+                                        <a href="/position/deliverList" class="list_more">
+                                            查看全部
+                                        </a>
+                                    </div>
                                 </div>
                                 
                             </div>

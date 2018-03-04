@@ -481,7 +481,7 @@ class PositionController extends Controller {
             ->where('position_status', '!=', 3)
             //select('pid', 'title', 'tag', 'salary', 'region', 'work_nature', 'total_num')
             ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->paginate(15);
 
         //查询每一个职位对应的投递次数
 
@@ -495,7 +495,7 @@ class PositionController extends Controller {
         }
         $data['dcount'] = $dcount;
 
-        //return $data;
+//        return $data;
         return view('position.publishList', ['data' => $data]);
         //return $position;
     }
@@ -529,8 +529,9 @@ class PositionController extends Controller {
                 $query->where('title', 'like', '%' . $keyword . '%')
                     ->orWhere('pdescribe', 'like', '%' . $keyword . '%');
             })
-            ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->where('position_status', '!=', 3)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(15);
 
         //查询每一个职位对应的投递次数
 

@@ -2,16 +2,6 @@
 //z正式网站路由开始
 //Route::get('index', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
 //    return view('index');
-//});
-Route::get('enterpriseVerify/auditfail', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('enterpriseVerify/auditFail');
-});
-Route::get('enterpriseVerify/audit1', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('enterpriseVerify/audit1');
-});
-Route::get('enterpriseVerify/audit2', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('enterpriseVerify/audit2');
-});
 //测试生成session uid
 Route::any('session', ['uses' => 'PositionController@test1']);
 //

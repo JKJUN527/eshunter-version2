@@ -26,7 +26,7 @@ input[type=text]:focus, input[type=submit]:focus, input[type=password]:focus, te
 .left{ float: left;}
 .right{ float: right;}
 .containter_box{ width: 100%; overflow: hidden;}
-.containter{width: 1200px; margin: 0 auto; padding-bottom: 15px; margin-top: 36px;}
+.containter{width: 1200px; margin: 0 auto; padding-bottom: 15px; margin-top: 36px;min-height: 560px;}
 #es_tbar{width: 100%;height: 30px;background: #333;}
 #es_tbar .inner{    position: relative;margin: 0 auto;}
 #es_tbar .inner .es_tbar_l{float:left;padding-left: 100px; height: 30px;line-height: 30px;}
