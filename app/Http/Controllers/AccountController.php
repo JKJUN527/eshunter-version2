@@ -39,6 +39,9 @@ class AccountController extends Controller {
     public function edit() {
         return view('account/edit');
     }
+    public function enterpriseVerify_step1(){
+        return view('enterpriseVerify/audit1');
+    }
 
     //个人资料修改（新增）
     public function personinfoEdit(Request $request) {
@@ -148,15 +151,16 @@ class AccountController extends Controller {
                 }
             }
         }
-        $enprinfo->byname = $request->input('byname');
-        $enprinfo->email = $request->input('email');
-        $enprinfo->etel = $request->input('etel');
-        $enprinfo->ebrief = $request->input('ebrief');
-        $enprinfo->escale = $request->input('escale');
+        if($request->has('byname')) $enprinfo->byname = $request->input('byname');
+        if($request->has('ename')) $enprinfo->ename = $request->input('ename');
+        if($request->has('email')) $enprinfo->email = $request->input('email');
+        if($request->has('etel')) $enprinfo->etel = $request->input('etel');
+        if($request->has('ebrief')) $enprinfo->ebrief = $request->input('ebrief');
+        if($request->has('escale')) $enprinfo->escale = $request->input('escale');
 //        $enprinfo->enature = $request->input('enature');
 //        $enprinfo->industry = $request->input('industry');
-        $enprinfo->home_page = $request->input('home_page');
-        $enprinfo->address = $request->input('address');
+        if($request->has('home_page')) $enprinfo->home_page = $request->input('home_page');
+        if($request->has('address')) $enprinfo->address = $request->input('address');
 
 
         if ($enprinfo->save()) {
@@ -172,7 +176,7 @@ class AccountController extends Controller {
     //企业用户验证页面\返回对应企业信息
     //如果options 为upload，则上传证件照片到数据库
     //返回值为$data数组
-    public function enterpriseVerifyView(Request $request) {
+    public function enterpriseVerifyView1(Request $request) {
         $data = array();
         $data['uid'] = AuthController::getUid();
         $data['username'] = InfoController::getUsername();
@@ -191,26 +195,54 @@ class AccountController extends Controller {
         $eid = Enprinfo::select('eid')
             ->where('uid', '=', $uid)
             ->first();
-
-//        if (sizeof($eid) == 0)
         if (!$eid->count())
             return redirect()->back();
 
-        $eid = $eid['eid'];
-        $data['eid'] = $eid;
-//        if ($eid[0]['is_verification'] == 1) {
-//            //已验证
-//            $data['is_verification'] = 1;
-//        } else {
-//            //未验证
-//            $data['is_verification'] = 0;
-//        }
-        $data['is_verification'] = $eid[0]['is_verification'];
-        $data['enterprise'] = Enprinfo::find($eid);
+//        $eid = $eid['eid'];
+        $data['eid'] = $eid['eid'];
+
+        $data['enterprise'] = Enprinfo::find($data['eid']);
+
+        if ($data['enterprise']['is_verification'] != -1)
+            return view('enterpriseVerify/auditFail', ['data' => $data]);
+
+        //return $data;
+        return view('enterpriseVerify/audit1', ['data' => $data]);
+    }
+    public function enterpriseVerifyView2(Request $request) {
+        $data = array();
+        $data['uid'] = AuthController::getUid();
+        $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
+
+        $uid = $data['uid'];
+
+        if ($uid == 0)
+            return view("/account/login", ['data' => $data]);
+
+        $type = AuthController::getType();
+
+        if ($type != 2)
+            return redirect()->back();
+
+        $eid = Enprinfo::select('eid')
+            ->where('uid', '=', $uid)
+            ->first();
+        if (!$eid->count())
+            return redirect()->back();
+
+//        $eid = $eid['eid'];
+        $data['eid'] = $eid['eid'];
+
+        $data['enterprise'] = Enprinfo::find($data['eid']);
+
+        if ($data['enterprise']['is_verification'] != -1)
+            return view('enterpriseVerify/auditFail', ['data' => $data]);
+
         $data['industry'] = Industry::select('id', 'name')->get();
 
         //return $data;
-        return view("account.enterpriseVerify", ['data' => $data]);
+        return view('enterpriseVerify/audit2', ['data' => $data]);
     }
 
     //上传企业验证证件照片
@@ -230,7 +262,7 @@ class AccountController extends Controller {
             $data['msg']="用户已提交审核，无需重复提交";
             return $data;
         }
-        if ($request->has('ename') && $request->has('enature') && $request->has('industry')) {
+        if ($request->has('enature') && $request->has('industry')) {
             $enprinfo = Enprinfo::find($eid['eid']);
 
             if ($request->isMethod('POST')) {
@@ -258,16 +290,17 @@ class AccountController extends Controller {
                     $bool1 = Storage::disk('authentication')->put($filename1, file_get_contents($realPath1));
                     $bool2 = Storage::disk('authentication')->put($filename2, file_get_contents($realPath2));
                     //var_dump($bool);
-                    if($bool1 && $bool2){
+                    if ($bool1 && $bool2) {
                         //文件名保存到数据库中
                         $enprinfo->ecertifi = asset('storage/authentication/' . $filename1);
                         $enprinfo->lcertifi = asset('storage/authentication/' . $filename2);
                     }
-                    $enprinfo->ename = $request->input('ename');
+//                    $enprinfo->ename = $request->input('ename');
                     $enprinfo->enature = $request->input('enature');
                     $enprinfo->industry = $request->input('industry');
-                    $enprinfo->email = $request->input('email');
-                    $enprinfo->etel = $request->input('etel');
+                    $enprinfo->escale = $request->input('escale');
+//                    $enprinfo->email = $request->input('email');
+//                    $enprinfo->etel = $request->input('etel');
                     $enprinfo->address = $request->input('address');
                     $enprinfo->is_verification = 0;
 
@@ -283,8 +316,6 @@ class AccountController extends Controller {
                         return $data;
                         //return redirect('account/enterpriseVerify?eid='.$eid)->with('error', '上传证件失败');
                     }
-
-
                 }
             }
         }

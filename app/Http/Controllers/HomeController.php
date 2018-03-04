@@ -30,7 +30,7 @@ class HomeController extends Controller {
         $data['newestposition'] = HomeController::searchNewestPosition();
         $data['news'] = HomeController::searchNews();
         $data['industry'] = Industry::all();
-        $data['occupation'] = Occupation::all();
+        $data['occupation'] = Occupation::orderBy('updated_at','desc')->get();
 
 //        return $data;
         return view('index', ["data" => $data]);
