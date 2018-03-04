@@ -108,6 +108,11 @@ nav#page_tools{
         color: #737373;
         font-size: 14px;
     }
+    .material-icons{
+        cursor:pointer;
+        float: left;
+        margin: 1rem;
+    }
 </style>
 @endsection
 
@@ -124,6 +129,7 @@ nav#page_tools{
     <div class="interview_container item_container" id="interview_container">
         <div id="interview_anchor"></div>
         <div class="item_ltitle">
+            <i class="material-icons" to="/account">arrow_back</i>
             <span >已发布职位</span>
             <div style="float: right;    margin-right: 32px;">
                 <form method="get" id="search-form" action="/position/publishList/search">

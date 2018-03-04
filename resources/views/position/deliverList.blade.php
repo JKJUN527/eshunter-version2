@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '公司详情')
+@section('title', '收到的申请记录')
 
 @section('custom-style')
  <link media="all" href="{{asset('../style/delivery.css?v=2.40')}}" type="text/css" rel="stylesheet">
@@ -55,7 +55,7 @@
     text-indent: 13px;
     float: left;
 }
-#publish-position {
+#delete-all--deliver {
     width: 104px;
     overflow: hidden;
     height: 38px;
@@ -79,6 +79,50 @@
     margin: 30px;
         overflow: hidden;
 }
+     nav#page_tools ul li:hover,nav#page_tools ul li.active{
+         background-color: #03A9F4;
+         color: #fff!important;
+     }
+     nav#page_tools ul li:hover a{
+         color: #fff!important;
+     }
+     nav#page_tools ul li a,nav#page_tools ul li span{
+         display: inline-block;
+         padding: 15px;
+     }
+     nav#page_tools ul li {
+         display:inline-block;
+         margin-bottom: 0px;
+         cursor: pointer;
+     }
+     nav#page_tools{
+         margin: 20px auto;
+         text-align: center;
+     }
+     .material-icons{
+         cursor:pointer;
+         float: left;
+         margin: 1rem;
+     }
+     .normal-info{
+         color: #03A9F4;
+     }
+     .danger-info {
+         color: #F44336;
+     }
+     .success-info {
+         color: #4CAF50;
+     }
+     .warning-info {
+         color: #FF9800;
+     }
+     .position-empty{
+        text-align: center;
+        padding: 16px 0;
+        font-weight: 300;
+        color: #737373;
+        font-size: 14px;
+     }
 </style>
 @endsection
 
@@ -95,193 +139,80 @@
     <div class="interview_container item_container" id="interview_container">
         <div id="interview_anchor"></div>
         <div class="item_ltitle">
+            <i class="material-icons" to="/account">arrow_back</i>
             <span >收到的申请记录</span>
-            <div style="float: right;    margin-right: 32px;">   
-<div class="taoyige">        
-            <div class="left form_div">
-                <input type="text" placeholder="请输入职位关键字" value="" id="name" name="name">
-            </div>
-        </div>
-        <input type="button" value="搜索" name="" id="publish-position">
+            <div style="float: right;    margin-right: 32px;">
+                 <input type="button" value="清空记录" name="" id="delete-all--deliver">
             </div>
         </div>
         
         <div class="reviews-empty">
             <form id="deliveryForm" class="deliveryAll" style="display: block;">
               <ul class="reset my_delivery">
-                <li>
-                  <div class="d_item clearfix">
-                    <div class="d_job">
-                      <a href="#" class="d_job_link" target="_blank">
-                        <em class="d_job_name">贾军</em>
-                        <span class="d_job_salary">（2k-4k）</span>
-                        </a>
-                        <button class="deliver-resume look-resume-btn">删除</button>
-                        <button class="deliver-resume look-resume-btn">查看简历</button>
-                    </div>
-                    <div class="d_company">
-                      <a href="#" target="_blank" title="舍得软件">舍得软件
-                        <span>[成都]</span></a>
-                    </div>
-                    <div class="d_resume">使用简历：
-                      <span class="d_resume_type">附件简历</span>
-                      <a href="javascript:;" class="btn_showprogress delviery_success_btn">
-                        <span>已接收</span>
-                      </a>
-                      <span class="d_time">2017-12-28 14:54</span></div>
-                  </div>
-                  <div class="progress_status progress_status_one dn" style="display: none;">
-                    <ul class="status_steps">
-                      <li class="status_done status_1">1</li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
+                  <?php
+                  $allnum = 0;
+                  $per_page =10;
+                  $current_num =0;
+                  ?>
+                  @forelse($data['deliverAll'] as $apply)
+                      <?php
+                      $allnum++;
+                      $current_num++;
+                      ?>
+                      <li class="apply-item" name="page<?php echo floor($current_num/$per_page) ?>"
+                          @if(floor($current_num/$per_page)==0)
+                            style="display: block"
+                          @else
+                            style="display: none"
+                          @endif
+                      >
+                          <div class="d_item clearfix">
+                              <div class="d_job">
+                                  <a class="d_job_link">
+                                      <em class="d_job_name">{{$apply->position_title}}</em>
+                                      <span class="deliver-resume look-resume-btn operations-delete" data-content="{{$apply->did}}">删除</span>
+                                      <span class="deliver-resume look-resume-btn" to="/position/deliverDetail?did={{$apply->did}}">查看简历</span>
+                                  </a>
+                              </div>
+                              <div class="d_company">
+                                  <img src="{{$apply->photo or asset('images/default-img.png')}}" style="height: 50px;width: 50px;">
+                                  <a href="/position/deliverDetail?did={{$apply->did}}">{{$apply->pname}}</a>
+                              </div>
+                              <div class="d_resume">
+                                  <a href="javascript:;" class="btn_showprogress delviery_success_btn">
+                                          @if($apply->status == 0)
+                                              <span class="normal-info">状态：待查看</span>
+                                          @elseif($apply->status == 1)
+                                              <span class="normal-info">状态：已查看</span>
+                                          @elseif($apply->status == 2)
+                                              <span class="success-info">状态：已录用</span>
+                                          @elseif($apply->status == 3)
+                                              <span class="danger-info">状态：未录用</span>
+                                          @elseif($apply->status == 4)
+                                              <span class="danger-info">状态：职位已下架</span>
+                                          @endif
+                                  </a>
+                                  <span class="d_time">申请时间:{{$apply->created_at}}</span></div>
+                          </div>
                       </li>
-                      <li class="status_grey">
-                        <span>2</span></li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>3</span></li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>4</span></li>
-                    </ul>
-                    <ul class="status_text clearfix">
-                      <li>已接收</li>
-                      <li class="status_text_2">简历已查看</li>
-                      <li class="status_text_3">待沟通</li>
-                      <li class="status_text_4 status_text_6">面试</li></ul>
-                    <ul class="status_list">
-                      <li class="top1">
-                        <div class="list_time">
-                          <em></em>2017-12-28 14:54</div>
-                        <div class="list_body">
-                          <img src="images/pic00.png" style="border-radius:50%;" width="60" heigth="60">
-                          <h3 class="contact_title" style="position:relative;z-index:2;display:inline-block;">舍得软件人力资源部&nbsp;已成功接收某XX的简历</h3></div>
-                      </li>
-                    </ul>
-                    <a href="javascript:;" class="btn_closeprogress up_btn"></a>
-                  </div>
-                </li>
-                <li>
-                  <div class="d_item clearfix">
-                    <div class="d_job">
-                      <a href="#" class="d_job_link" target="_blank">
-                        <em class="d_job_name">贾军</em>
-                        <!-- <span class="d_job_salary">（2k-4k）</span></a> -->
-                        <button class="deliver-resume look-resume-btn">删除</button>
-                        <button class="deliver-resume look-resume-btn">查看简历</button>
-                    </div>
-                    <div class="d_company">
-                      <a href="#" target="_blank" title="舍得软件">舍得软件
-                        <span>[成都]</span></a>
-                    </div>
-                    <div class="d_resume">使用简历：
-                      <span class="d_resume_type">附件简历</span>
-                      <a href="javascript:;" class="btn_showprogress">
-                        <span>已接收</span>
-                      </a>
-                      <span class="d_time">2017-12-28 14:54</span></div>
-                  </div>
-                  <div class="progress_status dn" style="display: none;">
-                    <ul class="status_steps">
-                      <li class="status_done status_1">1</li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>2</span></li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>3</span></li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>4</span></li>
-                    </ul>
-                    <ul class="status_text clearfix">
-                      <li>已接收</li>
-                      <li class="status_text_2">简历已查看</li>
-                      <li class="status_text_3">待沟通</li>
-                      <li class="status_text_4 status_text_6">面试</li></ul>
-                    <ul class="status_list">
-                      <li class="top1">
-                        <div class="list_time">
-                          <em></em>2017-12-28 14:54</div>
-                        <div class="list_body">
-                          <img src="images/pic00.png" style="border-radius:50%;" width="60" heigth="60">
-                          <h3 class="contact_title" style="position:relative;z-index:2;display:inline-block;">舍得软件人力资源部&nbsp;已成功接收某XX的简历</h3></div>
-                      </li>
-                    </ul>
-                    <a href="javascript:;" class="btn_closeprogress"></a>
-                  </div>
-                </li>
-                <li>
-                  <div class="d_item clearfix">
-                    <div class="d_job">
-                      <a href="#" class="d_job_link" target="_blank">
-                        <em class="d_job_name">贾军</em>
-                        <!-- <span class="d_job_salary">（2k-4k）</span></a> -->
-                        <button class="deliver-resume look-resume-btn">删除</button>
-                        <button class="deliver-resume look-resume-btn">查看简历</button>
-                    </div>
-                    <div class="d_company">
-                      <a href="#" target="_blank" title="舍得软件">舍得软件
-                        <span>[成都]</span></a>
-                    </div>
-                    <div class="d_resume">使用简历：
-                      <span class="d_resume_type">附件简历</span>
-                      <a href="javascript:;" class="btn_showprogress">
-                        <span>已接收</span>
-                      </a>
-                      <span class="d_time">2017-12-28 14:54</span></div>
-                  </div>
-                  <div class="progress_status dn" style="display: none;">
-                    <ul class="status_steps">
-                      <li class="status_done status_1">1</li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>2</span></li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>3</span></li>
-                      <li class="status_line status_line_grey">
-                        <span></span>
-                      </li>
-                      <li class="status_grey">
-                        <span>4</span></li>
-                    </ul>
-                    <ul class="status_text clearfix">
-                      <li>已接收</li>
-                      <li class="status_text_2">简历已查看</li>
-                      <li class="status_text_3">待沟通</li>
-                      <li class="status_text_4 status_text_6">面试</li></ul>
-                    <ul class="status_list">
-                      <li class="top1">
-                        <div class="list_time">
-                          <em></em>2017-12-28 14:54</div>
-                        <div class="list_body">
-                          <img src="images/pic00.png" style="border-radius:50%;" width="60" heigth="60">
-                          <h3 class="contact_title" style="position:relative;z-index:2;display:inline-block;">舍得软件人力资源部&nbsp;已成功接收某XXS的简历</h3></div>
-                      </li>
-                    </ul>
-                    <a href="javascript:;" class="btn_closeprogress"></a>
-                  </div>
-                </li>
+                  @empty
+                      <div class="position-empty">
+                          <img src="{{asset('images/desk.png')}}" width="40px">
+                          <span>暂无投递记录</span>
+                      </div>
+                  @endforelse
               </ul>
-              
             </form>
-          
+            <nav id="page_tools">
+                <ul class="pagination">
+                    <?php $pagenum = floor($current_num/$per_page) ?>
+                    <li><span name="page" data-content="0">&laquo;</span></li>
+                    @for($i=0;$i<$pagenum;$i++)
+                        <li><span name="page" data-content="{{$i}}">{{$i+1}}</span></li>
+                    @endfor
+                    <li><span name="page" data-content="{{$pagenum}}">&raquo;</span></li>
+                </ul>
+            </nav>
         </div>
        
     </div>
@@ -295,5 +226,82 @@
 
 
 @section('custom-script')
-    <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
+    <script type="text/javascript">
+        $("#delete-all--deliver").click(function () {
+            swal({
+                title: "确认",
+                text: "确定删除所有投递记录吗",
+                type: "info",
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                showCancelButton: true,
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/position/deldeliverRecord?did=-1",
+                    type: "get",
+                    success: function (data) {
+                        if (data['status'] === 200) {
+                            setTimeout(function () {
+                                self.location = "/position/deliverList";
+                            }, 1200);
+                            swal("删除成功");
+                        } else if (data['status'] === 400) {
+                            alert(data['msg']);
+                        }
+                    }
+
+                })
+            });
+        });
+
+        $(".operations-delete").click(function () {
+            var element = $(this);
+
+            swal({
+                title: "确认",
+                text: "确定删除该条投递记录吗",
+                type: "info",
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                showCancelButton: true,
+                closeOnConfirm: false
+            }, function () {
+                var did = element.attr("data-content");
+                $.ajax({
+                    url: "/position/deldeliverRecord?did=" + did,
+                    type: "get",
+                    success: function (data) {
+                        if (data['status'] === 200) {
+                            setTimeout(function () {
+                                self.location = "/position/deliverList";
+                            }, 1200);
+                            swal("删除成功");
+                        } else if (data['status'] === 400) {
+                            alert(data['msg']);
+                        }
+                    }
+                })
+            });
+        });
+        $("span[name=page]").click(function () {
+            var pagenum = $(this).attr('data-content');
+            var page = $(".apply-item");
+            var pagename = "li[name=page"+pagenum+"]";
+            var curr_page = $(pagename);
+            page.css('display','none');
+            curr_page.css('display','block');
+            $('.pagination').children('.active').removeClass('active');
+            $(this).parent().addClass('active');
+        });
+        function gotopage(pagenum) {
+            $(this).addClass('active');
+            alert($(this));
+            var page = $(".apply-item");
+            var pagename = "li[name=page"+pagenum+"]";
+            var curr_page = $(pagename);
+            page.css('display','none');
+            curr_page.css('display','block');
+        }
+    </script>
 @endsection

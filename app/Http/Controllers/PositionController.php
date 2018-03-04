@@ -80,7 +80,7 @@ class PositionController extends Controller {
         if (AuthController::getType() != 2)
             return redirect()->back();
 
-        //查看所有已发布职位
+        //查看所有投递记录
         $data['deliverAll'] = PersonCenterController::getAllApplyList();
 //        return $data;
         return view('position/deliverList', ['data' => $data]);

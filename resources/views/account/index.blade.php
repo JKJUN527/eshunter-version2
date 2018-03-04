@@ -610,17 +610,6 @@
                                                 <div class="d_job">
                                                   <a href="/position/deliverDetail?did={{$apply->did}}" class="d_job_link" target="_blank">
                                                     <em class="d_job_name">{{$apply->position_title}}</em>
-                                                    <span class="d_job_salary">
-                                                         @if($apply->salary <= 0)
-                                                            月薪面议
-                                                        @else
-                                                            {{$apply->salary/1000}}k-
-                                                            @if($apply->salary_max ==0) 无上限
-                                                            @else {{$apply->salary_max/1000}}k
-                                                            @endif
-                                                            元/月
-                                                        @endif
-                                                    </span>
                                                   </a>
                                                 </div>
                                                 <div class="d_company">
