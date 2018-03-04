@@ -362,7 +362,7 @@
                                         @if($data['enprinfo']->is_verification == 1) verified @endif
                                         @if($data['enprinfo']->is_verification == 0) unverified @endif">
                                         <i class="material-icons">verified_user</i>
-                                        <span>@if($data['enprinfo']->is_verification === 1) &nbsp;已认证 @elseif($data['enprinfo']->is_verification === 0) 待审核 @else 点击进行认证 @endif</span>
+                                        <font>@if($data['enprinfo']->is_verification === 1) &nbsp;已认证 @elseif($data['enprinfo']->is_verification === 0) 待审核 @else 点击进行认证 @endif</font>
                                     </span>
                                 </div>
                                 <div class="view_position">

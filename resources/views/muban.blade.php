@@ -1,15 +1,8 @@
 @extends('layout.master')
-@section('title', '消息通知')
+@section('title', '公司详情')
 
 @section('custom-style')
-
-@endsection
-
-@section('content')
-ddd
-@endsection
-
-@section('custom-script')
+ <link media="all" href="{{asset('../style/gsxx.css?v=2.40')}}" type="text/css" rel="stylesheet">
 
 @endsection
 
@@ -18,9 +11,19 @@ ddd
 @endsection
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
+   @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
 @endsection
+
+@section('content')
+
+@endsection
+
 
 @section('footer')
    @include('components.myfooter')
+@endsection
+
+
+@section('custom-script')
+	<script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
 @endsection

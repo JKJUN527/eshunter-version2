@@ -559,14 +559,17 @@
                                                 </li> 
                                                
                                             </ul>
-                                       
+                                            <div class="more_box"><a href="/position/publishList" class="list_more">查看全部</a></div> 
                                         </div>
                                         <p class="item_empty_desc">
                                             简洁有趣的产品介绍，能让用户最快速度了解公司业务。把自家优秀的产品展示出来吸引人才围观吧！
                                         </p>
                                         <p class="item_empty_add item_add disabled">
                                             <em class="item_ropeiconp"></em>
-                                            <span class="item_ropetext add_product">新增职位发布</span>
+                                            <a href="/position/publish">
+                                                <span class="item_ropetext add_product">新增职位发布</span>
+                                                
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
@@ -582,8 +585,8 @@
                                           <div class="d_item clearfix">
                                             <div class="d_job">
                                               <a href="#" class="d_job_link" target="_blank">
-                                                <em class="d_job_name">英雄联盟职业玩家（实...</em>
-                                                <span class="d_job_salary">（2k-4k）</span></a>
+                                                <em class="d_job_name">贾军</em>
+                                                <!-- <span class="d_job_salary">（2k-4k）</span> --></a>
                                             </div>
                                             <div class="d_company">
                                               <a href="#" target="_blank" title="舍得软件">舍得软件
@@ -637,8 +640,8 @@
                                           <div class="d_item clearfix">
                                             <div class="d_job">
                                               <a href="#" class="d_job_link" target="_blank">
-                                                <em class="d_job_name">英雄联盟职业玩家（实...</em>
-                                                <span class="d_job_salary">（2k-4k）</span></a>
+                                                <em class="d_job_name">贾军</em>
+                                                <!-- <span class="d_job_salary">（2k-4k）</span> --></a>
                                             </div>
                                             <div class="d_company">
                                               <a href="#" target="_blank" title="舍得软件">舍得软件
@@ -692,8 +695,8 @@
                                           <div class="d_item clearfix">
                                             <div class="d_job">
                                               <a href="#" class="d_job_link" target="_blank">
-                                                <em class="d_job_name">英雄联盟职业玩家（实...</em>
-                                                <span class="d_job_salary">（2k-4k）</span></a>
+                                                <em class="d_job_name">贾军</em>
+                                                <!-- <span class="d_job_salary">（2k-4k）</span> --></a>
                                             </div>
                                             <div class="d_company">
                                               <a href="#" target="_blank" title="舍得软件">舍得软件
@@ -744,15 +747,12 @@
                                           </div>
                                         </li>
                                       </ul>
-                                      
+                                      <div class="more_box"><a href="/position/deliverList" class="list_more">查看全部</a></div> 
                                     </form>
                                     <span class="empty_icon"></span>
                                     <span class="empty_text">该公司近2个月内未收到过申请记录</span>
                                 </div>
-                                <span class="item_ropera item_add disabled">
-                                    <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_two" ><a href="/position/deliverList">查看全部</a></span>
-                                </span>
+                                
                             </div>
                             <div class="item_container" id="company_intro">
                                 <div class="item_ltitle">公司介绍</div>
