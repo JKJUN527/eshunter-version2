@@ -46,12 +46,15 @@ class PersonCenterController extends Controller {
                 break;
             case 2:
                 $data['type'] = 2;
+                $eid = Enprinfo::where('uid', '=', $data['uid'])
+                    ->first();
                 $info = new InfoController();
                 $data['uid'] = AuthController::getUid();
                 $data['enterpriseInfo'] = $info->getEnprInfo();
-                $data['positionList'] = $this->getPostionList();
-                $data['messageNum'] = $this->getMessageNum();
-                $data['applyList'] = $this->getApplyList();
+                $data['positionList'] = $this->getPostionList($eid['eid']);
+//                $data['messageNum'] = $this->getMessageNum();
+                $data['positionNum'] = $this->getPositionNum($eid['eid']);
+                $data['applyList'] = $this->getApplyList($eid['eid']);
                 $data['industry'] = Industry::all();
                 break;
         }
@@ -171,6 +174,19 @@ class PersonCenterController extends Controller {
         else
             return $num;
     }
+    //在招职位数
+    public function getPositionNum($eid) {
+        $num = Position::where('eid', '=', $eid)
+            ->where(function ($query){
+                $query->where('position_status', '=', '1')
+                    ->orwhere('position_status', '=', '4');
+            })
+            ->count();
+        if ($num > 99)
+            return 99;
+        else
+            return $num;
+    }
 
     //获取近30天的简历数目
     public function getDeliveredNum() {
@@ -218,29 +234,21 @@ class PersonCenterController extends Controller {
         return $result;
     }
 
-    public function getPostionList() {
-        $uid = AuthController::getUid();
-        $eid = Enprinfo::where('uid', '=', $uid)
-            ->get();
-        $eid = $eid[0]['eid'];
+    public function getPostionList($eid) {
         $result = Position::where('eid', '=', $eid)
-//            ->where('position_status', '=', 1)
             ->where(function ($query){
                 $query->where('position_status',1)
                     ->orwhere('position_status',4);
             })
-            ->select('title', 'pdescribe', 'pid')
+//            ->select('title', 'pdescribe', 'pid')
+            ->orderBy('updated_at','desc')
+            ->take(6)
             ->get();
         return $result;
     }
 
     //申请记录列表只包含未查看的简历
-    public function getApplyList() {
-        $uid = AuthController::getUid();
-        $eid = Enprinfo::where('uid', '=', $uid)
-            ->select('eid')
-            ->get();
-        $eid = $eid[0]['eid'];
+    public function getApplyList($eid) {
         $pidArray = Position::where('eid', '=', $eid)
             ->where(function ($query){
                 $query->where('position_status',1)
@@ -260,7 +268,7 @@ class PersonCenterController extends Controller {
 //                    ->get();
                 $temp = DB::table('jobs_backup')
                     ->join('jobs_personinfo','jobs_personinfo.uid','=','jobs_backup.uid')
-                    ->select('did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','jobs_backup.created_at')
+                    ->select('did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','salary','salary_max','jobs_backup.created_at')
                     ->where('did','=',$backup['did'])
                     ->get();
 

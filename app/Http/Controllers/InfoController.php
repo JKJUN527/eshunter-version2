@@ -84,7 +84,7 @@ class InfoController extends Controller {
         }
         $type = $auth->getType();
         if ($uid && $type == 1) {
-            $personInfo = PersonInfo::where('uid', '=', $uid)
+            $personInfo = Personinfo::where('uid', '=', $uid)
                 ->get();
             return $personInfo;
         }
@@ -101,7 +101,7 @@ class InfoController extends Controller {
         }
         if ($uid && $type == 2) {
             $enprInfo = Enprinfo::where('uid', '=', $uid)
-                ->get();
+                ->first();
             return $enprInfo;
         }
         return null;

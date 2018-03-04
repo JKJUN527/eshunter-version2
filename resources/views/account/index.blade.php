@@ -348,35 +348,65 @@
                 width: 50%;
                 float: left;
             }
+            span.verify-flag {
+                width: 150px;
+                display: inline-block;
+                margin: 2px 8px 2px 16px;
+                vertical-align: top;
+                cursor: pointer;
+                position: relative;
+            }
+
+            span.verified {
+                color: #4CAF50;
+            }
+
+            span.unverified {
+                color: #aaaaaa;
+            }
+
+            span.verify-flag > i {
+                position: absolute;
+                top: 4px;
+
+            }
+
+            span.verify-flag > span {
+                position: absolute;
+                top: 6px;
+                left: 24px;
+                font-size: 14px;
+                font-weight: 400;
+            }
             </style>
     @endsection
     @section('content')
         <div class="containter">
             <div class="top_info">
                     <div class="top_info_wrap top_info_content">
-                        <img src="../images/1.gif" alt="公司Logo" width="164" heihgt="164">
+                        <img src="{{$data['enterpriseInfo']->elogo}}" alt="公司Logo" width="164" heihgt="164">
                         <div class="company_info">
                             <div class="company_main">
                                 <a href="/account/edit" class="edit edit_text" style="margin: 0px 67px 0px 0px;">
                                     <i></i>编辑
                                 </a>
                                 <h1>
-                                    <a href="myhome.html" class="hovertips" target="_blank" rel="nofollow">
+                                    <a href="http://{{str_replace(array('http://','https://'),'',$data['enterpriseInfo']->home_page)}}" class="hovertips" target="_blank" rel="nofollow">
                                         店小二餐饮连锁公司
                                     </a>
                                 </h1>
-                                <a href="myhome.html" class="icon-wrap" target="_blank" rel="nofollow" >
+                                <a href="http://{{str_replace(array('http://','https://'),'',$data['enterpriseInfo']->home_page)}}" class="icon-wrap" target="_blank" rel="nofollow" >
                                     <i></i>
                                 </a>
                                 <div class="company_word">
                                     <span class="verify-flag
-                                        @if($data['enterpriseInfo'][0]->is_verification == 1) verified @endif
-                                        @if($data['enterpriseInfo'][0]->is_verification == 0) unverified @endif
+                                        @if($data['enterpriseInfo']->is_verification == 1) verified @endif
+                                        @if($data['enterpriseInfo']->is_verification == 0) unverified @endif
                                                 ">
                                         <i class="material-icons">verified_user</i>
-                                        @if($data['enterpriseInfo'][0]->is_verification === 1)
+                                        @if($data['enterpriseInfo']->is_verification === 1)
                                             <span> &nbsp;已认证 </span>
-                                        @elseif($data['enterpriseInfo'][0]->is_verification === 0)
+                                        @elseif($data['enterpriseInfo']->is_verification === 0)
                                             <span> 待审核 </span>
                                         @else
                                             <span to="/account/enterpriseVerify/1">点击进行认证 </span>
@@ -387,18 +417,53 @@
                             <div class="company_data">
                                 <ul>
                                     <li>
-                                        <strong>赛事方</strong>
-                                        <br>
-                                        
+                                        <strong>
+                                            @if($data['enterpriseInfo']->industry == null)
+                                                行业未知
+                                            @else
+                                                @foreach($data['industry'] as $item)
+                                                    @if($data['enterpriseInfo']->industry == $item->id)
+                                                        {{$item->name}}
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </strong>
                                     </li>
                                     <li>
-                                        <strong>民营企业</strong>
-                                       
+                                        <strong>
+                                            @if($data['enterpriseInfo']->enature == null || $data['enterpriseInfo']->enature == 0)
+                                                企业类型未知
+                                            @elseif($data['enterpriseInfo']->enature == 1)
+                                                国有企业
+                                            @elseif($data['enterpriseInfo']->enature == 2)
+                                                民营企业
+                                            @elseif($data['enterpriseInfo']->enature == 3)
+                                                中外合资企业
+                                            @elseif($data['enterpriseInfo']->enature == 4)
+                                                外资企业
+                                            @elseif($data['enterpriseInfo']->enature == 5)
+                                                社会团体
+                                            @endif
+                                        </strong>
                                     </li>
                                     <li>
-                                        <strong>100～500人</strong>
-                                        <br>
-                                        
+                                        <strong>
+                                            @if($data['enterpriseInfo']->escale == null)
+                                                规模未知
+                                            @elseif($data['enterpriseInfo']->escale == 0)
+                                                10人以下
+                                            @elseif($data['enterpriseInfo']->escale == 1)
+                                                10～50人
+                                            @elseif($data['enterpriseInfo']->escale == 2)
+                                                50～100人
+                                            @elseif($data['enterpriseInfo']->escale == 3)
+                                                100～500人
+                                            @elseif($data['enterpriseInfo']->escale == 4)
+                                                500～1000人
+                                            @elseif($data['enterpriseInfo']->escale == 5)
+                                                1000人以上
+                                            @endif
+                                        </strong>
                                     </li>
                                     <!-- <li id="mspj" style="cursor:pointer;">
                                         <strong> 暂无</strong>
@@ -422,7 +487,7 @@
                                 <a href="javascript:;" class="company_index">公司主页</a>
                             </li>
                             <li class="li_two">
-                                <a href="javascript:;" class="recruit_job">招聘职位（0）</a>
+                                <a href="javascript:;" class="recruit_job">招聘职位（{{$data['positionNum']}}）</a>
                             </li>
                             {{--<li class="li_three">--}}
                                 {{--<a href="javascript:;" class="company_ask">公司问答</a>--}}
@@ -449,132 +514,73 @@
                                         
                                         <div class="The_job_con">
                                             <ul class="jieshao_list hotjobs" style="display: block;">
+                                                @foreach($data['positionList'] as $position)
                                                 <li>
                                                     <div class="jieshao_list_left left">
                                                         <div class="list_top">
                                                             <div class="clearfix pli_top">
                                                                 <div class="position_name left">
-                                                                    <h2 class="dib"><a href="#">王者荣耀职业玩家</a></h2>
-                                                                    <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
+                                                                    <h2 class="dib">
+                                                                        <a href="/position/detail?pid={{$position->pid}}">王者荣耀职业玩家</a>
+                                                                    </h2>
+                                                                    <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
                                                                 </div>
-                                                                <span class="salary right">10K-20k</span>
+                                                                <span class="salary right">
+                                                                    @if($position->salary <= 0)
+                                                                        月薪面议
+                                                                    @else
+                                                                        {{$position->salary/1000}}k-
+                                                                        @if($position->salary_max ==0) 无上限
+                                                                        @else {{$position->salary_max/1000}}k
+                                                                        @endif
+                                                                        元/月
+                                                                    @endif
+                                                                </span>
                                                             </div>
                                                             <div class="position_main_info">
-                                                                <span>无经验</span>
-                                                                <span>不限</span>
+                                                                <span>
+                                                                    @if($position->work_nature == 0)
+                                                                        兼职
+                                                                    @elseif($position->work_nature == 1)
+                                                                        实习
+                                                                    @else
+                                                                        全职
+                                                                    @endif
+                                                                </span>
+                                                                <span>
+                                                                    @if($position->education == -1)
+                                                                        无学历要求
+                                                                    @elseif($position->education == 0)
+                                                                        高中及以上
+                                                                    @elseif($position->education == 3)
+                                                                        专科及以上
+                                                                    @elseif($position->education == 1)
+                                                                        本科及以上
+                                                                    @elseif($position->education == 2)
+                                                                        研究生及以上
+                                                                    @endif
+                                                                </span>
                                                             </div>
                                                             <div class="lebel">
                                                                 <div class="lebel_item">
-                                                                    <span class="wordCut">包吃住</span>
-                                                                    <span class="wordCut">陪玩</span>
-                                                                    <span class="wordCut">代打</span>
+                                                                    @if($position->tag ==="" || $position->tag ===null)
+                                                                        <span class="wordCut">无标签</span>
+                                                                    @else
+                                                                        @foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)
+                                                                            <span class="wordCut">{{$tag}}</span>
+                                                                        @endforeach
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="jieshao_list_left left">
-                                                        <div class="list_top">
-                                                            <div class="clearfix pli_top">
-                                                                <div class="position_name left">
-                                                                    <h2 class="dib"><a href="#">NB2K职业玩家</a></h2>
-                                                                    <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                                                </div>
-                                                                <span class="salary right">5K-7k</span>
-                                                            </div>
-                                                            <div class="position_main_info">
-                                                                <span>经验1年左右</span>
-                                                                <span>高中</span>
-                                                            </div>
-                                                            <div class="lebel">
-                                                                <div class="lebel_item">
-                                                                    <span class="wordCut">包吃住</span>
-                                                                    <span class="wordCut">陪玩</span>
-                                                                    <span class="wordCut">代打</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="jieshao_list_left left">
-                                                        <div class="list_top">
-                                                            <div class="clearfix pli_top">
-                                                                <div class="position_name left">
-                                                                    <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                                                    <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                                                </div>
-                                                                <span class="salary right">10K-15k</span>
-                                                            </div>
-                                                            <div class="position_main_info">
-                                                                <span>经验3-5年</span>
-                                                                <span>本科</span>
-                                                            </div>
-                                                            <div class="lebel">
-                                                                <div class="lebel_item">
-                                                                    <span class="wordCut">包吃住</span>
-                                                                    <span class="wordCut">陪玩</span>
-                                                                    <span class="wordCut">代打</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="jieshao_list_left left">
-                                                        <div class="list_top">
-                                                            <div class="clearfix pli_top">
-                                                                <div class="position_name left">
-                                                                    <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                                                    <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                                                </div>
-                                                                <span class="salary right">10K-15k</span>
-                                                            </div>
-                                                            <div class="position_main_info">
-                                                                <span>经验3-5年</span>
-                                                                <span>本科</span>
-                                                            </div>
-                                                            <div class="lebel">
-                                                                <div class="lebel_item">
-                                                                    <span class="wordCut">包吃住</span>
-                                                                    <span class="wordCut">陪玩</span>
-                                                                    <span class="wordCut">代打</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="jieshao_list_left left">
-                                                        <div class="list_top">
-                                                            <div class="clearfix pli_top">
-                                                                <div class="position_name left">
-                                                                    <h2 class="dib"><a href="#">刀塔2职业玩家</a></h2>
-                                                                    <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                                                </div>
-                                                                <span class="salary right">10K-15k</span>
-                                                            </div>
-                                                            <div class="position_main_info">
-                                                                <span>经验3-5年</span>
-                                                                <span>本科</span>
-                                                            </div>
-                                                            <div class="lebel">
-                                                                <div class="lebel_item">
-                                                                    <span class="wordCut">包吃住</span>
-                                                                    <span class="wordCut">陪玩</span>
-                                                                    <span class="wordCut">代打</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li> 
-                                               
+                                                @endforeach
                                             </ul>
                                        
                                         </div>
                                         <p class="item_empty_desc">
-                                            简洁有趣的产品介绍，能让用户最快速度了解公司业务。把自家优秀的产品展示出来吸引人才围观吧！
+                                            简洁有趣的职位介绍，能让求职者最快速度了解公司职位任务。把需要的职位展示出来吸引人才围观吧！
                                         </p>
                                         <p class="item_empty_add item_add disabled">
                                             <em class="item_ropeiconp"></em>
@@ -590,176 +596,43 @@
                                 <div class="reviews-empty">
                                     <form id="deliveryForm" class="deliveryAll" style="display: block;">
                                       <ul class="reset my_delivery">
-                                        <li>
-                                          <div class="d_item clearfix">
-                                            <div class="d_job">
-                                              <a href="#" class="d_job_link" target="_blank">
-                                                <em class="d_job_name">英雄联盟职业玩家（实...</em>
-                                                <span class="d_job_salary">（2k-4k）</span></a>
-                                            </div>
-                                            <div class="d_company">
-                                              <a href="#" target="_blank" title="舍得软件">舍得软件
-                                                <span>[成都]</span></a>
-                                            </div>
-                                            <div class="d_resume">使用简历：
-                                              <span class="d_resume_type">附件简历</span>
-                                              <a href="javascript:;" class="btn_showprogress delviery_success_btn">
-                                                <span>已接收</span>
-                                                <i class="transform"></i>
-                                              </a>
-                                              <span class="d_time">2017-12-28 14:54</span></div>
-                                          </div>
-                                          <div class="progress_status progress_status_one dn" style="display: none;">
-                                            <ul class="status_steps">
-                                              <li class="status_done status_1">1</li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>2</span></li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>3</span></li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>4</span></li>
-                                            </ul>
-                                            <ul class="status_text clearfix">
-                                              <li>已接收</li>
-                                              <li class="status_text_2">简历已查看</li>
-                                              <li class="status_text_3">待沟通</li>
-                                              <li class="status_text_4 status_text_6">面试</li></ul>
-                                            <ul class="status_list">
-                                              <li class="top1">
-                                                <div class="list_time">
-                                                  <em></em>2017-12-28 14:54</div>
-                                                <div class="list_body">
-                                                  <img src="images/pic00.png" style="border-radius:50%;" width="60" heigth="60">
-                                                  <h3 class="contact_title" style="position:relative;z-index:2;display:inline-block;">舍得软件人力资源部&nbsp;已成功接收某XX的简历</h3></div>
-                                              </li>
-                                            </ul>
-                                            <a href="javascript:;" class="btn_closeprogress up_btn"></a>
-                                          </div>
-                                        </li>
-                                        <li>
-                                          <div class="d_item clearfix">
-                                            <div class="d_job">
-                                              <a href="#" class="d_job_link" target="_blank">
-                                                <em class="d_job_name">英雄联盟职业玩家（实...</em>
-                                                <span class="d_job_salary">（2k-4k）</span></a>
-                                            </div>
-                                            <div class="d_company">
-                                              <a href="#" target="_blank" title="舍得软件">舍得软件
-                                                <span>[成都]</span></a>
-                                            </div>
-                                            <div class="d_resume">使用简历：
-                                              <span class="d_resume_type">附件简历</span>
-                                              <a href="javascript:;" class="btn_showprogress">
-                                                <span>已接收</span>
-                                                <i class="transform"></i>
-                                              </a>
-                                              <span class="d_time">2017-12-28 14:54</span></div>
-                                          </div>
-                                          <div class="progress_status dn" style="display: none;">
-                                            <ul class="status_steps">
-                                              <li class="status_done status_1">1</li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>2</span></li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>3</span></li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>4</span></li>
-                                            </ul>
-                                            <ul class="status_text clearfix">
-                                              <li>已接收</li>
-                                              <li class="status_text_2">简历已查看</li>
-                                              <li class="status_text_3">待沟通</li>
-                                              <li class="status_text_4 status_text_6">面试</li></ul>
-                                            <ul class="status_list">
-                                              <li class="top1">
-                                                <div class="list_time">
-                                                  <em></em>2017-12-28 14:54</div>
-                                                <div class="list_body">
-                                                  <img src="images/pic00.png" style="border-radius:50%;" width="60" heigth="60">
-                                                  <h3 class="contact_title" style="position:relative;z-index:2;display:inline-block;">舍得软件人力资源部&nbsp;已成功接收某XX的简历</h3></div>
-                                              </li>
-                                            </ul>
-                                            <a href="javascript:;" class="btn_closeprogress"></a>
-                                          </div>
-                                        </li>
-                                        <li>
-                                          <div class="d_item clearfix">
-                                            <div class="d_job">
-                                              <a href="#" class="d_job_link" target="_blank">
-                                                <em class="d_job_name">英雄联盟职业玩家（实...</em>
-                                                <span class="d_job_salary">（2k-4k）</span></a>
-                                            </div>
-                                            <div class="d_company">
-                                              <a href="#" target="_blank" title="舍得软件">舍得软件
-                                                <span>[成都]</span></a>
-                                            </div>
-                                            <div class="d_resume">使用简历：
-                                              <span class="d_resume_type">附件简历</span>
-                                              <a href="javascript:;" class="btn_showprogress">
-                                                <span>已接收</span>
-                                                <i class="transform"></i>
-                                              </a>
-                                              <span class="d_time">2017-12-28 14:54</span></div>
-                                          </div>
-                                          <div class="progress_status dn" style="display: none;">
-                                            <ul class="status_steps">
-                                              <li class="status_done status_1">1</li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>2</span></li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>3</span></li>
-                                              <li class="status_line status_line_grey">
-                                                <span></span>
-                                              </li>
-                                              <li class="status_grey">
-                                                <span>4</span></li>
-                                            </ul>
-                                            <ul class="status_text clearfix">
-                                              <li>已接收</li>
-                                              <li class="status_text_2">简历已查看</li>
-                                              <li class="status_text_3">待沟通</li>
-                                              <li class="status_text_4 status_text_6">面试</li></ul>
-                                            <ul class="status_list">
-                                              <li class="top1">
-                                                <div class="list_time">
-                                                  <em></em>2017-12-28 14:54</div>
-                                                <div class="list_body">
-                                                  <img src="images/pic00.png" style="border-radius:50%;" width="60" heigth="60">
-                                                  <h3 class="contact_title" style="position:relative;z-index:2;display:inline-block;">舍得软件人力资源部&nbsp;已成功接收某XXS的简历</h3></div>
-                                              </li>
-                                            </ul>
-                                            <a href="javascript:;" class="btn_closeprogress"></a>
-                                          </div>
-                                        </li>
+                                          @foreach($data['applyList'] as $apply)
+                                            <li to="/position/deliverDetail?did={{$apply->did}}">
+                                              <div class="d_item clearfix">
+                                                <div class="d_job">
+                                                  <a href="/position/deliverDetail?did={{$apply->did}}" class="d_job_link" target="_blank">
+                                                    <em class="d_job_name">{{$apply->position_title}}</em>
+                                                    <span class="d_job_salary">
+                                                         @if($apply->salary <= 0)
+                                                            月薪面议
+                                                        @else
+                                                            {{$apply->salary/1000}}k-
+                                                            @if($apply->salary_max ==0) 无上限
+                                                            @else {{$apply->salary_max/1000}}k
+                                                            @endif
+                                                            元/月
+                                                        @endif
+                                                    </span>
+                                                  </a>
+                                                </div>
+                                                <div class="d_company">
+                                                    <img src="{{$apply->photo}}" style="height: 50px;width: 50px;">
+                                                  <a href="/position/deliverDetail?did={{$apply->did}}">{{$apply->pname}}</a>
+                                                </div>
+                                                <div class="d_resume">
+                                                  <a href="javascript:;" class="btn_showprogress delviery_success_btn">
+                                                    <span>已接收</span>
+                                                    <i class="transform"></i>
+                                                  </a>
+                                                  <span class="d_time">申请时间:{{$apply->created_at}}</span></div>
+                                              </div>
+                                            </li>
+                                          @endforeach
                                       </ul>
                                       
                                     </form>
                                     <span class="empty_icon"></span>
-                                    <span class="empty_text">该公司近2个月内未收到过申请记录</span>
+                                    <span class="empty_text">该公司最近收到过(未处理)申请记录</span>
                                 </div>
                                 <span class="item_ropera item_add disabled">
                                     <em class="item_ropeiconp"></em>
@@ -768,22 +641,28 @@
                             </div>
                             <div class="item_container" id="company_intro">
                                 <div class="item_ltitle">公司介绍</div>
-                                <div class="video_dialog" style="display: none;"> 
-                                        <video id="my_video" controls="" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" playsinline="" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" style="object-fit:fill" src="" poster="">
-                                                                
-                                        </video>
-                                </div> 
-                                <span class="item_ropera disabled" style="display:none;">
-                                    <em class="item_ropeiconp item_ropeicone"></em>
-                                    <span class="item_ropetext">编辑</span>
-                                </span>
+                                {{--<div class="video_dialog" style="display: none;"> --}}
+                                    {{--<video id="my_video" controls="" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" playsinline="" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" style="object-fit:fill" src="" poster="">--}}
+                                                                {{----}}
+                                    {{--</video>--}}
+                                {{--</div> --}}
+                                {{--<span class="item_ropera disabled" style="display:none;">--}}
+                                    {{--<em class="item_ropeiconp item_ropeicone"></em>--}}
+                                    {{--<span class="item_ropetext">编辑</span>--}}
+                                {{--</span>--}}
                                 <span class="item_ropera item_add disabled">
                                     <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_two" >新增</span>
+                                    <span class="item_ropetext add_two" to="/account/edit">修改</span>
                                 </span>
                                 
                                 <div class="item_content item_content_two" style="display: block;">
-                                    <div class="company_intro_text" style="display: block;">该公司尚未添加公司介绍<br></div>
+                                    <div class="company_intro_text" style="display: block;">
+                                        @if($data['enterpriseInfo']->ebrief == "" ||$data['enterpriseInfo']->ebrief == null)
+                                            该公司尚未添加公司介绍
+                                        @else
+                                            {!! $data['enterpriseInfo']->ebrief !!}
+                                        @endif
+                                    </div>
                                    
                                 </div>
                             
@@ -800,63 +679,60 @@
                                 </div>
                             </div>
 
-                            <div class="item_container" id="history_container">
-                                <div class="item_ltitle">发展历程</div>
-                            
-                                <span class="item_ropera item_add disabled item_add_wrap_three" style="display: block;">
-                                    <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_three">新增</span>
-                                </span>
-                                
-                               
-                            
-                                <!-- 展示区域 -->
-                                <div class="item_content item_content_three" style="display: block;">
-                                        <!-- 空 -->
-                                    <div class="item_empty item_add">
-                                        <p class="item_empty_desc">
-                                            向用户展示公司和产品不断壮大、优秀的过程中的里程碑事件。
-                                        </p>
-                                        <p class="item_empty_add disabled">
-                                            <em class="item_ropeiconp"></em>
-                                            <span class="item_ropetext add_process">添加发展历程</span>
-                                        </p>
-                                    </div>
-                                    </div>
-                            </div>
+                            {{--<div class="item_container" id="history_container">--}}
+                                {{--<div class="item_ltitle">发展历程</div>--}}
+                            {{----}}
+                                {{--<span class="item_ropera item_add disabled item_add_wrap_three" style="display: block;">--}}
+                                    {{--<em class="item_ropeiconp"></em>--}}
+                                    {{--<span class="item_ropetext add_three">新增</span>--}}
+                                {{--</span>--}}
+                                {{----}}
+                               {{----}}
+                            {{----}}
+                                {{--<!-- 展示区域 -->--}}
+                                {{--<div class="item_content item_content_three" style="display: block;">--}}
+                                        {{--<!-- 空 -->--}}
+                                    {{--<div class="item_empty item_add">--}}
+                                        {{--<p class="item_empty_desc">--}}
+                                            {{--向用户展示公司和产品不断壮大、优秀的过程中的里程碑事件。--}}
+                                        {{--</p>--}}
+                                        {{--<p class="item_empty_add disabled">--}}
+                                            {{--<em class="item_ropeiconp"></em>--}}
+                                            {{--<span class="item_ropetext add_process">添加发展历程</span>--}}
+                                        {{--</p>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                            {{--</div>--}}
 
-                            <input type="hidden" value="316493" class="companyId">
-                            <input type="hidden" value="0" class="totalCount">
-                            <input type="hidden" value="true" class="isHide">
-                            <input type="hidden" value="false" class="isOpen">
-                            <input type="hidden" value="1" class="isupdateState">
-
-                            
-
-                            <div class="address_container item_container" id="location_container">
-                                <div class="item_ltitle">公司位置</div>
-                            
-                                
-                               <!--  <span class="item_ropera   addr_add" style="display: block;">
-                                    <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext">新增</span>
-                                </span>
-                                <span class="item_ropera1 dn addr_edit_cancel" style="display: none;">
-                                    <em class="item_ropeiconp item_ropeicons"></em>
-                                    <span class="item_ropetext">取消编辑</span>
-                                </span>
-                                <span class="item_ropera1 dn addr_add_cancel">
-                                    <em class="item_ropeiconp item_ropeicons"></em>
-                                    <span class="item_ropetext">取消新增</span>
-                                </span> -->
-                                
-                                <div class="item_content">
-                                    <div class="item_con_map amap-container" id="addr_map" style="position: relative; background: rgb(252, 249, 242);">
-                                        <img src="../images/map.png"/>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                            {{--<input type="hidden" value="316493" class="companyId">--}}
+                            {{--<input type="hidden" value="0" class="totalCount">--}}
+                            {{--<input type="hidden" value="true" class="isHide">--}}
+                            {{--<input type="hidden" value="false" class="isOpen">--}}
+                            {{--<input type="hidden" value="1" class="isupdateState">--}}
+                            {{--<div class="address_container item_container" id="location_container">--}}
+                                {{--<div class="item_ltitle">公司位置</div>--}}
+                            {{----}}
+                                {{----}}
+                               {{--<!--  <span class="item_ropera   addr_add" style="display: block;">--}}
+                                    {{--<em class="item_ropeiconp"></em>--}}
+                                    {{--<span class="item_ropetext">新增</span>--}}
+                                {{--</span>--}}
+                                {{--<span class="item_roper1 dn addr_edit_cancel" style="display: none;">--}}
+                                    {{--<em class="item_ropeiconp item_ropeicons"></em>--}}
+                                    {{--<span class="item_ropetext">取消编辑</span>--}}
+                                {{--</span>--}}
+                                {{--<span class="item_ropera1 dn addr_add_cancel">--}}
+                                    {{--<em class="item_ropeiconp item_ropeicons"></em>--}}
+                                    {{--<span class="item_ropetext">取消新增</span>--}}
+                                {{--</span> -->--}}
+                                {{----}}
+                                {{--<div class="item_content">--}}
+                                    {{--<div class="item_con_map amap-container" id="addr_map" style="position: relative; background: rgb(252, 249, 242);">--}}
+                                        {{--<img src="../images/map.png"/>--}}
+                                    {{--</div>--}}
+                                    {{----}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
 
                     </div>
