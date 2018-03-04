@@ -22,7 +22,7 @@
 			</p> 
 			<ul class="file_check">
 				<li class="file_line1">审核材料已提交，请等待审核结果</li> 
-				<li class="file_line2">我们将在收到材料的1个工作日内进行人工审核，审核结果会发送到你的邮箱，请耐心等待...</li> 
+				<li class="file_line2">我们将在收到材料的1个工作日内进行人工审核，审核结果会发送到你的邮箱，请耐心等待...</li>
 				<li>
 					<p class="goto_back">
 						<a href="myhome.html"  class="btn">返回招聘后台</a>
@@ -30,7 +30,7 @@
 				</li>
 			</ul>  
 			<p class="question_tip" style="text-align: center;">
-				如有任何问题可工作日联系客服021-63339866（9:00-18:00）
+				如有任何问题可工作日联系客服:021-63339866（9:00-18:00）
 			</p>
 		</div>
 	</div>

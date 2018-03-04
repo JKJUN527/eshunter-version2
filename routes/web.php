@@ -3,14 +3,14 @@
 //Route::get('index', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
 //    return view('index');
 //});
-Route::get('other/auditfail', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('other/auditFail');
+Route::get('enterpriseVerify/auditfail', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
+   return view('enterpriseVerify/auditFail');
 });
-Route::get('other/audit1', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('other/audit1');
+Route::get('enterpriseVerify/audit1', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
+   return view('enterpriseVerify/audit1');
 });
-Route::get('other/audit2', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
-   return view('other/audit2');
+Route::get('enterpriseVerify/audit2', function () {//主页返回四类广告（大图、小图、文字、急聘广告、最新新闻（5个）），
+   return view('enterpriseVerify/audit2');
 });
 //测试生成session uid
 Route::any('session', ['uses' => 'PositionController@test1']);
@@ -63,7 +63,8 @@ Route::get('account/getEnprInfo', ['uses' => 'InfoController@getEnprInfo']);
 //Route::post('account/editPersonInfo', ['uses' => 'InfoController@editPersonInfo']);
 //Route::post('account/editEnprInfo', ['uses' => 'InfoController@editEnprInfo']);
 //企业号验证页面
-Route::any('account/enterpriseVerify', ['uses' => 'AccountController@enterpriseVerifyView']);
+Route::any('account/enterpriseVerify/1', ['uses' => 'AccountController@enterpriseVerifyView1']);
+Route::any('account/enterpriseVerify/2', ['uses' => 'AccountController@enterpriseVerifyView2']);
 Route::any('account/enterpriseVerify/upload', ['uses' => 'AccountController@uploadVerinfo']);
 //个人信息资料修改新增页面
 Route::any('account/personinfo/edit', ['uses' => 'AccountController@personinfoEdit']);

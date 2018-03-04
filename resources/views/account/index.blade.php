@@ -369,7 +369,19 @@
                                     <i></i>
                                 </a>
                                 <div class="company_word">
-                                        
+                                    <span class="verify-flag
+                                        @if($data['enterpriseInfo'][0]->is_verification == 1) verified @endif
+                                        @if($data['enterpriseInfo'][0]->is_verification == 0) unverified @endif
+                                                ">
+                                        <i class="material-icons">verified_user</i>
+                                        @if($data['enterpriseInfo'][0]->is_verification === 1)
+                                            <span> &nbsp;已认证 </span>
+                                        @elseif($data['enterpriseInfo'][0]->is_verification === 0)
+                                            <span> 待审核 </span>
+                                        @else
+                                            <span to="/account/enterpriseVerify/1">点击进行认证 </span>
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                             <div class="company_data">
@@ -409,13 +421,13 @@
                             <li class="li_one current">
                                 <a href="javascript:;" class="company_index">公司主页</a>
                             </li>
-                            <!-- <li class="li_two">
+                            <li class="li_two">
                                 <a href="javascript:;" class="recruit_job">招聘职位（0）</a>
                             </li>
-                            <li class="li_three">
-                                <a href="javascript:;" class="company_ask">公司问答</a>
-                                <i class="icon_new"></i>
-                            </li> -->
+                            {{--<li class="li_three">--}}
+                                {{--<a href="javascript:;" class="company_ask">公司问答</a>--}}
+                                {{--<i class="icon_new"></i>--}}
+                            {{--</li>--}}
                         </ul>
                       
                     </div>

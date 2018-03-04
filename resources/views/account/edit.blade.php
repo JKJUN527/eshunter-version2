@@ -448,8 +448,8 @@
                                 <div class="username input_box">
                                     <div class="form-line">
                                         <textarea rows="3" class="form-control" name="address" id="enterprise-address"
-                                                  placeholder="必填，Ex: xx省 xx市 xx区/县  xxx街道xxx号">
-                                            {{$data['enprinfo']->address}}
+                                                  placeholder="必填，Ex: xx省 xx市 xx区/县  xxx街道xxx号"
+                                                  value="{{$data['enprinfo']->address}}">
                                         </textarea>
                                     </div>
                                     <div class="help-info">必填项</div>
