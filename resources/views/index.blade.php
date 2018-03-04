@@ -50,10 +50,13 @@
                                     <?php $i=0; ?>
                                     @foreach($data['occupation'] as $occupation)
                                         @if($occupation->industry_id == $industry->id)
-                                            <a href="/position/advanceSearch?industry={{$industry->id}}">{{$occupation->name}}</a>
                                             @if($i++ >=4)
                                                 @break
                                             @endif
+                                            @if($i == 1){{--跳过综合选项--}}
+                                                @continue
+                                            @endif
+                                            <a href="/position/advanceSearch?industry={{$industry->id}}">{{$occupation->name}}</a>
                                         @endif
                                     @endforeach
                                     <i class="arrow"></i>
