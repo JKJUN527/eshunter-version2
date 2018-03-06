@@ -254,7 +254,9 @@
    @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
 @endsection
 
-
+@section('footer')
+   @include('components.myfooter')
+@endsection
 
 @section('content')
     <div class="info-panel">
@@ -1909,8 +1911,4 @@
                         initValue: $('#completionvalue').val()
                     });
     </script>
-@endsection
-
-@section('footer')
-   @include('components.myfooter')
 @endsection

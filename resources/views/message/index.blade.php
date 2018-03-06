@@ -15,14 +15,14 @@
 					        <a href="#" data-lg-tj-id="1810" >设置</a>
 					    </div>
 					</div>
-					<div class="category-tab">
+					<!-- <div class="category-tab">
 					    <div class="item-wrap">
 					        <ul class="tab" id="tabContainer">
-					            <!-- <li class="tab-item item_1 active">
+					            <li class="tab-item item_1 active">
 					            	<a href="javascript:;">全部</a></li>
 					            <li class="sep">
 					            	<span>|</span>
-					            </li> -->
+					            </li>
 					            <li class="tab-item item_2 active">
 					            	<a  href="javascript:;">投递反馈</a>
 					            </li>
@@ -41,11 +41,11 @@
 					            </li>
 					        </ul>
 					    </div>
-					</div>
+					</div> -->
 					<div class="twrap">
 						<div class="tab-content" id="msgContent">
 							<!--全部-->
-							<div class="t-content-item t-content-item_1 active" style="display: none;">
+							<!-- <div class="t-content-item t-content-item_1 active" style="display: none;">
 								<ul class="msg-list" id="allListContainer">
 									<li class="msg-box" >
 							            <div class="msg-body">
@@ -139,7 +139,7 @@
 							        </li>
 								</ul>
 							</div>
-							<!--投递反馈-->
+							投递反馈
 							<div class="t-content-item t-content-item_2" style="display: none;">
 								<ul class="msg-list" id="allListContainer">
 									<li class="msg-box" >
@@ -233,9 +233,9 @@
 							            </div>
 							        </li>
 								</ul>
-							</div>
+							</div> -->
 							<!--公司对话-->
-							<div class="t-content-item t-content-item_3 company-chalk" style="display: none;">
+							<div class="t-content-item t-content-item_3 company-chalk" style="display: block;">
   <div class="chalk-wrap clearfix">
     <div class="left chalk-company-list">
       <div class="mdl-card mdl-shadow--2dp info-card">
@@ -435,53 +435,53 @@
   </div>
 </div>
 							<!--系统通知-->
-							<div class="t-content-item t-content-item_4" style="display: block;">
+							<!-- <div class="t-content-item t-content-item_4" style="display: block;">
 							    <ul class="msg-list" id="invitationListContainer">
 								    <li class="msg-box">
 								        <div class="msg-body">
-					                        <div class="msg-type"><i class="msg-avant system-v"></i></div>
-					                        <div class="msg-content">
-					                            <div class="msg-head">
-					                                <div class="left">系统通知</div>
-					                                <div class="right">2017-04-07 12:19</div>
-					                            </div>
-					                            <div class="info">
-					                                <div class="pai-info">
-					                                    
-					                                                                 【电竞猎人邀请你】一拍专注中高端人才求职，无需主动投递简历，3500家名企虚位以待，1次申请，10个面试机会，2周敲定更好工作。
-					                                    <a class="complete-link" href="#" target="_blank" >去试试</a>
-					
-					                                </div>
-					                                <!-- <a class="to-detail" href="">去看看</a> -->
-					                            </div>
-					                        </div>
-					                    </div>
+												                        <div class="msg-type"><i class="msg-avant system-v"></i></div>
+												                        <div class="msg-content">
+												                            <div class="msg-head">
+												                                <div class="left">系统通知</div>
+												                                <div class="right">2017-04-07 12:19</div>
+												                            </div>
+												                            <div class="info">
+												                                <div class="pai-info">
+												                                    
+												                                                                 【电竞猎人邀请你】一拍专注中高端人才求职，无需主动投递简历，3500家名企虚位以待，1次申请，10个面试机会，2周敲定更好工作。
+												                                    <a class="complete-link" href="#" target="_blank" >去试试</a>
+												
+												                                </div>
+												                                <a class="to-detail" href="">去看看</a>
+												                            </div>
+												                        </div>
+												                    </div>
 								    </li>
 								    
 								    <li class="msg-box">
 								        <div class="msg-body">
-					                        <div class="msg-type"><i class="msg-avant system-v"></i></div>
-					                        <div class="msg-content">
-					                            <div class="msg-head">
-					                                <div class="left">系统通知</div>
-					                                <div class="right">2017-04-07 12:19</div>
-					                            </div>
-					                            <div class="info">
-					                                <p class="system-info">
-					                                        <a class="sys-link" href="#" target="_blank">
-					                                                <span class="sys-title">成都国美大数据线下干货分享&amp;招聘狂欢趴~高薪职位等你来！</span>
-					                                                <img src="images/Cgp.PNG" >
-					                                        </a>
-					                                        4月8日，相约在成都市高新区萃华路89号国际科技节能大厦17楼
-					                                </p>
-					                                    <a class="to-detail" href="#" target="_blank">查看详情</a>
-					                            </div>
-					                        </div>
-					                    </div>
+												                        <div class="msg-type"><i class="msg-avant system-v"></i></div>
+												                        <div class="msg-content">
+												                            <div class="msg-head">
+												                                <div class="left">系统通知</div>
+												                                <div class="right">2017-04-07 12:19</div>
+												                            </div>
+												                            <div class="info">
+												                                <p class="system-info">
+												                                        <a class="sys-link" href="#" target="_blank">
+												                                                <span class="sys-title">成都国美大数据线下干货分享&amp;招聘狂欢趴~高薪职位等你来！</span>
+												                                                <img src="images/Cgp.PNG" >
+												                                        </a>
+												                                        4月8日，相约在成都市高新区萃华路89号国际科技节能大厦17楼
+												                                </p>
+												                                    <a class="to-detail" href="#" target="_blank">查看详情</a>
+												                            </div>
+												                        </div>
+												                    </div>
 								    </li>
 							    </ul>
 							    <div class="item_con_pager"></div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<!-- <div class="Page" id="pagination"><a href="javascript:void(0)" goto="1" class="show gopage">1</a><a href="javascript:void(0)" goto="2" class="gopage">2</a><a href="javascript:void(0)" goto="3" class="gopage">3</a><a href="javascript:void(0)" goto="4" class="gopage">4</a><a href="javascript:void(0)" goto="5" class="gopage">5</a><a href="javascript:void(0)" goto="6" class="gopage">6</a><a href="javascript:void(0)" goto="7" class="gopage">7</a><a href="javascript:void(0)" goto="8" class="gopage">8</a><a href="javascript:void(0)" target="_self" flg="down" class="page_down pageup">下一页</a></div> -->
