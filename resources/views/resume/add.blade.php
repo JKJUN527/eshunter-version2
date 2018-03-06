@@ -50,11 +50,11 @@
 
         .education-panel p,
         .work-panel p {
-             display: block !important;
-             border: 1px solid #f5f5f5;
-             margin: 16px;
-             vertical-align: middle;
-         }
+            display: block !important;
+            border: 1px solid #f5f5f5;
+            margin: 16px;
+            vertical-align: middle;
+        }
         .project-panel p {
             padding: 5px 10px;
             display: inline-block;
@@ -84,12 +84,12 @@
 
         .education-panel p span,
         .work-panel p span {
-             margin-right: 10px;
-             overflow: hidden;
-             white-space: nowrap;
-             display: inline-block;
-             text-overflow: ellipsis;
-         }
+            margin-right: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-overflow: ellipsis;
+        }
         .project-panel p span {
             margin-right: 10px;
             overflow: hidden;
@@ -111,15 +111,15 @@
         }
         .education-panel p i,
         .work-panel p i {
-             float: right;
-             cursor: pointer;
-             font-size: 16px;
-             color: #D32F2F;
-             position: relative;
-             top: 5px;
-             border-radius: 16px;
-             background: #f5f5f5;
-         }
+            float: right;
+            cursor: pointer;
+            font-size: 16px;
+            color: #D32F2F;
+            position: relative;
+            top: 5px;
+            border-radius: 16px;
+            background: #f5f5f5;
+        }
         .project-panel p i {
             float: right;
             cursor: pointer;
@@ -134,9 +134,9 @@
         .skill-panel span i:hover,
         .education-panel p i:hover,
         .work-panel p i:hover {
-             background: #ebebeb;
-             color: #F44336;
-         }
+            background: #ebebeb;
+            color: #F44336;
+        }
         .project-panel p i:hover {
             background: #ebebeb;
             color: #F44336;
@@ -247,14 +247,12 @@
 @endsection
 
 @section('header-nav')
-   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
+    @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
+    @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
 @endsection
-
-
 
 @section('content')
     <div class="info-panel">
@@ -284,7 +282,7 @@
                 </button>
                 <input style="display: none" id="completionvalue" value="{{$data['completion']}}" />
                 <div class="prg-cont rad-prg" id="indicatorContainer"></div>
-                
+
             </div>
             <div class="info-panel--left">
 
@@ -312,9 +310,15 @@
                         @else
                             <p>地区：
                                 <span>
-                                    @foreach($data['region'] as $region)
-                                        @if($data['intention']->region == $region->id)
-                                            {{$region->name}}
+                                    @foreach($data['province'] as $province)
+                                        @if($data['intention']->region == $province->id)
+                                            {{$province->name}}
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    @foreach($data['city'] as $city)
+                                        @if($data['intention']->region == $city->id)
+                                            {{$city->name}}
                                             @break
                                         @elseif($data['intention']->region == -1)
                                             任意
@@ -377,15 +381,41 @@
 
                     <div class="mdl-card__actions mdl-card--border intention-panel-update">
 
-                        <label for="position-place">工作地区意向</label>
+                        {{--<label for="position-place">工作地区意向</label>--}}
+                        {{--<div class="form-group">--}}
+                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                        {{--<select class="form-control show-tick selectpicker" data-live-search="true"--}}
+                        {{--id="position-place" name="place">--}}
+                        {{--@if($data['intention'] == null)--}}
+                        {{--<option value="-1">任意</option>--}}
+                        {{--@foreach($data['region'] as $region)--}}
+                        {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
+                        {{--@endforeach--}}
+                        {{--@else--}}
+                        {{--@if($data['intention']->region == -1)--}}
+                        {{--<option value="-1" selected>任意</option>--}}
+                        {{--@else--}}
+                        {{--<option value="-1">任意</option>--}}
+                        {{--@endif--}}
+                        {{--@foreach($data['region'] as $region)--}}
+                        {{--@if($data['intention']->region == $region->id)--}}
+                        {{--<option value="{{$region->id}}" selected>{{$region->name}}</option>--}}
+                        {{--@else--}}
+                        {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
+                        {{--@endif--}}
+                        {{--@endforeach--}}
+                        {{--@endif--}}
+                        {{--</select>--}}
+                        {{--</div>--}}
+                        <label for="position-place">意向省份</label>
                         <div class="form-group">
                             {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" data-live-search="true"
-                                    id="position-place" name="place">
+                            <select class="form-control show-tick selectpicker" id="position-place"
+                                    data-live-search="true" name="place">
                                 @if($data['intention'] == null)
                                     <option value="-1">任意</option>
-                                    @foreach($data['region'] as $region)
-                                        <option value="{{$region->id}}">{{$region->name}}</option>
+                                    @foreach($data['province'] as $province)
+                                        <option value="{{$province->id}}">{{$province->name}}</option>
                                     @endforeach
                                 @else
                                     @if($data['intention']->region == -1)
@@ -393,16 +423,45 @@
                                     @else
                                         <option value="-1">任意</option>
                                     @endif
-                                    @foreach($data['region'] as $region)
-                                        @if($data['intention']->region == $region->id)
-                                            <option value="{{$region->id}}" selected>{{$region->name}}</option>
+                                    {{$default_province =$data['intention']->region }}
+                                    @foreach($data['province'] as $province)
+                                        @foreach($data['city'] as $city)
+                                            @if($data['intention']->region == $city->id)
+                                                <?php $default_province = $city->parent_id ?>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if($default_province == $province->id)
+                                            <option value="{{$province->id}}" selected>{{$province->name}}</option>
                                         @else
-                                            <option value="{{$region->id}}">{{$region->name}}</option>
+                                            <option value="{{$province->id}}">{{$province->name}}</option>
                                         @endif
                                     @endforeach
                                 @endif
                             </select>
+                            <label class="error" for="position-place"></label>
                         </div>
+                        <label for="position-city" id="citylabel" style="display: none">意向城市</label>
+                        @foreach($data['province'] as $province)
+                            <div class="form-group" id="city-display{{$province->id}}"
+                                 name="city-display" style="display: none">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" id="position-city"
+                                        data-live-search="true" name="city{{$province->id}}">
+                                    <option value="-1" selected >任意</option>
+                                    @foreach($data['city'] as $city)
+                                        @if($city->parent_id == $province->id)
+                                            @if($data['intention']->region == $city->id)
+                                                <option value="{{$city->id}}" selected>{{$city->name}}</option>
+                                            @else
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <label class="error" for="position-city"></label>
+                            </div>
+                        @endforeach
 
                         <label for="position-industry">行业意向</label>
                         <div class="form-group">
@@ -610,7 +669,7 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
-                            
+
                         </div>
 
                         <div class="button-panel">
@@ -656,7 +715,7 @@
                                             {{str_replace('-','/',$time)}}
                                         @endif
                                         <?php $index++ ?>
-                                @endforeach
+                                    @endforeach
                                 </span>
                                 <span>{{$work->ename}}</span>
                                 <span>{{$work->position}}</span>
@@ -700,7 +759,7 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
-                            
+
                             <label class="error" for="work-begin"></label>
                         </div>
 
@@ -711,7 +770,7 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
-                            
+
                             <label class="error" for="work-end"></label>
                         </div>
 
@@ -820,7 +879,7 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
-                           
+
                             <label class="error" for="project-begin"></label>
                         </div>
 
@@ -831,7 +890,7 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
-                           
+
                             <label class="error" for="project-end"></label>
                         </div>
 
@@ -899,14 +958,14 @@
                         <div class="form-group">
                             <input id="egame-id" name="egame-id" style="display: none;" value="-1">
                             <select class="form-control show-tick selectpicker" id="egame-name"
-                                     name="egamename">
+                                    name="egamename">
                                 @if(emptyArray($data['egame']))
                                     <option value="-1">暂无游戏</option>
                                 @endif
                                 @foreach($data['egame'] as $egame)
-                                <option value="{{$egame->id}}">{{$egame->name}}</option>
-                                 @endforeach
-                             </select>
+                                    <option value="{{$egame->id}}">{{$egame->name}}</option>
+                                @endforeach
+                            </select>
                             <label class="error" for="game-name"></label>
                         </div>
 
@@ -916,10 +975,10 @@
                                 {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                                 <select class="form-control show-tick selectpicker" name="egamelevel{{$egame->id}}">
                                     @foreach($data['egrade'] as $egrade)
-                                       @if($egrade->egame_id == $egame->id)
+                                        @if($egrade->egame_id == $egame->id)
                                             <option value="{{$egrade->id}}">{{$egrade->name}}</option>
-                                       @endif
-                                       @endforeach
+                                        @endif
+                                    @endforeach
                                 </select>
                                 <label class="error" for="game-level"></label>
                             </div>
@@ -932,7 +991,7 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
-                           
+
                             <label class="error" for="game-begin"></label>
                         </div>
                         <label for="game-desc">备注</label>
@@ -1111,7 +1170,9 @@
         </div>
     </div>
 @endsection
-
+@section('footer')
+    @include('components.myfooter')
+@endsection
 @section('custom-script')
     <script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('plugins/jquery-inputmask/jquery.inputmask.bundle.js')}}"></script>
@@ -1123,6 +1184,19 @@
 
 
     <script type="text/javascript">
+        $(function(){
+            var indexid = $("select[name='place']");
+            var id = "#city-display" + indexid.val();
+            var city_len = $("select[name='city"+ indexid.val() +"'] option").length;
+            if(city_len >1){
+                $('div[name=city-display]').css("display", "none");
+                $("#citylabel").css("display", "block");
+                $(id).css("display", "block");
+            }else{
+                $('div[name=city-display]').css("display", "none");
+                $("#citylabel").css("display", "none");
+            }
+        });
         $('.form_date').datetimepicker({
             language:  'zh-CN',
             weekStart: 1,
@@ -1386,6 +1460,20 @@
             $(id).css("display", "block");
             //            $(id).style.display = block;
         });
+        //自动关联省份和城市
+        $('#position-place').change(function () {
+            var indexid = $("select[name='place']");
+            var id = "#city-display" + indexid.val();
+            var city_len = $("select[name='city"+ indexid.val() +"'] option").length;
+            if(city_len >1){
+                $('div[name=city-display]').css("display", "none");
+                $("#citylabel").css("display", "block");
+                $(id).css("display", "block");
+            }else{
+                $('div[name=city-display]').css("display", "none");
+                $("#citylabel").css("display", "none");
+            }
+        });
         $("#resume-name--change").click(function () {
 
             var rid = $("input[name='rid']");
@@ -1419,19 +1507,38 @@
 
         $("#add-intention--button").click(function () {
             var rid = $("input[name='rid']");
-            var place = $("select[name='place']");
+//            var place = $("select[name='place']");
+            var province = $("select[name='place']");
+            var city = $("select[name='city"+ province.val() +"']");
+            var city_len = $("select[name='city"+ province.val() +"'] option").length;
             var industry = $("select[name='industry']");
 //            var occupation = $("select[name='occupation']");
             var occupation = $("select[name='occupation" + industry.val() + "']");
             var type = $("select[name='type']");
             var salary = $("input[name='salary']");
 
+            if (province.val() != "-1" && city.val() === "-1" && city_len >1) {
+                setError(city, "position-city", "请选择工作城市");
+                return;
+            } else {
+                removeError(city, "position-city");
+            }
+
             var formData = new FormData();
             formData.append('rid', rid.val());
             formData.append('work_nature', type.val());
-            formData.append('occupation', occupation.val());
             formData.append('industry', industry.val());
-            formData.append('region', place.val());
+            if(industry.val() == -1){
+                formData.append('occupation', -1);
+            }else
+                formData.append('occupation', occupation.val());
+
+            if(city_len >1){//省份有城市--非直辖市
+                formData.append("region", city.val());
+            }else{
+                formData.append("region", province.val());
+            }
+//            formData.append('region', place.val());
 
 
             if (salary.val() === '') {
@@ -1495,8 +1602,8 @@
             } else {
                 removeError(endDate, "work-end");
             }
-            if (workDesc.length >150) {
-                setError(workDesc_raw, "work-desc", "最大字数不能超过150字");
+            if (workDesc.length >500) {
+                setError(workDesc_raw, "work-desc", "最大字数不能超过500字");
                 return;
             } else {
                 removeError(workDesc_raw, "work-desc");
@@ -1564,8 +1671,8 @@
             } else {
                 removeError(endDate, "project-end");
             }
-            if (projectDesc.length >150) {
-                setError(projectDesc_raw, "project-desc", "最大字数不能超过150字");
+            if (projectDesc.length >500) {
+                setError(projectDesc_raw, "project-desc", "最大字数不能超过500字");
                 return;
             } else {
                 removeError(projectDesc_raw, "project-desc");
@@ -1898,19 +2005,15 @@
                 });
             });
         });
-                    $('#indicatorContainer').radialIndicator({
-                        barColor: {
-                            0: '#FF0000',
-                            33: '#FFFF00',
-                            66: '#0066FF',
-                            100: '#33CC33'
-                        },
-                        percentage: true,
-                        initValue: $('#completionvalue').val()
-                    });
+        $('#indicatorContainer').radialIndicator({
+            barColor: {
+                0: '#FF0000',
+                33: '#FFFF00',
+                66: '#0066FF',
+                100: '#33CC33'
+            },
+            percentage: true,
+            initValue: $('#completionvalue').val()
+        });
     </script>
-@endsection
-
-@section('footer')
-   @include('components.myfooter')
 @endsection
