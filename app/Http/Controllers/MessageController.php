@@ -13,6 +13,7 @@ use App\Message;
 use App\Personinfo;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller {
@@ -60,19 +61,23 @@ class MessageController extends Controller {
                 $data['listMessages'][] = $item;
             }
         }
+        //将自己的id加入temp数组查询用户名及头像
+        $temp[] = $data['uid'];
         foreach ($temp as $item) {
             $type = User::find($item);
-            if($type['type']!=2) {
-                $data['user'][$item] = User::select('username')
-                    ->where('uid', '=', $item)
-                    ->get();
-                if($type['type']==3){
-                    $data['user'][$item][0]['username']="系统消息";
-                }
+            if($type['type']==1) {
+                $data['user'][$item] = DB::table('jobs_users')
+                    ->leftjoin('jobs_personinfo','jobs_users.uid','jobs_personinfo.uid')
+                    ->select('username','photo')
+                    ->where('jobs_users.uid', '=', $item)
+                    ->first();
             }elseif ($type['type']==2){
-                $data['user'][$item] = Enprinfo::select('ename')
+                $data['user'][$item] = Enprinfo::select('ename','elogo')
                     ->where('uid', '=', $item)
-                    ->get();
+                    ->first();
+            }elseif ($type['type']==3){
+                $data['user'][$item]['username'] = "系统消息";
+                $data['user'][$item] = (object)$data['user'][$item];
             }
         }
 
