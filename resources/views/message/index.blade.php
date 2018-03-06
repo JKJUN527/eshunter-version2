@@ -417,11 +417,16 @@
 			<li class="company">
 				<p class="time">2018-03-02 09:52:41</p>
 
-				<p class="text"><span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>恭喜你!你已经被我们录取了！请尽快与我们取得联系,电话:18612363454邮箱:sunze@leidata.com</p>
+				<div class="text">
+				<span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>
+				<p class="chalk-detail-span">恭喜你!你已经被我们录取了！请尽快与我们取得联系,电话:18612363454邮箱:sunze@leidata.com</p></div>
 			</li>
 			<li class="me">
 				<p class="time">2018-03-02 09:52:41</p>
-				<p class="text"><span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>谢谢，期待合作愉快！</p>
+				<div class="text">
+				<span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>
+				<p class="chalk-detail-span">谢谢，期待合作愉快！</p>
+				</div>
 			</li>
 		</ul>
       </div>

@@ -331,13 +331,13 @@
 		ul{
 			li{
 
-				p.time{
+				.time{
 					color:#999;
 					font-size:13px;
 					text-align:center;
 					line-height:25px;
 				}
-				p.text{
+				.text{
 					    margin: 10px 0;
 					span.touxiang{
 
@@ -348,10 +348,15 @@
 						width:36px;
 						height:36px;
 					}
+					p.chalk-detail-span{
+						line-height:16px;
+						padding:3px;
+						border-radius:3px;
+					}
 				}
 			}
 			li.company {
-				p.text{
+				.text{
 				text-align:left;
 				span.touxiang{
 					float:left;
@@ -360,7 +365,7 @@
 			}
 		}
 			li.me {
-				p.text{
+				.text{
 				text-align:right;
 			span.touxiang{
 					float:right;

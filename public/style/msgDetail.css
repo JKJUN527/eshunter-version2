@@ -281,26 +281,30 @@
   height: 281px;
   overflow-y: auto;
   padding: 10px; }
-  .chalk-detail .chalk-content ul li p.time {
+  .chalk-detail .chalk-content ul li .time {
     color: #999;
     font-size: 13px;
     text-align: center;
     line-height: 25px; }
-  .chalk-detail .chalk-content ul li p.text {
+  .chalk-detail .chalk-content ul li .text {
     margin: 10px 0; }
-    .chalk-detail .chalk-content ul li p.text img {
+    .chalk-detail .chalk-content ul li .text img {
       border-radius: 50%;
       display: inline-block;
       width: 36px;
       height: 36px; }
-  .chalk-detail .chalk-content ul li.company p.text {
+    .chalk-detail .chalk-content ul li .text p.chalk-detail-span {
+      line-height: 16px;
+      padding: 3px;
+      border-radius: 3px; }
+  .chalk-detail .chalk-content ul li.company .text {
     text-align: left; }
-    .chalk-detail .chalk-content ul li.company p.text span.touxiang {
+    .chalk-detail .chalk-content ul li.company .text span.touxiang {
       float: left;
       margin-right: 6px; }
-  .chalk-detail .chalk-content ul li.me p.text {
+  .chalk-detail .chalk-content ul li.me .text {
     text-align: right; }
-    .chalk-detail .chalk-content ul li.me p.text span.touxiang {
+    .chalk-detail .chalk-content ul li.me .text span.touxiang {
       float: right;
       margin-left: 6px; }
 .chalk-detail .chalk-bottom {
