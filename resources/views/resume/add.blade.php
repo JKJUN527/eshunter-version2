@@ -2,12 +2,27 @@
 @section('title', '添加简历')
 
 @section('custom-style')
+ <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/material.style.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/material.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/icon-fonts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/animate-css/animate.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset("plugins/sweetalert/sweetalert.css")}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('style/font-awesome.min.css')}}"/>
 
     <style>
+    ol,ul{
+            margin-bottom: 0px;
+        }
+        .nav_ul li a {
+            text-decoration: none;
+        }
+        .logo-con {
+            float: left;
+            margin-top: 5px;
+        }
         .resume-card {
             width: 99.52%;
             margin: 50px 0 20px 0;
@@ -251,16 +266,14 @@
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
+    @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
 @endsection
 
-<<<<<<< HEAD
+
 @section('footer')
    @include('components.myfooter')
 @endsection
 
-=======
->>>>>>> f2653c0283287a992a2769c24bdf6d51d8b6443d
 @section('content')
     <div class="info-panel">
         <div class="container">
@@ -1161,8 +1174,6 @@
             <div class="gap"></div>
 
             <div class="info-panel--right">
-                @include('components.baseUserProfile', ['isShowEditBtn'=>true, 'isShowFunctionPanel' => false, 'info' => $data["personInfo"][0]])
-
                 <div class="button-panel left">
                     <button class="btn btn-primary blue-btn"
                             to="/resume/preview?rid={{$data['rid']}}">

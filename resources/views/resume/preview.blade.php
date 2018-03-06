@@ -4,6 +4,20 @@
 @section('custom-style')
     <link rel="stylesheet" type="text/css" href="{{asset('style/font-awesome.min.css')}}"/>
     <style>
+        ol,ul{
+            margin-bottom: 0px!important;
+        }
+        ul li{
+            margin-bottom: 0px!important;
+            
+        }
+        .nav_ul li a {
+            text-decoration: none;
+        }
+        .logo-con {
+            float: left;
+            margin-top: 5px;
+        }
         .resume-card {
             width: 100%;
             margin: 50px 0 20px 0;
@@ -107,15 +121,16 @@
 @endsection
 
 @section('header-nav')
-    @if($data['uid'] === 0)
-        @include('components.headerNav', ['isLogged' => false])
-    @else
-        @include('components.headerNav', ['isLogged' => true, 'username' => $data['username']])
-    @endif
+    @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 2, 'type'=>$data['type']])
+    @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
+@endsection
+
+
+@section('footer')
+   @include('components.myfooter')
 @endsection
 
 @section('content')
