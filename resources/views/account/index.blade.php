@@ -626,16 +626,19 @@
                                             </li>
                                           @endforeach
                                       </ul>
+                                      
                                     </form>
                                     @if(count($data['applyList']) ==0)
                                         <span class="empty_icon"></span>
                                         <span class="empty_text">最近没有收到过(未处理)申请记录</span>
+                                    @else
+                                        <div class="more_box">
+                                            <a href="/position/deliverList" class="list_more">
+                                                查看全部
+                                            </a>
+                                        </div>
                                     @endif
-                                    <div class="more_box">
-                                        <a href="/position/deliverList" class="list_more">
-                                            查看全部
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                                 
                             </div>
