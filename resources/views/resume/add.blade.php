@@ -258,6 +258,13 @@
             height: 36px;
             padding:0 16px;
         }
+        .button-panel button{
+            margin: auto 25px;
+        }
+        .button-panel{
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 @endsection
 
@@ -297,7 +304,7 @@
                 </div>
 
                 <button id="resume-name--change"
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                        class="btn btn-primary blue-btn">
                     修改
                 </button>
                 <input style="display: none" id="completionvalue" value="{{$data['completion']}}" />
@@ -585,7 +592,7 @@
                                 取消
                             </button>
                             <button id="add-intention--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认修改／新增
                             </button>
                         </div>
@@ -697,7 +704,7 @@
                                 取消
                             </button>
                             <button id="add-education--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认添加
                             </button>
                         </div>
@@ -817,7 +824,7 @@
                                 取消
                             </button>
                             <button id="add-work--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认添加
                             </button>
                         </div>
@@ -928,7 +935,7 @@
                                 取消
                             </button>
                             <button id="add-project--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认添加
                             </button>
                         </div>
@@ -1027,7 +1034,7 @@
                                 取消
                             </button>
                             <button id="add-game--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认添加
                             </button>
                         </div>
@@ -1108,7 +1115,7 @@
                                 取消
                             </button>
                             <button id="add-skill--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认添加
                             </button>
                         </div>
@@ -1163,7 +1170,7 @@
                                 取消
                             </button>
                             <button id="additional-content--button"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                    class="btn btn-primary blue-btn">
                                 确认
                             </button>
                         </div>
@@ -1174,7 +1181,7 @@
             <div class="gap"></div>
 
             <div class="info-panel--right">
-                <div class="button-panel left">
+                <div class="button-panel">
                     <button class="btn btn-primary blue-btn"
                             to="/resume/preview?rid={{$data['rid']}}">
                         预览简历

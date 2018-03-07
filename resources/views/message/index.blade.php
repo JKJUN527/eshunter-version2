@@ -43,7 +43,13 @@
                                         <div class="message-list">
                                             <ul>
                                                 @forelse($data['listMessages'] as $message)
-                                                <li>
+                                                <li class="from"
+                                                    @if($message->from_id == $data["uid"])
+                                                                        data-content="{{$message->to_id}}"
+                                                                      @else
+                                                                        data-content="{{$message->from_id}}"
+                                                                      @endif
+                                                >
                                                     <div class="pic">
                                                         <a href="" class="img-a">
                                                             @if(isset($data['user'][$message->from_id]->elogo))
@@ -56,13 +62,7 @@
                                                         </a>
                                                         <div class="title @if($message->is_read == 0) unread @endif">
                                                             <div class="sender">
-                                                                <span class="from"
-                                                                      @if($message->from_id == $data["uid"])
-                                                                        data-content="{{$message->to_id}}"
-                                                                      @else
-                                                                        data-content="{{$message->from_id}}"
-                                                                      @endif
-                                                                >
+                                                                <span >
                                                                     @if($message->from_id == $data['uid'])
                                                                         我
                                                                     @else

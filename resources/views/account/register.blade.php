@@ -440,12 +440,12 @@ function removeError(element, forStr) {
             }
         }
         $("#user_agreeent").click(function () {
-           if($('#user_agreeent').attr('class')=="add_i"){
-               $('#register-btn').css("background","whitesmoke");
-               $('#register-btn').attr("disabled","disabled");
+           if($('#user_agreeent').hasClass('add_i')){
+               $('#register-btn').css("background","whitesmoke").attr("disabled","disabled");
+               $('#user_agreeent').removeClass('add_i')
            }else{
-               $('#register-btn').css("background","#45c29d");
-               $('#register-btn').attr("disabled",false);
+               $('#register-btn').css("background","#45c29d").removeAttr('disabled');
+               $('#user_agreeent').addClass('add_i')
            }
         });
     </script>
