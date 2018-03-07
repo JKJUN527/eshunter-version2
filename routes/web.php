@@ -134,7 +134,7 @@ Route::any('news/addReview', ['uses' => 'NewsController@addReview']);//添加评
 //站内信模块
 Route::any('message/', ['uses' => 'MessageController@index']);//站内信主页
 Route::any('message/index', ['uses' => 'MessageController@index']);//站内信主页
-Route::any('message/detail', ['uses' => 'MessageController@detail']);//站内信详情
+Route::post('message/detail', ['uses' => 'MessageController@detail']);//站内信详情
 Route::any('message/read', ['uses' => 'MessageController@isRead']);//设置已读
 Route::any('message/delete', ['uses' => 'MessageController@delMessage']);
 Route::any('message/sendMessage', ['uses' => 'MessageController@sendMessage']);//发送站内信

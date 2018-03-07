@@ -98,10 +98,14 @@ class MessageController extends Controller {
             //var_dump($type['attributes']['type']);
             $data = null;
             if ($type[0]['attributes']['type'] == 1) {//普通用户
-                $data = Personinfo::where('uid', '=', $uid)
+                $data = DB::table('jobs_personinfo')
+                    ->leftjoin('jobs_users','jobs_users.uid','jobs_personinfo.uid')
+                    ->where('jobs_personinfo.uid', '=', $uid)
+                    ->select('jobs_personinfo.uid','photo','username')
                     ->first();
             } else if ($type[0]['attributes']['type'] == 2) {//企业用户
                 $data = Enprinfo::where('uid', '=', $uid)
+                    ->select('uid','elogo','ename')
                     ->first();
             } else if ($type[0]['attributes']['type'] == 3) {//管理员
                 $data = 'admin';//管理员头像可以用一个固定图片替代
@@ -144,18 +148,24 @@ class MessageController extends Controller {
         return $data;
     }
     //删除整个对话，传入对话人id
-    public function delDialog(Request $request){
+    public function delDialog(Request $request,$to_id = -1){
         $uid = AuthController::getUid();
 
         $data = array();
-
-        if($request->has('id') && $uid){
+        if($to_id != -1){
+            $did = $to_id;
+        }else if($request->has('id')){
             $did = $request->input('id');
+        }else
+            $did = 0;
+
+        if($did && $uid){
             $dialog = Message::where(function ($query) use($uid,$did){
-                $query->where('from_id',$uid)->where('to_id',$did)
-                    ->orWhere(function ($query) use ($uid,$did) {
-                        $query->where('from_id',$did)->where('to_id',$uid);
-                    });
+                $query->where('from_id',$uid)
+                    ->where('to_id',$did);
+                })
+                ->orWhere(function ($query) use ($uid,$did) {
+                    $query->where('from_id',$did)->where('to_id',$uid);
                 })
                 ->update(['is_delete' => 1]);
 
@@ -170,17 +180,29 @@ class MessageController extends Controller {
     }
     //删除站内信,传入待删除的mid数组
     public function delMessage(Request $request) {
+        $uid = AuthController::getUid();
         $temp = $request->input('mid');
+
         $mid = explode(',',$temp);
+
         $data = array();
         $done = 0;
         foreach ($mid as $item) {
             if ($item != "") {
                 $message = Message::find($item);//通过主键查找
-                if ($message->is_delete == 0) {
-                    $message->is_delete = 1;
-                    if ($message->save())
-                        $done++;
+                if($message->from_id == $uid)
+                    $to_id = $message->to_id;
+                else
+                    $to_id = $message->from_id;
+                //删除整条对话
+                $delDialog = $this->delDialog($request,$to_id);
+//                if ($message->is_delete == 0) {
+//                    $message->is_delete = 1;
+//                    if ($message->save())
+//                        $done++;
+//                }
+                if($delDialog['status'] == 200){
+                    $done++;
                 }
             }
         }
@@ -193,6 +215,7 @@ class MessageController extends Controller {
 
     //标记为已读状态、传入mid数组
     public function isRead(Request $request) {
+        $uid = AuthController::getUid();
         $temp = $request->input('mid');
         $mid = explode(',',$temp);
         $data = array();
@@ -200,11 +223,21 @@ class MessageController extends Controller {
         foreach ($mid as $item) {
             if ($item != "") {
                 $message = Message::find($item);//通过主键查找
-                if ($message->is_read == 0) {
-                    $message->is_read = 1;
-                    if ($message->save())
-                        $done++;
-                }
+                if($message->from_id == $uid)
+                    $to_id = $message->to_id;
+                else
+                    $to_id = $message->from_id;
+
+                $dialog = Message::where(function ($query) use($uid,$to_id){
+                    $query->where('from_id',$uid)
+                        ->where('to_id',$to_id);
+                })
+                    ->orWhere(function ($query) use ($uid,$to_id) {
+                        $query->where('from_id',$to_id)->where('to_id',$uid);
+                    })
+                    ->update(['is_read' => 1]);
+
+                $done++;
             }
         }
 
@@ -220,7 +253,7 @@ class MessageController extends Controller {
         $data['uid'] = AuthController::getUid();
         $data['username'] = InfoController::getUsername();
         $data['type'] = AuthController::getType();
-        $to_id = AuthController::getUid();
+        $to_id = $data['uid'];
         if ($to_id == 0) {
             $data['status'] = 400;
             $data['msg'] = "用户未登陆";
@@ -228,12 +261,15 @@ class MessageController extends Controller {
         }
 
         if (!$request->has('id')) {
-            return redirect()->back();
+            $data['msg'] = "参数错误";
+            return $data;
         }
 
         $id = $request->input('id');
         $data['id'] = $id;
         $data['to_id'] = $to_id;
+        $from_user_type = User::where('uid',$id)->first();
+        $data['from_type'] = $from_user_type->type;
 
         if ($id != "" && $to_id != "") {
             $data['message'] = Message::where('is_delete', 0)
@@ -248,10 +284,11 @@ class MessageController extends Controller {
                 $num = Message::where('mid',$item['mid'])
                     ->update(['is_read' => 1]);
             }
-            $data['userinfo'] = MessageController::getUserInfo($id);
+            $data['userinfo'][$id] = MessageController::getUserInfo($id);
+            $data['userinfo'][$to_id] = MessageController::getUserInfo($to_id);
         }
-//        return $data;
-        return view('message.detail', ['data' => $data]);
+        return $data;
+//        return view('message.detail', ['data' => $data]);
     }
 
     public function test(Request $request) {

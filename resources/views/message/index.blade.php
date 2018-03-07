@@ -54,15 +54,15 @@
                                                                 <img src="{{asset('images/avatar.png')}}">
                                                             @endif
                                                         </a>
-                                                        <div class="title @if($message->is_read == 0) unread @endif"
-                                                             @if($message->from_id == $data["uid"])
-                                                                data-content="{{$message->to_id}}"
-                                                             @else
-                                                                data-content="{{$message->from_id}}"
-                                                             @endif
-                                                        >
+                                                        <div class="title @if($message->is_read == 0) unread @endif">
                                                             <div class="sender">
-                                                                <span class="from">
+                                                                <span class="from"
+                                                                      @if($message->from_id == $data["uid"])
+                                                                        data-content="{{$message->to_id}}"
+                                                                      @else
+                                                                        data-content="{{$message->from_id}}"
+                                                                      @endif
+                                                                >
                                                                     @if($message->from_id == $data['uid'])
                                                                         我
                                                                     @else
@@ -93,27 +93,13 @@
                         </div>
 
                             <div class="right chalk-detail">
-                                <p class="chalk-content-title">北京舒福乐科技有限公司</p>
+                                <p class="chalk-content-title">对话详情</p>
                                 <div class="chalk-content">
-                                    <ul>
-                                        <li class="company">
-                                            <p class="time">2018-03-02 09:52:41</p>
-                                            <div class="text">
-                                                <span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>
-                                                <p class="chalk-detail-span">恭喜你!你已经被我们录取了！请尽快与我们取得联系,电话:18612363454邮箱:sunze@leidata.com</p></div>
-                                        </li>
-                                        <li class="me">
-                                            <p class="time">2018-03-02 09:52:41</p>
-                                            <div class="text">
-                                                <span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>
-                                                <p class="chalk-detail-span">谢谢，期待合作愉快！</p>
-                                            </div>
-                                        </li>
-
+                                    <ul id="talk_list">
                                     </ul>
                                 </div>
-                                <div class="chalk-bottom">
-                                    <textarea row="3" class="input-msg"></textarea>
+                                <div class="chalk-bottom" style="display: none">
+                                    <textarea row="3" class="input-msg" data-content=""></textarea>
                                     <a class="btn send right">发送</a>
                                 </div>
                             </div>
@@ -131,6 +117,7 @@
 @section('custom-script')
 <script type="text/javascript">
         $checkedAll = false;
+        var my_img_url = "";
         $messageList = $(".message-list");
 
         $messageList.find("input[type='checkbox']").click(function () {
@@ -143,7 +130,135 @@
         });
 
         $messageList.find(".from").click(function () {
-            self.location = "/message/detail?id=" + $(this).attr('data-content');
+//            self.location = "/message/detail?id=" + $(this).attr('data-content');
+            //查找对应的对话信息
+            var message_id = $(this).attr('data-content');
+            var formData = new FormData();
+            formData.append('id', message_id);
+            $.ajax({
+                url: "/message/detail",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    var my_info = result.userinfo[result.to_id];
+                    var from_id = result.id;//对方id
+                    var from_type = result.from_type;
+                    var img_url = "";
+                    var talk_title = $(".chalk-content-title");
+                    var talk_list = $("#talk_list");
+                    var input_msg = $(".input-msg");
+
+                    console.log(result);
+                    //设置对话标题,及对方的头像
+                    if(from_type === 1){
+                        talk_title.html(result.userinfo[from_id]['username']);
+                        img_url = result.userinfo[from_id]['photo'];
+                    } else if (from_type === 2){
+                        talk_title.html(result.userinfo[from_id]['ename']);
+                        img_url = result.userinfo[from_id]['elogo'];
+                    } else{
+                        talk_title.html(result.userinfo[from_id]);
+                        img_url = "{{asset('images/avatar.png')}}";
+                    }
+                    //设置自己的头像
+                    if(result.type === 1){
+                        my_img_url = my_info['photo'];
+                    } else if (result.type === 2){
+                        my_img_url = my_info['elogo'];
+                    } else{
+                        my_img_url = "{{asset('images/avatar.png')}}";
+                    }
+
+                    //设置对话内容
+                    var list_html = "";
+                    for (temp in result.message){
+                        if(result.message[temp].from_id == from_id){//对方发的消息
+                            list_html += "<li class='company'><p class='time'>"+result.message[temp].created_at +"</p>"+
+                                            "<div class='text'><span class='touxiang'><img src='"+ img_url + "'></span>"+
+                                            "<p class='chalk-detail-span'>"+ result.message[temp].content + "</p></div></li>";
+                        }else{//我发的消息
+                            list_html += "<li class='me'><p class='time'>"+result.message[temp].created_at +"</p>"+
+                                    "<div class='text'><span class='touxiang'><img src='"+ my_img_url + "'></span>"+
+                                    "<p class='chalk-detail-span'>"+ result.message[temp].content + "</p></div></li>";
+                        }
+                    }
+                    talk_list.html(list_html);
+                    //设置发送框的id为对方uid
+                    input_msg.attr('data-content',from_id);
+                    input_msg.parent().show();
+                    {{--<li class="me">--}}
+                            {{--<p class="time">2018-03-02 09:52:41</p>--}}
+                    {{--<div class="text">--}}
+                            {{--<span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>--}}
+                            {{--<p class="chalk-detail-span">谢谢，期待合作愉快！</p>--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+
+
+//                    setTimeout(function () {
+//                        location.reload()
+//                    }, 1000);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    swal(xhr.status + "：" + thrownError);
+                    //checkResult(400, "", xhr.status + "：" + thrownError, null);
+                }
+            })
+        });
+        $(".send").click(function () {
+            var input_msg = $(".input-msg");
+            var to_id = input_msg.attr('data-content');
+            if(to_id === "" || to_id===null){
+                swal("","发送失败-未知的对话用户","error");
+                return;
+            }
+            if(input_msg.val().length === 0){
+                swal("","发送内容不能为空","error");
+                return;
+            }
+
+            if(input_msg.val().length > 140){
+                swal("","站内信长度不能大于140字，当前字数："+input_msg.val().length,"error");
+                return;
+            }
+            var formData = new FormData();
+            formData.append('to_id', to_id);
+            formData.append('content', input_msg.val());
+
+            $.ajax({
+                url: "/message/sendMessage",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    if(result.status === 200){
+                        //处理新增对话消息
+                        var myDate = new Date();//获取系统当前时间
+                        var talk_list = $("#talk_list");
+                        var list_html = talk_list.html();
+                        list_html = "<li class='me'><p class='time'>"+ myDate.toLocaleString( ) +"</p>"+
+                                "<div class='text'><span class='touxiang'><img src='"+ my_img_url + "'></span>"+
+                                "<p class='chalk-detail-span'>"+ input_msg.val() + "</p></div></li>"+
+                                list_html;
+
+                        talk_list.html(list_html);
+                    }else{
+                        swal("",result.msg,"error");
+                        return;
+                    }
+
+                }
+            })
+
         });
 
         $("#select-all--message").click(function () {
@@ -162,15 +277,16 @@
         });
 
         $("#delete-all--selected_message").click(function () {
-            var $selected = getSelected();
+            var selected = getSelected();
+            console.log(selected);
 
-            if ($selected.length === 0) {
+            if (selected.length === 0) {
                 swal("未选择任何消息，请先选择要删除的消息");
                 return;
             }
 
             var dataForm = new FormData();
-            dataForm.append("mid", $selected);
+            dataForm.append("mid", selected);
 
             swal({
                 title: "确认",
