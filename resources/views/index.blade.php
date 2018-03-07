@@ -373,7 +373,6 @@
 
 @section('footer')
     @include('components.myfooter')
-    
 @endsection
 
 

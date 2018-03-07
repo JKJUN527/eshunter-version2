@@ -653,7 +653,6 @@
 
         });
         $(".tabs_delivery_success").click(function(){
-            alert(123);
             $(".deliverySuccess").show();
             $(".deliveryAll").hide();
             $(".deliveryLook").hide();

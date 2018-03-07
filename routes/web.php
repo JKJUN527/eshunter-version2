@@ -17,6 +17,7 @@ Route::post('account/register', ['uses' => 'RegisterController@postRegister']); 
 Route::post('account/login', ['uses' => 'LoginController@postLogin']);   //完成
 
 Route::get('account/logout', ['uses' => 'LoginoutController@logout']);   //完成
+Route::get('account/checkout', ['uses' => 'LoginoutController@checkout']);   //切换角色
 Route::any('account/sms', ['uses' => 'ValidationController@regSMS']);//发送短信验证码
 //发送邮箱
 Route::any('account/sendemail', ['uses' => 'ValidationController@sendemail']);

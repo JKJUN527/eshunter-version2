@@ -13,7 +13,7 @@
                     <a class="message" href="/message">消息<em class="msg_amount" id="headMsgAmount">{{$personInfo['messageNum']}}</em></a>
                 </li>
                 @if($type ==1)
-                    <li><a href="/resume/list" style="border-left:none;">我的简历</a></li>
+                    <li><a href="/account" style="border-left:none;">我的简历</a></li>
                     <li><a href="/position/applyList">投递箱<em class="msg_amount" id="headMsgAmount">{{$personInfo['deliveredNum']}}</em></a></li>
                     <li class="user_dropdown">
                         <a href="#">{{$personInfo['username']}}<span></span></a>
@@ -21,7 +21,7 @@
                             <!-- <li><a href="">我的订阅</a></li> -->
                             <!-- <li><a href="">职位邀请</a></li> -->
                             <li><a href="/account/edit">账号设置</a></li>
-                            <li><a href="">去企业版</a></li>
+                            <li><a href="/account/checkout">去企业版</a></li>
                             <li><a href="/account/logout">退出</a></li>
                         </ul>
                     </li>
@@ -34,7 +34,7 @@
                             <!-- <li><a href="">我的订阅</a></li> -->
                             <!-- <li><a href="">职位邀请</a></li> -->
                             <li><a href="/account/edit">账号设置</a></li>
-                            <li><a href="">去个人版</a></li>
+                            <li><a href="/account/checkout">去个人版</a></li>
                             <li><a href="/account/logout">退出</a></li>
                         </ul>
                     </li>

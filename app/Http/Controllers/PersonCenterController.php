@@ -312,7 +312,7 @@ class PersonCenterController extends Controller {
                 $temp = DB::table('jobs_backup')
                     ->join('jobs_personinfo','jobs_personinfo.uid','=','jobs_backup.uid')
                     ->leftjoin('jobs_delivered','jobs_backup.did','=','jobs_delivered.did')
-                    ->select('jobs_backup.did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','salary','salary_max','status','jobs_backup.created_at')
+                    ->select('jobs_backup.did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','salary','status','jobs_backup.created_at')
 //                    ->where('jobs_backup.created_at', '>=', $dateLimt)
                     ->where('jobs_backup.did','=',$backup)
                     ->get();

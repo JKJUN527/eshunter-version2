@@ -20,4 +20,11 @@ class LoginoutController extends Controller
         // return 123;
         return redirect('index');
     }
+    //切换角色
+    public function checkout() {
+        Auth::logout();
+        Session::flush();   //清除所有缓存
+        // return 123;
+        return redirect('/account/login');
+    }
 }

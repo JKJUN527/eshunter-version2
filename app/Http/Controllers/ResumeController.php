@@ -117,7 +117,7 @@ class ResumeController extends Controller {
         return view('resume/add', ["data" => $data]);
     }
     public function Completion_total($rid){
-        $data = 10;//初始完成度为10%
+        $data = 0;//初始完成度为0
         //检查简历表中技能及额外填写情况
         $resume = Resumes::find($rid);
         if($resume->skill != null){
@@ -139,12 +139,17 @@ class ResumeController extends Controller {
         //检查工作经历是否填写
         $workexp = Workexp::where('uid',$resume['uid'])->get();
         if($workexp->count()>0){
-            $data = $data +20;
+            $data = $data +15;
         }
         //检查电竞经历是否填写
         $egamecp = Egamexpr::where('uid',$resume['uid'])->get();
         if($egamecp->count()>0){
             $data = $data +20;
+        }
+        //检查项目经历是否填写
+        $projectexp = Projectexp::where('uid',$resume['uid'])->get();
+        if($projectexp->count()>0){
+            $data = $data +15;
         }
         return $data;
     }
