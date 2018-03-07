@@ -23,7 +23,7 @@
 			</p> 
 			<ul class="file_check">
 				<li class="file_line1">审核材料已提交，请等待审核结果</li> 
-				<li class="file_line2">我们将在收到材料的3个工作日内进行人工审核，审核结果会发送到你的站内信，请耐心等待...</li>
+				<li class="file_line2" style="margin-top: 1rem;">我们将在收到材料的3个工作日内进行人工审核，审核结果会发送到你的站内信，请耐心等待...</li>
 				<li>
 					<p class="goto_back">
 						<a href="/account"  class="btn">返回企业中心</a>
@@ -39,11 +39,11 @@
 	<div class="state-content" style="display: block;">
 		<div class="file_content"> 
 			<p class="file_success">
-				<i class="icon-glyph-fail iconfont icon-popfailure"></i>
+				<i class="icon-glyph-success iconfont icon-popfailure"></i>
 			</p> 
 			<ul class="file_check">
 				<li class="file_line1">招聘者身份审核已审核通过</li>
-				<li class="file_line2">无需重复提交
+				<li class="file_line2" style="margin-top: 1rem;">无需重复提交
 					<span>赶快登录官网，发布职位吧！</span>
 				</li> 
 				<li>
@@ -65,7 +65,7 @@
 			   </p>
 			   <ul class="file_check">
 				   <li class="file_line1">招聘者身份审核未通过</li>
-				   <li class="file_line2">拒绝原因：
+				   <li class="file_line2" style="margin-top: 1rem;">拒绝原因：
 					   <span>公司全称不符合规范（需在企业信息网可查备案信息）,公司营业执照不符合规范,请上传本人正确手持身份证照片</span>
 				   </li>
 				   <li>
