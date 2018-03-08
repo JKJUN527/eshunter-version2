@@ -1,0 +1,23 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: JKJUN
+ * Date: 2017/7/28
+ * Time: 17:15
+ */
+namespace App\Http\Controllers\mobile;
+
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+class LoginoutController extends Controller
+{
+    //登出函数
+    public function logout() {
+        Auth::logout();
+        Session::flush();   //清除所有缓存
+        // return 123;
+        return redirect('/m/account/index');
+    }
+}

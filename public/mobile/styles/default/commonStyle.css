@@ -1,0 +1,174 @@
+/*  @common style  */
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Thin), url("fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("fonts/roboto/Roboto-Thin.woff") format("woff");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Light), url("fonts/roboto/Roboto-Light.woff2") format("woff2"), url("fonts/roboto/Roboto-Light.woff") format("woff");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Regular), url("fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("fonts/roboto/Roboto-Regular.woff") format("woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Medium), url("fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("fonts/roboto/Roboto-Medium.woff") format("woff");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Bold), url("fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("fonts/roboto/Roboto-Bold.woff") format("woff");
+    font-weight: 700;
+}
+
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/matericalIcons/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(fonts/matericalIcons/MaterialIcons-Regular.woff2) format('woff2'),
+    url(fonts/matericalIcons/MaterialIcons-Regular.woff) format('woff'),
+    url(fonts/matericalIcons/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    color: #333;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a, a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+a:active,label:active,input:active {
+    background-color: transparent;
+}
+
+textarea {
+    resize: none;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+
+/*  @mdl-layout extends */
+
+
+.esh-layout__header-row {
+    padding: 0 16px;
+}
+
+.esh-layout__header-row--has-button {
+    padding: 0 72px;
+}
+
+.esh-layout__title {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/*  @esh-tabs   */
+
+
+.esh-tabs-container {
+
+}
+
+.esh-tabs {
+    height: 56px;
+    margin: 0;
+    padding: 0 1em;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+}
+
+.esh-tabs {
+    border-top: 1px solid #d6d6d6;
+    background-color: #fcfcfc;
+}
+
+.esh-tabs__tab {
+    float: left;
+    position: relative;
+    display: block;
+    padding: 0.5em 0.25em 0;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #999;
+    overflow: hidden;
+}
+
+.esh-tabs__tab i {
+    font-size: 2.15rem;
+}
+
+.esh-tabs__text {
+    display: block;
+    text-align: center;
+    font-size: 0.857rem;
+    line-height: 0.857rem;
+    margin-top: -3px;
+}
+
+
+.esh-pull--left {
+    float: left !important;
+}
+
+.esh-pull--right {
+    float: right !important;
+}

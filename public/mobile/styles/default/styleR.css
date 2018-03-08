@@ -1,0 +1,760 @@
+/*common CSS*/
+.esh-bottom-option {
+    text-align: center;;
+}
+.esh-back {
+    position: absolute;
+    top: 16px;
+}
+.esh-pd-lr-10{
+    padding: 0 10px;
+}
+.esh-error-info.error {
+    color: #d50000;
+    position: relative;
+    font-size: 12px;
+    margin-top: 3px;
+    float: right;
+    display: block;
+}
+/*a {*/
+    /*color: #ccc;*/
+/*}*/
+.esh-edit-title-name {
+    width: 160px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.esh-right-icon {
+    position: absolute;
+    right: 10px;
+    display: block;
+    top: 12px;
+    font-size: 32px;
+}
+.esh-right-icon .material-icons {
+    font-size: 32px;
+}
+
+/*??????????????????*/
+.esh-no-login input[type="text"],
+.esh-no-login input[type="password"] {
+    border: 0 none;
+    outline: none;
+}
+.esh-no-login a {
+    color: #3f51b5;
+    text-decoration: none;
+}
+.esh-no-login .mdl-card {
+    width: 100%;
+}
+.esh-login-logo {
+    height: 65px;
+    width: 64px;
+    margin: 0 auto;
+}
+.esh-no-login .esh-form-group {
+    margin-bottom: 20px;
+}
+.esh-no-login .esh-form-group .esh-last {
+    border-bottom: 1px solid #a0a0a0;;
+}
+.esh-form-input {
+    position: relative;
+    background: #fff;
+    border: 1px solid #a0a0a0;
+    border-bottom: 0 none;
+}
+.esh-form-input input {
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.esh-form-forget{
+    float: left;
+}
+.esh-form-register{
+    float: right;
+    margin-bottom: 10px;
+}
+.esh-form-sure {
+    clear: both;
+}
+.esh-form-sure .mdl-button{
+    width: 100%;
+    font-size: 16px;
+    height: 50px;
+}
+
+/*???*/
+.esh-reg-way {
+    width: 100%;
+    height: 40px;
+    /*margin-top: 30px;*/
+}
+.esh-reg-way a {
+    width: 50%;
+    text-align: center;
+    background: #cccccc;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+.esh-reg-way a.esh-active {
+    background: #3f51b5 ;
+}
+.esh-form-verify .mdl-button {
+    position: absolute;
+    right: 10px;
+    height: 40px;
+    top: 5px;
+}
+.esh-agreement,.esh-reg-type{
+    margin-bottom: 10px;
+}
+
+
+
+
+/*??????*/
+
+.esh-edit {
+    position: relative;
+    display: block;
+    min-height: 32px;
+    line-height: 32px;
+    color: #444;
+    padding: 8px 26px 8px 95px;
+    background-color: #fff;
+}
+.esh-edit.esh-edit-upload{
+    min-height: 40px;
+    padding: 8px 26px 0 95px
+}
+.esh-edit.esh-edit-upload .esh-upload-button {
+    float: right;
+    position: relative;
+    bottom: 0;
+}
+
+.esh-edit.esh-no-label {
+    margin-top: -1px;
+    padding: 8px 26px;
+}
+.esh-no-label.esh-no-chose {
+    display: none;
+}
+.esh-checkbox-input.esh-edit {
+    line-height: 24px;
+}
+.esh-checkbox-input.esh-edit .mdl-checkbox {
+    width: auto;
+}
+.esh-edit .esh-label {
+    position: absolute;
+    text-align: left;
+    left: 21px;
+    top: 8px;
+}
+.esh-edit:before{
+     position: absolute;
+     height: 0;
+     content: '\00a0';
+     font-size: 0;
+     left: 11px;
+     right: 11px;
+     bottom: 0;
+     border-bottom: 1px solid #e6e6e6;
+ }
+
+.esh-edit .esh-label em{
+    position: absolute;
+    color: #ff6000;
+    left: -8px;
+    top: 0;
+}
+.esh-edit .esh-upload-img {
+    float: right;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+}
+.esh-edit .mdl-textfield {
+    width: 100%;
+    padding: 0;
+}
+.esh-edit .mdl-textfield__input {
+    border-bottom: 0;
+    text-align: right;
+    font-size: 14px;
+}
+/*编辑 label*/
+.esh-edit label.error {
+    color: #d50000;
+    position: relative;
+    font-size: 12px;
+    margin-top: 3px;
+    float: right;
+    display: block;
+}
+/*.esh-edit .mdl-textfield__error{*/
+    /*position: relative;*/
+    /*text-align: right;*/
+    /*display: none;*/
+/*}*/
+/*.esh-edit .is-invalid .mdl-textfield__error {*/
+    /*display: block;*/
+/*}*/
+.esh-check_inputs {
+    text-align: right;
+}
+
+
+/*select 下来选择框*/
+.esh-select:after {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    content: '\00a0';
+    background: url("/mobile/styles/default/images/right.png") no-repeat;
+    top: 17px;
+    right: 11px;
+}
+.esh-select .esh-sval {
+    display: block;
+    text-align: right;
+}
+.esh-select select {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border: 0 none;
+    z-index: 2;
+}
+/*??дselect2???*/
+.esh-select .select2-container {
+    display: block;
+    text-align: right;
+    width: 100%;
+}
+.esh-select .select2-container--default .select2-selection--single{
+    border: 0;
+    outline: none;
+}
+.esh-select .select2-container .select2-selection--single .select2-selection__rendered{
+    padding-right: 0;
+    line-height: 34px;
+}
+.esh-select .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    display: none;
+}
+.select2-container--open .select2-dropdown--below {
+    border: 1px solid #aaa;
+}
+/* textarea CSS*/
+.esh-edit.esh-textarea {
+    padding: 0 11px 8px 11px;
+}
+.esh-edit.esh-textarea:before{
+    border-bottom: 0;
+}
+.esh-edit.esh-textarea label{
+    position: relative;
+    display: block;
+    left: 11px;
+    margin-bottom: 16px;
+}
+.esh-textarea--p {
+    height: 130px;
+    padding: 6px 11px;
+    background-color: #f6f6f6;
+}
+.esh-textarea--p textarea {
+    width: 100%;
+    height: 110px;
+    line-height: 20px;
+    font-size: 12px;
+    vertical-align: top;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+/*COMMON LIST ????*/
+.esh-common-list .esh-edit-href,
+.esh-common-list .esh-del-href{
+    padding: 0 5px;
+}
+.esh-common-list .esh-edit-href{
+    color: #46c01b;
+    border-right: solid 1px #d6d6d6;
+}
+.esh-common-list .esh-del-href{
+    color: #999;
+}
+.esh-add-text {
+    vertical-align: middle;
+    display: inline-block;
+    height: 24px;
+    line-height: 25px;
+}
+.esh-common-list .mdl-list__item:not(:last-child){
+    border-bottom: 1px solid #d9d9d9;
+}
+/*?????? footer button*/
+.esh-edit-fb {
+    padding: 50px 5%;
+    /*background-color: #fff;*/
+}
+.esh-edit-fb .mdl-button{
+    width: 100%;
+    padding: 2px 16px;
+}
+.esh-edit input, textarea, button {
+    outline: none;
+}
+.esh-edit-icon {
+    vertical-align: middle;
+    height: 24px;
+    line-height: 20px;
+}
+
+
+/*overwrite sweetalert */
+.esh-sweetalert .sweet-alert h2 {
+    font-size: 16px;
+    text-align: left;
+    margin: 0;
+}
+.esh-sweetalert .sweet-alert input {
+    height: 34px;
+    font-size: 14px;
+}
+.sweet-alert .sa-input-error::before, .sweet-alert .sa-input-error::after{
+    display: none;
+}
+
+
+/*****************
+    my page
+*****************/
+
+/*my,resume page esh-account-ingo,esh-resume CSS*/
+
+
+.esh-account-info.mdl-card,
+.esh-resume.mdl-card,
+.esh-resume-info  .mdl-card{
+    width: 100%;
+    min-height: 150px;
+}
+/*暂时*/
+.esh-resume.mdl-card{
+    min-height: 100px;
+}
+
+/*my page esh-account-ingo CSS*/
+.esh-account-info.mdl-card .mdl-card__title {
+    text-align: center;
+   /* margin: 15px auto 0;
+    background: url("images/default-img.png") no-repeat center;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: solid 1px #e6e6e6;
+    zoom: 0.9;*/
+}
+.esh-account-img {
+    margin: 0 auto;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    border: solid 1px #e6e6e6;
+}
+.esh-person .mdl-button{
+    color:#46c01b;
+}
+.esh-company .mdl-button {
+    color:#f44336;
+}
+
+.esh-account-info.mdl-card .mdl-card__supporting-text {
+    text-align: center;
+    width: auto;
+}
+.esh-account-info.mdl-card .mdl-card__supporting-text .esh-text-l {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.esh-img-br {
+    height: 70px;
+    width: 70px;
+}
+/*my page esh-subs CSS*/
+.esh-subs.mdl-list {
+    margin-top: 15px;
+}
+.esh-subs .mdl-list__item:after{
+    /*position: absolute;*/
+    width: 8px;
+    /*height: 14px;*/
+    content: '\00a0';
+    background: url("/mobile/styles/default/images/right.png") no-repeat;
+    top: 17px;
+    right: 11px;
+}
+
+
+.esh-subs .mdl-badge.mdl-badge--overlap{
+    margin-right: 32px;
+    color: #757575;
+}
+.esh-subs .mdl-badge[data-badge]:after {
+    background: #46c01b;
+}
+.esh-subs .verified .material-icons {
+    /*color:#46c01b;*/
+}
+.esh-subs .unverified .material-icons {
+    /*color:#757575;*/
+}
+.esh-counts {
+    padding-right: 10px;
+}
+
+
+
+/*resume page esh-resume CSS*/
+
+.esh-resume.mdl-card{
+    margin-bottom: 20px;
+    border-top: solid 1px #ccc;
+}
+.esh-resume.mdl-card .mdl-card__title{
+    padding: 16px 16px 5px 16px;
+}
+.esh-resume.mdl-card .mdl-card__title .mdl-card__title-text {
+    font-size: 18px;
+    /*padding: 10px;*/
+}
+.esh-resume.mdl-card .mdl-card__supporting-text {
+    font-size: 0.9rem;
+}
+.esh-resume.mdl-card .mdl-card__actions {
+    /*text-align: center;*/
+}
+.esh-resume.mdl-card .mdl-card__actions .mdl-button {
+    /*background-color: #fff8ed;*/
+}
+
+
+/*resumeInfo page esh-resume-info*/
+
+.esh-resume-info .mdl-card {
+    margin-bottom: 15px;
+}
+.esh-resume-info .mdl-card__title:after {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    content: '\00a0';
+    background: url("/mobile/styles/default/images/right.png") no-repeat;
+    right: 11px;
+}
+.esh-deliver-detail.esh-resume-info .mdl-card__title:after,
+.esh-preview.esh-resume-info .mdl-card__title:after{
+    display: none;
+}
+.esh-resume-info .mdl-card__title.esh-no-after:after{
+    content: "";
+    background: #fff;
+}
+.esh-resume-info .mdl-card__title-text {
+    font-size: 18px;
+}
+.esh-resume-info .mdl-card__supporting-text {
+    position: relative;
+}
+.esh-no-content {
+    font-size: 13px;
+    padding: 0 26px 14px 42px;
+}
+.esh-resume-info-t {
+    position: relative;
+    line-height: 22px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding: 0 11px 0 132px;
+}
+.esh-resume-info-t label {
+    position: absolute;
+    top: 0;
+    left: 42px;
+}
+.esh-resume-info .mdl-card__supporting-text .esh-tlbox:before {
+    top: 8px;
+}
+.esh-tlbox {
+    position: relative;
+}
+.esh-tlbox:before {
+    position: absolute;
+    width: 1px;
+    content: '\00a0';
+    top: 55px;
+    bottom: 4px;
+    left: 21px;
+    background-color: #f44336;
+}
+.esh-timeline {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 21px;
+}
+.esh-timeline:before{
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    content: '\00a0';
+    top: 5px;
+    left: 15px;
+    /*background: url("images/time-line.png") center no-repeat;*/
+    background: #f44336;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-background-size: 13px auto;
+    -moz-background-size: 13px auto;
+    -ms-background-size: 13px auto;
+    -o-background-size: 13px auto;
+    background-size: 13px auto;
+}
+.esh-timeline .point{
+    line-height: 22px;
+    font-weight: bold;
+    margin: 7px 21px;
+}
+.esh-resume-info .suptext {
+    line-height: 22px;
+    margin: 7px 21px;
+}
+.esh-resume-info .esh-skill {
+    padding: 14px 26px 14px 42px;
+}
+
+/*esh-msg CSS*/
+.esh-msg.mdl-list {
+    margin-top: 32px;
+}
+.unread.mdl-list__item--three-line .mdl-list__item-text-body{
+    color:#1976D2;
+}
+.esh-msg.esh-media-list .esh-list__item-image {
+    height: 36px;
+    width: 36px;
+}
+.esh-media-list .esh-list__item.esh-no-msg:after{
+    border-top:0;
+}
+.esh-msg.esh-media-list .esh-no-msg{
+    text-align: center;
+}
+.esh-right-wrapper {
+    box-sizing: border-box;
+    position: absolute;
+    right: 16px;
+}
+
+/*esh-chart-list page  CSS*/
+.esh-layout__title.esh-chart-title-name {
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    width: 300px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 18px;
+}
+.esh-chart-list.esh-media-list .esh-list__item:after{
+    border-top:0;
+}
+.esh-chart-list.esh-media-list .esh-list__item-text-body {
+    padding-top: 10px;
+    padding-left: 36px;
+}
+.esh-chart-list .mdl-list__item-primary-content {
+    height: auto;
+}
+.esh-chart-list .mdl-list__item--three-line {
+    height: auto;
+}
+.esh-chart-list .esh-media-list .esh-list__item-text {
+    overflow: visible;
+    white-space: normal;
+}
+.esh-chartl-footer .esh-textarea--p {
+    height: 50px;
+}
+.esh-chartl-footer .esh-textarea--p textarea {
+    height: 40px;
+}
+.esh-chartl-footer .esh-chart-help-info {
+    padding: 0 15px;
+    float: right
+}
+.esh-chartl-footer .esh-replay-error {
+    color: red;
+}
+.esh-chartl-footer .esh-replay-button {
+    text-align: right;
+    clear: both;
+}
+.esh-chartl-footer .esh-chart-label{
+    float:left;
+    display: inline;
+}
+.esh-chartl-footer .esh-edit.esh-textarea .esh-mdl-radios label {
+    font-size: 14px;
+}
+.esh-chartl-footer .tip {
+    border-top: 1px solid #d6d6d6;
+    background-color: #fcfcfc;
+    padding: 10px;
+}
+.esh-time {
+    text-align: center;
+}
+.esh-time .esh-time-content {
+    width: 100%;
+    height: 1px;
+    background: #ebebeb;
+}
+.esh-time span {
+    background-color: #ffffff;
+    position: relative;
+    top: -12px;
+    padding: 0 12px;
+    font-size: 13px;
+    color: #aaaaaa;
+}
+
+
+
+/*my apply record CSS*/
+.esh-arecord .mdl-list__item .mdl-list__item-secondary-content {
+    font-size: 13px;
+    height: 30px;
+}
+.esh-arecord .mdl-list__item:not(:last-child){
+    border-bottom: 1px solid #d9d9d9;
+}
+/*.esh-arecord .esh-no-record {
+    text-align: center;
+    font-size: 16px;
+}*/
+.esh-no-record{
+    text-align: center;
+    font-size: 16px;
+}
+/*.esh-arecord .mdl-list__item-primary-content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}*/
+
+/*Deliver list CSS*/
+.esh-deliver-list .esh-account-img {
+    margin: 0;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: solid 1px #e6e6e6;
+}
+.esh-deliver-status {
+    float: right;
+}
+.esh-deliver-status .normal-info{
+    color: #46c01b;
+}
+
+/*publish List CSS*/
+.esh-publish-list .mdl-card{
+    margin-bottom: 10px;
+}
+.esh-publish.esh-resume.mdl-card .mdl-card__actions .mdl-button {
+    margin-top: 5px;
+    min-width: 50px;
+}
+.esh-info-error{
+    color: #d50000;
+    text-align: right;
+    display: block;
+    font-size: 12px;
+}
+.esh-publish .esh-select select {
+    height: 35px;
+}
+.esh-about-logo {
+
+}
+
+.preview .material-icons {
+    position: absolute;
+    right: 0;
+}
+
+
+/*preview deliverdetail CSS */
+.esh-preview,.esh-resume-info{
+    display: block;
+}
+.esh-deliver-detail .esh-account-info,
+.esh-preview .esh-account-info {
+    font-size: 1rem;
+}
+.esh-deliver-detail .esh-account-info.mdl-card .mdl-card__title,
+.esh-preview .esh-account-info.mdl-card .mdl-card__title {
+    display: block;
+    text-align: left;
+    color: rgba(0,0,0,.54);
+}
+.esh-preview__img{
+    float: right;
+}
+.esh-preview__img .esh-account-img {
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius: 0;
+}
+.esh-preview__info {
+    float: left;
+}
+
+.esh-text-l {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+}
+
+
+
+

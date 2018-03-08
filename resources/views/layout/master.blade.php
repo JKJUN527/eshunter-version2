@@ -65,18 +65,18 @@
         $("*[to]").click(function () {
             self.location = $(this).attr('to');
         });
-        window.onload = function(){
-            var userAgentInfo = navigator.userAgent;
-            var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    top.location='http://eshunter.com/m/';
-                    break;
-                }
-            }
-        }
+//        window.onload = function(){
+//            var userAgentInfo = navigator.userAgent;
+//            var Agents = ["Android", "iPhone",
+//                "SymbianOS", "Windows Phone",
+//                "iPad", "iPod"];
+//            for (var v = 0; v < Agents.length; v++) {
+//                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+//                    top.location='http://eshunter.com/m/';
+//                    break;
+//                }
+//            }
+//        }
 </script>
 @section('custom-script')
 @show
