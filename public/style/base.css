@@ -209,7 +209,7 @@ em.msg_amount {
 
 /*有事点我*/
 .QQ_each{ width: 200px; height: 200px;  display: block; 
-	 position: fixed; 	z-index: 14; top: 50%; margin-top: -100px; margin-left: 1160px;}
+	 position: fixed; 	z-index: 14; top: 50%; margin-top: -100px; margin-left: 88%;}
 .float_qq{ width: 70px; height: 130px; overflow: hidden; display: block; 
 	background: url(../images/float_qq.png?v=20150514) right center no-repeat; 
 	}

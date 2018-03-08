@@ -570,7 +570,7 @@
                                             <li class="guess_like_list_item  clearfix">
                                                 <a class="position_link clearfix" href="/position/detail?pid={{$position->pid}}" target="_blank">
                                                     <div class="guess_like_list_item_logo">
-                                                        <img src="{{$data['recommendPosition']['enprinfo'][$position->eid]->elogo}}"  width="56" height="56">
+                                                        <img src="{{$data['recommendPosition']['enprinfo'][$position->eid]->elogo or asset('images/1.gif')}}"  width="56" height="56">
                                                     </div>
                                                     <div class="guess_like_list_item_pos">
                                                         <h2 title="{{$position->title}}" > {{mb_substr($position->title, 0, 10, 'utf-8')}}</h2>

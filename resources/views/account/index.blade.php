@@ -504,9 +504,9 @@
                             <div class="item_container" id="company_products">
                                 <div class="item_ltitle">发布的职位</div>
                             
-                                <span class="item_ropera item_add disabled add_btn_wrap" style="display: block;">
+                                <span class="item_ropera item_add disabled add_btn_wrap" to="/position/publish" style="display: block;">
                                     <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_one"><a href="/position/publish">新增</a></span>
+                                    <span class="item_ropetext add_one">新增</span>
                                 </span>
                                 
                                 <div class="item_content item_content_one"  style="display: block;">
@@ -521,7 +521,9 @@
                                                             <div class="clearfix pli_top">
                                                                 <div class="position_name left">
                                                                     <h2 class="dib">
-                                                                        <a href="/position/detail?pid={{$position->pid}}">王者荣耀职业玩家</a>
+                                                                        <a href="/position/detail?pid={{$position->pid}}">
+                                                                            {{mb_substr($position->title,0,5)}}
+                                                                        </a>
                                                                     </h2>
                                                                     <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
                                                                 </div>

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '高级搜索')
+@section('title', '搜索结果')
 
 @section('custom-style')
     <link media="all" href="{{asset('../style/tao.css')}}" type="text/css" rel="stylesheet">
@@ -45,181 +45,176 @@
     border:none;
     border-bottom: 1px solid #dcdcdc;
 }
+        .no_result{
+            margin-top: 2rem;
+        }
     </style>
 @endsection
-{{--@section('header-nav')
+@section('header-nav')
    @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
-@endsection--}}
+@endsection
 @section('header-tab')
     @include('components.headerTab', ['activeIndex' => 10,'type' =>0])
 @endsection
 
 @section('content')
 <div class="containter  ">
-    <h3>搜索结果</h3>
+    <h3>搜索结果:
+        <small style="font-size: smaller">共计 {{count($searchResult['position']) + count($searchResult['news'])}} 个</small>
+    </h3>
   <div class="jieshao">
-  <div class="taoyige">
-    <div class="left form_div">
-      <input type="text" placeholder="请输入关键词，如：运营策划" value="" name="" id="xinkeywd" style="height:100%"></div>
-  </div>
-  <input type="button" value="搜索" name="" id="chakan">
+      <form action="/index/search">
+          <div class="taoyige">
+            <div class="left form_div">
+              <input type="text" placeholder="请输入关键词，如：绝地求生" name="keyword" style="height:100%"></div>
+          </div>
+          <input type="submit" value="搜索" name="" id="chakan">
+      </form>
   <!-- 热门搜索 -->
   <div class="taoyige_hotsearch">热门搜索：
-    <a href="company.html">电竞传媒</a>
-    <a href="#">ADC</a>
-    <a href="#">辅助</a>
-    <a href="#">打野</a>
-    <a href="#">中单</a></div>
+      <a href="/index/search?keyword=绝地求生">绝地求生</a>
+      <a href="/index/search?keyword=ADC">ADC</a>
+      <a href="/index/search?keyword=王者荣耀">王者荣耀</a>
+      <a href="/index/search?keyword=打野">打野</a>
+      <a href="/index/search?keyword=中单">中单</a>
+  </div>
   <!-- 热门搜索 end-->
   <!-- banner 轮播-->
   <div class="">
     <div class="jieshao_tb">
                     <span v="0" class="active">新闻资讯</span>
-                    <span v="1">其他</span>          
+                    <span v="1">在招职位</span>
                 </div>  
                 <ul class="jieshao_list hotjobs search-news" style="display: block;">
+                    @forelse($searchResult['news'] as $news)
                     <li class="blogs">
-                        <figure><img src="http://eshunter.com/storage/newspic/2017-10-17-05-44-30-59e598bea31e1news1.png"></figure>
+                        <figure>
+                            @if($news->picture != null)
+                                <?php
+                                $pics = explode(';', $news->picture);
+                                $baseurl = explode('@', $pics[0])[0];
+                                $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
+                                $imagepath = explode('@', $pics[0])[1];
+                                ?>
+                                <img src="{{$baseurl}}{{$imagepath}}">
+                            @else
+                                <img src="{{asset('images/lamian.jpg')}}"/>
+                            @endif
+                        </figure>
                         <ul>
-                          <h3><a href="/">离职后要不要删前同事好友？雷军在乌镇大会用行动给了教科书式回答</a></h3>
-                          <p>凡是想要在事业上实现飞黄腾达的野心家，总想多结识点人脉。这已经成了职场中一条黄金般的真理。即使是身家亿万的老板，也不例外。每年的乌镇饭局，就是互联网大佬人脉流动的社交场。</p>
-                          <p class="autor"><span class="lm f_l"><a href="/">author_ly</a></span><span class="dtime f_l"> 2017-10-17 05:44:30</span></p>
+                          <h3>
+                              <a href="/news/detail?nid={{$news->nid}}">
+                                  [{{$news->quote}}] {{mb_substr($news->title,0,30)}}
+                              </a>
+                          </h3>
+                          <p>
+                              {{str_replace("</br>","",mb_substr(strip_tags($news->content), 0, 100, 'utf-8'))}}
+                          </p>
+                          <p class="autor">
+                              <span class="lm f_l">
+                                  <a href="#">作者: admin</a>
+                              </span>
+                              <span class="dtime f_l">
+                                  发布时间: {{$news->created_at}}
+                              </span>
+                          </p>
                         </ul>
-                      </li><li class="blogs">
-                        <figure><img src="http://eshunter.com/storage/newspic/2017-10-17-05-44-30-59e598bea31e1news1.png"></figure>
-                        <ul>
-                          <h3><a href="/">离职后要不要删前同事好友？雷军在乌镇大会用行动给了教科书式回答</a></h3>
-                          <p>凡是想要在事业上实现飞黄腾达的野心家，总想多结识点人脉。这已经成了职场中一条黄金般的真理。即使是身家亿万的老板，也不例外。每年的乌镇饭局，就是互联网大佬人脉流动的社交场。</p>
-                          <p class="autor"><span class="lm f_l"><a href="/">author_ly</a></span><span class="dtime f_l"> 2017-10-17 05:44:30</span></p>
-                        </ul>
-                      </li><li class="blogs">
-                        <figure><img src="http://eshunter.com/storage/newspic/2017-10-17-05-44-30-59e598bea31e1news1.png"></figure>
-                        <ul>
-                          <h3><a href="/">离职后要不要删前同事好友？雷军在乌镇大会用行动给了教科书式回答</a></h3>
-                          <p>凡是想要在事业上实现飞黄腾达的野心家，总想多结识点人脉。这已经成了职场中一条黄金般的真理。即使是身家亿万的老板，也不例外。每年的乌镇饭局，就是互联网大佬人脉流动的社交场。</p>
-                          <p class="autor"><span class="lm f_l"><a href="/">author_ly</a></span><span class="dtime f_l"> 2017-10-17 05:44:30</span></p>
-                        </ul>
-                      </li>
-                     
+                    </li>
+                    @empty
+                        <p class="no_result">未搜索到与"{{$searchResult['keyword']}}"相关的新闻资讯</p>
+                    @endforelse
                 </ul>
                  <ul class="jieshao_list jobs" style="display: none;">
-                    <li>    
-                        <div class="jieshao_list_left left">            
+                     @forelse($searchResult['position'] as $position)
+                     <li>
+                         <div class="jieshao_list_left left">
                              <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="detail_job.html">英雄联盟职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">5K-6k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>经验1-3年</span>
-                                    <span>本科</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
+                                 <div class="clearfix pli_top">
+                                     <div class="position_name left">
+                                         <h2 class="dib"><a href="/position/detail?pid={{$position->pid}}">{{mb_substr($position->title,0,11,'utf-8')}}</a></h2>
+                                         <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
+                                     </div>
+                                     <span class="salary right">
+                                        @if($position->salary <= 0)
+                                             月薪面议
+                                         @else
+                                             {{$position->salary/1000}}k-
+                                             @if($position->salary_max ==0) 无上限
+                                             @else {{$position->salary_max/1000}}k
+                                             @endif
+                                             元/月
+                                         @endif
+                                    </span>
+                                 </div>
+                                 <div class="position_main_info">
+                                    <span>
+                                        @if($position->work_nature == 0)
+                                            兼职
+                                        @elseif($position->work_nature == 1)
+                                            实习
+                                        @else
+                                            全职
+                                        @endif
+                                    </span>
+                                     <span>
+                                        @if($position->education == -1)
+                                             无学历要求
+                                         @elseif($position->education == 0)
+                                             高中及以上
+                                         @elseif($position->education == 3)
+                                             专科及以上
+                                         @elseif($position->education == 1)
+                                             本科及以上
+                                         @elseif($position->education == 2)
+                                             研究生及以上
+                                         @endif
+                                    </span>
+                                 </div>
+                                 <div class="lebel">
+                                     <div class="lebel_item">
+                                         @if($position->tag ==="" || $position->tag ===null)
+                                             <span class="wordCut">无标签</span>
+                                         @else
+                                             @foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)
+                                                 <span class="wordCut">{{$tag}}</span>
+                                             @endforeach
+                                         @endif
+                                     </div>
+                                 </div>
                              </div>
+
                              <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="detail_company.html" target="_blank">蓝洞游戏公司</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏服务</span>
-                                        <span>上市</span>
-                                        <span>美国</span>
-                                    </div>
-                                </div>
+                                 <a href="/company?eid={{$position->eid}}" class="left">
+                                     <img
+                                             @if($position->elogo === "" ||$position->elogo === null)
+                                             src="../images/pic0.jpg"
+                                             @else
+                                             src="{{$position->elogo}}"
+                                             @endif
+                                             alt="公司logo" class="company-logo" width="40" height="40">
+                                 </a>
+                                 <div class="bottom-right">
+                                     <div class="company_name wordCut">
+                                         <a href="/company?eid={{$position->eid}}">
+                                             @if($position->byname != "")
+                                                 {{$position->byname}}
+                                             @else
+                                                 {{$position->ename}}
+                                             @endif
+                                         </a>
+                                     </div>
+                                     <div class="industry wordCut">
+                                         <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
+                                         {{--<span>未融资</span>--}}
+                                         {{--<span>成都-高新pli-btm</span>--}}
+                                     </div>
+                                 </div>
                              </div>
-                        </div>
-                    </li>
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="detail_job.html">绝地求生职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">15K-20k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>无经验</span>
-                                    <span>专科</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
-                             </div>
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="images/pic0.jpg" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="detail_company.html" target="_blank">EDG俱乐部</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏服务、游戏运营</span>
-                                        <span>未融资</span>
-                                        <span>成都-高新pli-btm</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
-                    <li>    
-                        <div class="jieshao_list_left left">            
-                             <div class="list_top">
-                                <div class="clearfix pli_top">
-                                    <div class="position_name left">
-                                        <h2 class="dib"><a href="detail_job.html">王者荣耀职业玩家</a></h2>
-                                        <span class="create_time">&ensp;[2017-12-30]&ensp;</span>
-                                    </div>
-                                    <span class="salary right">5K-10k</span>
-                                </div>
-                                <div class="position_main_info">
-                                    <span>经验1年以下</span>
-                                    <span>本科</span>
-                                </div>
-                                <div class="lebel">
-                                    <div class="lebel_item">
-                                        <span class="wordCut">包吃住</span>
-                                        <span class="wordCut">陪玩</span>
-                                        <span class="wordCut">代打</span>
-                                    </div>
-                                </div>
-                             </div>
-                             <div class="pli_btm">
-                                <a href="#" class="left">
-                                    <img src="images/pic00.png" alt="公司logo" class="company-logo" width="40" height="40">
-                                </a>
-                                <div class="bottom-right">
-                                    <div class="company_name wordCut">
-                                        <a href="detail_company.html" target="_blank">斗鱼俱乐部</a>
-                                    </div>
-                                    <div class="industry wordCut">
-                                        <span>游戏直播</span>
-                                        <span>A轮</span>
-                                        <span>上海</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </li>
+                         </div>
+                     </li>
+                     @empty
+                         <p class="no_result">未搜索到与"{{$searchResult['keyword']}}"相关的职位</p>
+                     @endforelse
                 </ul>
   </div>
   <!-- 轮播end --></div>

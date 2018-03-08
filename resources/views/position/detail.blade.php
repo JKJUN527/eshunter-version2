@@ -330,7 +330,7 @@
             <dt>
                 <a href="/company?eid={{$data['enprinfo'][0]->eid}}" target="_blank">
                     @if($data['enprinfo'][0]->elogo == null)
-                        <img  class="b2" src="../images/pic0.jpg" width="96" height="96"/>
+                        <img  class="b2" src="../images/1.gif" width="96" height="96"/>
                     @else
                         <img  class="b2" src="{{$data['enprinfo'][0]->elogo}}" width="96" height="96"/>
                     @endif

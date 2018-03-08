@@ -77,14 +77,22 @@
                         </div>
                     </div>     
                     <div class="jieshao">
-                        <div class="taoyige">
-                            <div class="left form_div">
-                                <input type="text" placeholder="请输入关键词，如：运营策划" value="" name="" id="xinkeywd" style="height:100%">
+                        <form action="/index/search">
+                            <div class="taoyige">
+                                <div class="left form_div">
+                                    <input type="text" placeholder="请输入关键词，如：绝地求生" name="keyword" style="height:100%">
+                                </div>
                             </div>
-                        </div>
-                        <input type="button" value="搜索" href="/search" name="" id="chakan">
+                            <input type="submit" value="搜索" id="chakan">
+                        </form>
                         <!-- 热门搜索 -->
-                        <div class="taoyige_hotsearch">热门搜索：<a href="#">电竞传媒</a><a href="#">ADC</a><a href="#">辅助</a><a href="#">打野</a><a href="#">中单</a></div>
+                        <div class="taoyige_hotsearch">热门搜索：
+                            <a href="/index/search?keyword=绝地求生">绝地求生</a>
+                            <a href="/index/search?keyword=ADC">ADC</a>
+                            <a href="/index/search?keyword=王者荣耀">王者荣耀</a>
+                            <a href="/index/search?keyword=打野">打野</a>
+                            <a href="/index/search?keyword=中单">中单</a>
+                        </div>
                         <!-- 热门搜索 end-->
                         <!-- banner 轮播-->
                         <div class="m_banner">
@@ -373,6 +381,7 @@
 
 @section('footer')
     @include('components.myfooter')
+    @include('components.wheelmenu')
 @endsection
 
 

@@ -135,6 +135,7 @@ class HomeController extends Controller {
         $data = array();
         $data['uid'] = AuthController::getUid();
         $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
 
         $news = array();
         $position = array();
@@ -154,9 +155,23 @@ class HomeController extends Controller {
                     //->paginate($num);
                     ->get();
 
-                $position = Position::where('vaildity', '>=', date('Y-m-d H-i-s'))
-//                    ->where('position_status', 1)
-                    ->where(function ($query){
+//                $position = Position::where('vaildity', '>=', date('Y-m-d H-i-s'))
+////                    ->where('position_status', 1)
+//                    ->where(function ($query){
+//                        $query->where('position_status',1)
+//                            ->orwhere('position_status',4);
+//                    })
+//                    ->where(function ($query) use ($keywords) {
+//                        $query->orwhere('title', 'like', '%' . $keywords . '%')
+//                            ->orwhere('pdescribe', 'like', '%' . $keywords . '%')
+//                            ->orwhere('experience', 'like', '%' . $keywords . '%');
+//                    })
+//                    ->get();
+                $position = DB::table('jobs_position')
+                    ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+                    ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                    //            ->where('vaildity', '>=', date('Y-m-d H-i-s'))
+                    ->where(function ($query){//职位状态
                         $query->where('position_status',1)
                             ->orwhere('position_status',4);
                     })
@@ -165,6 +180,7 @@ class HomeController extends Controller {
                             ->orwhere('pdescribe', 'like', '%' . $keywords . '%')
                             ->orwhere('experience', 'like', '%' . $keywords . '%');
                     })
+                    ->orderBy('view_count', 'desc')//热门程度
                     ->get();
             }
         }
@@ -174,7 +190,7 @@ class HomeController extends Controller {
         $searchResult['position'] = $position;
 
         // ly:返回首页搜索结果页面
-        //return $data;
+//        return $searchResult;
         return view('search', [
             "data" => $data,
             "searchResult" => $searchResult

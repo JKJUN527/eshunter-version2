@@ -20,14 +20,14 @@
         @endif
         
       </li>
-      <li class="pos_relative" id="xiu">
-        @if($activeIndex === 6)
-            <a class="xiu home_active" title="精准推荐" href="/resume/advanceSearch" rel="nofollow">大神库</a>
-        @else
-            <a class="xiu" title="精准推荐" href="/resume/advanceSearch" rel="nofollow">大神库</a>
-        @endif
-        
-      </li>
+      {{--<li class="pos_relative" id="xiu">--}}
+        {{--@if($activeIndex === 6)--}}
+            {{--<a class="xiu home_active" title="精准推荐" href="/resume/advanceSearch" rel="nofollow">大神库</a>--}}
+        {{--@else--}}
+            {{--<a class="xiu" title="精准推荐" href="/resume/advanceSearch" rel="nofollow">大神库</a>--}}
+        {{--@endif--}}
+        {{----}}
+      {{--</li>--}}
       <li id="cuan">
         @if($activeIndex === 4)
             <a class="post_Jb home_active" title="" href="/news" rel="nofollow">资讯中心</a>
