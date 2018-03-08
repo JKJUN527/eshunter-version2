@@ -163,10 +163,12 @@
                         </div>
 
                         <div class="input-group">
-                            <div class="form-line">
-                                    <textarea rows="8" class="form-control no-resize" id="content" name="content"
-                                              placeholder="在这里输入新闻内容..." required></textarea>
+                            <div id="wangeditor">
                             </div>
+                            {{--<div class="form-line">--}}
+                                    {{--<textarea rows="8" class="form-control no-resize" id="content" name="content"--}}
+                                              {{--placeholder="在这里输入新闻内容..." required></textarea>--}}
+                            {{--</div>--}}
                             <label id="content-error" class="error" for="content"></label>
                         </div>
 
@@ -189,12 +191,26 @@
 @endsection
 
 @section('custom-script')
+    <script type="text/javascript" src="{{asset('js/wangEditor/wangEditor.min.js')}}"></script>
     <script type="text/javascript">
         var index = 1;
         var previewHolder = $("#preview-holder");
         var appendFileInput = true;
 
+        var E = window.wangEditor;
+        var editor = new E('#wangeditor');
+        editor.customConfig.menus = [
+            'head',
+            'bold',
+            'italic',
+            'fontSize',  // 字号
+            'underline'
+        ];
+        editor.create();
+
         function insertImage() {
+//            alert(editor.txt.html());
+
             if (appendFileInput) {
                 previewHolder.append("<input type='file' name='pic" + index + "' hidden onchange='showPreview(this, index)'/>");
                 appendFileInput = false;
@@ -292,7 +308,8 @@
                 var content = $("#content");
                 var pictureIndex = $("input[name='picture-index']");
 
-                content.val(content.val().replace("[图片" + i + "]", ""));
+//                content.val(content.val().replace("[图片" + i + "]", ""));
+                editor.txt.html(editor.txt.html().replace("[图片" + i + "]", ""));
                 pictureIndex.val(pictureIndex.val().replace("@" + i, ""));
 
 
@@ -305,7 +322,8 @@
             var content = $("#content");
             var pictureIndex = $("input[name='picture-index']");
 
-            content.val(content.val() + "[图片" + i + "]");
+//            content.val(content.val() + "[图片" + i + "]");
+            editor.txt.html(editor.txt.html() + "[图片" + i + "]");
             pictureIndex.val(pictureIndex.val() + "@" + i);
         }
 
@@ -325,7 +343,7 @@
             var title = $("#title");
             var quote = $("#quote");
             var newtype = $("select[name=newtype]");
-            var content = $("#content");
+//            var content = $("#content");
             var pictureIndex = $("input[name='picture-index']").val();
 
             if (title.val() === '') {
@@ -341,24 +359,27 @@
                 removeError(newtype, 'newtype');
             }
 
-            var testContent = content.val().replace(/\r\n/g, '');
-            testContent = testContent.replace(/\n/g, '');
-            testContent = testContent.replace(/\s/g, '');
-
-            if (testContent === '') {
+//            var testContent = content.val().replace(/\r\n/g, '');
+//            testContent = testContent.replace(/\n/g, '');
+//            testContent = testContent.replace(/\s/g, '');
+//
+//            if (testContent === '') {
+//                setError(content, 'content', '不能为空');
+//                return;
+//            } else {
+//                removeError(content, 'content');
+//            }
+//
+//            // 将content中的换行 "\r\n" 或者 "\n" 换成 <br>
+//            // '\s'空格替换成"&nbsp;"
+//            // 这样可以保持新闻内容的编辑格式
+//            var newsContent = content.val().replace(/\r\n/g, '<br>');
+//            newsContent = newsContent.replace(/\n/g, '<br>');
+//            newsContent = newsContent.replace(/\s/g, '&nbsp;');
+            if(editor.txt.text().length === 0){
                 setError(content, 'content', '不能为空');
                 return;
-            } else {
-                removeError(content, 'content');
             }
-
-            // 将content中的换行 "\r\n" 或者 "\n" 换成 <br>
-            // '\s'空格替换成"&nbsp;"
-            // 这样可以保持新闻内容的编辑格式
-            var newsContent = content.val().replace(/\r\n/g, '<br>');
-            newsContent = newsContent.replace(/\n/g, '<br>');
-            newsContent = newsContent.replace(/\s/g, '&nbsp;');
-
             var formData = new FormData();
             formData.append("ename", '');
             formData.append("title", title.val());
@@ -366,7 +387,7 @@
             formData.append("quote", quote.val());
             formData.append("newtype", newtype.val());
             formData.append("tag", '');
-            formData.append("content", newsContent);
+            formData.append("content", editor.txt.html());
 
             pictureIndex = pictureIndex.substring(1);
             formData.append("pictureIndex", pictureIndex);
