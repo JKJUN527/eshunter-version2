@@ -82,9 +82,9 @@
                                 <input type="text" placeholder="请输入关键词，如：运营策划" value="" name="" id="xinkeywd" style="height:100%">
                             </div>
                         </div>
-                        <input type="button" value="搜索" name="" id="chakan">
+                        <input type="button" value="搜索" href="/search" name="" id="chakan">
                         <!-- 热门搜索 -->
-                        <div class="taoyige_hotsearch">热门搜索：<a href="company.html">电竞传媒</a><a href="#">ADC</a><a href="#">辅助</a><a href="#">打野</a><a href="#">中单</a></div>
+                        <div class="taoyige_hotsearch">热门搜索：<a href="#">电竞传媒</a><a href="#">ADC</a><a href="#">辅助</a><a href="#">打野</a><a href="#">中单</a></div>
                         <!-- 热门搜索 end-->
                         <!-- banner 轮播-->
                         <div class="m_banner">
@@ -367,7 +367,7 @@
             </div>
             <div class="more_box"><a href="/news" class="list_more">查看更多</a></div>
             </div>
-            @include('components.wheelmenu')
+            
 @endsection
 
 

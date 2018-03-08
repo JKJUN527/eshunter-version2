@@ -9,24 +9,24 @@ $(function(){
         }
     });
 
-    $('#chakan').on("click",function(){
-    	var xinkeywd = $("#xinkeywd").val();
-    	if(xinkeywd=="请输入关键词，如：运营策划" || xinkeywd==""){
-    		xinkeywd="";
-    	}else{
-    		if(CheckStr(xinkeywd) == false){
-        		alert("搜索词包含非法字符");
-        		return;
-        	}
-    	}
-    	if(xinkeywd == "打野" || xinkeywd == "打野"){
-    		xinkeywd =xinkeywd.substring(0,1) +  "jiajia";
-    	}
-    	if(xinkeywd == "电竞" || xinkeywd == "电竞"){
-    		xinkeywd =xinkeywd.substring(0,1) +  "jing";
-    	}
-    	window.location.href =BaseJSURL + "/jc/?mkwd=" + xinkeywd;
-    });
+    // $('#chakan').on("click",function(){
+    // 	var xinkeywd = $("#xinkeywd").val();
+    // 	if(xinkeywd=="请输入关键词，如：运营策划" || xinkeywd==""){
+    // 		xinkeywd="";
+    // 	}else{
+    // 		if(CheckStr(xinkeywd) == false){
+    //     		alert("搜索词包含非法字符");
+    //     		return;
+    //     	}
+    // 	}
+    // 	if(xinkeywd == "打野" || xinkeywd == "打野"){
+    // 		xinkeywd =xinkeywd.substring(0,1) +  "jiajia";
+    // 	}
+    // 	if(xinkeywd == "电竞" || xinkeywd == "电竞"){
+    // 		xinkeywd =xinkeywd.substring(0,1) +  "jing";
+    // 	}
+    // 	window.location.href =BaseJSURL + "/jc/?mkwd=" + xinkeywd;
+    // });
     
 //   $('.choosing li').on("click",function(){
 //	   var area = $(this).text();
