@@ -2,11 +2,20 @@
 @section('title', '邮箱验证')
 
 @section('custom-style')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/material.style.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/material.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/icon-fonts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/animate-css/animate.min.css')}}">
     <style>
 
+
         .verify-card-holder {
+            padding-top:100px;
+        }
+       body{
             width: 100%;
             min-height: 450px;
             background: url({{asset('images/akali_vs_baron_3.jpg')}}) no-repeat center;
@@ -14,7 +23,6 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
-            padding: 80px 0
         }
 
         .verify-card-holder > h3,
@@ -33,7 +41,7 @@
         .verify-card {
             width: 800px;
             height: 300px;
-            margin: 0 auto;
+            margin: 40px auto;
             padding: 0 30px;
             background-color: rgba(255, 255, 255, .95);
             border: 1px solid lightgray;
@@ -54,7 +62,10 @@
             display: inline-block;
             width: 88px;
         }
-
+        .verify-card p{
+            text-align: center;
+            
+        }
     </style>
 @endsection
 
@@ -75,10 +86,12 @@
 
             @if($data["status"] ==  200)
                 <p id="verify-result">{{$data["user"]->mail}} 邮箱激活成功，<br>请使用该邮箱直接登录</p>
+                <p>
                 <button to="/account/login"
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                        class="btn btn-primary blue-btn">
                     点击登录
                 </button>
+                </p>
                 @elseif($data["status"] == 400)
                 <p id="verify-result">{{$data["msg"]}}<br>请重新发送邮箱验证！</p>
             @endif
@@ -102,4 +115,7 @@
     <script type="text/javascript">
 
     </script>
+@endsection
+@section('footer')
+    @include('components.myfooter')
 @endsection
