@@ -2,6 +2,11 @@
 @section('title', '修改职位')
 
 @section('custom-style')
+ <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/material.style.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/material.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/icon-fonts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('style/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/ion-rangeslider/css/ion.rangeSlider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/ion-rangeslider/css/ion.rangeSlider.skinFlat.css')}}">
@@ -10,6 +15,17 @@
     <link rel="stylesheet" type="text/css" href="{{asset("plugins/sweetalert/sweetalert.css")}}"/>
 
     <style>
+        ol,ul{
+            margin-bottom: 0px;
+        }
+        .nav_ul li a {
+            text-decoration: none;
+        }
+        .logo-con {
+            float: left;
+            margin-top: 5px;
+        }
+    
         .publish-card {
             width: 100%;
             margin: 50px 0;
@@ -119,7 +135,8 @@
         .js-irs-2 {
             display: block !important;
         }
-
+    .publish-form .left-panel, .publish-form .right-panel {
+    width: 49%;}
     </style>
 @endsection
 
@@ -322,7 +339,7 @@
                         <div style="clear: both;"></div>
 
                         <button id="publish-button"
-                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
+                                class="btn btn-primary blue-btn">
                             立即更新
                         </button>
                     </form>
