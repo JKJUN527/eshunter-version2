@@ -509,8 +509,9 @@
 .job_company dt div {
     position: absolute;
     left: 90px;
-    bottom: 5px;
-    padding: 20px 0;
+    top:0;
+    /*bottom: 5px;*/
+    /*padding: 20px 0;*/
 }
 .job_company dt h2 {
     margin-left: 21px;

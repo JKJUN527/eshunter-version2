@@ -29,7 +29,6 @@
     <script src="{{asset('js/choose.js?v=2.33')}}" type="text/javascript"></script>
     <script src="{{asset('js/placeholder.js?v=2.32')}}" type="text/javascript"></script>
     <script src="{{asset('js/san_index.js?v=1.02')}}" type="text/javascript"></script>
-    <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/master.js')}}" type="text/javascript"></script>

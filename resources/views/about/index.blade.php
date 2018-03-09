@@ -1,119 +1,152 @@
 @extends('layout.master')
-@section('title', '电竞猎人|首页')
+@section('title', '关于')
 
 @section('custom-style')
-   <link media="all" href="{{asset('../style/style.css')}}" type="text/css" rel="stylesheet">
-@endsection
+ <link media="all" href="{{asset('../style/about.css')}}" type="text/css" rel="stylesheet">
 
+@endsection
 
 @section('header-nav')
-   @include('components.headerNav')
+   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
-
 @section('header-tab')
-    @include('components.headerTab', ['activeIndex' => 4,'type' =>$data['type']])
+   @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
 @endsection
 
 @section('content')
-<script src="js/jquery.wheelmenu.js" type="text/javascript"></script>
-        <div class="QQ_each">
-                <a class="wheel-button float_qq" href="#wheel" style="opacity: 1;"></a>
-                <ul class="wheel" id="wheel">
-                    <li class="item"><a href="#"></a></li>
-                    <li class="item"><a href="#"></a></li>
-                    <li class="item"><a href="#"></a></li>
-                    <li class="item"><a href="#"></a></li>
-                    <!--<li class="item"><a target="_blank" href="#" class='sss'>沙僧</a></li>-->
-                    <li class="item"><a class="bj" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1538590175&amp;site=qq&amp;menu=yes" target="_blank">求职<br>服务</a></li>
-                    <li class="item"><a class="wk" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3078167392&amp;site=qq&amp;menu=yes" target="_blank">招聘<br>服务</a></li>
-                    <li class="item"><a class="ts" href="http://wpa.qq.com/msgrd?v=3&amp;uin=6281927&amp;site=qq&amp;menu=yes" target="_blank">bug<br>反馈</a></li>      
-                    <li class="item"><a href="#"></a></li>
-                    <li class="item"><a href="#"></a></li>
-                    <li class="item"><a href="#"></a></li>
-                </ul>
-            </div>
-        <a style="display: none;" class="back_to_top" title="" href="#"></a>
+<div class="detail-wrap">
+  <div class="detail-left">
+    <div class="product-board">
+      <!-- <img src="/static/img/1.0de5539.png"> -->
+      <ul>
+        <li class="">简历指导</li>
+        <li class="active">关于我们</li>
+        <li class="">联系我们</li>
+        <li class="">网站地图</li>
+        <li class="">免责申明</li>
+    </ul>
+    </div>
+  </div>
+  <div class="detail-right">
+    <div class="sales-board">
+        <div class="sales-board-intro">
+        <h2 >简历指导</h2>
+        <div class="modal-body">
+                    <div class="modal-body-paper">
+                        <p>找工作都需要一个认真的态度，对待所有工作都是，对待电竞相关的工作也是如此。<br/>草草敷衍的填写简历，多数企业是不会给予机会嗒。<br/>不管你想打职业，想做赛事，想做幕后，等等...<br/>都希望您认真并属实的填写简历哦！以下为一些简单的范例，从工作经历开始，仅供参考。<br/></p>
+                       
+                    </div>
+                    <div class="modal-body-detail">
+                        <p>1. 工作经历：不管实习还是全职工作经历，请填写公司、职位、工作时间，以及详细的工作经历。</p>
+                    </div>
 
-        <script type="text/javascript">
-        $(".wheel-button").wheelmenu({
-            // alert(1);
-            trigger: "hover",
-            animation: "fly",
-            angle: [0, 360]
-        });
-        </script>
-        <div class="content_wrap clearfix">
-            <div class="content aboutus">
-                <dl>
-                    <dt>
-                        <h2> 
-                            <em></em>
-                            联系我们
-                        </h2>
-                    </dt>
-                    <dd class="clearfix">
-                        <img class="photo" alt="电竞猎人团队" src="images/news1.jpg" width="186" height="215">
-                        <div class="intro">
-                            <p>
-                                                电竞猎人（隶属于上海汉竞信息科技有限公司）是专注电竞职业机会的招聘网站，我们是全国第一家专注电子竞技行业的垂直招聘网站。电竞及相关企业可以通过电竞猎人平台寻找人才，
-企业之间也能在线上互相寻求合作。电竞行业今非昔比，人才数量的需求以及人才质量的要求都在提高，
-我们目标为电竞行业输入一些优秀的外部人才，也致力于打造电竞行业的线上求职及培训的综合性平台。
-                            </p>
-                            <p>我们是一个热爱电竞的年轻团队，我们用责任来做这件事情，致力于打造最专业的电竞游戏招聘平台。</p>
-                        </div>
-                        <ul>
-                            <li class="cli1">
-                                <h3>商务合作</h3>
-                                                 邮箱：
-                                <a href="mailto:market@lagou.com" style="display:inline;">kefu@eshunter.com</a>
-                            </li>
-                            <li class="cli2">
-                                <h3>客户服务中心</h3>
-                                <div class="service service_fl">
-                                                客服邮箱：
-                                    <a href="mailto:kefu@eshunter.com">kefu@eshunter.com</a>
-                                </div>
-                                <div class="service service_fr">
-                                                       客服热线：021-63339866
-                                </div>
-                                <p style="clear: both;">
-                                                       地址：上海市黄浦区会稽路8号金天地国际大厦708室
-                                </p>
-                            </li>
-                            <li class="cli3">
-                                <h3>电竞猎人服务站</h3>
-                                <p>上海服务站：上海市黄浦区会稽路8号金天地国际大厦708室</p>
-                                <p>广州服务站：无</p>
-                                <p>深圳服务站：无</p>
-                                <p>成都服务站：无</p>
-                                <p>杭州服务站：无</p>
-                            </li>
-                            <li class="cli4">
-                                <img alt="服务热线" src="images/hotline_6c5691a.png" height="52" width="52">
-                                <p>服务热线</p>
-                                <span>Service hotline</span>
-                                <div class="telephone">
-                                    <p>021-63339866</p>
-                                    <span>仅收市话费</span>
-                                </div>
-                            </li>
-                            <li class="cli5">
-                                400 service is powered by
-                                <a href="http://www.ti-net.com.cn/" target="_blank"> <strong>T&amp;I</strong>
-                                    <span>天润融通</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
+                    <div class="modal-img"><img src="{{asset("images/resume_explain1.png")}}" alt=""></div>
+                    <div class="modal-body-detail">
+                        <p>2. 每个人寻求的都是不同方向的岗位，想做选手的有一些比赛经历，想做赛事的可以填一些赛事策划或执行的经历，又或者是程序猿有编程项目的经历等等。</p>
+                    </div>
+                    <div class="modal-body-detail2">
+                        <p>（1）有打比赛的经历，请填写赛事名称、游戏、位置、时间，以及比赛的描述。</p>
+                    </div>
+
+                    <div class="modal-img"><img src="{{asset("images/resume_explain2.png")}}" alt=""></div>
+                    <div class="modal-body-detail2">
+                        <p>（2）有赛事的经历，可以填写赛事名称、负责的职责、时间，以及具体策划或执行的细节。</p>
+                    </div>
+
+                    <div class="modal-img"><img src="{{asset("images/resume_explain3.png")}}" alt=""></div>
+                    <div class="modal-body-detail2">
+                        <p>（3）又或者您应聘的是电竞公司的程序猿，可以填写一些自己曾经负责或参与开发的APP或者网站项目。</p>
+                    </div>
+
+                    <div class="modal-img"><img src="{{asset("images/resume_explain4.png")}}" alt=""></div>
+                    <div class="modal-body-detail">
+                        <p>3. 电竞经历：填写自己平时在玩的一些游戏，选择大概的段位，然后在再细致的备注一下游戏里的具体服务器、游戏ID、KDA等等，这也是招聘的加分项哦。</p>
+                    </div>
+
+                    <div class="modal-img"><img src="{{asset("images/resume_explain5.png")}}" alt=""></div>
+                    <div class="modal-body-detail">
+                        <p>4. 技能特长：职场上还需要自己一些实用技能，比如会编程、熟悉办公软件、会PS，都是企业很看重的。</p>
+                    </div>
+
+                    <div class="modal-img"><img src="{{asset("images/resume_explain6.png")}}" alt=""></div>
+                </div>
+    </div>
+    </div>
+    <div class="sales-board active">
+        <div class="sales-board-intro">
+        <h2 >关于我们</h2>
+        <p>电竞猎人平台创建于2017年，隶属于上海汉竞信息科技有限公司。<br/>
+        我们是全国第一家专注电子竞技行业的垂直招聘网站。<br/>电竞及相关企业可以通过电竞猎人平台寻找人才，
+        企业之间也能在线上互相寻求合作。电竞行业今非昔比，人才数量的需求以及人才质量的要求都在提高，
+        我们目标为电竞行业输入一些优秀的外部人才，也致力于打造电竞行业的线上求职及培训的综合性平台。</p></div>
+    </div>
+    <div class="sales-board">
+        <div class="sales-board-intro">
+        <h2 >联系我们</h2>
+        <p>地址：上海市黄浦区会稽路8号金天地国际大厦708室</p>
+        <p>邮编：200021</p>
+        <p>电话：021-63339866</p>
+        <p>邮箱：kefu@eshunter.com</p>
         </div>
+    </div>
+    <div class="sales-board">
+        <div class="sales-board-intro">
+        <h2 >网站地图</h2>
+         <p>地址：上海市黄浦区会稽路8号金天地国际大厦708室</p>
+        <div class="address-map">
+                    <div id="map" style="width:100%; height: 600px;"></div>
+                </div></div>
+    </div>
+    <div class="sales-board">
+      <div class="sales-board-intro">
+        <h2 >免责声明</h2>
+        <p>电竞猎人平台文章多来源于网络，转载内容只为传播信息无任何商业目的，若涉及版权或侵权的问题请邮件联系我们，核实后我们将删除 联系我们：021-63339866 邮箱：kefu@eshunter.com</p></div>
+    </div>
+  </div>
+</div>
 @endsection
+
 
 @section('footer')
    @include('components.myfooter')
 @endsection
 
+
 @section('custom-script')
+    <script charset="utf-8" type="text/javascript" src="js/header.js?v=1.00"></script>
+    <script>
+        $('.product-board ul').on('click', 'li', function(event,index) {
+            event.preventDefault();
+            /* Act on the event */
+            $(event.currentTarget).addClass('active').siblings().removeClass('active')
+            var num = $(event.currentTarget).index()
+            $('.detail-right .sales-board').eq(num).show().siblings().hide()
+        });
+    </script>
+        <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&key=e143b33668668e4b9be611be3584b0e7"></script>
+    <script>
+
+        map = new AMap.Map('map', {
+            resizeEnable: true,
+            zoom: 13,
+            center: [121.48944, 31.228947]
+        });
+
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'],
+            function () {
+                map.addControl(new AMap.ToolBar());
+
+                map.addControl(new AMap.Scale());
+
+                map.setStatus({scrollWheel: false});
+            });
+
+        marker = new AMap.Marker({
+            position: [121.48944, 31.228947],
+            title: "company name",
+            map: map
+        });
+    </script>
 @endsection

@@ -26,7 +26,9 @@
     }
      .dn{
          display: block;
-         background-color: #f2f5f4 !important;
+         padding: 10px;
+         padding-left: 0px;
+         /*background-color: #f2f5f4 !important;*/
      }
      .content_r {
         width: 275px;
@@ -37,7 +39,7 @@
     display: inline-block;
     }
     .job_company dt h2 {
-        margin-bottom: 3px;
+        margin: 3px;
     }
     .job_company .c_feature a {
         word-break: break-all;
@@ -97,6 +99,11 @@
 
     .resume-item p {
         margin: 0;
+    }
+    .material-icons{
+
+  font-size: 18px;
+    vertical-align: middle;
     }
  </style>
 @endsection
@@ -334,16 +341,16 @@
                     @else
                         <img  class="b2" src="{{$data['enprinfo'][0]->elogo}}" width="96" height="96"/>
                     @endif
-                    <div>
-                        <h2 class="left">
-                            <b>{{$data['enprinfo'][0]->ename or "公司名称未填写"}}</b>
-                        </h2>
-                        <h2 class="left">
+                    <div class="left">
+                        <h2 class="">
                             {{$data['enprinfo'][0]->byname or "公司别名未填写"}}
                         </h2>
-                        <span class="dn">电竞猎人已认证</span>
+                        <p class="dn"><i class="material-icons">verified_user</i>电竞猎人已认证</p>
                     </div>
                 </a>
+                <h2 class="">
+                    <b>{{$data['enprinfo'][0]->ename or "公司名称未填写"}}</b>
+                </h2>
             </dt>
             <dd>
                 <ul class="c_feature">

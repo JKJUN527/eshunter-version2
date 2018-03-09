@@ -2,6 +2,8 @@
 @section('title', '发布职位')
 
 @section('custom-style')
+    <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+
 <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('style/material.style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('style/material.css')}}">
