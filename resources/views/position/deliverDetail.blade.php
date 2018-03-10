@@ -7,6 +7,16 @@
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert/sweetalert.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('style/font-awesome.min.css')}}"/>
     <style>
+        ol,ul,ul li{
+            margin-bottom: 0px!important;
+        }
+        .nav_ul li a {
+            text-decoration: none;
+        }
+        .logo-con {
+            float: left;
+            margin-top: 5px;
+        }
         .mdl-card__title-text {
             position: relative;
             /*top: 4px;*/
