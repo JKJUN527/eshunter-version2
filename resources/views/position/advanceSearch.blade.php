@@ -591,7 +591,7 @@
                 data: formData,
                 success: function (data) {
                     var result = JSON.parse(data);
-                    console.log(result);
+//                    console.log(result);
                     if(result.status === 200){
                         swal("","简历投递成功！","success");
                         return;
