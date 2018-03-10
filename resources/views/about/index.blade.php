@@ -11,7 +11,7 @@
 @endsection
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 3,'type' => $data['type']])
+   @include('components.headerTab',['activeIndex' => 5,'type' => $data['type']])
 @endsection
 
 @section('content')
@@ -20,16 +20,16 @@
     <div class="product-board">
       <!-- <img src="/static/img/1.0de5539.png"> -->
       <ul>
-        <li class="">简历指导</li>
-        <li class="active">关于我们</li>
-        <li class="">联系我们</li>
-        <li class="">网站地图</li>
-        <li class="">免责申明</li>
+        <li @if($data['tab'] == 'tab1') class="active" @endif>简历指导</li>
+        <li @if($data['tab'] == 'tab2') class="active" @endif>关于我们</li>
+        <li @if($data['tab'] == 'tab3') class="active" @endif>联系我们</li>
+        <li @if($data['tab'] == 'tab4') class="active" @endif>网站地图</li>
+        <li @if($data['tab'] == 'tab5') class="active" @endif>免责申明</li>
     </ul>
     </div>
   </div>
   <div class="detail-right">
-    <div class="sales-board">
+    <div class="sales-board @if($data['tab'] == 'tab1') active @endif">
         <div class="sales-board-intro">
         <h2 >简历指导</h2>
         <div class="modal-body">
@@ -73,7 +73,7 @@
                 </div>
     </div>
     </div>
-    <div class="sales-board active">
+    <div class="sales-board @if($data['tab'] == 'tab2') active @endif">
         <div class="sales-board-intro">
         <h2 >关于我们</h2>
         <p>电竞猎人平台创建于2017年，隶属于上海汉竞信息科技有限公司。<br/>
@@ -81,16 +81,16 @@
         企业之间也能在线上互相寻求合作。电竞行业今非昔比，人才数量的需求以及人才质量的要求都在提高，
         我们目标为电竞行业输入一些优秀的外部人才，也致力于打造电竞行业的线上求职及培训的综合性平台。</p></div>
     </div>
-    <div class="sales-board">
+    <div class="sales-board @if($data['tab'] == 'tab3') active @endif">
         <div class="sales-board-intro">
         <h2 >联系我们</h2>
-        <p>地址：上海市黄浦区会稽路8号金天地国际大厦708室</p>
+        <p>地址：{{$data['about']->address}}</p>
         <p>邮编：200021</p>
-        <p>电话：021-63339866</p>
-        <p>邮箱：kefu@eshunter.com</p>
+        <p>电话：{{$data['about']->tel}}</p>
+        <p>邮箱：{{$data['about']->email}}</p>
         </div>
     </div>
-    <div class="sales-board">
+    <div class="sales-board @if($data['tab'] == 'tab4') active @endif">
         <div class="sales-board-intro">
         <h2 >网站地图</h2>
          <p>地址：上海市黄浦区会稽路8号金天地国际大厦708室</p>
@@ -98,7 +98,7 @@
                     <div id="map" style="width:100%; height: 600px;"></div>
                 </div></div>
     </div>
-    <div class="sales-board">
+    <div class="sales-board @if($data['tab'] == 'tab5') active @endif">
       <div class="sales-board-intro">
         <h2 >免责声明</h2>
         <p>电竞猎人平台文章多来源于网络，转载内容只为传播信息无任何商业目的，若涉及版权或侵权的问题请邮件联系我们，核实后我们将删除 联系我们：021-63339866 邮箱：kefu@eshunter.com</p></div>

@@ -137,6 +137,7 @@ class MessageController extends Controller {
         $message = new Message();
         $message->from_id = $from_id;
         $message->to_id = $to_id;
+        $message->is_read = 0;
         $message->content = $sendcontent;
         if ($message->save()) {
             $data['status'] = 200;

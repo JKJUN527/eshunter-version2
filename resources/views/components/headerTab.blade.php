@@ -51,6 +51,13 @@
               @endif
           @endif
         </li>
+        <li id="cuan">
+            @if($activeIndex === 5)
+                <a class="home home_active" href="/about">关于我们</a>
+            @else
+                <a class="home" href="/about">关于我们</a>
+            @endif
+        </li>
     </ul>
   </div>
 </div>

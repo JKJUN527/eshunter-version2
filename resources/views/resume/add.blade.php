@@ -1186,7 +1186,8 @@
                             to="/resume/preview?rid={{$data['rid']}}">
                         预览简历
                     </button>
-                    <button class="btn btn-primary blue-btn" data-toggle="modal" data-target="#resume_explain">
+                    <button class="btn btn-primary blue-btn"
+                            to="/about?page=tab1">
                         简历指导
                     </button>
 

@@ -591,9 +591,14 @@
                 data: formData,
                 success: function (data) {
                     var result = JSON.parse(data);
-//                    console.log(result);
-
-                    checkResult(result.status, "简历投递成功", result.msg, null);
+                    console.log(result);
+                    if(result.status === 200){
+                        swal("","简历投递成功！","success");
+                        return;
+                    }else{
+                        swal("",result.msg,"error");
+                        return;
+                    }
                 }
             })
 
@@ -609,7 +614,9 @@
                         self.location = "/resume/add?rid=" + data['rid'];
                     } else if (data['status'] === 400) {
 //                        swal("",data['msg'],"error");
-                        checkResult(data['status'], "", data['msg'], null);
+                        swal("",data['msg'],"error");
+                        return;
+//                        checkResult(data['status'], "", data['msg'], null);
                     }
                 }
             });

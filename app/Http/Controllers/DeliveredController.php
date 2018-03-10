@@ -262,9 +262,11 @@ class DeliveredController extends Controller {
         $data['personInfo'] = $person->getPersonInfo();
         $data['resume'] = Resumes::find($data['rid']);
         $data['intention'] = Intention::find($data['resume']['inid']);
+
         $data['education'] = ResumeController::getEducation();
         $data['game'] = ResumeController::getEgamexpr();
         $data['work'] = ResumeController::getWorkexp();
+        $data['project'] = ResumeController::getProjectexp();
 
         $skillStr = $data['resume']['skill'];
         if ($skillStr == null) {

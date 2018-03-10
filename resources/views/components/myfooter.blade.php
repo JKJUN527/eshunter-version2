@@ -10,11 +10,11 @@
                         </div>
                         <div class="foot_list">
                             <div class="foot_list_item">
-                                <span class="about_left"><a title="" href="/about">简历指导</a></span>
-                                <span class="about_left"><a title="" href="/about">关于我们</a></span>
-                                <span class="about_left"><a title="" href="/about">联系我们</a></span>
-                                <span class="about_left"><a title="" href="/about">网站地图</a></span>
-                                <span class="about_left"><a title="" href="/about">免责申明</a></span>
+                                <span class="about_left"><a title="" href="/about?page=tab1">简历指导</a></span>
+                                <span class="about_left"><a title="" href="/about?page=tab2">关于我们</a></span>
+                                <span class="about_left"><a title="" href="/about?page=tab3">联系我们</a></span>
+                                <span class="about_left"><a title="" href="/about?page=tab4">网站地图</a></span>
+                                <span class="about_left"><a title="" href="/about?page=tab5">免责申明</a></span>
                                 <!-- <span class="about_left"><a title="" href="http://weibo.com/neipin2013" rel="nofollow" >微博</a></span>
                                 <span class="about_left wx_pos">
                                     <a title="" href="javascript:void(0)">微信服务号</a>
