@@ -17,6 +17,9 @@
             float: left;
             margin-top: 5px;
         }
+        #es_tbar .inner .es_tbar_r .user_dropdown ul{
+            min-width: 90px;
+        }
         .mdl-card__title-text {
             position: relative;
             /*top: 4px;*/
