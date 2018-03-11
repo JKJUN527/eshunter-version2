@@ -56,7 +56,7 @@
                                             @if($i == 1){{--跳过综合选项--}}
                                                 @continue
                                             @endif
-                                            <a href="/position/advanceSearch?industry={{$industry->id}}">{{$occupation->name}}</a>
+                                            <a href="/position/advanceSearch?industry={{$industry->id}}&occupation={{$occupation->id}}">{{$occupation->name}}</a>
                                         @endif
                                     @endforeach
                                     <i class="arrow"></i>
@@ -66,7 +66,7 @@
                                         <div>
                                             @foreach($data['occupation'] as $occupation)
                                                 @if($occupation->industry_id == $industry->id)
-                                                    <a href="/position/advanceSearch?industry={{$industry->id}}">{{$occupation->name}}</a>
+                                                    <a href="/position/advanceSearch?industry={{$industry->id}}&occupation={{$occupation->id}}">{{$occupation->name}}</a>
                                                 @endif
                                             @endforeach
                                         </div>
