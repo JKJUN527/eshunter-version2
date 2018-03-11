@@ -462,15 +462,15 @@
                 })
 
 
-                $('.banner1').on('click', function() {
-                    window.open("#");
-                });
-                $('.banner2').on('click', function() {
-                    window.open("#");
-                });
-                $('.banner3').on('click', function() {
-                    window.open("#");
-                });
+//                $('.banner1').on('click', function() {
+//                    window.open("#");
+//                });
+//                $('.banner2').on('click', function() {
+//                    window.open("#");
+//                });
+//                $('.banner3').on('click', function() {
+//                    window.open("#");
+//                });
                 // 二级导航
                 $('.all_divlist_border').on('mouseover', function() {
                     $(this).addClass('all_divlist_active');

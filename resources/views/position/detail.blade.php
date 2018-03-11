@@ -554,29 +554,37 @@
             var formData = new FormData();
             formData.append('rid', rid);
             formData.append('pid', pid);
-
-            $.ajax({
-                url: "/delivered/add",
-                type: "post",
-                dataType: 'text',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: formData,
-                success: function (data) {
-                    var result = JSON.parse(data);
+            swal({
+                        title: "确认投递该简历？",
+                        text: "点击确认立即投递",
+                        type: "info",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function(){
+                        $.ajax({
+                            url: "/delivered/add",
+                            type: "post",
+                            dataType: 'text',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (data) {
+                                var result = JSON.parse(data);
 //                    console.log(result);
-//
 //                    checkResult(result.status, "简历投递成功", result.msg, null);
-                    if(result.status === 200){
-                        swal("","简历投递成功！","success");
-                        return;
-                    }else{
-                        swal("",result.msg,"error");
-                        return;
-                    }
-                }
-            })
+                                if(result.status === 200){
+                                    swal("","简历投递成功！","success");
+                                    return;
+                                }else{
+                                    swal("",result.msg,"error");
+                                    return;
+                                }
+                            }
+                        })
+                    });
 
         }
 

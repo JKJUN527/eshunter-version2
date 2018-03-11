@@ -15,6 +15,7 @@ use App\Enprinfo;
 use App\Industry;
 use App\Occupation;
 use App\Personinfo;
+use App\Place;
 use App\Position;
 use App\Region;
 use App\User;
@@ -716,6 +717,9 @@ class PositionController extends Controller {
         }
 
         if ($request->has('industry')) $data['industry'] = $request->input('industry');
+        if ($request->has('occupation')) $data['occupation'] = $request->input('occupation');
+        if ($request->has('place')) $data['place'] = $request->input('place');
+
         $city_set =array();
         if ($request->has('region-pro')) {
             $data['region-pro'] = $request->input('region-pro');
@@ -749,6 +753,12 @@ class PositionController extends Controller {
             ->where(function ($query) use ($request,$city_set) {
                 if ($request->has('industry')) {//行业
                     $query->where('jobs_position.industry', '=', $request->input('industry'));
+                }
+                if ($request->has('occupation')) {//游戏
+                    $query->where('jobs_position.occupation', '=', $request->input('occupation'));
+                }
+                if ($request->has('place')) {//职位
+                    $query->where('jobs_position.place', '=', $request->input('place'));
                 }
                 if ($request->has('region-pro') && $request->has('region-city')) {
 //                    $query->whereIn('jobs_position.region',$city_set)
@@ -823,6 +833,7 @@ class PositionController extends Controller {
         $data['type'] = AuthController::getType();
         $data['industry'] = Industry::all();
         $data['occupation'] = Occupation::all();
+        $data['place'] = Place::all();
         $data['region-pro'] = Region::where('parent_id',0)
             ->orderBy('created_at','asc')
             ->get();

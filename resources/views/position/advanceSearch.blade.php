@@ -200,6 +200,8 @@
                         <div class="searchPart">
                             <form method="get" id="search-form">
                                 <input type="hidden" name="industry">
+                                <input type="hidden" name="occupation">
+                                <input type="hidden" name="place">
                                 <input type="hidden" name="region-pro">
                                 <input type="hidden" name="region-city">
                                 <input type="hidden" name="salary">
@@ -224,6 +226,50 @@
                                          @endforeach
                                     </div>
                                 </div>
+                                @foreach($data['industry'] as $industry)
+                                    <div class="stander_list" id="occupation{{$industry->id}}" name="occupation"
+                                         @if(isset($data['result']['industry']) &&$data['result']['industry']==$industry->id)
+                                            style="display: inline-block">
+                                        @else
+                                            style="display: none">
+                                        @endif
+                                        <span>游戏：</span>
+                                        <div class="span-holder stander_div3 occupation{{$industry->id}}-holder">
+                                            <a rel="nofollow" @if(!isset($data['result']['occupation'])) class="active"
+                                               @endif data-content="-1">全部</a>
+                                            @foreach($data['occupation'] as $occupation)
+                                                @if($industry->id == $occupation->industry_id)
+                                                    <a rel="nofollow" data-content="{{$occupation->id}}"
+                                                       @if(isset($data['result']['occupation']) && $data['result']['occupation'] == $occupation->id)
+                                                       class="active"
+                                                            @endif
+                                                    >{{$occupation->name}}</a>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="stander_list" id="place{{$industry->id}}" name="place"
+                                         @if(isset($data['result']['industry']) &&$data['result']['industry']==$industry->id)
+                                         style="display: inline-block">
+                                        @else
+                                            style="display: none">
+                                        @endif
+                                        <span>职位：</span>
+                                        <div class="span-holder stander_div3 place{{$industry->id}}-holder">
+                                            <a rel="nofollow" @if(!isset($data['result']['place'])) class="active"
+                                               @endif data-content="-1">全部</a>
+                                            @foreach($data['place'] as $place)
+                                                @if($industry->id == $place->industry_id)
+                                                    <a rel="nofollow" data-content="{{$place->id}}"
+                                                       @if(isset($data['result']['place']) && $data['result']['place'] == $place->id)
+                                                       class="active"
+                                                            @endif
+                                                    >{{$place->name}}</a>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
                                 <div class="stander_list">
                                     <span>省份：</span>
                                     <div class="stander_div3 span-holder-region region-province-holder">
@@ -499,6 +545,11 @@
     });
     function goSearch() {
         var industry = $(".industry-holder").find("a.active").attr("data-content");
+        var occupation_id = "occupation"+industry+"-holder";
+        var occupation = $('.'+occupation_id).find("a.active").attr("data-content");
+        var place_id = "place"+industry+"-holder";
+        var place = $('.'+place_id).find("a.active").attr("data-content");
+
         var region_pro = $(".region-province-holder").find("a.active").attr("data-content");
         var cityid = "region-city"+region_pro+"-holder";
         var region_city = $("."+cityid).find("a.active").attr("data-content");
@@ -511,6 +562,11 @@
 
         if (industry !== "-1")
             $("input[name='industry']").val(industry);
+        if (occupation !== "-1")
+            $("input[name='occupation']").val(occupation);
+        if (place !== "-1")
+            $("input[name='place']").val(place);
+
         if (region_pro !== "-1")
             $("input[name='region-pro']").val(region_pro);
         if (region_city !== "-1")
@@ -580,27 +636,37 @@
             var formData = new FormData();
             formData.append('rid', rid);
             formData.append('pid', pid);
-
-            $.ajax({
-                url: "/delivered/add",
-                type: "post",
-                dataType: 'text',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: formData,
-                success: function (data) {
-                    var result = JSON.parse(data);
+            swal({
+                        title: "确认投递该简历？",
+                        text: "点击确认立即投递",
+                        type: "info",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function(){
+                        $.ajax({
+                            url: "/delivered/add",
+                            type: "post",
+                            dataType: 'text',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (data) {
+                                var result = JSON.parse(data);
 //                    console.log(result);
-                    if(result.status === 200){
-                        swal("","简历投递成功！","success");
-                        return;
-                    }else{
-                        swal("",result.msg,"error");
-                        return;
-                    }
-                }
-            })
+                                if(result.status === 200){
+                                    swal("","简历投递成功！","success");
+                                    return;
+                                }else{
+                                    swal("",result.msg,"error");
+                                    return;
+                                }
+                            }
+                        })
+
+                    });
 
         }
 

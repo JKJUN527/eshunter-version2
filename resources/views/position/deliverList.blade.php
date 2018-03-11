@@ -206,11 +206,13 @@
             <nav id="page_tools">
                 <ul class="pagination">
                     <?php $pagenum = floor($current_num/$per_page) ?>
+                    @if($pagenum >0)
                     <li><span name="page" data-content="0">&laquo;</span></li>
                     @for($i=0;$i<$pagenum;$i++)
                         <li><span name="page" data-content="{{$i}}">{{$i+1}}</span></li>
                     @endfor
                     <li><span name="page" data-content="{{$pagenum}}">&raquo;</span></li>
+                    @endif
                 </ul>
             </nav>
         </div>
