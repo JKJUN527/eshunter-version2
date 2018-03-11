@@ -246,6 +246,24 @@
                                 </div>
                             @endforeach
 
+                            <label for="position-place" id="placelabel" style="display: none">职位</label>
+                            @foreach($data['industry'] as $industry)
+                                <div class="form-group" id="place-display{{$industry->id}}"
+                                     name="place-display" style="display:none;">
+                                    {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                    <select class="form-control show-tick selectpicker" id="position-place"
+                                            name="place{{$industry->id}}">
+                                        <option value="0">请选择所属职位</option>
+                                        @foreach($data['place'] as $place)
+                                            @if($place->industry_id == $industry->id)
+                                                <option value="{{$place->id}}">{{$place->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <label class="error" for="position-place"></label>
+                                </div>
+                            @endforeach
+
                             <label for="position-type">职位类型</label>
                             <div class="form-group">
                                 {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
@@ -480,10 +498,15 @@
         $('#position-industry').change(function () {
 //            document.getElementById("ddlResourceType").options.add(new Option(text,value));
             var indexid = $("select[name='industry']").val();
-            var id = "#occupation-display" + indexid;
+            var occupation_id = "#occupation-display" + indexid;
+            var place_id = "#place-display" + indexid;
+
             $('div[name=occupation-display]').css("display", "none");
+            $('div[name=place-display]').css("display", "none");
             $("#occulabel").css("display", "block");
-            $(id).css("display", "block");
+            $("#placelabel").css("display", "block");
+            $(occupation_id).css("display", "block");
+            $(place_id).css("display", "block");
 //            $(id).style.display = block;
         });
         //自动关联省份和城市
@@ -516,6 +539,7 @@
             var city_len = $("select[name='city"+ province.val() +"'] option").length;
             var industry = $("select[name='industry']");
             var occupation = $("select[name='occupation" + industry.val() + "']");
+            var place = $("select[name='place" + industry.val() + "']");
             var type = $("select[name='type']");
 
             var salaryCB = $("#salary-uncertain");
@@ -650,7 +674,9 @@
             }else{
                 formData.append("region", province.val());
             }
+
             formData.append("work_nature", type.val());
+            formData.append("place", place.val());
             formData.append("occupation", occupation.val());
             formData.append("industry", industry.val());
             formData.append("experience", experience);

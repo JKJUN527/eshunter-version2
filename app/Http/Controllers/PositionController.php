@@ -266,8 +266,10 @@ class PositionController extends Controller {
         //查询工作地区
         $data['province'] = Region::where('parent_id',0)->get();
         $data['city'] = Region::where('parent_id','!=',0)->get();
-        //查询职业
+        //查询游戏
         $data['occupation'] = Occupation::orderBy('updated_at','asc')->get();
+        //职位
+        $data['place'] = Place::orderBy('updated_at','asc')->get();
         //查询行业
         $data['industry'] = Industry::all();
 //        return $data;
@@ -310,7 +312,8 @@ class PositionController extends Controller {
             $position->salary_max = $salary_max;
             $position->region = $request->input('region');//工作地区，这里应为地区id，指向jobs_region
             $position->work_nature = $request->input('work_nature');//工作性质（兼职|实习|全职）int
-            $position->occupation = $request->input('occupation');//职业，这里应为职业id，指向jobs_occupation
+            $position->place = $request->input('place');//职业，这里应为职业id，指向jobs_place
+            $position->occupation = $request->input('occupation');//游戏，这里应为游戏id，指向jobs_occupation
             $position->industry = $request->input('industry');//行业，这里应为行业id，指向jobs_industry
             $position->experience = $request->input('experience');//
             $position->workplace = $request->input('workplace');
