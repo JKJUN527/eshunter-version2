@@ -655,7 +655,9 @@ class PositionController extends Controller {
             $detail1->save();
             $data['detail'] = DB::table('jobs_position')
                 ->leftjoin('jobs_occupation', 'jobs_position.occupation', '=', 'jobs_occupation.id')
-                ->select('jobs_position.pid','jobs_position.eid','jobs_position.title','jobs_position.tag','jobs_position.pdescribe','jobs_position.salary','salary_max','jobs_position.region','work_nature','jobs_position.occupation','jobs_position.industry','jobs_position.experience','jobs_position.education','jobs_position.total_num','jobs_position.max_age','jobs_position.workplace','jobs_position.position_status','jobs_position.view_count','jobs_position.created_at','name')
+                ->leftjoin('jobs_industry', 'jobs_position.industry', '=', 'jobs_industry.id')
+                ->leftjoin('jobs_place', 'jobs_position.place', '=', 'jobs_place.id')
+                ->select('jobs_position.pid','jobs_position.eid','jobs_position.title','jobs_position.tag','jobs_position.pdescribe','jobs_position.salary','salary_max','jobs_position.region','work_nature','jobs_position.occupation','jobs_position.industry','jobs_position.experience','jobs_position.education','jobs_position.total_num','jobs_position.max_age','jobs_position.workplace','jobs_position.position_status','jobs_position.view_count','jobs_position.created_at','jobs_occupation.name as occupation_name','jobs_industry.name as industry_name','jobs_place.name as place_name')
                 ->where('pid', '=', $pid)
                 ->first();
 

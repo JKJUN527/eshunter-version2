@@ -220,6 +220,10 @@
         <dl class="job_detail" id="job_detail">
             <dt class="clearfix join_tc_icon"></dt>
             <dd class="job_advantage">
+                <span class="advantage">所属游戏:</span>
+                <p>{{$data['detail']->industry_name}}/{{$data['detail']->occupation_name}}/{{$data['detail']->place_name}}</p>
+            </dd>
+            <dd class="job_advantage">
                 <span class="advantage">职位诱惑:</span>
                 <p>{{$data['detail']->tag}}</p>
             </dd>
