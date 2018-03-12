@@ -99,12 +99,12 @@
                             <div style="cursor:pointer;" class="banner banner1">
                                 <img src="../images/banner.jpg" width="800" height="241"/>
                             </div>  
-                            <div style="display:none; cursor:pointer;" class="banner banner2">
-                                <img src="../images/banner3.jpg" width="800" height="241"/>
-                            </div>          
-                            <div style="display:none; cursor:pointer;" class="banner banner3">
-                                <img src="../images/banner2.jpg" width="800" height="241"/>
-                            </div>          
+                            {{--<div style="display:none; cursor:pointer;" class="banner banner2">--}}
+                                {{--<img src="../images/banner3.jpg" width="800" height="241"/>--}}
+                            {{--</div>          --}}
+                            {{--<div style="display:none; cursor:pointer;" class="banner banner3">--}}
+                                {{--<img src="../images/banner2.jpg" width="800" height="241"/>--}}
+                            {{--</div>          --}}
                             <a class="prev" href="javascript:void(0);" style="display: none;"></a>
                             <a class="next" href="javascript:void(0);" style="display: none;"></a>
                         </div>

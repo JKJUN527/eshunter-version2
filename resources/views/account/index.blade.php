@@ -249,7 +249,7 @@
                         </div>
                         <div class="my_labels my_labelsie">
                         <div class="mdl-card__actions mdl-card--border resume-panel">
-                            <span style="" class="myhidden">我的简历</span>
+                            <span style="" class="myhidden">一般简历</span>
                             @foreach($data['resumeList'] as $resume)
                                 <div class="resume-item">
                                     <a to="/resume/add?rid={{$resume->rid}}">
@@ -286,6 +286,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
