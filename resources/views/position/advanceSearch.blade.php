@@ -153,7 +153,13 @@
                         </div>
                         <input type="button" value="搜索" name="" id="publish-position">
                         <!-- 热门搜索的链接没有写 -->
-                        <div class="taoyige_hotsearch">热门搜索：<a href="javascript:void(0);">小米</a><a href="javascript:void(0);">同程旅游</a><a href="javascript:void(0);">知聊</a><a href="javascript:void(0);">状元理财</a></div>
+                        <div class="taoyige_hotsearch">热门搜索：
+                            <a href="/position/advanceSearch?keyword=绝地求生">绝地求生</a>
+                            <a href="/position/advanceSearch?keyword=ADC">ADC</a>
+                            <a href="/position/advanceSearch?keyword=王者荣耀">王者荣耀</a>
+                            <a href="/position/advanceSearch?keyword=打野">打野</a>
+                            <a href="/position/advanceSearch?keyword=中单">中单</a>
+                        </div>
                         <div class="tao_change">
                             <div class="gs_rank">
                                 <div style="display:block" class="gs_rank_item">

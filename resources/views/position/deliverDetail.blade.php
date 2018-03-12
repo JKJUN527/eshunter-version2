@@ -38,7 +38,7 @@
             /*padding-bottom: 3px;*/
         }
         .base-info__title {
-            width: 480px !important;
+            width: 100% !important;
         }
 
         .resume-child-card {
@@ -130,6 +130,9 @@
             margin-left: 1rem;
             font-size: small;
         }
+        .mdl-card{
+            width: 100% !important;
+        }
     </style>
 @endsection
 
@@ -187,9 +190,6 @@
             color:tomato;
             margin-right: 4px;
             /*padding-bottom: 3px;*/
-        }
-        .base-info__title {
-            width: 480px !important;
         }
 
         .resume-child-card {

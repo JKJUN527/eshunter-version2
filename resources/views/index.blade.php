@@ -311,7 +311,7 @@
                             <div class="item_top">
                                 <p>
                                     <a href="/company?eid={{$ad_big->eid}}" target="_blank">
-                                        <img src="{{$ad_big->picture or asset('images/house.jpg')}}" alt="" width="193" height="100"/>
+                                        <img src="{{$ad_big->picture or asset('images/house.jpg')}}" alt="" width="225" height="100"/>
                                     </a>
                                 </p>
                                 <p class="company-name wordCut">

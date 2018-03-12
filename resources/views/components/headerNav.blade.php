@@ -1,7 +1,7 @@
 <div id="es_tbar">
     <div class="inner">
         <div class="es_tbar_l">
-            <span class="iconfont icon-shouji"></span><a class="es_app" href="#" rel="nofollow">电竞猎人APP</a>
+            <span class="iconfont icon-shouji"></span><a class="es_app" href="#" rel="nofollow">电竞猎人官网</a>
             {{--@if($type == 1)--}}
                 {{--<a class="es_os" href="#" rel="nofollow">进入企业版</a>--}}
             {{--@endif--}}
@@ -27,7 +27,7 @@
                     </li>
                 @else
                     <li><a href="/position/publishList" style="border-left:none;">已发布职位</a></li>
-                    <li><a href="/position/deliverList">投递记录</a></li>
+                    <li><a href="/position/deliverList">收到简历记录</a></li>
                     <li class="user_dropdown">
                         <a href="#">{{$personInfo['username']}}<span></span></a>
                         <ul>
