@@ -5,7 +5,7 @@
  <link media="all" href="{{asset('../style/news.css')}}" type="text/css" rel="stylesheet">
     <style>
         .mdl-card__supporting-text{
-            width: 97% !important;
+            /*width: 97% !important;*/
         }
     </style>
 @endsection

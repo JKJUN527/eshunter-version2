@@ -124,10 +124,10 @@
                         <div class="news-content">
                           <h3><b>
                             {{mb_substr($news->title, 0, 30)}}</b></h3>
-                          <div class="content-body">
+                          <p class="content-body">
                               {{--{{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 40)}}--}}
                               {{mb_substr(strip_tags($news->content), 0, 70)}}
-                          </div>
+                          </p>
                           <small class="content-appendix">
                             <span>责任编辑: admin</span>
                             <span>新闻来源:{{$news->quote}}</span>
@@ -164,10 +164,10 @@
                           @endif
                         <div class="hot-news-content">
                           <h3><b>{{mb_substr($news->title, 0, 8)}}</</h3>
-                          <div class="content-body">
+                          <p class="content-body" style="margin-bottom: 0px;">
                               {{--{{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 35)}}--}}
                               {{mb_substr(strip_tags($news->content), 0, 35)}}
-                          </div>
+                          </p>
                           <small class="content-appendix">
                             <span>发布时间: {{mb_substr($news->created_at,0,10,'utf-8')}}</span></small>
                         </div>

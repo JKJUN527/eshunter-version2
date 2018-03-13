@@ -24,7 +24,7 @@
         border: 1px solid #D32F2F;
     }
     .gsdiv {
-        width: 390px;
+        width: 522px;
 
     }
     #publish-position{
@@ -426,7 +426,7 @@
                         </div>
                     </div>
                     <!-- 右边 -->
-                    <div style="float:right; height: 730px;" class="all_divclass">
+                    <!-- <div style="float:right; height: 730px;" class="all_divclass">
                         <div style="margin-top:0px" class="banner_con"> 
                             <div class="num_part"><span>热招企业</span></div>
                             <ul id="hotCompanyList" class="slides major-list">
@@ -444,7 +444,7 @@
                                 @endforeach
                         </div>
                         {{--<a target="_blank" href="http://old.ui.cn/joblist.php"><img style="margin-top:20px;" src="../images/UIchina.jpg"></a>--}}
-                    </div>   
+                    </div>   --> 
                 </div>
                 
             </div>
@@ -478,7 +478,6 @@
 
 @section('footer')
    @include('components.myfooter')
-   @include('components.wheelmenu')
 @endsection
 
 @section('custom-script')

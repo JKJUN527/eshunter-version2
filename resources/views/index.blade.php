@@ -40,7 +40,7 @@
                 <!-- 左边结束  -->
                 <input type="hidden" value="" id="keywd_py">
                 <div class="index_con">
-                    <div id="all_divclass" class="all_divclass">
+                   <!--  <div id="all_divclass" class="all_divclass">
                         <div class="all_divcon">
                             {{--<p class="til">全部职位分类</p>   --}}
                             @foreach($data['industry'] as $industry)
@@ -75,7 +75,7 @@
                             </div>
                             @endforeach
                         </div>
-                    </div>     
+                    </div>   -->   
                     <div class="jieshao">
                         <form action="/index/search">
                             <div class="taoyige">

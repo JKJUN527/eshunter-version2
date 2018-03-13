@@ -80,6 +80,7 @@
     box-sizing: border-box;
 }
 .news-body {
+    cursor: pointer;
     width: 100%;
     min-height: 0;
     padding: 24px 0;
@@ -114,7 +115,7 @@
 .news-content h3 {
     font-size: 18px;
     font-weight: 500;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
 }
 .news-content h3 a,.hot-news-content h3 a{
 	font-weight: 700;
@@ -126,6 +127,9 @@
     font-size: 14px;
     font-weight: 300;
     color: #737373;
+    line-height: 18px;
+    margin-top: 9px;
+    margin-bottom: 14px;
 }
 .news-content .content-appendix, .hot-news-content .content-appendix {
     font-size: 12px;
@@ -137,6 +141,7 @@
 }
 .news-body:hover,.hot-news-body:hover{
 	background-color: #eee;
+    cursor: pointer;
 }
 .hot-news-body {
     height: auto;
@@ -258,12 +263,12 @@ label {
     color: #737373;
 }
 .news-detail .mdl-card__supporting-text {
-    width: 100%;
+    /*width: 100%;*/
     color: #737373;
     font-size: 16px;
     line-height: 26px;
     overflow: hidden;
-    padding: 16px 16px;
+    padding: 16px 90px;
 }
 .news-image {
     text-align: center;
@@ -433,5 +438,5 @@ p {
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0;
-    margin-bottom: 16px;
+    /*margin-bottom: 16px;*/
 }
