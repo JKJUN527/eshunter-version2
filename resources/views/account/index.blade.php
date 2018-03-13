@@ -36,15 +36,15 @@
         .mdl-card__actions .resume-item p {
             color: #fff;
             text-align: center;
-            font-size: 15px;
+            font-size: 11px;
             margin-top: 7px;
-            margin-left: -10px;
+            margin-left: -4px;
             cursor: pointer;
         }
         .mdl-card__actions .resume-item{
             margin:10px auto;
             display: inline-block;
-            width: 49%;
+            width: 32%;
         }
         .mdl-card__actions span.myhidden{
             font-size: 20px;
@@ -253,14 +253,14 @@
                             @foreach($data['resumeList'] as $resume)
                                 <div class="resume-item">
                                     <a to="/resume/add?rid={{$resume->rid}}">
-                                        <img src="http://eshunter.com/images/resume.png" width="100px"></a>
+                                        <img src="http://eshunter.com/images/resume.png" width="70px"></a>
                                     <p>{{$resume->resume_name}}</p>
                                 </div>
                             @endforeach
                             @if(count($data['resumeList']) < 3)
                                 <div class="resume-item">
                                     <a id="add-resume">
-                                        <img src="{{asset('images/resume_add.png')}}" width="100px"/></a>
+                                        <img src="{{asset('images/resume_add.png')}}" width="70px"/></a>
                                     <p>添加简历</p>
                                 </div>
                             @endif
@@ -272,6 +272,16 @@
                                     <div class="perc">20%</div>
                                 </div>
                             </div> -->
+                        </div>
+                        <div class="my_labels my_labelsie">
+                            <div class="mdl-card__actions mdl-card--border resume-panel">
+                                <span style="" class="myhidden">选手简历</span>
+                                    <div class="resume-item">
+                                        <a id="add-resume">
+                                            <img src="{{asset('images/resume_add.png')}}" width="70px"/></a>
+                                        <p>正在开发</p>
+                                    </div>
+                            </div>
                         </div>
                         <div style="display: none;" class="my_labels">
                             <p>附件简历</p>
@@ -656,10 +666,10 @@
                                     {{--<em class="item_ropeiconp item_ropeicone"></em>--}}
                                     {{--<span class="item_ropetext">编辑</span>--}}
                                 {{--</span>--}}
-                                <span class="item_ropera item_add disabled">
-                                    <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_two" to="/account/edit">修改</span>
-                                </span>
+                                {{--<span class="item_ropera item_add disabled">--}}
+                                    {{--<em class="item_ropeiconp"></em>--}}
+                                    {{--<span class="item_ropetext add_two" to="/account/edit">修改</span>--}}
+                                {{--</span>--}}
                                 
                                 <div class="item_content item_content_two" style="display: block;">
                                     <div class="company_intro_text" style="display: block;">

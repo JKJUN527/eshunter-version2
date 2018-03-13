@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\about;
+use App\About;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class WebinfoController extends Controller {
             return redirect('admin/login');
         }
         $data = array();
-        $data['webinfo'] = about::orderBy('updated_at', 'desc')
+        $data['webinfo'] = About::orderBy('updated_at', 'desc')
             ->take(1)
             ->get();
         return $data;
@@ -32,7 +32,7 @@ class WebinfoController extends Controller {
             return redirect('admin/login');
         }
 
-        $webinfo = about::find(1);
+        $webinfo = About::find(1);
         $webinfo->tel = $request->input('tel');
 
         if ($webinfo->save()) {
@@ -51,7 +51,7 @@ class WebinfoController extends Controller {
             return redirect('admin/login');
         }
 
-        $webinfo = about::find(1);
+        $webinfo = About::find(1);
         $webinfo->email = $request->input('email');
 
         if ($webinfo->save()) {
@@ -70,7 +70,7 @@ class WebinfoController extends Controller {
             return redirect('admin/login');
         }
 
-        $webinfo = about::find(1);
+        $webinfo = About::find(1);
         $webinfo->address = $request->input('address');
 
         if ($webinfo->save()) {
@@ -89,7 +89,7 @@ class WebinfoController extends Controller {
             return redirect('admin/login');
         }
 
-        $webinfo = about::find(1);
+        $webinfo = About::find(1);
         $webinfo->content = $request->input('content');
 
         if ($webinfo->save()) {
@@ -110,7 +110,7 @@ class WebinfoController extends Controller {
         }
 //        if($request->has('webinfo')){
 //            $data = $request->input('webinfo');
-        $webinfo = about::findfirst();
+        $webinfo = About::findfirst();
         $webinfo->uid = 1;//登陆获取
         $webinfo->tel = $request->input('tel');
         $webinfo->email = $request->input('email');

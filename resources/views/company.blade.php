@@ -35,10 +35,10 @@
             </div>
             <div class="left gsxxi_con">                
                 <div class="jbxx">
-                    <div class="dianzan">
-                        <span>已有0人认为该公司值得加入</span>
-                        <i class="praise "></i>
-                    </div>
+                    {{--<div class="dianzan">--}}
+                        {{--<span>已有0人认为该公司值得加入</span>--}}
+                        {{--<i class="praise "></i>--}}
+                    {{--</div>--}}
                     <div style=" width:100%; overflow: hidden;">
                         <h2>{{$data['enprinfo']->byname or "公司别名未填写"}}</h2>
                         <h3>{{$data['enprinfo']->ename or "公司名称未填写"}}</h3>

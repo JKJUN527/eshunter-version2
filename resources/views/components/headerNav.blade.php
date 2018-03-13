@@ -29,7 +29,7 @@
                     <li><a href="/position/publishList" style="border-left:none;">已发布职位</a></li>
                     <li><a href="/position/deliverList">收到简历记录</a></li>
                     <li class="user_dropdown">
-                        <a href="#">{{$personInfo['username']}}<span></span></a>
+                        <a href="/account">{{$personInfo['username']}}<span></span></a>
                         <ul>
                             <!-- <li><a href="">我的订阅</a></li> -->
                             <!-- <li><a href="">职位邀请</a></li> -->

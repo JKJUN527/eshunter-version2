@@ -637,7 +637,7 @@ background: #fff;}
     margin: 30px 0px 28px 0;
 }
 .ad_company .nav-logos .nav-logo {
-    width: 72px;
+    width: 100px;
     padding: 39px;
     display: inline-block;
     /* margin: 30px 87px 28px 0; */
@@ -657,9 +657,9 @@ background: #fff;}
     border: 1px solid #eee;
 }
 .ad_company .nav-logos .company-short-name {
-    width: 69px;
+    width: 94px;
     height: 16px;
-    margin-top: 16px;
+    margin-top: 35px;
     text-align: center;
     overflow: hidden;
 }

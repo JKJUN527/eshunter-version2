@@ -101,9 +101,11 @@
         margin: 0;
     }
     .material-icons{
-
-  font-size: 18px;
-    vertical-align: middle;
+        font-size: 18px;
+        vertical-align: middle;
+    }
+    p.verified {
+        color: #4CAF50;
     }
  </style>
 @endsection
@@ -349,7 +351,7 @@
                         <h2 class="">
                             {{$data['enprinfo'][0]->byname or "公司别名未填写"}}
                         </h2>
-                        <p class="dn"><i class="material-icons">verified_user</i>电竞猎人已认证</p>
+                        <p class="dn verified"><i class="material-icons">verified_user</i>电竞猎人已认证</p>
                     </div>
                 </a>
                 <h2 class="">
@@ -433,12 +435,12 @@
             $index = 0;
             $count = count($data['position']);
             ?>
+            @if($count >0)
             <h4 class="jobs_similar_header">
                 <span>其他职位</span>
                 <span style="color: #D32F2F;font-size: 14px;">{{$count}}</span>
                 <span class="look-more"><a href="/company">查看更多>></a></span>
             </h4>
-            @if($count >0)
             <div class="jobs_similar_content" id="jobs_similar_content" style="display: block;">
                 <div class="jobs_similar_detail" id="jobs_similar_detail">
                     <ul class="similar_list reset">
@@ -475,8 +477,8 @@
                     </ul>
                 </div>
             </div>
-            @else
-            <div class="nodata_similar_list"></div>
+            {{--@else--}}
+            {{--<div class="nodata_similar_list"></div>--}}
             @endif
         </div>
     </div>

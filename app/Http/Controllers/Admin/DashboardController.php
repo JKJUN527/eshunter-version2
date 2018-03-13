@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\about;
+use App\About;
 use App\Http\Controllers\Controller;
 use App\User;
 

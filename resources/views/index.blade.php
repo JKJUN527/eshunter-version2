@@ -125,7 +125,7 @@
                                     <div class="clearfix pli_top">
                                         <div class="position_name left">
                                             <h2 class="dib"><a href="/position/detail?pid={{$position->pid}}">{{mb_substr($position->title,0,11,'utf-8')}}</a></h2>
-                                            <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
+                                            <span class="create_time">&ensp;[{{substr($position->created_at,0,10)}}]&ensp;</span>
                                         </div>
                                         <span class="salary right">
                                         @if($position->salary <= 0)
@@ -215,7 +215,7 @@
                                     <div class="clearfix pli_top">
                                         <div class="position_name left">
                                             <h2 class="dib"><a href="/position/detail?pid={{$position->pid}}">{{mb_substr($position->title,0,11,'utf-8')}}</a></h2>
-                                            <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}]&ensp;</span>
+                                            <span class="create_time">&ensp;[{{substr($position->created_at,0,10)}}]&ensp;</span>
                                         </div>
                                         <span class="salary right">
                                         @if($position->salary == -1)
@@ -329,7 +329,7 @@
                         @foreach($data['ad']['ad1'] as $ad1)
                         <li class="nav-logo" data-tj-exposure="off" data-lg-tj-type="xiaoyuan_ad" data-lg-tj-id="19ng" data-lg-tj-no="idnull" data-lg-tj-cid="7" data-reactid="319">
                             <div class="nav-img" data-reactid="320" to="/company?eid={{$ad1->eid}}">
-                                <img src="{{$ad1->picture or asset('images/house.jpg')}}" width="70" height="70"data-reactid="321">
+                                <img src="{{$ad1->picture or asset('images/house.jpg')}}" width="90" height="90"data-reactid="321">
                                 <div class="nav-hover-cycle" data-reactid="322"></div>
                             </div>
                             <div class="company-short-name" data-reactid="323">{{$ad1->title}}</div>
