@@ -199,7 +199,9 @@
                         @if($data['detail']->position_status == 3)
                             <a rel="nofollow"  class="send-CV-btn s-send-btn fr gray" style="display: block;">已下线</a>
                         @elseif($data['detail']->position_status ==1 ||$data['detail']->position_status == 4)
-                            <a rel="nofollow" class="deliver-resume send-CV-btn s-send-btn fr"  data-toggle="modal" data-target="#chooseResumeModal">投个简历</a>
+                            <a rel="nofollow" class="deliver-resume send-CV-btn s-send-btn fr"  data-toggle="modal"
+                               data-content="{{$data['detail']->pid}}"
+                               data-target="#chooseResumeModal">投个简历</a>
                         @else
                             <a rel="nofollow"  class="send-CV-btn s-send-btn fr gray" style="display: block;">无法投递</a>
                         @endif

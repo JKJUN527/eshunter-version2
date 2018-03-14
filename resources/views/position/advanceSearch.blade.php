@@ -407,7 +407,8 @@
                                         @if($data['type']==0)
                                             <button class="deliver-resume toujianli" to="/account/login">投简历</button>
                                         @elseif($position->position_status==1 ||$position->position_status==4)
-                                            <button class="deliver-resume toujianli" data-content="{{$position->pid}}"
+                                            <button class="deliver-resume toujianli"
+                                                    data-content="{{$position->pid}}"
                                                     data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
                                         @else
                                             <button class="deliver-resume toujianli">无法投递</button>
