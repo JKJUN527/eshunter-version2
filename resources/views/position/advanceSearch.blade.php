@@ -12,19 +12,17 @@
         /*border-bottom: none;*/
             margin-bottom: 16px;
     }
-    .companydiv li:nth-child(odd) {
+    .companydiv li {
         float: left;
             border: 1px solid #dcdcdc;
+            margin: 11px 4px;
     }
-    .companydiv li:nth-child(even) {
-            border: 1px solid #dcdcdc;
-            float: right;
-    }
+   
     .companydiv li:hover{
         border: 1px solid #D32F2F;
     }
     .gsdiv {
-        width: 522px;
+        width: 333px;
 
     }
     #publish-position{
@@ -115,7 +113,8 @@
         margin: 0;
     }
     .gsdiv .div_s {
-        height: 48px;
+            height: 76px;
+    width: 290px;
     }
     #page_tools li{
         padding: 0;
