@@ -21,6 +21,55 @@
         .nav-logo{
             padding: 20px 20px 10px 20px !important;
         }
+        .info-panel {
+    margin: 7px 0;
+}.info-panel--right {
+    min-width: 390px;
+    width: 20%;
+}
+.info-panel--left, .info-panel--right {
+    display: inline-block;
+    vertical-align: top;
+}.tuwen {
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    /* margin: 20px 0; */
+}.image_ad h3, .tuwen h3 {
+    line-height: 40px;
+    color: #38485A;
+    font-size: 18px;
+    border-bottom: 1px solid #E6E6E6;
+    height: 40px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}.look-all {
+    font-size: 12px;
+    color: #666;
+}.pull-right {
+    float: right!important;
+}.tuwen ul {
+    padding: 0px;
+    padding-left: 10px;
+    list-style: none;
+}.tuwen li {
+    overflow: hidden;
+    width: 100%;
+    clear: both;
+    margin-bottom: 3.5px;
+}.tuwen li img {
+    width: 100px;
+    height: 67px;
+    float: left;
+    margin-right: 15px;
+}.tuwen li b {
+    overflow: hidden;
+    width: 100%;
+    font-weight: normal;
+    color: #333;
+    font-size: 14px;
+     line-height: 22px; 
+}
     </style>
 @endsection
 
@@ -110,7 +159,41 @@
                         </div>
                         <!-- 轮播end -->
                     </div> 
-                    
+                    <div class="info-panel--right info-panel" style="padding-left: 16px;">
+  <div class="tuwen">
+    <h3>最新资讯
+      <a href="news/">
+        <span class="pull-right look-all">查看全部&gt;&gt;</span></a>
+    </h3>
+    <ul>
+      <li>
+        <a href="news/detail?nid=565">
+          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-51-36-5aa79f2884c55news1.jpg">
+          <b>DOTA2推出全新包月服务“刀塔Plus” 月费2400刀币</b>
+        </a>
+      </li>
+      <li>
+        <a href="news/detail?nid=564">
+          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-43-41-5aa79d4d6639cnews1.png">
+          <b>王者荣耀2018KPL春季赛解说阵容公布</b>
+        </a>
+      </li>
+      <li>
+        <a href="news/detail?nid=563">
+          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-33-18-5aa79adeb13benews1.png">
+          <b>中国职业选手为何很难进入国外OWL战队</b>
+        </a>
+      </li>
+      <li>
+        <a href="news/detail?nid=562">
+          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-29-25-5aa799f506c0fnews1.jpg">
+          <b>ESPN战力榜：IG升到全球第三，SKT排名第八</b>
+        </a>
+      </li>
+     
+    </ul>
+  </div>
+</div>
                 </div>
 
                 <div class="jieshao_tb">
