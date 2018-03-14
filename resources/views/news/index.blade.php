@@ -186,11 +186,11 @@
 @section('custom-script')
     <script>
         $(".news-body").click(function () {
-            self.location = "/news/detail?nid=" + $(this).attr('data-content');
+            window.open("/news/detail?nid=" + $(this).attr('data-content'));
         });
 
         $(".hot-news-body").click(function () {
-            self.location = "/news/detail?nid=" + $(this).attr('data-content');
+            window.open("/news/detail?nid=" + $(this).attr('data-content'));
         });
         $('.news_tab ul').on('click', 'li', function(event) {
             event.preventDefault();

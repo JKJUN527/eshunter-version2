@@ -160,40 +160,62 @@
                         <!-- 轮播end -->
                     </div> 
                     <div class="info-panel--right info-panel" style="padding-left: 16px;">
-  <div class="tuwen">
-    <h3>最新资讯
-      <a href="news/">
-        <span class="pull-right look-all">查看全部&gt;&gt;</span></a>
-    </h3>
-    <ul>
-      <li>
-        <a href="news/detail?nid=565">
-          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-51-36-5aa79f2884c55news1.jpg">
-          <b>DOTA2推出全新包月服务“刀塔Plus” 月费2400刀币</b>
-        </a>
-      </li>
-      <li>
-        <a href="news/detail?nid=564">
-          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-43-41-5aa79d4d6639cnews1.png">
-          <b>王者荣耀2018KPL春季赛解说阵容公布</b>
-        </a>
-      </li>
-      <li>
-        <a href="news/detail?nid=563">
-          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-33-18-5aa79adeb13benews1.png">
-          <b>中国职业选手为何很难进入国外OWL战队</b>
-        </a>
-      </li>
-      <li>
-        <a href="news/detail?nid=562">
-          <img src="http://116.62.198.110/storage/newspic/2018-03-13-17-29-25-5aa799f506c0fnews1.jpg">
-          <b>ESPN战力榜：IG升到全球第三，SKT排名第八</b>
-        </a>
-      </li>
-     
-    </ul>
-  </div>
-</div>
+                        <div class="tuwen">
+                            <h3>最新资讯
+                                <a href="news/">
+                                    <span class="pull-right look-all">查看全部&gt;&gt;</span></a>
+                            </h3>
+                            <?php
+                            $index = 0;
+                            $count = 4;
+                            ?>
+                            <ul>
+                                @foreach($data['news']['news'] as $newsItem)
+                                    @if($index++ < $count)
+                                        @if($newsItem->picture != null)
+                                            <?php
+                                            $pics = explode(';', $newsItem->picture);
+                                            $baseurl = explode('@', $pics[0])[0];
+                                            $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
+                                            $imagepath = explode('@', $pics[0])[1];
+                                            ?>
+                                            <li>
+                                                <a href="news/detail?nid={{$newsItem->nid}}" target="_blank">
+                                                    <img src="{{$baseurl}}{{$imagepath}}">
+                                                    <b>{{$newsItem->title}}</b>
+                                                </a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a href="news/detail?nid={{$newsItem->nid}}" target="_blank">
+                                                    <img src="http://eshunter.com/storage/newspic/default.jpg">
+                                                    <b>{{$newsItem->title}}</b>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                {{--<li>--}}
+                                    {{--<a href="news/detail?nid=564">--}}
+                                        {{--<img src="http://116.62.198.110/storage/newspic/2018-03-13-17-43-41-5aa79d4d6639cnews1.png">--}}
+                                        {{--<b>王者荣耀2018KPL春季赛解说阵容公布</b>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="news/detail?nid=563">--}}
+                                        {{--<img src="http://116.62.198.110/storage/newspic/2018-03-13-17-33-18-5aa79adeb13benews1.png">--}}
+                                        {{--<b>中国职业选手为何很难进入国外OWL战队</b>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="news/detail?nid=562">--}}
+                                        {{--<img src="http://116.62.198.110/storage/newspic/2018-03-13-17-29-25-5aa799f506c0fnews1.jpg">--}}
+                                        {{--<b>ESPN战力榜：IG升到全球第三，SKT排名第八</b>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jieshao_tb">
