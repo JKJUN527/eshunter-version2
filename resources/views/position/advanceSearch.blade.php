@@ -18,9 +18,7 @@
             margin: 11px 6px;
     }
    
-    .companydiv li:hover{
-        border: 1px solid #D32F2F;
-    }
+
     .gsdiv {
         width: 525px;
 
@@ -113,8 +111,8 @@
         margin: 0;
     }
     .gsdiv .div_s {
-            height: 76px;
-    /*width: 290px;*/
+               height: 64px;
+    padding-top: 10px;
     }
     #page_tools li{
         padding: 0;
@@ -127,6 +125,16 @@
         width: 116px;
         height: 92px;
     }
+
+    .gsdiv .div_s span {
+    margin-right: 3px;
+    word-break: initial;
+    border: 1px solid #ddd;
+    padding: 3px 5px;
+    border-radius: 3px;
+    line-height: 32px;
+}
+.jieshao_list li:hover{box-shadow: 2px 2px 2px #ebebeb;}
    </style>
 @endsection
 
