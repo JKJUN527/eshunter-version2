@@ -1200,6 +1200,7 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('plugins/jquery-inputmask/jquery.inputmask.bundle.js')}}"></script>
     <script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>

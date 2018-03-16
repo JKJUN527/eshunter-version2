@@ -16,7 +16,7 @@
                     <li><a href="/account" style="border-left:none;">我的简历</a></li>
                     <li><a href="/position/applyList">投递箱<em class="msg_amount" id="headMsgAmount">{{$personInfo['deliveredNum']}}</em></a></li>
                     <li class="user_dropdown">
-                        <a href="#">{{$personInfo['username']}}<span></span></a>
+                        <a href="/account">{{$personInfo['username']}}<span></span></a>
                         <ul>
                             <!-- <li><a href="">我的订阅</a></li> -->
                             <!-- <li><a href="">职位邀请</a></li> -->

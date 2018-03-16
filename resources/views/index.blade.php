@@ -302,9 +302,47 @@
                                             </a>
                                         </div>
                                         <div class="industry wordCut">
-                                            <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
-                                            {{--<span>未融资</span>--}}
-                                            {{--<span>成都-高新pli-btm</span>--}}
+                                            {{--<span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>--}}
+                                            <span>
+                                                @foreach($data['industry'] as $industry)
+                                                    @if($industry->id == $position->industry)
+                                                        {{$industry->name}}
+                                                        @break
+                                                    @endif
+                                                @endforeach
+                                            </span>
+                                            <span>
+                                                @if($position->enature == null || $position->enature == 0)
+                                                    企业类型未知
+                                                @elseif($position->enature == 1)
+                                                    国有企业
+                                                @elseif($position->enature == 2)
+                                                    民营企业
+                                                @elseif($position->enature == 3)
+                                                    中外合资企业
+                                                @elseif($position->enature == 4)
+                                                    外资企业
+                                                @elseif($position->enature == 5)
+                                                    社会团体
+                                                @endif
+                                            </span>
+                                            <span>
+                                                 @if($position->escale == null)
+                                                    规模未知
+                                                @elseif($position->escale == 0)
+                                                    10人以下
+                                                @elseif($position->escale == 1)
+                                                    10～50人
+                                                @elseif($position->escale == 2)
+                                                    50～100人
+                                                @elseif($position->escale == 3)
+                                                    100～500人
+                                                @elseif($position->escale == 4)
+                                                    500～1000人
+                                                @elseif($position->escale == 5)
+                                                    1000人以上
+                                                @endif
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -393,9 +431,47 @@
                                             </a>
                                         </div>
                                         <div class="industry wordCut">
-                                            <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
-                                            {{--<span>未融资</span>--}}
-                                            {{--<span>成都-高新pli-btm</span>--}}
+                                            {{--<span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>--}}
+                                            <span>
+                                                @foreach($data['industry'] as $industry)
+                                                    @if($industry->id == $position->industry)
+                                                        {{$industry->name}}
+                                                        @break
+                                                    @endif
+                                                @endforeach
+                                            </span>
+                                            <span>
+                                                @if($position->enature == null || $position->enature == 0)
+                                                    企业类型未知
+                                                @elseif($position->enature == 1)
+                                                    国有企业
+                                                @elseif($position->enature == 2)
+                                                    民营企业
+                                                @elseif($position->enature == 3)
+                                                    中外合资企业
+                                                @elseif($position->enature == 4)
+                                                    外资企业
+                                                @elseif($position->enature == 5)
+                                                    社会团体
+                                                @endif
+                                            </span>
+                                            <span>
+                                                 @if($position->escale == null)
+                                                    规模未知
+                                                @elseif($position->escale == 0)
+                                                    10人以下
+                                                @elseif($position->escale == 1)
+                                                    10～50人
+                                                @elseif($position->escale == 2)
+                                                    50～100人
+                                                @elseif($position->escale == 3)
+                                                    100～500人
+                                                @elseif($position->escale == 4)
+                                                    500～1000人
+                                                @elseif($position->escale == 5)
+                                                    1000人以上
+                                                @endif
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
