@@ -48,7 +48,11 @@
 }
      .jieshao_list li {
     width: 48.16%;
-    height: 130px;
+    height: auto;
+    padding: 20px 18px 8px;
+}
+.lebel {
+    margin: 5px 0;
 }
 .item_ltitle span{
             font-size: 20px;
@@ -65,13 +69,14 @@
 
     .lebel .lebel_option span{
         display: inline-block;
-        width: 30px;
-        height: 20px;
-        padding: 0 5px;
+        /*width: 30px;*/
+        /*height: 20px;*/
+        padding: 7px 11px;
         font-size: 12px;
-        line-height: 20px;
+        /*line-height: 20px;*/
         color: #fff;
-        border: 1px solid #ddd;
+        margin: 0 3px;
+        /*border: 1px solid #ddd;*/
         border-radius: 3px;
         text-align: center;
         background-color: #27c24c;
@@ -118,6 +123,7 @@ nav#page_tools{
     .lebel_option{
         text-align: right;
     }
+
 </style>
 @endsection
 
