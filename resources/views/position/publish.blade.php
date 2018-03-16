@@ -138,6 +138,7 @@
         }
 .publish-form .left-panel, .publish-form .right-panel {
     width: 49%;}
+    
     </style>
 @endsection
 

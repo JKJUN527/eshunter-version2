@@ -47,7 +47,7 @@
     cursor: pointer;
 }
      .jieshao_list li {
-    width: 31.16%;
+    width: 48.16%;
     height: 130px;
 }
 .item_ltitle span{
@@ -62,6 +62,7 @@
     width: 90%;
     margin: 0 auto;
 }
+
     .lebel .lebel_option span{
         display: inline-block;
         width: 30px;
@@ -69,14 +70,15 @@
         padding: 0 5px;
         font-size: 12px;
         line-height: 20px;
-        color: #999;
+        color: #fff;
         border: 1px solid #ddd;
         border-radius: 3px;
         text-align: center;
-        background-color: #add8e6;
+        background-color: #27c24c;
+        animation: all 0.4s;
     }
     .lebel .lebel_option span:hover{
-        border: 1px solid #D32F2F;
+        transform: scale(1.1);
     }
     .option{
         cursor:pointer;
@@ -112,6 +114,9 @@ nav#page_tools{
         cursor:pointer;
         float: left;
         margin: 1rem;
+    }
+    .lebel_option{
+        text-align: right;
     }
 </style>
 @endsection

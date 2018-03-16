@@ -15,14 +15,14 @@
     .companydiv li {
         float: left;
             border: 1px solid #dcdcdc;
-            margin: 11px 4px;
+            margin: 11px 6px;
     }
    
     .companydiv li:hover{
         border: 1px solid #D32F2F;
     }
     .gsdiv {
-        width: 333px;
+        width: 525px;
 
     }
     #publish-position{
@@ -114,7 +114,7 @@
     }
     .gsdiv .div_s {
             height: 76px;
-    width: 290px;
+    /*width: 290px;*/
     }
     #page_tools li{
         padding: 0;
