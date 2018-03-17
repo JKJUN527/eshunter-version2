@@ -1,7 +1,8 @@
 <div id="es_tbar">
     <div class="inner">
         <div class="es_tbar_l">
-            <span class="iconfont icon-shouji"></span><a class="es_app" href="#" rel="nofollow">电竞猎人官网</a>
+            <span class="iconfont icon-shouji"></span>
+            <a class="es_app" href="#" rel="nofollow">电竞猎人官网</a>
             {{--@if($type == 1)--}}
                 {{--<a class="es_os" href="#" rel="nofollow">进入企业版</a>--}}
             {{--@endif--}}

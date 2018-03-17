@@ -3,8 +3,8 @@
     <div class="logo-con">
       <a title="" href="/">
         <img src="{{asset("images/logo-black.png")}}" style="height:43px;width:132px"></a>
-      <span style="padding-left:10px;font-size:12px;color:#999;display: inline-block;margin-top: 25px;">电竞猎人 - 做专业的竞技游戏职业招聘网站</span></div>
-    <ul class="nav_ul">
+      <span style="padding-left:5px;font-size:12px;color:#999;display: block;margin-top: 8px;">电竞猎人 - 做专业的竞技游戏职业招聘网站</span></div>
+    <ul class="nav_ul" style="margin-right: 35%;">
       <li id="cuan">
         @if($activeIndex === 1)
             <a class="home home_active" title="电竞猎人" href="/index">首页</a>

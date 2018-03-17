@@ -12,9 +12,9 @@
 @section('custom-style')
     <link href="{{asset('../style/tao.css?v=2.61')}}" type="text/css" rel="stylesheet">
     <style>
-    .jieshao{
-        float: right;
-    }
+    /*.jieshao{*/
+        /*float: right;*/
+    /*}*/
         .jieshao_tb{
             margin-top: 1rem;
         }

@@ -254,7 +254,7 @@
                                     {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                                     <select class="form-control show-tick selectpicker" id="position-place"
                                             name="place{{$industry->id}}">
-                                        <option value="0">请选择所属职位</option>
+                                        <option value="0">(选填)请选择所属职位</option>
                                         @foreach($data['place'] as $place)
                                             @if($place->industry_id == $industry->id)
                                                 <option value="{{$place->id}}">{{$place->name}}</option>

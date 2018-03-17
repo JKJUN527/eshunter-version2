@@ -375,11 +375,16 @@ class PositionController extends Controller {
         if($data['position']->eid != $enterprise->eid){
             return redirect()->back();
         }
-        $data['region'] = Region::all();
+//        $data['region'] = Region::all();
+        //查询工作地区
+        $data['province'] = Region::where('parent_id',0)->get();
+        $data['city'] = Region::where('parent_id','!=',0)->get();
         //查询职业
         $data['occupation'] = Occupation::orderBy('updated_at','asc')->get();
         //查询行业
         $data['industry'] = Industry::all();
+        //查询职位
+        $data['place'] = Place::all();
 //        return $data;
         return view('position/publishEdit', ['data' => $data]);
     }
@@ -421,6 +426,7 @@ class PositionController extends Controller {
             $position->salary = $salary;
             $position->salary_max = $salary_max;
             $position->region = $request->input('region');//工作地区，这里应为地区id，指向jobs_region
+            $position->place = $request->input('place');//职业，这里应为职业id，指向jobs_place
             $position->work_nature = $request->input('work_nature');//工作性质（兼职|实习|全职）int
             $position->occupation = $request->input('occupation');//职业，这里应为职业id，指向jobs_occupation
             $position->industry = $request->input('industry');//行业，这里应为行业id，指向jobs_industry
@@ -744,7 +750,7 @@ class PositionController extends Controller {
         //return $data;
 
         $data['position'] = DB::table('jobs_position')
-            ->select('pid', 'title','tag','ename','byname','ebrief','salary','salary_max','jobs_region.name','position_status')
+            ->select('pid', 'title','tag','jobs_position.industry as jobindustry','occupation','place','elogo','ename','byname','escale','enature','jobs_enprinfo.industry as eindustry','salary','salary_max','jobs_region.name','position_status')
             ->leftjoin('jobs_enprinfo', 'jobs_enprinfo.eid', '=', 'jobs_position.eid')
             ->leftjoin('jobs_region', 'jobs_region.id', '=', 'jobs_position.region')
             //关闭企业职位有效期

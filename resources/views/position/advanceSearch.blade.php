@@ -408,16 +408,32 @@
                                                   元/月
                                               @endif
                                           </font >
-                                            <span>|</span>{{mb_substr($position->ebrief, 0, 15, 'utf-8')}}
+{{--                                            <span>|</span>{{mb_substr($position->ebrief, 0, 15, 'utf-8')}}--}}
+                                          <span>|</span>{{$position->byname}}
+
                                       </div>
                                       <div class="div_s">
-                                          @if($position->tag ==="" || $position->tag ===null)
-                                              <span>无标签</span>
-                                          @else
-                                              @foreach(preg_split("/(,| |、)/",$position->tag) as $tag)
-                                                  <span>{{$tag}}</span>
-                                              @endforeach
-                                          @endif
+                                          {{--行业--}}
+                                          @foreach($data['industry'] as $industry)
+                                              @if($position->jobindustry == $industry->id)
+                                                  <span>{{$industry->name}}</span>
+                                                  @break
+                                              @endif
+                                          @endforeach
+                                          {{--游戏--}}
+                                          @foreach($data['occupation'] as $occupation)
+                                              @if($position->occupation == $occupation->id)
+                                                  <span>{{$occupation->name}}</span>
+                                                  @break
+                                              @endif
+                                          @endforeach
+                                          {{--职位--}}
+                                          @foreach($data['place'] as $place)
+                                              @if($position->place == $place->id)
+                                                  <span>{{$place->name}}</span>
+                                                  @break
+                                              @endif
+                                          @endforeach
                                       </div>
                                     <div class="brif">
                                         @if($data['type']==0)
@@ -433,14 +449,64 @@
                                   </div>
                                   <div class="company-all">
                                       <p class="company-name">
-                                          <span class="name">上海汉竞信息科技有限公司</span>
+                                          <span class="name">{{$position->ename}}</span>
                                           <i class="material-icons">verified_user</i>
                                       </p>
-                                      <p class="company-feature">电竞门户  民营企业  10～50人</p>
-                                      <p class="company-bunefits">五险一金,季度福利假,弹性上班,年终奖</p>
+                                      <p class="company-feature">
+                                          @foreach($data['industry'] as $industry)
+                                              @if($industry->id == $position->eindustry)
+                                                  {{$industry->name}}/
+                                                  @break
+                                              @endif
+                                          @endforeach
+                                          @if($position->enature == null || $position->enature == 0)
+                                              企业类型未知/
+                                          @elseif($position->enature == 1)
+                                              国有企业/
+                                          @elseif($position->enature == 2)
+                                              民营企业/
+                                          @elseif($position->enature == 3)
+                                              中外合资企业/
+                                          @elseif($position->enature == 4)
+                                              外资企业/
+                                          @elseif($position->enature == 5)
+                                              社会团体/
+                                          @endif
+
+                                              @if($position->escale == null)
+                                                  规模未知/
+                                              @elseif($position->escale == 0)
+                                                  10人以下/
+                                              @elseif($position->escale == 1)
+                                                  10～50人/
+                                              @elseif($position->escale == 2)
+                                                  50～100人/
+                                              @elseif($position->escale == 3)
+                                                  100～500人/
+                                              @elseif($position->escale == 4)
+                                                  500～1000人/
+                                              @elseif($position->escale == 5)
+                                                  1000人以上/
+                                              @endif
+                                      </p>
+                                      <p class="company-bunefits">
+
+                                          @if($position->tag ==="" || $position->tag ===null)
+                                              <span>无标签</span>
+                                          @else
+                                              {{$position->tag}}
+                                              {{--@foreach(preg_split("/(,| |、)/",$position->tag) as $tag)--}}
+                                                  {{--<span>{{$tag}}</span>--}}
+                                              {{--@endforeach--}}
+                                          @endif
+                                      </p>
                                   </div>
                                   <div class="company-logo">
-                                      <img src="http://www.eshunter.com/storage/profiles/2017-11-15-11-39-21-5a0bb6e9b09afelogo.jpg" alt="公司LOGO">
+                                      @if($position->elogo == null)
+                                          <img src="../images/1.gif"/>
+                                      @else
+                                          <img src="{{$position->elogo}}"/>
+                                      @endif
                                   </div>
                                 </li>
                             @endforeach
