@@ -1,0 +1,44 @@
+.companydiv li .company-all {
+  margin-left: 140px;
+  width: 360px; }
+  .companydiv li .company-all p.company-name {
+    padding-bottom: 20px; }
+    .companydiv li .company-all p.company-name .name {
+      display: inline-block;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+      color: #00b38a;
+      font-size: 18px; }
+    .companydiv li .company-all p.company-name .material-icons {
+      color: #4CAF50;
+      font-size: 18px; }
+  .companydiv li .company-all p.company-feature {
+    padding: 3px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal; }
+  .companydiv li .company-all p.company-bunefits {
+    padding: 3px;
+    float: left;
+    width: 360px;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    color: #666; }
+.companydiv li .company-logo {
+  float: right; }
+  .companydiv li .company-logo img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #eee; }
+
+/*# sourceMappingURL=advanceSearch.css.map */

@@ -6,21 +6,29 @@
    <link href="{{asset('style/fenyestyle.css?v=2.33')}}" type="text/css" rel="stylesheet">
    <link href="{{asset('style/icon-font/iconfont.css')}}" type="text/css" rel="stylesheet">
    <link media="all" href="{{asset('../style/modal.css')}}" type="text/css" rel="stylesheet">
+   <link media="all" href="{{asset('../style/advanceSearch.css')}}" type="text/css" rel="stylesheet">
  <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
    <style>
     .companydiv li {
         /*border-bottom: none;*/
             margin-bottom: 16px;
     }
+    .containter{
+            width: 1080px;
+        }
+    .companydiv li>div{
+        float: left;
+    }
     .companydiv li {
         float: left;
             border: 1px solid #dcdcdc;
             margin: 11px 6px;
+            width: 96%;
     }
    
 
     .gsdiv {
-        width: 525px;
+        width: 42%;
 
     }
     #publish-position{
@@ -71,13 +79,13 @@
       font-weight: bold;
     }
     .gsdiv .brif .toujianli{
-          float: right;
-      padding: 4px 6px;
-      margin-top: -26px;
-      background-color: #03A9F4;
-      color: #fff;
-      border: none;
-      border-radius: 3px;
+              /* float: right; */
+    padding: 10px 40px;
+    /* margin-right: -87px; */
+    background-color: #03A9F4;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
     }
     .gs_rank_item {
         padding: 6px 17px;
@@ -111,8 +119,8 @@
         margin: 0;
     }
     .gsdiv .div_s {
-               height: 64px;
-    padding-top: 10px;
+               /*height: 64px;*/
+    padding: 10px 0;
     }
     #page_tools li{
         padding: 0;
@@ -413,15 +421,26 @@
                                       </div>
                                     <div class="brif">
                                         @if($data['type']==0)
-                                            <button class="deliver-resume toujianli" to="/account/login">投简历</button>
+                                            <button class="deliver-resume toujianli" to="/account/login">投个简历</button>
                                         @elseif($position->position_status==1 ||$position->position_status==4)
                                             <button class="deliver-resume toujianli"
                                                     data-content="{{$position->pid}}"
-                                                    data-toggle="modal" data-target="#chooseResumeModal">投简历</button>
+                                                    data-toggle="modal" data-target="#chooseResumeModal">投个简历</button>
                                         @else
                                             <button class="deliver-resume toujianli">无法投递</button>
                                         @endif
                                     </div>
+                                  </div>
+                                  <div class="company-all">
+                                      <p class="company-name">
+                                          <span class="name">上海汉竞信息科技有限公司</span>
+                                          <i class="material-icons">verified_user</i>
+                                      </p>
+                                      <p class="company-feature">电竞门户  民营企业  10～50人</p>
+                                      <p class="company-bunefits">五险一金,季度福利假,弹性上班,年终奖</p>
+                                  </div>
+                                  <div class="company-logo">
+                                      <img src="http://www.eshunter.com/storage/profiles/2017-11-15-11-39-21-5a0bb6e9b09afelogo.jpg" alt="公司LOGO">
                                   </div>
                                 </li>
                             @endforeach

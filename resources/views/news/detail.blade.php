@@ -7,6 +7,9 @@
         .mdl-card__supporting-text{
             /*width: 97% !important;*/
         }
+        .containter{
+            width: 1000px;
+        }
     </style>
 @endsection
 
