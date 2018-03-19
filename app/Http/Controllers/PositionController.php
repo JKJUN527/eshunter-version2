@@ -750,7 +750,7 @@ class PositionController extends Controller {
         //return $data;
 
         $data['position'] = DB::table('jobs_position')
-            ->select('pid', 'title','tag','jobs_position.industry as jobindustry','occupation','place','elogo','ename','byname','escale','enature','jobs_enprinfo.industry as eindustry','salary','salary_max','jobs_region.name','position_status')
+            ->select('pid', 'title','tag','jobs_position.industry as jobindustry','occupation','place','jobs_position.eid','elogo','ename','byname','escale','enature','jobs_enprinfo.industry as eindustry','salary','salary_max','jobs_region.name','position_status','jobs_position.created_at')
             ->leftjoin('jobs_enprinfo', 'jobs_enprinfo.eid', '=', 'jobs_position.eid')
             ->leftjoin('jobs_region', 'jobs_region.id', '=', 'jobs_position.region')
             //关闭企业职位有效期

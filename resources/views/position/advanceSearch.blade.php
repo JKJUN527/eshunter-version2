@@ -435,20 +435,24 @@
                                               @endif
                                           @endforeach
                                       </div>
-                                    <div class="brif">
-                                        @if($data['type']==0)
-                                            <button class="deliver-resume toujianli" to="/account/login">投个简历</button>
-                                        @elseif($position->position_status==1 ||$position->position_status==4)
-                                            <button class="deliver-resume toujianli"
-                                                    data-content="{{$position->pid}}"
-                                                    data-toggle="modal" data-target="#chooseResumeModal">投个简历</button>
-                                        @else
-                                            <button class="deliver-resume toujianli">无法投递</button>
-                                        @endif
-                                    </div>
+                                      <div>
+                                          <p class="b7">[{{substr($position->created_at,0,10)}}]</p>
+                                      </div>
+                                      {{--关闭投递简历按钮--}}
+                                    {{--<div class="brif">--}}
+                                        {{--@if($data['type']==0)--}}
+                                            {{--<button class="deliver-resume toujianli" to="/account/login">投个简历</button>--}}
+                                        {{--@elseif($position->position_status==1 ||$position->position_status==4)--}}
+                                            {{--<button class="deliver-resume toujianli"--}}
+                                                    {{--data-content="{{$position->pid}}"--}}
+                                                    {{--data-toggle="modal" data-target="#chooseResumeModal">投个简历</button>--}}
+                                        {{--@else--}}
+                                            {{--<button class="deliver-resume toujianli">无法投递</button>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
                                   </div>
                                   <div class="company-all">
-                                      <p class="company-name">
+                                      <p class="company-name" style="cursor:pointer;" to="/company?eid={{$position->eid}}">
                                           <span class="name">{{$position->ename}}</span>
                                           <i class="material-icons">verified_user</i>
                                       </p>
