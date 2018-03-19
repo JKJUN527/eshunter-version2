@@ -129,7 +129,7 @@
                               {{mb_substr(strip_tags($news->content), 0, 70)}}
                           </p>
                           <small class="content-appendix">
-                            <span>责任编辑: admin</span>
+                            <span>责任编辑: {{$news->subtitle}}</span>
                             <span>新闻来源:{{$news->quote}}</span>
                             <span>发布时间:{{mb_substr($news->created_at,0,10,'utf-8')}}</span>
                           </small>

@@ -528,37 +528,38 @@
             <div class="ad_company">
                 
             </div>
-            <!-- <div class="more_box"><a href="#" class="list_more">查看更多</a></div> -->
-            <div class="jieshao_tb">
-                <span v="0" class="active">广告资讯</span>
-            </div>
-            <div class="ad_company" style="    padding-top: 20px;">
-                <ul class="gallery-list">
-                    <?php $i = 0;?>
-                    @foreach($data['news']['news'] as $new)
-                            @if($new->picture != null)
-                                <?php
-                                $pics = explode(';', $new->picture);
-                                $baseurl = explode('@', $pics[0])[0];
-                                $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
-                                $imagepath = explode('@', $pics[0])[1];
-                                ?>
-                                <li class="gallery-item @if($i ==0 ||$i ==7) larger-item @endif" style="background-image:url({{$baseurl}}{{$imagepath}});">
-                            @else
-                                <li class="gallery-item @if($i ==0 ||$i ==7) larger-item @endif" style="background-image:url(http://eshunter.com/storage/newspic/default.jpg);">
-                            @endif
-                                <a class="gallery-link" href="news/detail?nid={{$new->nid}}" target="_blank">
-                                    <span class="text">{{$new->title}}</span>
-                                </a>
-                                </li>
-                            <?php $i++;?>
-                    @endforeach
-                	<div style="clear: both;"></div>
-                	
-                </ul>
-            </div>
-            <div class="more_box"><a href="/news" class="list_more">查看更多</a></div>
-            </div>
+            {{--<div class="more_box"><a href="#" class="list_more">查看更多</a></div>--}}
+               {{--暂时隐藏广告资讯--}}
+                {{--<div class="jieshao_tb">--}}
+                    {{--<span v="0" class="active">广告资讯</span>--}}
+                {{--</div>--}}
+                {{--<div class="ad_company" style="    padding-top: 20px;">--}}
+                    {{--<ul class="gallery-list">--}}
+                        {{--<?php $i = 0;?>--}}
+                        {{--@foreach($data['news']['news'] as $new)--}}
+                                {{--@if($new->picture != null)--}}
+                                    {{--<?php--}}
+                                    {{--$pics = explode(';', $new->picture);--}}
+                                    {{--$baseurl = explode('@', $pics[0])[0];--}}
+                                    {{--$baseurl = substr($baseurl, 0, strlen($baseurl) - 1);--}}
+                                    {{--$imagepath = explode('@', $pics[0])[1];--}}
+                                    {{--?>--}}
+                                    {{--<li class="gallery-item @if($i ==0 ||$i ==7) larger-item @endif" style="background-image:url({{$baseurl}}{{$imagepath}});">--}}
+                                {{--@else--}}
+                                    {{--<li class="gallery-item @if($i ==0 ||$i ==7) larger-item @endif" style="background-image:url(http://eshunter.com/storage/newspic/default.jpg);">--}}
+                                {{--@endif--}}
+                                    {{--<a class="gallery-link" href="news/detail?nid={{$new->nid}}" target="_blank">--}}
+                                        {{--<span class="text">{{$new->title}}</span>--}}
+                                    {{--</a>--}}
+                                    {{--</li>--}}
+                                {{--<?php $i++;?>--}}
+                        {{--@endforeach--}}
+                        {{--<div style="clear: both;"></div>--}}
+                        {{----}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+                {{--<div class="more_box"><a href="/news" class="list_more">查看更多</a></div>--}}
+            {{--</div>--}}
             
 @endsection
 

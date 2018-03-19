@@ -1,3 +1,4 @@
+<a style="display:none;margin-left: 1340px;" class="back_to_top" title="" href="#"></a>
 <div class="footer">
                 <div class="footer_con">
                     <div class="footer_top">
@@ -35,3 +36,23 @@
                 </div>
                 
             </div>
+<script type="text/javascript">
+    $(function(){
+        // 返回顶部
+        //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+        $(window).scroll(function(){
+            if ($(window).scrollTop()>200){
+                $(".back_to_top").fadeIn(1000);
+            }
+            else
+            {
+                $(".back_to_top").fadeOut(1000);
+            }
+        });
+        //当点击跳转链接后，回到页面顶部位置
+        $(".back_to_top").click(function(){
+            $('body,html').animate({scrollTop:0},20);
+            return false;
+        });
+    });
+</script>

@@ -124,13 +124,13 @@
                             <label id="title-error" class="error" for="title"></label>
                         </div>
 
-                        {{--<div class="input-group">--}}
-                        {{--<div class="form-line">--}}
-                        {{--<input type="text" id="subtitle" name="subtitle" class="form-control"--}}
-                        {{--placeholder="新闻副标题">--}}
-                        {{--</div>--}}
-                        {{--<label id="subtitle-error" class="error" for="subtitle"></label>--}}
-                        {{--</div>--}}
+                        <div class="input-group">
+                        <div class="form-line">
+                        <input type="text" id="subtitle" name="subtitle" class="form-control"
+                        placeholder="责任编辑">
+                        </div>
+                        <label id="subtitle-error" class="error" for="subtitle"></label>
+                        </div>
 
                         <div class="input-group">
                             <div class="form-line">
@@ -341,6 +341,7 @@
             event.preventDefault();
 
             var title = $("#title");
+            var subtitle = $("#subtitle");
             var quote = $("#quote");
             var newtype = $("select[name=newtype]");
 //            var content = $("#content");
@@ -351,6 +352,12 @@
                 return;
             } else {
                 removeError(title, 'title');
+            }
+            if (subtitle.val() === '') {
+                setError(subtitle, 'subtitle', "不能为空");
+                return;
+            } else {
+                removeError(subtitle, 'subtitle');
             }
             if (newtype.val() == 0) {
                 setError(newtype, 'newtype', '请选择新闻类别');
@@ -383,7 +390,7 @@
             var formData = new FormData();
             formData.append("ename", '');
             formData.append("title", title.val());
-            formData.append("subtitle", '');
+            formData.append("subtitle", subtitle.val());
             formData.append("quote", quote.val());
             formData.append("newtype", newtype.val());
             formData.append("tag", '');
