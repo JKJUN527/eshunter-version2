@@ -112,7 +112,7 @@
                           </p>
                           <p class="autor">
                               <span class="lm f_l">
-                                  <a href="#">作者: admin</a>
+                                  <a href="#">作者: {{$news->subtitle or 'admin'}}</a>
                               </span>
                               <span class="dtime f_l">
                                   发布时间: {{$news->created_at}}

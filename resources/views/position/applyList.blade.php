@@ -609,7 +609,6 @@
             </div>
         </div>
     </div>
-    <a style="display: none;" class="back_to_top" title="" href="#"></a>
 @endsection
 @section('footer')
     @include('components.myfooter')

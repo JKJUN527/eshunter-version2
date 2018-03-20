@@ -37,7 +37,7 @@
     
                         <div class="mdl-card__actions mdl-card--border base-info--panel">
                             
-                            <label><span>责任编辑: {{$news->subtitle or 'admin'}}</span></label>
+                            <label><span>责任编辑: {{$data['news']->subtitle or 'admin'}}</span></label>
                             <label><span>发布时间: {{mb_substr($data['news']->created_at,0,10,'utf-8')}}</span></label>
                             {{--<label><i class="material-icons">visibility</i><span>{{$data['news']->view_count}}</span></label>--}}
                             <label><i class="material-icons">comment</i> <span>{{sizeof($data['review'])}}</span></label>
