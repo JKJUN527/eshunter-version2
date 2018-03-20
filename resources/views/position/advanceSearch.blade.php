@@ -143,6 +143,9 @@
     line-height: 32px;
 }
 .jieshao_list li:hover{box-shadow: 2px 2px 2px #ebebeb;}
+       .region{
+           color: #00b38a;
+       }
    </style>
 @endsection
 
@@ -394,7 +397,22 @@
                                               {{mb_substr($position->title, 0, 15, 'utf-8')}}
                                           @endif
                                       </a>
-                                        [{{$position->name}}]
+                                        <span class="region">[{{$position->name}}]</span>
+                                        <?php
+                                            $time_now = time();
+                                            $created_time = strtotime($position->created_at);
+                                            $sub_time = ceil(($time_now - $created_time)/86400);
+                                        ?>
+                                        @if($sub_time == 1)
+                                            {{mb_substr($position->created_at,11,5,'utf-8')}}发布
+                                        @elseif($sub_time >1 && $sub_time <=2)
+                                            1天前发布
+                                        @elseif($sub_time >2 && $sub_time <=5)
+                                            2天前发布
+                                        @else
+                                            {{substr($position->created_at,0,10)}}发布
+                                        @endif
+                                        {{--{{substr($position->created_at,0,10)}}发布--}}
                                     </p>
                                       <div class="brif">
                                           <font style="color: #fd5f39;font-size: 15px">
@@ -434,9 +452,6 @@
                                                   @break
                                               @endif
                                           @endforeach
-                                      </div>
-                                      <div>
-                                          <p class="b7">[{{substr($position->created_at,0,10)}}]</p>
                                       </div>
                                       {{--关闭投递简历按钮--}}
                                     {{--<div class="brif">--}}

@@ -107,6 +107,9 @@
     p.verified {
         color: #4CAF50;
     }
+     .position-content-l{
+         max-width: 80% !important;
+     }
  </style>
 @endsection
 
@@ -124,7 +127,7 @@
         <div class="position-content-l">
             <div class="job-name" title="{{$data['detail']->title}}">
                 <div class="company">{{$data['enprinfo'][0]->ename}}招聘</div>
-                <span class="name">{{$data['detail']->title}}</span>
+                <span class="name">{{mb_substr($data['detail']->title,0,20)}}</span>
                 <span class="outline_tag">
                     @if($data['detail']->position_status == 1)
                         该职位正在招聘中

@@ -10,6 +10,10 @@
         .containter{
             width: 1000px;
         }
+        .news-image img{
+            max-width:100%;
+            height: auto;
+        }
     </style>
 @endsection
 
