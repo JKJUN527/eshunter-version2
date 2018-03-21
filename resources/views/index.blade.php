@@ -598,16 +598,16 @@
                 $('li[name=hot'+(ad_count+2)+']').fadeToggle("slow");
                 //边界处理
                 if(ad_count+2 > ad_count_total-1){
-                    $('li[name=hot'+(ad_count+1)+']').fadeToggle();
+                    $('li[name=hot'+(ad_count+1)+']').hide();
                     ad_count=0;
-                    $('li[name=hot'+(ad_count)+']').fadeToggle();
-                    $('li[name=hot'+(ad_count+1)+']').fadeToggle();
+                    $('li[name=hot'+(ad_count)+']').show();
+                    $('li[name=hot'+(ad_count+1)+']').show();
                 }else {
                     ad_count +=1;
                 }
             }
             //重复执行
-            var t1 = window.setInterval(changeAdCompany,5000);
+            var t1 = window.setInterval(changeAdCompany,2000);
             //加载index_xianxing内容，推荐状况的实时展示
 
             // 气球客服
