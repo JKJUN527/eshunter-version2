@@ -607,7 +607,7 @@
                 }
             }
             //重复执行
-            var t1 = window.setInterval(changeAdCompany,2000);
+            var t1 = window.setInterval(changeAdCompany,5000);
             //加载index_xianxing内容，推荐状况的实时展示
 
             // 气球客服
