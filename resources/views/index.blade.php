@@ -592,10 +592,11 @@
         $(function() {
             //定时执行函数
             function changeAdCompany() {
-                $('li[name=hot'+ad_count+']').fadeToggle("fast");
+                $('li[name=hot'+ad_count+']').hide();
+//                $('li[name=hot'+ad_count+']').fadeToggle("fast");
 //                $('li[name=hot'+(ad_count+1)+']').fadeToggle();
                 $('li[name=hot'+(ad_count+2)+']').fadeToggle("slow");
-//                $('li[name=hot'+(ad_count+3)+']').fadeToggle();
+                //边界处理
                 if(ad_count+2 > ad_count_total-1){
                     $('li[name=hot'+(ad_count+1)+']').fadeToggle();
                     ad_count=0;
