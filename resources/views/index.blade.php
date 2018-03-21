@@ -489,9 +489,13 @@
                     <span v="1">推荐公司</span>
                 </div> 
                 <div class="ad_company gongsi_list">
-                    <ul class="ad_company_list clearfix hot-company">
+                    <ul class="ad_company_list clearfix hot-company" data-content="{{ceil(count($data['ad']['ad0'])/5)}}">
+                        <?php
+                        $i=0;
+                        $count=0;
+                        ?>
                         @foreach($data['ad']['ad0'] as $ad_big)
-                        <li class="company_item">
+                        <li class="company_item" name="hot{{$i}}" @if($i >1) style="display: none" @endif>
                             <div class="item_top">
                                 <p>
                                     <a href="/company?eid={{$ad_big->eid}}" target="_blank">
@@ -506,6 +510,13 @@
                                 </p>
                             </div>
                         </li>
+                            <?php
+                                $count++;
+                                if($count >=5){
+                                    $count =0;
+                                    $i++;
+                                }
+                            ?>
                         @endforeach
                         <div style="clear: both;"></div>
                     </ul>
@@ -575,7 +586,27 @@
     <script>
         
         var openid = "";
+        var ad_count_total = $('.hot-company').attr('data-content');//热门广告分组总数
+        var ad_count = 0;//热门广告当前显示分组号
+
         $(function() {
+            //定时执行函数
+            function changeAdCompany() {
+                $('li[name=hot'+ad_count+']').fadeToggle("fast");
+//                $('li[name=hot'+(ad_count+1)+']').fadeToggle();
+                $('li[name=hot'+(ad_count+2)+']').fadeToggle("slow");
+//                $('li[name=hot'+(ad_count+3)+']').fadeToggle();
+                if(ad_count+2 > ad_count_total-1){
+                    $('li[name=hot'+(ad_count+1)+']').fadeToggle();
+                    ad_count=0;
+                    $('li[name=hot'+(ad_count)+']').fadeToggle();
+                    $('li[name=hot'+(ad_count+1)+']').fadeToggle();
+                }else {
+                    ad_count +=1;
+                }
+            }
+            //重复执行
+            var t1 = window.setInterval(changeAdCompany,5000);
             //加载index_xianxing内容，推荐状况的实时展示
 
             // 气球客服
