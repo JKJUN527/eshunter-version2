@@ -518,20 +518,20 @@
                         var height = image.height;
                         console.log(width + "//" + height);
 
-                        if (width !== 100 || height !== 50) {
+                        if (width !== 80 || height !== 80) {
                             isCorrect = false;
                             $("#picture-small").val("");
                             swal({
                                 title: "错误",
                                 type: "error",
-                                text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n小图片广告分辨率应为 100像素 * 50像素",
+                                text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n小图片广告分辨率应为 80像素 * 80像素",
                                 cancelButtonText: "关闭",
                                 showCancelButton: true,
                                 showConfirmButton: false
                             });
                         } else if (isCorrect) {
                             $("#preview-holder-small").html("<div class='image-preview'>" +
-                                "<img src='" + objectUrl + "' width='100' height='50'>" +
+                                "<img src='" + objectUrl + "' width='80' height='80'>" +
                                 "<i class='material-icons delete-image' onclick='deleteSmallImage(this)'>close</i></div>");
                         }
                     };
