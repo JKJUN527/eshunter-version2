@@ -209,14 +209,14 @@ class HomeController extends Controller {
             $eid = $request->input('eid');
             $data['position'] = DB::table('jobs_position')
                 ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
                 ->where('jobs_position.eid', $eid)
 //                ->where('vaildity', '>=', date('Y-m-d H-i-s'))
                 ->where(function ($query){
                     $query->where('position_status',1)
                         ->orwhere('position_status',4);
                 })
-                ->orderBy('jobs_position.updated_at','desc')
+                ->orderBy('jobs_position.created_at','desc')
                 ->paginate(9);
 
             $data['enprinfo'] = Enprinfo::find($eid);

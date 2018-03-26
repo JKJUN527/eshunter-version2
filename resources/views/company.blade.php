@@ -128,7 +128,7 @@
                                                         {{mb_substr($position->title,0,11,'utf-8')}}
                                                     </a>
                                                 </h2>
-                                                <span class="create_time">[{{substr($position->updated_at,0,10)}}]</span>
+                                                <span class="create_time">[{{substr($position->created_at,0,10)}}]</span>
                                             </div>
                                             <span class="salary right">
                                                 @if($position->salary == -1)
