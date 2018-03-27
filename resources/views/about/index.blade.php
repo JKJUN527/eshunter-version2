@@ -93,7 +93,7 @@
     <div class="sales-board @if($data['tab'] == 'tab4') active @endif">
         <div class="sales-board-intro">
         <h2 >网站地图</h2>
-         <p>地址：上海市黄浦区会稽路8号金天地国际大厦708室</p>
+         <p>地址：{{$data['about']->address}}</p>
         <div class="address-map">
                     <div id="map" style="width:100%; height: 600px;"></div>
                 </div></div>
@@ -131,7 +131,7 @@
         map = new AMap.Map('map', {
             resizeEnable: true,
             zoom: 13,
-            center: [121.48944, 31.228947]
+            center: [121.48103,31.260517]
         });
 
         AMap.plugin(['AMap.ToolBar', 'AMap.Scale'],
@@ -144,8 +144,8 @@
             });
 
         marker = new AMap.Marker({
-            position: [121.48944, 31.228947],
-            title: "company name",
+            position: [121.48103,31.260517],
+            title: "上海汉竞信息科技有限公司",
             map: map
         });
     </script>
