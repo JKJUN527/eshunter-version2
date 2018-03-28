@@ -159,7 +159,8 @@
                     var result = JSON.parse(data);
                     // checkResultWithLocation(result.status, "登录成功，正在跳转", result.msg, "/index");
                     if(result.status == 200){
-                      window.location.href="/";
+//                      window.location.href="/";
+                        window.location.href=document.referrer;
                     }else{
                       $(".username_msg").html(result.msg);
                     }
