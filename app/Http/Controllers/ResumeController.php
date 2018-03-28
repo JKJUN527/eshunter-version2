@@ -16,6 +16,7 @@ use App\Egrade;
 use App\Industry;
 use App\Intention;
 use App\Occupation;
+use App\PlayerResume;
 use App\Projectexp;
 use App\Region;
 use App\Resumes;
@@ -39,7 +40,7 @@ class ResumeController extends Controller {
             $resume = new Resumes();
             $resume->uid = $uid;
             $resume->resume_name = "未命名简历";
-            $count = Resumes::where('uid', '=', $uid)->count();       //ORM聚合函数的用法
+            $count = Resumes::where('uid', '=', $uid)->where('type',0)->count();       //ORM聚合函数的用法
             if ($count > 2) {
                 $data['status'] = 400;
                 $data['msg'] = "简历数大于上限";
@@ -52,6 +53,45 @@ class ResumeController extends Controller {
                 $intention->work_nature = -1;
                 $intention->occupation = -1;
                 $intention->industry = -1;
+                $intention->region = -1;
+                $intention->salary = -1;
+                $intention->save();
+
+                $updateresume = Resumes::where('rid',$resume->rid)
+                    ->update(['inid'=>$intention->inid]);
+
+                $data['status'] = 200;
+                $data['rid'] = $resume->rid;
+            }
+        }else{
+            $data['status'] = 400;
+            $data['msg'] = "仅个人用户才能添加简历";
+        }
+
+        return $data;
+    }
+    public function addPlayerResume(){
+        $data = array();
+
+        $uid = AuthController::getUid();
+        $type = AuthController::getType();
+        if($type == 1 ){
+            $resume = new Resumes();
+            $resume->uid = $uid;
+            $resume->resume_name = "未命名简历";
+            $resume->type = 1;//选手简历
+            $count = Resumes::where('uid', '=', $uid)->where('type',1)->count();       //ORM聚合函数的用法
+            if ($count > 0) {
+                $data['status'] = 400;
+                $data['msg'] = "只能添加一个选手简历";
+            } else {
+                $resume->save();
+                $intention = new Intention();
+                $intention->rid = $resume->rid;
+                $intention->uid = $uid;
+                $intention->work_nature = -1;
+                $intention->occupation = -1;
+                $intention->industry = 4;
                 $intention->region = -1;
                 $intention->salary = -1;
                 $intention->save();
@@ -115,6 +155,49 @@ class ResumeController extends Controller {
 
 //        return $data;
         return view('resume/add', ["data" => $data]);
+    }
+    //返回选手简历修改页面
+    public function getPlayerIndex(Request $request){
+        $input = $request->all();
+        $data = array();
+
+        $data['uid'] = AuthController::getUid();
+
+        $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
+
+        if (!($request->has('rid'))) return redirect()->back();
+
+        $resume = Resumes::where('rid', $input['rid'])->get();
+
+        if (sizeof($resume) == 0) return redirect()->back();
+
+        if ($resume[0]->uid != $data['uid']) return redirect()->back();
+
+        $data['rid'] = $input['rid'];
+        $data['resume'] = Resumes::find($data['rid']);
+        $data['intention'] = Intention::find($data['resume']['inid']);
+
+        $skillStr = $data['resume']['skill'];
+        if ($skillStr == null) {
+            $data['resume']['skill'] = null;
+        } else {
+            $data['resume']['skill'] = explode("|@|", substr($skillStr, 3));
+        }
+
+        $data['playerResume'] = $this->getPlayerResumeExp();
+        $person = new InfoController();
+        $data['personInfo'] = $person->getPersonInfo();
+        //查询工作地区
+        $data['province'] = Region::where('parent_id',0)->get();
+        $data['city'] = Region::where('parent_id','!=',0)->get();
+        $data['industry'] = Industry::all();
+        $data['occupation'] = Occupation::where('industry_id',4)->orderBy('updated_at','asc')->get();
+
+        $data['completion'] = $this->Completion_total($data['rid']);
+
+//        return $data;
+        return view('resume/addPlayerResume', ["data" => $data]);
     }
     public function Completion_total($rid){
         $data = 0;//初始完成度为0
@@ -187,9 +270,29 @@ class ResumeController extends Controller {
 
     /*简历列表
     */
+    public function getResumeAllList() {
+        $uid = AuthController::getUid();
+        $result = Resumes::where('uid', '=', $uid)
+            ->select('rid', 'inid', 'resume_name','type')
+            ->get();
+        return $result;
+    }
+    /*一般简历
+     * */
     public function getResumeList() {
         $uid = AuthController::getUid();
         $result = Resumes::where('uid', '=', $uid)
+            ->where('type',0)//一般简历
+            ->select('rid', 'inid', 'resume_name')
+            ->get();
+        return $result;
+    }
+    /*查询选手简历
+    */
+    public function getPlayerResume() {
+        $uid = AuthController::getUid();
+        $result = Resumes::where('uid', '=', $uid)
+            ->where('type',1)//选手简历
             ->select('rid', 'inid', 'resume_name')
             ->get();
         return $result;
@@ -451,6 +554,43 @@ class ResumeController extends Controller {
         }
         return $data;
     }
+    //新增选手简历信息
+    public function addPlayerResumeExp(Request $request){
+        $uid = AuthController::getUid();
+
+        $data = array();
+        $input = $request->all();
+        if(!$request->has('playerId')){
+            $count = PlayerResume::where('uid', '=', $uid)->count();       //ORM聚合函数的用法
+            if ($count > 10) {
+                $data['status'] = 400;
+                $data['msg'] = "最多添加10个选手经历";
+                return $data;
+            } else {
+                $playerexp = new PlayerResume();
+            }
+        }else{
+            $playerexp = PlayerResume::find($input['playerId']);
+        }
+
+        $playerexp->uid = $uid;
+        $playerexp->game_id = $input['game_id'];
+        $playerexp->egame = $input['egame'];
+        $playerexp->place = $input['place'];
+        $playerexp->service = $input['service'];
+        $playerexp->best_result = $input['best_result'];
+        $playerexp->probability = $input['probability'];
+
+        if ($playerexp->save()) {
+            $data['status'] = 200;
+            $data['msg'] = "添加选手经历成功";
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "添加选手经历失败";
+        }
+        return $data;
+    }
+
     public static function getEducation() {
         return Education::where('uid', '=', AuthController::getUid())->get();
     }
@@ -463,6 +603,9 @@ class ResumeController extends Controller {
     }
     public static function getProjectexp() {
         return Projectexp::where('uid', '=', AuthController::getUid())->get();
+    }
+    public static function getPlayerResumeExp() {
+        return PlayerResume::where('uid', '=', AuthController::getUid())->get();
     }
 
     public function deleteEducation(Request $request) {
@@ -499,6 +642,16 @@ class ResumeController extends Controller {
     public function deleteProjectexp(Request $request) {
         $data = array();
         if (Projectexp::find($request->input('id'))->delete()) {
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 400;
+        }
+
+        return $data;
+    }
+    public function deletePlayerExp(Request $request) {
+        $data = array();
+        if (PlayerResume::find($request->input('id'))->delete()) {
             $data['status'] = 200;
         } else {
             $data['status'] = 400;
@@ -745,6 +898,14 @@ class ResumeController extends Controller {
         $data =array();
         if($request->has('egid')){
             $data = Egamexpr::find($request->input('egid'));
+        }
+        return $data;
+    }
+    //获取待修改选手简历数据信息
+    public function getPlayerResumeinfo(Request $request){
+        $data =array();
+        if($request->has('id')){
+            $data = PlayerResume::find($request->input('id'));
         }
         return $data;
     }

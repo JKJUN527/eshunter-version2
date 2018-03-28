@@ -69,10 +69,13 @@ Route::any('account/', ['uses' => 'PersonCenterController@index']);
 Route::any('account/index', ['uses' => 'PersonCenterController@index']);
 //简历模块
 Route::get('resume/add', ['uses' => 'ResumeController@getIndex']);
+Route::get('resume/player/add', ['uses' => 'ResumeController@getPlayerIndex']);
 Route::get('resume/addResume', ['uses' => 'ResumeController@addResume']);
+Route::get('resume/addPlayerResume', ['uses' => 'ResumeController@addPlayerResume']);
 Route::any('resume/getRegion', ['uses' => 'ResumeController@getRegion']);
 Route::any('resume/getIndustry', ['uses' => 'ResumeController@getIndustry']);
 Route::get('resume/getResumeList', ['uses' => 'ResumeController@getResumeList']);
+Route::get('resume/getResumeAllList', ['uses' => 'ResumeController@getResumeAllList']);
 Route::get('resume/preview', ['uses' => 'ResumeController@previewResume']);
 
 Route::post('resume/rename', ['uses' => 'ResumeController@rename']);
@@ -81,6 +84,8 @@ Route::post('resume/addEducation', ['uses' => 'ResumeController@addEducation']);
 Route::post('resume/addGame', ['uses' => 'ResumeController@addEgamexpr']);
 Route::post('resume/addWorkexp', ['uses' => 'ResumeController@addWorkexp']);
 Route::post('resume/addProjectexp', ['uses' => 'ResumeController@addProjectexp']);
+//选手简历信息新增
+Route::post('resume/addPlayerResumeExp', ['uses' => 'ResumeController@addPlayerResumeExp']);
 Route::post('resume/addSkill', ['uses' => 'ResumeController@addTag']);
 Route::post('resume/addExtra', ['uses' => 'ResumeController@addExtra']);
 Route::post('resume/deleteSkill', ['uses' => 'ResumeController@deleteTag']);
@@ -88,6 +93,8 @@ Route::get('resume/deleteEducation', ['uses' => 'ResumeController@deleteEducatio
 Route::get('resume/deleteGame', ['uses' => 'ResumeController@deleteGame']);
 Route::get('resume/deleteWorkexp', ['uses' => 'ResumeController@deleteWorkexp']);
 Route::get('resume/deleteProjectexp', ['uses' => 'ResumeController@deleteProjectexp']);
+//删除选手经历
+Route::get('resume/deletePlayerExp', ['uses' => 'ResumeController@deletePlayerExp']);
 Route::any('resume/advanceSearch', ['uses' => 'ResumeController@test']);
 //以下为新增修改已填写简历功能
 Route::post('resume/geteduinfo', ['uses' => 'ResumeController@geteduinfo']);

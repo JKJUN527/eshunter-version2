@@ -531,7 +531,7 @@
             var $pid = $(this).attr("data-content");
 
             $.ajax({
-                url: "/resume/getResumeList",
+                url: "/resume/getResumeAllList",
                 type: "get",
                 success: function (data) {
 
@@ -539,13 +539,20 @@
                     if (data.length === 0) {
                         html = "<button onclick='addResume()' " +
                             "class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky'>" +
-                            "没有简历，点击添加 </button>"
+                            "没有一般简历，点击添加 </button>";
+                        html += "<button onclick='addPlayerResume()' " +
+                                "class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky'>" +
+                                "没有选手简历，点击添加 </button>";
                     } else {
                         for (var item in data) {
-
+                            var type = "";
+                            if(data[item]['type'] == 0)
+                                type = "一般简历";
+                            else
+                                type = "选手简历";
                             var resumeName = data[item]['resume_name'] === null ? "未命名的简历" : data[item]['resume_name'];
                             html += "<li class='resume-item' data-content='" + data[item]['rid'] + "' onclick='resumeChosen(this, " + $pid + ")'>" +
-                                "<p>" + resumeName + "</p>" +
+                                "<p><span style='color: #00b38a'>"+ type + ": </span>" + resumeName + "</p>" +
                                 "</li>";
                         }
 
@@ -606,6 +613,21 @@
                 success: function (data) {
                     if (data['status'] === 200) {
                         self.location = "/resume/add?rid=" + data['rid'];
+                    } else if (data['status'] === 400) {
+//                        checkResult(data['status'], "", data['msg'], null);
+                        swal("",data['msg'],"error");
+                        return;
+                    }
+                }
+            });
+        }
+        function addPlayerResume() {
+            $.ajax({
+                url: "/resume/addPlayerResume",
+                type: "get",
+                success: function (data) {
+                    if (data['status'] === 200) {
+                        self.location = "/resume/player/add?rid=" + data['rid'];
                     } else if (data['status'] === 400) {
 //                        checkResult(data['status'], "", data['msg'], null);
                         swal("",data['msg'],"error");

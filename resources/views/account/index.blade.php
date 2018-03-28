@@ -276,11 +276,19 @@
                         <div class="my_labels my_labelsie">
                             <div class="mdl-card__actions mdl-card--border resume-panel">
                                 <span style="" class="myhidden">选手简历</span>
+                                @forelse($data['playerResume'] as $resume)
                                     <div class="resume-item">
-                                        <a id="add-resume">
-                                            <img src="{{asset('images/resume_add.png')}}" width="70px"/></a>
-                                        <p>正在开发</p>
+                                        <a to="/resume/player/add?rid={{$resume->rid}}">
+                                            <img src="{{asset('images/resume.png')}}" width="70px"/></a>
+                                        <p>{{$resume->resume_name}}</p>
                                     </div>
+                                @empty
+                                    <div class="resume-item">
+                                        <a id="add-player-resume">
+                                            <img src="{{asset('images/resume_add.png')}}" width="70px"/></a>
+                                        <p>选手简历</p>
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                         <div style="display: none;" class="my_labels">
@@ -318,6 +326,19 @@
                   success: function (data) {
                       if (data['status'] === 200) {
                           self.location = "/resume/add?rid=" + data['rid'];
+                      } else if (data['status'] === 400) {
+                          alert(data['msg']);
+                      }
+                  }
+              });
+          });
+          $("#add-player-resume").click(function () {
+              $.ajax({
+                  url: "/resume/addPlayerResume",
+                  type: "get",
+                  success: function (data) {
+                      if (data['status'] === 200) {
+                          self.location = "/resume/player/add?rid=" + data['rid'];
                       } else if (data['status'] === 400) {
                           alert(data['msg']);
                       }

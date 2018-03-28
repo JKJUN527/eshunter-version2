@@ -16,6 +16,7 @@ use App\Enprinfo;
 use App\Industry;
 use App\Intention;
 use App\Occupation;
+use App\PlayerResume;
 use App\Position;
 use App\Projectexp;
 use App\Region;
@@ -34,17 +35,18 @@ class DeliveredController extends Controller {
     //back_up表、delivered表
     //传递简历id+职位id
     //发送站内信到企业id
-    public function delivered(Request $request) {
+    public function delivered(Request $request)
+    {
         $uid = AuthController::getUid();
         $type = AuthController::getType();
         if ($uid == 0) {
             $data['status'] = 400;
-            $data['msg'] ="请先登录";
+            $data['msg'] = "请先登录";
             return $data;
         }
-        if($type != 1){
+        if ($type != 1) {
             $data['status'] = 400;
-            $data['msg'] ="仅个人用户能投递简历";
+            $data['msg'] = "仅个人用户能投递简历";
             return $data;
         }
 //        $uid = 1;
@@ -56,14 +58,30 @@ class DeliveredController extends Controller {
             $rid = $request->input('rid');
             $pid = $request->input('pid');
             //已投递过该简历不能再投
-            $is_deliverd = Delivered::where('uid',$uid)
-                ->where('rid',$rid)
-                ->where('pid',$pid)
+            $is_deliverd = Delivered::where('uid', $uid)
+                ->where('rid', $rid)
+                ->where('pid', $pid)
                 ->get();
-            if($is_deliverd->count()){
+            if ($is_deliverd->count()) {
                 $data['status'] = 400;
-                $data['msg'] ="已投递过该职位";
+                $data['msg'] = "已投递过该职位";
                 return $data;
+            }
+            //查询职位是否是招聘选手、简历是否是选手简历
+            $positiontype = Position::find($pid);
+            $resumetype = Resumes::find($rid);
+            if ($positiontype->place == 1) {//招聘选手
+                if ($resumetype->type != 1) {
+                    $data['status'] = 400;
+                    $data['msg'] = "该职位需要使用选手简历投递";
+                    return $data;
+                }
+            } else {
+                if ($resumetype->type == 1) {
+                    $data['status'] = 400;
+                    $data['msg'] = "该职位需要使用一般简历投递";
+                    return $data;
+                }
             }
 //            $did = Backup::where('uid','=',$uid)->get();
 //            //return $did;
@@ -80,168 +98,266 @@ class DeliveredController extends Controller {
 //                    }
 //                }
 //            }
-            //查询简历表信息
-            $resumeinfo = Resumes::find($rid);
-            $intentioninfo = Intention::where('uid', '=', $uid)
-                ->where('rid', '=', $rid)
-                ->get();
-            $positioninfo = Position::find($pid);
+            //投递一般简历
+            if ($positiontype->place != 1) {//招聘非选手
+                //查询简历表信息
+                $resumeinfo = Resumes::find($rid);
+                $intentioninfo = Intention::where('uid', '=', $uid)
+                    ->where('rid', '=', $rid)
+                    ->get();
+                $positioninfo = Position::find($pid);
 
-            //新建back_up表，保存投递信息
-            $back_up = new Backup();
-            $back_up->uid = $uid;
-            $back_up->eid = $positioninfo['eid'];
-            $back_up->position_title = $positioninfo['title'];
+                //新建back_up表，保存投递信息
+                $back_up = new Backup();
+                $back_up->uid = $uid;
+                $back_up->eid = $positioninfo['eid'];
+                $back_up->position_title = $positioninfo['title'];
 
-            //设置work_nature值:012 兼职 实习 全职
-            if($intentioninfo->count()){
-                if ($intentioninfo[0]['work_nature'] == 0) {
-                    $back_up->work_nature = "兼职";
-                } else if ($intentioninfo[0]['work_nature'] == 1) {
-                    $back_up->work_nature = "实习";
+                //设置work_nature值:012 兼职 实习 全职
+                if ($intentioninfo->count()) {
+                    if ($intentioninfo[0]['work_nature'] == 0) {
+                        $back_up->work_nature = "兼职";
+                    } else if ($intentioninfo[0]['work_nature'] == 1) {
+                        $back_up->work_nature = "实习";
+                    } else {
+                        $back_up->work_nature = "全职";
+                    }
+                    //设置industry值
+                    if ($intentioninfo[0]['industry'] != -1) {
+                        $industry = Industry::find($intentioninfo[0]['industry']);
+                        $back_up->industry = $industry['name'];
+                    }
+                    //设置occupation值
+                    if ($intentioninfo[0]['occupation'] != -1) {
+                        $occupation = Occupation::find($intentioninfo[0]['occupation']);
+                        $back_up->occupation = $occupation['name'];
+                    }
+                    //设置region值
+                    if ($intentioninfo[0]['region'] != -1) {
+                        $region = Region::find($intentioninfo[0]['region']);
+                        $back_up->region = $region['name'];
+                    }
+                    //设置薪水值
+                    if ($intentioninfo[0]['salary'] != -1) {
+                        $back_up->salary = $intentioninfo[0]['salary'];
+                    }
+                }
+
+                if (empty($resumeinfo) || empty($positioninfo)) {
+                    $data['status'] = 400;
+                    $data['msg'] = "简历投递失败";
+                    return $data;
+                }
+                $back_up->skill = $resumeinfo['skill'];
+                $back_up->extra = $resumeinfo['extra'];
+                //设置教育经历
+                $education = Education::where('uid', '=', $uid)
+                    ->get();
+                if ($education->count()) {
+                    $tem = 0;
+                    foreach ($education as $item) {
+                        $tem = $tem + 1;
+                        //return $item;
+                        $education = $item['school'] . '@' . $item['date'] . '@' . $item['major'] . '@' . $item['degree'];
+                        switch ($tem) {
+                            case 1:
+                                $back_up->education1 = $education;
+                                break;
+                            case 2:
+                                $back_up->education2 = $education;
+                                break;
+                            case 3:
+                                $back_up->education3 = $education;
+                                break;
+                        }
+                    }
+                }
+                //设置电竞经历
+                $egamexpr = Egamexpr::where('uid', '=', $uid)
+                    ->get();
+                if ($egamexpr->count()) {
+                    $tem = 0;
+                    foreach ($egamexpr as $item) {
+                        $tem = $tem + 1;
+                        //return $item;
+                        $egame = $item['ename'] . '@' . $item['date'] . '@' . $item['level'] . '@' . $item['extra'];
+                        switch ($tem) {
+                            case 1:
+                                $back_up->egamexpr1 = $egame;
+                                break;
+                            case 2:
+                                $back_up->egamexpr2 = $egame;
+                                break;
+                            case 3:
+                                $back_up->egamexpr3 = $egame;
+                                break;
+                        }
+                    }
+                }
+                //设置工作经历
+                $workexp = Workexp::where('uid', '=', $uid)
+                    ->get();
+                if ($workexp->count()) {
+                    $tem = 0;
+                    foreach ($workexp as $item) {
+                        $tem = $tem + 1;
+                        $workexp = $item['type'] . '@' . $item['work_time'] . '@' . $item['ename'] . '@' . $item['position'] . '@' . $item['describe'];
+                        switch ($tem) {
+                            case 1:
+                                $back_up->workexp1 = $workexp;
+                                break;
+                            case 2:
+                                $back_up->workexp2 = $workexp;
+                                break;
+                            case 3:
+                                $back_up->workexp3 = $workexp;
+                                break;
+                        }
+                    }
+                }
+                //设置项目经历
+                $projectexp = Projectexp::where('uid', '=', $uid)
+                    ->get();
+                if ($projectexp->count()) {
+                    $tem = 0;
+                    foreach ($projectexp as $item) {
+                        $tem = $tem + 1;
+                        $project = $item['project_time'] . '@' . $item['project_name'] . '@' . $item['position'] . '@' . $item['describe'];
+                        switch ($tem) {
+                            case 1:
+                                $back_up->projectexp1 = $project;
+                                break;
+                            case 2:
+                                $back_up->projectexp2 = $project;
+                                break;
+                            case 3:
+                                $back_up->projectexp3 = $project;
+                                break;
+                        }
+                    }
+                }
+                $back_up->save();
+                //return $back_up;
+
+                //新建投递表
+                $deliver = new Delivered();
+                $deliver->did = $back_up['did'];
+                $deliver->uid = $uid;
+                $deliver->pid = $pid;
+                $deliver->rid = $rid;
+                $deliver->status = 0;
+
+                $toid = Enprinfo::where('eid', $positioninfo['eid'])->first();//企业用户对应的uid
+                if ($deliver->save()) {
+                    //发送站内信到企业端
+                    if ($uid != 0) {
+                        $content = "我投了贵公司的" . $positioninfo['title'] . "职位，请注意查收！";
+                        $bool = MessageController::sendMessage($request, $toid['uid'], $content);
+                    }
+                    //发送简历邮件到企业端
+                    if ($this->sendresumetomail($request, $toid['eid'])) {
+                        $data['msg'] = "发送邮件到企业失败";
+                    }
+                    $data['status'] = 200;
                 } else {
-                    $back_up->work_nature = "全职";
+                    $data['status'] = 400;
+                    $data['msg'] = "简历投递失败";
                 }
-                //设置industry值
-                if($intentioninfo[0]['industry'] != -1){
-                    $industry = Industry::find($intentioninfo[0]['industry']);
-                    $back_up->industry =  $industry['name'];
-                }
-                //设置occupation值
-                if($intentioninfo[0]['occupation'] != -1){
-                    $occupation = Occupation::find($intentioninfo[0]['occupation']);
-                    $back_up->occupation = $occupation['name'];
-                }
-                //设置region值
-                if($intentioninfo[0]['region'] != -1){
-                    $region = Region::find($intentioninfo[0]['region']);
-                    $back_up->region = $region['name'];
-                }
-                //设置薪水值
-                if($intentioninfo[0]['salary'] != -1){
-                    $back_up->salary = $intentioninfo[0]['salary'];
-                }
-            }
+            } else {//招聘选手职位
+                //查询简历表信息
+                $resumeinfo = Resumes::find($rid);
+                $intentioninfo = Intention::where('uid', '=', $uid)
+                    ->where('rid', '=', $rid)
+                    ->get();
+                $positioninfo = Position::find($pid);
 
-            if (empty($resumeinfo) || empty($positioninfo)) {
-                $data['status'] = 400;
-                $data['msg'] = "简历投递失败";
-                return $data;
-            }
-            $back_up->skill = $resumeinfo['skill'];
-            $back_up->extra = $resumeinfo['extra'];
-            //设置教育经历
-            $education = Education::where('uid', '=', $uid)
-                ->get();
-            if($education->count()){
-                $tem = 0;
-                foreach ($education as $item) {
-                    $tem = $tem + 1;
-                    //return $item;
-                    $education = $item['school'] . '@' . $item['date'] . '@' . $item['major'] . '@' . $item['degree'];
-                    switch ($tem) {
-                        case 1:
-                            $back_up->education1 = $education;
-                            break;
-                        case 2:
-                            $back_up->education2 = $education;
-                            break;
-                        case 3:
-                            $back_up->education3 = $education;
-                            break;
-                    }
-                }
-            }
-            //设置电竞经历
-            $egamexpr = Egamexpr::where('uid', '=', $uid)
-                ->get();
-            if($egamexpr->count()){
-                $tem = 0;
-                foreach ($egamexpr as $item) {
-                    $tem = $tem + 1;
-                    //return $item;
-                    $egame = $item['ename'] . '@' . $item['date'] . '@' . $item['level'].'@'.$item['extra'];
-                    switch ($tem) {
-                        case 1:
-                            $back_up->egamexpr1 = $egame;
-                            break;
-                        case 2:
-                            $back_up->egamexpr2 = $egame;
-                            break;
-                        case 3:
-                            $back_up->egamexpr3 = $egame;
-                            break;
-                    }
-                }
-            }
-            //设置工作经历
-            $workexp = Workexp::where('uid', '=', $uid)
-                ->get();
-            if($workexp->count()){
-                $tem = 0;
-                foreach ($workexp as $item) {
-                    $tem = $tem + 1;
-                    $workexp = $item['type'] . '@' . $item['work_time'] . '@' . $item['ename']. '@' . $item['position']. '@' . $item['describe'];
-                    switch ($tem) {
-                        case 1:
-                            $back_up->workexp1 = $workexp;
-                            break;
-                        case 2:
-                            $back_up->workexp2 = $workexp;
-                            break;
-                        case 3:
-                            $back_up->workexp3 = $workexp;
-                            break;
-                    }
-                }
-            }
-            //设置项目经历
-            $projectexp = Projectexp::where('uid', '=', $uid)
-                ->get();
-            if($projectexp->count()){
-                $tem = 0;
-                foreach ($projectexp as $item) {
-                    $tem = $tem + 1;
-                    $project = $item['project_time'] . '@' . $item['project_name']. '@' . $item['position']. '@' . $item['describe'];
-                    switch ($tem) {
-                        case 1:
-                            $back_up->projectexp1 = $project;
-                            break;
-                        case 2:
-                            $back_up->projectexp2 = $project;
-                            break;
-                        case 3:
-                            $back_up->projectexp3 = $project;
-                            break;
-                    }
-                }
-            }
-            $back_up->save();
-            //return $back_up;
+                //新建back_up表，保存投递信息
+                $back_up = new Backup();
+                $back_up->uid = $uid;
+                $back_up->eid = $positioninfo['eid'];
+                $back_up->position_title = $positioninfo['title'];
 
-            //新建投递表
-            $deliver = new Delivered();
-            $deliver->did = $back_up['did'];
-            $deliver->uid = $uid;
-            $deliver->pid = $pid;
-            $deliver->rid = $rid;
-            $deliver->status = 0;
+                //设置work_nature值:012 兼职 实习 全职
+                if ($intentioninfo->count()) {
+                    if ($intentioninfo[0]['work_nature'] == 0) {
+                        $back_up->work_nature = "兼职";
+                    } else if ($intentioninfo[0]['work_nature'] == 1) {
+                        $back_up->work_nature = "实习";
+                    } else {
+                        $back_up->work_nature = "全职";
+                    }
+                    //设置industry值
+                    if ($intentioninfo[0]['industry'] != -1) {
+                        $industry = Industry::find($intentioninfo[0]['industry']);
+                        $back_up->industry = $industry['name'];
+                    }
+                    //设置occupation值
+                    if ($intentioninfo[0]['occupation'] != -1) {
+                        $occupation = Occupation::find($intentioninfo[0]['occupation']);
+                        $back_up->occupation = $occupation['name'];
+                    }
+                    //设置region值
+                    if ($intentioninfo[0]['region'] != -1) {
+                        $region = Region::find($intentioninfo[0]['region']);
+                        $back_up->region = $region['name'];
+                    }
+                    //设置薪水值
+                    if ($intentioninfo[0]['salary'] != -1) {
+                        $back_up->salary = $intentioninfo[0]['salary'];
+                    }
+                }
 
-            $toid = Enprinfo::where('eid',$positioninfo['eid'])->first();//企业用户对应的uid
-            if ($deliver->save()) {
-                //发送站内信到企业端
-                if ($uid != 0) {
-                    $content = "我投了贵公司的".$positioninfo['title']."职位，请注意查收！";
-                    $bool = MessageController::sendMessage($request,$toid['uid'],$content);
+                if (empty($resumeinfo) || empty($positioninfo)) {
+                    $data['status'] = 400;
+                    $data['msg'] = "简历投递失败";
+                    return $data;
                 }
-                //发送简历邮件到企业端
-                if($this->sendresumetomail($request,$toid['eid'])){
-                    $data['msg']="发送邮件到企业失败";
+                $back_up->skill = $resumeinfo['skill'];
+                $back_up->extra = $resumeinfo['extra'];
+                $back_up->extra = $resumeinfo['professional'];
+                $back_up->extra = $resumeinfo['club'];
+                $back_up->extra = $resumeinfo['is_contract'];
+                $back_up->extra = $resumeinfo['opinion'];
+
+                //设置选手经历
+                $playerexp = PlayerResume::where('uid', '=', $uid)
+                    ->get();
+                if ($playerexp->count()) {
+                    $player = "";
+                    foreach ($playerexp as $item) {
+                        if($player == "")
+                            $player = $item['game_id'] . '@' .$item['egame'] . '@' .$item['place']. '@' .$item['service']. '@' .$item['best_result']. '@' .$item['probability'];
+                        else
+                            $player = $player . ';' . $item['game_id'] . '@' .$item['egame'] . '@' .$item['place']. '@' .$item['service']. '@' .$item['best_result']. '@' .$item['probability'];
+                    }
+                    $back_up->playerexp = $player;
                 }
-                $data['status'] = 200;
-            } else {
-                $data['status'] = 400;
-                $data['msg'] = "简历投递失败";
+                $back_up->save();
+
+                //新建投递表
+                $deliver = new Delivered();
+                $deliver->did = $back_up['did'];
+                $deliver->uid = $uid;
+                $deliver->pid = $pid;
+                $deliver->rid = $rid;
+                $deliver->status = 0;
+
+                $toid = Enprinfo::where('eid', $positioninfo['eid'])->first();//企业用户对应的uid
+                if ($deliver->save()) {
+                    //发送站内信到企业端
+                    if ($uid != 0) {
+                        $content = "我投了贵公司的" . $positioninfo['title'] . "职位，请注意查收！";
+                        $bool = MessageController::sendMessage($request, $toid['uid'], $content);
+                    }
+                    //发送简历邮件到企业端
+                    if ($this->sendresumetomail($request, $toid['eid'])) {
+                        $data['msg'] = "发送邮件到企业失败";
+                    }
+                    $data['status'] = 200;
+                } else {
+                    $data['status'] = 400;
+                    $data['msg'] = "简历投递失败";
+                }
             }
         } else {
             $data['status'] = 400;

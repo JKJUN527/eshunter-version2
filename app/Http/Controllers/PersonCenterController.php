@@ -37,6 +37,7 @@ class PersonCenterController extends Controller {
                 $data['uid'] = AuthController::getUid();
                 $data['type'] = 1;
                 $data['resumeList'] = $resume->getResumeList();
+                $data['playerResume'] = $resume->getPlayerResume();
                 $info = new InfoController();
                 $data['personInfo'] = $info->getPersonInfo();
                 $data['recommendPosition'] = $this->recommendPosition();
