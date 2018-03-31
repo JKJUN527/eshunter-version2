@@ -335,6 +335,40 @@ class ResumeController extends Controller {
 //        return $data;
         return view('resume/preview', ["data" => $data]);
     }
+    //预览选手简历
+    public function previewPlayerResume(Request $request) {
+        $data = array();
+        $data['uid'] = AuthController::getUid();
+        $data['type'] = AuthController::getType();
+        $data['uid'] = AuthController::getUid();
+        $data['username'] = InfoController::getUsername();
+        $input = $request->all();
+        if (!($request->has('rid'))) {
+            return redirect()->back() - with('error', '参数错误');
+        }
+
+        $data['rid'] = $input['rid'];
+
+        $person = new InfoController();
+        $data['personInfo'] = $person->getPersonInfo();
+        $data['resume'] = Resumes::find($data['rid']);
+        $data['intention'] = Intention::find($data['resume']['inid']);
+        $data['playerResume'] = $this->getPlayerResumeExp();
+
+        $skillStr = $data['resume']['skill'];
+        if ($skillStr == null) {
+            $data['resume']['skill'] = null;
+        } else {
+            $data['resume']['skill'] = explode("|@|", substr($skillStr, 3));
+        }
+
+        $data['region'] = Region::all();
+        $data['industry'] = Industry::all();
+        $data['occupation'] = Occupation::orderBy('updated_at','asc')->get();
+
+//        return $data;
+        return view('resume/previewPlayer', ["data" => $data]);
+    }
 
     //基本信息的获取
 //    public function generateRid() {
@@ -587,6 +621,29 @@ class ResumeController extends Controller {
         } else {
             $data['status'] = 400;
             $data['msg'] = "添加选手经历失败";
+        }
+        return $data;
+    }
+    //新增选手基本信息
+    public function addPlayerBaseinfoResume(Request $request){
+        $uid = AuthController::getUid();
+        $input = $request->all();
+        $rid = $input['rid'];
+
+        $data = array();
+        $resume = Resumes::find($rid);
+
+        $resume->professional = $input['professional'];
+        $resume->club = $input['club'];
+        $resume->is_contract = $input['is_contract'];
+        $resume->opinion = $input['opinion'];
+
+        if ($resume->save()) {
+            $data['status'] = 200;
+            $data['msg'] = "设置选手信息成功";
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "设置选手信息失败";
         }
         return $data;
     }

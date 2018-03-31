@@ -77,6 +77,7 @@ Route::any('resume/getIndustry', ['uses' => 'ResumeController@getIndustry']);
 Route::get('resume/getResumeList', ['uses' => 'ResumeController@getResumeList']);
 Route::get('resume/getResumeAllList', ['uses' => 'ResumeController@getResumeAllList']);
 Route::get('resume/preview', ['uses' => 'ResumeController@previewResume']);
+Route::get('resume/previewPlayer', ['uses' => 'ResumeController@previewPlayerResume']);
 
 Route::post('resume/rename', ['uses' => 'ResumeController@rename']);
 Route::post('resume/addIntention', ['uses' => 'ResumeController@addIntention']);
@@ -86,6 +87,7 @@ Route::post('resume/addWorkexp', ['uses' => 'ResumeController@addWorkexp']);
 Route::post('resume/addProjectexp', ['uses' => 'ResumeController@addProjectexp']);
 //选手简历信息新增
 Route::post('resume/addPlayerResumeExp', ['uses' => 'ResumeController@addPlayerResumeExp']);
+Route::post('resume/addPlayerBaseinfoResume', ['uses' => 'ResumeController@addPlayerBaseinfoResume']);
 Route::post('resume/addSkill', ['uses' => 'ResumeController@addTag']);
 Route::post('resume/addExtra', ['uses' => 'ResumeController@addExtra']);
 Route::post('resume/deleteSkill', ['uses' => 'ResumeController@deleteTag']);
@@ -101,6 +103,7 @@ Route::post('resume/geteduinfo', ['uses' => 'ResumeController@geteduinfo']);
 Route::post('resume/getworkinfo', ['uses' => 'ResumeController@getworkinfo']);
 Route::post('resume/getegameinfo', ['uses' => 'ResumeController@getegameinfo']);
 Route::post('resume/getprojectinfo', ['uses' => 'ResumeController@getprojectinfo']);
+Route::post('resume/getPlayerResumeinfo', ['uses' => 'ResumeController@getPlayerResumeinfo']);
 
 //Route::any('resume/advanceSearch', ['uses' => 'ResumeController@advanceIndex']);
 

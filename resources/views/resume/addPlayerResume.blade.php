@@ -54,7 +54,7 @@
         }
 
         .intention-panel p,
-        .education-panel p,
+        .baseinfo-panel p,
         .PlayerResume-panel p,
         .work-panel p {
             padding: 5px 10px;
@@ -64,7 +64,7 @@
             margin-bottom: 0;
         }
 
-        .education-panel p,
+        .baseinfo-panel p,
         .PlayerResume-panel p,
         .work-panel p {
             display: block !important;
@@ -85,6 +85,7 @@
         }
 
         .education-panel p:hover,
+        .baseinfo-panel p:hover,
         .PlayerResume-panel p:hover,
         .work-panel p:hover {
             background-color: #f5f5f5;
@@ -99,6 +100,10 @@
             font-size: 14px;
 
         }
+        .baseinfo-panel p span {
+            color: #737373;
+            font-size: 14px;
+         }
         .PlayerResume-panel span{
             color: #737373;
             font-size: 14px;
@@ -158,6 +163,7 @@
 
         .skill-panel span i:hover,
         .education-panel p i:hover,
+        .baseinfo-panel p i:hover,
         .PlayerResume-panel p i:hover,
         .work-panel p i:hover {
             background: #ebebeb;
@@ -196,10 +202,7 @@
         }
 
         .intention-panel-update,
-        .education-panel-update,
-        .education-panel-edit,
-        .work-panel-update,
-        .project-panel-update,
+        .baseinfo-panel-update,
         .skill-panel-update,
         .PlayerResume-panel-update,
         .additional-panel-update,
@@ -624,8 +627,7 @@
                         <label for="PlayerResume-gameID">游戏ID</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" id="gameID" name="gameID" class="form-control"
-                                       placeholder="不能为空">
+                                <input type="text" id="gameID" name="gameID" class="form-control" placeholder="不能为空">
                                 <input type="text" id="PlayerResumeID" name="PlayerResumeID" class="form-control" value="-1" style="display: none">
                             </div>
                             <label class="error" for="school"></label>
@@ -704,11 +706,11 @@
 
                 <div class="mdl-card resume-child-card">
                     <div class="mdl-card__title">
-                        <i class="fa fa-pencil fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">求职意向</h5>
+                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手信息</h5>
                     </div>
 
                     <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-intention">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-baseinfo">
                             <i class="material-icons">mode_edit</i>
                         </button>
 
@@ -717,243 +719,91 @@
                         </div>
                     </div>
 
-                    <div class="mdl-card__actions mdl-card--border intention-panel">
+                    <div class="mdl-card__actions mdl-card--border baseinfo-panel">
 
-                        @if($data['intention'] == null)
+                        @if($data['resume'] == null)
                             <div class="mdl-card__supporting-text">
-                                您还没有填写过求职意向，点击右上角进行填写
+                                您还没有填写过选手基本信息，点击右上角进行填写
                             </div>
                         @else
-                            <p>地区：
+                            <p>是否职业选手：
                                 <span>
-                                    @foreach($data['province'] as $province)
-                                        @if($data['intention']->region == $province->id)
-                                            {{$province->name}}
-                                            @break
-                                        @endif
-                                    @endforeach
-                                    @foreach($data['city'] as $city)
-                                        @if($data['intention']->region == $city->id)
-                                            {{$city->name}}
-                                            @break
-                                        @elseif($data['intention']->region == -1)
-                                            任意
-                                            @break
-                                        @endif
-                                    @endforeach
-                                </span>
-                            </p>
-                            <p>行业分类：
-                                <span>
-                                    @foreach($data['industry'] as $industry)
-                                        @if($data['intention']->industry == $industry->id)
-                                            {{$industry->name}}
-                                            @break
-                                        @elseif($data['intention']->industry == -1)
-                                            任意
-                                            @break
-                                        @endif
-                                    @endforeach
-                                </span>
-                            </p>
-                            <p>职业分类：
-                                <span>
-                                    @foreach($data['occupation'] as $occupation)
-                                        @if($data['intention']->occupation == $occupation->id)
-                                            {{$occupation->name}}
-                                            @break
-                                        @elseif($data['intention']->occupation == -1)
-                                            任意
-                                            @break
-                                        @endif
-                                    @endforeach
-                                </span>
-                            </p>
-                            <p>工作类型：
-                                <span>
-                                    @if($data['intention']->work_nature == -1)
-                                        任意
-                                    @elseif($data['intention']->work_nature == 0)
-                                        兼职
-                                    @elseif($data['intention']->work_nature == 1)
-                                        实习
-                                    @elseif($data['intention']->work_nature == 2)
-                                        全职
+                                    @if($data['resume']->professional == 0)
+                                        否
+                                    @else
+                                        是
                                     @endif
                                 </span>
                             </p>
-
-                            <p>期望薪资（月）:
+                            <p>曾效力俱乐部：
                                 <span>
-                                    @if($data['intention']->salary < 0)
-                                        未指定
+                                    @if($data['resume']->club == null ||$data['resume']->club == "")
+                                        暂无
                                     @else
-                                        {{$data['intention']->salary}} 元
+                                        {{$data['resume']->club}}
+                                    @endif
+                                </span>
+                            </p>
+                            <p>是否有合同：
+                                <span>
+                                    @if($data['resume']->is_contract == 0)
+                                        暂无
+                                    @else
+                                        有签订合同
+                                    @endif
+                                </span>
+                            </p>
+                            <p>监护人意见：
+                                <span>
+                                    @if($data['resume']->opinion == 0)
+                                        沟通中
+                                    @else
+                                        同意
                                     @endif
                                 </span>
                             </p>
                         @endif
                     </div>
 
-                    <div class="mdl-card__actions mdl-card--border intention-panel-update">
-                        <label for="position-place">意向省份</label>
+                    <div class="mdl-card__actions mdl-card--border baseinfo-panel-update">
+                        <label for="baseinfo-professional">是否职业选手</label>
                         <div class="form-group">
                             {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" id="position-place"
-                                    data-live-search="true" name="place">
-                                @if($data['intention'] == null)
-                                    <option value="-1">任意</option>
-                                    @foreach($data['province'] as $province)
-                                        <option value="{{$province->id}}">{{$province->name}}</option>
-                                    @endforeach
-                                @else
-                                    @if($data['intention']->region == -1)
-                                        <option value="-1" selected>任意</option>
-                                    @else
-                                        <option value="-1">任意</option>
-                                    @endif
-                                    {{$default_province =$data['intention']->region }}
-                                    @foreach($data['province'] as $province)
-                                        @foreach($data['city'] as $city)
-                                            @if($data['intention']->region == $city->id)
-                                                <?php $default_province = $city->parent_id ?>
-                                                @break
-                                            @endif
-                                        @endforeach
-                                        @if($default_province == $province->id)
-                                            <option value="{{$province->id}}" selected>{{$province->name}}</option>
-                                        @else
-                                            <option value="{{$province->id}}">{{$province->name}}</option>
-                                        @endif
-                                    @endforeach
-                                @endif
+                            <select class="form-control show-tick selectpicker" id="baseinfo-professional" name="baseinfo-professional">
+                                    <option value="0" @if($data['resume']->professional == 0) selected @endif>不是</option>
+                                    <option value="1" @if($data['resume']->professional == 1) selected @endif>是</option>
                             </select>
-                            <label class="error" for="position-place"></label>
+                            <label class="error" for="professional"></label>
                         </div>
-                        <label for="position-city" id="citylabel" style="display: none">意向城市</label>
-                        @foreach($data['province'] as $province)
-                            <div class="form-group" id="city-display{{$province->id}}"
-                                 name="city-display" style="display: none">
-                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                                <select class="form-control show-tick selectpicker" id="position-city"
-                                        data-live-search="true" name="city{{$province->id}}">
-                                    <option value="-1" selected >任意</option>
-                                    @foreach($data['city'] as $city)
-                                        @if($city->parent_id == $province->id)
-                                            @if($data['intention']->region == $city->id)
-                                                <option value="{{$city->id}}" selected>{{$city->name}}</option>
-                                            @else
-                                                <option value="{{$city->id}}">{{$city->name}}</option>
-                                            @endif
-                                        @endif
-                                    @endforeach
-                                </select>
-                                <label class="error" for="position-city"></label>
-                            </div>
-                        @endforeach
-
-                        <label for="position-industry">行业意向</label>
-                        <div class="form-group">
-                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" disabled id="position-industry"
-                                    name="industry">
-
-                                @if($data['intention'] == null)
-                                    <option value="-1">任意</option>
-                                    @foreach($data['industry'] as $industry)
-                                        <option value="{{$industry->id}}">{{$industry->name}}</option>
-                                    @endforeach
-                                @else
-                                    @if($data['intention']->industry == -1)
-                                        <option value="-1" selected>任意</option>
-                                    @else
-                                        <option value="-1">任意</option>
-                                    @endif
-                                    @foreach($data['industry'] as $industry)
-                                        @if($data['intention']->industry == $industry->id)
-                                            <option value="{{$industry->id}}" selected>{{$industry->name}}</option>
-                                        @else
-                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-
-                        <label for="position-occupation" id="occulabel" style="display:none">游戏意向</label>
-                        @foreach($data['industry'] as $industry)
-                            <div class="form-group" id="occupation-display{{$industry->id}}" name="occupation-display"
-                                 style="display:none;">
-                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                                <select class="form-control show-tick selectpicker" id="position-occupation"
-                                        name="occupation{{$industry->id}}">
-
-                                    @if($data['intention'] == null)
-                                        <option value="-1">任意</option>
-                                        @foreach($data['occupation'] as $occupation)
-                                            @if($occupation->industry_id == $industry->id)
-                                                <option value="{{$occupation->id}}">{{$occupation->name}}</option>
-                                            @endif
-                                        @endforeach
-
-                                    @else
-                                        @if($data['intention']->occupation == -1)
-                                            <option value="-1" selected>任意</option>
-                                        @else
-                                            <option value="-1">任意</option>
-                                        @endif
-                                        @foreach($data['occupation'] as $occupation)
-                                            @if($occupation->industry_id == $industry->id)
-                                                @if($data['intention']->occupation == $occupation->id)
-                                                    <option value="{{$occupation->id}}"
-                                                            selected>{{$occupation->name}}</option>
-                                                @else
-                                                    <option value="{{$occupation->id}}">{{$occupation->name}}</option>
-                                                @endif
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                        @endforeach
-
-                        <label for="position-type">工作类型意向</label>
-                        <div class="form-group">
-                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" id="position-type" name="type">
-                                @if($data['intention'] == null)
-                                    <option value="-1">任意</option>
-                                    <option value="0">兼职</option>
-                                    <option value="1">实习</option>
-                                    <option value="2">全职</option>
-                                @else
-                                    <option value="-1" {{$data['intention']->work_nature==-1?"selected":""}}>任意</option>
-                                    <option value="0" {{$data['intention']->work_nature==0?"selected":""}}>兼职</option>
-                                    <option value="1" {{$data['intention']->work_nature==1?"selected":""}}>实习</option>
-                                    <option value="2" {{$data['intention']->work_nature==2?"selected":""}}>全职</option>
-                                @endif
-                            </select>
-                        </div>
-
-                        <label for="position-salary">薪资意向（月）</label>
+                        <label for="baseinfo-club">曾效力俱乐部</label>
                         <div class="form-group">
                             <div class="form-line">
-                                @if($data['intention'] == null || $data['intention']->salary < 0)
-                                    <input type="number" id="position-salary" name="salary" class="form-control"
-                                           step="1" placeholder="薪资意向(单位：元)，选填">
-                                @else
-                                    <input type="number" id="position-salary" name="salary" class="form-control"
-                                           step="1" placeholder="薪资意向(单位：元)，选填"
-                                           value="{{$data['intention']->salary}}">
-                                @endif
+                                <input type="text" id="baseinfo-club" name="baseinfo-club" class="form-control" placeholder="曾经效力俱乐部">
                             </div>
+                            <label class="error" for="baseinfo-club"></label>
+                        </div>
+                        <label for="baseinfo-is_contract">是否有签订合同</label>
+                        <div class="form-group">
+                            <select class="form-control show-tick selectpicker" id="baseinfo-is_contract" name="is_contract">
+                                    <option value="0" @if($data['resume']->is_contract == 0) selected @endif>没有</option>
+                                    <option value="1" @if($data['resume']->is_contract == 1) selected @endif>有</option>
+                            </select>
+                            <label class="error" for="baseinfo-is_contract"></label>
+                        </div>
+                        <label for="baseinfo-opinion">监护人意见</label>
+                        <div class="form-group">
+                            <select class="form-control show-tick selectpicker" id="baseinfo-opinion" name="baseinfo-opinion">
+                                    <option value="0" @if($data['resume']->opinion == 0) selected @endif>沟通中</option>
+                                    <option value="1" @if($data['resume']->opinion == 1) selected @endif>同意</option>
+                            </select>
+                            <label class="error" for="baseinfo-opinion"></label>
                         </div>
 
                         <div class="button-panel">
                             <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
                                 取消
                             </button>
-                            <button id="add-intention--button"
+                            <button id="add-baseinfo--button"
                                     class="btn btn-primary blue-btn">
                                 确认修改／新增
                             </button>
@@ -1085,7 +935,7 @@
             <div class="info-panel--right">
                 <div class="button-panel">
                     <button class="btn btn-primary blue-btn"
-                            to="/resume/preview?rid={{$data['rid']}}">
+                            to="/resume/previewPlayer?rid={{$data['rid']}}">
                         预览简历
                     </button>
                     <button class="btn btn-primary blue-btn"
@@ -1143,11 +993,13 @@
         });
 
         $intentionPanelUpdate = $(".intention-panel-update");
+        $baseinfoPanelUpdate = $(".baseinfo-panel-update");
         $PlayerResumePanelUpdate = $(".PlayerResume-panel-update");
         $skillPanelUpdate = $(".skill-panel-update");
         $additionalPanelUpdate = $(".additional-panel-update");
 
         $intentionPanelUpdate.hide();
+        $baseinfoPanelUpdate.hide();
         $PlayerResumePanelUpdate.hide();
         $skillPanelUpdate.hide();
         $additionalPanelUpdate.hide();
@@ -1155,13 +1007,16 @@
         $("#update-intention").click(function () {
             $intentionPanelUpdate.fadeIn();
         });
+        $("#update-baseinfo").click(function () {
+            $baseinfoPanelUpdate.fadeIn();
+        });
 
         $("#update-PlayerResume").click(function () {
-            $("input[id=school]").val("");//设置学校值
-            $("input[id=eduid]").val(-1);//设置教育经历id
-            $("input[id=subject-name]").val("");//设置专业信息
-            $("input[id=education-begin]").val("");//设置入学时间
-            $("input[id=education-end]").val("");//设置毕业时间
+//            $("input[id=school]").val("");//设置学校值
+            $("input[id=gameID]").val(-1);//设置教育经历id
+//            $("input[id=subject-name]").val("");//设置专业信息
+//            $("input[id=education-begin]").val("");//设置入学时间
+//            $("input[id=education-end]").val("");//设置毕业时间
             $PlayerResumePanelUpdate.fadeIn();
         });
 
@@ -1177,6 +1032,10 @@
             $intentionPanelUpdate.hide();
         });
 
+        $baseinfoPanelUpdate.find(".button-panel>button.cancel").click(function () {
+            $baseinfoPanelUpdate.hide();
+        });
+
         $PlayerResumePanelUpdate.find(".button-panel>button.cancel").click(function () {
             $PlayerResumePanelUpdate.hide();
         });
@@ -1188,21 +1047,15 @@
         $additionalPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $additionalPanelUpdate.hide();
         });
-        //修改已填写的教育经历
-        $editEducation = $("p[name=education_info]");
-        //修改工作经历
-        $editWork = $("p[name=work_info]");
-        //修改项目经历
-        $editProject = $("p[name=project_info]");
-        //修改电竞经历
-        $editEgame = $("p[name=egame_info]");
+        //修改已填写的选手经历
+        $editPlayer = $("p[name=playerResume_info]");
 
-        $editEducation .click(function (){
-            $eduid = $(this).attr("data-content");
+        $editPlayer .click(function (){
+            $playerid = $(this).attr("data-content");
             var formData = new FormData();
-            formData.append('eduid', $eduid);
+            formData.append('id', $playerid);
             $.ajax({
-                url: '/resume/geteduinfo',
+                url: '/resume/getPlayerResumeinfo',
                 type: 'post',
                 dataType: 'text',
                 cache: false,
@@ -1212,57 +1065,22 @@
                 success: function (data) {
                     var result = JSON.parse(data);
                     //调用函数打开编辑框
-                    showeditEdu(result);
+                    showeditPlayer(result);
 //                    console.log(result);
                 }
             })
 
         });
-        function showeditEdu(data) {
-            $("input[id=school]").val(data.school);//设置学校值
-            $("input[id=eduid]").val(data.eduid);//设置教育经历id
-//            $("select[id=education-degree]").find("option:contains(3)").attr("selected",true);
-//            $("select[id=education-degree]").val(data.degree);//设置学位信息
-            $("input[id=subject-name]").val(data.major);//设置专业信息
-            $("input[id=education-begin]").val(data.date);//设置入学时间
-            $("input[id=education-end]").val(data.gradu_date);//设置毕业时间
-            $educationPanelUpdate.fadeIn();
-
-        }
-        function showeditWork(data) {
-            $("input[id=company-name]").val(data.ename);//设置公司名称
-            $("input[id=workex-id]").val(data.id);//设置公司名称
-            $("input[id=position]").val(data.position);//设置职位
-            $("input[id=work-begin]").val(data.work_time.split('@')[0]);//设置入职时间
-            $("input[id=work-end]").val(data.work_time.split('@')[1]);//设置离职时间
-            if(data.describe){
-                data.describe = data.describe.replace(/<\/br>/g, "\r\n");
-            }
-            $("textarea[id=work-desc]").val(data.describe);
-            $workPanelUpdate.fadeIn();
-
-        }
-        function showeditProject(data) {
-            $("input[id=project-name]").val(data.project_name);//设置项目名称
-            $("input[id=projectex-id]").val(data.id);//设置项目id
-            $("input[id=project-position]").val(data.position);//设置职位
-            $("input[id=project-begin]").val(data.project_time.split('@')[0]);//设置开始时间
-            $("input[id=project-end]").val(data.project_time.split('@')[1]);//设置结束时间
-            if(data.describe){
-                data.describe = data.describe.replace(/<\/br>/g, "\r\n");
-            }
-            $("textarea[id=project-desc]").val(data.describe);
-            $projectPanelUpdate.fadeIn();
-
-        }
-        function showeditEgame(data) {
-            $("input[id=egame-id]").val(data.egid);//设置游戏经历id
-            $("input[id=game-begin]").val(data.date);
-            if(data.extra){
-                data.extra = data.extra.replace(/<\/br>/g, "\r\n");
-            }
-            $("textarea[id=game-desc]").val(data.extra);//设置备注信息
-            $gamePanelUpdate.fadeIn();
+        function showeditPlayer(data) {
+            $("input[id=gameID]").val(data.game_id);//
+            $("input[id=PlayerResumeID]").val(data.id);//
+            $("select[id=PlayerResume-gamename] option[value='26']").attr("selected",true);
+            $("select[id=PlayerResume-place]").find("option:contains(data.place)").attr("selected",true);
+//            $("select[id=education-degree]").val(data.degree);//
+            $("input[id=PlayerResume-service]").val(data.service);//
+            $("input[id=PlayerResume-grade]").val(data.best_result);//
+            $("select[id=PlayerResume-probability]").find("option:contains(data.probability)").attr("selected",true);
+            $PlayerResumePanelUpdate.fadeIn();
 
         }
         //自动关联行业和职业信息
@@ -1274,15 +1092,6 @@
             $("#occulabel").css("display", "block");
             $(id).css("display", "block");
 //            $(id).style.display = block;
-        });
-        //自动关联游戏名称及游戏段位
-        $('#egame-name').change(function () {
-            var indexid = $("select[name='egamename']").val();
-            var id = "#egrade-display" + indexid;
-            $('div[name=egrade-display]').css("display", "none");
-            $("#egrade-label").css("display", "block");
-            $(id).css("display", "block");
-            //            $(id).style.display = block;
         });
         //自动关联省份和城市
         $('#position-place').change(function () {
@@ -1441,6 +1250,42 @@
                 success: function (data) {
                     var result = JSON.parse(data);
                     checkResult(result.status, "选手经历已添加", result.msg, $PlayerResumePanelUpdate);
+                }
+            })
+        });
+        $("#add-baseinfo--button").click(function () {
+
+            var rid = $("input[name='rid']");
+            var professional = $("select[name='baseinfo-professional']");
+            var club = $("input[name='baseinfo-club']");
+            var is_contract = $("select[name='is_contract']");
+            var opinion = $("select[name='baseinfo-opinion']");
+
+            if (professional.val() === '1' && club.val().length <= 0 ) {
+                setError(club, "baseinfo-club", "不能为空");
+                return;
+            } else {
+                removeError(club, "baseinfo-club");
+            }
+
+            var formData = new FormData();
+            formData.append('rid', rid.val());
+            formData.append('professional', professional.val());
+            formData.append('club', club.val());
+            formData.append('is_contract', is_contract.val());
+            formData.append('opinion', opinion.val());
+
+            $.ajax({
+                url: "/resume/addPlayerBaseinfoResume",
+                type: 'post',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    checkResult(result.status, "选手信息已设置", result.msg, $baseinfoPanelUpdate);
                 }
             })
         });

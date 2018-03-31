@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '预览一般简历')
+@section('title', '预览选手简历')
 
 @section('custom-style')
     <link rel="stylesheet" type="text/css" href="{{asset('style/font-awesome.min.css')}}"/>
@@ -48,6 +48,8 @@
         }
 
         .intention-panel p,
+        .baseinfo-panel p,
+        .PlayerResume-panel p,
         .education-panel p,
         .work-panel p {
             padding: 5px 25px;
@@ -58,6 +60,8 @@
         }
 
         .education-panel p,
+        .baseinfo-panel p,
+        .PlayerResume-panel p,
         .work-panel p {
             display: block !important;
         }
@@ -88,6 +92,30 @@
             margin-right: 10px;
         }
 
+        .intention-panel p span {
+            color: #737373;
+            font-size: 14px;
+
+        }
+        .baseinfo-panel p span {
+            color: #737373;
+            font-size: 14px;
+        }
+        .PlayerResume-panel span{
+            color: #737373;
+            font-size: 14px;
+        }
+
+        .PlayerResume-panel p span,
+        .education-panel p span,
+        .work-panel p span {
+            margin-right: 10px;
+            /*overflow: hidden;*/
+            white-space: nowrap;
+            display: inline-block;
+            text-overflow: ellipsis;
+        }
+
         .skill-panel span {
             display: inline-block;
             background: #03A9F4;
@@ -116,6 +144,22 @@
         .base-info__title {
             width: 800px !important;
         }
+        .PlayerResume-panel p span:last-child{
+            min-width: 103px;
+            max-width: 200px;
+        }
+        .education-panel p i,
+        .PlayerResume-panel p i,
+        .work-panel p i {
+            float: right;
+            cursor: pointer;
+            font-size: 16px;
+            color: #D32F2F;
+            position: relative;
+            top: 5px;
+            border-radius: 16px;
+            background: #f5f5f5;
+        }
 
     </style>
 @endsection
@@ -142,7 +186,7 @@
                             to="/resume/add?rid={{$data['rid']}}">
                         <i class="material-icons">arrow_back</i>
                     </button>
-                    <h5 class="mdl-card__title-text" style="margin-left: 16px;">预览一般简历</h5>
+                    <h5 class="mdl-card__title-text" style="margin-left: 16px;">预览选手简历</h5>
                 </div>
 
                 <div class="mdl-card__supporting-text" style="margin-left: 48px;">
@@ -401,133 +445,78 @@
                 </div>
             </div>
 
-            <div class="mdl-card resume-child-card">
-                <div class="mdl-card__title">
-                    <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">教育经历</h5>
-                </div>
+                <div class="mdl-card resume-child-card">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手经历</h5>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border PlayerResume-panel">
 
-                <div class="mdl-card__actions mdl-card--border education-panel">
-
-                    @forelse($data['education'] as $education)
-                        <p>
-                            <span>{{$education->school}}</span>
-                            @if($education->gradu_date !=NULL)
-                                <span>{{$education->date}}-{{$education->gradu_date}}</span>
-                            @else
-                                <span>{{$education->date}}- -</span>
-                            @endif
-                            <span>
-                                    @if($education->degree == 0)
-                                    高中
-                                @elseif($education->degree == 1)
-                                    本科
-                                @elseif($education->degree == 3)
-                                    专科
-                                @elseif($education->degree == 2)
-                                    硕士及以上
-                                @endif
-                                </span>
-                            <span>{{$education->major}}</span>
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            无教育经历
-                        </div>
-                    @endforelse
-                </div>
-            </div>
-
-            <div class="mdl-card resume-child-card">
-                <div class="mdl-card__title">
-                    <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">工作经历</h5>
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border work-panel">
-
-                    @forelse($data['work'] as $work)
-                        <p>
-                            <?php
-                            $index = 1;
-                            ?>
-                            <span>
-                            @foreach(explode('@', $work->work_time) as $time)
-                                @if($index == 1)
-                                    {{$time}}--
-                                @elseif($index == 2)
-                                    {{$time}}
-                                @endif
-
-                                <?php $index++ ?>
-                            @endforeach
-                            </span>
-                            <span>{{$work->ename}}</span>
-                            <span>{{$work->position}}</span></br>
-                            <p style="width: auto">{!! $work->describe !!}</p>
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            无工作经历
-                        </div>
-                    @endforelse
-                </div>
-            </div>
-
-            <div class="mdl-card resume-child-card">
-                 <div class="mdl-card__title">
-                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">项目/赛事经历</h5>
-                 </div>
-
-                    <div class="mdl-card__actions mdl-card--border work-panel">
-
-                        @forelse($data['project'] as $project)
-                            <p>
-                                <?php
-                                $index = 1;
-                                ?>
-                                <span>
-                                @foreach(explode('@', $project->project_time) as $time)
-                                        @if($index == 1)
-                                            {{str_replace('-','/',$time)}} --
-                                        @elseif($index == 2)
-                                            {{str_replace('-','/',$time)}}
-                                        @endif
-                                        <?php $index++ ?>
-                                    @endforeach
-                                </span>
-                                <span>{{$project->project_name}}</span>
-                                <span>{{$project->position}}</span>
-                                <span style="width: 90%">{!! $project->describe !!}</span>
+                        @forelse($data['playerResume'] as $playerResume)
+                            <p id="playerResume_info" name="playerResume_info" data-content="{{$playerResume->id}}">
+                                游戏ID：<span>{{$playerResume->game_id}}</span>
+                                游戏名称：<span>{{$playerResume->egame}}</span>
+                                选手位置：<span>{{$playerResume->place}}</span>
+                                服务器：<span>{{$playerResume->service}}</span>
+                                最高排位：<span>{{$playerResume->best_result}}</span>
+                                胜率：<span>{{$playerResume->probability*10}}%~{{($playerResume->probability+1)*10}}%</span>
                             </p>
                         @empty
                             <div class="mdl-card__supporting-text">
-                                无项目经历
+                                您还没有填写过选手经历，点击右上角进行填写
                             </div>
                         @endforelse
-                 </div>
-            </div>
-
-            <div class="mdl-card resume-child-card">
-                <div class="mdl-card__title">
-                    <i class="fa fa-gamepad fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">电竞经历</h5>
+                    </div>
+                </div>
+                <div class="mdl-card resume-child-card">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手信息</h5>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border baseinfo-panel">
+                        @if($data['resume'] == null)
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过选手基本信息，点击右上角进行填写
+                            </div>
+                        @else
+                            <p>是否职业选手：
+                                <span>
+                                    @if($data['resume']->professional == 0)
+                                        否
+                                    @else
+                                        是
+                                    @endif
+                                </span>
+                            </p>
+                            <p>曾效力俱乐部：
+                                <span>
+                                    @if($data['resume']->club == null ||$data['resume']->club == "")
+                                        暂无
+                                    @else
+                                        {{$data['resume']->club}}
+                                    @endif
+                                </span>
+                            </p>
+                            <p>是否有合同：
+                                <span>
+                                    @if($data['resume']->is_contract == 0)
+                                        暂无
+                                    @else
+                                        有签订合同
+                                    @endif
+                                </span>
+                            </p>
+                            <p>监护人意见：
+                                <span>
+                                    @if($data['resume']->opinion == 0)
+                                        沟通中
+                                    @else
+                                        同意
+                                    @endif
+                                </span>
+                            </p>
+                        @endif
+                    </div>
                 </div>
 
-                <div class="mdl-card__actions mdl-card--border education-panel">
-                    @forelse($data['game'] as $game)
-                        <p>
-                            <span>{{$game->ename}}</span>
-                            <span>{{$game->level}}</span>
-                            <span>{{$game->date}} 开始接触</span>
-                            @if($game->extra != null && $game->extra != "")
-                                <p style="width: auto">{!! $game->extra !!}</p>
-                            @endif
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            无电竞经历
-                        </div>
-                    @endforelse
-                </div>
-            </div>
 
             <div class="mdl-card resume-child-card">
                 <div class="mdl-card__title">
