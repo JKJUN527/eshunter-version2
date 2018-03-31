@@ -285,7 +285,7 @@
                         @endif
                     </div>
                 </div>
-
+            @if($resume['type'] == 0)
                 <div class="mdl-card resume-child-card">
                     <div class="mdl-card__title">
                         <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i>
@@ -404,6 +404,86 @@
                         @endforelse
                     </div>
                 </div>
+            @else
+                    <div class="mdl-card resume-child-card">
+                        <div class="mdl-card__title">
+                            <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手经历</h5>
+                        </div>
+
+                        <div class="mdl-card__actions mdl-card--border PlayerResume-panel">
+
+                            @forelse($playerResume as $player)
+                                <p id="playerResume_info" name="playerResume_info" data-content="{{$player->id}}">
+                                    游戏ID：<span>{{$player->game_id}}</span>
+                                    游戏名称：<span>{{$player->egame}}</span>
+                                    选手位置：<span>{{$player->place}}</span>
+                                    服务器：<span>{{$player->service}}</span>
+                                    最高排位：<span>{{$player->best_result}}</span>
+                                    胜率：<span>{{$player->probability*10}}%~{{($player->probability+1)*10}}%</span>
+                                </p>
+                            @empty
+                                <div class="mdl-card__supporting-text">
+                                    您还没有填写过选手经历，点击右上角进行填写
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                    <div class="mdl-card resume-child-card">
+                        <div class="mdl-card__title">
+                            <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手信息</h5>
+                        </div>
+
+                        <div class="mdl-card__menu">
+                            <button class="mdl-button mdl-button--icon mdl-js-button" id="update-baseinfo">
+                                <i class="material-icons">mode_edit</i>
+                            </button>
+
+                            <div class="mdl-tooltip" data-mdl-for="update-intention">
+                                修改
+                            </div>
+                        </div>
+
+                        <div class="mdl-card__actions mdl-card--border baseinfo-panel">
+
+                                <p>是否职业选手：
+                                    <span>
+                                    @if($resume['professional'] == 0)
+                                            否
+                                        @else
+                                            是
+                                        @endif
+                                </span>
+                                </p>
+                                <p>曾效力俱乐部：
+                                    <span>
+                                    @if($resume['club'] == null ||$resume['club'] == "")
+                                            暂无
+                                        @else
+                                            {{$resume['club']}}
+                                        @endif
+                                </span>
+                                </p>
+                                <p>是否有合同：
+                                    <span>
+                                    @if($resume['is_contract'] == 0)
+                                            暂无
+                                        @else
+                                            有签订合同
+                                        @endif
+                                </span>
+                                </p>
+                                <p>监护人意见：
+                                    <span>
+                                    @if($resume['opinion'] == 0)
+                                            沟通中
+                                        @else
+                                            同意
+                                    @endif
+                                </span>
+                                </p>
+                        </div>
+                    </div>
+            @endif
 
                 <div class="mdl-card resume-child-card">
                     <div class="mdl-card__title">

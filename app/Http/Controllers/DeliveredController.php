@@ -276,6 +276,7 @@ class DeliveredController extends Controller {
                 $back_up->uid = $uid;
                 $back_up->eid = $positioninfo['eid'];
                 $back_up->position_title = $positioninfo['title'];
+                $back_up->type = 1;//简历为选手简历
 
                 //设置work_nature值:012 兼职 实习 全职
                 if ($intentioninfo->count()) {
@@ -314,10 +315,10 @@ class DeliveredController extends Controller {
                 }
                 $back_up->skill = $resumeinfo['skill'];
                 $back_up->extra = $resumeinfo['extra'];
-                $back_up->extra = $resumeinfo['professional'];
-                $back_up->extra = $resumeinfo['club'];
-                $back_up->extra = $resumeinfo['is_contract'];
-                $back_up->extra = $resumeinfo['opinion'];
+                $back_up->professional = $resumeinfo['professional'];
+                $back_up->club = $resumeinfo['club'];
+                $back_up->is_contract = $resumeinfo['is_contract'];
+                $back_up->opinion = $resumeinfo['opinion'];
 
                 //设置选手经历
                 $playerexp = PlayerResume::where('uid', '=', $uid)
@@ -383,6 +384,8 @@ class DeliveredController extends Controller {
         $data['game'] = ResumeController::getEgamexpr();
         $data['work'] = ResumeController::getWorkexp();
         $data['project'] = ResumeController::getProjectexp();
+
+        $data['playerResume'] = ResumeController::getPlayerResumeExp();
 
         $skillStr = $data['resume']['skill'];
         if ($skillStr == null) {
