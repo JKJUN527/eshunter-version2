@@ -44,7 +44,7 @@
             width: 100%;
         }
         span.verify-flag {
-            width: 150px;
+            /*width: 150px;*/
             display: inline-block;
             margin: 2px 8px 2px 16px;
             vertical-align: top;
@@ -54,7 +54,7 @@
 
         span.verified {
             color: #4CAF50;
-            text-align: right;
+            /*text-align: right;*/
         }
 
         span.unverified {
@@ -357,9 +357,11 @@
                                 </div>
                                 <div class="view_nickname">
                                     <span>{{$data['enprinfo']->ename}}</span>
+                                </div>
+                                <div class="view_nickname">
                                     <span class="verify-flag
                                         @if($data['enprinfo']->is_verification == 1) verified @endif
-                                        @if($data['enprinfo']->is_verification == 0) unverified @endif">
+                                    @if($data['enprinfo']->is_verification == 0) unverified @endif">
                                         <i class="material-icons">verified_user</i>
                                         <font>@if($data['enprinfo']->is_verification === 1) &nbsp;已认证 @elseif($data['enprinfo']->is_verification === 0) 待审核 @else 点击进行认证 @endif</font>
                                     </span>

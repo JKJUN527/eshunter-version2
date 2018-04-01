@@ -624,7 +624,7 @@
                                             </p>
                                         @else
                                             <div class="more_box">
-                                                <a href="/position/publishList" class="list_more">查看全部</a>
+                                                <a href="/position/publishList" class="list_more">查看全部/修改</a>
                                             </div>
                                         @endif
 

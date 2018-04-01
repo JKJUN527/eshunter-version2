@@ -343,7 +343,7 @@
                                     <input type="text" class="form-control" name="tag" id="position-tag"
                                            data-role="tagsinput">
                                 </div>
-                                <div class="help-info">如有多个标签，请用英文逗号分割</div>
+                                <div class="help-info">如有多个标签，请按回车键</div>
                                 <label class="error" for="position-tag"></label>
                             </div>
 

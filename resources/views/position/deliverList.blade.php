@@ -171,12 +171,12 @@
                                   <a class="d_job_link">
                                       <em class="d_job_name">{{$apply->position_title}}</em>
                                       <span class="deliver-resume look-resume-btn operations-delete" data-content="{{$apply->did}}">删除</span>
-                                      <span class="deliver-resume look-resume-btn" to="/position/deliverDetail?did={{$apply->did}}">查看简历</span>
+                                      <span class="deliver-resume look-resume-btn check-resume-new" data-content="{{$apply->did}}">查看简历</span>
                                   </a>
                               </div>
                               <div class="d_company">
                                   <img src="{{$apply->photo or asset('images/default-img.png')}}" style="height: 50px;width: 50px;">
-                                  <a href="/position/deliverDetail?did={{$apply->did}}">{{$apply->pname}}</a>
+                                  <a target="_blank" href="/position/deliverDetail?did={{$apply->did}}">{{$apply->pname}}</a>
                               </div>
                               <div class="d_resume">
                                   <a href="javascript:;" class="btn_showprogress delviery_success_btn">
@@ -229,6 +229,10 @@
 
 @section('custom-script')
     <script type="text/javascript">
+        $(".check-resume-new").click(function () {
+            var did = $(this).attr('data-content');
+            window.open("/position/deliverDetail?did="+did);
+        });
         $("#delete-all--deliver").click(function () {
             swal({
                 title: "确认",

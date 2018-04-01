@@ -65,12 +65,22 @@
         }
 
         .intention-panel p,
+        .baseinfo-panel p,
+        .PlayerResume-panel p,
         .education-panel p {
             padding: 5px 25px;
             display: inline-block;
             color: #333333;
             font-size: 16px;
             margin-bottom: 0;
+        }
+        .baseinfo-panel p,
+        .PlayerResume-panel p,
+        .work-panel p {
+            display: block !important;
+            border: 1px solid #f5f5f5;
+            margin: 16px;
+            vertical-align: middle;
         }
 
         .education-panel p {
@@ -409,7 +419,7 @@
                                 </p>
                             </div>
                         </div>
-
+                    @if($data["intention"]->type ==0)
                         {{--education--}}
                         <div class="mdl-card resume-child-card">
                             <div class="mdl-card__title">
@@ -671,6 +681,81 @@
                                 @endif
                             </div>
                         </div>
+                    @else
+                        {{--选手经历--}}
+                                <div class="mdl-card resume-child-card">
+                                    <div class="mdl-card__title">
+                                        <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手经历</h5>
+                                    </div>
+                                    <div class="mdl-card__actions mdl-card--border PlayerResume-panel">
+                                        <?php
+                                            $playerResumes = explode(';',$data["intention"]->playerexp);
+                                        ?>
+
+                                        @forelse($playerResumes as $item)
+                                            <?php $playerResume = explode('@',$item);?>
+                                            <p id="playerResume_info" name="playerResume_info" data-content="">
+                                                游戏ID：<span>{{$playerResume[0]}}</span>
+                                                游戏名称：<span>{{$playerResume[1]}}</span>
+                                                选手位置：<span>{{$playerResume[2]}}</span>
+                                                服务器：<span>{{$playerResume[3]}}</span>
+                                                最高排位：<span>{{$playerResume[4]}}</span>
+                                                胜率：<span>{{$playerResume[5]*10}}%~{{($playerResume[5]+1)*10}}%</span>
+                                            </p>
+                                        @empty
+                                            <div class="mdl-card__supporting-text">
+                                                您还没有填写过选手经历，点击右上角进行填写
+                                            </div>
+                                        @endforelse
+                                    </div>
+                                </div>
+                            {{--选手基本信息--}}
+                                <div class="mdl-card resume-child-card">
+                                    <div class="mdl-card__title">
+                                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手信息</h5>
+                                    </div>
+                                    <div class="mdl-card__actions mdl-card--border baseinfo-panel">
+                                            <p>是否职业选手：
+                                                <span>
+                                    @if($data["intention"]->professional == 0)
+                                                        否
+                                                    @else
+                                                        是
+                                                    @endif
+                                </span>
+                                            </p>
+                                            <p>曾效力俱乐部：
+                                                <span>
+                                    @if($data["intention"]->club == null ||$data["intention"]->club == "")
+                                                        暂无
+                                                    @else
+                                                        {{$data["intention"]->club}}
+                                                    @endif
+                                </span>
+                                            </p>
+                                            <p>是否有合同：
+                                                <span>
+                                    @if($data["intention"]->is_contract == 0)
+                                                        暂无
+                                                    @else
+                                                        有签订合同
+                                                    @endif
+                                </span>
+                                            </p>
+                                            <p>监护人意见：
+                                                <span>
+                                    @if($data["intention"]->opinion == 0)
+                                                        沟通中
+                                                    @else
+                                                        同意
+                                                    @endif
+                                </span>
+                                            </p>
+                                    </div>
+                                </div>
+
+
+                    @endif
 
                         {{--skill--}}
                         <div class="mdl-card resume-child-card">
