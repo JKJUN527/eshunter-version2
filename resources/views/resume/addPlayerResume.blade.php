@@ -589,7 +589,7 @@
 
                 <div class="mdl-card resume-child-card">
                     <div class="mdl-card__title">
-                        <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手经历</h5>
+                        <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">游戏段位</h5>
                     </div>
 
                     <div class="mdl-card__menu">
@@ -644,21 +644,19 @@
                         </div>
 
                         <label for="PlayerResume-place">选手位置</label>
-                        <div class="form-group">
+                        @foreach($data['occupation'] as $occupation)
+                        <div class="form-group" style="display: none" id="game-place{{$occupation->id}}" name="game-place">
                             {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" id="PlayerResume-place" name="PlayerResume-place">
-                                <option value="0" selected>上单</option>
-                                <option value="1">中单</option>
-                                <option value="2">打野</option>
-                                <option value="3">辅助</option>
-                                <option value="4">射手</option>
-                                <option value="5">狙击位</option>
-                                <option value="6">突击位</option>
-                                <option value="7">指挥位</option>
-                                <option value="8">支援位</option>
-                                <option value="-1" >其他</option>
-                            </select>
+                                <select class="form-control show-tick selectpicker" id="PlayerResume-place{{$occupation->id}}" name="PlayerResume-place">
+                                    @foreach($data['gamingposition'] as $item)
+                                        @if($item->occupation_id == $occupation->id)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endif
+                                    @endforeach
+                                    <option value="-1" >其他</option>
+                                </select>
                         </div>
+                        @endforeach
 
                         <label for="PlayerResume-service">所在服务器</label>
                         <div class="form-group">
@@ -726,7 +724,7 @@
                                 您还没有填写过选手基本信息，点击右上角进行填写
                             </div>
                         @else
-                            <p>是否职业选手：
+                            <p>是否曾是职业选手：
                                 <span>
                                     @if($data['resume']->professional == 0)
                                         否
@@ -778,7 +776,7 @@
                         <label for="baseinfo-club">曾效力俱乐部</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" id="baseinfo-club" name="baseinfo-club" class="form-control" placeholder="曾经效力俱乐部">
+                                <input type="text" id="baseinfo-club" name="baseinfo-club" class="form-control" placeholder="曾经效力俱乐部" value="{{$data['resume']->club or "暂无"}}">
                             </div>
                             <label class="error" for="baseinfo-club"></label>
                         </div>
@@ -893,7 +891,7 @@
 
                         @if($data['resume']->extra == null)
                             <div class="mdl-card__supporting-text">
-                                您还没有填写过附加信息，点击右上角进行填写
+                                写下您对电竞行业或者某个游戏的理解和想法
                             </div>
                         @else
                             <p>{{$data['resume']->extra}}</p>
@@ -1012,11 +1010,11 @@
         });
 
         $("#update-PlayerResume").click(function () {
-//            $("input[id=school]").val("");//设置学校值
-            $("input[id=gameID]").val(-1);//设置教育经历id
-//            $("input[id=subject-name]").val("");//设置专业信息
-//            $("input[id=education-begin]").val("");//设置入学时间
-//            $("input[id=education-end]").val("");//设置毕业时间
+
+            $("input[id=gameID]").val("");//清空游戏id
+            $("input[id=PlayerResume-service]").val("");//清空服务器
+            $("input[id=PlayerResume-grade]").val("");//清空段位
+
             $PlayerResumePanelUpdate.fadeIn();
         });
 
@@ -1075,7 +1073,7 @@
             $("input[id=gameID]").val(data.game_id);//
             $("input[id=PlayerResumeID]").val(data.id);//
             $("select[id=PlayerResume-gamename] option[value='26']").attr("selected",true);
-            $("select[id=PlayerResume-place]").find("option:contains(data.place)").attr("selected",true);
+            $("select[name=PlayerResume-place]").find("option:contains(data.place)").attr("selected",true);
 //            $("select[id=education-degree]").val(data.degree);//
             $("input[id=PlayerResume-service]").val(data.service);//
             $("input[id=PlayerResume-grade]").val(data.best_result);//
@@ -1083,6 +1081,13 @@
             $PlayerResumePanelUpdate.fadeIn();
 
         }
+        //自动关联游戏和选手位置
+        $('#PlayerResume-gamename').change(function () {
+            var occupation_id = $('#PlayerResume-gamename').val();
+            var position_id = "#game-place" + occupation_id;
+            $("div[name=game-place]").hide();
+            $(position_id).show();
+        });
         //自动关联行业和职业信息
         $('#position-industry').change(function () {
 //            document.getElementById("ddlResourceType").options.add(new Option(text,value));
@@ -1201,7 +1206,9 @@
             var playerID = $("input[name='PlayerResumeID']");
             var gameid = $("input[name='gameID']");
             var gamename = $("select[name='PlayerResume-gamename']");
-            var place = $("select[name='PlayerResume-place']");
+
+            var place_id = "#PlayerResume-place" + gamename.val();
+            var place = $(place_id);
             var service = $("input[name='PlayerResume-service']");
             var grade = $("input[name='PlayerResume-grade']");
             var probability = $("select[name='PlayerResume-probability']");

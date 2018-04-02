@@ -1141,7 +1141,7 @@
 
                         @if($data['resume']->extra == null)
                             <div class="mdl-card__supporting-text">
-                                您还没有填写过附加信息，点击右上角进行填写
+                                写下您对电竞行业或者某个游戏的理解和想法
                             </div>
                         @else
                             <p>{{$data['resume']->extra}}</p>

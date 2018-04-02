@@ -167,12 +167,12 @@ Route::post('/business/publish/upload', ['uses' => 'CooperationController@publis
 
 
 //网站后台
-Route::get('admin/login', function () {
+Route::get('eshunter/admin/login', function () {
     return view('admin/login');
 });
 Route::post('admin/login', ['uses' => 'Admin\LoginController@postLogin']);
 
-Route::get('admin/', ['uses' => 'Admin\DashboardController@view']);
+Route::get('eshunter/admin/', ['uses' => 'Admin\DashboardController@view']);
 Route::get('admin/dashboard', ['uses' => 'Admin\DashboardController@view']);
 
 Route::get('admin/admin', ['uses' => 'Admin\AdminController@view']);
@@ -186,6 +186,9 @@ Route::any('admin/occupation/{option}', ['uses' => 'Admin\OccupationController@e
 
 Route::any('admin/egame', ['uses' => 'Admin\EgamenameController@index']);//显示游戏
 Route::any('admin/egame/{option}', ['uses' => 'Admin\EgamenameController@edit'])->where('option', '[A-Za-z]+');//显示行业
+
+Route::any('admin/gameposition', ['uses' => 'Admin\GamePositionController@index']);//显示选手游戏位置
+Route::any('admin/gameposition/{option}', ['uses' => 'Admin\GamePositionController@edit'])->where('option', '[A-Za-z]+');//显示行业
 
 Route::any('admin/egrade', ['uses' => 'Admin\EgradeController@index']);//显示职业
 Route::any('admin/egrade/{option}', ['uses' => 'Admin\EgradeController@edit'])->where('option', '[A-Za-z]+');//显示职业

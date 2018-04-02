@@ -69,6 +69,16 @@
                         <span>游戏-段位</span>
                     </a>
                 </li>
+                <li
+                        @if($title === 'gameposition')
+                        class="active"
+                        @endif
+                >
+                    <a href="/admin/gameposition">
+                        <i class="material-icons">event</i>
+                        <span>选手位置</span>
+                    </a>
+                </li>
 
                 <li
                         @if($title === 'position')

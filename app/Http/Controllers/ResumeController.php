@@ -13,6 +13,7 @@ use App\Egame;
 use App\Egamexp;
 use App\Egamexpr;
 use App\Egrade;
+use App\Gameposition;
 use App\Industry;
 use App\Intention;
 use App\Occupation;
@@ -193,7 +194,8 @@ class ResumeController extends Controller {
         $data['city'] = Region::where('parent_id','!=',0)->get();
         $data['industry'] = Industry::all();
         $data['occupation'] = Occupation::where('industry_id',4)->orderBy('updated_at','asc')->get();
-
+        //查询对应的选手位置
+        $data['gamingposition'] = Gameposition::where('industry_id',4)->orderBy('created_at','asc')->get();
         $data['completion'] = $this->Completion_total($data['rid']);
 
 //        return $data;
