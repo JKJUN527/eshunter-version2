@@ -121,7 +121,7 @@
             <div class="c_section">
                 @if($data['type'] == 1)
                     <div class="userinfo_edit">
-                        <div class="hadInfo">
+                        <div class="hadInfo" @if(isset($data['open_edit'])) style="display: none" @endif>
                             <span class="edit_link" id="edit_link">编辑</span>
                             <div class="view_avatar">
                                 @if($data['personinfo']->photo != null && $data['personinfo']->photo != "")
@@ -152,7 +152,7 @@
                             </div>
                             <div class="view_introduce">{{$data['personinfo']->self_evalu or "自我评价未填写"}}</div>
                         </div>
-                        <form id="userinfoEditForm" onkeydown="if(event.keyCode==13){return false;}">
+                        <form id="userinfoEditForm" onkeydown="if(event.keyCode==13){return false;}" @if(isset($data['open_edit'])) style="display: block" @endif>
                             <div class="avatar">
                                 @if($data['personinfo']->photo != null && $data['personinfo']->photo != "")
                                     <img class="avatar_img" id="head-img" src="{{$data['personinfo']->photo}}" width="100" height="100">
@@ -536,10 +536,10 @@
         $(document).ready(function(){
             $("#edit_link").click(function(){
                 $(".hadInfo").hide();
-            });
-            $("#edit_link").click(function(){
                 $("#userinfoEditForm").show();
             });
+            // $("#edit_link").click(function(){
+            // });
         });
         $("#head-img").click(function (event) {
             event.preventDefault();
