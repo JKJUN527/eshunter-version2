@@ -280,6 +280,16 @@
             text-align: center;
             padding: 20px;
         }
+
+    .datetimepicker {
+        left:60% !important;
+    }
+    .datetimepicker-years .year{
+        margin-left: 1rem;
+    }
+    .datetimepicker-months .month{
+        margin-left: 1rem;
+    }
     </style>
 @endsection
 
