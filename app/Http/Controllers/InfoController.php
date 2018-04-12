@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 class InfoController extends Controller {
 
     //个人、企业基本信息修改、新增页面
-    public function index(){
+    public function index(Request $request){
         $data = array();
 
         $uid = AuthController::getUid();
@@ -26,6 +26,9 @@ class InfoController extends Controller {
         $data['username'] = $username;
         $data['type'] = $type;
         $data['uid'] = $uid;
+        //设置是否直接打开编辑框，如果从个人中心/企业中心直接点击修改资料则直接到修改界面
+        if($request->has('edit'))
+            $data['open_edit'] = 1;
         if($uid == 0){
             return  redirect('index');
         }

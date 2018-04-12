@@ -637,10 +637,12 @@
                         <div class="form-group">
                             {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                             <select class="form-control show-tick selectpicker" id="PlayerResume-gamename" name="PlayerResume-gamename">
-                                @foreach($data['occupation'] as $occupation)
+                                <option value="-1">请选择游戏种类</option>
+                            @foreach($data['occupation'] as $occupation)
                                     <option value="{{$occupation->id}}">{{$occupation->name}}</option>
                                 @endforeach
                             </select>
+                            <label class="error" for="PlayerResume-gamename"></label>
                         </div>
 
                         <label for="PlayerResume-place">选手位置</label>
@@ -1219,6 +1221,13 @@
                 return;
             } else {
                 removeError(gameid, "gameID");
+            }
+
+            if(gamename.val() === "-1"){
+                setError(gamename, "PlayerResume-gamename", "请选择游戏种类");
+                return;
+            } else {
+                removeError(gamename,"PlayerResume-gamename");
             }
 
             if (service.val() === "") {

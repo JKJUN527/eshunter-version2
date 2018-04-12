@@ -14,6 +14,13 @@
             max-width:100%;
             height: auto;
         }
+        .comment-content span{
+            float: right;
+            font-size: 0.9rem;
+        }
+        .comment-content p{
+            display: inline-block;
+        }
     </style>
 @endsection
 
@@ -79,20 +86,20 @@
                             @else
                                 @foreach($data['review'] as $comment)
                                     <div class="comment-item">
-                                        @if($comment->photo == null || $comment->photo == "")
-                                            <img src="{{asset('images/default-img.png')}}" class="head-img" width="48"
-                                                 height="48"/>
-                                        @else
-                                            @if($comment->type == 1)
-                                                <img src="{{$comment->photo}}" class="head-img" width="48" height="48"/>
-                                            @else
-                                                <img src="{{$comment->elogo}}" class="head-img" width="48" height="48"/>
-                                            @endif
-                                        @endif
-
                                         <div class="comment-content">
-                                            <p><b>{{$comment->username}}: </b>&nbsp;&nbsp;{{$comment->content}}</p>
+                                            @if($comment->photo == null || $comment->photo == "")
+                                                <img src="{{asset('images/default-img.png')}}" class="head-img" width="48"
+                                                     height="48"/>
+                                            @else
+                                                @if($comment->type == 1)
+                                                    <img src="{{$comment->photo}}" class="head-img" width="48" height="48"/>
+                                                @else
+                                                    <img src="{{$comment->elogo}}" class="head-img" width="48" height="48"/>
+                                                @endif
+                                            @endif
                                             <span>{{$comment->created_at}}</span>
+                                                <p><b>{{$comment->username}}: </b></p>
+                                                <p>{{$comment->content}}</p>
                                         </div>
                                     </div>
                                 @endforeach

@@ -81,7 +81,7 @@
                 <div class="online_left left">
                     <!-- 个人资料预览 -->
                     <div id="self_info1" class="self_info">
-                        <a href="/account/edit">
+                        <a href="/account/edit?edit=true">
                             <div class="edit_pen" style="display: none;"></div>
                         </a>
                         <div class="Resume_con">
@@ -252,7 +252,7 @@
                             <span style="" class="myhidden">一般简历</span>
                             @foreach($data['resumeList'] as $resume)
                                 <div class="resume-item">
-                                    <a to="/resume/add?rid={{$resume->rid}}">
+                                    <a target="_blank" href="/resume/add?rid={{$resume->rid}}">
                                         <img src="http://eshunter.com/images/resume.png" width="70px"></a>
                                     <p>{{$resume->resume_name}}</p>
                                 </div>
@@ -278,7 +278,7 @@
                                 <span style="" class="myhidden">选手简历</span>
                                 @forelse($data['playerResume'] as $resume)
                                     <div class="resume-item">
-                                        <a to="/resume/player/add?rid={{$resume->rid}}">
+                                        <a target="_blank" href="/resume/player/add?rid={{$resume->rid}}">
                                             <img src="{{asset('images/resume.png')}}" width="70px"/></a>
                                         <p>{{$resume->resume_name}}</p>
                                     </div>
