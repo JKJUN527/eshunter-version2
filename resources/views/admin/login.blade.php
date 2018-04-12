@@ -114,7 +114,7 @@
             data: serializedData,
             success: function (data) {
                 var result = JSON.parse(data);
-                checkResultWithLocation(result.status, "登录成功，正在跳转...", result.msg, "eshunter/admin");
+                checkResultWithLocation(result.status, "登录成功，正在跳转...", result.msg, "/eshunter/admin");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 swal(xhr.status + "：" + thrownError);

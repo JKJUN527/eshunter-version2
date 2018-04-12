@@ -76,7 +76,7 @@ class LoginController extends Controller
     public function logout(){
         Auth::logout();
         Session::flush();   //清除所有缓存
-        return redirect('admin/login');
+        return redirect('eshunter/admin/login');
     }
     //获取用户名
     public function getUsername() {

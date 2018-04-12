@@ -5,7 +5,95 @@
 	<link media="all" href="{{asset('../style/app.css')}}" type="text/css" rel="stylesheet">
 	<link media="all" href="{{asset('../style/user_style.css')}}" type="text/css" rel="stylesheet">
 	<style type="text/css">
-	    	.user_userinfo_content1{margin-left: 15px;}
+		.preview{
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			/*width: 260px;*/
+			/*height: 260px;*/
+			padding: 0 10px;
+			background: #FFF;
+			border: 1px solid #EAEDEC;
+			box-shadow: 0 2px 4px 0 rgba(0,0,0,.07);
+			border-radius: 3px;
+			font-size: 14px;
+		}
+		.preview .top{
+			text-align: center;
+			border-bottom: 1px solid #F1F1F1;
+		}
+		.top img{
+			margin-top: 20px;
+			width: 80px;
+			height: 80px;
+			border-radius: 40px;
+		}
+		.top span{
+			margin-top: 13px;
+			font-size: 16px;
+			color: #333;
+			display: block;
+			line-height: 22px;
+			overflow: hidden;
+		}
+		.positionName{
+			margin-top: 3px;
+			margin-bottom: 12px;
+			color: #555;
+		}
+		.preview .bottom{
+			margin-top: 16px;
+			font-size: 14px;
+			color: #777;
+			text-align: center;
+		}
+		.bottom span{
+			display: block;
+			line-height: 26px;
+			overflow: hidden;
+		}
+		#app #personalInfo{
+			margin-left: 10px !important;
+		}
+		#app #personalInfo .name{
+			width: auto !important;
+		}
+		.input_box select{
+			width: 446px;
+			padding: 12px 16px;
+			border: 1px solid #f8f8f8;
+			border-radius: 2px;
+			background-color: #f8f8f8;
+			font-size: 14px;
+			line-height: 20px;
+			font-family: inherit;
+		}
+		.input_box textarea{
+			display: block;
+			box-sizing: border-box;
+			width: 100%;
+			height: 44px;
+			margin-top: 0;
+			padding: 12px 0;
+			font-size: 14px;
+			color: #555;
+			border: 1px solid #f8f8f8;
+			border-radius: 2px;
+			background-color: #f8f8f8;
+		}
+		.form-group button{
+			margin-top: 2rem;
+			width: 10rem;
+			height: 2.5rem;
+			color: white;
+			background-color: #00B38A;
+		}
+		.submit-btn{
+			margin-top: 4rem;
+		}
+		.preview-img{
+			margin-top: 2rem;
+		}
 	</style>
 @endsection
 {{--@section('header-nav')
@@ -41,160 +129,148 @@
 							<span class="receiveMail">{{$data['enterprise']->email}}</span>
 							<span class="companyFullName">{{$data['enterprise']->etel}}</span>
 						</p>
-					</div>
-    			{{--<div class="comp-wrap img-to-img clearfix">--}}
-    				{{--<div class="left_box left">--}}
-    					{{--<img src="images/1.gif" alt="用户头像" class="img1"> --}}
-    					{{--<p>陈XX·老板</p>--}}
-    				{{--</div> --}}
-    				{{--<div class="horizon-line"></div> --}}
-    				{{--<div class="right_box right">--}}
-    					{{--<img src="images/1.gif" alt="公司头像" class="img2"> --}}
-    					{{--<p>店小二</p>--}}
-    				{{--</div>--}}
-    			{{--</div>--}}
-    			<form id="personalInfo" action="javascript:;" autocomplete="off">
-    				<table class="table-layout">
-    					<tbody>
-    						<tr class="company-name">
-    							<td class="title">
-    								<span class="required title">公司全称</span>
-    							</td> 
-    							<td>
-    								<span class="name">{{$data['enterprise']->ename}}</span>
-    							</td>
-    						</tr> 
-    						<tr>
-    							<td class="title">
-    								<span class="required title">公司简称</span>
-    							</td> 
-    							<td>
-									<span class="name">{{$data['enterprise']->byname}}</span>
-    								{{--<input type="text" placeholder="请填写全称简写或主要产品名称，将展示在公司主页" name="companyShortName" class="inputer input_zore"> --}}
-    								{{--<span class="vue-error vue-error-0" style="display: none;"><i class="iconfont icon-gantanhao icon-glyph-attention2"></i> 此项不能为空</span>--}}
-    							</td>
-    						</tr>
-    						<tr>
-    							<td class="title">
-    								<span class="required title">行业领域</span>
-    							</td> 
-    							<td>
-									<div class="username input_box">
-										<select class="form-control show-tick selectpicker" id="enterprise-industry"
-												name="enterprise-industry">
-											<option value="0">请选择行业</option>
-											@foreach($data['industry'] as $industry)
-												<option value="{{$industry->id}}">{{$industry->name}}</option>
-											@endforeach
-										</select>
-									</div>
-    							</td>
-    						</tr> 
-    						<tr>
-								<td class="title">
-									<span class="required title">企业类型</span>
-								</td>
-								<td>
-									<div class="username input_box">
-										<select class="form-control show-tick selectpicker" id="enterprise-type"
-												name="enterprise-type">
-											<option value="0">请选择企业类型</option>
-											<option value="1">国有企业</option>
-											<option value="2">民营企业</option>
-											<option value="3">中外合资企业</option>
-											<option value="4">外资企业</option>
-											<option value="5">社会团体</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="title">
-									<span class="required title">企业规模</span>
-								</td>
-								<td>
-									<div class="username input_box">
-										<select class="form-control show-tick selectpicker" id="enterprise-scale"
-												name="scale">
-											<option value="0" @if($data['enterprise']->escale == null) selected @endif>
-												请选择企业规模
-											</option>
-											<option value="1" @if($data['enterprise']->escale == 1) selected @endif>
-												少于50人
-											</option>
-											<option value="2" @if($data['enterprise']->escale == 2) selected @endif>
-												50人至200人
-											</option>
-											<option value="3" @if($data['enterprise']->escale == 3) selected @endif>
-												200至500人
-											</option>
-											<option value="4" @if($data['enterprise']->escale == 4) selected @endif>
-												500人至1000人
-											</option>
-											<option value="5" @if($data['enterprise']->escale == 5) selected @endif>
-												1000人以上
-											</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-    							<td class="title">
-    								<span class="required title">企业地址</span>
-    							</td> 
-    							<td>
-									<div class="username input_box">
+
+						<form id="personalInfo" action="javascript:;" autocomplete="off">
+							<table class="table-layout">
+								<tbody>
+								<tr class="company-name">
+									<td class="title">
+										<span class="required title">公司全称</span>
+									</td>
+									<td>
+										<span class="name">{{$data['enterprise']->ename}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										<span class="required title">公司简称</span>
+									</td>
+									<td>
+										<span class="name">{{$data['enterprise']->byname}}</span>
+										{{--<input type="text" placeholder="请填写全称简写或主要产品名称，将展示在公司主页" name="companyShortName" class="inputer input_zore"> --}}
+										{{--<span class="vue-error vue-error-0" style="display: none;"><i class="iconfont icon-gantanhao icon-glyph-attention2"></i> 此项不能为空</span>--}}
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										<span class="required title">行业领域</span>
+									</td>
+									<td>
+										<div class="username input_box">
+											<select class="form-control show-tick selectpicker" id="enterprise-industry"
+													name="enterprise-industry">
+												<option value="0">请选择行业</option>
+												@foreach($data['industry'] as $industry)
+													<option value="{{$industry->id}}">{{$industry->name}}</option>
+												@endforeach
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										<span class="required title">企业类型</span>
+									</td>
+									<td>
+										<div class="username input_box">
+											<select class="form-control show-tick selectpicker" id="enterprise-type"
+													name="enterprise-type">
+												<option value="0">请选择企业类型</option>
+												<option value="1">国有企业</option>
+												<option value="2">民营企业</option>
+												<option value="3">中外合资企业</option>
+												<option value="4">外资企业</option>
+												<option value="5">社会团体</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										<span class="required title">企业规模</span>
+									</td>
+									<td>
+										<div class="username input_box">
+											<select class="form-control show-tick selectpicker" id="enterprise-scale"
+													name="scale">
+												<option value="0" @if($data['enterprise']->escale == null) selected @endif>
+													请选择企业规模
+												</option>
+												<option value="1" @if($data['enterprise']->escale == 1) selected @endif>
+													少于50人
+												</option>
+												<option value="2" @if($data['enterprise']->escale == 2) selected @endif>
+													50人至200人
+												</option>
+												<option value="3" @if($data['enterprise']->escale == 3) selected @endif>
+													200至500人
+												</option>
+												<option value="4" @if($data['enterprise']->escale == 4) selected @endif>
+													500人至1000人
+												</option>
+												<option value="5" @if($data['enterprise']->escale == 5) selected @endif>
+													1000人以上
+												</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										<span class="required title">企业地址</span>
+									</td>
+									<td>
+										<div class="username input_box">
 										<textarea rows="3" class="form-control" name="enterprise-address"
 												  id="enterprise-address"
 												  placeholder="必填，Ex: xx省 xx市 xx区/县  xxx街道xxx号"
 												  value="{{$data['enterprise']->address}}"></textarea>
-									</div>
-    							</td>
-    						</tr>
-							{{--<tr>--}}
+										</div>
+									</td>
+								</tr>
+								{{--<tr>--}}
 								{{--<td class="title">--}}
-									{{--<span class="required title">相关负责人手持身份证照片</span>--}}
+								{{--<span class="required title">相关负责人手持身份证照片</span>--}}
 								{{--</td>--}}
 								{{--<td>--}}
-									{{--<div class="form-group" id="id-card_holder" style="margin-top: 16px">--}}
-										{{--<button id="id-card__upload-btn"--}}
-												{{--class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">--}}
-											{{--点击上传--}}
-										{{--</button>--}}
-									{{--</div>--}}
+								{{--<div class="form-group" id="id-card_holder" style="margin-top: 16px">--}}
+								{{--<button id="id-card__upload-btn"--}}
+								{{--class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">--}}
+								{{--点击上传--}}
+								{{--</button>--}}
+								{{--</div>--}}
 
-									{{--<div id="id-card__preview-holder">--}}
-									{{--</div>--}}
+								{{--<div id="id-card__preview-holder">--}}
+								{{--</div>--}}
 								{{--</td>--}}
-							{{--</tr>--}}
-    					</tbody>
-    				</table>
-					<label for="enterprise-id__card">相关负责人手持身份证照片</label><br>
+								{{--</tr>--}}
+								</tbody>
+							</table>
+							<div class="form-group" id="id-card_holder" style="margin-top: 16px">
+								<label for="enterprise-id__card">相关负责人手持身份证照片</label><br>
+								<button id="id-card__upload-btn"
+										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
+									点击上传
+								</button>
+							</div>
+							<div id="id-card__preview-holder">
+							</div>
+							<div class="form-group" id="license_holder" style="margin-top: 16px">
+								<label for="enterprise-license">企业营业执照</label><br>
+								<button id="license__upload-btn"
+										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
+									点击上传
+								</button>
+							</div>
 
-					<div class="form-group" id="id-card_holder" style="margin-top: 16px">
-						<button id="id-card__upload-btn"
-								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
-							点击上传
-						</button>
+							<div id="license__preview-holder">
+							</div>
+							<div class="submit-btn">
+								<input type="submit" id="submit-verify" value="提交审核" class="submit">
+								<a href="/account/enterpriseVerify/1" class="content-after-submit">返回上一步</a>
+							</div>
+						</form>
 					</div>
-
-					<div id="id-card__preview-holder">
-					</div>
-
-					<label for="enterprise-license">企业营业执照</label><br>
-
-					<div class="form-group" id="license_holder" style="margin-top: 16px">
-						<button id="license__upload-btn"
-								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
-							点击上传
-						</button>
-					</div>
-
-					<div id="license__preview-holder">
-					</div>
-    				<input type="submit" id="submit-verify" value="提交审核" class="submit">
-    				<a href="/account/enterpriseVerify/1" class="content-after-submit">返回上一步</a>
-    			</form>
     		</div>
 	</div>
 @endsection
@@ -270,9 +346,9 @@
 					showConfirmButton: false
 				});
 			} else {
-				idCardPreviewHolder.html("<div class='preview'>" +
+				idCardPreviewHolder.html("<div class='preview-img'>" +
 						"<i class='material-icons' onclick='removeIdCardPreview()'>close</i>" +
-						"<img src='" + objectUrl + "' width='384'></div>");
+						"<img src='" + objectUrl + "' width='200'></div>");
 				isUploadIdCard = true;
 			}
 		}
@@ -306,9 +382,9 @@
 				});
 			} else {
 
-				licensePreviewHolder.html("<div class='preview'>" +
+				licensePreviewHolder.html("<div class='preview-img'>" +
 						"<i class='material-icons' onclick='removeLicensePreview()'>close</i>" +
-						"<img src='" + objectUrl + "' width='384'></div>");
+						"<img src='" + objectUrl + "' width='200'></div>");
 				isUploadLicense = true;
 			}
 
