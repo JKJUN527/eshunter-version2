@@ -42,7 +42,10 @@
                 @endif
             @else
                 <li>
-                    <a class="message" href="/account/login">立即登录</a>
+                    <a class="message" href="/account/login">个人登录</a>
+                </li>
+                <li>
+                    <a href="/account/login">企业登录</a>
                 </li>
                 <li>
                     <a href="/account/register">免费注册</a>

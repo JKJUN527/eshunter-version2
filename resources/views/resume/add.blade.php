@@ -912,7 +912,7 @@
 
                         <label for="project-end">截止时间</label>
                         <div class="form-group">
-                            <div class="form-line input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <div class="form-line input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm" data-link-field="dtp_input2" data-link-format="yyyy-mm">
                                 <input size="16" type="text"  value="" readonly id="project-end" name="project-end" class="form-control" placeholder="不能为空">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -1230,9 +1230,10 @@
             todayBtn:  1,
             autoclose: 1,
             todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
+            startView: 3,
+            minView: 3,
+            forceParse: 0,
+            format: 'yyyy-mm'
         });
         $(".form-control").focus(function () {
             $(this.parentNode).addClass("focused");
