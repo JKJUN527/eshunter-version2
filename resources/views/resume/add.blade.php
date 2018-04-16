@@ -270,10 +270,51 @@
         }
         .datetimepicker-years .year{
             margin-left: 1rem;
+            display: block;
         }
         .datetimepicker-months .month{
             margin-left: 1rem;
         }
+
+    .guide{
+        width:auto;
+        margin-left:10px;
+        position:fixed;
+        /*left:50%;*/
+        /*bottom:134px;*/
+        _position:absolute;
+        _top:expression(documentElement.scrollTop+documentElement.clientHeight - this.clientHeight - 134+'px');
+        display:block;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    .guide a{
+        display:block;
+        width:auto;
+        /*height:50px;*/
+        /*background:url(images/sprite_v2.png) no-repeat;*/
+        /*margin-top:10px;*/
+        text-decoration:none;
+        font:16px/50px "Microsoft YaHei";
+        text-align:center;
+        /*color:#fff;*/
+        border-radius:2px;
+    }
+    .guide a span{
+        /*display:none;*/
+        text-align:center;
+        margin: 2rem;
+        color: black;
+    }
+    .guide a:hover{
+        text-decoration:none;
+        background-color:#39F;
+        color:#fff;}
+    .guide a:hover span{
+        margin: 2rem;
+        display:block;
+        width:auto;
+        background:#39F
+    }
     </style>
 @endsection
 
@@ -292,6 +333,18 @@
 
 @section('content')
     <div class="info-panel">
+        <div class="guide">
+            <div class="guide-wrap">
+                <a href="#intention" title=""><span>求职意向</span></a>
+                <a href="#education" title=""><span>教育经历</span></a>
+                <a href="#workexp" title=""><span>工作经历</span></a>
+                <a href="#projectexp" title=""><span>赛事经历</span></a>
+                <a href="#egameexp" title=""><span>电竞经历</span></a>
+                <a href="#skill" title=""><span>技能特长</span></a>
+                <a href="#additional" title=""><span>附加信息</span></a>
+                <a href="javascript:window.scrollTo(0,0)" class="top" title="回顶部"><span>回顶部</span></a>
+            </div>
+        </div>
         <div class="container">
             <div class="resume-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
@@ -322,7 +375,7 @@
             </div>
             <div class="info-panel--left">
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="intention">
                     <div class="mdl-card__title">
                         <i class="fa fa-pencil fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">求职意向</h5>
                     </div>
@@ -608,7 +661,7 @@
                     </div>
                 </div>
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="education">
                     <div class="mdl-card__title">
                         <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">教育经历</h5>
                     </div>
@@ -721,7 +774,7 @@
                     </div>
                 </div>
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="workexp">
                     <div class="mdl-card__title">
                         <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">工作经历</h5>
                     </div>
@@ -841,7 +894,7 @@
                     </div>
                 </div>
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="projectexp">
                     <div class="mdl-card__title">
                         <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">项目/赛事经历</h5>
                     </div>
@@ -952,7 +1005,7 @@
                     </div>
                 </div>
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="egameexp">
 
                     <div class="mdl-card__title">
                         <i class="fa fa-gamepad fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">电竞经历</h5>
@@ -1068,7 +1121,7 @@
                     {{--</div>--}}
                 </div>
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="skill">
                     <div class="mdl-card__title">
                         <i class="fa fa-tags fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">技能特长</h5>
                     </div>
@@ -1131,7 +1184,7 @@
                     </div>
                 </div>
 
-                <div class="mdl-card resume-child-card">
+                <div class="mdl-card resume-child-card" id="additional">
                     <div class="mdl-card__title">
                         <i class="fa fa-plus-square fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">附加信息</h5>
                     </div>

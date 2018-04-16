@@ -32,7 +32,14 @@
             position: fixed;
             top: 0;
         }
-
+        .news-aside:hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+        .hot-news-aside:hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+        .news-aside img{
+             transition: all 0.5s;
+        }
+        .hot-news-aside img{
+            transition: all 0.5s;
+        }
         .news_tab .active  a{
             color: #fff!important;
         }

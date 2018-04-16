@@ -133,6 +133,9 @@
                         <p class="no_result">未搜索到与"{{$searchResult['keyword']}}"相关的新闻资讯</p>
                     @endforelse
                 </ul>
+      {{--<nav id="page_tools">--}}
+          {{--{!! $searchResult['news']->appends(['keyword'=>$searchResult['keyword']])->render()!!}--}}
+      {{--</nav>--}}
                  <ul class="jieshao_list jobs" style="display: none;">
                      @forelse($searchResult['position'] as $position)
                      <li>

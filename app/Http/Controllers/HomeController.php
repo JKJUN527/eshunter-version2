@@ -153,6 +153,8 @@ class HomeController extends Controller {
                     ->orWhere('title', 'like', '%' . $keywords . '%')
                     ->orWhere('subtitle', 'like', '%' . $keywords . '%')
                     //->paginate($num);
+                    ->orderBy('created_at','desc')
+//                    ->paginate(20,['*'],"newspage");
                     ->get();
 
 //                $position = Position::where('vaildity', '>=', date('Y-m-d H-i-s'))
@@ -181,6 +183,7 @@ class HomeController extends Controller {
                             ->orwhere('experience', 'like', '%' . $keywords . '%');
                     })
                     ->orderBy('view_count', 'desc')//热门程度
+//                    ->paginate(20,['*'],"jobpage");
                     ->get();
             }
         }
