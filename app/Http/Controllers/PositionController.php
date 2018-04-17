@@ -850,12 +850,6 @@ class PositionController extends Controller {
             ->get();
         $data['region-city'] = Region::where('parent_id','!=',0)->get();
         $data['result'] = $this->advanceSearch($request);
-        $data['hot-ad-company'] = Adverts::where('validity', '>=', date('Y-m-d H-i-s'))
-            ->where('type', '=', '0')
-//            ->where('location', '<', 13)
-            ->orderBy('updated_at', 'desc')
-            ->take(12)
-            ->get();
 
         $data['condition'] = $request->all();
 //        return $data;

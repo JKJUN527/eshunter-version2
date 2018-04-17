@@ -1,0 +1,62 @@
+#company_list {
+    padding-top: 4px;
+}
+#company_list ul.item_con_list {
+    width: auto;
+}
+#company_list ul.item_con_list::before, #company_list ul.item_con_list::after {
+    content: "";
+    display: table;
+}
+#company_list ul.item_con_list li {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 23.4%;
+    height: 205px;
+    margin-top: 16px;
+    margin-right: 16px;
+    border: 1px solid #EEE;
+}
+#company_list ul.item_con_list li .top {
+    margin: 0 13px;
+    padding: 20px 0 14px;
+    text-align: center;
+    /*border-bottom: 1px dashed #E0E0E0;*/
+}
+#company_list ul.item_con_list li .top p {
+    line-height: 22px;
+}
+#company_list ul.item_con_list li .top img {
+    border: 0;
+    vertical-align: top;
+    display: inline-block;
+}
+#company_list ul.item_con_list li .top {
+    text-align: center;
+}
+#company_list ul.item_con_list li .top .company-name {
+    margin-top: 13px;
+    font-size: 16px;
+    color: #333;
+}
+#company_list ul.item_con_list li .wordCut {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.wordCut a{
+    color: #555;
+    background-color: transparent;
+    text-decoration: none;
+}
+#company_list ul.item_con_list li .top .indus-stage {
+    margin-top: 3px;
+    color: #999;
+}
+#company_list ul.item_con_list li .top .advantage {
+    margin-top: 5px;
+    color: #555;
+}

@@ -382,7 +382,7 @@
                             @if($data['result']['position']->total() ==0)
                                 <div style="display:block" class="company_nojob">
                                     <img alt="" src="../images/ergou.jpg">
-                                    <div>暂时没有符合条件的公司信息！</div>
+                                    <div>暂时没有符合条件的职位信息！</div>
                                 </div>
                             @endif
                           <ul class="jieshao_list companydiv">
@@ -537,26 +537,6 @@
                           {{--</div>--}}
                         </div>
                     </div>
-                    <!-- 右边 -->
-                    <!-- <div style="float:right; height: 730px;" class="all_divclass">
-                        <div style="margin-top:0px" class="banner_con"> 
-                            <div class="num_part"><span>热招企业</span></div>
-                            <ul id="hotCompanyList" class="slides major-list">
-                                @foreach($data['hot-ad-company'] as $company)
-                                    <li class="major-item">
-                                        <a href="/company?eid={{$company->eid}}" target="_blank">
-                                            <span style="background: rgba(0, 0, 0, 0) url(&quot;{{$company->picture or asset('images/house.jpg')}}&quot;) no-repeat scroll 0 0;z-index:2;background-size:114px 114px;-webkit-background-size: 114px 90px;" class="tongyong_loge">
-                                            </span>
-                                            <span class="back-face">
-                                                <h2>{{$company->title}}</h2>
-                                                <div>{{$company->content}}</div>
-                                            </span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                        </div>
-                        {{--<a target="_blank" href="http://old.ui.cn/joblist.php"><img style="margin-top:20px;" src="../images/UIchina.jpg"></a>--}}
-                    </div>   --> 
                 </div>
                 
             </div>

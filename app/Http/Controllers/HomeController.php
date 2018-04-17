@@ -199,43 +199,4 @@ class HomeController extends Controller {
             "searchResult" => $searchResult
         ]);
     }
-
-    public function companySearch(Request $request) {
-        $data = array();
-
-        $data['uid'] = AuthController::getUid();
-        $data['username'] = InfoController::getUsername();
-        $data['type'] = AuthController::getType();
-        $data['position'] = null;
-
-        if ($request->has('eid')) {
-            $eid = $request->input('eid');
-            $data['position'] = DB::table('jobs_position')
-                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
-                ->where('jobs_position.eid', $eid)
-//                ->where('vaildity', '>=', date('Y-m-d H-i-s'))
-                ->where(function ($query){
-                    $query->where('position_status',1)
-                        ->orwhere('position_status',4);
-                })
-                ->orderBy('jobs_position.created_at','desc')
-                ->paginate(9);
-
-            $data['enprinfo'] = Enprinfo::find($eid);
-            $data['industry'] = Industry::all();
-            //搜索企业标签--发布职位的所有标签和
-            $data['tag'] = array();
-            foreach ($data['position'] as $position){
-               foreach (preg_split("/(,| |、|;)/",$position->tag) as $tag){
-                   if(!in_array($tag,$data['tag'])){
-                       $data['tag'][] = $tag;
-                   }
-               }
-            }
-        }
-        $data['enprinfo']->ebrief = str_replace(array("\r\n", "\r", "\n"), "<br>",$data['enprinfo']->ebrief);
-//        return $data;
-        return view('company', ['data' => $data]);
-    }
 }
