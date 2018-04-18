@@ -35,13 +35,6 @@
             <a class="post_Jb" title="" href="/news" rel="nofollow">资讯中心</a>
         @endif
       </li>
-        <li id="cuan">
-            @if($activeIndex === 5)
-                <a class="post_Jb home_active" title="" href="/searchcompany" rel="nofollow">公司黄页</a>
-            @else
-                <a class="post_Jb" title="" href="/searchcompany" rel="nofollow">公司黄页</a>
-            @endif
-        </li>
  
       <li id="person_center">
         @if($activeIndex === 2)
