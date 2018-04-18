@@ -617,7 +617,11 @@
 
         goSearch();
     });
-
+    $('#name').keypress(function (event) {
+        if(event.which == 13){
+            goSearch();
+        }
+    });
     $('#publish-position').click(function (event) {
         event.preventDefault();
         goSearch();

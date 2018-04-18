@@ -31,7 +31,7 @@ class CompanyController extends Controller {
         if($request->has('type')){//是否入驻公司1、是0 否
             $data['is_join'] = $request->input('type');
         }else{
-            $data['is_join'] = 0;
+            $data['is_join'] = 1;
         }
 
         $data['position'] = null;
@@ -63,14 +63,15 @@ class CompanyController extends Controller {
                 }
             }
         }else{
-            $data['enprinfo'] = Company::find(1);
+            $id = $request->input('id');
+            $data['enprinfo'] = Company::find($id);
             $data['industry'] = Industry::all();
             $data['tag'] = array();
         }
 
         $data['enprinfo']->ebrief = str_replace(array("\r\n", "\r", "\n"), "<br>",$data['enprinfo']->ebrief);
 //        return $data;
-        return view('company', ['data' => $data]);
+        return view('company.company', ['data' => $data]);
     }
 
     public function companyIndex(Request $request){
@@ -96,7 +97,7 @@ class CompanyController extends Controller {
 
         //return $data;
 
-        $data['companyinfo'] = Company::select('eid','ename','byname','elogo','ebrief','escale','enature','industry','type')
+        $data['companyinfo'] = Company::select('id','eid','ename','byname','elogo','ebrief','escale','enature','industry','type')
             ->where('ename','!=','')
             ->where('byname','!=','')
             ->where(function ($query) use ($request) {

@@ -114,6 +114,7 @@
                 <div class="product_presentation">
                 </div>              
                 <div class="The_job">
+                    @if($data['is_join'] == 1)
                     <p class="p_Label"><span>在招职位</span><font>该公司共发布{!! $data['position']->total() !!}个招聘职位</font></p>
                     <div class="The_job_con">
                         <ul class="jieshao_list hotjobs" style="display: block;">
@@ -210,6 +211,9 @@
                             @endforeach
                         </ul>
                     </div>
+                    @else
+                        <p class="p_Label"><span>在招职位</span><font>该公司暂未入驻本平台</font></p>
+                    @endif
                 </div>
             </div> 
             <!-- 公司信息 -->

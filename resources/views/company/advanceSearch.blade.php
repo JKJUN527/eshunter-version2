@@ -174,11 +174,11 @@
                         </div>
                         <input type="button" value="搜索" name="" id="search-company">
                         <div class="taoyige_hotsearch">热门搜索：
-                            <a href="/position/advanceSearch?keyword=绝地求生">绝地求生</a>
-                            <a href="/position/advanceSearch?keyword=ADC">ADC</a>
-                            <a href="/position/advanceSearch?keyword=王者荣耀">王者荣耀</a>
-                            <a href="/position/advanceSearch?keyword=打野">打野</a>
-                            <a href="/position/advanceSearch?keyword=中单">中单</a>
+                            <a href="/searchcompany?keyword=暴龙电竞">暴龙电竞</a>
+                            <a href="/searchcompany?keyword=俱乐部">俱乐部</a>
+                            <a href="/searchcompany?keyword=绿盟电竞">绿盟电竞</a>
+                            <a href="/searchcompany?keyword=电竞虎">电竞虎</a>
+                            <a href="/searchcompany?keyword=电竞协会">电竞协会</a>
                         </div>
                         <!-- 热门搜索的链接没有写 -->
                         <div class="searchPart">
@@ -290,7 +290,7 @@
                                     <li class="company-item">
                                         <div class="top">
                                             <p>
-                                                <a href="/company?eid={{$company->eid}}&type={{$company->type}}" target="_blank">
+                                                <a href="/company?eid={{$company->eid}}&type={{$company->type}}&id={{$company->id}}" target="_blank">
                                                     <img src="{{$company->elogo or asset('images/avatar.png')}}" alt="公司logo" width="80" height="80">
                                                 </a>
                                             </p>
