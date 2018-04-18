@@ -172,6 +172,33 @@
                     </ul>
                 </li>
 
+                <li
+                        @if($title === 'company')
+                        class="active"
+                        @endif
+                >
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">info</i>
+                        <span>公司黄页</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li
+                                @if($subtitle === 'companyList')
+                                class="active"
+                                @endif
+                        >
+                            <a href="/admin/companys">公司列表</a>
+                        </li>
+                        <li
+                                @if($subtitle === 'addcompany')
+                                class="active"
+                                @endif
+                        >
+                            <a href="/admin/addcompany">新增公司</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="header"></li>
 
                 <li>

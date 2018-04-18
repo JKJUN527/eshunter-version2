@@ -301,7 +301,7 @@
                                             </p>
                                             <p class="indus-stage wordCut">
                                                 @foreach($data['industry'] as $industry)
-                                                    @if($industry->id == $company->eindustry)
+                                                    @if($industry->id == $company->industry)
                                                         {{$industry->name}}/
                                                         @break
                                                     @endif
@@ -359,6 +359,11 @@
 
 @section('custom-script')
 <script type="text/javascript">
+    $('#name').keypress(function (event) {
+        if(event.which == 13){
+            goSearch();
+        }
+    });
     $('#search-company').click(function (event) {
         event.preventDefault();
         goSearch();

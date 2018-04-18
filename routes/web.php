@@ -255,7 +255,11 @@ Route::any('admin/resumes', ['uses' => 'Admin\ResumesController@index']);//显�
 Route::any('admin/addresume', ['uses' => 'Admin\ResumesController@addIndex']);//新增临时简历用户页面
 Route::post('admin/addresume', ['uses' => 'Admin\ResumesController@addtempresume']);//新增临时简历用户
 Route::get('admin/resume/del', ['uses' => 'Admin\ResumesController@delResume']);//删除临时简历用户，同时删除所有该临时用户的所有信息。
-
+//公司信息管理
+Route::any('admin/companys', ['uses' => 'Admin\CompanysController@index']);//显示已有公司信息
+Route::any('admin/addcompany', ['uses' => 'Admin\CompanysController@addIndex']);//新增公司信息用户页面
+Route::post('admin/addcompany', ['uses' => 'Admin\CompanysController@addcompany']);//提交新增公司信息
+Route::get('admin/company/del', ['uses' => 'Admin\CompanysController@delCompany']);//删除公司信息
 //mobile routes
 //index page
 Route::any('m/', ['uses' => 'mobile\HomeController@index']);//完成
