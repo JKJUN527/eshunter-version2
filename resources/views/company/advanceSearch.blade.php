@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '电竞猎人|公司黄页')
+@section('title', '电竞猎人|电竞黄页')
 
 @section('custom-style')
    <link media="all" href="{{asset('style/company.css')}}" type="text/css" rel="stylesheet">
