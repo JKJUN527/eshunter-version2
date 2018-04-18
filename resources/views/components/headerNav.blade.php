@@ -2,7 +2,7 @@
     <div class="inner">
         <div class="es_tbar_l">
             <span class="iconfont icon-shouji"></span>
-            <a class="es_app" href="/searchcompany" rel="nofollow">公司黄页</a>
+            <a class="es_app" href="/searchcompany" rel="nofollow">电竞黄页</a>
             {{--@if($type == 1)--}}
                 {{--<a class="es_os" href="#" rel="nofollow">进入企业版</a>--}}
             {{--@endif--}}
