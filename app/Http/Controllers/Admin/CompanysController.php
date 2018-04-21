@@ -34,11 +34,11 @@ class CompanysController extends Controller {
         $data = DashboardController::getLoginInfo();
 
         $data['companys'] = DB::table('jobs_companyinfo')
-            ->select('jobs_companyinfo.id','ename','byname','jobs_industry.name as industry','enature','escale','type')
+            ->select('jobs_companyinfo.id','ename','byname','jobs_industry.name as industry','enature','escale','is_verification','type')
             ->leftjoin('jobs_industry','jobs_industry.id','jobs_companyinfo.industry')
             ->orderBy('jobs_companyinfo.created_at','desc')
             ->paginate(20);
-
+//        return $data;
         return view('admin.companys',['data'=>$data]);
     }
     public function addIndex(){
@@ -110,6 +110,27 @@ class CompanysController extends Controller {
             $data['msg'] = "需上传企业logo";
             return $data;
         }
+    }
+
+    public function passCompany(Request $request){
+        $data = array();
+        $data['status'] = 400;
+        $data['msg'] = "未知错误";
+        if($request->has('id')){
+            $id = $request->input('id');
+            $companyinfo = Company::find($id);
+            if($companyinfo){
+                if($companyinfo->is_verification == -1) $companyinfo->is_verification = 1;
+                else $companyinfo->is_verification = -1;
+                if($companyinfo->save()){
+                    $data['status'] = 200;
+                    $data['mag'] = "审核成功";
+                }
+            }else{
+                $data['msg'] = "未查询到相关公司信息";
+            }
+        }
+        return $data;
     }
 
 }

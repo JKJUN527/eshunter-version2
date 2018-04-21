@@ -17,6 +17,9 @@
         i.material-icons {
             cursor: pointer;
         }
+        .is_pass{
+            color: green;
+        }
     </style>
 @endsection
 
@@ -106,8 +109,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{--<i class="material-icons detail" data-content="{{$news->nid}}"--}}
-                                       {{--data-toggle='modal' data-target='#detailNewsModal'>visibility</i>--}}
+                                    <i class="material-icons check @if($company->is_verification == 1) is_pass @endif" data-content="{{$company->id}}">check</i>
                                     <i class="material-icons delete" data-content="{{$company->id}}"
                                        style="margin-left: 16px;">delete</i>
                                 </td>
@@ -128,25 +130,6 @@
     </div>
 
     <!-- Modal Dialogs ====================================================================================================================== -->
-    <!-- Default Size -->
-    <div class="modal fade" id="detailNewsModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="defaultModalLabel"></h4>
-                </div>
-                <div class="modal-body">
-                    <span class="news-time"></span>
-                    <br>
-                    <div class="news-content"></div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">关闭</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('custom-script')
@@ -175,6 +158,35 @@
                     }
                 });
             });
-        })
+        });
+        $(".check").click(function () {
+            var element = $(this);
+            var status = "" ;
+            if(element.hasClass('is_pass')){
+                status = "审核拒绝";
+            }else{
+                status = "审核通过";
+            }
+            swal({
+                title: "确认",
+                text: "确认"+status+"该公司信息吗?",
+                type: "warning",
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                showCancelButton: true,
+                closeOnConfirm: true
+            }, function () {
+                $.ajax({
+                    url: "/admin/company/pass?id=" + element.attr('data-content'),
+                    type: "get",
+                    success: function (data) {
+                        checkResult(data['status'], "审核成功", data['msg'], null);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1200);
+                    }
+                });
+            });
+        });
     </script>
 @show

@@ -150,6 +150,13 @@
        .region{
            color: #00b38a;
        }
+
+       .pull-right{
+           margin-left: 3.4rem;
+           /*height: 38px;*/
+           background-color: #00b38a;
+           border: 1px solid #00b38a;
+       }
    </style>
 @endsection
 
@@ -173,6 +180,7 @@
                             </div>
                         </div>
                         <input type="button" value="搜索" name="" id="search-company">
+                        <a class="btn btn-danger pull-right" href="/company/add/index" target="_blank">提交公司信息</a>
                         <div class="taoyige_hotsearch">热门搜索：
                             <a href="/searchcompany?keyword=暴龙电竞">暴龙电竞</a>
                             <a href="/searchcompany?keyword=俱乐部">俱乐部</a>
@@ -241,7 +249,7 @@
                             </div>
                             <div class="search_stander">
                                 <div class="stander_list">
-                                    <span>性质：</span>
+                                    <span>规模：</span>
                                     <div class="span-holder stander_div3 escale-holder">
                                         <a rel="nofollow" @if(!isset($data['result']['escale'])) class="active"
                                            @endif data-content="-1">全部</a>

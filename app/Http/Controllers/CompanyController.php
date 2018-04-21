@@ -19,6 +19,7 @@ use App\Position;
 use App\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller {
 
@@ -98,6 +99,7 @@ class CompanyController extends Controller {
         //return $data;
 
         $data['companyinfo'] = Company::select('id','eid','ename','byname','elogo','ebrief','escale','enature','industry','type')
+            ->where('is_verification','1')
             ->where('ename','!=','')
             ->where('byname','!=','')
             ->where(function ($query) use ($request) {
@@ -121,6 +123,78 @@ class CompanyController extends Controller {
             })
             ->orderBy('created_at', 'desc')
             ->paginate(20);
+        return $data;
+    }
+
+    public function addIndex(Request $request){
+        $data = array();
+        $data['uid'] = AuthController::getUid();
+        $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
+        $data['industry'] = Industry::all();
+
+        if($data['uid'] == 0){
+            return view('account.login');
+        }
+
+//        return $data;
+        return view('company/upload', ['data' => $data]);
+    }
+    public function addPost(Request $request){
+        $data = array();
+        $data['uid'] = AuthController::getUid();
+        $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
+        if ($data['uid'] == 0) {//用户未登陆
+            $data['status'] = 400;
+            $data['msg'] = "请先登陆再进行操作";
+            return $data;
+        }
+        //上传头像;
+        $companyinfo = new Company();
+
+        if ($request->hasFile('elogo')) {
+            //验证输入的图片格式,验证图片尺寸比例为一比一
+//            $this->validate($request, [
+//                'elogo' => 'dimensions:ratio=1/1'
+//            ]);
+            $elogo = $request->file('elogo');
+            if ($elogo->isValid()) {//判断文件是否上传成功
+                $originalName = $elogo->getClientOriginalName();
+                //扩展名
+                $ext = $elogo->getClientOriginalExtension();
+                //mimetype
+                $type = $elogo->getClientMimeType();
+                //临时觉得路径
+                $realPath = $elogo->getRealPath();
+
+                $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . 'elogo' . '.' . $ext;
+
+                $bool = Storage::disk('profile')->put($filename, file_get_contents($realPath));
+                if ($bool) {
+//                    $enprinfo->elogo = $filename;
+                    $companyinfo->elogo = asset('storage/profiles/' . $filename);
+                }
+            }
+        }
+        if($request->has('byname')) $companyinfo->byname = $request->input('byname');
+        if($request->has('ename')) $companyinfo->ename = $request->input('ename');
+        if($request->has('ebrief')) $companyinfo->ebrief = $request->input('ebrief');
+        if($request->has('escale')) $companyinfo->escale = $request->input('escale');
+        if($request->has('enature')) $companyinfo->enature = $request->input('enature');
+        if($request->has('industry')) $companyinfo->industry = $request->input('industry');
+        if($request->has('home_page')) $companyinfo->home_page = $request->input('home_page');
+        if($request->has('address')) $companyinfo->address = $request->input('address');
+
+
+        if ($companyinfo->save()) {
+            $data['status'] = 200;
+            $data['msg'] = "操作成功";
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "操作失败";
+        }
+
         return $data;
     }
 }

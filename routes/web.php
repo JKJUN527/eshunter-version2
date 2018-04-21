@@ -158,6 +158,8 @@ Route::any('about/index', ['uses' => 'AboutController@index']);//网站信息模
 Route::any('company', ['uses' => 'CompanyController@companySearch']);//完成
 
 Route::any('searchcompany', ['uses' => 'CompanyController@companyIndex']);//公司黄页搜索
+Route::get('/company/add/index', ['uses' => 'CompanyController@addIndex']);//提交公司信息页面
+Route::post('/company/add/event', ['uses' => 'CompanyController@addPost']);//提交公司信息
 //Route::any('company', function () {
 //    return view('company');
 //});
@@ -260,6 +262,7 @@ Route::any('admin/companys', ['uses' => 'Admin\CompanysController@index']);//显
 Route::any('admin/addcompany', ['uses' => 'Admin\CompanysController@addIndex']);//新增公司信息用户页面
 Route::post('admin/addcompany', ['uses' => 'Admin\CompanysController@addcompany']);//提交新增公司信息
 Route::get('admin/company/del', ['uses' => 'Admin\CompanysController@delCompany']);//删除公司信息
+Route::get('admin/company/pass', ['uses' => 'Admin\CompanysController@passCompany']);//审核公司信息
 //mobile routes
 //index page
 Route::any('m/', ['uses' => 'mobile\HomeController@index']);//完成

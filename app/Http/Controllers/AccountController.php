@@ -112,7 +112,6 @@ class AccountController extends Controller {
         $data['uid'] = AuthController::getUid();
         $data['username'] = InfoController::getUsername();
         $data['type'] = AuthController::getType();
-        $data['type'] = AuthController::getType();
         if ($data['uid'] == 0) {//用户未登陆
             $data['status'] = 400;
             $data['msg'] = "请先登陆再进行操作";

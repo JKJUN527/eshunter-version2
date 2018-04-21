@@ -11,6 +11,7 @@
                         </div>
                         <div class="foot_list">
                             <div class="foot_list_item">
+                                <span class="about_left"><a title="" href="/searchcompany">电竞黄页</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab1">简历指导</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab2">关于我们</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab3">联系我们</a></span>
