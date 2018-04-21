@@ -64,6 +64,7 @@ class CompanyController extends Controller {
                 }
             }
         }else{
+            $data['source'] = 1;
             $id = $request->input('id');
             $data['enprinfo'] = Company::find($id);
             $data['industry'] = Industry::all();
@@ -185,6 +186,7 @@ class CompanyController extends Controller {
         if($request->has('industry')) $companyinfo->industry = $request->input('industry');
         if($request->has('home_page')) $companyinfo->home_page = $request->input('home_page');
         if($request->has('address')) $companyinfo->address = $request->input('address');
+        $companyinfo->author = $data['username'];
 
 
         if ($companyinfo->save()) {

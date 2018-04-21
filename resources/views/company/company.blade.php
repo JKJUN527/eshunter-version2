@@ -4,6 +4,15 @@
 @section('custom-style')
  <link media="all" href="{{asset('../style/gsxx.css?v=2.40')}}" type="text/css" rel="stylesheet">
  <link media="all" href="{{asset('../style/tao.css')}}" type="text/css" rel="stylesheet">
+    <style>
+        .company_presentation font {
+            color: #e85349;
+            font-weight: normal;
+            line-height: 36px;
+            float: right;
+            margin-right: 15px;
+        }
+    </style>
 
 @endsection
 
@@ -104,7 +113,7 @@
             <div class="gsxxi left">
                 <!--公司介绍-->
                 <div class="company_presentation">
-                    <p class="p_Label"><span>公司介绍</span></p>
+                    <p class="p_Label"><span>公司介绍</span>@if(isset($data['source'])) <font>该公司共信息由{!! $data['enprinfo']->author !!}提供</font>@endif</p>
                     <div class="company_presentation_con">
                         {!! $data['enprinfo']->ebrief or "公司简介暂无" !!}
                     </div>

@@ -100,6 +100,7 @@ class CompanysController extends Controller {
             $companyinfo->ebrief = $request->input('ebrief');
             $companyinfo->address = $request->input('address');
             $companyinfo->home_page = $request->input('home_page');
+            $companyinfo->author = "系统管理员";
 
             $companyinfo->save();
             $data['status'] = 200;
