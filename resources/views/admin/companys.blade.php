@@ -18,7 +18,7 @@
             cursor: pointer;
         }
         .is_pass{
-            color: green;
+            color: red;
         }
     </style>
 @endsection
@@ -109,7 +109,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <i class="material-icons check @if($company->is_verification == 1) is_pass @endif" data-content="{{$company->id}}">check</i>
+                                    @if($company->is_verification == 1)
+                                        <i class="material-icons check  is_pass" data-content="{{$company->id}}">close</i>
+                                    @else
+                                        <i class="material-icons check" data-content="{{$company->id}}">check</i>
+                                    @endif
                                     <i class="material-icons delete" data-content="{{$company->id}}"
                                        style="margin-left: 16px;">delete</i>
                                 </td>
