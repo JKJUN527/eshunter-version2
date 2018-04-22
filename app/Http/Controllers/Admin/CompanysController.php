@@ -117,11 +117,12 @@ class CompanysController extends Controller {
         $data = array();
         $data['status'] = 400;
         $data['msg'] = "未知错误";
-        if($request->has('id')){
+        if($request->has('id') && $request->has('status')){
+            $status = $request->input('status');
             $id = $request->input('id');
             $companyinfo = Company::find($id);
             if($companyinfo){
-                if($companyinfo->is_verification == -1) $companyinfo->is_verification = 1;
+                if($status == 1) $companyinfo->is_verification = 1;
                 else $companyinfo->is_verification = -1;
                 if($companyinfo->save()){
                     $data['status'] = 200;
@@ -130,6 +131,25 @@ class CompanysController extends Controller {
             }else{
                 $data['msg'] = "未查询到相关公司信息";
             }
+        }
+        return $data;
+    }
+    public function detail(Request $request){
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+        $data = array();
+        if ($request->has('id')) {
+            $eid = $request->input('id');
+
+//            $data['enprinfo'] = Enprinfo::find($eid);
+//            $data['industry'] = Industry::all();
+            $data['enprinfo'] = DB::table('jobs_companyinfo')
+                ->select('jobs_companyinfo.id as detail_id','ename','byname','elogo','enature','escale','ebrief','address','jobs_industry.name as industry_name')
+                ->leftjoin('jobs_industry', 'jobs_industry.id', '=', 'jobs_companyinfo.industry')
+                ->where('jobs_companyinfo.id', '=', $eid)
+                ->first();
         }
         return $data;
     }
