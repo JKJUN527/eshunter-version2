@@ -182,11 +182,9 @@
                         <input type="button" value="搜索" name="" id="search-company">
                         <a class="btn btn-danger pull-right" href="/company/add/index" target="_blank">提交公司信息</a>
                         <div class="taoyige_hotsearch">热门搜索：
-                            <a href="/searchcompany?keyword=暴龙电竞">暴龙电竞</a>
+                            <a href="/searchcompany?keyword=电竞教育">电竞教育</a>
                             <a href="/searchcompany?keyword=俱乐部">俱乐部</a>
-                            <a href="/searchcompany?keyword=绿盟电竞">绿盟电竞</a>
-                            <a href="/searchcompany?keyword=电竞虎">电竞虎</a>
-                            <a href="/searchcompany?keyword=电竞协会">电竞协会</a>
+                            <a href="/searchcompany?keyword=电子竞技协会">电子竞技协会</a>
                         </div>
                         <!-- 热门搜索的链接没有写 -->
                         <div class="searchPart">
@@ -303,7 +301,7 @@
                                                 </a>
                                             </p>
                                             <p class="company-name wordCut">
-                                                <a href="" target="_blank" title="{{$company->ename}}">
+                                                <a href="/company?eid={{$company->eid}}&type={{$company->type}}&id={{$company->id}}" target="_blank" title="{{$company->ename}}">
                                                     {{$company->byname or $company->ename}}
                                                 </a>
                                             </p>

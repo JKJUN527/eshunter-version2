@@ -12,6 +12,9 @@
             float: right;
             margin-right: 15px;
         }
+        .welfare .c1 a{
+            padding: 15px;
+        }
     </style>
 
 @endsection
@@ -96,17 +99,30 @@
                             @endif
                     </div>
                 </div>
-                <div class="welfare">
-                    @foreach($data['tag'] as $tag)
-                        <label class="c1"><i>
-                                @if($tag == '')
-                                    暂无标签
-                                @else
-                                    {{$tag}}
-                                @endif
-                            </i><em></em></label>
-                    @endforeach
-               </div>
+
+                    <div class="welfare">
+                            <label class="c1">
+                                <i>
+                                    <a href="{{$data['enprinfo']->home_page}}" target="_blank">
+                                        公司官网
+                                    </a>
+                                </i>
+                                <em></em>
+                            </label>
+                    </div>
+                {{--@if(!isset($data['source']))--}}
+                    {{--<div class="welfare">--}}
+                        {{--@foreach($data['tag'] as $tag)--}}
+                            {{--<label class="c1"><i>--}}
+                                    {{--@if($tag == '')--}}
+                                        {{--暂无标签--}}
+                                    {{--@else--}}
+                                        {{--{{$tag}}--}}
+                                    {{--@endif--}}
+                                {{--</i><em></em></label>--}}
+                        {{--@endforeach--}}
+                   {{--</div>--}}
+                {{--@endif--}}
             </div>
         </div>
         <div class="gsxxi_part">     

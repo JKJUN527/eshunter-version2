@@ -43,7 +43,16 @@ border-top-right-radius: 2px; border-top-left-radius: 2px;
 .gs_logoimg{ width: 160px; height: 160px; }
 .gs_logoimg img{ width: 160px; height: 160px; overflow: hidden; /*border: 1px solid #cbcbcb;*/} 
 /*.gsxxi_top img.logo{ margin-right: 15px;}*/
-.gsxxi_con h2{ font-size: 36px; color: #fff; font-weight: normal; float: left; margin-right: 18px; max-width: 252px; overflow: hidden; text-overflow:ellipsis;white-space: nowrap;}
+.gsxxi_con h2{
+	font-size: 36px;
+	color: #fff;
+	font-weight: normal;
+	/*float: left; */
+	margin-right: 18px;
+	/*max-width: 252px;*/
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;}
 .gsxxi_con h3{  font-size: 16px; color: #fff; float: left; margin-top: 20px; font-weight: normal;max-width: 290px; overflow: hidden; text-overflow:ellipsis;white-space: nowrap;}
 .jieduan{text-indent: 10px;}
 .allzhiwei{ width: 100%; overflow: hidden;}
