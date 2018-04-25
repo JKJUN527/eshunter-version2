@@ -186,6 +186,7 @@ class CompanyController extends Controller {
         if($request->has('industry')) $companyinfo->industry = $request->input('industry');
         if($request->has('home_page')) $companyinfo->home_page = $request->input('home_page');
         if($request->has('address')) $companyinfo->address = $request->input('address');
+        $companyinfo->uid = $data['uid'];
         $companyinfo->author = $data['username']['username'];
 
 
