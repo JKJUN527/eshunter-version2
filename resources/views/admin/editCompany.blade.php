@@ -304,6 +304,12 @@
             } else {
                 removeError(industry, 'industry');
             }
+            if (escale.val() == 0) {
+                setError(escale, 'escale', '不能为空');
+                return;
+            } else {
+                removeError(escale, 'escale');
+            }
             if (enature.val() == 0) {
                 setError(enature, 'enature', '不能为空');
                 return;
