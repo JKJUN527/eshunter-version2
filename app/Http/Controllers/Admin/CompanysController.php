@@ -76,7 +76,12 @@ class CompanysController extends Controller {
 
     public function addcompany(Request $request){
         $data = array();
-        $companyinfo = new Company();
+        if($request->has('eid')){
+            $eid = $request->input('eid');
+            $companyinfo = Company::find($eid);
+        }else{
+            $companyinfo = new Company();
+        }
         if ($request->hasFile('logo')) {
             $adpic = $request->file('logo');//取得上传文件信息
             if ($adpic->isValid()) {//判断文件是否上传成功
@@ -152,6 +157,22 @@ class CompanysController extends Controller {
                 ->first();
         }
         return $data;
+    }
+    public function edit(Request $request){
+        $data = array();
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0)
+            return view('admin.login');
+        $data = DashboardController::getLoginInfo();
+
+        if ($request->has('id')) {
+            $eid = $request->input('id');
+
+            $data['companyinfo'] = Company::find($eid);
+        }
+        $data['industry'] = Industry::all();
+//        return $data;
+        return view('admin/editCompany',['data'=>$data]);
     }
 
 }

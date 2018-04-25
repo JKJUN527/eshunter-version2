@@ -115,6 +115,7 @@
                                     {{--@endif--}}
                                     <i class="material-icons detail" data-content="{{$company->id}}"
                                        data-toggle='modal' data-target='#detailApplyModal'>visibility</i>
+                                    <i class="material-icons edit" data-content="{{$company->id}}">edit</i>
                                     <i class="material-icons delete" data-content="{{$company->id}}"
                                        style="margin-left: 16px;">delete</i>
                                 </td>
@@ -159,6 +160,11 @@
 
 @section('custom-script')
     <script type="text/javascript">
+        $(".edit").click(function () {
+            var element = $(this);
+            var id = element.attr("data-content");
+            self.location = "/admin/company/edit?id="+id;
+        });
         function pass() {
             var id = $("#enterprise_id").html();
 

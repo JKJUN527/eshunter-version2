@@ -82,16 +82,14 @@
                                 社会团体
                         @endif|
 
-                            @if($data['enprinfo']->escale == null)
+                            @if($data['enprinfo']->escale == null ||$data['enprinfo']->escale == 0)
                                 规模未知
-                            @elseif($data['enprinfo']->escale == 0)
-                                10人以下
                             @elseif($data['enprinfo']->escale == 1)
-                                10～50人
+                                50人以下
                             @elseif($data['enprinfo']->escale == 2)
-                                50～100人
+                                50～200人
                             @elseif($data['enprinfo']->escale == 3)
-                                100～500人
+                                200～500人
                             @elseif($data['enprinfo']->escale == 4)
                                 500～1000人
                             @elseif($data['enprinfo']->escale == 5)

@@ -330,16 +330,14 @@
                                                 @endif
                                             </span>
                                             <span>
-                                                 @if($position->escale == null)
+                                                 @if($position->escale == null || $position->escale == 0)
                                                     规模未知
-                                                @elseif($position->escale == 0)
-                                                    10人以下
                                                 @elseif($position->escale == 1)
-                                                    10～50人
+                                                    50人以下
                                                 @elseif($position->escale == 2)
-                                                    50～100人
+                                                    50～200人
                                                 @elseif($position->escale == 3)
-                                                    100～500人
+                                                    200～500人
                                                 @elseif($position->escale == 4)
                                                     500～1000人
                                                 @elseif($position->escale == 5)

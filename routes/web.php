@@ -264,6 +264,7 @@ Route::post('admin/addcompany', ['uses' => 'Admin\CompanysController@addcompany'
 Route::get('admin/company/del', ['uses' => 'Admin\CompanysController@delCompany']);//删除公司信息
 Route::get('admin/company/pass', ['uses' => 'Admin\CompanysController@passCompany']);//审核公司信息
 Route::get('admin/company/detail', ['uses' => 'Admin\CompanysController@detail']);//获取公司详情
+Route::get('admin/company/edit', ['uses' => 'Admin\CompanysController@edit']);//获取公司详情
 //mobile routes
 //index page
 Route::any('m/', ['uses' => 'mobile\HomeController@index']);//完成

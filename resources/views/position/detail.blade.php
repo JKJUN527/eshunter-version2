@@ -394,16 +394,14 @@
                     </li>
                     <li>
                         <i class="iconfont icon-ren"></i>
-                        @if($data['enprinfo'][0]->escale == null)
+                        @if($data['enprinfo'][0]->escale == null ||$data['enprinfo'][0]->escale == 0)
                             规模未知
-                        @elseif($data['enprinfo'][0]->escale == 0)
-                            10人以下
                         @elseif($data['enprinfo'][0]->escale == 1)
-                            10～50人
+                            50人以下
                         @elseif($data['enprinfo'][0]->escale == 2)
-                            50～100人
+                            50～200人
                         @elseif($data['enprinfo'][0]->escale == 3)
-                            100～500人
+                            200～500人
                         @elseif($data['enprinfo'][0]->escale == 4)
                             500～1000人
                         @elseif($data['enprinfo'][0]->escale == 5)

@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', '新增公司信息')
+@section('title', '修改公司信息')
 
 @section('custom-style')
     <style>
@@ -88,7 +88,7 @@
 @endsection
 
 @section('sidebar')
-    @include('components.adminAside', ['title' => 'company', 'subtitle'=>'addcompany', 'username' => $data['username']])
+    @include('components.adminAside', ['title' => 'company', 'subtitle'=>'companyList', 'username' => $data['username']])
 @endsection
 
 @section('content')
@@ -97,7 +97,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        新增公司
+                        修改公司信息
                     </h2>
                     <div class="mdl-card__menu">
 
@@ -115,18 +115,18 @@
                 </div>
 
                 <div class="body">
-                    <form role="form" method="post" id="add-company-form">
+                    <form role="form" method="post" id="add-company-form" data-content="{{$data['companyinfo']->id}}">
 
                         <div class="input-group">
                             <div class="form-line">
-                                <input type="text" id="ename" name="ename" class="form-control" placeholder="公司名称">
+                                <input type="text" id="ename" name="ename" class="form-control" placeholder="公司名称" value="{{$data['companyinfo']->ename}}">
                             </div>
                             <label id="ename-error" class="error" for="ename"></label>
                         </div>
 
                         <div class="input-group">
                             <div class="form-line">
-                                <input type="text" id="byname" name="byname" class="form-control" placeholder="公司别名">
+                                <input type="text" id="byname" name="byname" class="form-control" placeholder="公司别名" value="{{$data['companyinfo']->byname}}">
                             </div>
                             <label id="byname-error" class="error" for="byname"></label>
                         </div>
@@ -138,7 +138,7 @@
                                     id="industry" name="industry" data-live-search="true">
                                 <option value="0">无</option>
                                 @foreach($data['industry'] as $industry)
-                                    <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                    <option value="{{$industry->id}}" @if($data['companyinfo']->industry === $industry->id) selected @endif>{{$industry->name}}</option>
                                 @endforeach
                             </select>
                             <label id="industry-error" class="error" for="industry"></label>
@@ -148,12 +148,12 @@
                             {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                             <select class="form-control show-tick selectpicker" data-live-search="true"
                                     id="escale" name="escale" data-live-search="true">
-                                <option value="0">选择公司规模</option>
-                                <option value="1">50人以下</option>
-                                <option value="2">50～200人</option>
-                                <option value="3">200～500人</option>
-                                <option value="4">500～1000人</option>
-                                <option value="5">1000人以上</option>
+                                <option value="0" @if($data['companyinfo']->escale === 0) selected @endif>请选择公司规模</option>
+                                <option value="1" @if($data['companyinfo']->escale === 1) selected @endif>50人以下</option>
+                                <option value="2" @if($data['companyinfo']->escale === 2) selected @endif>50～100人</option>
+                                <option value="3" @if($data['companyinfo']->escale === 3) selected @endif>100～500人</option>
+                                <option value="4" @if($data['companyinfo']->escale === 4) selected @endif>500～1000人</option>
+                                <option value="5" @if($data['companyinfo']->escale === 5) selected @endif>1000人以上</option>
                             </select>
                             <label id="escale-error" class="error" for="escale"></label>
                         </div>
@@ -162,25 +162,25 @@
                             {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                             <select class="form-control show-tick selectpicker" data-live-search="true"
                                     id="enature" name="enature" data-live-search="true">
-                                <option value="1">国有企业</option>
-                                <option value="2">民营企业</option>
-                                <option value="3">中外合资企业</option>
-                                <option value="4">外资企业</option>
-                                <option value="5">社会团体</option>
+                                <option value="1" @if($data['companyinfo']->enature === 1) selected @endif>国有企业</option>
+                                <option value="2" @if($data['companyinfo']->enature === 2) selected @endif>民营企业</option>
+                                <option value="3" @if($data['companyinfo']->enature === 3) selected @endif>中外合资企业</option>
+                                <option value="4" @if($data['companyinfo']->enature === 4) selected @endif>外资企业</option>
+                                <option value="5" @if($data['companyinfo']->enature === 5) selected @endif>社会团体</option>
                             </select>
                             <label id="enature-error" class="error" for="enature"></label>
                         </div>
 
                         <div class="input-group">
                             <div class="form-line">
-                                <input type="text" id="address" name="address" class="form-control" placeholder="公司地址">
+                                <input type="text" id="address" name="address" class="form-control" placeholder="公司地址" value="{{$data['companyinfo']->address}}">
                             </div>
                             <label id="address-error" class="error" for="address"></label>
                         </div>
 
                         <div class="input-group">
                             <div class="form-line">
-                                <input type="text" id="home_page" name="home_page" class="form-control" placeholder="公司官网链接地址">
+                                <input type="text" id="home_page" name="home_page" class="form-control" placeholder="公司官网链接地址" value="{{$data['companyinfo']->home_page}}">
                             </div>
                             <label id="home_page-error" class="error" for="home_page"></label>
                         </div>
@@ -189,7 +189,7 @@
                         <div class="input-group">
                             <div class="form-line">
                                 <textarea rows="8" class="form-control no-resize" id="ebrief" name="ebrief"
-                                placeholder="在这里输入公司介绍内容..." required></textarea>
+                                placeholder="在这里输入公司介绍内容..." required>{{str_replace("</br>","\r\n",$data['companyinfo']->ebrief)}}</textarea>
                             </div>
                             <label id="ebrief-error" class="error" for="ebrief"></label>
                         </div>
@@ -200,14 +200,16 @@
                                 <input type="file" id="logo" name="logo" style="display: none" onchange="showPreview(this);">
                                 <img id="choiceLogo" src="{{asset('images/addbg.png')}}" width="40">
                             </div>
-                            <div id="previewLogo"></div>
+                            <div id="previewLogo">
+                                <img src='{{$data['companyinfo']->elogo}}' width='200' height='200'>
+                            </div>
                             <label id="logo-error" class="error" for="logo"></label>
                         </div>
 
 
                         <button id="submit-company"
                                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-blue-sky">
-                            添加公司信息
+                            修改公司信息
                         </button>
                     </form>
                 </div><!-- #END# .body-->
@@ -278,6 +280,7 @@
 
         $("#submit-company").click(function (event) {
             event.preventDefault();
+            var eid = $("#add-company-form").attr('data-content');
 
             var ename = $("#ename");
             var byname = $("#byname");
@@ -300,12 +303,6 @@
                 return;
             } else {
                 removeError(industry, 'industry');
-            }
-            if (escale.val() == 0) {
-                setError(escale, 'escale', '不能为空');
-                return;
-            } else {
-                removeError(escale, 'escale');
             }
             if (enature.val() == 0) {
                 setError(enature, 'enature', '不能为空');
@@ -335,6 +332,7 @@
                 removeError(logo, 'logo');
                 formData.append('logo', logo.prop("files")[0]);
             }
+            formData.append("eid", eid);
             formData.append("ename", ename.val());
             formData.append("byname", byname.val());
             formData.append("industry", industry.val());
@@ -355,7 +353,7 @@
                 success: function (data) {
                     var result = JSON.parse(data);
 
-                    checkResult(result.status, "添加成功", result.msg, null);
+                    checkResult(result.status, "操作成功", result.msg, null);
 
                     if (result.status === 200) {
                         setTimeout(function () {
