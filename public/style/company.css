@@ -27,11 +27,25 @@
 }
 #company_list ul.item_con_list li .top p {
     line-height: 22px;
+    overflow: hidden;
 }
+ #company_list ul.item_con_list li .top .company-img a{
+     width: 80px;
+ }
 #company_list ul.item_con_list li .top img {
     border: 0;
     vertical-align: top;
     display: inline-block;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+#company_list ul.item_con_list li .top img:hover{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
 }
 #company_list ul.item_con_list li .top {
     text-align: center;

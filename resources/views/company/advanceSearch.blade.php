@@ -295,7 +295,7 @@
                                     {{--@endif--}}
                                     <li class="company-item">
                                         <div class="top">
-                                            <p>
+                                            <p class="company-img">
                                                 <a href="/company?eid={{$company->eid}}&type={{$company->type}}&id={{$company->id}}" target="_blank">
                                                     <img src="{{$company->elogo or asset('images/avatar.png')}}" alt="公司logo" width="80" height="80">
                                                 </a>
