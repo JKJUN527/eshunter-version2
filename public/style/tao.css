@@ -133,7 +133,8 @@
     color: #333;
     cursor: default;
     border-bottom: 2px solid #333;}
-.jieshao_list{    padding-left: 3px;
+
+.jieshao_list {
     width: 100%;
     overflow: hidden;
     background: #fff;

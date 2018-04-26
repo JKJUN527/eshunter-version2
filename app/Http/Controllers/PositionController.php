@@ -505,7 +505,7 @@ class PositionController extends Controller {
         }
         $data['dcount'] = $dcount;
 
-//        return $data;
+        //return $data;
         return view('position.publishList', ['data' => $data]);
         //return $position;
     }

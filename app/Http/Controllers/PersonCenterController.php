@@ -27,41 +27,34 @@ class PersonCenterController extends Controller {
         $data['username'] = InfoController::getUsername();
         $data['type'] = AuthController::getType();
 
-        if (AuthController::getUid() == 0) {
+        if (AuthController::getUid() == 0 || ($data['type'] != 1 && $data['type'] != 2)) {
             return view("/account/login",['data'=>$data]);
         }
 
-        switch (AuthController::getType()) {
-            case 1:
-                $resume = new ResumeController();
-                $data['uid'] = AuthController::getUid();
-                $data['type'] = 1;
-                $data['resumeList'] = $resume->getResumeList();
-                $data['playerResume'] = $resume->getPlayerResume();
-                $info = new InfoController();
-                $data['personInfo'] = $info->getPersonInfo();
-                $data['recommendPosition'] = $this->recommendPosition();
-                $data['messageNum'] = $this->getMessageNum();
-                $data['deliveredNum'] = $this->getDeliveredNum();
-                $data['applylist'] = PositionController::getPersonApplyList($data['uid']);
-                break;
-            case 2:
-                $data['type'] = 2;
-                $eid = Enprinfo::where('uid', '=', $data['uid'])
-                    ->first();
-                $info = new InfoController();
-                $data['uid'] = AuthController::getUid();
-                $data['enterpriseInfo'] = $info->getEnprInfo();
-                $data['positionList'] = $this->getPostionList($eid['eid']);
+        if ($data['type'] == 1) {
+            $resume = new ResumeController();
+            $data['resumeList'] = $resume->getResumeList();
+            $data['playerResume'] = $resume->getPlayerResume();
+            $info = new InfoController();
+            $data['personInfo'] = $info->getPersonInfo();
+            $data['recommendPosition'] = $this->recommendPosition();
+            $data['messageNum'] = $this->getMessageNum();
+            $data['deliveredNum'] = $this->getDeliveredNum();
+            $data['applylist'] = PositionController::getPersonApplyList($data['uid']);
+            return view('account.index', ['data' => $data]);
+        } else {
+            $eid = Enprinfo::where('uid', '=', $data['uid'])
+                ->first();
+            $info = new InfoController();
+            $data['enterpriseInfo'] = $info->getEnprInfo();
+            $data['positionList'] = $this->getPostionList($eid['eid']);
 //                $data['messageNum'] = $this->getMessageNum();
-                $data['positionNum'] = $this->getPositionNum($eid['eid']);
-                $data['applyList'] = $this->getApplyList($eid['eid']);
-                $data['industry'] = Industry::all();
-                break;
+            $data['positionNum'] = $this->getPositionNum($eid['eid']);
+            $data['applyList'] = $this->getApplyList($eid['eid']);
+            $data['industry'] = Industry::all();
+            //return $data;
+            return view('account.entindex', ['data' => $data]);
         }
-
-//        return $data;
-        return view('account.index', ['data' => $data]);
     }
 
     public function recommendPosition() {
