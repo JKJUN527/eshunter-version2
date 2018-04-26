@@ -136,6 +136,7 @@
             <!-- 公司实拍 end-->
                 <div class="product_presentation">
                 </div>              
+<!--
                 <div class="The_job">
                     @if($data['is_join'] == 1)
                     <p class="p_Label"><span>在招职位</span><font>该公司共发布{!! $data['position']->total() !!}个招聘职位</font></p>
@@ -239,6 +240,7 @@
                     @endif
                 </div>
             </div> 
+-->
             <!-- 公司信息 -->
             <!-- <div class="gs_part right">             
                 <ul class="company_brief">
