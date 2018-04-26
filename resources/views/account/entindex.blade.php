@@ -184,6 +184,9 @@
                                     {{$data['enterpriseInfo']->ename}}
                                 </a>
                             </dt>
+                            <dd>电话&nbsp;
+                                {{$data['enterpriseInfo']['etel'] or "未填写"}}
+                            </dd>
                             <dd>邮箱&nbsp;
                                 {{$data['enterpriseInfo']['email'] or "未填写"}}
                             </dd>
