@@ -1,7 +1,7 @@
-.top_info {
-    padding: 34px 0 0;
-    background: #f2f5f4;
-}
+/*.top_info {*/
+/*padding: 34px 0 0;*/
+/*background: #f2f5f4;*/
+/*}*/
 .top_info .top_info_wrap {
     position: relative;
     width: 1024px;
@@ -439,8 +439,9 @@ span.error {
     height: 54px;
 }
 #main_container {
-    width: 1024px;
-    margin: 40px auto;
+    /*width: 1024px;*/
+    /*margin: 40px auto;*/
+    padding: 10px 28px;
     overflow: hidden;
     color: #555;
     font-size: 14px;
