@@ -86,8 +86,10 @@
         <h2 >联系我们</h2>
         <p>地址：{{$data['about']->address}}</p>
         <p>邮编：200021</p>
-        <p>电话：{{$data['about']->tel}}</p>
+        {{--<p>电话：{{$data['about']->tel}}</p>--}}
         <p>邮箱：{{$data['about']->email}}</p>
+        <p>招聘事宜：{{$data['about']->recruit}}</p>
+        <p>商务合作：{{$data['about']->cooperation}}</p>
         </div>
     </div>
     <div class="sales-board @if($data['tab'] == 'tab4') active @endif">

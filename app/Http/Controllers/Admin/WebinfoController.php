@@ -101,6 +101,42 @@ class WebinfoController extends Controller {
 
         return $data;
     }
+    public function setRecruit(Request $request) {
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+
+        $webinfo = About::find(1);
+        $webinfo->recruit = $request->input('recruit');
+
+        if ($webinfo->save()) {
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "设置失败";
+        }
+
+        return $data;
+    }
+    public function setCooperation(Request $request) {
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+
+        $webinfo = About::find(1);
+        $webinfo->cooperation = $request->input('cooperation');
+
+        if ($webinfo->save()) {
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "设置失败";
+        }
+
+        return $data;
+    }
 
     //修改网站信息
     public function setWebinfo(Request $request) {

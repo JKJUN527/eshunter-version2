@@ -242,6 +242,8 @@ Route::any('admin/about/setPhone', ['uses' => 'Admin\WebinfoController@setPhone'
 Route::any('admin/about/setEmail', ['uses' => 'Admin\WebinfoController@setEmail']);
 Route::any('admin/about/setAddress', ['uses' => 'Admin\WebinfoController@setAddress']);
 Route::any('admin/about/setContent', ['uses' => 'Admin\WebinfoController@setContent']);
+Route::any('admin/about/setRecruit', ['uses' => 'Admin\WebinfoController@setRecruit']);
+Route::any('admin/about/setCooperation', ['uses' => 'Admin\WebinfoController@setCooperation']);
 
 //end
 Route::any('smstest', ['uses' => 'ValidationController@verifySmsCode']);//显示已发布的职位信息
