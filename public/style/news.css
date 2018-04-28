@@ -117,6 +117,9 @@
     font-weight: 500;
     margin: 0 0 10px 0;
 }
+.news-content  b:hover,.hot-news-content b:hover{
+    color: #D32F2F;
+}
 .news-content h3 a,.hot-news-content h3 a{
 	font-weight: 700;
 }

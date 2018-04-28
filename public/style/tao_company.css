@@ -13,7 +13,11 @@
 /*tao_right*/
 .tao_right{ width: 763px;}
 .taoyige{ width: 794px;  display: inline-block;float: left; border: 1px solid #ccc; border-right: 0px;}
-.class_job{ width: 867px; padding: 9px 0; padding-left: 157px; line-height: 24px; color: #fff; 
+.taoyige:hover{
+	border: 1px solid #D32F2F;
+	border-right: 0px;
+}
+.class_job{ width: 867px; padding: 9px 0; padding-left: 157px; line-height: 24px; color: #fff;
 	font-size: 18px; display: inline-block;}
 .class_job span{ float: left;}
 .all_c{line-height: 25px; float: left;}

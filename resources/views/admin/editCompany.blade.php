@@ -331,9 +331,9 @@
             var formData = new FormData();
 
             if (logo.prop("files")[0] === undefined) {
-                console.log("file is empty");
-                setError(logo, 'logo', "请上传公司logo-200像素 * 200像素");
-                return;
+                // console.log("file is empty");
+                // setError(logo, 'logo', "请上传公司logo-200像素 * 200像素");
+                // return;
             } else {
                 removeError(logo, 'logo');
                 formData.append('logo', logo.prop("files")[0]);

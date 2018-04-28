@@ -31,6 +31,16 @@
                                     href="{{$data['webinfo']->email or '#'}}">{{$data['webinfo']->email or '邮箱未填写'}}</a></span>
                     </dd>
                 </dl>
+                <dl>
+                    <dt><span>招聘事宜</span></dt>
+                    <dd><span>{{$data['webinfo']->recruit or '招聘事宜联系方式未填写'}}</span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><span>商务合作</span></dt>
+                    <dd><span>{{$data['webinfo']->cooperation or '商务合作联系方式未填写'}}</span>
+                    </dd>
+                </dl>
 
                 <dl>
                     <dt><span>地址</span></dt>
@@ -57,6 +67,12 @@
         </button>
         <button class="btn bg-teal waves-effect"
                 data-toggle="modal" data-target="#setEmailModal">修改公司邮箱
+        </button>
+        <button class="btn bg-teal waves-effect"
+                data-toggle="modal" data-target="#setRecruitModal">修改招聘事宜
+        </button>
+        <button class="btn bg-teal waves-effect"
+                data-toggle="modal" data-target="#setCooperationModal">修改商务合作
         </button>
         <button class="btn bg-teal waves-effect"
                 data-toggle="modal" data-target="#setAddressModal">修改公司地址
@@ -162,6 +178,56 @@
                                           placeholder="网站介绍"></textarea>
                             </div>
                             <label id="content-error" class="error" for="content"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary waves-effect">设置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="setRecruitModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">设置招聘事宜</h4>
+                </div>
+                <form role="form" method="post" id="set-recruit-form">
+                    <div class="modal-body">
+
+                        <div class="input-group">
+                            <div class="form-line">
+                                <input type="text" id="recruit" name="recruit" class="form-control"
+                                       placeholder="公司招聘事宜联系方式">
+                            </div>
+                            <label id="recruit-error" class="error" for="recruit"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary waves-effect">设置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="setCooperationModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">设置商务合作</h4>
+                </div>
+                <form role="form" method="post" id="set-cooperation-form">
+                    <div class="modal-body">
+
+                        <div class="input-group">
+                            <div class="form-line">
+                                <input type="text" id="cooperation" name="cooperation" class="form-control"
+                                       placeholder="公司商务合作联系方式">
+                            </div>
+                            <label id="cooperation-error" class="error" for="cooperation"></label>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -303,6 +369,72 @@
                 data: formData,
                 success: function (data) {
                     $("#setContentModal").modal('toggle');
+                    var result = JSON.parse(data);
+
+                    checkResult(result.status, "修改成功", result.msg, null);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1200);
+                }
+            })
+        });
+        $("#set-recruit-form").submit(function (event) {
+            event.preventDefault();
+            var recruit = $("#recruit");
+
+            if (recruit.val() === '') {
+                setError(recruit, 'recruit', "不能为空");
+                return;
+            } else {
+                removeError(recruit, 'recruit');
+            }
+
+            var formData = new FormData();
+            formData.append("recruit", recruit.val());
+
+            $.ajax({
+                url: "/admin/about/setRecruit",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    $("#setRecruittModal").modal('toggle');
+                    var result = JSON.parse(data);
+
+                    checkResult(result.status, "修改成功", result.msg, null);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1200);
+                }
+            })
+        });
+        $("#set-cooperation-form").submit(function (event) {
+            event.preventDefault();
+            var cooperation = $("#cooperation");
+
+            if (cooperation.val() === '') {
+                setError(cooperation, 'cooperation', "不能为空");
+                return;
+            } else {
+                removeError(cooperation, 'cooperation');
+            }
+
+            var formData = new FormData();
+            formData.append("cooperation", cooperation.val());
+
+            $.ajax({
+                url: "/admin/about/setCooperation",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    $("#setRecruittModal").modal('toggle');
                     var result = JSON.parse(data);
 
                     checkResult(result.status, "修改成功", result.msg, null);
