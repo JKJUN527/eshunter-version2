@@ -103,7 +103,7 @@
     <div class="sales-board @if($data['tab'] == 'tab5') active @endif">
       <div class="sales-board-intro">
         <h2 >免责声明</h2>
-        <p>电竞猎人平台文章多来源于网络，转载内容只为传播信息无任何商业目的，若涉及版权或侵权的问题请邮件联系我们，核实后我们将删除 联系我们：021-63339866 邮箱：kefu@eshunter.com</p></div>
+        <p>电竞猎人平台文章多来源于网络，转载内容只为传播信息无任何商业目的，若涉及版权或侵权的问题请邮件联系我们，核实后我们将删除 联系我们：QQ 1739250429	 邮箱：kefu@eshunter.com</p></div>
     </div>
   </div>
 </div>
