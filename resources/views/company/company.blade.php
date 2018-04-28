@@ -99,6 +99,7 @@
                 </div>
 
                     <div class="welfare">
+                        @if(isset($data['source']))
                             <label class="c1">
                                 <i>
                                     <a href="{{$data['enprinfo']->home_page}}" target="_blank">
@@ -107,6 +108,21 @@
                                 </i>
                                 <em></em>
                             </label>
+                        @else
+                            @forelse($data['tag'] as $tag)
+                                @if($tag != "" || $tag != null)
+                                    <label class="c1">
+                                        <i>{{$tag}}</i>
+                                        <em></em>
+                                    </label>
+                                @endif
+                            @empty
+                                <label class="c1">
+                                    <i>暂无标签</i>
+                                    <em></em>
+                                </label>
+                            @endforelse
+                        @endif
                     </div>
                 {{--@if(!isset($data['source']))--}}
                     {{--<div class="welfare">--}}
@@ -123,138 +139,148 @@
                 {{--@endif--}}
             </div>
         </div>
-        <div class="gsxxi_part">     
-            <div class="gsxxi left">
-                <!--公司介绍-->
-                <div class="company_presentation">
-                    <p class="p_Label"><span>公司介绍</span>@if(isset($data['source'])) <font>该公司共信息由{!! $data['enprinfo']->author !!}提供</font>@endif</p>
-                    <div class="company_presentation_con">
-                        {!! $data['enprinfo']->ebrief or "公司简介暂无" !!}
-                    </div>
-                </div>
-                <!-- 公司实拍 -->
-            <!-- 公司实拍 end-->
-                <div class="product_presentation">
-                </div>              
-<!--
-                <div class="The_job">
-                    @if($data['is_join'] == 1)
-                    <p class="p_Label"><span>在招职位</span><font>该公司共发布{!! $data['position']->total() !!}个招聘职位</font></p>
-                    <div class="The_job_con">
-                        <ul class="jieshao_list hotjobs" style="display: block;">
-                            @foreach($data['position'] as $position)
-                            <li>
-                                <div class="jieshao_list_left left">
-                                    <div class="list_top">
-                                        <div class="clearfix pli_top">
-                                            <div class="position_name left">
-                                                <h2 class="dib">
-                                                    <a href="/position/detail?pid={{$position->pid}}">
-                                                        {{mb_substr($position->title,0,11,'utf-8')}}
-                                                    </a>
-                                                </h2>
-                                                <span class="create_time">[{{substr($position->created_at,0,10)}}]</span>
-                                            </div>
-                                            <span class="salary right">
-                                                @if($position->salary == -1)
-                                                    工资面议
-                                                @else
-                                                    {{$position->salary/1000}}K-
-                                                    @if($position->salary_max == -1)
-                                                        无上限
-                                                    @else
-                                                        {{$position->salary_max/1000}}K
-                                                    @endif
-                                                @endif
-                                            </span>
-                                        </div>
-                                        <div class="position_main_info">
-                                           <span>
-                                               @if($position->work_nature == 0)
-                                                   兼职
-                                               @elseif($position->work_nature == 1)
-                                                   实习
-                                               @else
-                                                   全职
-                                               @endif
-                                            </span>
-                                            <span>
-                                                @if($position->education == -1)
-                                                    无学历要求
-                                                @elseif($position->education == 0)
-                                                    高中及以上
-                                                @elseif($position->education == 3)
-                                                    专科及以上
-                                                @elseif($position->education == 1)
-                                                    本科及以上
-                                                @elseif($position->education == 2)
-                                                    研究生及以上
-                                                @endif
-                                            </span>
-                                        </div>
-                                        <div class="lebel">
-                                            <div class="lebel_item">
-                                                @if($position->tag ==="" || $position->tag ===null)
-                                                    <span class="wordCut">无标签</span>
-                                                @else
-                                                    @foreach(preg_split("/(,| |、|;)/",$position->tag) as $tag)
-                                                        <span class="wordCut">{{$tag}}</span>
-                                                    @endforeach
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
+        <div class="gsxxi_part">
+            @if(!isset($data['source']))
+                <div class="gsxxi_part">
+                    <div class="gsxxi left">
+                        <!--公司介绍-->
+                        <div class="company_presentation">
+                            <p class="p_Label"><span>公司介绍</span></p>
+                            <div class="company_presentation_con">
+                                {!! $data['enprinfo']->ebrief or "公司简介暂无" !!}
+                            </div>
+                        </div>
 
-                                    <div class="pli_btm">
-                                        <a href="/company?eid={{$position->eid}}" class="left">
-                                            <img
-                                                    @if($position->elogo === "" ||$position->elogo === null)
-                                                    src="../images/pic0.jpg"
-                                                    @else
-                                                    src="{{$position->elogo}}"
-                                                    @endif
-                                                    alt="公司logo" class="company-logo" width="40" height="40">
-                                        </a>
-                                        <div class="bottom-right">
-                                            <div class="company_name wordCut">
-                                                <a href="/company?eid={{$position->eid}}">
-                                                    @if($position->byname != "")
-                                                        {{$position->byname}}
-                                                    @else
-                                                        {{$position->ename}}
-                                                    @endif
-                                                </a>
+                        <div class="product_presentation">
+                        </div>
+
+                        <div class="The_job">
+                            <p class="p_Label"><span>在招职位</span><font>该公司共发布{!! $data['position']->total() !!}个招聘职位</font></p>
+                            <div class="The_job_con">
+                                <ul class="jieshao_list hotjobs" style="display: block;">
+                                    @foreach($data['position'] as $position)
+                                        <li>
+                                            <div class="jieshao_list_left left">
+                                                <div class="list_top">
+                                                    <div class="clearfix pli_top">
+                                                        <div class="position_name left">
+                                                            <h2 class="dib">
+                                                                <a href="/position/detail?pid={{$position->pid}}">
+                                                                    {{mb_substr($position->title,0,11,'utf-8')}}
+                                                                </a>
+                                                            </h2>
+                                                            <span class="create_time">[{{substr($position->created_at,0,10)}}]</span>
+                                                        </div>
+                                                        <span class="salary right">
+                                                    @if($position->salary == -1)
+                                                                工资面议
+                                                            @else
+                                                                {{$position->salary/1000}}K-
+                                                                @if($position->salary_max == -1)
+                                                                    无上限
+                                                                @else
+                                                                    {{$position->salary_max/1000}}K
+                                                                @endif
+                                                            @endif
+                                                </span>
+                                                    </div>
+                                                    <div class="position_main_info">
+                                               <span>
+                                                   @if($position->work_nature == 0)
+                                                       兼职
+                                                   @elseif($position->work_nature == 1)
+                                                       实习
+                                                   @else
+                                                       全职
+                                                   @endif
+                                                </span>
+                                                        <span>
+                                                    @if($position->education == -1)
+                                                                无学历要求
+                                                            @elseif($position->education == 0)
+                                                                高中及以上
+                                                            @elseif($position->education == 3)
+                                                                专科及以上
+                                                            @elseif($position->education == 1)
+                                                                本科及以上
+                                                            @elseif($position->education == 2)
+                                                                研究生及以上
+                                                            @endif
+                                                </span>
+                                                    </div>
+                                                    <div class="lebel">
+                                                        <div class="lebel_item">
+                                                            @if($position->tag ==="" || $position->tag ===null)
+                                                                <span class="wordCut">无标签</span>
+                                                            @else
+                                                                @foreach(preg_split("/(,| |、|;)/",$position->tag) as $tag)
+                                                                    <span class="wordCut">{{$tag}}</span>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="pli_btm">
+                                                    <a href="/company?eid={{$position->eid}}" class="left">
+                                                        <img
+                                                                @if($position->elogo === "" ||$position->elogo === null)
+                                                                src="../images/pic0.jpg"
+                                                                @else
+                                                                src="{{$position->elogo}}"
+                                                                @endif
+                                                                alt="公司logo" class="company-logo" width="40" height="40">
+                                                    </a>
+                                                    <div class="bottom-right">
+                                                        <div class="company_name wordCut">
+                                                            <a href="/company?eid={{$position->eid}}">
+                                                                @if($position->byname != "")
+                                                                    {{$position->byname}}
+                                                                @else
+                                                                    {{$position->ename}}
+                                                                @endif
+                                                            </a>
+                                                        </div>
+                                                        <div class="industry wordCut">
+                                                            <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="industry wordCut">
-                                                <span>{{mb_substr($position->ebrief,0,20,'utf-8')}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    @else
-                        <p class="p_Label"><span>在招职位</span><font>该公司暂未入驻本平台</font></p>
-                    @endif
+
+                    <!-- 公司信息 -->
+                    <!-- <div class="gs_part right">
+                        <ul class="company_brief">
+                            <p class="p_Label p_Label_pos"><span class="gray">公司信息</span></p>
+                            <li><span class="liwai">城市：</span><em>广州</em></li>
+
+                            <li><span class="liwai">领域：</span><em>移动互联网,社交</em></li>
+                            <li><span class="liwai">规模：</span><em class="gsgm" id="gm">少于15人</em></li>
+                            <li>
+                                <span class="liwai">融资：</span><em>天使轮</em>
+                            </li>
+                        </ul>
+                    </div> -->
                 </div>
-            </div> 
--->
-            <!-- 公司信息 -->
-            <!-- <div class="gs_part right">             
-                <ul class="company_brief">
-                    <p class="p_Label p_Label_pos"><span class="gray">公司信息</span></p> 
-                    <li><span class="liwai">城市：</span><em>广州</em></li>
-                   
-                    <li><span class="liwai">领域：</span><em>移动互联网,社交</em></li>
-                    <li><span class="liwai">规模：</span><em class="gsgm" id="gm">少于15人</em></li>
-                    <li>
-                        <span class="liwai">融资：</span><em>天使轮</em>
-                    </li>
-                </ul>
-            </div> -->
-        </div>           
+            @else
+                <div class="gsxxi_part">
+                    <div class="gsxxi left">
+                        <!--公司介绍-->
+                        <div class="company_presentation">
+                            <p class="p_Label"><span>公司介绍</span><font>该公司共信息由{!! $data['enprinfo']->author !!}提供</font></p>
+                            <div class="company_presentation_con">
+                                {!! $data['enprinfo']->ebrief or "公司简介暂无" !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
     </div>
 </div>
 @endsection

@@ -155,7 +155,8 @@ Route::any('message/delDialog', ['uses' => 'MessageController@delDialog']);//发
 Route::any('about/', ['uses' => 'AboutController@index']);//网站信息模块
 Route::any('about/index', ['uses' => 'AboutController@index']);//网站信息模块
 
-Route::any('company', ['uses' => 'CompanyController@companySearch']);//完成
+Route::any('company', ['uses' => 'CompanyController@companySearch']);//入驻公司信息完成
+Route::any('/company/Info', ['uses' => 'CompanyController@companyInfo']);//公司黄页信息
 
 Route::any('searchcompany', ['uses' => 'CompanyController@companyIndex']);//公司黄页搜索
 Route::get('/company/add/index', ['uses' => 'CompanyController@addIndex']);//提交公司信息页面
