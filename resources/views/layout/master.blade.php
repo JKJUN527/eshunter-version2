@@ -98,7 +98,16 @@
                     break;
                 }
             }
-        }
+        };
+        //搜索框获取和失去焦点事件
+        $(".taoyige input").focus(function () {
+            $(".taoyige").css("border","1px solid #D32F2F");
+            $(".taoyige").css("border-right","0px");
+        });
+        $(".taoyige input").blur(function () {
+            $(".taoyige").css("border","1px solid #ccc");
+            $(".taoyige").css("border-right","0px");
+        });
 </script>
 @section('custom-script')
 @show

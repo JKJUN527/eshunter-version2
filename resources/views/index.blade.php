@@ -12,67 +12,77 @@
 @section('custom-style')
     <link href="{{asset('../style/tao.css?v=2.61')}}" type="text/css" rel="stylesheet">
     <style>
-    /*.jieshao{*/
-        /*float: right;*/
-    /*}*/
         .jieshao_tb{
             margin-top: 1rem;
-        }
-        .all_divcon{
-            position: static;
         }
         .nav-logo{
             padding: 20px 20px 10px 20px !important;
         }
         .info-panel {
-    margin: 7px 0;
-}.info-panel--right {
-    min-width: 390px;
-    width: 20%;
-}
-.info-panel--left, .info-panel--right {
-    display: inline-block;
-    vertical-align: top;
-}.tuwen {
-    width: 100%;
-    clear: both;
-    overflow: hidden;
-    /* margin: 20px 0; */
-}.image_ad h3, .tuwen h3 {
-    line-height: 40px;
-    color: #38485A;
-    font-size: 18px;
-    border-bottom: 1px solid #E6E6E6;
-    height: 40px;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}.look-all {
-    font-size: 12px;
-    color: #666;
-}.pull-right {
-    float: right!important;
-}.tuwen ul {
-    padding: 0px;
-    padding-left: 10px;
-    list-style: none;
-}.tuwen li {
-    overflow: hidden;
-    width: 100%;
-    clear: both;
-    margin-bottom: 3.5px;
-}.tuwen li img {
-    width: 100px;
-    height: 67px;
-    float: left;
-    margin-right: 15px;
-}.tuwen li b {
-    overflow: hidden;
-    width: 100%;
-    font-weight: normal;
-    color: #333;
-    font-size: 14px;
-     line-height: 22px; 
-}
+            margin: 7px 0;
+        }
+        .info-panel--right {
+             min-width: 390px;
+             width: 20%;
+        }
+        .info-panel--left, .info-panel--right {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .tuwen {
+             width: 100%;
+             clear: both;
+             overflow: hidden;
+             /* margin: 20px 0; */
+         }
+        .image_ad h3, .tuwen h3 {
+              line-height: 40px;
+              color: #38485A;
+              font-size: 18px;
+              border-bottom: 1px solid #E6E6E6;
+              height: 40px;
+              margin-bottom: 1rem;
+              font-weight: bold;
+          }
+        .look-all {
+               font-size: 12px;
+               color: #666;
+        }
+        .pull-right {
+            float: right!important;
+        }
+        .tuwen ul {
+            padding: 0px;
+            padding-left: 10px;
+            list-style: none;
+        }
+        .tuwen li {
+            overflow: hidden;
+            width: 100%;
+            clear: both;
+            margin-bottom: 3.5px;
+        }
+        .tuwen li img {
+            width: 100px;
+            height: 67px;
+            float: left;
+            margin-right: 15px;
+        }
+        .tuwen li b {
+            overflow: hidden;
+            width: 100%;
+            font-weight: normal;
+            color: #333;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .tuwen li b:hover{
+            color: #D32F2F;
+        }
+        .taoyige:hover{
+            border: 1px solid #D32F2F;
+            border-right: 0px;
+        }
     </style>
 @endsection
 
@@ -575,7 +585,7 @@
 
 @section('footer')
     @include('components.myfooter')
-    @include('components.wheelmenu')
+    {{--@include('components.wheelmenu')--}}
 @endsection
 
 
