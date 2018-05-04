@@ -74,7 +74,7 @@
             font-weight: normal;
             color: #333;
             font-size: 14px;
-            line-height: 22px;
+            line-height: 2.3rem;
         }
         .tuwen li b:hover{
             color: #D32F2F;
@@ -85,6 +85,8 @@
         }
         .tuwen .new-time{
             float: right;
+            color: #999;
+            font-size: 12px;
         }
     </style>
 @endsection
@@ -183,7 +185,7 @@
                             </h3>
                             <?php
                             $index = 0;
-                            $count = 11;
+                            $count = 8;
                             ?>
                             <ul>
                                 @foreach($data['news']['news'] as $newsItem)
@@ -198,19 +200,20 @@
                                             <li>
                                                 <a href="news/detail?nid={{$newsItem->nid}}" target="_blank">
                                                     @if($newsItem->type ==1)
-                                                        <span class="label label-warning">综合电竞</span>
+                                                        <span class="label label-warning">综合</span>
                                                     @elseif($newsItem->type ==2)
-                                                        <span class="label label-info">电竞八卦</span>
+                                                        <span class="label label-info">趣闻</span>
                                                     @elseif($newsItem->type ==3)
-                                                        <span class="label label-default">赛事资讯</span>
+                                                        <span class="label label-default">赛事</span>
                                                     @elseif($newsItem->type ==4)
-                                                        <span class="label label-success">游戏快讯</span>
+                                                        <span class="label label-success">游戏</span>
                                                     @elseif($newsItem->type ==5)
-                                                        <span class="label label-primary">职场鸡汤</span>
+                                                        <span class="label label-primary">职场</span>
                                                     @endif
                                                     {{--<img src="{{$baseurl}}{{$imagepath}}">--}}
-                                                    <b>{{mb_substr($newsItem->title,0,18,'utf-8')}}</b>
-                                                    <span class="new-time">{{mb_substr($newsItem->created_at,6,5,'utf-8')}}</span>
+                                                    <b>{{mb_substr($newsItem->title,0,20,'utf-8')}}
+                                                        <span class="new-time">{{mb_substr($newsItem->created_at,6,5,'utf-8')}}</span>
+                                                    </b>
                                                 </a>
                                             </li>
                                         @else
