@@ -70,7 +70,7 @@
         }
         .tuwen li b {
             overflow: hidden;
-            width: 100%;
+            width: 80%;
             font-weight: normal;
             color: #333;
             font-size: 14px;
@@ -211,8 +211,8 @@
                                                         <span class="label label-primary">职场</span>
                                                     @endif
                                                     {{--<img src="{{$baseurl}}{{$imagepath}}">--}}
-                                                    <b>{{mb_substr($newsItem->title,0,20,'utf-8')}}
-                                                        <span class="new-time">{{mb_substr($newsItem->created_at,6,5,'utf-8')}}</span>
+                                                    <b>{{mb_strcut($newsItem->title,0,60,'utf-8')}}
+                                                    <span class="new-time">{{mb_substr($newsItem->created_at,6,5,'utf-8')}}</span>
                                                     </b>
                                                 </a>
                                             </li>
