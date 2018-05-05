@@ -69,17 +69,19 @@
         .education-panel p,
         .work-panel p {
             display: block !important;
-            border: 1px dashed #00B38A;
+            border: 1px solid #f5f5f5;
             margin: 16px;
             vertical-align: middle;
         }
 
         .project-panel p {
             padding: 5px 10px;
+            display: inline-block;
             color: #333333;
             font-size: 16px;
+            margin-bottom: 0;
             display: block !important;
-            border: 1px dashed #00B38A;
+            border: 1px solid #f5f5f5;
             margin: 16px;
             vertical-align: middle;
         }
@@ -339,7 +341,7 @@
 
         /* 更新简历页面 - 重新设计*/
         body {
-            background: #ffffff;
+            background: #EEEEEE;
         }
 
         .info_panel {
@@ -350,10 +352,8 @@
         .left_panel {
             float: left;
             width: 835px;
-            background: #fafafa;
+            background: #fff;
             margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #f2f2f2;
         }
 
         .right_panel {
@@ -365,7 +365,7 @@
             width: 835px;
             height: 200px;
             background: url({{asset("images/resume/resume_header.jpg")}});
-            border-radius: 5px;
+            border-radius: 10px 10px 0 0;
             position: relative;
         }
 
@@ -398,19 +398,8 @@
             background-color: #fafafa;
         }
 
-        .shadow {
-            position: absolute;
-            left: 353px;
-            top: 100px;
-            opacity: 0;
-        }
-
-        .head_pic:hover .shadow {
-            opacity: 1;
-        }
-
         .base_info {
-            padding: 35px 40px 10px 40px;
+            padding: 35px 40px;
             margin-top: 15px;
         }
 
@@ -475,37 +464,21 @@
             text-decoration: none;
         }
 
-        .mdl-card {
-            background: #fafafa !important;
-        }
-
-        .mdl-card__title {
-            padding-bottom: 20px;
-            text-align: center !important;
-        }
-
-        .mdl-card__title i.fa {
-            color: #00B38A;
-            margin-right: 10px;
-        }
-
-        /*right panel*/
-
-        .right-item {
-            padding: 16px 10px;
-            background-color: #fafafa;
+        .resume_pg {
+            padding: 16px 16px 18px;
             border: 1px solid #f2f2f2;
+            background-color: #fafafa;
             border-radius: 3px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            position: relative;
         }
 
         .progress {
             -webkit-border-radius: 0;
             -moz-border-radius: 0;
             -ms-border-radius: 0;
-            border-radius: 3px;
-            height: 8px;
-            margin: 15px 10px;
+            border-radius: 0;
+            height: 22px;
         }
 
         .progress .progress-bar {
@@ -523,213 +496,11 @@
             color: #fff;
             text-align: center;
             background-color: #00b38a;
-            -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
-            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+            -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
             -webkit-transition: width .6s ease;
             -o-transition: width .6s ease;
             transition: width .6s ease;
-        }
-
-        .progress-info {
-            margin: 0 10px;
-            font-weight: lighter;
-        }
-
-        .right-item span em,
-        .right-item a {
-            color: #00b38a;
-            text-decoration: none;
-        }
-
-        .right-item a {
-            float: right;
-            font-weight: normal;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .resume-name {
-            margin: 0 10px;
-        }
-
-        .dn {
-            display: none;
-        }
-
-        .right-nav {
-            border-left: 1px solid #f2f2f2;
-        }
-
-        .right-nav ul li a {
-            line-height: 50px;
-            cursor: pointer;
-            display: block;
-            height: 50px;
-            color: #333;
-            border-left: 2px solid transparent;
-            text-decoration: none;
-        }
-
-        .right-nav ul li a i {
-            margin: 0 15px 0 30px;
-        }
-
-        .right-nav ul li a:hover {
-            background-color: #fafafa;
-            border-left: 2px solid #00b38a;
-            color: #00B38A;
-        }
-
-        .active-nav-item {
-            background-color: #fafafa;
-            border-left: 2px solid #00b38a;
-            color: #00B38A;
-        }
-
-        .right-nav.affix {
-            top: 10px;
-        }
-
-        .line-left {
-            width: 319px;
-            height: 1px;
-            border-top: 1px solid #ededed;
-        }
-
-        .line-right {
-            width: 240px;
-            height: 1px;
-            border-top: 1px solid #ededed;
-        }
-
-        span.mdl-card__title-text {
-            width: 170px;
-            font-size: 18px;
-            padding: 6px 24px;
-            display: inline-block;
-            text-align: center !important;
-            background-color: #eee;
-            margin: 0 13px;
-            -moz-border-radius: 26px;
-            -webkit-border-radius: 26px;
-            border-radius: 26px;
-        }
-
-        .mdl-card__actions {
-            min-height: 100px;
-        }
-
-        .mdl-card__menu button i {
-            color: #00B38A;
-        }
-
-        .update-resume-name {
-            vertical-align: central;
-        }
-
-        input[name='resume-name'] {
-            width: 140px;
-            font-size: 10px;
-            padding: 2px 5px;
-        }
-
-        input[name='name'] {
-            width: 200px;
-            height: 30px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .save-btn {
-            background-color: #00B38A;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            border-radius: 4px;
-            font-size: 8px;
-            font-weight: lighter;
-            color: #fff;
-            padding: 0 5px;
-            margin: 0 5px;
-            position: relative;
-            top: -1px;
-        }
-
-        .save-btn-big {
-            background-color: #00B38A;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 6px;
-            font-weight: lighter;
-            color: #fff;
-            padding: 12px 18px;
-            font-size: 16px;
-            vertical-align: middle;
-        }
-
-        .base_info__name,
-        .bio {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        form.form_base_info__name,
-        form.form_base_info__bio {
-            position: relative;
-        }
-
-        #cancel_update_name,
-        #cancel_update_bio {
-            font-weight: normal;
-            font-size: 12px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #00B38A;
-            position: absolute;
-            right: 10px;
-            top: 6px;
-        }
-
-        #cancel_update_others {
-            padding: 12px 18px;
-            font-size: 16px;
-            vertical-align: middle;
-            text-decoration: none;
-            color: #00B38A;
-            cursor: pointer;
-            font-weight: 300;
-        }
-
-        .base_info__name form input[type="submit"],
-        .bio form input[type="submit"] {
-            position: absolute;
-            right: 50px;
-            top: 5px;
-        }
-
-        .form_base_info__others {
-            background: #fefef2;
-        }
-
-        .form_base_info__others input,
-        .form_base_info__others select,
-        .form_base_info__others select option {
-            text-align: left;
-            padding-left: 17px;
-            width: 327px;
-            height: 44px;
-            background-color: #fff;
-        }
-
-        .form_base_info__others label {
-            display: block;
-            font-size: 15px;
-            font-weight: 300;
-            margin-top: 20px;
-        }
-
-        .others form {
-            padding: 35px 40px;
         }
 
     </style>
@@ -743,1070 +514,1896 @@
                 <div class="head_pic">
                     <img src="{{asset("images/resume/default_headpic.png")}}" alt="" class="head_pic_img" width="120"
                          height="120">
-                    <img src={{asset("images/resume/head_pic_shadow.png")}} alt="" class="shadow" width="120"
-                         height="120">
+                    {{--                    <img src={{asset("images/resume/head_pic_shadow.png")}} alt="" class="shadow">--}}
                     <input type="file" name="head_pic" title="支持jpg、jpeg、gif、png格式，文件小于10M"/>
                 </div>
             </div>
 
-            <div class="base_info" id="base-info">
-                <p class="name base_info__name">
-                    <span>LiuYang</span>
-                    <a class="edit edit-name" id="update_name__btn"><i class="material-icons">edit</i> 编辑</a>
+            <div class="base_info">
+                <p class="name"><span>LiuYang</span><a class="edit edit-name"><i class="material-icons">edit</i> 编辑</a>
                 </p>
-
-                <div class="dn base_info__name">
-                    <form action="" class="form_base_info__name">
-                        <input type="text" name="name" value="名字">
-                        <input type="submit" value="保存" class="save-btn">
-                        <a id="cancel_update_name">取消</a>
-                    </form>
-                </div>
-
-                <p class="bio">
-                    <span>liuyang's bio......</span>
-                    <a class="edit edit-bio" id="update_bio_btn"><i class="material-icons">edit</i> 编辑</a>
-                </p>
-
-                <div class="dn bio">
-                    <form action="" class="form_base_info__bio">
-                        <input type="text" name="name" value="bio">
-                        <input type="submit" value="保存" class="save-btn">
-                        <a id="cancel_update_bio">取消</a>
-                    </form>
-                </div>
-
+                <p class="bio"><span>liuyang's bio......</span><a class="edit edit-bio"><i
+                                class="material-icons">edit</i> 编辑</a></p>
                 <p class="others">
                     <span><i class="material-icons">school</i>计算机技术 - 四川大学</span><br>
                     <span><i class="material-icons">people</i>硕士 - 应届毕业生 - 成都</span><br>
 
                     <span><i class="material-icons">phone</i>1234567890</span>
                     <span><i class="material-icons">email</i>liuyang@eshunter.com</span>
-                    <a class="edit edit-others" id="update_others_btn"><i class="material-icons">edit</i>编辑</a>
+                    <a class="edit edit-others"><i class="material-icons">edit</i>编辑</a>
                 </p>
             </div>
 
-            <div class="others dn">
-                <form action="" class="form_base_info__others">
-                    <label for="base_info__school">毕业院校</label>
-                    <input type="text" id="base_info__school" class="base_info__school" name="base_info__school">
+            <div class="info-panel--left">
 
-                    <label for="base_info__major">主修专业</label>
-                    <input type="text" id="base_info__major" class="base_info__major" name="base_info__major">
-
-                    <label for="base_info__major">主修专业</label>
-                    <input type="text" id="base_info__major" class="base_info__major" name="base_info__major">
-
-                    <label for="base_info__degree">最高学历</label>
-                    <select name="base_info__degree" id="base_info__degree">
-                        <option value="0">大专</option>
-                        <option value="1">本科</option>
-                        <option value="2">硕士</option>
-                        <option value="3">博士</option>
-                        <option value="4">其他</option>
-                    </select>
-
-                    {{--工作年限--}}
-                    <label for="base_info__workingyears">工作年限</label>
-                    <select name="base_info__workingyears" id="base_info__workingyears">
-                        <option value="0">应届毕业生</option>
-                        @foreach([1,2,3,4,5,6,7,8,9,10] as $working_years)
-                            <option value="1">{{$working_years}}年</option>
-                        @endforeach
-                        <option value="11">10年以上</option>
-                    </select>
-
-                    <label for="base_info__city">城市</label>
-                    <input type="text" id="base_info__city" class="base_info__city" name="base_info__city">
-
-                    <label for="base_info__phonenumber">手机号码</label>
-                    <input type="text" id="base_info__phonenumber" class="base_info__phonenumber"
-                           name="base_info__phonenumber">
-
-                    <label for="base_info__email">联系邮箱</label>
-                    <input type="text" id="base_info__email" class="base_info__email" name="base_info__email">
-
-                    <div style="margin-top: 20px;">
-                        <button class="save-btn-big" id="save_othres">保存</button>
-                        <a id="cancel_update_others">取消</a>
+                <div class="mdl-card resume-child-card" id="intention">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-pencil fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">求职意向</h5>
                     </div>
-                </form>
-            </div>
 
-            {{--<div class="info-panel--left">--}}
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-intention">
+                            <i class="material-icons">mode_edit</i>
+                        </button>
 
-            <div class="mdl-card resume-child-card" id="intention">
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">求职意向</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-intention">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-intention">
-                        修改
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions intention-panel">
-
-                    @if($data['intention'] == null)
-                        <div class="mdl-card__supporting-text">
-                            您还没有填写过求职意向，点击右上角进行填写
+                        <div class="mdl-tooltip" data-mdl-for="update-intention">
+                            修改
                         </div>
-                    @else
-                        <p>地区：
-                            <span>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border intention-panel">
+
+                        @if($data['intention'] == null)
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过求职意向，点击右上角进行填写
+                            </div>
+                        @else
+                            <p>地区：
+                                <span>
                                     @foreach($data['province'] as $province)
-                                    @if($data['intention']->region == $province->id)
-                                        {{$province->name}}
-                                        @break
-                                    @endif
-                                @endforeach
-                                @foreach($data['city'] as $city)
-                                    @if($data['intention']->region == $city->id)
-                                        {{$city->name}}
-                                        @break
-                                    @elseif($data['intention']->region == -1)
-                                        任意
-                                        @break
-                                    @endif
-                                @endforeach
-                                </span>
-                        </p>
-                        <p>行业分类：
-                            <span>
-                                    @foreach($data['industry'] as $industry)
-                                    @if($data['intention']->industry == $industry->id)
-                                        {{$industry->name}}
-                                        @break
-                                    @elseif($data['intention']->industry == -1)
-                                        任意
-                                        @break
-                                    @endif
-                                @endforeach
-                                </span>
-                        </p>
-                        <p>职业分类：
-                            <span>
-                                    @foreach($data['occupation'] as $occupation)
-                                    @if($data['intention']->occupation == $occupation->id)
-                                        {{$occupation->name}}
-                                        @break
-                                    @elseif($data['intention']->occupation == -1)
-                                        任意
-                                        @break
-                                    @endif
-                                @endforeach
-                                </span>
-                        </p>
-                        <p>工作类型：
-                            <span>
-                                    @if($data['intention']->work_nature == -1)
-                                    任意
-                                @elseif($data['intention']->work_nature == 0)
-                                    兼职
-                                @elseif($data['intention']->work_nature == 1)
-                                    实习
-                                @elseif($data['intention']->work_nature == 2)
-                                    全职
-                                @endif
-                                </span>
-                        </p>
-
-                        <p>期望薪资（月）:
-                            <span>
-                                    @if($data['intention']->salary < 0)
-                                    未指定
-                                @else
-                                    {{$data['intention']->salary}} 元
-                                @endif
-                                </span>
-                        </p>
-                    @endif
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border intention-panel-update">
-
-                    {{--<label for="position-place">工作地区意向</label>--}}
-                    {{--<div class="form-group">--}}
-                    {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                    {{--<select class="form-control show-tick selectpicker" data-live-search="true"--}}
-                    {{--id="position-place" name="place">--}}
-                    {{--@if($data['intention'] == null)--}}
-                    {{--<option value="-1">任意</option>--}}
-                    {{--@foreach($data['region'] as $region)--}}
-                    {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
-                    {{--@endforeach--}}
-                    {{--@else--}}
-                    {{--@if($data['intention']->region == -1)--}}
-                    {{--<option value="-1" selected>任意</option>--}}
-                    {{--@else--}}
-                    {{--<option value="-1">任意</option>--}}
-                    {{--@endif--}}
-                    {{--@foreach($data['region'] as $region)--}}
-                    {{--@if($data['intention']->region == $region->id)--}}
-                    {{--<option value="{{$region->id}}" selected>{{$region->name}}</option>--}}
-                    {{--@else--}}
-                    {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
-                    {{--@endif--}}
-                    {{--@endforeach--}}
-                    {{--@endif--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    <label for="position-place">意向省份</label>
-                    <div class="form-group">
-                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                        <select class="form-control show-tick selectpicker" id="position-place"
-                                data-live-search="true" name="place">
-                            @if($data['intention'] == null)
-                                <option value="-1">任意</option>
-                                @foreach($data['province'] as $province)
-                                    <option value="{{$province->id}}">{{$province->name}}</option>
-                                @endforeach
-                            @else
-                                @if($data['intention']->region == -1)
-                                    <option value="-1" selected>任意</option>
-                                @else
-                                    <option value="-1">任意</option>
-                                @endif
-                                {{$default_province =$data['intention']->region }}
-                                @foreach($data['province'] as $province)
-                                    @foreach($data['city'] as $city)
-                                        @if($data['intention']->region == $city->id)
-                                            <?php $default_province = $city->parent_id ?>
+                                        @if($data['intention']->region == $province->id)
+                                            {{$province->name}}
                                             @break
                                         @endif
                                     @endforeach
-                                    @if($default_province == $province->id)
-                                        <option value="{{$province->id}}" selected>{{$province->name}}</option>
-                                    @else
-                                        <option value="{{$province->id}}">{{$province->name}}</option>
-                                    @endif
-                                @endforeach
-                            @endif
-                        </select>
-                        <label class="error" for="position-place"></label>
-                    </div>
-                    <label for="position-city" id="citylabel" style="display: none">意向城市</label>
-                    @foreach($data['province'] as $province)
-                        <div class="form-group" id="city-display{{$province->id}}"
-                             name="city-display" style="display: none">
-                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" id="position-city"
-                                    data-live-search="true" name="city{{$province->id}}">
-                                <option value="-1" selected>任意</option>
-                                @foreach($data['city'] as $city)
-                                    @if($city->parent_id == $province->id)
+                                    @foreach($data['city'] as $city)
                                         @if($data['intention']->region == $city->id)
-                                            <option value="{{$city->id}}" selected>{{$city->name}}</option>
-                                        @else
-                                            <option value="{{$city->id}}">{{$city->name}}</option>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </select>
-                            <label class="error" for="position-city"></label>
-                        </div>
-                    @endforeach
-
-                    <label for="position-industry">行业意向</label>
-                    <div class="form-group">
-                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                        <select class="form-control show-tick selectpicker" id="position-industry"
-                                name="industry">
-
-                            @if($data['intention'] == null)
-                                <option value="-1">任意</option>
-                                @foreach($data['industry'] as $industry)
-                                    <option value="{{$industry->id}}">{{$industry->name}}</option>
-                                @endforeach
-                            @else
-                                @if($data['intention']->industry == -1)
-                                    <option value="-1" selected>任意</option>
-                                @else
-                                    <option value="-1">任意</option>
-                                @endif
-                                @foreach($data['industry'] as $industry)
-                                    @if($data['intention']->industry == $industry->id)
-                                        <option value="{{$industry->id}}" selected>{{$industry->name}}</option>
-                                    @else
-                                        <option value="{{$industry->id}}">{{$industry->name}}</option>
-                                    @endif
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-
-                    <label for="position-occupation" id="occulabel" style="display:none">游戏意向</label>
-                    @foreach($data['industry'] as $industry)
-                        <div class="form-group" id="occupation-display{{$industry->id}}" name="occupation-display"
-                             style="display:none;">
-                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" id="position-occupation"
-                                    name="occupation{{$industry->id}}">
-
-                                @if($data['intention'] == null)
-                                    <option value="-1">任意</option>
-                                    @foreach($data['occupation'] as $occupation)
-                                        @if($occupation->industry_id == $industry->id)
-                                            <option value="{{$occupation->id}}">{{$occupation->name}}</option>
+                                            {{$city->name}}
+                                            @break
+                                        @elseif($data['intention']->region == -1)
+                                            任意
+                                            @break
                                         @endif
                                     @endforeach
+                                </span>
+                            </p>
+                            <p>行业分类：
+                                <span>
+                                    @foreach($data['industry'] as $industry)
+                                        @if($data['intention']->industry == $industry->id)
+                                            {{$industry->name}}
+                                            @break
+                                        @elseif($data['intention']->industry == -1)
+                                            任意
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </span>
+                            </p>
+                            <p>职业分类：
+                                <span>
+                                    @foreach($data['occupation'] as $occupation)
+                                        @if($data['intention']->occupation == $occupation->id)
+                                            {{$occupation->name}}
+                                            @break
+                                        @elseif($data['intention']->occupation == -1)
+                                            任意
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </span>
+                            </p>
+                            <p>工作类型：
+                                <span>
+                                    @if($data['intention']->work_nature == -1)
+                                        任意
+                                    @elseif($data['intention']->work_nature == 0)
+                                        兼职
+                                    @elseif($data['intention']->work_nature == 1)
+                                        实习
+                                    @elseif($data['intention']->work_nature == 2)
+                                        全职
+                                    @endif
+                                </span>
+                            </p>
 
+                            <p>期望薪资（月）:
+                                <span>
+                                    @if($data['intention']->salary < 0)
+                                        未指定
+                                    @else
+                                        {{$data['intention']->salary}} 元
+                                    @endif
+                                </span>
+                            </p>
+                        @endif
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border intention-panel-update">
+
+                        {{--<label for="position-place">工作地区意向</label>--}}
+                        {{--<div class="form-group">--}}
+                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                        {{--<select class="form-control show-tick selectpicker" data-live-search="true"--}}
+                        {{--id="position-place" name="place">--}}
+                        {{--@if($data['intention'] == null)--}}
+                        {{--<option value="-1">任意</option>--}}
+                        {{--@foreach($data['region'] as $region)--}}
+                        {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
+                        {{--@endforeach--}}
+                        {{--@else--}}
+                        {{--@if($data['intention']->region == -1)--}}
+                        {{--<option value="-1" selected>任意</option>--}}
+                        {{--@else--}}
+                        {{--<option value="-1">任意</option>--}}
+                        {{--@endif--}}
+                        {{--@foreach($data['region'] as $region)--}}
+                        {{--@if($data['intention']->region == $region->id)--}}
+                        {{--<option value="{{$region->id}}" selected>{{$region->name}}</option>--}}
+                        {{--@else--}}
+                        {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
+                        {{--@endif--}}
+                        {{--@endforeach--}}
+                        {{--@endif--}}
+                        {{--</select>--}}
+                        {{--</div>--}}
+                        <label for="position-place">意向省份</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="position-place"
+                                    data-live-search="true" name="place">
+                                @if($data['intention'] == null)
+                                    <option value="-1">任意</option>
+                                    @foreach($data['province'] as $province)
+                                        <option value="{{$province->id}}">{{$province->name}}</option>
+                                    @endforeach
                                 @else
-                                    @if($data['intention']->occupation == -1)
+                                    @if($data['intention']->region == -1)
                                         <option value="-1" selected>任意</option>
                                     @else
                                         <option value="-1">任意</option>
                                     @endif
-                                    @foreach($data['occupation'] as $occupation)
-                                        @if($occupation->industry_id == $industry->id)
-                                            @if($data['intention']->occupation == $occupation->id)
-                                                <option value="{{$occupation->id}}"
-                                                        selected>{{$occupation->name}}</option>
-                                            @else
-                                                <option value="{{$occupation->id}}">{{$occupation->name}}</option>
+                                    {{$default_province =$data['intention']->region }}
+                                    @foreach($data['province'] as $province)
+                                        @foreach($data['city'] as $city)
+                                            @if($data['intention']->region == $city->id)
+                                                <?php $default_province = $city->parent_id ?>
+                                                @break
                                             @endif
+                                        @endforeach
+                                        @if($default_province == $province->id)
+                                            <option value="{{$province->id}}" selected>{{$province->name}}</option>
+                                        @else
+                                            <option value="{{$province->id}}">{{$province->name}}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select>
+                            <label class="error" for="position-place"></label>
+                        </div>
+                        <label for="position-city" id="citylabel" style="display: none">意向城市</label>
+                        @foreach($data['province'] as $province)
+                            <div class="form-group" id="city-display{{$province->id}}"
+                                 name="city-display" style="display: none">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" id="position-city"
+                                        data-live-search="true" name="city{{$province->id}}">
+                                    <option value="-1" selected>任意</option>
+                                    @foreach($data['city'] as $city)
+                                        @if($city->parent_id == $province->id)
+                                            @if($data['intention']->region == $city->id)
+                                                <option value="{{$city->id}}" selected>{{$city->name}}</option>
+                                            @else
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <label class="error" for="position-city"></label>
+                            </div>
+                        @endforeach
+
+                        <label for="position-industry">行业意向</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="position-industry"
+                                    name="industry">
+
+                                @if($data['intention'] == null)
+                                    <option value="-1">任意</option>
+                                    @foreach($data['industry'] as $industry)
+                                        <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                    @endforeach
+                                @else
+                                    @if($data['intention']->industry == -1)
+                                        <option value="-1" selected>任意</option>
+                                    @else
+                                        <option value="-1">任意</option>
+                                    @endif
+                                    @foreach($data['industry'] as $industry)
+                                        @if($data['intention']->industry == $industry->id)
+                                            <option value="{{$industry->id}}" selected>{{$industry->name}}</option>
+                                        @else
+                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
                                         @endif
                                     @endforeach
                                 @endif
                             </select>
                         </div>
-                    @endforeach
 
-                    <label for="position-type">工作类型意向</label>
-                    <div class="form-group">
-                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                        <select class="form-control show-tick selectpicker" id="position-type" name="type">
-                            @if($data['intention'] == null)
-                                <option value="-1">任意</option>
-                                <option value="0">兼职</option>
-                                <option value="1">实习</option>
-                                <option value="2">全职</option>
-                            @else
-                                <option value="-1" {{$data['intention']->work_nature==-1?"selected":""}}>任意</option>
-                                <option value="0" {{$data['intention']->work_nature==0?"selected":""}}>兼职</option>
-                                <option value="1" {{$data['intention']->work_nature==1?"selected":""}}>实习</option>
-                                <option value="2" {{$data['intention']->work_nature==2?"selected":""}}>全职</option>
-                            @endif
-                        </select>
-                    </div>
+                        <label for="position-occupation" id="occulabel" style="display:none">游戏意向</label>
+                        @foreach($data['industry'] as $industry)
+                            <div class="form-group" id="occupation-display{{$industry->id}}" name="occupation-display"
+                                 style="display:none;">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" id="position-occupation"
+                                        name="occupation{{$industry->id}}">
 
-                    <label for="position-salary">薪资意向（月）</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            @if($data['intention'] == null || $data['intention']->salary < 0)
-                                <input type="number" id="position-salary" name="salary" class="form-control"
-                                       step="1" placeholder="薪资意向(单位：元)，选填">
-                            @else
-                                <input type="number" id="position-salary" name="salary" class="form-control"
-                                       step="1" placeholder="薪资意向(单位：元)，选填"
-                                       value="{{$data['intention']->salary}}">
-                            @endif
-                        </div>
-                    </div>
+                                    @if($data['intention'] == null)
+                                        <option value="-1">任意</option>
+                                        @foreach($data['occupation'] as $occupation)
+                                            @if($occupation->industry_id == $industry->id)
+                                                <option value="{{$occupation->id}}">{{$occupation->name}}</option>
+                                            @endif
+                                        @endforeach
 
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
-                        </button>
-                        <button id="add-intention--button"
-                                class="btn btn-primary blue-btn">
-                            确认修改／新增
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mdl-card resume-child-card" id="education">
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">教育经历</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-education">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-education">
-                        添加
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions education-panel">
-
-                    @forelse($data['education'] as $education)
-                        <p id="education_info" name="education_info" data-content="{{$education->eduid}}">
-                            <span>{{$education->school}}</span>
-                            @if($education->gradu_date !=NULL)
-                                <span>{{str_replace('-','/',$education->date)}}
-                                    -{{str_replace('-','/',$education->gradu_date)}}</span>
-                            @else
-                                <span>{{$education->date}}- -</span>
-                            @endif
-                            <span>
-                                    @if($education->degree == 0)
-                                    高中
-                                @elseif($education->degree == 1)
-                                    本科
-                                @elseif($education->degree == 2)
-                                    硕士及以上
-                                @elseif($education->degree == 3)
-                                    专科
-                                @endif
-                                </span>
-                            <span>{{$education->major}}</span>
-                            <i class="material-icons edu-delete education-item"
-                               data-content="{{$education->eduid}}">close</i>
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            您还没有填写过教育经历，点击右上角进行填写
-                        </div>
-                    @endforelse
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border education-panel-update">
-
-                    <label for="school-name">学校</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="school" name="school" class="form-control"
-                                   placeholder="不能为空">
-                            <input type="text" id="eduid" name="eduid" class="form-control" value="-1"
-                                   style="display: none">
-                        </div>
-                        <label class="error" for="school"></label>
-                    </div>
-
-                    <label for="education-degree">学历</label>
-                    <div class="form-group">
-                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                        <select class="form-control show-tick selectpicker" id="education-degree" name="degree">
-                            <option value="0">高中</option>
-                            <option value="3">专科</option>
-                            <option value="1" selected>本科</option>
-                            <option value="2">硕士及以上</option>
-                        </select>
-                    </div>
-
-                    <label for="subject-name">专业</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="subject-name" name="subject" class="form-control"
-                                   placeholder="可以为空">
-                        </div>
-                    </div>
-
-                    <label for="education-begin">入学时间</label>
-                    <div class="form-group">
-
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
-                             data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="16" type="text" name="education-begin" value=""
-                                   readonly placeholder="不能为空">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-
-                        <label class="error" for="education-begin"></label>
-                    </div>
-                    <label for="education-end">毕业时间</label>
-                    <div class="form-group">
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
-                             data-link-format="yyyy-mm-dd">
-                            <input size="16" type="text" value="" readonly id="education-end" name="education-end"
-                                   class="form-control"
-                                   placeholder="如在读状态请勿填写">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-
-                    </div>
-
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
-                        </button>
-                        <button id="add-education--button"
-                                class="btn btn-primary blue-btn">
-                            确认添加
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="mdl-card resume-child-card" id="workexp">
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">工作经历</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-work">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-work">
-                        添加
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions work-panel">
-
-                    @forelse($data['work'] as $work)
-                        <p id="work_info" name="work_info" data-content="{{$work->id}}">
-                            <?php
-                            $index = 1;
-                            ?>
-                            <span>
-                                @foreach(explode('@', $work->work_time) as $time)
-                                    @if($index == 1)
-                                        {{str_replace('-','/',$time)}} --
-                                    @elseif($index == 2)
-                                        {{str_replace('-','/',$time)}}
+                                    @else
+                                        @if($data['intention']->occupation == -1)
+                                            <option value="-1" selected>任意</option>
+                                        @else
+                                            <option value="-1">任意</option>
+                                        @endif
+                                        @foreach($data['occupation'] as $occupation)
+                                            @if($occupation->industry_id == $industry->id)
+                                                @if($data['intention']->occupation == $occupation->id)
+                                                    <option value="{{$occupation->id}}"
+                                                            selected>{{$occupation->name}}</option>
+                                                @else
+                                                    <option value="{{$occupation->id}}">{{$occupation->name}}</option>
+                                                @endif
+                                            @endif
+                                        @endforeach
                                     @endif
-                                    <?php $index++ ?>
-                                @endforeach
-                                </span>
-                            <span>{{$work->ename}}</span>
-                            <span>{{$work->position}}</span>
-                            <span style="width: 90%">{!! $work->describe !!}</span>
+                                </select>
+                            </div>
+                        @endforeach
 
-                            <i class="material-icons work-delete"
-                               data-content="{{$work->id}}">close</i>
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            您还没有填写过工作经历，点击右上角进行填写
+                        <label for="position-type">工作类型意向</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="position-type" name="type">
+                                @if($data['intention'] == null)
+                                    <option value="-1">任意</option>
+                                    <option value="0">兼职</option>
+                                    <option value="1">实习</option>
+                                    <option value="2">全职</option>
+                                @else
+                                    <option value="-1" {{$data['intention']->work_nature==-1?"selected":""}}>任意</option>
+                                    <option value="0" {{$data['intention']->work_nature==0?"selected":""}}>兼职</option>
+                                    <option value="1" {{$data['intention']->work_nature==1?"selected":""}}>实习</option>
+                                    <option value="2" {{$data['intention']->work_nature==2?"selected":""}}>全职</option>
+                                @endif
+                            </select>
                         </div>
-                    @endforelse
+
+                        <label for="position-salary">薪资意向（月）</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                @if($data['intention'] == null || $data['intention']->salary < 0)
+                                    <input type="number" id="position-salary" name="salary" class="form-control"
+                                           step="1" placeholder="薪资意向(单位：元)，选填">
+                                @else
+                                    <input type="number" id="position-salary" name="salary" class="form-control"
+                                           step="1" placeholder="薪资意向(单位：元)，选填"
+                                           value="{{$data['intention']->salary}}">
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-intention--button"
+                                    class="btn btn-primary blue-btn">
+                                确认修改／新增
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mdl-card__actions mdl-card--border work-panel-update">
+                <div class="mdl-card resume-child-card" id="education">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">
+                            教育经历</h5>
+                    </div>
 
-                    <label for="company-name">公司名称</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="company-name" name="company-name" class="form-control"
-                                   placeholder="不能为空">
-                            <input type="text" id="workex-id" name="workex-id" class="form-control"
-                                   style="display: none;" value="-1">
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-education">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-education">
+                            添加
                         </div>
-                        <label class="error" for="company-name"></label>
                     </div>
 
-                    <label for="position">职位</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="position" name="position" class="form-control"
-                                   placeholder="不能为空">
+                    <div class="mdl-card__actions mdl-card--border education-panel">
+
+                        @forelse($data['education'] as $education)
+                            <p id="education_info" name="education_info" data-content="{{$education->eduid}}">
+                                <span>{{$education->school}}</span>
+                                @if($education->gradu_date !=NULL)
+                                    <span>{{str_replace('-','/',$education->date)}}
+                                        -{{str_replace('-','/',$education->gradu_date)}}</span>
+                                @else
+                                    <span>{{$education->date}}- -</span>
+                                @endif
+                                <span>
+                                    @if($education->degree == 0)
+                                        高中
+                                    @elseif($education->degree == 1)
+                                        本科
+                                    @elseif($education->degree == 2)
+                                        硕士及以上
+                                    @elseif($education->degree == 3)
+                                        专科
+                                    @endif
+                                </span>
+                                <span>{{$education->major}}</span>
+                                <i class="material-icons edu-delete education-item"
+                                   data-content="{{$education->eduid}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过教育经历，点击右上角进行填写
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border education-panel-update">
+
+                        <label for="school-name">学校</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="school" name="school" class="form-control"
+                                       placeholder="不能为空">
+                                <input type="text" id="eduid" name="eduid" class="form-control" value="-1"
+                                       style="display: none">
+                            </div>
+                            <label class="error" for="school"></label>
                         </div>
-                        <label class="error" for="position"></label>
-                    </div>
 
-                    <label for="work-begin">入职时间</label>
-                    <div class="form-group">
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
-                             data-link-format="yyyy-mm-dd">
-                            <input size="16" type="text" value="" readonly id="work-begin" name="work-begin"
-                                   class="form-control" placeholder="不能为空">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
+                        <label for="education-degree">学历</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="education-degree" name="degree">
+                                <option value="0">高中</option>
+                                <option value="3">专科</option>
+                                <option value="1" selected>本科</option>
+                                <option value="2">硕士及以上</option>
+                            </select>
                         </div>
 
-                        <label class="error" for="work-begin"></label>
-                    </div>
-
-                    <label for="work-end">离职时间</label>
-                    <div class="form-group">
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
-                             data-link-format="yyyy-mm-dd">
-                            <input size="16" type="text" value="" readonly id="work-end" name="work-end"
-                                   class="form-control" placeholder="不能为空">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
+                        <label for="subject-name">专业</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="subject-name" name="subject" class="form-control"
+                                       placeholder="可以为空">
+                            </div>
                         </div>
 
-                        <label class="error" for="work-end"></label>
+                        <label for="education-begin">入学时间</label>
+                        <div class="form-group">
+
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" name="education-begin" value=""
+                                       readonly placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="education-begin"></label>
+                        </div>
+                        <label for="education-end">毕业时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="education-end" name="education-end"
+                                       class="form-control"
+                                       placeholder="如在读状态请勿填写">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-education--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="workexp">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">工作经历</h5>
                     </div>
 
-                    <label for="work-type">工作类型</label>
-                    <div class="form-group">
-                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                        <select class="form-control show-tick selectpicker" id="work-type" name="work-type">
-                            <option value="0" selected>全职</option>
-                            <option value="1">实习</option>
-                        </select>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-work">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-work">
+                            添加
+                        </div>
                     </div>
 
-                    <label for="work-desc">工作描述</label>
-                    <div class="form-group">
-                        <div class="form-line">
+                    <div class="mdl-card__actions mdl-card--border work-panel">
+
+                        @forelse($data['work'] as $work)
+                            <p id="work_info" name="work_info" data-content="{{$work->id}}">
+                                <?php
+                                $index = 1;
+                                ?>
+                                <span>
+                                @foreach(explode('@', $work->work_time) as $time)
+                                        @if($index == 1)
+                                            {{str_replace('-','/',$time)}} --
+                                        @elseif($index == 2)
+                                            {{str_replace('-','/',$time)}}
+                                        @endif
+                                        <?php $index++ ?>
+                                    @endforeach
+                                </span>
+                                <span>{{$work->ename}}</span>
+                                <span>{{$work->position}}</span>
+                                <span style="width: 90%">{!! $work->describe !!}</span>
+
+                                <i class="material-icons work-delete"
+                                   data-content="{{$work->id}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过工作经历，点击右上角进行填写
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border work-panel-update">
+
+                        <label for="company-name">公司名称</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="company-name" name="company-name" class="form-control"
+                                       placeholder="不能为空">
+                                <input type="text" id="workex-id" name="workex-id" class="form-control"
+                                       style="display: none;" value="-1">
+                            </div>
+                            <label class="error" for="company-name"></label>
+                        </div>
+
+                        <label for="position">职位</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="position" name="position" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="position"></label>
+                        </div>
+
+                        <label for="work-begin">入职时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="work-begin" name="work-begin"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="work-begin"></label>
+                        </div>
+
+                        <label for="work-end">离职时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="work-end" name="work-end"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="work-end"></label>
+                        </div>
+
+                        <label for="work-type">工作类型</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="work-type" name="work-type">
+                                <option value="0" selected>全职</option>
+                                <option value="1">实习</option>
+                            </select>
+                        </div>
+
+                        <label for="work-desc">工作描述</label>
+                        <div class="form-group">
+                            <div class="form-line">
                                 <textarea rows="5" class="form-control" name="work-desc" id="work-desc"
                                           placeholder="介绍你的工作内容..."></textarea>
+                            </div>
+                            <label class="error" for="work-desc"></label>
                         </div>
-                        <label class="error" for="work-desc"></label>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-work--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="projectexp">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">项目/赛事经历</h5>
                     </div>
 
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-project">
+                            <i class="material-icons">add</i>
                         </button>
-                        <button id="add-work--button"
-                                class="btn btn-primary blue-btn">
-                            确认添加
-                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-project">
+                            添加
+                        </div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="mdl-card__actions mdl-card--border project-panel">
 
-            <div class="mdl-card resume-child-card" id="projectexp">
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">项目/赛事经历</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-project">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-project">
-                        添加
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions project-panel">
-
-                    @forelse($data['project'] as $project)
-                        <p id="project_info" name="project_info" data-content="{{$project->id}}">
-                            <?php
-                            $index = 1;
-                            ?>
-                            <span>
+                        @forelse($data['project'] as $project)
+                            <p id="project_info" name="project_info" data-content="{{$project->id}}">
+                                <?php
+                                $index = 1;
+                                ?>
+                                <span>
                                 @foreach(explode('@', $project->project_time) as $time)
-                                    @if($index == 1)
-                                        {{str_replace('-','/',$time)}} --
-                                    @elseif($index == 2)
-                                        {{str_replace('-','/',$time)}}
-                                    @endif
-                                    <?php $index++ ?>
-                                @endforeach
+                                        @if($index == 1)
+                                            {{str_replace('-','/',$time)}} --
+                                        @elseif($index == 2)
+                                            {{str_replace('-','/',$time)}}
+                                        @endif
+                                        <?php $index++ ?>
+                                    @endforeach
                                 </span>
-                            <span>{{$project->project_name}}</span>
-                            <span>{{$project->position}}</span>
-                            <span style="width: 90%">{!! $project->describe !!}</span>
+                                <span>{{$project->project_name}}</span>
+                                <span>{{$project->position}}</span>
+                                <span style="width: 90%">{!! $project->describe !!}</span>
 
-                            <i class="material-icons project-delete"
-                               data-content="{{$project->id}}">close</i>
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            您还没有填写过项目经历，点击右上角进行填写
-                        </div>
-                    @endforelse
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border project-panel-update">
-
-                    <label for="project-name">项目/赛事</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="project-name" name="project-name" class="form-control"
-                                   placeholder="不能为空">
-                            <input type="text" id="projectex-id" name="projectex-id" class="form-control"
-                                   style="display: none;" value="-1">
-                        </div>
-                        <label class="error" for="project-name"></label>
+                                <i class="material-icons project-delete"
+                                   data-content="{{$project->id}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过项目经历，点击右上角进行填写
+                            </div>
+                        @endforelse
                     </div>
 
-                    <label for="project-position">项目职责</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="project-position" name="project-position" class="form-control"
-                                   placeholder="不能为空">
-                        </div>
-                        <label class="error" for="project-position"></label>
-                    </div>
+                    <div class="mdl-card__actions mdl-card--border project-panel-update">
 
-                    <label for="project-begin">开始时间</label>
-                    <div class="form-group">
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
-                             data-link-format="yyyy-mm-dd">
-                            <input size="16" type="text" value="" readonly id="project-begin" name="project-begin"
-                                   class="form-control" placeholder="不能为空">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
+                        <label for="project-name">项目/赛事</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="project-name" name="project-name" class="form-control"
+                                       placeholder="不能为空">
+                                <input type="text" id="projectex-id" name="projectex-id" class="form-control"
+                                       style="display: none;" value="-1">
+                            </div>
+                            <label class="error" for="project-name"></label>
                         </div>
 
-                        <label class="error" for="project-begin"></label>
-                    </div>
-
-                    <label for="project-end">截止时间</label>
-                    <div class="form-group">
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm" data-link-field="dtp_input2" data-link-format="yyyy-mm">
-                            <input size="16" type="text" value="" readonly id="project-end" name="project-end"
-                                   class="form-control" placeholder="不能为空">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
+                        <label for="project-position">项目职责</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="project-position" name="project-position" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="project-position"></label>
                         </div>
 
-                        <label class="error" for="project-end"></label>
-                    </div>
+                        <label for="project-begin">开始时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="project-begin" name="project-begin"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
 
-                    <label for="project-desc">项目描述</label>
-                    <div class="form-group">
-                        <div class="form-line">
+                            <label class="error" for="project-begin"></label>
+                        </div>
+
+                        <label for="project-end">截止时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm" data-link-field="dtp_input2" data-link-format="yyyy-mm">
+                                <input size="16" type="text" value="" readonly id="project-end" name="project-end"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="project-end"></label>
+                        </div>
+
+                        <label for="project-desc">项目描述</label>
+                        <div class="form-group">
+                            <div class="form-line">
                                 <textarea rows="5" class="form-control" name="project-desc" id="project-desc"
                                           placeholder="介绍你的项目情况..."></textarea>
+                            </div>
+                            <label class="error" for="project-desc"></label>
                         </div>
-                        <label class="error" for="project-desc"></label>
-                    </div>
 
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
-                        </button>
-                        <button id="add-project--button"
-                                class="btn btn-primary blue-btn">
-                            确认添加
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="mdl-card resume-child-card" id="egameexp">
-
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">电竞经历</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-game">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-game">
-                        添加
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions education-panel">
-                    @forelse($data['game'] as $game)
-                        <p id="egame_info" name="egame_info" data-content="{{$game->egid}}">
-                            <span>{{$game->ename}}</span>
-                            <span>{{$game->level}}</span>
-                            <span>{{str_replace('-','/',$game->date)}} 开始接触</span>
-                            @if($game->extra != null && $game->extra != "")
-                                <span style="width: 90%">{!! $game->extra !!}</span>
-                            @endif
-
-                            <i class="material-icons education-item game-delete"
-                               data-content="{{$game->egid}}">close</i>
-                        </p>
-                    @empty
-                        <div class="mdl-card__supporting-text">
-                            您还没有填写过电竞经历
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-project--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
                         </div>
-                    @endforelse
+
+                    </div>
                 </div>
 
-                <div class="mdl-card__actions mdl-card--border game-panel-update">
+                <div class="mdl-card resume-child-card" id="egameexp">
 
-                    <label for="game-name">游戏名称</label>
-                    <div class="form-group">
-                        <input id="egame-id" name="egame-id" style="display: none;" value="-1">
-                        <select class="form-control show-tick selectpicker" id="egame-name"
-                                name="egamename">
-                            @if(emptyArray($data['egame']))
-                                <option value="-1">暂无游戏</option>
-                            @endif
-                            @foreach($data['egame'] as $egame)
-                                <option value="{{$egame->id}}">{{$egame->name}}</option>
-                            @endforeach
-                        </select>
-                        <label class="error" for="game-name"></label>
+                    <div class="mdl-card__title">
+                        <i class="fa fa-gamepad fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">电竞经历</h5>
                     </div>
 
-                    <label for="game-level" id="egrade-label" style="display: none;">段位／排名</label>
-                    @foreach($data['egame'] as $egame)
-                        <div class="form-group" id="egrade-display{{$egame->id}}" name="egrade-display"
-                             style="display: none;">
-                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
-                            <select class="form-control show-tick selectpicker" name="egamelevel{{$egame->id}}">
-                                @foreach($data['egrade'] as $egrade)
-                                    @if($egrade->egame_id == $egame->id)
-                                        <option value="{{$egrade->id}}">{{$egrade->name}}</option>
-                                    @endif
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-game">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-game">
+                            添加
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border education-panel">
+                        @forelse($data['game'] as $game)
+                            <p id="egame_info" name="egame_info" data-content="{{$game->egid}}">
+                                <span>{{$game->ename}}</span>
+                                <span>{{$game->level}}</span>
+                                <span>{{str_replace('-','/',$game->date)}} 开始接触</span>
+                                @if($game->extra != null && $game->extra != "")
+                                    <span style="width: 90%">{!! $game->extra !!}</span>
+                                @endif
+
+                                <i class="material-icons education-item game-delete"
+                                   data-content="{{$game->egid}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过电竞经历
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border game-panel-update">
+
+                        <label for="game-name">游戏名称</label>
+                        <div class="form-group">
+                            <input id="egame-id" name="egame-id" style="display: none;" value="-1">
+                            <select class="form-control show-tick selectpicker" id="egame-name"
+                                    name="egamename">
+                                @if(emptyArray($data['egame']))
+                                    <option value="-1">暂无游戏</option>
+                                @endif
+                                @foreach($data['egame'] as $egame)
+                                    <option value="{{$egame->id}}">{{$egame->name}}</option>
                                 @endforeach
                             </select>
-                            <label class="error" for="game-level"></label>
-                        </div>
-                    @endforeach
-                    <label for="game-begin">接触时间</label>
-                    <div class="form-group">
-                        <div class="form-line input-group date form_date col-md-5" data-date=""
-                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
-                             data-link-format="yyyy-mm-dd">
-                            <input size="16" type="text" value="" readonly id="game-begin" name="game-begin"
-                                   class="form-control"
-                                   placeholder="从何时开始接触这款游戏">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
+                            <label class="error" for="game-name"></label>
                         </div>
 
-                        <label class="error" for="game-begin"></label>
-                    </div>
-                    <label for="game-desc">备注</label>
-                    <div class="form-group">
-                        <div class="form-line">
+                        <label for="game-level" id="egrade-label" style="display: none;">段位／排名</label>
+                        @foreach($data['egame'] as $egame)
+                            <div class="form-group" id="egrade-display{{$egame->id}}" name="egrade-display"
+                                 style="display: none;">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" name="egamelevel{{$egame->id}}">
+                                    @foreach($data['egrade'] as $egrade)
+                                        @if($egrade->egame_id == $egame->id)
+                                            <option value="{{$egrade->id}}">{{$egrade->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <label class="error" for="game-level"></label>
+                            </div>
+                        @endforeach
+                        <label for="game-begin">接触时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="game-begin" name="game-begin"
+                                       class="form-control"
+                                       placeholder="从何时开始接触这款游戏">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="game-begin"></label>
+                        </div>
+                        <label for="game-desc">备注</label>
+                        <div class="form-group">
+                            <div class="form-line">
                                 <textarea rows="5" class="form-control" name="game-desc" id="game-desc"
                                           placeholder="备注你的服务大区、游戏ID、KDA、组排分等信息"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-game--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+
+                    {{--<div class="mdl-card__actions mdl-card--border egamexper-panel">--}}
+
+                    {{--@forelse($data['egamexper'] as $egamexper)--}}
+                    {{--<p>--}}
+                    {{--<span>英雄联盟</span>--}}
+                    {{--<span>2012</span>--}}
+                    {{--<span>黄金</span>--}}
+                    {{--<i class="material-icons egame-delete egamexper-item"--}}
+                    {{--data-content="1">close</i>--}}
+                    {{--</p>--}}
+                    {{--@empty--}}
+                    {{--<div class="mdl-card__supporting-text">--}}
+                    {{--您还没有填写过电竞经历，点击右上角进行填写--}}
+                    {{--</div>--}}
+                    {{--@endforelse--}}
+                    {{--</div>--}}
+                </div>
+
+                <div class="mdl-card resume-child-card" id="skill">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-tags fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">技能特长</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-skill">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-skill">
+                            添加
                         </div>
                     </div>
 
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
-                        </button>
-                        <button id="add-game--button"
-                                class="btn btn-primary blue-btn">
-                            确认添加
-                        </button>
-                    </div>
-
-                </div>
-
-                {{--<div class="mdl-card__actions mdl-card--border egamexper-panel">--}}
-
-                {{--@forelse($data['egamexper'] as $egamexper)--}}
-                {{--<p>--}}
-                {{--<span>英雄联盟</span>--}}
-                {{--<span>2012</span>--}}
-                {{--<span>黄金</span>--}}
-                {{--<i class="material-icons egame-delete egamexper-item"--}}
-                {{--data-content="1">close</i>--}}
-                {{--</p>--}}
-                {{--@empty--}}
-                {{--<div class="mdl-card__supporting-text">--}}
-                {{--您还没有填写过电竞经历，点击右上角进行填写--}}
-                {{--</div>--}}
-                {{--@endforelse--}}
-                {{--</div>--}}
-            </div>
-
-            <div class="mdl-card resume-child-card" id="skill">
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">技能特长</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-skill">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-skill">
-                        添加
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions skill-panel">
-                    {{--|@|王者荣耀|至尊星耀|@|LOL|最强王者--}}
-                    @if($data['resume']['skill'] == null)
-                        <div class="mdl-card__supporting-text">
-                            您还没有填写过技能特长，点击右上角进行填写
-                        </div>
-                    @else
-                        @foreach($data['resume']['skill'] as $skill)
-                            <span>
+                    <div class="mdl-card__actions mdl-card--border skill-panel">
+                        {{--|@|王者荣耀|至尊星耀|@|LOL|最强王者--}}
+                        @if($data['resume']['skill'] == null)
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过技能特长，点击右上角进行填写
+                            </div>
+                        @else
+                            @foreach($data['resume']['skill'] as $skill)
+                                <span>
                                     <small class="skill-item" style="font-size:120%">{{$skill}}</small>
                                     <i class="material-icons skill-item skill-delete">close</i>
                                 </span>
-                        @endforeach
-                    @endif
+                            @endforeach
+                        @endif
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border skill-panel-update">
+
+                        <label for="skill-name">技能特长名称</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="skill-name" name="skill-name" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="skill-name"></label>
+                        </div>
+
+                        <label for="skill-degree">级别</label>&nbsp;&nbsp;<small>例如：熟练度，分数，等级</small>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="skill-degree" name="skill-degree" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="skill-degree"></label>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-skill--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mdl-card__actions mdl-card--border skill-panel-update">
-
-                    <label for="skill-name">技能特长名称</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="skill-name" name="skill-name" class="form-control"
-                                   placeholder="不能为空">
-                        </div>
-                        <label class="error" for="skill-name"></label>
+                <div class="mdl-card resume-child-card" id="additional">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-plus-square fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">
+                            附加信息</h5>
                     </div>
 
-                    <label for="skill-degree">级别</label>&nbsp;&nbsp;<small>例如：熟练度，分数，等级</small>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" id="skill-degree" name="skill-degree" class="form-control"
-                                   placeholder="不能为空">
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-additional">
+                            <i class="material-icons">mode_edit</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-additional">
+                            添加/修改
                         </div>
-                        <label class="error" for="skill-degree"></label>
                     </div>
 
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
-                        </button>
-                        <button id="add-skill--button"
-                                class="btn btn-primary blue-btn">
-                            确认添加
-                        </button>
+                    <div class="mdl-card__actions mdl-card--border additional-panel">
+
+                        @if($data['resume']->extra == null)
+                            <div class="mdl-card__supporting-text">
+                                写下您对电竞行业或者某个游戏的理解和想法
+                            </div>
+                        @else
+                            <p>{{$data['resume']->extra}}</p>
+                        @endif
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border additional-panel-update">
+
+                        <label for="additional-content">添加附加内容</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                @if($data['resume']->extra == null)
+                                    <textarea rows="5" class="form-control" name="additional-content"
+                                              id="additional-content"
+                                              placeholder="还有什么是我们没想到的？在这里填写你想填写的任意内容"></textarea>
+                                @else
+                                    <textarea rows="5" class="form-control" name="additional-content"
+                                              id="additional-content"
+                                              placeholder="还有什么是我们没想到的？在这里填写你想填写的任意内容">{{$data['resume']->extra}}</textarea>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="additional-content--button"
+                                    class="btn btn-primary blue-btn">
+                                确认
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="mdl-card resume-child-card" id="additional">
-                <div class="mdl-card__title">
-                    <span class="line-left"></span>
-                    <span class="mdl-card__title-text">附加信息</span>
-                    <span class="line-right"></span>
-                </div>
-
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button" id="update-additional">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                    <div class="mdl-tooltip" data-mdl-for="update-additional">
-                        添加/修改
-                    </div>
-                </div>
-
-                <div class="mdl-card__actions additional-panel">
-
-                    @if($data['resume']->extra == null)
-                        <div class="mdl-card__supporting-text">
-                            写下您对电竞行业或者某个游戏的理解和想法
-                        </div>
-                    @else
-                        <p>{{$data['resume']->extra}}</p>
-                    @endif
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border additional-panel-update">
-
-                    <label for="additional-content">添加附加内容</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            @if($data['resume']->extra == null)
-                                <textarea rows="5" class="form-control" name="additional-content"
-                                          id="additional-content"
-                                          placeholder="还有什么是我们没想到的？在这里填写你想填写的任意内容"></textarea>
-                            @else
-                                <textarea rows="5" class="form-control" name="additional-content"
-                                          id="additional-content"
-                                          placeholder="还有什么是我们没想到的？在这里填写你想填写的任意内容">{{$data['resume']->extra}}</textarea>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="button-panel">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
-                            取消
-                        </button>
-                        <button id="additional-content--button"
-                                class="btn btn-primary blue-btn">
-                            确认
-                        </button>
-                    </div>
-                </div>
-            </div>
-            {{--</div>--}}
         </div>
 
         <div class="right_panel info_panel">
-
-            <div class="right-item">
-                <div class="resume-name">
-                    <span>这里写简历名称</span>
-                    <a id="update-resume-name">修改</a>
-                </div>
-
-                <div class="resume-name dn">
-                    <form action="" class="update-resume-name">
-                        <input type="text" name="resume-name" value="简历名称">
-                        <input type="submit" value="保存" class="save-btn">
-                        <a id="cancel-update-resume-name" style="position: relative; top: 3px;">取消</a>
-                    </form>
+            <div class="resume_pg progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                     style="width: 60%;">
+                    <span class="sr-only">60% Complete</span>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="right-item">
-                <div class="progress-info">
-                    <span>简历完整度：<em>{{$data['completion']}}%</em></span>
-                    <a href="">预览简历</a>
+
+
+    <div class="info-panel">
+        <div class="guide">
+            <div class="guide-wrap">
+                <a href="#intention" title=""><span>求职意向</span></a>
+                <a href="#education" title=""><span>教育经历</span></a>
+                <a href="#workexp" title=""><span>工作经历</span></a>
+                <a href="#projectexp" title=""><span>赛事经历</span></a>
+                <a href="#egameexp" title=""><span>电竞经历</span></a>
+                <a href="#skill" title=""><span>技能特长</span></a>
+                <a href="#additional" title=""><span>附加信息</span></a>
+                <a href="javascript:window.scrollTo(0,0)" class="top" title="回顶部"><span>回顶部</span></a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="resume-card mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text">添加简历</h5>
                 </div>
 
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{$data['completion']}}" aria-valuemin="0"
-                         aria-valuemax="100"
-                         style="width: {{$data['completion']}}%;">
-                        <span class="sr-only">{{$data['completion']}}% Complete</span>
+                <div class="mdl-card__supporting-text">
+                    添加并完善简历后即可投递给心仪的公司。So Easy！
+                </div>
+
+                <input type="hidden" name="rid" value="{{$data['rid']}}">
+
+                <div class="form-group resume-name--form">
+                    <div class="form-line">
+                        <input type="text" id="resume-name" name="resume-name" class="form-control"
+                               placeholder="不能为空" value="{{$data['resume']->resume_name}}">
+                    </div>
+                    <label class="error" for="resume-name"></label>
+                </div>
+
+                <button id="resume-name--change"
+                        class="btn btn-primary blue-btn">
+                    修改
+                </button>
+                <input style="display: none" id="completionvalue" value="{{$data['completion']}}"/>
+                {{--<div class="prg-cont rad-prg" id="indicatorContainer"></div>--}}
+
+            </div>
+            <div class="info-panel--left">
+
+                <div class="mdl-card resume-child-card" id="intention">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-pencil fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">求职意向</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-intention">
+                            <i class="material-icons">mode_edit</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-intention">
+                            修改
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border intention-panel">
+
+                        @if($data['intention'] == null)
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过求职意向，点击右上角进行填写
+                            </div>
+                        @else
+                            <p>地区：
+                                <span>
+                                    @foreach($data['province'] as $province)
+                                        @if($data['intention']->region == $province->id)
+                                            {{$province->name}}
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    @foreach($data['city'] as $city)
+                                        @if($data['intention']->region == $city->id)
+                                            {{$city->name}}
+                                            @break
+                                        @elseif($data['intention']->region == -1)
+                                            任意
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </span>
+                            </p>
+                            <p>行业分类：
+                                <span>
+                                    @foreach($data['industry'] as $industry)
+                                        @if($data['intention']->industry == $industry->id)
+                                            {{$industry->name}}
+                                            @break
+                                        @elseif($data['intention']->industry == -1)
+                                            任意
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </span>
+                            </p>
+                            <p>职业分类：
+                                <span>
+                                    @foreach($data['occupation'] as $occupation)
+                                        @if($data['intention']->occupation == $occupation->id)
+                                            {{$occupation->name}}
+                                            @break
+                                        @elseif($data['intention']->occupation == -1)
+                                            任意
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </span>
+                            </p>
+                            <p>工作类型：
+                                <span>
+                                    @if($data['intention']->work_nature == -1)
+                                        任意
+                                    @elseif($data['intention']->work_nature == 0)
+                                        兼职
+                                    @elseif($data['intention']->work_nature == 1)
+                                        实习
+                                    @elseif($data['intention']->work_nature == 2)
+                                        全职
+                                    @endif
+                                </span>
+                            </p>
+
+                            <p>期望薪资（月）:
+                                <span>
+                                    @if($data['intention']->salary < 0)
+                                        未指定
+                                    @else
+                                        {{$data['intention']->salary}} 元
+                                    @endif
+                                </span>
+                            </p>
+                        @endif
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border intention-panel-update">
+
+                        {{--<label for="position-place">工作地区意向</label>--}}
+                        {{--<div class="form-group">--}}
+                        {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                        {{--<select class="form-control show-tick selectpicker" data-live-search="true"--}}
+                        {{--id="position-place" name="place">--}}
+                        {{--@if($data['intention'] == null)--}}
+                        {{--<option value="-1">任意</option>--}}
+                        {{--@foreach($data['region'] as $region)--}}
+                        {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
+                        {{--@endforeach--}}
+                        {{--@else--}}
+                        {{--@if($data['intention']->region == -1)--}}
+                        {{--<option value="-1" selected>任意</option>--}}
+                        {{--@else--}}
+                        {{--<option value="-1">任意</option>--}}
+                        {{--@endif--}}
+                        {{--@foreach($data['region'] as $region)--}}
+                        {{--@if($data['intention']->region == $region->id)--}}
+                        {{--<option value="{{$region->id}}" selected>{{$region->name}}</option>--}}
+                        {{--@else--}}
+                        {{--<option value="{{$region->id}}">{{$region->name}}</option>--}}
+                        {{--@endif--}}
+                        {{--@endforeach--}}
+                        {{--@endif--}}
+                        {{--</select>--}}
+                        {{--</div>--}}
+                        <label for="position-place">意向省份</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="position-place"
+                                    data-live-search="true" name="place">
+                                @if($data['intention'] == null)
+                                    <option value="-1">任意</option>
+                                    @foreach($data['province'] as $province)
+                                        <option value="{{$province->id}}">{{$province->name}}</option>
+                                    @endforeach
+                                @else
+                                    @if($data['intention']->region == -1)
+                                        <option value="-1" selected>任意</option>
+                                    @else
+                                        <option value="-1">任意</option>
+                                    @endif
+                                    {{$default_province =$data['intention']->region }}
+                                    @foreach($data['province'] as $province)
+                                        @foreach($data['city'] as $city)
+                                            @if($data['intention']->region == $city->id)
+                                                <?php $default_province = $city->parent_id ?>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if($default_province == $province->id)
+                                            <option value="{{$province->id}}" selected>{{$province->name}}</option>
+                                        @else
+                                            <option value="{{$province->id}}">{{$province->name}}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select>
+                            <label class="error" for="position-place"></label>
+                        </div>
+                        <label for="position-city" id="citylabel" style="display: none">意向城市</label>
+                        @foreach($data['province'] as $province)
+                            <div class="form-group" id="city-display{{$province->id}}"
+                                 name="city-display" style="display: none">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" id="position-city"
+                                        data-live-search="true" name="city{{$province->id}}">
+                                    <option value="-1" selected>任意</option>
+                                    @foreach($data['city'] as $city)
+                                        @if($city->parent_id == $province->id)
+                                            @if($data['intention']->region == $city->id)
+                                                <option value="{{$city->id}}" selected>{{$city->name}}</option>
+                                            @else
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <label class="error" for="position-city"></label>
+                            </div>
+                        @endforeach
+
+                        <label for="position-industry">行业意向</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="position-industry"
+                                    name="industry">
+
+                                @if($data['intention'] == null)
+                                    <option value="-1">任意</option>
+                                    @foreach($data['industry'] as $industry)
+                                        <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                    @endforeach
+                                @else
+                                    @if($data['intention']->industry == -1)
+                                        <option value="-1" selected>任意</option>
+                                    @else
+                                        <option value="-1">任意</option>
+                                    @endif
+                                    @foreach($data['industry'] as $industry)
+                                        @if($data['intention']->industry == $industry->id)
+                                            <option value="{{$industry->id}}" selected>{{$industry->name}}</option>
+                                        @else
+                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+
+                        <label for="position-occupation" id="occulabel" style="display:none">游戏意向</label>
+                        @foreach($data['industry'] as $industry)
+                            <div class="form-group" id="occupation-display{{$industry->id}}" name="occupation-display"
+                                 style="display:none;">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" id="position-occupation"
+                                        name="occupation{{$industry->id}}">
+
+                                    @if($data['intention'] == null)
+                                        <option value="-1">任意</option>
+                                        @foreach($data['occupation'] as $occupation)
+                                            @if($occupation->industry_id == $industry->id)
+                                                <option value="{{$occupation->id}}">{{$occupation->name}}</option>
+                                            @endif
+                                        @endforeach
+
+                                    @else
+                                        @if($data['intention']->occupation == -1)
+                                            <option value="-1" selected>任意</option>
+                                        @else
+                                            <option value="-1">任意</option>
+                                        @endif
+                                        @foreach($data['occupation'] as $occupation)
+                                            @if($occupation->industry_id == $industry->id)
+                                                @if($data['intention']->occupation == $occupation->id)
+                                                    <option value="{{$occupation->id}}"
+                                                            selected>{{$occupation->name}}</option>
+                                                @else
+                                                    <option value="{{$occupation->id}}">{{$occupation->name}}</option>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        @endforeach
+
+                        <label for="position-type">工作类型意向</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="position-type" name="type">
+                                @if($data['intention'] == null)
+                                    <option value="-1">任意</option>
+                                    <option value="0">兼职</option>
+                                    <option value="1">实习</option>
+                                    <option value="2">全职</option>
+                                @else
+                                    <option value="-1" {{$data['intention']->work_nature==-1?"selected":""}}>任意</option>
+                                    <option value="0" {{$data['intention']->work_nature==0?"selected":""}}>兼职</option>
+                                    <option value="1" {{$data['intention']->work_nature==1?"selected":""}}>实习</option>
+                                    <option value="2" {{$data['intention']->work_nature==2?"selected":""}}>全职</option>
+                                @endif
+                            </select>
+                        </div>
+
+                        <label for="position-salary">薪资意向（月）</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                @if($data['intention'] == null || $data['intention']->salary < 0)
+                                    <input type="number" id="position-salary" name="salary" class="form-control"
+                                           step="1" placeholder="薪资意向(单位：元)，选填">
+                                @else
+                                    <input type="number" id="position-salary" name="salary" class="form-control"
+                                           step="1" placeholder="薪资意向(单位：元)，选填"
+                                           value="{{$data['intention']->salary}}">
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-intention--button"
+                                    class="btn btn-primary blue-btn">
+                                确认修改／新增
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="education">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">
+                            教育经历</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-education">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-education">
+                            添加
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border education-panel">
+
+                        @forelse($data['education'] as $education)
+                            <p id="education_info" name="education_info" data-content="{{$education->eduid}}">
+                                <span>{{$education->school}}</span>
+                                @if($education->gradu_date !=NULL)
+                                    <span>{{str_replace('-','/',$education->date)}}
+                                        -{{str_replace('-','/',$education->gradu_date)}}</span>
+                                @else
+                                    <span>{{$education->date}}- -</span>
+                                @endif
+                                <span>
+                                    @if($education->degree == 0)
+                                        高中
+                                    @elseif($education->degree == 1)
+                                        本科
+                                    @elseif($education->degree == 2)
+                                        硕士及以上
+                                    @elseif($education->degree == 3)
+                                        专科
+                                    @endif
+                                </span>
+                                <span>{{$education->major}}</span>
+                                <i class="material-icons edu-delete education-item"
+                                   data-content="{{$education->eduid}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过教育经历，点击右上角进行填写
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border education-panel-update">
+
+                        <label for="school-name">学校</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="school" name="school" class="form-control"
+                                       placeholder="不能为空">
+                                <input type="text" id="eduid" name="eduid" class="form-control" value="-1"
+                                       style="display: none">
+                            </div>
+                            <label class="error" for="school"></label>
+                        </div>
+
+                        <label for="education-degree">学历</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="education-degree" name="degree">
+                                <option value="0">高中</option>
+                                <option value="3">专科</option>
+                                <option value="1" selected>本科</option>
+                                <option value="2">硕士及以上</option>
+                            </select>
+                        </div>
+
+                        <label for="subject-name">专业</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="subject-name" name="subject" class="form-control"
+                                       placeholder="可以为空">
+                            </div>
+                        </div>
+
+                        <label for="education-begin">入学时间</label>
+                        <div class="form-group">
+
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" name="education-begin" value=""
+                                       readonly placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="education-begin"></label>
+                        </div>
+                        <label for="education-end">毕业时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="education-end" name="education-end"
+                                       class="form-control"
+                                       placeholder="如在读状态请勿填写">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-education--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="workexp">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">工作经历</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-work">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-work">
+                            添加
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border work-panel">
+
+                        @forelse($data['work'] as $work)
+                            <p id="work_info" name="work_info" data-content="{{$work->id}}">
+                                <?php
+                                $index = 1;
+                                ?>
+                                <span>
+                                @foreach(explode('@', $work->work_time) as $time)
+                                        @if($index == 1)
+                                            {{str_replace('-','/',$time)}} --
+                                        @elseif($index == 2)
+                                            {{str_replace('-','/',$time)}}
+                                        @endif
+                                        <?php $index++ ?>
+                                    @endforeach
+                                </span>
+                                <span>{{$work->ename}}</span>
+                                <span>{{$work->position}}</span>
+                                <span style="width: 90%">{!! $work->describe !!}</span>
+
+                                <i class="material-icons work-delete"
+                                   data-content="{{$work->id}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过工作经历，点击右上角进行填写
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border work-panel-update">
+
+                        <label for="company-name">公司名称</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="company-name" name="company-name" class="form-control"
+                                       placeholder="不能为空">
+                                <input type="text" id="workex-id" name="workex-id" class="form-control"
+                                       style="display: none;" value="-1">
+                            </div>
+                            <label class="error" for="company-name"></label>
+                        </div>
+
+                        <label for="position">职位</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="position" name="position" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="position"></label>
+                        </div>
+
+                        <label for="work-begin">入职时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="work-begin" name="work-begin"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="work-begin"></label>
+                        </div>
+
+                        <label for="work-end">离职时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="work-end" name="work-end"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="work-end"></label>
+                        </div>
+
+                        <label for="work-type">工作类型</label>
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker" id="work-type" name="work-type">
+                                <option value="0" selected>全职</option>
+                                <option value="1">实习</option>
+                            </select>
+                        </div>
+
+                        <label for="work-desc">工作描述</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <textarea rows="5" class="form-control" name="work-desc" id="work-desc"
+                                          placeholder="介绍你的工作内容..."></textarea>
+                            </div>
+                            <label class="error" for="work-desc"></label>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-work--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="projectexp">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-list fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">项目/赛事经历</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-project">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-project">
+                            添加
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border project-panel">
+
+                        @forelse($data['project'] as $project)
+                            <p id="project_info" name="project_info" data-content="{{$project->id}}">
+                                <?php
+                                $index = 1;
+                                ?>
+                                <span>
+                                @foreach(explode('@', $project->project_time) as $time)
+                                        @if($index == 1)
+                                            {{str_replace('-','/',$time)}} --
+                                        @elseif($index == 2)
+                                            {{str_replace('-','/',$time)}}
+                                        @endif
+                                        <?php $index++ ?>
+                                    @endforeach
+                                </span>
+                                <span>{{$project->project_name}}</span>
+                                <span>{{$project->position}}</span>
+                                <span style="width: 90%">{!! $project->describe !!}</span>
+
+                                <i class="material-icons project-delete"
+                                   data-content="{{$project->id}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过项目经历，点击右上角进行填写
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border project-panel-update">
+
+                        <label for="project-name">项目/赛事</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="project-name" name="project-name" class="form-control"
+                                       placeholder="不能为空">
+                                <input type="text" id="projectex-id" name="projectex-id" class="form-control"
+                                       style="display: none;" value="-1">
+                            </div>
+                            <label class="error" for="project-name"></label>
+                        </div>
+
+                        <label for="project-position">项目职责</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="project-position" name="project-position" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="project-position"></label>
+                        </div>
+
+                        <label for="project-begin">开始时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="project-begin" name="project-begin"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="project-begin"></label>
+                        </div>
+
+                        <label for="project-end">截止时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm" data-link-field="dtp_input2" data-link-format="yyyy-mm">
+                                <input size="16" type="text" value="" readonly id="project-end" name="project-end"
+                                       class="form-control" placeholder="不能为空">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="project-end"></label>
+                        </div>
+
+                        <label for="project-desc">项目描述</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <textarea rows="5" class="form-control" name="project-desc" id="project-desc"
+                                          placeholder="介绍你的项目情况..."></textarea>
+                            </div>
+                            <label class="error" for="project-desc"></label>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-project--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="egameexp">
+
+                    <div class="mdl-card__title">
+                        <i class="fa fa-gamepad fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">电竞经历</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-game">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-game">
+                            添加
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border education-panel">
+                        @forelse($data['game'] as $game)
+                            <p id="egame_info" name="egame_info" data-content="{{$game->egid}}">
+                                <span>{{$game->ename}}</span>
+                                <span>{{$game->level}}</span>
+                                <span>{{str_replace('-','/',$game->date)}} 开始接触</span>
+                                @if($game->extra != null && $game->extra != "")
+                                    <span style="width: 90%">{!! $game->extra !!}</span>
+                                @endif
+
+                                <i class="material-icons education-item game-delete"
+                                   data-content="{{$game->egid}}">close</i>
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过电竞经历
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border game-panel-update">
+
+                        <label for="game-name">游戏名称</label>
+                        <div class="form-group">
+                            <input id="egame-id" name="egame-id" style="display: none;" value="-1">
+                            <select class="form-control show-tick selectpicker" id="egame-name"
+                                    name="egamename">
+                                @if(emptyArray($data['egame']))
+                                    <option value="-1">暂无游戏</option>
+                                @endif
+                                @foreach($data['egame'] as $egame)
+                                    <option value="{{$egame->id}}">{{$egame->name}}</option>
+                                @endforeach
+                            </select>
+                            <label class="error" for="game-name"></label>
+                        </div>
+
+                        <label for="game-level" id="egrade-label" style="display: none;">段位／排名</label>
+                        @foreach($data['egame'] as $egame)
+                            <div class="form-group" id="egrade-display{{$egame->id}}" name="egrade-display"
+                                 style="display: none;">
+                                {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                                <select class="form-control show-tick selectpicker" name="egamelevel{{$egame->id}}">
+                                    @foreach($data['egrade'] as $egrade)
+                                        @if($egrade->egame_id == $egame->id)
+                                            <option value="{{$egrade->id}}">{{$egrade->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <label class="error" for="game-level"></label>
+                            </div>
+                        @endforeach
+                        <label for="game-begin">接触时间</label>
+                        <div class="form-group">
+                            <div class="form-line input-group date form_date col-md-5" data-date=""
+                                 data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                 data-link-format="yyyy-mm-dd">
+                                <input size="16" type="text" value="" readonly id="game-begin" name="game-begin"
+                                       class="form-control"
+                                       placeholder="从何时开始接触这款游戏">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+
+                            <label class="error" for="game-begin"></label>
+                        </div>
+                        <label for="game-desc">备注</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <textarea rows="5" class="form-control" name="game-desc" id="game-desc"
+                                          placeholder="备注你的服务大区、游戏ID、KDA、组排分等信息"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-game--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+
+                    </div>
+
+                    {{--<div class="mdl-card__actions mdl-card--border egamexper-panel">--}}
+
+                    {{--@forelse($data['egamexper'] as $egamexper)--}}
+                    {{--<p>--}}
+                    {{--<span>英雄联盟</span>--}}
+                    {{--<span>2012</span>--}}
+                    {{--<span>黄金</span>--}}
+                    {{--<i class="material-icons egame-delete egamexper-item"--}}
+                    {{--data-content="1">close</i>--}}
+                    {{--</p>--}}
+                    {{--@empty--}}
+                    {{--<div class="mdl-card__supporting-text">--}}
+                    {{--您还没有填写过电竞经历，点击右上角进行填写--}}
+                    {{--</div>--}}
+                    {{--@endforelse--}}
+                    {{--</div>--}}
+                </div>
+
+                <div class="mdl-card resume-child-card" id="skill">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-tags fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">技能特长</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-skill">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-skill">
+                            添加
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border skill-panel">
+                        {{--|@|王者荣耀|至尊星耀|@|LOL|最强王者--}}
+                        @if($data['resume']['skill'] == null)
+                            <div class="mdl-card__supporting-text">
+                                您还没有填写过技能特长，点击右上角进行填写
+                            </div>
+                        @else
+                            @foreach($data['resume']['skill'] as $skill)
+                                <span>
+                                    <small class="skill-item" style="font-size:120%">{{$skill}}</small>
+                                    <i class="material-icons skill-item skill-delete">close</i>
+                                </span>
+                            @endforeach
+                        @endif
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border skill-panel-update">
+
+                        <label for="skill-name">技能特长名称</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="skill-name" name="skill-name" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="skill-name"></label>
+                        </div>
+
+                        <label for="skill-degree">级别</label>&nbsp;&nbsp;<small>例如：熟练度，分数，等级</small>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="skill-degree" name="skill-degree" class="form-control"
+                                       placeholder="不能为空">
+                            </div>
+                            <label class="error" for="skill-degree"></label>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="add-skill--button"
+                                    class="btn btn-primary blue-btn">
+                                确认添加
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdl-card resume-child-card" id="additional">
+                    <div class="mdl-card__title">
+                        <i class="fa fa-plus-square fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">
+                            附加信息</h5>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button" id="update-additional">
+                            <i class="material-icons">mode_edit</i>
+                        </button>
+
+                        <div class="mdl-tooltip" data-mdl-for="update-additional">
+                            添加/修改
+                        </div>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border additional-panel">
+
+                        @if($data['resume']->extra == null)
+                            <div class="mdl-card__supporting-text">
+                                写下您对电竞行业或者某个游戏的理解和想法
+                            </div>
+                        @else
+                            <p>{{$data['resume']->extra}}</p>
+                        @endif
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border additional-panel-update">
+
+                        <label for="additional-content">添加附加内容</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                @if($data['resume']->extra == null)
+                                    <textarea rows="5" class="form-control" name="additional-content"
+                                              id="additional-content"
+                                              placeholder="还有什么是我们没想到的？在这里填写你想填写的任意内容"></textarea>
+                                @else
+                                    <textarea rows="5" class="form-control" name="additional-content"
+                                              id="additional-content"
+                                              placeholder="还有什么是我们没想到的？在这里填写你想填写的任意内容">{{$data['resume']->extra}}</textarea>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="button-panel">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
+                                取消
+                            </button>
+                            <button id="additional-content--button"
+                                    class="btn btn-primary blue-btn">
+                                确认
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="right-nav" data-spy="affix" data-offset-top="323">
-                <ul>
-                    <li class="">
-                        <a href="#base-info" onclick="activeThis(this, e)"><i class="fa fa-pencil fa-2"
-                                                                              aria-hidden="true"></i>基本信息</a>
-                    </li>
-                    <li>
-                        <a href="#intention"><i class="fa fa-pencil fa-2" aria-hidden="true"></i>求职意向</a>
-                    </li>
-                    <li>
-                        <a href="#education"><i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i>教育经历</a>
-                    </li>
-                    <li>
-                        <a href="#workexp"><i class="fa fa-list fa-2" aria-hidden="true"></i>工作经历</a>
-                    </li>
-                    <li>
-                        <a href="#projectexp"><i class="fa fa-list fa-2" aria-hidden="true"></i>项目/赛事经历</a>
-                    </li>
-                    <li>
-                        <a href="#egameexp"><i class="fa fa-gamepad fa-2" aria-hidden="true"></i>电竞经历</a>
-                    </li>
-                    <li>
-                        <a href="#skill"><i class="fa fa-tags fa-2" aria-hidden="true"></i>技能特长</a>
-                    </li>
-                    <li>
-                        <a href="#additional"><i class="fa fa-plus-square fa-2" aria-hidden="true"></i>附加信息</a>
-                    </li>
-                </ul>
+            <div class="gap"></div>
+
+            <div class="info-panel--right">
+                <div class="button-panel">
+                    <button class="btn btn-primary blue-btn"
+                            to="/resume/preview?rid={{$data['rid']}}">
+                        预览简历
+                    </button>
+                    <button class="btn btn-primary blue-btn"
+                            to="/about?page=tab1">
+                        简历指导
+                    </button>
+
+                </div>
             </div>
         </div>
     </div>
@@ -1837,12 +2434,6 @@
 
 
     <script type="text/javascript">
-
-        $(".right-nav").find("ul li").click(function () {
-            $(".active-nav-item").removeClass("active-nav-item")
-            $(this).addClass("active-nav-item")
-        });
-
         $(function () {
             var indexid = $("select[name='place']");
             var id = "#city-display" + indexid.val();
@@ -1889,45 +2480,19 @@
         $skillPanelUpdate.hide();
         $additionalPanelUpdate.hide();
 
-        var intention_isClose = true;
-        var education_isClose = true;
-        var work_isClose = true;
-        var project_isClose = true;
-        var game_isClose = true;
-        var skill_isClose = true;
-        var additional_isClose = true;
-
-        $intention_update_button = $('#update-intention').find("i.material-icons");
         $("#update-intention").click(function () {
-            if (intention_isClose) {
-                $intentionPanelUpdate.fadeIn();
-                $intention_update_button.html("close")
-            } else {
-                $intentionPanelUpdate.fadeOut();
-                $intention_update_button.html("add")
-            }
-            intention_isClose = !intention_isClose;
+            $intentionPanelUpdate.fadeIn();
         });
 
-        $education_update_button = $('#update-education').find("i.material-icons");
         $("#update-education").click(function () {
             $("input[id=school]").val("");//设置学校值
             $("input[id=eduid]").val(-1);//设置教育经历id
             $("input[id=subject-name]").val("");//设置专业信息
             $("input[id=education-begin]").val("");//设置入学时间
             $("input[id=education-end]").val("");//设置毕业时间
-
-            if (education_isClose) {
-                $educationPanelUpdate.fadeIn();
-                $education_update_button.html("close");
-            } else {
-                $educationPanelUpdate.fadeOut();
-                $education_update_button.html("add");
-            }
-            education_isClose = !education_isClose;
+            $educationPanelUpdate.fadeIn();
         });
 
-        $work_update_button = $("#update-work").find("i.material-icons");
         $("#update-work").click(function () {
             $("input[id=company-name]").val("");//设置公司名称
             $("input[id=workex-id]").val(-1);//设置公司名称
@@ -1935,18 +2500,8 @@
             $("input[id=work-begin]").val("");//设置入职时间
             $("input[id=work-end]").val("");//设置离职时间
             $("textarea[id=work-desc]").val("");//设置离职时间
-            if (work_isClose) {
-                $workPanelUpdate.fadeIn();
-                $work_update_button.html("close");
-            } else {
-                $workPanelUpdate.fadeOut();
-                $work_update_button.html("add");
-            }
-
-            work_isClose = !work_isClose;
+            $workPanelUpdate.fadeIn();
         });
-
-        $project_update_button = $("#update-project").find("i.material-icons");
         $("#update-project").click(function () {
             $("input[id=project-name]").val("");//设置项目名称
             $("input[id=projectex-id]").val(-1);//设置项目id
@@ -1954,77 +2509,49 @@
             $("input[id=project-begin]").val("");//设置入职时间
             $("input[id=project-end]").val("");//设置离职时间
             $("textarea[id=project-desc]").val("");//设置项目描述
-            if (project_isClose) {
-                $projectPanelUpdate.fadeIn();
-                $project_update_button.html("close");
-            } else {
-                $projectPanelUpdate.fadeOut();
-                $project_update_button.html("add");
-            }
-            project_isClose = !project_isClose;
+            $projectPanelUpdate.fadeIn();
         });
 
-        $game_update_button = $("#update-game").find("i.material-icons");
         $("#update-game").click(function () {
             $("input[id=egame-id]").val(-1);//设置游戏经历id
             $("input[id=game-begin]").val("");
-            if (game_isClose) {
-                $gamePanelUpdate.fadeIn();
-                $game_update_button.html("close")
-            } else {
-                $gamePanelUpdate.fadeOut();
-                $game_update_button.html("add")
-            }
-            game_isClose = !game_isClose;
+            $gamePanelUpdate.fadeIn();
         });
 
-        $skill_update_button = $("#update-skill").find("i.material-icons");
         $("#update-skill").click(function () {
-            if (skill_isClose) {
-                $skillPanelUpdate.fadeIn();
-                $skill_update_button.html("close")
-            } else {
-                $skillPanelUpdate.fadeOut();
-                $skill_update_button.html("add")
-            }
-            skill_isClose = !skill_isClose;
+            $skillPanelUpdate.fadeIn();
         });
 
-        $additional_update_button = $("#update-additional").find("i.material-icons");
         $("#update-additional").click(function () {
-            if (additional_isClose) {
-                $additionalPanelUpdate.fadeIn();
-                $additional_update_button.html("close");
-            } else {
-                $additionalPanelUpdate.fadeOut();
-                $additional_update_button.html("add");
-            }
-            additional_isClose = !additional_isClose;
+            $additionalPanelUpdate.fadeIn();
         });
 
         $intentionPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $intentionPanelUpdate.hide();
         });
+
         $educationPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $educationPanelUpdate.hide();
         });
+
         $workPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $workPanelUpdate.hide();
         });
         $projectPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $projectPanelUpdate.hide();
         });
+
         $gamePanelUpdate.find(".button-panel>button.cancel").click(function () {
             $gamePanelUpdate.hide();
         });
+
         $skillPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $skillPanelUpdate.hide();
         });
+
         $additionalPanelUpdate.find(".button-panel>button.cancel").click(function () {
             $additionalPanelUpdate.hide();
         });
-
-
         //修改已填写的教育经历
         $editEducation = $("p[name=education_info]");
         //修改工作经历
@@ -2203,7 +2730,6 @@
                 $("#citylabel").css("display", "none");
             }
         });
-
         $("#resume-name--change").click(function () {
 
             var rid = $("input[name='rid']");
@@ -2649,6 +3175,7 @@
             });
         });
 
+
         $(".edu-delete").click(function () {
             var id = $(this).attr("data-content");
             swal({
@@ -2734,46 +3261,15 @@
                 });
             });
         });
-
-        $("#update-resume-name").click(function () {
-            $(".resume-name:first").addClass('dn');
-            $(".resume-name:last").removeClass('dn');
+        $('#indicatorContainer').radialIndicator({
+            barColor: {
+                0: '#FF0000',
+                33: '#FFFF00',
+                66: '#0066FF',
+                100: '#33CC33'
+            },
+            percentage: true,
+            initValue: $('#completionvalue').val()
         });
-
-        $("#cancel-update-resume-name").click(function () {
-            $(".resume-name:first").removeClass('dn');
-            $(".resume-name:last").addClass('dn');
-        });
-
-        $("#update_name__btn").click(function () {
-            $(".base_info__name:first").addClass("dn");
-            $(".base_info__name:last").removeClass("dn");
-        });
-
-        $("#cancel_update_name").click(function () {
-            $(".base_info__name:first").removeClass("dn");
-            $(".base_info__name:last").addClass("dn");
-        });
-
-        $("#update_bio_btn").click(function () {
-            $(".bio:first").addClass("dn");
-            $(".bio:last").removeClass("dn");
-        });
-
-        $("#cancel_update_bio").click(function () {
-            $(".bio:first").removeClass("dn");
-            $(".bio:last").addClass("dn");
-        });
-
-        $("#update_others_btn").click(function () {
-            $(".others:first").addClass("dn");
-            $(".others:last").removeClass("dn");
-        });
-
-        $("#cancel_update_others").click(function () {
-            $(".others:first").removeClass("dn");
-            $(".others:last").addClass("dn");
-        });
-
     </script>
 @endsection
