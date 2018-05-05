@@ -70,11 +70,11 @@
         }
         .tuwen li b {
             overflow: hidden;
-            width: 100%;
+            width: 80%;
             font-weight: normal;
             color: #333;
             font-size: 14px;
-            line-height: 22px;
+            line-height: 2.3rem;
         }
         .tuwen li b:hover{
             color: #D32F2F;
@@ -82,6 +82,11 @@
         .taoyige:hover{
             border: 1px solid #D32F2F;
             border-right: 0px;
+        }
+        .tuwen .new-time{
+            float: right;
+            color: #999;
+            font-size: 12px;
         }
     </style>
 @endsection
@@ -180,29 +185,42 @@
                             </h3>
                             <?php
                             $index = 0;
-                            $count = 4;
+                            $count = 8;
                             ?>
                             <ul>
                                 @foreach($data['news']['news'] as $newsItem)
                                     @if($index++ < $count)
                                         @if($newsItem->picture != null)
                                             <?php
-                                            $pics = explode(';', $newsItem->picture);
-                                            $baseurl = explode('@', $pics[0])[0];
-                                            $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
-                                            $imagepath = explode('@', $pics[0])[1];
+//                                            $pics = explode(';', $newsItem->picture);
+//                                            $baseurl = explode('@', $pics[0])[0];
+//                                            $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
+//                                            $imagepath = explode('@', $pics[0])[1];
                                             ?>
                                             <li>
                                                 <a href="news/detail?nid={{$newsItem->nid}}" target="_blank">
-                                                    <img src="{{$baseurl}}{{$imagepath}}">
-                                                    <b>{{$newsItem->title}}</b>
+                                                    @if($newsItem->type ==1)
+                                                        <span class="label label-warning">综合</span>
+                                                    @elseif($newsItem->type ==2)
+                                                        <span class="label label-info">趣闻</span>
+                                                    @elseif($newsItem->type ==3)
+                                                        <span class="label label-default">赛事</span>
+                                                    @elseif($newsItem->type ==4)
+                                                        <span class="label label-success">游戏</span>
+                                                    @elseif($newsItem->type ==5)
+                                                        <span class="label label-primary">职场</span>
+                                                    @endif
+                                                    {{--<img src="{{$baseurl}}{{$imagepath}}">--}}
+                                                    <b>{{mb_strcut($newsItem->title,0,60,'utf-8')}}
+                                                    <span class="new-time">{{mb_substr($newsItem->created_at,6,5,'utf-8')}}</span>
+                                                    </b>
                                                 </a>
                                             </li>
                                         @else
                                             <li>
                                                 <a href="news/detail?nid={{$newsItem->nid}}" target="_blank">
                                                     <img src="http://eshunter.com/storage/newspic/default.jpg">
-                                                    <b>{{$newsItem->title}}</b>
+                                                    <b>{{mb_substr($newsItem->title,0,18,'utf-8')}}</b>
                                                 </a>
                                             </li>
                                         @endif

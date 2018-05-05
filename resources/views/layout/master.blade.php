@@ -53,6 +53,34 @@
             margin: 20px auto;
             text-align: center;
         }
+        /*标签样式*/
+        .label{
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+        }
+        .label-primary{
+            background-color: #337ab7;
+        }
+        .label-success {
+            background-color: #5cb85c;
+        }
+        .label-default {
+            background-color: #777;
+        }
+        .label-info {
+            background-color: #5bc0de;
+        }
+        .label-warning {
+            background-color: #f0ad4e;
+        }
     </style>
 
 @section('custom-style')
@@ -109,6 +137,21 @@
             $(".taoyige").css("border-right","0px");
         });
 </script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 @section('custom-script')
 @show
 </body>
