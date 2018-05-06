@@ -211,7 +211,7 @@
                                                         <span class="label label-primary">职场</span>
                                                     @endif
                                                     {{--<img src="{{$baseurl}}{{$imagepath}}">--}}
-                                                    <b>{{mb_strcut($newsItem->title,0,60,'utf-8')}}
+                                                    <b>{{mb_strcut($newsItem->title,0,52,'utf-8')}}
                                                     <span class="new-time">{{mb_substr($newsItem->created_at,6,5,'utf-8')}}</span>
                                                     </b>
                                                 </a>
