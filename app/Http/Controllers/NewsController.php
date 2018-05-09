@@ -71,6 +71,7 @@ class NewsController extends Controller {
             $type = 1;//默认搜索综合电竞新闻
         }
         $data['newtype'] = $type;
+        $data['topnews'] = NewsController::searchTopnews($pagnum,$type);//置顶新闻
         $data['newest'] = NewsController::searchNewest($pagnum,$type);//最新新闻
         $data['hottest'] = NewsController::searchHottest($type);//最热新闻
         $data['uid'] = AuthController::getUid();
@@ -80,9 +81,18 @@ class NewsController extends Controller {
         return view('news.index', ['data' => $data]);
     }
 
+    public function searchTopnews($num,$type) {
+        $data = array();
+        $data = News::where('type',$type)
+            ->where('is_top',1)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return $data;
+    }
     public function searchNewest($num,$type) {
         $data = array();
         $data = News::where('type',$type)
+            ->where('is_top',0)
             ->orderBy('created_at', 'desc')
             ->paginate($num);
         return $data;

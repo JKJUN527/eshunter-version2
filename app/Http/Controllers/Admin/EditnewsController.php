@@ -125,5 +125,28 @@ class EditnewsController extends Controller {
 
         return $data;
     }
+    function topNews(Request $request) {
+        $data = array();
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+
+        if ($request->has('id')) {
+            $nid = $request->input('id');
+            $istop = News::where('nid', '=', $nid)->first();
+            if($istop->is_top ==0)
+                $istop->is_top =1;
+            else
+                $istop->is_top =0;
+            $istop->save();
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 200;
+            $data['msg'] = "删除失败";
+        }
+
+        return $data;
+    }
 
 }
