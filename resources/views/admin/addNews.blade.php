@@ -154,6 +154,17 @@
                             <label class="error" for="newtype"></label>
                         </div>
 
+                        <div class="form-group">
+                            {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
+                            <select class="form-control show-tick selectpicker"
+                                    id="istop" name="istop">
+                                <option value="-1">请选择是否加急</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                            <label class="error" for="istop"></label>
+                        </div>
+
                         <div class="news-content--title">
                             <h6>新闻内容</h6>
                             <a id="insert-image" onclick="insertImage(this)"
@@ -344,6 +355,7 @@
             var subtitle = $("#subtitle");
             var quote = $("#quote");
             var newtype = $("select[name=newtype]");
+            var istop = $("select[name=istop]");
 //            var content = $("#content");
             var pictureIndex = $("input[name='picture-index']").val();
 
@@ -364,6 +376,12 @@
                 return;
             } else {
                 removeError(newtype, 'newtype');
+            }
+            if (istop.val() == -1) {
+                setError(istop, 'istop', '请选择是否加急');
+                return;
+            } else {
+                removeError(istop, 'istop');
             }
 
 //            var testContent = content.val().replace(/\r\n/g, '');
@@ -395,6 +413,7 @@
             formData.append("newtype", newtype.val());
             formData.append("tag", '');
             formData.append("content", editor.txt.html());
+            formData.append("istop", istop.val());
 
             pictureIndex = pictureIndex.substring(1);
             formData.append("pictureIndex", pictureIndex);

@@ -21,7 +21,12 @@ class EditnewsController extends Controller {
         if ($uid == 0)
             return view('admin.login');
         $data = DashboardController::getLoginInfo();
+        $data['topnews'] = News::orderBy('updated_at', 'desc')
+            ->where('is_top',1)
+            ->get();
+
         $data['news'] = News::orderBy('updated_at', 'desc')
+            ->where('is_top',0)
             ->paginate(20);
 
         return view('admin.news', ['data' => $data]);
@@ -94,6 +99,7 @@ class EditnewsController extends Controller {
         $new->quote = $request->input('quote');
         $new->type = $request->input('newtype');
         $new->content = $request->input('content');
+        $new->is_top = $request->input('istop');
         $new->tag = $request->input('tag');
         if ($new->save()) {
             $data['status'] = 200;

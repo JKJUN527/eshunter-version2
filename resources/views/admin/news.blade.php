@@ -58,6 +58,25 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($data['topnews'] as $news)
+                            <tr>
+                                <td>{{$news->nid}}</td>
+                                <td>{{$news->title}}</td>
+                                <td>{{substr($news->content, 0, 60)}}...</td>
+                                <td>@if($news->is_top == 0)
+                                        <span class="label label-default">否</span>
+                                    @else
+                                        <span class="label label-success"><i class="glyphicon glyphicon-arrow-up">置顶</i></span>
+                                    @endif</td>
+                                <td>
+                                    <i class="glyphicon glyphicon-arrow-up top" style="cursor:pointer;" data-content="{{$news->nid}}">置顶</i>
+                                    <i class="material-icons detail" data-content="{{$news->nid}}"
+                                       data-toggle='modal' data-target='#detailNewsModal'>visibility</i>
+                                    <i class="material-icons delete" data-content="{{$news->nid}}"
+                                       style="margin-left: 16px;">delete</i>
+                                </td>
+                            </tr>
+                        @endforeach
                         @forelse($data['news'] as $news)
                             <tr>
                                 <td>{{$news->nid}}</td>
