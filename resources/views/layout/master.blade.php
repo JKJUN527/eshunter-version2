@@ -33,6 +33,9 @@
     <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/master.js')}}" type="text/javascript"></script>
     <style>
+        body{
+            min-width: 1280px;
+        }
         nav#page_tools ul li:hover,nav#page_tools ul li.active{
             background-color: #03A9F4;
             color: #fff!important;
@@ -122,7 +125,9 @@
                 "iPad", "iPod"];
             for (var v = 0; v < Agents.length; v++) {
                 if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    top.location='/m';
+                    // top.location='/m';
+                    var app = $("#change_to_app");
+                    app.show();
                     break;
                 }
             }
