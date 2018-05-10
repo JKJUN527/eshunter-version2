@@ -84,6 +84,9 @@
         .label-warning {
             background-color: #f0ad4e;
         }
+        .label-danger {
+            background-color: #d9534f;
+        }
     </style>
 
 @section('custom-style')
