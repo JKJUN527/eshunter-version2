@@ -130,7 +130,7 @@
                                 </div>
                             @endif
                             <div class="news-content">
-                                <h3><b>{{mb_substr($news->title, 0, 25)}}</b><span class="label label-success" style="float: right"><i class="glyphicon glyphicon-arrow-up">置顶</i></span></h3>
+                                <h3><b>{{mb_substr($news->title, 0, 25)}}</b><span class="label label-danger" style="float: right"><i class="glyphicon glyphicon-arrow-up">推荐</i></span></h3>
                                 <p class="content-body">
                                     {{--{{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 40)}}--}}
                                     {{mb_substr(str_replace(array("[图片1]","[图片2]"),"",strip_tags($news->content)), 0, 70)}}
