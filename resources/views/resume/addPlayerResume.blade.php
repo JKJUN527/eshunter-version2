@@ -681,7 +681,7 @@
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" id="PlayerResume-grade" name="PlayerResume-grade" class="form-control"
-                                       placeholder="可以为空">
+                                       placeholder="可填写段位，排名，KDA等各种信息">
                             </div>
                         </div>
                         <label for="PlayerResume-probability">排位胜率</label>
