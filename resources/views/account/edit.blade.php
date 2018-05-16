@@ -328,13 +328,13 @@
                                             </button>
                                         @endif
                                         @if($data['enprinfo']->is_verification == -1)
-                                            <button style="margin-top: 12px;" to="/account/enterpriseVerify"
+                                            <button style="margin-top: 12px;" to="/account/enterpriseVerify/1"
                                                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
                                                 点击立即审核
                                             </button>
                                         @endif
                                         @if($data['enprinfo']->is_verification == 2)
-                                            <button style="margin-top: 12px;" to="/account/enterpriseVerify"
+                                            <button style="margin-top: 12px;" to="/account/enterpriseVerify/1"
                                                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-cucumber">
                                                 审核失败-重新提交
                                             </button>
