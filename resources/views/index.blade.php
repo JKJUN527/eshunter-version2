@@ -164,10 +164,10 @@
                         <!-- banner 轮播-->
                         <div class="m_banner">
                             <div style="cursor:pointer;" class="banner banner1">
-                                <img id="banner_1" src="../images/banner.jpg" width="800" height="241"/>
+                                <img id="banner_1" src="../images/banner_2.jpg" width="800" height="241"/>
                             </div>  
                             <div style="display:none; cursor:pointer;" class="banner banner2">
-                                <img id="banner_2" src="../images/banner_2.jpg" width="800" height="241"/>
+                                <img id="banner_2" src="../images/banner.jpg" width="800" height="241"/>
                             </div>
                             {{--<div style="display:none; cursor:pointer;" class="banner banner3">--}}
                                 {{--<img src="../images/banner2.jpg" width="800" height="241"/>--}}
@@ -746,7 +746,7 @@
 
 
         })
-        $('.banner2').click(function(){
+        $('.banner1').click(function(){
            window.open("/company?eid=148");
 		//alert("123");
 	});
