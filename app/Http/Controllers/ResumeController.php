@@ -201,7 +201,7 @@ class ResumeController extends Controller {
 //        return $data;
         return view('resume/addPlayerResume', ["data" => $data]);
     }
-    public function Completion_total($rid){
+    static public function Completion_total($rid){
         $data = 0;//初始完成度为0
         //检查简历表中技能及额外填写情况
         $resume = Resumes::find($rid);
@@ -285,7 +285,7 @@ class ResumeController extends Controller {
         $uid = AuthController::getUid();
         $result = Resumes::where('uid', '=', $uid)
             ->where('type',0)//一般简历
-            ->select('rid', 'inid', 'resume_name')
+            ->select('rid', 'inid', 'resume_name','download_count')
             ->get();
         return $result;
     }

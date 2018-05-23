@@ -41,6 +41,20 @@ class PersonCenterController extends Controller {
             $data['messageNum'] = $this->getMessageNum();
             $data['deliveredNum'] = $this->getDeliveredNum();
             $data['applylist'] = PositionController::getPersonApplyList($data['uid']);
+            //录用个数--面试通知
+            $data['passNum'] = $this->getPassNum();
+            //简历下载次数//简历完善度-显示最高完善度
+            $data['resumeDownloadCount'] = 0;
+            $data['Max_completion'] =0;
+            foreach ($data['resumeList'] as $resume){
+                $data['resumeDownloadCount'] += $resume->download_count;
+                $Completion_total = ResumeController::Completion_total($resume->rid);
+                if( $Completion_total > $data['Max_completion']){
+                    $data['Max_completion'] = $Completion_total;
+                }
+            }
+
+//            return $data;
             return view('account.index', ['data' => $data]);
         } else {
             $eid = Enprinfo::where('uid', '=', $data['uid'])
@@ -156,7 +170,17 @@ class PersonCenterController extends Controller {
 
         return $data;
     }
-
+    public function getPassNum(){
+        $uid = AuthController::getUid();
+        $num = Delivered::where('uid',$uid)
+            ->where('status',2)//已录用
+            ->count();
+//        $num = DB::table('jobs_delivered')
+//            ->where('jobs_delivered.uid',$uid)
+//            ->where('jobs_delivered.status',2)//已录用
+//            ->count();
+        return $num;
+    }
     public function getMessageNum() {
         $uid = AuthController::getUid();
         $num = Message::where('to_id', '=', $uid)

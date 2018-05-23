@@ -148,6 +148,10 @@
         li.edit_emp_info a {
             color: #00b38a !important;
         }
+        .company_intro_text p{
+            font-size: 15px;
+            line-height: 2;
+        }
 
     </style>
 @endsection
@@ -425,11 +429,13 @@
                         <div class="item_ltitle">公司介绍</div>
                         <div class="item_content item_content_two" style="display: block;">
                             <div class="company_intro_text" style="display: block;">
+                                <p>
                                 @if($data['enterpriseInfo']->ebrief == "" ||$data['enterpriseInfo']->ebrief == null)
-                                    该公司尚未添加公司介绍
+                                    对公司详尽又生动的介绍，是吸引应聘者的最佳利器。
                                 @else
                                     {!! $data['enterpriseInfo']->ebrief !!}
                                 @endif
+                                </p>
                             </div>
 
                         </div>

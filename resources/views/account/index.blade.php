@@ -376,11 +376,11 @@
 
                     <div class="op_num">
                         <ul>
-                            <li><a href=""><span>?%</span><span>简历完善度</span></a></li>
-                            <li><a href=""><span>?</span><span>面试通知</span></a></li>
-                            <li><a href=""><span>?</span><span>简历投递记录</span></a></li>
-                            <li><a href=""><span>?</span><span>浏览记录</span></a></li>
-                            <li><a href=""><span>?</span><span>简历被下载</span></a></li>
+                            <li><a href=""><span>{{$data['Max_completion']}}%</span><span>简历完善度</span></a></li>
+                            <li><a href="/position/applyList"><span>{{$data['passNum']}}</span><span>面试通知</span></a></li>
+                            <li><a href="/position/applyList"><span>{{$data['deliveredNum']}}</span><span>简历投递记录</span></a></li>
+                            <li><a href=""><span>{{$data['resumeDownloadCount']}}</span><span>简历被下载</span></a></li>
+                            <li><a href="/message"><span>{{$data['messageNum']}}</span><span>未读站内信</span></a></li>
                         </ul>
                     </div>
                 </div>

@@ -616,6 +616,9 @@
             * Create the PDF file
             */
             doc.create();
+
+            //发送简历下载到服务器，修改对应简历下载次数
+
         }
     
     </script>
