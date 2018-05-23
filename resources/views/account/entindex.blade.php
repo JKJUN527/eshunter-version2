@@ -152,6 +152,9 @@
             font-size: 15px;
             line-height: 2;
         }
+        .jieshao_list li{
+            height: 150px !important;
+        }
 
     </style>
 @endsection
