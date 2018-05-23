@@ -86,8 +86,10 @@
         <h2 >联系我们</h2>
         <p>地址：{{$data['about']->address}}</p>
         <p>邮编：200021</p>
-        <p>电话：{{$data['about']->tel}}</p>
+        {{--<p>电话：{{$data['about']->tel}}</p>--}}
         <p>邮箱：{{$data['about']->email}}</p>
+        <p>招聘事宜：{{$data['about']->recruit}}</p>
+        <p>商务合作：{{$data['about']->cooperation}}</p>
         </div>
     </div>
     <div class="sales-board @if($data['tab'] == 'tab4') active @endif">
@@ -101,7 +103,7 @@
     <div class="sales-board @if($data['tab'] == 'tab5') active @endif">
       <div class="sales-board-intro">
         <h2 >免责声明</h2>
-        <p>电竞猎人平台文章多来源于网络，转载内容只为传播信息无任何商业目的，若涉及版权或侵权的问题请邮件联系我们，核实后我们将删除 联系我们：021-63339866 邮箱：kefu@eshunter.com</p></div>
+        <p>电竞猎人平台文章多来源于网络，转载内容只为传播信息无任何商业目的，若涉及版权或侵权的问题请邮件联系我们，核实后我们将删除 联系我们：QQ 1739250429	 邮箱：kefu@eshunter.com</p></div>
     </div>
   </div>
 </div>

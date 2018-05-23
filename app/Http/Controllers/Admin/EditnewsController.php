@@ -21,7 +21,12 @@ class EditnewsController extends Controller {
         if ($uid == 0)
             return view('admin.login');
         $data = DashboardController::getLoginInfo();
+        $data['topnews'] = News::orderBy('updated_at', 'desc')
+            ->where('is_top',1)
+            ->get();
+
         $data['news'] = News::orderBy('updated_at', 'desc')
+            ->where('is_top',0)
             ->paginate(20);
 
         return view('admin.news', ['data' => $data]);
@@ -94,6 +99,7 @@ class EditnewsController extends Controller {
         $new->quote = $request->input('quote');
         $new->type = $request->input('newtype');
         $new->content = $request->input('content');
+        $new->is_top = $request->input('istop');
         $new->tag = $request->input('tag');
         if ($new->save()) {
             $data['status'] = 200;
@@ -117,6 +123,29 @@ class EditnewsController extends Controller {
             $nid = $request->input('id');
             News::where('nid', '=', $nid)
                 ->delete();
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 200;
+            $data['msg'] = "删除失败";
+        }
+
+        return $data;
+    }
+    function topNews(Request $request) {
+        $data = array();
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+
+        if ($request->has('id')) {
+            $nid = $request->input('id');
+            $istop = News::where('nid', '=', $nid)->first();
+            if($istop->is_top ==0)
+                $istop->is_top =1;
+            else
+                $istop->is_top =0;
+            $istop->save();
             $data['status'] = 200;
         } else {
             $data['status'] = 200;

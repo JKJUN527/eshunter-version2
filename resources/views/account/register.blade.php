@@ -138,7 +138,7 @@
       <div class="denglu_pages_right right" id="">
         <div class="zhuce">已有账号直接登录</div>
         <div class="zhuce"><a title="" href="/account/login">登录</a></div>
-        <p class="use-type">你还可以使用<span>邮箱</span>来注册 esport hunter</p>
+        <p class="use-type">你还可以使用<span>邮箱</span>来注册</p>
         <p class="use-register">
             <a for="phone-form" onclick="switchRegisterType(this,0)" style="display: none;">使用手机号注册</a>
             <a for="email-form" onclick="switchRegisterType(this,1)" >使用邮箱注册</a>

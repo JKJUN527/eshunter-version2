@@ -53,16 +53,42 @@
                             <th>#</th>
                             <th>新闻标题</th>
                             <th>内容</th>
+                            <th>是否置顶</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($data['topnews'] as $news)
+                            <tr>
+                                <td>{{$news->nid}}</td>
+                                <td>{{$news->title}}</td>
+                                <td>{{substr($news->content, 0, 60)}}...</td>
+                                <td>@if($news->is_top == 0)
+                                        <span class="label label-default">否</span>
+                                    @else
+                                        <span class="label label-success"><i class="glyphicon glyphicon-arrow-up">置顶</i></span>
+                                    @endif</td>
+                                <td>
+                                    <i class="glyphicon glyphicon-arrow-up top" style="cursor:pointer;" data-content="{{$news->nid}}">置顶</i>
+                                    <i class="material-icons detail" data-content="{{$news->nid}}"
+                                       data-toggle='modal' data-target='#detailNewsModal'>visibility</i>
+                                    <i class="material-icons delete" data-content="{{$news->nid}}"
+                                       style="margin-left: 16px;">delete</i>
+                                </td>
+                            </tr>
+                        @endforeach
                         @forelse($data['news'] as $news)
                             <tr>
                                 <td>{{$news->nid}}</td>
                                 <td>{{$news->title}}</td>
                                 <td>{{substr($news->content, 0, 60)}}...</td>
+                                <td>@if($news->is_top == 0)
+                                        <span class="label label-default">否</span>
+                                    @else
+                                        <span class="label label-success"><i class="glyphicon glyphicon-arrow-up">置顶</i></span>
+                                    @endif</td>
                                 <td>
+                                    <i class="glyphicon glyphicon-arrow-up top" style="cursor:pointer;" data-content="{{$news->nid}}">置顶</i>
                                     <i class="material-icons detail" data-content="{{$news->nid}}"
                                        data-toggle='modal' data-target='#detailNewsModal'>visibility</i>
                                     <i class="material-icons delete" data-content="{{$news->nid}}"
@@ -162,6 +188,31 @@
                     type: "get",
                     success: function (data) {
                         checkResult(data['status'], "删除成功", data['msg'], null);
+
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1200);
+                    }
+                });
+            });
+        })
+        $(".top").click(function () {
+            var element = $(this);
+
+            swal({
+                title: "确认",
+                text: "确认置顶或取消置顶嘛？?",
+                type: "warning",
+                confirmButtonText: "确认",
+                cancelButtonText: "取消",
+                showCancelButton: true,
+                closeOnConfirm: true
+            }, function () {
+                $.ajax({
+                    url: "/admin/news/top?id=" + element.attr('data-content'),
+                    type: "get",
+                    success: function (data) {
+                        checkResult(data['status'], "操作成功", data['msg'], null);
 
                         setTimeout(function () {
                             location.reload();

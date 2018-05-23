@@ -155,7 +155,8 @@ Route::any('message/delDialog', ['uses' => 'MessageController@delDialog']);//发
 Route::any('about/', ['uses' => 'AboutController@index']);//网站信息模块
 Route::any('about/index', ['uses' => 'AboutController@index']);//网站信息模块
 
-Route::any('company', ['uses' => 'CompanyController@companySearch']);//完成
+Route::any('company', ['uses' => 'CompanyController@companySearch']);//入驻公司信息完成
+Route::any('/company/Info', ['uses' => 'CompanyController@companyInfo']);//公司黄页信息
 
 Route::any('searchcompany', ['uses' => 'CompanyController@companyIndex']);//公司黄页搜索
 Route::get('/company/add/index', ['uses' => 'CompanyController@addIndex']);//提交公司信息页面
@@ -230,6 +231,7 @@ Route::any('admin/news/detail', ['uses' => 'Admin\EditnewsController@detail']);/
 Route::get('admin/addNews', ['uses' => 'Admin\EditnewsController@addNewsView']);//新增或修改新闻信息
 Route::any('admin/news/add', ['uses' => 'Admin\EditnewsController@addNews']);//新增或修改新闻信息
 Route::any('admin/news/del', ['uses' => 'Admin\EditnewsController@delNews']);
+Route::any('admin/news/top', ['uses' => 'Admin\EditnewsController@topNews']);//置顶新闻
 
 //管理企业发布职位
 Route::any('admin/position', ['uses' => 'Admin\PositionController@index']);//显示已发布的职位信息
@@ -242,6 +244,8 @@ Route::any('admin/about/setPhone', ['uses' => 'Admin\WebinfoController@setPhone'
 Route::any('admin/about/setEmail', ['uses' => 'Admin\WebinfoController@setEmail']);
 Route::any('admin/about/setAddress', ['uses' => 'Admin\WebinfoController@setAddress']);
 Route::any('admin/about/setContent', ['uses' => 'Admin\WebinfoController@setContent']);
+Route::any('admin/about/setRecruit', ['uses' => 'Admin\WebinfoController@setRecruit']);
+Route::any('admin/about/setCooperation', ['uses' => 'Admin\WebinfoController@setCooperation']);
 
 //end
 Route::any('smstest', ['uses' => 'ValidationController@verifySmsCode']);//显示已发布的职位信息

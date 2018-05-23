@@ -95,6 +95,7 @@ class CompanysController extends Controller {
 
                 $companyinfo->elogo = asset('storage/profiles/' . $picname);
             }
+        }
 
             //保存其他信息
             $companyinfo->ename = $request->input('ename');
@@ -111,11 +112,6 @@ class CompanysController extends Controller {
             $data['status'] = 200;
             $data['msg'] = "新增成功";
             return $data;
-        } else {
-            $data['status'] = 400;
-            $data['msg'] = "需上传企业logo";
-            return $data;
-        }
     }
 
     public function passCompany(Request $request){

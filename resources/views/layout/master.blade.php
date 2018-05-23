@@ -33,6 +33,9 @@
     <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/master.js')}}" type="text/javascript"></script>
     <style>
+        body{
+            min-width: 1280px;
+        }
         nav#page_tools ul li:hover,nav#page_tools ul li.active{
             background-color: #03A9F4;
             color: #fff!important;
@@ -52,6 +55,37 @@
         nav#page_tools{
             margin: 20px auto;
             text-align: center;
+        }
+        /*标签样式*/
+        .label{
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+        }
+        .label-primary{
+            background-color: #337ab7;
+        }
+        .label-success {
+            background-color: #5cb85c;
+        }
+        .label-default {
+            background-color: #777;
+        }
+        .label-info {
+            background-color: #5bc0de;
+        }
+        .label-warning {
+            background-color: #f0ad4e;
+        }
+        .label-danger {
+            background-color: #d9534f;
         }
     </style>
 
@@ -94,12 +128,38 @@
                 "iPad", "iPod"];
             for (var v = 0; v < Agents.length; v++) {
                 if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    top.location='/m';
+                    // top.location='/m';
+                    var app = $("#change_to_app");
+                    app.show();
                     break;
                 }
             }
-        }
+        };
+        //搜索框获取和失去焦点事件
+        $(".taoyige input").focus(function () {
+            $(".taoyige").css("border","1px solid #D32F2F");
+            $(".taoyige").css("border-right","0px");
+        });
+        $(".taoyige input").blur(function () {
+            $(".taoyige").css("border","1px solid #ccc");
+            $(".taoyige").css("border-right","0px");
+        });
 </script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 @section('custom-script')
 @show
 </body>
