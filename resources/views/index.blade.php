@@ -164,11 +164,11 @@
                         <!-- banner 轮播-->
                         <div class="m_banner">
                             <div style="cursor:pointer;" class="banner banner1">
-                                <img src="../images/banner.jpg" width="800" height="241"/>
+                                <img id="banner_1" src="../images/banner_2.jpg" width="800" height="241"/>
                             </div>  
-                            {{--<div style="display:none; cursor:pointer;" class="banner banner2">--}}
-                                {{--<img src="../images/banner3.jpg" width="800" height="241"/>--}}
-                            {{--</div>          --}}
+                            <div style="display:none; cursor:pointer;" class="banner banner2">
+                                <img id="banner_2" src="../images/banner.jpg" width="800" height="241"/>
+                            </div>
                             {{--<div style="display:none; cursor:pointer;" class="banner banner3">--}}
                                 {{--<img src="../images/banner2.jpg" width="800" height="241"/>--}}
                             {{--</div>          --}}
@@ -708,9 +708,14 @@
 //                $('.banner1').on('click', function() {
 //                    window.open("#");
 //                });
-//                $('.banner2').on('click', function() {
-//                    window.open("#");
-//                });
+    //            $('#banner_2').click(function(){
+//
+//		    alert("123");
+//		
+//		});
+		    //alert("123");
+                    //window.open("/company?eid=148");
+               // });
 //                $('.banner3').on('click', function() {
 //                    window.open("#");
 //                });
@@ -741,6 +746,10 @@
 
 
         })
+        $('.banner1').click(function(){
+           window.open("/company?eid=148");
+		//alert("123");
+	});
     </script>
 @endsection
 
