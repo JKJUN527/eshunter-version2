@@ -252,12 +252,12 @@
             background-color: transparent;
         }
 
-        #resume-name--change {
-            width: 88px;
-            position: absolute;
-            left: 200px;
-            top: 89px;
-        }
+        /*#resume-name--change {*/
+            /*width: 88px;*/
+            /*position: absolute;*/
+            /*left: 200px;*/
+            /*top: 89px;*/
+        /*}*/
 
         #indicatorContainer {
             position: absolute;
@@ -677,6 +677,7 @@
             </div>
 
             {{--<div class="info-panel--left">--}}
+            <input type="hidden" name="rid" value="{{$data['rid']}}">
 
             <div class="mdl-card resume-child-card" id="intention">
                 <div class="mdl-card__title">
@@ -1594,14 +1595,30 @@
 
             <div class="right-item">
                 <div class="resume-name">
-                    <span>这里写简历名称</span>
+                    <span>{{$data['resume']->resume_name}}</span>
                     <a id="update-resume-name">修改</a>
                 </div>
 
+                {{--
+                <div class="form-group resume-name--form">
+                    <div class="form-line">
+                        <input type="text" id="resume-name" name="resume-name" class="form-control"
+                               placeholder="不能为空" value="{{$data['resume']->resume_name}}">
+                    </div>
+                    <label class="error" for="resume-name"></label>
+                </div>
+
+                <button id="resume-name--change"
+                        class="btn btn-primary blue-btn">
+                    修改
+                </button>
+
+                --}}
+
                 <div class="resume-name dn">
                     <form action="" class="update-resume-name">
-                        <input type="text" name="resume-name" value="简历名称">
-                        <input type="submit" value="保存" class="save-btn">
+                        <input type="text" name="resume-name" value="{{$data['resume']->resume_name}}">
+                        <input type="submit" value="保存" class="save-btn" id="resume-name--change">
                         <a id="cancel-update-resume-name">取消</a>
                     </form>
                 </div>
@@ -1610,7 +1627,7 @@
             <div class="right-item">
                 <div class="progress-info">
                     <span>简历完整度：<em>60%</em></span>
-                    <a href="">预览简历</a>
+                    <a href="/resume/preview?rid={{$data['rid']}}">预览简历</a>
                 </div>
 
                 <div class="progress">
@@ -2046,8 +2063,8 @@
                 $("#citylabel").css("display", "none");
             }
         });
-        $("#resume-name--change").click(function () {
 
+        $("#resume-name--change").click(function () {
             var rid = $("input[name='rid']");
             var resumeName = $("input[name='resume-name']");
 
@@ -2275,7 +2292,6 @@
         });
 
         $("#add-education--button").click(function () {
-
             var school = $("input[name='school']");
             var eduid = $("input[name='eduid']");
             var degree = $("select[name='degree']");
