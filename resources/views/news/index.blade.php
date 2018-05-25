@@ -16,6 +16,9 @@
             color: #08c;
             cursor: pointer;
         }
+        .news_tab ul li:hover{
+            background-color: #c7ddef;
+        }
         .news_tab ul{
             background-color: #fff;
             /*padding-left: 10%;*/
