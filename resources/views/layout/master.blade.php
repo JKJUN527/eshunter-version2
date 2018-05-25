@@ -51,6 +51,7 @@
             display:inline-block;
             margin-bottom: 0px;
             cursor: pointer;
+            border: 1px solid darkgray;
         }
         nav#page_tools{
             margin: 20px auto;
@@ -86,6 +87,10 @@
         }
         .label-danger {
             background-color: #d9534f;
+        }
+        .es_app:hover{
+            text-shadow:0 0 0.05em #f87,
+            -0 -0 0.05em #f87;
         }
     </style>
 

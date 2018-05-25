@@ -252,12 +252,12 @@
             background-color: transparent;
         }
 
-        #resume-name--change {
-            width: 88px;
-            position: absolute;
-            left: 200px;
-            top: 89px;
-        }
+        /*#resume-name--change {*/
+            /*width: 88px;*/
+            /*position: absolute;*/
+            /*left: 200px;*/
+            /*top: 89px;*/
+        /*}*/
 
         #indicatorContainer {
             position: absolute;
@@ -410,7 +410,7 @@
         }
 
         .base_info {
-            padding: 35px 40px 10px 40px;
+            padding: 35px 40px;
             margin-top: 15px;
         }
 
@@ -552,6 +552,10 @@
             margin: 0 10px;
         }
 
+        #resume-name-update {
+
+        }
+
         .dn {
             display: none;
         }
@@ -623,22 +627,8 @@
             color: #00B38A;
         }
 
-        .update-resume-name {
-            vertical-align: central;
-        }
-
         input[name='resume-name'] {
             width: 140px;
-            font-size: 10px;
-            padding: 2px 5px;
-        }
-
-        input[name='name'] {
-            width: 200px;
-            height: 30px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
         }
 
         .save-btn {
@@ -654,84 +644,6 @@
             position: relative;
             top: -1px;
         }
-
-        .save-btn-big {
-            background-color: #00B38A;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 6px;
-            font-weight: lighter;
-            color: #fff;
-            padding: 12px 18px;
-            font-size: 16px;
-            vertical-align: middle;
-        }
-
-        .base_info__name,
-        .bio {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        form.form_base_info__name,
-        form.form_base_info__bio {
-            position: relative;
-        }
-
-        #cancel_update_name,
-        #cancel_update_bio {
-            font-weight: normal;
-            font-size: 12px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #00B38A;
-            position: absolute;
-            right: 10px;
-            top: 6px;
-        }
-
-        #cancel_update_others {
-            padding: 12px 18px;
-            font-size: 16px;
-            vertical-align: middle;
-            text-decoration: none;
-            color: #00B38A;
-            cursor: pointer;
-            font-weight: 300;
-        }
-
-        .base_info__name form input[type="submit"],
-        .bio form input[type="submit"] {
-            position: absolute;
-            right: 50px;
-            top: 5px;
-        }
-
-        .form_base_info__others {
-            background: #fefef2;
-        }
-
-        .form_base_info__others input,
-        .form_base_info__others select,
-        .form_base_info__others select option {
-            text-align: left;
-            padding-left: 17px;
-            width: 327px;
-            height: 44px;
-            background-color: #fff;
-        }
-
-        .form_base_info__others label {
-            display: block;
-            font-size: 15px;
-            font-weight: 300;
-            margin-top: 20px;
-        }
-
-        .others form {
-            padding: 35px 40px;
-        }
-
     </style>
 @endsection
 
@@ -750,90 +662,22 @@
             </div>
 
             <div class="base_info" id="base-info">
-                <p class="name base_info__name">
-                    <span>LiuYang</span>
-                    <a class="edit edit-name" id="update_name__btn"><i class="material-icons">edit</i> 编辑</a>
+                <p class="name"><span>LiuYang</span><a class="edit edit-name"><i class="material-icons">edit</i> 编辑</a>
                 </p>
-
-                <div class="dn base_info__name">
-                    <form action="" class="form_base_info__name">
-                        <input type="text" name="name" value="名字">
-                        <input type="submit" value="保存" class="save-btn">
-                        <a id="cancel_update_name">取消</a>
-                    </form>
-                </div>
-
-                <p class="bio">
-                    <span>liuyang's bio......</span>
-                    <a class="edit edit-bio" id="update_bio_btn"><i class="material-icons">edit</i> 编辑</a>
-                </p>
-
-                <div class="dn bio">
-                    <form action="" class="form_base_info__bio">
-                        <input type="text" name="name" value="bio">
-                        <input type="submit" value="保存" class="save-btn">
-                        <a id="cancel_update_bio">取消</a>
-                    </form>
-                </div>
-
+                <p class="bio"><span>liuyang's bio......</span><a class="edit edit-bio"><i
+                                class="material-icons">edit</i> 编辑</a></p>
                 <p class="others">
                     <span><i class="material-icons">school</i>计算机技术 - 四川大学</span><br>
                     <span><i class="material-icons">people</i>硕士 - 应届毕业生 - 成都</span><br>
 
                     <span><i class="material-icons">phone</i>1234567890</span>
                     <span><i class="material-icons">email</i>liuyang@eshunter.com</span>
-                    <a class="edit edit-others" id="update_others_btn"><i class="material-icons">edit</i>编辑</a>
+                    <a class="edit edit-others"><i class="material-icons">edit</i>编辑</a>
                 </p>
             </div>
 
-            <div class="others dn">
-                <form action="" class="form_base_info__others">
-                    <label for="base_info__school">毕业院校</label>
-                    <input type="text" id="base_info__school" class="base_info__school" name="base_info__school">
-
-                    <label for="base_info__major">主修专业</label>
-                    <input type="text" id="base_info__major" class="base_info__major" name="base_info__major">
-
-                    <label for="base_info__major">主修专业</label>
-                    <input type="text" id="base_info__major" class="base_info__major" name="base_info__major">
-
-                    <label for="base_info__degree">最高学历</label>
-                    <select name="base_info__degree" id="base_info__degree">
-                        <option value="0">大专</option>
-                        <option value="1">本科</option>
-                        <option value="2">硕士</option>
-                        <option value="3">博士</option>
-                        <option value="4">其他</option>
-                    </select>
-
-                    {{--工作年限--}}
-                    <label for="base_info__workingyears">工作年限</label>
-                    <select name="base_info__workingyears" id="base_info__workingyears">
-                        <option value="0">应届毕业生</option>
-                        @foreach([1,2,3,4,5,6,7,8,9,10] as $working_years)
-                            <option value="1">{{$working_years}}年</option>
-                        @endforeach
-                        <option value="11">10年以上</option>
-                    </select>
-
-                    <label for="base_info__city">城市</label>
-                    <input type="text" id="base_info__city" class="base_info__city" name="base_info__city">
-
-                    <label for="base_info__phonenumber">手机号码</label>
-                    <input type="text" id="base_info__phonenumber" class="base_info__phonenumber"
-                           name="base_info__phonenumber">
-
-                    <label for="base_info__email">联系邮箱</label>
-                    <input type="text" id="base_info__email" class="base_info__email" name="base_info__email">
-
-                    <div style="margin-top: 20px;">
-                        <button class="save-btn-big" id="save_othres">保存</button>
-                        <a id="cancel_update_others">取消</a>
-                    </div>
-                </form>
-            </div>
-
             {{--<div class="info-panel--left">--}}
+            <input type="hidden" name="rid" value="{{$data['rid']}}">
 
             <div class="mdl-card resume-child-card" id="intention">
                 <div class="mdl-card__title">
@@ -1751,30 +1595,46 @@
 
             <div class="right-item">
                 <div class="resume-name">
-                    <span>这里写简历名称</span>
+                    <span>{{$data['resume']->resume_name}}</span>
                     <a id="update-resume-name">修改</a>
                 </div>
 
+                {{--
+                <div class="form-group resume-name--form">
+                    <div class="form-line">
+                        <input type="text" id="resume-name" name="resume-name" class="form-control"
+                               placeholder="不能为空" value="{{$data['resume']->resume_name}}">
+                    </div>
+                    <label class="error" for="resume-name"></label>
+                </div>
+
+                <button id="resume-name--change"
+                        class="btn btn-primary blue-btn">
+                    修改
+                </button>
+
+                --}}
+
                 <div class="resume-name dn">
                     <form action="" class="update-resume-name">
-                        <input type="text" name="resume-name" value="简历名称">
-                        <input type="submit" value="保存" class="save-btn">
-                        <a id="cancel-update-resume-name" style="position: relative; top: 3px;">取消</a>
+                        <input type="text" name="resume-name" value="{{$data['resume']->resume_name}}">
+                        <input type="submit" value="保存" class="save-btn" id="resume-name--change">
+                        <a id="cancel-update-resume-name">取消</a>
                     </form>
                 </div>
             </div>
 
             <div class="right-item">
                 <div class="progress-info">
-                    <span>简历完整度：<em>{{$data['completion']}}%</em></span>
-                    <a href="">预览简历</a>
+                    <span>简历完整度：<em>60%</em></span>
+                    <a href="/resume/preview?rid={{$data['rid']}}">预览简历</a>
                 </div>
 
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{$data['completion']}}" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
                          aria-valuemax="100"
-                         style="width: {{$data['completion']}}%;">
-                        <span class="sr-only">{{$data['completion']}}% Complete</span>
+                         style="width: 60%;">
+                        <span class="sr-only">60% Complete</span>
                     </div>
                 </div>
             </div>
@@ -2205,7 +2065,6 @@
         });
 
         $("#resume-name--change").click(function () {
-
             var rid = $("input[name='rid']");
             var resumeName = $("input[name='resume-name']");
 
@@ -2433,7 +2292,6 @@
         });
 
         $("#add-education--button").click(function () {
-
             var school = $("input[name='school']");
             var eduid = $("input[name='eduid']");
             var degree = $("select[name='degree']");
@@ -2744,36 +2602,5 @@
             $(".resume-name:first").removeClass('dn');
             $(".resume-name:last").addClass('dn');
         });
-
-        $("#update_name__btn").click(function () {
-            $(".base_info__name:first").addClass("dn");
-            $(".base_info__name:last").removeClass("dn");
-        });
-
-        $("#cancel_update_name").click(function () {
-            $(".base_info__name:first").removeClass("dn");
-            $(".base_info__name:last").addClass("dn");
-        });
-
-        $("#update_bio_btn").click(function () {
-            $(".bio:first").addClass("dn");
-            $(".bio:last").removeClass("dn");
-        });
-
-        $("#cancel_update_bio").click(function () {
-            $(".bio:first").removeClass("dn");
-            $(".bio:last").addClass("dn");
-        });
-
-        $("#update_others_btn").click(function () {
-            $(".others:first").addClass("dn");
-            $(".others:last").removeClass("dn");
-        });
-
-        $("#cancel_update_others").click(function () {
-            $(".others:first").removeClass("dn");
-            $(".others:last").addClass("dn");
-        });
-
     </script>
 @endsection
