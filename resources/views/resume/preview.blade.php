@@ -396,23 +396,41 @@
 
             <div class="left_panel info_panel">
                 {{--头像显示不了，我就隐藏了！--}}
-                {{--<div class="resume_header">--}}
-                {{--<div class="cover"></div>--}}
-                {{--<div class="head_pic">--}}
-                {{--<img src="{{asset("images/resume/default_headpic.png")}}" alt="" class="head_pic_img" width="120"--}}
-                {{--height="120">--}}
-                {{--</div>--}}
-                {{--</div>--}}
+                <div class="resume_header">
+                <div class="cover"></div>
+                <div class="head_pic">
+                <img src="{{ $data['userinfo']->photo or  asset("images/resume/default_headpic.png")}}" alt="" class="head_pic_img" width="120"
+                height="120">
+                </div>
+                </div>
 
                 <div class="base_info" id="base-info">
-                    <p class="name"><span>LiuYang</span></p>
-                    <p class="bio"><span>liuyang's bio......</span></p>
+                    <p class="name"><span>{{$data['userinfo']->pname or "姓名未填写"}}</span></p>
+                    <p class="bio"><span>{{$data['userinfo']->self_evalu or "自我评价未填写"}}</span></p>
                     <p class="others">
-                        <span><i class="material-icons">school</i>计算机技术 - 四川大学</span><br>
-                        <span><i class="material-icons">people</i>硕士 - 应届毕业生 - 成都</span><br>
+                        <span><i class="material-icons">school</i>
+                            @if(isset($data['education'][0]))
+                                {{$data['education'][0]->major}}-{{$data['education'][0]->school}}
+                            @else
+                                未知专业-未知学校
+                            @endif
+                        </span><br>
+                        <span><i class="material-icons">people</i>
+                            @if($data['userinfo']->education == 0)
+                                高中
+                            @elseif($data['userinfo']->education == 1)
+                                本科
+                            @elseif($data['userinfo']->education == 2)
+                                硕士及以上
+                            @elseif($data['userinfo']->education == 3)
+                                专科
+                            @endif
+                            -
+                            {{$data['userinfo']->residence}}
+                        </span><br>
 
-                        <span><i class="material-icons">phone</i>1234567890</span>
-                        <span><i class="material-icons">email</i>liuyang@eshunter.com</span>
+                        <span><i class="material-icons">phone</i>{{$data['userinfo']->tel or "电话未填写"}}</span>
+                        <span><i class="material-icons">email</i>{{$data['userinfo']->mail or "邮箱未填写"}}</span>
                     </p>
                 </div>
 

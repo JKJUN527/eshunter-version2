@@ -17,6 +17,7 @@ use App\Gameposition;
 use App\Industry;
 use App\Intention;
 use App\Occupation;
+use App\Personinfo;
 use App\PlayerResume;
 use App\Projectexp;
 use App\Region;
@@ -24,6 +25,7 @@ use App\Resumes;
 use App\Workexp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller {
 //    public function __construct() {
@@ -138,6 +140,8 @@ class ResumeController extends Controller {
         } else {
             $data['resume']['skill'] = explode("|@|", substr($skillStr, 3));
         }
+        //查询基本信息
+        $data['userinfo'] = $this->getUserinfo();
 
         $data['education'] = $this->getEducation();
         $data['game'] = $this->getEgamexpr();
@@ -269,6 +273,46 @@ class ResumeController extends Controller {
 
         return $data;
     }
+    //改变头像
+    public function changePhoto(Request $request){
+        $data['status'] = 400;
+        $data['msg'] = "未知错误";
+        $data['uid'] = AuthController::getUid();
+        if ($data['uid'] == 0) {//用户未登陆
+            $data['msg'] = "用户未登陆";
+            return $data;
+        }
+        //上传头像;
+        $pid = Personinfo::where('uid', $data['uid'])->first();
+        $personinfo = Personinfo::find($pid['pid']);
+        if($request->hasFile('photo')){
+            $photo = $request->file('photo');
+            if ($photo->isValid()) {//判断文件是否上传成功
+                $originalName = $photo->getClientOriginalName();
+                //扩展名
+                $ext = $photo->getClientOriginalExtension();
+                //mimetype
+                $type = $photo->getClientMimeType();
+                //临时觉得路径
+                $realPath = $photo->getRealPath();
+
+                $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . 'photo' . '.' . $ext;
+
+                $bool = Storage::disk('profile')->put($filename, file_get_contents($realPath));
+                if ($bool) {
+                    $personinfo->photo = asset('storage/profiles/' . $filename);
+                }
+            }
+            if ($personinfo->save()) {
+                $data['status'] = 200;
+                $data['msg'] = "操作成功";
+            } else {
+                $data['status'] = 400;
+                $data['msg'] = "操作失败";
+            }
+        }
+        return $data;
+    }
 
     /*简历列表
     */
@@ -313,6 +357,9 @@ class ResumeController extends Controller {
         }
 
         $data['rid'] = $input['rid'];
+
+        //查询基本信息
+        $data['userinfo'] = $this->getUserinfo();
 
         $person = new InfoController();
         $data['personInfo'] = $person->getPersonInfo();
@@ -665,6 +712,9 @@ class ResumeController extends Controller {
     }
     public static function getPlayerResumeExp() {
         return PlayerResume::where('uid', '=', AuthController::getUid())->get();
+    }
+    public static function getUserinfo(){
+        return Personinfo::where('uid','=',AuthController::getUid())->first();
     }
 
     public function deleteEducation(Request $request) {

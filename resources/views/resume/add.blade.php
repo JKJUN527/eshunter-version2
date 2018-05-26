@@ -745,11 +745,11 @@
             <div class="resume_header">
                 <div class="cover"></div>
                 <div class="head_pic">
-                    <img src="{{asset("images/resume/default_headpic.png")}}" alt="" class="head_pic_img" width="120"
+                    <img src="{{$data['userinfo']->photo or asset("images/resume/default_headpic.png")}}" alt="" class="head_pic_img" width="120"
                          height="120">
                     <img src={{asset("images/resume/head_pic_shadow.png")}} alt="" class="shadow" width="120"
                          height="120">
-                    <input type="file" name="head_pic" title="支持jpg、jpeg、gif、png格式，文件小于10M"/>
+                    <input type="file" name="head_pic" title="支持jpg、jpeg、gif、png格式，文件小于10M" onchange="showPreview(this);"/>
                 </div>
             </div>
 
@@ -1858,10 +1858,102 @@
 
 
     <script type="text/javascript">
+        //预览头像
+        var isCorrect = true;
+        function showPreview(element) {
+//            var isCorrect = true;
+
+            var file = element.files[0];
+            var anyWindow = window.URL || window.webkitURL;
+            var objectUrl = anyWindow.createObjectURL(file);
+            window.URL.revokeObjectURL(file);
+
+            console.log(objectUrl);
+
+
+            var headImagePath = $("input[name='head_pic']").val();
+
+            console.log(headImagePath);
+
+
+            if (!/.(jpg|jpeg|png|JPG|JPEG|PNG)$/.test(headImagePath)) {
+                isCorrect = false;
+                swal({
+                    title: "错误",
+                    type: "error",
+                    text: "图片格式错误，支持：.jpg .jpeg .png类型。请选择正确格式的图片后再试！",
+                    cancelButtonText: "关闭",
+                    showCancelButton: true,
+                    showConfirmButton: false
+                });
+            } else {
+                var size = file.size;
+                console.log(size);
+
+                if (size > 2 * 1024 * 1024) {
+                    swal({
+                        title: "错误",
+                        type: "error",
+                        text: "图片文件最大支持：2MB",
+                        cancelButtonText: "关闭",
+                        showCancelButton: true,
+                        showConfirmButton: false
+                    });
+                } else {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var data = e.target.result;
+                        //加载图片获取图片真实宽度和高度
+                        var image = new Image();
+                        image.onload = function () {
+                            var width = image.width;
+                            var height = image.height;
+                            console.log(width + "//" + height);
+
+                            if (width > 1000 || height > 1000) {
+                                isCorrect = false;
+
+                                swal({
+                                    title: "错误",
+                                    type: "error",
+                                    text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n图片分辨率最大支持 1000像素 * 1000像素",
+                                    cancelButtonText: "关闭",
+                                    showCancelButton: true,
+                                    showConfirmButton: false
+                                });
+                            } else if (isCorrect) {
+                                originalHeadImg = $(".head_pic_img").attr("src");
+                                $(".head_pic_img").attr("src", objectUrl);
+                                //上传头像
+                                var file = $("input[name='head_pic']");
+                                var formData = new FormData();
+                                formData.append('photo', file.prop("files")[0]);
+                                $.ajax({
+                                    url: "/resume/changePhoto",
+                                    type: 'post',
+                                    dataType: 'text',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    success: function (data) {
+                                        console.log(data);
+                                        var result = JSON.parse(data);
+                                    }
+                                })
+
+                            }
+                        };
+                        image.src = data;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
 
         $(".right-nav").find("ul li").click(function () {
-            $(".active-nav-item").removeClass("active-nav-item")
-            $(this).addClass("active-nav-item")
+            $(".active-nav-item").removeClass("active-nav-item");
+            $(this).addClass("active-nav-item");
         });
 
         $(function () {
