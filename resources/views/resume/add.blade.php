@@ -755,80 +755,101 @@
 
             <div class="base_info" id="base-info">
                 <p class="name base_info__name">
-                    <span>LiuYang</span>
+                    <span>{{$data['userinfo']->pname or "姓名未填写"}}</span>
                     <a class="edit edit-name" id="update_name__btn"><i class="material-icons">edit</i> 编辑</a>
                 </p>
 
                 <div class="dn base_info__name">
                     <form action="" class="form_base_info__name">
-                        <input type="text" name="name" value="名字">
+                        <input type="text" name="pname" value="{{$data['userinfo']->pname or "姓名未填写"}}">
                         <input type="submit" value="保存" class="save-btn">
                         <a id="cancel_update_name">取消</a>
                     </form>
                 </div>
 
                 <p class="bio">
-                    <span>liuyang's bio......</span>
+                    <span>{{$data['userinfo']->self_evalu or "自我评价未填写"}}</span>
                     <a class="edit edit-bio" id="update_bio_btn"><i class="material-icons">edit</i> 编辑</a>
                 </p>
 
                 <div class="dn bio">
                     <form action="" class="form_base_info__bio">
-                        <input type="text" name="name" value="bio">
+                        <input type="text" name="self_evalu" value="{{$data['userinfo']->self_evalu or "自我评价未填写"}}">
                         <input type="submit" value="保存" class="save-btn">
                         <a id="cancel_update_bio">取消</a>
                     </form>
                 </div>
 
                 <p class="others">
-                    <span><i class="material-icons">school</i>计算机技术 - 四川大学</span><br>
-                    <span><i class="material-icons">people</i>硕士 - 应届毕业生 - 成都</span><br>
+                    <span><i class="material-icons">school</i>
+                        @if(isset($data['education'][0]))
+                            {{$data['education'][0]->major}}-{{$data['education'][0]->school}}
+                        @else
+                            未知专业-未知学校
+                        @endif
+                    </span><br>
+                    <span><i class="material-icons">people</i>
+                        @if($data['userinfo']->education == 0)
+                            高中
+                        @elseif($data['userinfo']->education == 1)
+                            本科
+                        @elseif($data['userinfo']->education == 2)
+                            硕士及以上
+                        @elseif($data['userinfo']->education == 3)
+                            专科
+                        @endif
+                        -
+                        {{$data['userinfo']->residence}}
+                    </span><br>
 
-                    <span><i class="material-icons">phone</i>1234567890</span>
-                    <span><i class="material-icons">email</i>liuyang@eshunter.com</span>
+                    <span><i class="material-icons">phone</i>{{$data['userinfo']->tel or "电话未填写"}}</span>
+                    <span><i class="material-icons">email</i>{{$data['userinfo']->mail or "邮箱未填写"}}</span>
                     <a class="edit edit-others" id="update_others_btn"><i class="material-icons">edit</i>编辑</a>
                 </p>
             </div>
 
             <div class="others dn">
                 <form action="" class="form_base_info__others">
-                    <label for="base_info__school">毕业院校</label>
-                    <input type="text" id="base_info__school" class="base_info__school" name="base_info__school">
+                    {{--<label for="base_info__school">毕业院校</label>--}}
+                    {{--<input type="text" id="base_info__school" class="base_info__school" name="base_info__school" value="{{$data['education'][0]->school}}">--}}
 
-                    <label for="base_info__major">主修专业</label>
-                    <input type="text" id="base_info__major" class="base_info__major" name="base_info__major">
-
-                    <label for="base_info__major">主修专业</label>
-                    <input type="text" id="base_info__major" class="base_info__major" name="base_info__major">
+                    {{--<label for="base_info__major">主修专业</label>--}}
+                    {{--<input type="text" id="base_info__major" class="base_info__major" name="base_info__major" value="{{$data['education'][0]->major}}">--}}
 
                     <label for="base_info__degree">最高学历</label>
                     <select name="base_info__degree" id="base_info__degree">
-                        <option value="0">大专</option>
-                        <option value="1">本科</option>
-                        <option value="2">硕士</option>
-                        <option value="3">博士</option>
-                        <option value="4">其他</option>
+                        <option value="9" @if($data['userinfo']->education == 9) selected @endif>
+                            请选择最高学历
+                        </option>
+                        <option value="0" @if($data['userinfo']->education == 0) selected @endif>高中
+                        </option>
+                        <option value="3" @if($data['userinfo']->education == 3) selected @endif>专科
+                        </option>
+                        <option value="1" @if($data['userinfo']->education == 1) selected @endif>本科
+                        </option>
+                        <option value="2" @if($data['userinfo']->education == 2) selected @endif>
+                            研究生及以上
+                        </option>
                     </select>
 
                     {{--工作年限--}}
-                    <label for="base_info__workingyears">工作年限</label>
-                    <select name="base_info__workingyears" id="base_info__workingyears">
-                        <option value="0">应届毕业生</option>
-                        @foreach([1,2,3,4,5,6,7,8,9,10] as $working_years)
-                            <option value="1">{{$working_years}}年</option>
-                        @endforeach
-                        <option value="11">10年以上</option>
-                    </select>
+                    {{--<label for="base_info__workingyears">工作年限</label>--}}
+                    {{--<select name="base_info__workingyears" id="base_info__workingyears">--}}
+                        {{--<option value="0">应届毕业生</option>--}}
+                        {{--@foreach([1,2,3,4,5,6,7,8,9,10] as $working_years)--}}
+                            {{--<option value="1">{{$working_years}}年</option>--}}
+                        {{--@endforeach--}}
+                        {{--<option value="11">10年以上</option>--}}
+                    {{--</select>--}}
 
                     <label for="base_info__city">城市</label>
-                    <input type="text" id="base_info__city" class="base_info__city" name="base_info__city">
+                    <input type="text" id="base_info__city" class="base_info__city" name="base_info__city" value="{{$data['userinfo']->residence}}">
 
                     <label for="base_info__phonenumber">手机号码</label>
-                    <input type="text" id="base_info__phonenumber" class="base_info__phonenumber"
-                           name="base_info__phonenumber">
+                    <input type="text" id="base_info__phonenumber" class="base_info__phonenumber" name="base_info__phonenumber" value="{{$data['userinfo']->tel}}">
 
                     <label for="base_info__email">联系邮箱</label>
-                    <input type="text" id="base_info__email" class="base_info__email" name="base_info__email">
+                    <input type="text" id="base_info__email" class="base_info__email" name="base_info__email" value="{{ $data['userinfo']->mail }} ">
 
                     <div style="margin-top: 20px;">
                         <button class="save-btn-big" id="save_othres">保存</button>
@@ -2885,6 +2906,98 @@
             $(".others:first").removeClass("dn");
             $(".others:last").addClass("dn");
         });
+
+        //设置姓名
+        $(".form_base_info__name").submit(function (e) {
+            e.preventDefault();
+            var pname = $("input[name=pname]").val();
+
+            var formData = new FormData();
+            formData.append('pname', pname);
+
+            $.ajax({
+                url: '/resume/changePersoninfo',
+                type: 'post',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    checkResult(result.status, "姓名已修改", result.msg,null);
+                }
+            })
+        });
+        $(".form_base_info__bio").submit(function (e) {
+            e.preventDefault();
+            var self_evalu = $("input[name=self_evalu]").val();
+
+            var formData = new FormData();
+            formData.append('self_evalu', self_evalu);
+
+            $.ajax({
+                url: '/resume/changePersoninfo',
+                type: 'post',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    checkResult(result.status, "自我评价已修改", result.msg,null);
+                }
+            })
+        });
+        $(".form_base_info__others").submit(function (e) {
+            e.preventDefault();
+//            var school = $("input[name=base_info__school]").val();
+//            var major = $("input[name=base_info__major]").val();
+            var degree = $("select[name=base_info__degree]").val();
+            var city = $("input[name=base_info__city]").val();
+            var tel = $("input[name=base_info__phonenumber]").val();
+            var email = $("input[name=base_info__email]").val();
+            if(degree == 9){
+                swal("","请选择最高学历","error");
+                return;
+            }
+            if(city.length ==0 ){
+                swal("","所在城市不能为空","error");
+                return;
+            }
+            if(tel.length ==0 ){
+                swal("","联系电话不能为空","error");
+                return;
+            }
+            if(email.length ==0 ){
+                swal("","邮箱不能为空","error");
+                return;
+            }
+
+            var formData = new FormData();
+//            formData.append('school', school);
+//            formData.append('major', major);
+            formData.append('degree', degree);
+            formData.append('city', city);
+            formData.append('tel', tel);
+            formData.append('email', email);
+
+            $.ajax({
+                url: '/resume/changePersoninfo',
+                type: 'post',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    checkResult(result.status, "基本信息已修改", result.msg,null);
+                }
+            })
+        });
+
 
     </script>
 @endsection

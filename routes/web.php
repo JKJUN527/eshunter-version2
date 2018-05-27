@@ -87,6 +87,7 @@ Route::post('resume/addWorkexp', ['uses' => 'ResumeController@addWorkexp']);
 Route::post('resume/addProjectexp', ['uses' => 'ResumeController@addProjectexp']);
 
 Route::post('/resume/changePhoto', ['uses' => 'ResumeController@changePhoto']);
+Route::post('/resume/changePersoninfo', ['uses' => 'ResumeController@changePersoninfo']);
 
 //选手简历信息新增
 Route::post('resume/addPlayerResumeExp', ['uses' => 'ResumeController@addPlayerResumeExp']);

@@ -313,6 +313,31 @@ class ResumeController extends Controller {
         }
         return $data;
     }
+    //修改简历头基本信息
+    public function changePersoninfo(Request $request){
+        $data['status'] = 400;
+        $data['msg'] = "未知错误";
+        $data['uid'] = AuthController::getUid();
+        if ($data['uid'] == 0) {//用户未登陆
+            $data['msg'] = "用户未登陆";
+            return $data;
+        }
+        $personinfo = Personinfo::where('uid', $data['uid'])->first();
+        if($request->has('pname')) $personinfo->pname = $request->input('pname');
+        if($request->has('self_evalu')) $personinfo->self_evalu = $request->input('self_evalu');
+        if($request->has('degree') && $request->has('city') && $request->has('tel') && $request->has('email')){
+            $personinfo->education = $request->input('degree');
+            $personinfo->residence = $request->input('city');
+            $personinfo->tel = $request->input('tel');
+            $personinfo->mail = $request->input('email');
+        }
+
+        if($personinfo->save()){
+            $data['status'] = 200;
+            $data['msg'] = "修改成功";
+        }
+        return $data;
+    }
 
     /*简历列表
     */
