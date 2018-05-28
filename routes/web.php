@@ -108,6 +108,8 @@ Route::post('resume/getworkinfo', ['uses' => 'ResumeController@getworkinfo']);
 Route::post('resume/getegameinfo', ['uses' => 'ResumeController@getegameinfo']);
 Route::post('resume/getprojectinfo', ['uses' => 'ResumeController@getprojectinfo']);
 Route::post('resume/getPlayerResumeinfo', ['uses' => 'ResumeController@getPlayerResumeinfo']);
+//增加简历下载次数
+Route::post('resume/download_resume', ['uses' => 'ResumeController@downloadResume']);
 
 //Route::any('resume/advanceSearch', ['uses' => 'ResumeController@advanceIndex']);
 

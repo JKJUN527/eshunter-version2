@@ -338,6 +338,28 @@ class ResumeController extends Controller {
         }
         return $data;
     }
+    public function downloadResume(Request $request){
+        $data['status'] = 400;
+        $data['msg'] = "未知错误";
+        $data['uid'] = AuthController::getUid();
+        if ($data['uid'] == 0) {//用户未登陆
+            $data['msg'] = "用户未登陆";
+            return $data;
+        }
+        if($request->has('rid')){
+            $rid = $request->input('rid');
+            $resume = Resumes::find($rid);
+            $resume->download_count = $resume->download_count+1;
+            if($resume->save()){
+                $data['status'] = 200;
+                $data['msg'] = "操作成功";
+            }
+        }else{
+            $data['status'] = 400;
+            $data['msg'] = "参数错误";
+        }
+        return $data;
+    }
 
     /*简历列表
     */

@@ -154,6 +154,7 @@ class PositionController extends Controller {
             //设置简历投递状态为已查看
             $deid = Delivered::where('did', '=', $data['intention']->did)->get();
             $deliverStatus = Delivered::find($deid[0]['deid']);
+            $data['rid'] = $deliverStatus->rid;
             $data['status'] = $deliverStatus->status;
             if($deliverStatus->status == 0){
                 $deliverStatus->status = 1;

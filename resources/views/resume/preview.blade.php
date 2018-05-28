@@ -154,7 +154,7 @@
             </div>
 
             <div class="mdl-card__menu">
-                <button class="mdl-button mdl-js-button btn btn-link waves-effect" id="download_resume">
+                <button class="mdl-button mdl-js-button btn btn-link waves-effect" id="download_resume" data-content="{{$data['rid']}}">
                     <i class="material-icons">file_download</i> 下载简历预览
                 </button>
             </div>
@@ -808,7 +808,21 @@
             doc.create();
 
             //发送简历下载到服务器，修改对应简历下载次数
-
+            var rid = $('#download_resume').attr('data-content');
+            var formData = new FormData();
+            formData.append('rid', rid);
+            $.ajax({
+                url: '/resume/download_resume',
+                type: 'post',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                   console.log(data);
+                }
+            })
         }
 
     </script>
