@@ -245,6 +245,18 @@
                         <span>职位管理 ({{count($data['position'])}})</span>
                     </a>
                 </li>
+                <li class="">
+                    <a href="/position/deliverList">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>简历管理</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/message">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>站内信 ({{$data['username']['messageNum']}})</span>
+                    </a>
+                </li>
             </ul>
         </div>
 

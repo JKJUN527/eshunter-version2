@@ -445,7 +445,7 @@
                                                     <h2 class="dib"><a
                                                                 href="/position/detail?pid={{$position->pid}}">{{mb_substr($position->title,0,9,'utf-8')}}</a>
                                                     </h2>
-                                                    <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}
+                                                    <span class="create_time">&ensp;[{{substr($position->created_at,0,10)}}
                                                         ]&ensp;</span>
                                                 </div>
                                                 <span class="salary right">

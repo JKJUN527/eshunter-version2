@@ -91,7 +91,7 @@ class PersonCenterController extends Controller {
         foreach ($intentions as $item) {
             $result = DB::table('jobs_position')
                 ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
                 ->where(function ($query){//职位状态
                     $query->where('position_status',1)
                         ->orwhere('position_status',4);
@@ -125,7 +125,7 @@ class PersonCenterController extends Controller {
         }
             $result2=DB::table('jobs_position')
                 ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
                 ->where(function ($query){//职位状态
                     $query->where('position_status',1)
                         ->orwhere('position_status',4);
@@ -141,7 +141,7 @@ class PersonCenterController extends Controller {
             }
             $result3= DB::table('jobs_position')
                 ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.updated_at')
+                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
                 ->where(function ($query){//职位状态
                     $query->where('position_status',1)
                         ->orwhere('position_status',4);

@@ -155,6 +155,9 @@
         .jieshao_list li{
             height: 150px !important;
         }
+        .verified, .verified i,.verified span {
+            color: #4CAF50 !important;
+        }
 
     </style>
 @endsection
@@ -169,6 +172,18 @@
                     <a href="/position/publishList">
                         <i class="iconfont icon-jianli"></i>
                         <span>职位管理 ({{$data['positionNum']}})</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/position/deliverList">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>简历管理</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/message">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>站内信 ({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>
             </ul>
@@ -200,7 +215,7 @@
                         </dl>
 
                         <ul>
-                            <li class="identification">
+                            <li class="identification @if($data['enterpriseInfo']->is_verification === 1) verified @endif">
                                 <a>
                                     <i class="material-icons">verified_user</i>
                                     @if($data['enterpriseInfo']->is_verification === 1)
@@ -306,7 +321,7 @@
                                                                         {{mb_substr($position->title,0,5)}}
                                                                     </a>
                                                                 </h2>
-                                                                <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}
+                                                                <span class="create_time">&ensp;[{{substr($position->created_at,0,10)}}
                                                                     ]&ensp;</span>
                                                             </div>
                                                             <span class="salary right">

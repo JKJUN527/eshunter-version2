@@ -45,13 +45,14 @@
         }
         nav#page_tools ul li a,nav#page_tools ul li span{
             display: inline-block;
-            padding: 15px;
+            padding: 8px 13px;
         }
         nav#page_tools ul li {
             display:inline-block;
             margin-bottom: 0px;
             cursor: pointer;
-            border: 1px solid darkgray;
+            background: #e5e5e5;
+            /*border: 1px solid darkgray;*/
         }
         nav#page_tools{
             margin: 20px auto;

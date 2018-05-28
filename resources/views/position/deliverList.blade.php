@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '收到的申请记录')
+@section('title', '简历管理')
 
 @section('custom-style')
  <link media="all" href="{{asset('../style/delivery.css?v=2.40')}}" type="text/css" rel="stylesheet">
@@ -140,7 +140,7 @@
         <div id="interview_anchor"></div>
         <div class="item_ltitle">
             <i class="material-icons" to="/account">arrow_back</i>
-            <span >收到的申请记录</span>
+            <span >简历管理</span>
             <div style="float: right;    margin-right: 32px;">
                  <input type="button" value="清空记录" name="" id="delete-all--deliver">
             </div>
