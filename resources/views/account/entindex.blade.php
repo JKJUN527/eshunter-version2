@@ -4,78 +4,9 @@
     <link media="all" href="{{asset('../style/myhome.css')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('../style/tao.css')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('../style/delivery.css')}}" type="text/css" rel="stylesheet">
+    <link media="all" rel="stylesheet" href="{{asset('../style/personal_account.css')}}" type="text/css">
 
     <style>
-        body {
-            background: #EEEEEE;
-        }
-
-        .containter {
-            width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 15px;
-            margin-top: 36px;
-        }
-
-        .info_left, .info_right {
-            display: inline-block;
-            vertical-align: top;
-            background: #fff;
-        }
-
-        .info_left {
-            width: 210px;
-        }
-
-        .info_right {
-            width: 965px;
-            min-height: 400px;
-            float: right;
-        }
-
-        .info_left ul {
-            float: left;
-            width: 214px;
-            background: #FFFFFF;
-        }
-
-        .info_left ul li {
-            width: 210px;
-            height: 58px;
-            line-height: 58px;
-            border-left: 4px #ffffff solid;
-            border-bottom: #E6E6E6 1px solid;
-            overflow: hidden;
-            vertical-align: middle;
-        }
-
-        .info_left ul li.active {
-            width: 210px;
-            border-left: 4px #00b38a solid !important;
-            background: #F7F7F7;
-        }
-
-        .info_left ul li:hover {
-            width: 210px;
-            border-left: 4px #00b38a solid !important;
-            background: #F7F7F7;
-        }
-
-        .info_left ul li a {
-            cursor: pointer;
-            display: inline-block;
-            width: 210px;
-            height: 58px;
-        }
-
-        .info_left ul li a i {
-            width: 17px;
-            height: 17px;
-            margin-top: 20px;
-            margin-left: 20px;
-            margin-right: 16px;
-        }
-
         .top_info {
             margin: 28px;
             padding-bottom: 28px;
@@ -171,19 +102,19 @@
                 <li class="">
                     <a href="/position/publishList">
                         <i class="iconfont icon-jianli"></i>
-                        <span>职位管理 ({{$data['positionNum']}})</span>
+                        <span>职位管理</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="/position/deliverList">
                         <i class="iconfont icon-jianli"></i>
-                        <span>简历管理</span>
+                        <span>收到的简历</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="/message">
                         <i class="iconfont icon-jianli"></i>
-                        <span>站内信 ({{$data['username']['messageNum']}})</span>
+                        <span>站内信</span>
                     </a>
                 </li>
             </ul>

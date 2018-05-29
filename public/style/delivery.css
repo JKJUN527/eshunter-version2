@@ -126,11 +126,11 @@
     border-right: 0;
 }
 ul.my_delivery {
-    margin: 20px 29px;
+
 }
 
 .my_delivery > li {
-    padding: 15px 0;
+    padding: 15px;
     background: #fff;
     position: relative;
     border-bottom: 1px solid #f2f2f2;
@@ -142,11 +142,22 @@ ul.my_delivery {
     margin: 0;
     padding: 5px 0;
     font-weight: 400;
+    position: relative;
 }
+
+a.d_job_link {
+    display: inline-block;
+}
+
 .my_delivery .d_job .d_job_name {
-    font-size: 18px;
-    color: #D32F2F;
+    font-size: 14px;
+    vertical-align: middle;
 }
+
+.d_job_name:hover {
+    color: #00b38a;
+}
+
 .my_delivery .d_job .d_job_salary {
     font-size: 16px;
     color: #0d9572;
@@ -158,9 +169,7 @@ ul.my_delivery {
 .my_delivery .d_company a {
     color: #555;
 }
-.my_delivery .d_company span {
-    color: #999;
-}
+
 .my_delivery .d_resume {
     margin: 5px 0;
     color: #999;
@@ -210,10 +219,35 @@ ul.my_delivery {
 }
 .my_delivery .d_time {
     position: absolute;
-    top: 20px;
-    right: 120px;
+    top: 0;
+    right: 0;
     color: #999;
 }
+
+.d_company {
+    position: relative;
+}
+
+.d_company > img {
+    padding: 5px;
+    background-color: #f8f8f8;
+    border: 1px solid #f2f2f2;
+}
+
+.d_company > a {
+    position: absolute;
+    top: 25px;
+    left: 75px;
+    font-size: 14px;
+}
+
+.d_company > span {
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+}
+
 .progress_status {
     border-top: 1px dashed #ccc;
     padding: 25px 35px;
