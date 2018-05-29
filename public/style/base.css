@@ -281,7 +281,7 @@ input[type=text], input[type=password], textarea {
 button, input, optgroup, select, textarea {
     margin: 0;
     padding: 0;
-    border: 1px solid #ededed;
+    border: none;
     border-radius: 0;
     font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
 }
@@ -305,7 +305,6 @@ tr {
 button, input, optgroup, select, textarea {
     margin: 0;
     padding: 0;
-    border: 1px solid #ededed;
     border-radius: 0;
     font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
 }
