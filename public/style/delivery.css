@@ -7,11 +7,9 @@
     width: 870px;
 }
 .new_section>dl {
-    background-color: #fafafa;
     margin-bottom: 15px;
 }
 .new_section>dl dt {
-    background: #fafafa;
     height: 50px;
     border-bottom: 1px solid #ebebeb;
     position: relative;
@@ -86,12 +84,12 @@
 }
 .new_section>dl dd {
     min-height: 300px;
-    padding: 20px 0;
+    padding: 0 0 20px 0;
     clear: both;
 }
 .delivery_tabs {
-    background-color: #f2f2f2;
     padding: 0;
+    background-color: #f8f8f8;
 }
 .delivery_tabs ul {
     margin-left: 30px;
@@ -128,15 +126,16 @@
     border-right: 0;
 }
 ul.my_delivery {
-    margin: 20px 34px 20px 29px;
+    margin: 20px 29px;
 }
-.my_delivery li {
-    margin-bottom: 30px;
+
+.my_delivery > li {
+    padding: 15px 0;
     background: #fff;
     position: relative;
+    border-bottom: 1px solid #f2f2f2;
 }
 .my_delivery .d_item {
-    border-left: 3px solid #91cebe;
     padding: 3px 12px;
 }
 .my_delivery .d_job {
@@ -170,8 +169,11 @@ ul.my_delivery {
     color: #333;
 }
 .btn_showprogress {
-    position: relative;
-    float: right;
+    width: 110px;
+    text-align: right;
+    position: absolute;
+    top: 20px;
+    right: 0;
     margin-left: 5px;
     padding-right: 15px;
     font-size: 14px;
@@ -195,6 +197,9 @@ ul.my_delivery {
     transition: all .4s ease 0s;
 }
 .btn_showprogress i.transform {
+    position: relative !important;
+    top: -3px;
+    left: 5px;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -204,12 +209,13 @@ ul.my_delivery {
     transition: all .4s ease 0s;
 }
 .my_delivery .d_time {
-    float: right;
+    position: absolute;
+    top: 20px;
+    right: 120px;
     color: #999;
 }
 .progress_status {
     border-top: 1px dashed #ccc;
-    border-bottom: 2px solid #91cebe;
     padding: 25px 35px;
     position: relative;
     zoom: 1;
@@ -220,8 +226,7 @@ ul.my_delivery {
     transition: all .2s ease-in-out;
 }
 .progress_status ul {
-    margin: 0;
-    padding: 0;
+    padding-top: 10px;
     list-style: none;
 }
 .status_steps .status_1 {
@@ -286,13 +291,12 @@ ul.my_delivery {
 .progress_status .status_text {
     position: relative;
     margin-bottom: 30px;
-    height: 60px;
+    height: 30px;
 }
 .status_text li {
     position: absolute;
     width: 148px;
     text-align: center;
-    top: 32px;
     left: -42px;
     color: #333;
     font-size: 16px;
