@@ -2,22 +2,51 @@
 @section('title', '消息通知')
 
 @section('custom-style')
- <link media="all" href="{{asset('../style/msgDetail.css')}}" type="text/css" rel="stylesheet">
+    <link media="all" href="{{asset('../style/msgDetail.css')}}" type="text/css" rel="stylesheet">
+    <link media="all" rel="stylesheet" href="{{asset('../style/personal_account.css')}}" type="text/css">
     <style>
-        .unread{
+        .unread {
             color: yellowgreen;
         }
     </style>
 @endsection
 
 @section('content')
-<div id="messageContainer" class="container cleafix">
-    <div class="content-left">
-        <div class="left-wrap">
+    <div class="container">
+        <div class="info_left info_panel" style="background: white;">
+            <ul>
+                <li class="">
+                    <a><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                </li>
+
+                <li class="">
+                    <a href="/position/applyList">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>申请记录</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/message">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>站内信</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="/position/advanceSearch">
+                        <i class="iconfont icon-jianli"></i>
+                        <span>查找职位</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info_right info_panel" style="background-color: transparent!important;">
             <div class="setting-box">
-                <h2 class="main-title">我的消息</h2>
+                <h2 class="main-title">站内信</h2>
                 <div class="setting-btn" style="display: none;">
-                    <a href="#" data-lg-tj-id="1810" >设置</a>
+                    <a href="#" data-lg-tj-id="1810">设置</a>
                 </div>
             </div>
             <div class="twrap">
@@ -27,15 +56,19 @@
                             <div class="left chalk-company-list">
                                 <div class="mdl-card mdl-shadow--2dp info-card">
                                     <div class="mdl-card__title clearfix">
-                                    <button class="mdl-button mdl-button--icon mdl-js-button" id="back-to--message-list left"  title="">
-                                        <i class="material-icons">email</i>
-                                    </button>
+                                        <button class="mdl-button mdl-button--icon mdl-js-button"
+                                                id="back-to--message-list left" title="">
+                                            <i class="material-icons">email</i>
+                                        </button>
                                         <span class="mdl-card__menu right">
-                                            <button class="mdl-button mdl-button--icon mdl-js-button" id="delete-all--selected_message" title="删除">
+                                            <button class="mdl-button mdl-button--icon mdl-js-button"
+                                                    id="delete-all--selected_message" title="删除">
                                                 <i class="material-icons">delete_sweep</i></button>
-                                            <button class="mdl-button mdl-button--icon mdl-js-button" id="read-all--message" title="标为已读">
+                                            <button class="mdl-button mdl-button--icon mdl-js-button"
+                                                    id="read-all--message" title="标为已读">
                                                 <i class="material-icons">done_all</i></button>
-                                            <button class="mdl-button mdl-button--icon mdl-js-button" id="select-all--message" title="全选">
+                                            <button class="mdl-button mdl-button--icon mdl-js-button"
+                                                    id="select-all--message" title="全选">
                                                 <i class="material-icons">select_all</i></button>
                                         </span>
                                     </div>
@@ -43,26 +76,26 @@
                                         <div class="message-list">
                                             <ul>
                                                 @forelse($data['listMessages'] as $message)
-                                                <li class="from"
-                                                    @if($message->from_id == $data["uid"])
-                                                                        data-content="{{$message->to_id}}"
-                                                                      @else
-                                                                        data-content="{{$message->from_id}}"
-                                                                      @endif
-                                                >
-                                                    <div class="pic">
-                                                        <a href="" class="img-a">
-                                                            @if(isset($data['user'][$message->from_id]->elogo))
-                                                                <img src="{{$data['user'][$message->from_id]->elogo}}">
-                                                            @elseif(isset($data['user'][$message->from_id]->photo))
-                                                                <img src="{{$data['user'][$message->from_id]->photo}}">
-                                                            @else
-                                                                <img src="{{asset('images/avatar.png')}}">
+                                                    <li class="from"
+                                                        @if($message->from_id == $data["uid"])
+                                                        data-content="{{$message->to_id}}"
+                                                        @else
+                                                        data-content="{{$message->from_id}}"
                                                             @endif
-                                                        </a>
-                                                        <div class="title @if($message->is_read == 0) unread @endif">
-                                                            <div class="sender">
-                                                                <span >
+                                                    >
+                                                        <div class="pic">
+                                                            <a href="" class="img-a">
+                                                                @if(isset($data['user'][$message->from_id]->elogo))
+                                                                    <img src="{{$data['user'][$message->from_id]->elogo}}">
+                                                                @elseif(isset($data['user'][$message->from_id]->photo))
+                                                                    <img src="{{$data['user'][$message->from_id]->photo}}">
+                                                                @else
+                                                                    <img src="{{asset('images/avatar.png')}}">
+                                                                @endif
+                                                            </a>
+                                                            <div class="title @if($message->is_read == 0) unread @endif">
+                                                                <div class="sender">
+                                                                <span>
                                                                     @if($message->from_id == $data['uid'])
                                                                         我
                                                                     @else
@@ -73,24 +106,26 @@
                                                                         @endif
                                                                     @endif
                                                                 </span>
-                                                                <span class="select right">
-                                                                    <input type="checkbox" name="msg" data-content="{{$message->mid}}" class="chk-col-teal"></span>
-                                                                {{--<span class="operations right" ><a>删除</a>--}}
-                                                                {{--</span>--}}
+                                                                    <span class="select right">
+                                                                    <input type="checkbox" name="msg"
+                                                                           data-content="{{$message->mid}}"
+                                                                           class="chk-col-teal"></span>
+                                                                    {{--<span class="operations right" ><a>删除</a>--}}
+                                                                    {{--</span>--}}
+                                                                </div>
+                                                                <p>
+                                                                    <span class="text">{{mb_substr($message->content, 0, 15)}}</span>
+                                                                    <span class="time right">{{$message->created_at}}</span>
+                                                                </p>
                                                             </div>
-                                                            <p>
-                                                                <span class="text">{{mb_substr($message->content, 0, 15)}}</span>
-                                                                <span class="time right">{{$message->created_at}}</span>
-                                                            </p>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                                @endforeach
-                                        </ul>
+                                                    </li>
+                                                    @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                             <div class="right chalk-detail">
                                 <p class="chalk-content-title">对话详情</p>
@@ -111,11 +146,118 @@
             </div>
         </div>
     </div>
-</div>
+
+    {{--<div id="messageContainer" class="container cleafix">--}}
+    {{--<div class="content-left">--}}
+    {{--<div class="left-wrap">--}}
+    {{--<div class="setting-box">--}}
+    {{--<h2 class="main-title">我的消息</h2>--}}
+    {{--<div class="setting-btn" style="display: none;">--}}
+    {{--<a href="#" data-lg-tj-id="1810">设置</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="twrap">--}}
+    {{--<div class="tab-content" id="msgContent">--}}
+    {{--<div class="t-content-item t-content-item_3 company-chalk" style="display: block;">--}}
+    {{--<div class="chalk-wrap clearfix">--}}
+    {{--<div class="left chalk-company-list">--}}
+    {{--<div class="mdl-card mdl-shadow--2dp info-card">--}}
+    {{--<div class="mdl-card__title clearfix">--}}
+    {{--<button class="mdl-button mdl-button--icon mdl-js-button"--}}
+    {{--id="back-to--message-list left" title="">--}}
+    {{--<i class="material-icons">email</i>--}}
+    {{--</button>--}}
+    {{--<span class="mdl-card__menu right">--}}
+    {{--<button class="mdl-button mdl-button--icon mdl-js-button"--}}
+    {{--id="delete-all--selected_message" title="删除">--}}
+    {{--<i class="material-icons">delete_sweep</i></button>--}}
+    {{--<button class="mdl-button mdl-button--icon mdl-js-button"--}}
+    {{--id="read-all--message" title="标为已读">--}}
+    {{--<i class="material-icons">done_all</i></button>--}}
+    {{--<button class="mdl-button mdl-button--icon mdl-js-button"--}}
+    {{--id="select-all--message" title="全选">--}}
+    {{--<i class="material-icons">select_all</i></button>--}}
+    {{--</span>--}}
+    {{--</div>--}}
+    {{--<div class="mdl-card__actions mdl-card--border message-panel">--}}
+    {{--<div class="message-list">--}}
+    {{--<ul>--}}
+    {{--@forelse($data['listMessages'] as $message)--}}
+    {{--<li class="from"--}}
+    {{--@if($message->from_id == $data["uid"])--}}
+    {{--data-content="{{$message->to_id}}"--}}
+    {{--@else--}}
+    {{--data-content="{{$message->from_id}}"--}}
+    {{--@endif--}}
+    {{-->--}}
+    {{--<div class="pic">--}}
+    {{--<a href="" class="img-a">--}}
+    {{--@if(isset($data['user'][$message->from_id]->elogo))--}}
+    {{--<img src="{{$data['user'][$message->from_id]->elogo}}">--}}
+    {{--@elseif(isset($data['user'][$message->from_id]->photo))--}}
+    {{--<img src="{{$data['user'][$message->from_id]->photo}}">--}}
+    {{--@else--}}
+    {{--<img src="{{asset('images/avatar.png')}}">--}}
+    {{--@endif--}}
+    {{--</a>--}}
+    {{--<div class="title @if($message->is_read == 0) unread @endif">--}}
+    {{--<div class="sender">--}}
+    {{--<span>--}}
+    {{--@if($message->from_id == $data['uid'])--}}
+    {{--我--}}
+    {{--@else--}}
+    {{--@if(isset($data['user'][$message->from_id]->ename))--}}
+    {{--{{$data['user'][$message->from_id]->ename}}--}}
+    {{--@else--}}
+    {{--{{$data['user'][$message->from_id]->username}}--}}
+    {{--@endif--}}
+    {{--@endif--}}
+    {{--</span>--}}
+    {{--<span class="select right">--}}
+    {{--<input type="checkbox" name="msg"--}}
+    {{--data-content="{{$message->mid}}"--}}
+    {{--class="chk-col-teal"></span>--}}
+    {{--<span class="operations right" ><a>删除</a>--}}
+    {{--</span>--}}
+    {{--</div>--}}
+    {{--<p>--}}
+    {{--<span class="text">{{mb_substr($message->content, 0, 15)}}</span>--}}
+    {{--<span class="time right">{{$message->created_at}}</span>--}}
+    {{--</p>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</li>--}}
+    {{--@endforeach--}}
+    {{--</ul>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+
+    {{--<div class="right chalk-detail">--}}
+    {{--<p class="chalk-content-title">对话详情</p>--}}
+    {{--<div class="chalk-content">--}}
+    {{--<ul id="talk_list">--}}
+    {{--</ul>--}}
+    {{--</div>--}}
+    {{--<div class="chalk-bottom" style="display: none">--}}
+    {{--<textarea row="3" class="input-msg" data-content=""></textarea>--}}
+    {{--<a class="btn send right">发送</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+
+    {{--<div class="item_con_pager"></div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 @endsection
 
 @section('custom-script')
-<script type="text/javascript">
+    <script type="text/javascript">
         $checkedAll = false;
         var my_img_url = "";
         $messageList = $(".message-list");
@@ -155,54 +297,54 @@
 
                     console.log(result);
                     //设置对话标题,及对方的头像
-                    if(from_type === 1){
+                    if (from_type === 1) {
                         talk_title.html(result.userinfo[from_id]['username']);
                         img_url = result.userinfo[from_id]['photo'];
-                    } else if (from_type === 2){
+                    } else if (from_type === 2) {
                         talk_title.html(result.userinfo[from_id]['ename']);
                         img_url = result.userinfo[from_id]['elogo'];
-                    } else{
+                    } else {
                         talk_title.html(result.userinfo[from_id]);
                         img_url = "{{asset('images/avatar.png')}}";
                     }
                     //设置自己的头像
-                    if(result.type === 1){
+                    if (result.type === 1) {
                         my_img_url = my_info['photo'];
-                    } else if (result.type === 2){
+                    } else if (result.type === 2) {
                         my_img_url = my_info['elogo'];
-                    } else{
+                    } else {
                         my_img_url = "{{asset('images/avatar.png')}}";
                     }
 
                     //设置对话内容
                     var list_html = "";
-                    for (temp in result.message){
-                        if(result.message[temp].from_id == from_id){//对方发的消息
-                            list_html += "<li class='company'><p class='time'>"+result.message[temp].created_at +"</p>"+
-                                            "<div class='text'><span class='touxiang'><img src='"+ img_url + "'></span>"+
-                                            "<p class='chalk-detail-span'>"+ result.message[temp].content + "</p></div></li>";
-                        }else{//我发的消息
-                            list_html += "<li class='me'><p class='time'>"+result.message[temp].created_at +"</p>"+
-                                    "<div class='text'><span class='touxiang'><img src='"+ my_img_url + "'></span>"+
-                                    "<p class='chalk-detail-span'>"+ result.message[temp].content + "</p></div></li>";
+                    for (temp in result.message) {
+                        if (result.message[temp].from_id == from_id) {//对方发的消息
+                            list_html += "<li class='company'><p class='time'>" + result.message[temp].created_at + "</p>" +
+                                "<div class='text'><span class='touxiang'><img src='" + img_url + "'></span>" +
+                                "<p class='chalk-detail-span'>" + result.message[temp].content + "</p></div></li>";
+                        } else {//我发的消息
+                            list_html += "<li class='me'><p class='time'>" + result.message[temp].created_at + "</p>" +
+                                "<div class='text'><span class='touxiang'><img src='" + my_img_url + "'></span>" +
+                                "<p class='chalk-detail-span'>" + result.message[temp].content + "</p></div></li>";
                         }
                     }
                     talk_list.html(list_html);
                     //设置发送框的id为对方uid
-                    input_msg.attr('data-content',from_id);
+                    input_msg.attr('data-content', from_id);
                     input_msg.parent().show();
                     {{--<li class="me">--}}
-                            {{--<p class="time">2018-03-02 09:52:41</p>--}}
+                    {{--<p class="time">2018-03-02 09:52:41</p>--}}
                     {{--<div class="text">--}}
-                            {{--<span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>--}}
-                            {{--<p class="chalk-detail-span">谢谢，期待合作愉快！</p>--}}
+                    {{--<span class="touxiang"><img src="http://eshunter.com/images/avatar.png" alt=""></span>--}}
+                    {{--<p class="chalk-detail-span">谢谢，期待合作愉快！</p>--}}
                     {{--</div>--}}
                     {{--</li>--}}
 
 
-//                    setTimeout(function () {
-//                        location.reload()
-//                    }, 1000);
+                    //                    setTimeout(function () {
+                    //                        location.reload()
+                    //                    }, 1000);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     swal(xhr.status + "：" + thrownError);
@@ -213,17 +355,17 @@
         $(".send").click(function () {
             var input_msg = $(".input-msg");
             var to_id = input_msg.attr('data-content');
-            if(to_id === "" || to_id===null){
-                swal("","发送失败-未知的对话用户","error");
+            if (to_id === "" || to_id === null) {
+                swal("", "发送失败-未知的对话用户", "error");
                 return;
             }
-            if(input_msg.val().length === 0){
-                swal("","发送内容不能为空","error");
+            if (input_msg.val().length === 0) {
+                swal("", "发送内容不能为空", "error");
                 return;
             }
 
-            if(input_msg.val().length > 140){
-                swal("","站内信长度不能大于140字，当前字数："+input_msg.val().length,"error");
+            if (input_msg.val().length > 140) {
+                swal("", "站内信长度不能大于140字，当前字数：" + input_msg.val().length, "error");
                 return;
             }
             var formData = new FormData();
@@ -240,19 +382,19 @@
                 data: formData,
                 success: function (data) {
                     var result = JSON.parse(data);
-                    if(result.status === 200){
+                    if (result.status === 200) {
                         //处理新增对话消息
                         var myDate = new Date();//获取系统当前时间
                         var talk_list = $("#talk_list");
                         var list_html = talk_list.html();
-                        list_html = "<li class='me'><p class='time'>"+ myDate.toLocaleString( ) +"</p>"+
-                                "<div class='text'><span class='touxiang'><img src='"+ my_img_url + "'></span>"+
-                                "<p class='chalk-detail-span'>"+ input_msg.val() + "</p></div></li>"+
-                                list_html;
+                        list_html = "<li class='me'><p class='time'>" + myDate.toLocaleString() + "</p>" +
+                            "<div class='text'><span class='touxiang'><img src='" + my_img_url + "'></span>" +
+                            "<p class='chalk-detail-span'>" + input_msg.val() + "</p></div></li>" +
+                            list_html;
 
                         talk_list.html(list_html);
-                    }else{
-                        swal("",result.msg,"error");
+                    } else {
+                        swal("", result.msg, "error");
                         return;
                     }
 
@@ -357,6 +499,7 @@
                 return $(this).attr('data-content');
             }).get();
         }
+
         //    $(document).ready(function(){
         //
         //        $(".item_1").click(function(){
@@ -400,17 +543,17 @@
         //            $(".t-content-item_4").show();
         //        })
         //    })
-</script>
+    </script>
 @endsection
 
 @section('header-nav')
-   @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
+    @include('components.headerNav',['personInfo'=>$data['username'],'type'=>$data['type'],'uid'=>$data['uid']])
 @endsection
 
 @section('header-tab')
-   @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
+    @include('components.headerTab',['activeIndex' => 2,'type' => $data['type']])
 @endsection
 
 @section('footer')
-   @include('components.myfooter')
+    @include('components.myfooter')
 @endsection

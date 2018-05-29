@@ -6,6 +6,7 @@
     <link media="all" href="{{asset('style/tao.css')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/style_qq.css?v=2.33')}}" type="text/css" rel="stylesheet">
+    <link media="all" rel="stylesheet" href="{{asset('../style/personal_account.css')}}" type="text/css">
     <script src="{{asset('js/choose.js?v=2.33')}}" type="text/javascript"></script>
     <script src="{{asset('js/placeholder.js?v=2.32')}}" type="text/javascript"></script>
     <script src="{{asset('js/progressbar.js?v=2.32')}}" type="text/javascript"></script>
@@ -19,76 +20,6 @@
 
     <script defer="defer" src="{{asset('js/center.js?v=2.32')}}" type="text/javascript"></script>
     <style>
-        body {
-            background: #EEEEEE;
-        }
-
-        .container {
-            width: 1200px;
-            margin: 36px auto;
-            padding-bottom: 15px;
-        }
-
-        .info_left, .info_right {
-            display: inline-block;
-            vertical-align: top;
-            background: #fff;
-        }
-
-        .info_left {
-            width: 210px;
-        }
-
-        .info_right {
-            width: 965px;
-            min-height: 400px;
-            float: right;
-            margin-bottom: 50px;
-        }
-
-        .info_left ul {
-            float: left;
-            width: 214px;
-            background: #FFFFFF;
-        }
-
-        .info_left ul li {
-            width: 210px;
-            height: 58px;
-            line-height: 58px;
-            border-left: 4px #ffffff solid;
-            border-bottom: #E6E6E6 1px solid;
-            overflow: hidden;
-            vertical-align: middle;
-        }
-
-        .info_left ul li.active {
-            width: 210px;
-            border-left: 4px #00b38a solid !important;
-            background: #F7F7F7;
-        }
-
-        .info_left ul li:hover {
-            width: 210px;
-            border-left: 4px #00b38a solid !important;
-            background: #F7F7F7;
-        }
-
-        .info_left ul li a {
-            cursor: pointer;
-            display: inline-block;
-            width: 210px;
-            height: 58px;
-        }
-
-        .info_left ul li a i {
-            width: 17px;
-            height: 17px;
-            margin-top: 20px;
-            margin-left: 20px;
-            margin-right: 16px;
-        }
-
         .top_info {
             margin: 28px;
             padding-bottom: 28px;
