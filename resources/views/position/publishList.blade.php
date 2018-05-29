@@ -242,13 +242,13 @@
                 <li class="active">
                     <a href="/position/publishList">
                         <i class="iconfont icon-jianli"></i>
-                        <span>职位管理 ({{count($data['position'])}})</span>
+                        <span>职位管理</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="/position/deliverList">
                         <i class="iconfont icon-jianli"></i>
-                        <span>简历管理</span>
+                        <span>收到的简历</span>
                     </a>
                 </li>
                 <li class="">
