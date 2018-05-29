@@ -154,7 +154,8 @@
             </div>
 
             <div class="mdl-card__menu">
-                <button class="mdl-button mdl-js-button btn btn-link waves-effect" id="download_resume" data-content="{{$data['rid']}}">
+                <button class="mdl-button mdl-js-button btn btn-link waves-effect" id="download_resume"
+                        data-content="{{$data['rid']}}">
                     <i class="material-icons">file_download</i> 下载简历预览
                 </button>
             </div>
@@ -397,11 +398,12 @@
             <div class="left_panel info_panel">
                 {{--头像显示不了，我就隐藏了！--}}
                 <div class="resume_header">
-                <div class="cover"></div>
-                <div class="head_pic">
-                <img src="{{ $data['userinfo']->photo or  asset("images/resume/default_headpic.png")}}" alt="" class="head_pic_img" width="120"
-                height="120">
-                </div>
+                    <div class="cover"></div>
+                    <div class="head_pic">
+                        <img src="{{ $data['userinfo']->photo or  asset("images/resume/default_headpic.png")}}" alt=""
+                             class="head_pic_img" width="120"
+                             height="120">
+                    </div>
                 </div>
 
                 <div class="base_info" id="base-info">
@@ -560,27 +562,24 @@
                     </div>
 
                     <div class="mdl-card__actions work-panel">
-
                         @forelse($data['work'] as $work)
-                            <p>
-                                <?php
-                                $index = 1;
-                                ?>
-                                <span>
-                            @foreach(explode('@', $work->work_time) as $time)
-                                        @if($index == 1)
-                                            {{$time}}--
-                                        @elseif($index == 2)
-                                            {{$time}}
-                                        @endif
+                            <?php
+                            $index = 1;
+                            ?>
+                            <span>
+                                @foreach(explode('@', $work->work_time) as $time)
+                                    @if($index == 1)
+                                        {{$time}}--
+                                    @elseif($index == 2)
+                                        {{$time}}
+                                    @endif
 
-                                        <?php $index++ ?>
-                                    @endforeach
+                                    <?php $index++ ?>
+                                @endforeach
                             </span>
-                                <span>{{$work->ename}}</span>
-                                <span>{{$work->position}}</span></br>
+                            <span>{{$work->ename}}</span>
+                            <span>{{$work->position}}</span></br>
                             <p style="width: auto">{!! $work->describe !!}</p>
-                            </p>
                         @empty
                             <div class="mdl-card__supporting-text">
                                 无工作经历
@@ -820,7 +819,7 @@
                 processData: false,
                 data: formData,
                 success: function (data) {
-                   console.log(data);
+                    console.log(data);
                 }
             })
         }
