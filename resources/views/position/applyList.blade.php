@@ -2,7 +2,8 @@
 @section('title', '申请记录')
 
 @section('custom-style')
-    <link media="all" href="{{asset('../style/delivery.css')}}" type="text/css" rel="stylesheet">
+    {{--<link media="all" href="{{asset('../style/delivery.css')}}" type="text/css" rel="stylesheet">--}}
+    <link media="all" href="{{asset('../style/apply.css')}}" type="text/css" rel="stylesheet">
     <link media="all" rel="stylesheet" href="{{asset('../style/personal_account.css')}}" type="text/css">
     <style>
         .QQ_each{
