@@ -51,11 +51,11 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="">
-                    <a><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                    <a href="/account"><i class="iconfont icon-home"></i><span>帐户中心</span></a>
                 </li>
 
                 <li class="active">
-                    <a href="/position/applyList">
+                    <a>
                         <i class="iconfont icon-jianli"></i>
                         <span>申请记录</span>
                     </a>
