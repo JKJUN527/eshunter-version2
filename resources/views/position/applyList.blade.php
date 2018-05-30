@@ -34,6 +34,13 @@
         .transform{
             position: initial !important;
         }
+        .d_job_company{
+            font-size: 1.2rem;
+            padding: 10px 0;
+        }
+        .d_job_company a:hover{
+            color: #0d9572;
+        }
     </style>
 @endsection
 
@@ -124,7 +131,7 @@
                                         <div class="d_job">
                                             <a href="/position/detail?pid={{$apply->pid}}" class="d_job_link"
                                                target="_blank">
-                                                <em class="d_job_name">{{mb_substr($apply->title,0,20,'utf-8')}}...</em>
+                                                <em class="d_job_name">{{$apply->title}}</em>
                                                 <span class="d_job_salary">
                                                         @if($apply->salary == -1)
                                                         工资面议
@@ -136,10 +143,14 @@
                                                     </span>
                                             </a>
                                         </div>
-                                        <div class="d_company">
-                                            <a href="#"
+                                        <div class="d_job_company">
+                                            <a href="/company?eid={{$apply->eid}}"
                                                target="_blank">{{$data['applylist']['ename'][$apply->eid]->ename}}</a>
                                         </div>
+                                        {{--<div class="d_company">--}}
+                                            {{--<a href="#"--}}
+                                               {{--target="_blank">{{$data['applylist']['ename'][$apply->eid]->ename}}</a>--}}
+                                        {{--</div>--}}
                                         <div class="d_resume">
                                             使用简历：
                                             <span class="d_resume_type">{{$apply->resume_name}}</span>

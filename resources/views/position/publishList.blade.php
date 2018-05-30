@@ -78,7 +78,7 @@
             width: 300px;
             display: inline-block;
             float: left;
-            border: 1px solid #D32F2F;
+            /*border: 1px solid #D32F2F;*/
             border-right: 0px;
         }
 
@@ -159,7 +159,7 @@
             /*border: 1px solid #ddd;*/
             border-radius: 3px;
             text-align: center;
-            background-color: #27c24c;
+            background-color: #5bc0de;
             animation: all 0.4s;
         }
 
@@ -224,13 +224,13 @@
                 <li class="">
                     <a href="/position/deliverList">
                         <i class="iconfont icon-jianli"></i>
-                        <span>收到的简历</span>
+                        <span>简历管理</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="/message">
                         <i class="iconfont icon-jianli"></i>
-                        <span>站内信 ({{$data['username']['messageNum']}})</span>
+                        <span>站内信({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>
             </ul>

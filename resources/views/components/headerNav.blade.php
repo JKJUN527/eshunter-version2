@@ -28,8 +28,8 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="/position/publishList" style="border-left:none;">已发布职位</a></li>
-                    <li><a href="/position/deliverList">收到简历记录</a></li>
+                    <li><a href="/position/publishList" style="border-left:none;">职位管理</a></li>
+                    <li><a href="/position/deliverList">简历管理</a></li>
                     <li class="user_dropdown">
                         <a href="/account">{{$personInfo['username']}}<span></span></a>
                         <ul>

@@ -30,7 +30,7 @@
                     <li class="active">
                         <a>
                             <i class="iconfont icon-jianli"></i>
-                            <span>站内信</span>
+                            <span>站内信({{$data['username']['messageNum']}})</span>
                         </a>
                     </li>
 
@@ -51,14 +51,14 @@
                     <li class="">
                         <a href="/position/deliverList">
                             <i class="iconfont icon-jianli"></i>
-                            <span>收到的简历</span>
+                            <span>简历管理</span>
                         </a>
                     </li>
 
                     <li class="active">
                         <a>
                             <i class="iconfont icon-jianli"></i>
-                            <span>站内信</span>
+                            <span>站内信({{$data['username']['messageNum']}})</span>
                         </a>
                     </li>
                 @endif

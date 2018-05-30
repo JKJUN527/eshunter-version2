@@ -181,8 +181,8 @@ a.d_job_link {
     width: 110px;
     text-align: right;
     position: absolute;
-    top: 20px;
-    right: 0;
+    top: 80px;
+    right: 20px;
     margin-left: 5px;
     padding-right: 15px;
     font-size: 14px;
@@ -219,8 +219,8 @@ a.d_job_link {
 }
 .my_delivery .d_time {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 30px;
+    right: 30px;
     color: #999;
 }
 
@@ -236,7 +236,7 @@ a.d_job_link {
 
 .d_company > a {
     position: absolute;
-    top: 25px;
+    top: 30px;
     left: 75px;
     font-size: 14px;
 }

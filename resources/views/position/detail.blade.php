@@ -544,13 +544,18 @@
                     } else {
                         for (var item in data) {
                             var type = "";
-                            if(data[item]['type'] == 0)
+                            var color = "";
+                            if(data[item]['type'] == 0) {
+                                color = "00b38a";
                                 type = "一般简历";
-                            else
+                            }
+                            else{
                                 type = "选手简历";
+                                color = "fd5f39";
+                            }
                             var resumeName = data[item]['resume_name'] === null ? "未命名的简历" : data[item]['resume_name'];
                             html += "<li class='resume-item' data-content='" + data[item]['rid'] + "' onclick='resumeChosen(this, " + $pid + ")'>" +
-                                "<p><span style='color: #00b38a'>"+ type + ": </span>" + resumeName + "</p>" +
+                                "<p><span style='color: \#"+ color +"'>"+ type + ": </span>" + resumeName + "</p>" +
                                 "</li>";
                         }
 

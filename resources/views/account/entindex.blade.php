@@ -108,13 +108,13 @@
                 <li class="">
                     <a href="/position/deliverList">
                         <i class="iconfont icon-jianli"></i>
-                        <span>收到的简历</span>
+                        <span>简历管理</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="/message">
                         <i class="iconfont icon-jianli"></i>
-                        <span>站内信</span>
+                        <span>站内信({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>
             </ul>
@@ -233,7 +233,7 @@
                         <span class="item_ropera item_add disabled add_btn_wrap" to="/position/publish"
                               style="display: block;">
                                     <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_one">新增</span>
+                                    <span class="item_ropetext add_one">发布职位</span>
                                 </span>
 
                         <div class="item_content item_content_one" style="display: block;">

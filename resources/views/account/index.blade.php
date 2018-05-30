@@ -150,10 +150,10 @@
             width: 965px;
             border-top: 1px #D8E3EB solid;
             background: #F5F8FA;
-            min-height: 300px;
+            /*min-height: 300px;*/
         }
 
-        .resume_list > p,
+        .resume_list p,
         .job_recommendation > p {
             font-size: 18px;
             font-weight: bold;
@@ -320,8 +320,8 @@
             </div>
 
             <div class="resume_list">
+                <div style="float: left;width: 65%">
                 <p>一般简历</p>
-
                 @foreach($data['resumeList'] as $resume)
                     <div class="resume-item">
                         <a target="_blank" href="/resume/add?rid={{$resume->rid}}">
@@ -340,7 +340,8 @@
                 @endif
 
                 <div class="divider"></div>
-
+                </div>
+                <div style="float: right;width: 30%">
                 <p>选手简历</p>
                 @forelse($data['playerResume'] as $resume)
                     <div class="resume-item">
@@ -355,6 +356,7 @@
                         <label>添加选手简历</label>
                     </div>
                 @endforelse
+                </div>
             </div>
 
             <div class="job_recommendation">
