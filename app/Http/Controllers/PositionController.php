@@ -70,7 +70,7 @@ class PositionController extends Controller {
         return $result;
     }
 
-    public function deliverListView() {
+    public function deliverListView(Request $request) {
         $data = array();
         $data['uid'] = AuthController::getUid();
         $data['username'] = InfoController::getUsername();
@@ -80,9 +80,14 @@ class PositionController extends Controller {
 
         if (AuthController::getType() != 2)
             return redirect()->back();
+        //获取需要查看的分类
+        if($request->has('status'))
+            $data['status'] = $request->input('status');
+        else
+            $data['status'] = -1;
 
         //查看所有投递记录
-        $data['deliverAll'] = PersonCenterController::getAllApplyList();
+        $data['deliverAll'] = PersonCenterController::getAllApplyList($data['status']);
 //        return $data;
         return view('position/deliverList', ['data' => $data]);
     }

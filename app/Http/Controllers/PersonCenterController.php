@@ -300,7 +300,7 @@ class PersonCenterController extends Controller {
     }
 
     //查看所有
-    public static function getAllApplyList() {
+    public static function getAllApplyList($type) {
         $uid = AuthController::getUid();
         $dateLimt = date("y-m-d h:i:s", strtotime('-30 day', time()));  //当前时间向前回退30天
         $eid = Enprinfo::where('uid', '=', $uid)
@@ -327,13 +327,25 @@ class PersonCenterController extends Controller {
         rsort($didArray);
 //        return $didArray;
             foreach ($didArray as $backup) {
-                $temp = DB::table('jobs_backup')
-                    ->join('jobs_personinfo','jobs_personinfo.uid','=','jobs_backup.uid')
-                    ->leftjoin('jobs_delivered','jobs_backup.did','=','jobs_delivered.did')
-                    ->select('jobs_backup.did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','salary','status','jobs_backup.created_at')
+                if($type == -1){//查看全部
+                    $temp = DB::table('jobs_backup')
+                        ->join('jobs_personinfo','jobs_personinfo.uid','=','jobs_backup.uid')
+                        ->leftjoin('jobs_delivered','jobs_backup.did','=','jobs_delivered.did')
+                        ->select('jobs_backup.did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','salary','status','jobs_backup.created_at')
 //                    ->where('jobs_backup.created_at', '>=', $dateLimt)
-                    ->where('jobs_backup.did','=',$backup)
-                    ->get();
+                        ->where('jobs_backup.did','=',$backup)
+                        ->get();
+                }else{
+                    $temp = DB::table('jobs_backup')
+                        ->join('jobs_personinfo','jobs_personinfo.uid','=','jobs_backup.uid')
+                        ->leftjoin('jobs_delivered','jobs_backup.did','=','jobs_delivered.did')
+                        ->select('jobs_backup.did','jobs_personinfo.pname','jobs_personinfo.photo','position_title','salary','status','jobs_backup.created_at')
+//                    ->where('jobs_backup.created_at', '>=', $dateLimt)
+                        ->where('jobs_backup.did','=',$backup)
+                        ->where('jobs_delivered.status',$type)
+                        ->get();
+                }
+
                 if($temp->count())
                     $result[] = $temp[0];
             }

@@ -219,17 +219,20 @@
 
                 <div class="delivery_tabs">
                     <ul class="reset">
-                        <li class="current li_one">
-                            <a class="all_border tabs_all">全部</a>
+                        <li class="li_one @if($data['status'] == -1) current @endif">
+                            <a class="all_border tabs_all" href="/position/deliverList">全部</a>
                         </li>
-                        <li class="li_two">
-                            <a class="tabs_delivery_success">未查看</a>
+                        <li class="li_two @if($data['status'] == 1) current @endif">
+                            <a class="tabs_delivery_success" href="/position/deliverList?status=1">已查看</a>
                         </li>
-                        <li class="li_three">
-                            <a class="tabs_look">待沟通</a>
+                        <li class="li_three @if($data['status'] == 0) current @endif">
+                            <a class="tabs_look" href="/position/deliverList?status=0">待沟通</a>
                         </li>
-                        <li class="li_four">
-                            <a class="tabs_say">不合适</a>
+                        <li class="li_four @if($data['status'] == 2) current @endif">
+                            <a class="tabs_review" href="/position/deliverList?status=2">已录用</a>
+                        </li>
+                        <li class="li_five @if($data['status'] == 3) current @endif">
+                            <a class="tabs_say" href="/position/deliverList?status=3">不合适</a>
                         </li>
                         {{--<li class="li_five">--}}
                         {{--<a class="tabs_review">未录用</a>--}}
