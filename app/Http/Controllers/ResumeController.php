@@ -190,6 +190,8 @@ class ResumeController extends Controller {
             $data['resume']['skill'] = explode("|@|", substr($skillStr, 3));
         }
 
+        $data['userinfo'] = $this->getUserinfo();
+
         $data['playerResume'] = $this->getPlayerResumeExp();
         $person = new InfoController();
         $data['personInfo'] = $person->getPersonInfo();
@@ -457,6 +459,9 @@ class ResumeController extends Controller {
         } else {
             $data['resume']['skill'] = explode("|@|", substr($skillStr, 3));
         }
+
+        //查询基本信息
+        $data['userinfo'] = $this->getUserinfo();
 
         $data['region'] = Region::all();
         $data['industry'] = Industry::all();

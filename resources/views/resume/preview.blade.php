@@ -393,6 +393,16 @@
                     border-radius: 26px;
                 }
 
+                .education-panel p {
+                    padding-top: 10px;
+                    border-bottom: 1px dashed #e8e8e8;
+                }
+
+                .divider {
+                    margin: 15px 0;
+                    border-bottom: 1px dashed #e8e8e8;
+                }
+
             </style>
 
             <div class="left_panel info_panel">
@@ -580,6 +590,7 @@
                             <span>{{$work->ename}}</span>
                             <span>{{$work->position}}</span></br>
                             <p style="width: auto">{!! $work->describe !!}</p>
+                                <div class="divider"></div>
                         @empty
                             <div class="mdl-card__supporting-text">
                                 无工作经历
@@ -616,6 +627,8 @@
                                 <span>{{$project->position}}</span>
                                 <span style="width: 90%">{!! $project->describe !!}</span>
                             </p>
+
+                            <div class="divider"></div>
                         @empty
                             <div class="mdl-card__supporting-text">
                                 无项目经历
