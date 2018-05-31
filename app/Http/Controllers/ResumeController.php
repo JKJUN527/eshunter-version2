@@ -190,6 +190,8 @@ class ResumeController extends Controller {
             $data['resume']['skill'] = explode("|@|", substr($skillStr, 3));
         }
 
+        $data['userinfo'] = $this->getUserinfo();
+
         $data['playerResume'] = $this->getPlayerResumeExp();
         $person = new InfoController();
         $data['personInfo'] = $person->getPersonInfo();

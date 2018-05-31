@@ -736,6 +736,15 @@
             padding: 35px 40px;
         }
 
+        .right-item h6 {
+            margin-top: 0;
+            margin-left: 10px;
+        }
+
+        .affix {
+            width: 260px;
+        }
+
     </style>
 @endsection
 
@@ -1776,26 +1785,11 @@
         <div class="right_panel info_panel">
 
             <div class="right-item">
+                <h6>一般简历</h6>
                 <div class="resume-name">
                     <span>{{$data['resume']->resume_name}}</span>
                     <a id="update-resume-name">修改</a>
                 </div>
-
-                {{--
-                <div class="form-group resume-name--form">
-                    <div class="form-line">
-                        <input type="text" id="resume-name" name="resume-name" class="form-control"
-                               placeholder="不能为空" value="{{$data['resume']->resume_name}}">
-                    </div>
-                    <label class="error" for="resume-name"></label>
-                </div>
-
-                <button id="resume-name--change"
-                        class="btn btn-primary blue-btn">
-                    修改
-                </button>
-
-                --}}
 
                 <div class="resume-name dn">
                     <form action="" class="update-resume-name">
