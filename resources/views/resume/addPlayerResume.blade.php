@@ -270,12 +270,12 @@
             background-color: transparent;
         }
 
-        #resume-name--change {
-            width: 88px;
-            position: absolute;
-            left: 200px;
-            top: 89px;
-        }
+        /*#resume-name--change {*/
+        /*width: 88px;*/
+        /*position: absolute;*/
+        /*left: 200px;*/
+        /*top: 89px;*/
+        /*}*/
 
         #indicatorContainer {
             position: absolute;
@@ -816,6 +816,59 @@
                     <span><i class="material-icons">email</i>{{$data['userinfo']->mail or "邮箱未填写"}}</span>
                     <a class="edit edit-others" id="update_others_btn"><i class="material-icons">edit</i>编辑</a>
                 </p>
+            </div>
+
+            <div class="others dn">
+                <form action="" class="form_base_info__others">
+                    {{--<label for="base_info__school">毕业院校</label>--}}
+                    {{--<input type="text" id="base_info__school" class="base_info__school" name="base_info__school" value="{{$data['education'][0]->school}}">--}}
+
+                    {{--<label for="base_info__major">主修专业</label>--}}
+                    {{--<input type="text" id="base_info__major" class="base_info__major" name="base_info__major" value="{{$data['education'][0]->major}}">--}}
+
+                    <label for="base_info__degree">最高学历</label>
+                    <select name="base_info__degree" id="base_info__degree">
+                        <option value="9" @if($data['userinfo']->education == 9) selected @endif>
+                            请选择最高学历
+                        </option>
+                        <option value="0" @if($data['userinfo']->education == 0) selected @endif>高中
+                        </option>
+                        <option value="3" @if($data['userinfo']->education == 3) selected @endif>专科
+                        </option>
+                        <option value="1" @if($data['userinfo']->education == 1) selected @endif>本科
+                        </option>
+                        <option value="2" @if($data['userinfo']->education == 2) selected @endif>
+                            研究生及以上
+                        </option>
+                    </select>
+
+                    {{--工作年限--}}
+                    {{--<label for="base_info__workingyears">工作年限</label>--}}
+                    {{--<select name="base_info__workingyears" id="base_info__workingyears">--}}
+                    {{--<option value="0">应届毕业生</option>--}}
+                    {{--@foreach([1,2,3,4,5,6,7,8,9,10] as $working_years)--}}
+                    {{--<option value="1">{{$working_years}}年</option>--}}
+                    {{--@endforeach--}}
+                    {{--<option value="11">10年以上</option>--}}
+                    {{--</select>--}}
+
+                    <label for="base_info__city">城市</label>
+                    <input type="text" id="base_info__city" class="base_info__city" name="base_info__city"
+                           value="{{$data['userinfo']->residence}}">
+
+                    <label for="base_info__phonenumber">手机号码</label>
+                    <input type="text" id="base_info__phonenumber" class="base_info__phonenumber"
+                           name="base_info__phonenumber" value="{{$data['userinfo']->tel}}">
+
+                    <label for="base_info__email">联系邮箱</label>
+                    <input type="text" id="base_info__email" class="base_info__email" name="base_info__email"
+                           value="{{ $data['userinfo']->mail }} ">
+
+                    <div style="margin-top: 20px;">
+                        <button class="save-btn-big" id="save_othres">保存</button>
+                        <a id="cancel_update_others">取消</a>
+                    </div>
+                </form>
             </div>
 
             <div class="mdl-card resume-child-card" id="intention">
@@ -1475,7 +1528,8 @@
                     </div>
                 </div>
 
-                <a href="/about?page=tab1" class="help_guide"><i class="fa fa-question fa-2"></i> 简历指导</a>
+                <a href="/about?page=tab1" target="_blank" class="help_guide"><i class="fa fa-question fa-2"></i>
+                    简历指导</a>
 
                 <div style="clear: both;"></div>
             </div>
@@ -1541,6 +1595,46 @@
         $(".right-nav").find("ul li").click(function () {
             $(".active-nav-item").removeClass("active-nav-item");
             $(this).addClass("active-nav-item");
+        });
+
+        $("#update-resume-name").click(function () {
+            $(".resume-name:first").addClass('dn');
+            $(".resume-name:last").removeClass('dn');
+        });
+
+        $("#cancel-update-resume-name").click(function () {
+            $(".resume-name:first").removeClass('dn');
+            $(".resume-name:last").addClass('dn');
+        });
+
+        $("#update_name__btn").click(function () {
+            $(".base_info__name:first").addClass("dn");
+            $(".base_info__name:last").removeClass("dn");
+        });
+
+        $("#cancel_update_name").click(function () {
+            $(".base_info__name:first").removeClass("dn");
+            $(".base_info__name:last").addClass("dn");
+        });
+
+        $("#update_bio_btn").click(function () {
+            $(".bio:first").addClass("dn");
+            $(".bio:last").removeClass("dn");
+        });
+
+        $("#cancel_update_bio").click(function () {
+            $(".bio:first").removeClass("dn");
+            $(".bio:last").addClass("dn");
+        });
+
+        $("#update_others_btn").click(function () {
+            $(".others:first").addClass("dn");
+            $(".others:last").removeClass("dn");
+        });
+
+        $("#cancel_update_others").click(function () {
+            $(".others:first").removeClass("dn");
+            $(".others:last").addClass("dn");
         });
 
         $('.form_date').datetimepicker({
