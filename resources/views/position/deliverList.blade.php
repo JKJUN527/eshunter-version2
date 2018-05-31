@@ -30,12 +30,13 @@
 
         .look-resume-btn {
             float: right;
-            padding: 4px 6px;
+            padding: 6px 8px;
             margin-right: 16px;
             background-color: #03A9F4;
             color: #fff;
             border: none;
             border-radius: 3px;
+            margin-top: 3.2rem;
         }
 
         .taoyige {
@@ -62,31 +63,6 @@
             height: 100%;
             text-indent: 13px;
             float: left;
-        }
-
-        nav#page_tools ul li:hover, nav#page_tools ul li.active {
-            background-color: #03A9F4;
-            color: #fff !important;
-        }
-
-        nav#page_tools ul li:hover a {
-            color: #fff !important;
-        }
-
-        nav#page_tools ul li a, nav#page_tools ul li span {
-            display: inline-block;
-            padding: 15px;
-        }
-
-        nav#page_tools ul li {
-            display: inline-block;
-            margin-bottom: 0px;
-            cursor: pointer;
-        }
-
-        nav#page_tools {
-            margin: 20px auto;
-            text-align: center;
         }
 
         .material-icons {
@@ -170,6 +146,12 @@
             top: 15px;
             right: 15px;
         }
+        .my_delivery .d_time {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            color: #999;
+        }
     </style>
 @endsection
 
@@ -186,23 +168,25 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="">
-                    <a href="/account"><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                    <a><i class="iconfont icon-homepage"></i>
+                        <span>帐户中心</span>
+                    </a>
                 </li>
                 <li class="">
                     <a href="/position/publishList">
-                        <i class="iconfont icon-jianli"></i>
+                        <i class="iconfont icon-createtask_fill"></i>
                         <span>职位管理</span>
                     </a>
                 </li>
                 <li class="active">
                     <a href="/position/deliverList">
-                        <i class="iconfont icon-jianli"></i>
+                        <i class="iconfont icon-businesscard"></i>
                         <span>简历管理</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="/message">
-                        <i class="iconfont icon-jianli"></i>
+                        <i class="iconfont icon-message_fill"></i>
                         <span>站内信({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>

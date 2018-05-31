@@ -16,48 +16,48 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="">
-                    <a href="/account"><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                    <a href="/account"><i class="iconfont icon-homepage"></i>
+                        <span>帐户中心</span>
+                    </a>
                 </li>
 
                 @if($data["type"] == 1)
                     <li class="">
                         <a href="/position/applyList">
-                            <i class="iconfont icon-jianli"></i>
+                            <i class="iconfont icon-order"></i>
                             <span>申请记录</span>
                         </a>
                     </li>
 
                     <li class="active">
-                        <a>
-                            <i class="iconfont icon-jianli"></i>
+                        <a href="/message">
+                            <i class="iconfont icon-message_fill"></i>
                             <span>站内信({{$data['username']['messageNum']}})</span>
                         </a>
                     </li>
 
                     <li class="">
                         <a href="/position/advanceSearch">
-                            <i class="iconfont icon-jianli"></i>
+                            <i class="iconfont icon-manage"></i>
                             <span>查找职位</span>
                         </a>
                     </li>
                 @elseif($data["type"] == 2)
                     <li class="">
                         <a href="/position/publishList">
-                            <i class="iconfont icon-jianli"></i>
+                            <i class="iconfont icon-createtask_fill"></i>
                             <span>职位管理</span>
                         </a>
                     </li>
-
                     <li class="">
                         <a href="/position/deliverList">
-                            <i class="iconfont icon-jianli"></i>
+                            <i class="iconfont icon-businesscard"></i>
                             <span>简历管理</span>
                         </a>
                     </li>
-
                     <li class="active">
-                        <a>
-                            <i class="iconfont icon-jianli"></i>
+                        <a href="/message">
+                            <i class="iconfont icon-message_fill"></i>
                             <span>站内信({{$data['username']['messageNum']}})</span>
                         </a>
                     </li>

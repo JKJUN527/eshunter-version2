@@ -41,6 +41,7 @@ class PersonCenterController extends Controller {
             $data['messageNum'] = $this->getMessageNum();
             $data['deliveredNum'] = $this->getDeliveredNum();
             $data['applylist'] = PositionController::getPersonApplyList($data['uid']);
+
             //录用个数--面试通知
             $data['passNum'] = $this->getPassNum();
             //简历下载次数//简历完善度-显示最高完善度
@@ -77,88 +78,118 @@ class PersonCenterController extends Controller {
         if($uid == 0){//用户未登陆
             return redirect('index');
         }
-        $intentions = DB::table('jobs_personinfo')->join('jobs_intention', 'jobs_personinfo.uid', '=', 'jobs_intention.uid')
-            ->where('jobs_intention.uid', '=', $uid)
-            ->select('sex', 'work_nature', 'occupation', 'industry', 'region', 'salary')
-            ->get();
         $result = array();
         $data = array();
-        //获取最高学历
-        $degree = Personinfo::where('uid','=',$uid)->first();
-//        echo  $degree['education'];
-        $pid = array();
-//        return $degree['education'];
-        foreach ($intentions as $item) {
-            $result = DB::table('jobs_position')
-                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
-                ->where(function ($query){//职位状态
-                    $query->where('position_status',1)
-                        ->orwhere('position_status',4);
-                })
-                ->where(function($query) use ($item,$degree){
-                    $query->where('jobs_position.work_nature', '=', $item->work_nature )
-                        ->orwhere('jobs_position.education', '<=', $degree['education'])
-                        ->orwhere('jobs_position.industry', '=', $item->industry)
-                        ->orwhere('jobs_position.occupation', '=', $item->occupation );
-//                        ->orWhere(function ($query) use ($degree,$item){
-//                            $query->where('education', '<=', $degree['education'])
-//                                ->orWhere(function ($query) use($item){
-//                                    $query->where('industry', '=', $item->industry );
-//                                });
-//                        });
 
-//                        ->orWhere('industry', '=', $item->industry )
-//                        ->orWhere('occupation', '=', $item->occupation );
-                })
-                ->orderBy('view_count','desc')
-                ->take(5)
-                ->get();
-            foreach ($result as $item1){
-                if(in_array($item1->pid,$pid)){
-                    continue;
-                }
-                $pid[] = $item1->pid;
-                $data['position'][] = $item1;
-            }
+        //
+        //按简历信息推荐-暂时关闭
+        //
 
-        }
-            $result2=DB::table('jobs_position')
-                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
-                ->where(function ($query){//职位状态
-                    $query->where('position_status',1)
-                        ->orwhere('position_status',4);
-                })
-                ->where('is_urgency', '=', 1)
-                ->get();
-            foreach ($result2 as $item){
-                if(in_array($item->pid,$pid)){
-                    continue;
-                }
-                $pid[] = $item->pid;
-                $data['position'][] = $item;
-            }
-            $result3= DB::table('jobs_position')
-                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
-                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
-                ->where(function ($query){//职位状态
-                    $query->where('position_status',1)
-                        ->orwhere('position_status',4);
-                })
-                ->orderBy('view_count','desc')
-                ->take(5)
-                ->get();
+//        $intentions = DB::table('jobs_personinfo')->join('jobs_intention', 'jobs_personinfo.uid', '=', 'jobs_intention.uid')
+//            ->where('jobs_intention.uid', '=', $uid)
+//            ->select('sex', 'work_nature', 'occupation', 'industry', 'region', 'salary')
+//            ->get();
+//
+//        //获取最高学历
+//        $degree = Personinfo::where('uid','=',$uid)->first();
+////        echo  $degree['education'];
+//        $pid = array();
+////        return $degree['education'];
+//        foreach ($intentions as $item) {
+//            $result = DB::table('jobs_position')
+//                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+//                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
+//                ->where(function ($query){//职位状态
+//                    $query->where('position_status',1)
+//                        ->orwhere('position_status',4);
+//                })
+//                ->where(function($query) use ($item,$degree){
+//                    $query->where('jobs_position.work_nature', '=', $item->work_nature )
+//                        ->orwhere('jobs_position.education', '<=', $degree['education'])
+//                        ->orwhere('jobs_position.industry', '=', $item->industry)
+//                        ->orwhere('jobs_position.occupation', '=', $item->occupation );
+////                        ->orWhere(function ($query) use ($degree,$item){
+////                            $query->where('education', '<=', $degree['education'])
+////                                ->orWhere(function ($query) use($item){
+////                                    $query->where('industry', '=', $item->industry );
+////                                });
+////                        });
+//
+////                        ->orWhere('industry', '=', $item->industry )
+////                        ->orWhere('occupation', '=', $item->occupation );
+//                })
+//                ->orderBy('view_count','desc')
+//                ->take(5)
+//                ->get();
+//            foreach ($result as $item1){
+//                if(in_array($item1->pid,$pid)){
+//                    continue;
+//                }
+//                $pid[] = $item1->pid;
+//                $data['position'][] = $item1;
+//            }
+//
+//        }
+//            $result2=DB::table('jobs_position')
+//                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+//                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
+//                ->where(function ($query){//职位状态
+//                    $query->where('position_status',1)
+//                        ->orwhere('position_status',4);
+//                })
+//                ->where('is_urgency', '=', 1)
+//                ->get();
+//            foreach ($result2 as $item){
+//                if(in_array($item->pid,$pid)){
+//                    continue;
+//                }
+//                $pid[] = $item->pid;
+//                $data['position'][] = $item;
+//            }
+//            $result3= DB::table('jobs_position')
+//                ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+//                ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
+//                ->where(function ($query){//职位状态
+//                    $query->where('position_status',1)
+//                        ->orwhere('position_status',4);
+//                })
+//                ->orderBy('view_count','desc')
+//                ->take(5)
+//                ->get();
+//
+//            foreach ($result3 as $item){
+//                if(in_array($item->pid,$pid)){
+//                    continue;
+//                }
+//                $pid[] = $item->pid;
+//                $data['position'][] = $item;
+//            }
+//        //需要让多维数组变成一维数组
+//        //返回相关企业名称
+//        $eid = array();
+//        foreach ($data['position'] as $item){
+//            if(in_array($item->eid,$eid)){
+//                continue;
+//            }
+//            $eid[] = $item->eid;
+//            $data['enprinfo'][$item->eid] = Enprinfo::select('ename','byname','elogo')->find($item->eid);
+//        }
 
-            foreach ($result3 as $item){
-                if(in_array($item->pid,$pid)){
-                    continue;
-                }
-                $pid[] = $item->pid;
-                $data['position'][] = $item;
-            }
-        //需要让多维数组变成一维数组
-        //返回相关企业名称
+        //
+        //推荐最新的三个月发布的热门职位
+        //
+        $data['position'] =DB::table('jobs_position')
+            ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
+            ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','ebrief','jobs_position.created_at')
+            ->where(function ($query){//职位状态
+                $query->where('position_status',1)
+                    ->orwhere('position_status',4);
+            })
+            ->where('jobs_position.created_at','>=',date('Y-m-d H:i:s', strtotime('-90 day')))
+            ->orderBy('view_count','desc')
+            ->take(9)
+            ->get();
+
         $eid = array();
         foreach ($data['position'] as $item){
             if(in_array($item->eid,$eid)){

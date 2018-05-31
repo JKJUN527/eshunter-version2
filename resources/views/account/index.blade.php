@@ -218,26 +218,28 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="active">
-                    <a><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                    <a><i class="iconfont icon-homepage"></i>
+                        <span>帐户中心</span>
+                    </a>
                 </li>
 
                 <li class="">
                     <a href="/position/applyList">
-                        <i class="iconfont icon-jianli"></i>
+                        <i class="iconfont icon-order"></i>
                         <span>申请记录</span>
                     </a>
                 </li>
 
                 <li class="">
                     <a href="/message">
-                        <i class="iconfont icon-jianli"></i>
-                        <span>站内信</span>
+                        <i class="iconfont icon-message_fill"></i>
+                        <span>站内信({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>
 
                 <li class="">
                     <a href="/position/advanceSearch">
-                        <i class="iconfont icon-jianli"></i>
+                        <i class="iconfont icon-manage"></i>
                         <span>查找职位</span>
                     </a>
                 </li>

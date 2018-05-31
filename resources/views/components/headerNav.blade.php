@@ -1,9 +1,12 @@
 <div id="es_tbar">
     <div class="inner">
         <div class="es_tbar_l">
-            <span class="iconfont icon-shouji"></span>
+            <span class="iconfont icon-unfold"></span>
             <a class="es_app" id="change_to_app"  style="display: none;" href="/m" rel="nofollow">切换到手机版 |</a>
             <a class="es_app" href="/searchcompany" rel="nofollow">电竞黄页</a>
+
+            <span class="iconfont icon-weibo"></span>
+            <a class="es_app" target="_blank" href="https://weibo.com/u/1892843895?nick=%B5%E7%BE%BA%C1%D4%C8%CBeshunter&noscript=1&is_hot=1" rel="nofollow">微博主页</a>
             {{--@if($type == 1)--}}
                 {{--<a class="es_os" href="#" rel="nofollow">进入企业版</a>--}}
             {{--@endif--}}
