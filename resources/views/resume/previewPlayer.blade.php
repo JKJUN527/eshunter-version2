@@ -343,7 +343,7 @@
                     .resume_header {
                         width: 900px;
                         height: 200px;
-                        background: url({{asset("images/resume/resume_header.jpg")}});
+                        background: url({{asset("images/resume/resume_header1.jpg")}});
                         border-radius: 5px;
                         position: relative;
                     }
@@ -351,7 +351,7 @@
                     .cover {
                         width: 900px;
                         height: 200px;
-                        background-color: rgba(0, 0, 0, .3);
+                        /*background-color: rgba(0, 0, 0, .3);*/
                         position: absolute;
                         border-radius: 10px 10px 0 0;
                     }

@@ -372,7 +372,7 @@
         .cover {
             width: 835px;
             height: 200px;
-            background-color: rgba(0, 0, 0, .3);
+            /*background-color: rgba(0, 0, 0, .3);*/
             position: absolute;
             border-radius: 10px 10px 0 0;
         }
