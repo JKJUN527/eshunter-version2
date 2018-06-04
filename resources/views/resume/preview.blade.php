@@ -299,7 +299,7 @@
                 .resume_header {
                     width: 900px;
                     height: 200px;
-                    background: url({{asset("images/resume/resume_header.jpg")}});
+                    background: url({{asset("images/resume/resume_header1.jpg")}});
                     border-radius: 5px;
                     position: relative;
                 }
@@ -650,15 +650,15 @@
                                 <span>{{$game->ename}}</span>
                                 <span>{{$game->level}}</span>
                                 <span>{{$game->date}} 开始接触</span>
-                            @if($game->extra != null && $game->extra != "")
-                                <p style="width: auto">{!! $game->extra !!}</p>
+                                @if($game->extra != null && $game->extra != "")
+                                    <span style="width: 90%;display: block">{!! $game->extra !!}</span>
                                 @endif
-                                </p>
-                                @empty
-                                    <div class="mdl-card__supporting-text">
-                                        无电竞经历
-                                    </div>
-                                @endforelse
+                            </p>
+                        @empty
+                            <div class="mdl-card__supporting-text">
+                                无电竞经历
+                            </div>
+                        @endforelse
                     </div>
                 </div>
 
