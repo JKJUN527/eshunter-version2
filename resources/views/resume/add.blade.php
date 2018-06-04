@@ -741,6 +741,17 @@
             margin-left: 10px;
         }
 
+        .help_guide {
+            padding-right: 10px;
+            color: #8c8c8c !important;
+            font-weight: 200 !important;
+        }
+
+        .help_guide:hover {
+            color: #00B38A !important;
+            cursor: help;
+        }
+
         .affix {
             width: 260px;
         }
@@ -1813,6 +1824,11 @@
                         <span class="sr-only">60% Complete</span>
                     </div>
                 </div>
+
+                <a href="/about?page=tab1" target="_blank" class="help_guide"><i class="fa fa-question fa-2"></i>
+                    简历指导</a>
+
+                <div style="clear: both;"></div>
             </div>
 
             <div class="right-nav" data-spy="affix" data-offset-top="323">
