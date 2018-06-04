@@ -3,19 +3,23 @@
     margin: 35px auto 0;
     padding-bottom: 15px;
 }
+
 .new_section {
     width: 870px;
 }
-.new_section>dl {
+
+.new_section > dl {
     margin-bottom: 15px;
 }
-.new_section>dl dt {
+
+.new_section > dl dt {
     height: 50px;
     border-bottom: 1px solid #ebebeb;
     position: relative;
     padding: 10px 0 0 20px;
 }
-.new_section>dl dt h1 {
+
+.new_section > dl dt h1 {
     font-size: 24px;
     color: #555;
 }
@@ -25,6 +29,7 @@
     line-height: 42px;
     margin: 0 0 20px;
 }
+
 .select_input {
     position: absolute;
     width: 128px;
@@ -38,11 +43,13 @@
     background: #fff;
     cursor: pointer;
 }
+
 .select_input span {
     position: absolute;
     left: 14px;
     top: 6px;
 }
+
 .select_input i {
     position: absolute;
     width: 11px;
@@ -51,6 +58,7 @@
     top: 12px;
     background: url(../images/dropdown1.png) no-repeat;
 }
+
 .select_options {
     position: absolute;
     width: 128px;
@@ -65,14 +73,17 @@
     background: #fff;
     cursor: pointer;
 }
+
 .dn {
     display: none;
 }
+
 .select_options span {
     position: absolute;
     left: 14px;
     top: 10px;
 }
+
 .d_refresh {
     font-size: 18px;
     color: #555;
@@ -82,22 +93,27 @@
     right: 35px;
     top: 16px;
 }
-.new_section>dl dd {
+
+.new_section > dl dd {
     min-height: 300px;
     padding: 0 0 20px 0;
     clear: both;
 }
+
 .delivery_tabs {
     padding: 0;
     background-color: #f8f8f8;
 }
+
 .delivery_tabs ul {
     margin-left: 30px;
     font-size: 0;
 }
+
 .delivery_tabs li.current {
     border-bottom: 2px solid #D32F2F;
 }
+
 .delivery_tabs li {
     position: relative;
     font-size: 0;
@@ -105,6 +121,7 @@
     vertical-align: middle;
     display: inline-block;
 }
+
 .delivery_tabs li.current a, .delivery_tabs li:hover a {
     color: #D32F2F;
 }
@@ -122,9 +139,11 @@
     color: #777;
     border-left: 1px solid #d8d8d8;
 }
+
 .delivery_tabs li.last a {
     border-right: 0;
 }
+
 ul.my_delivery {
 
 }
@@ -135,9 +154,11 @@ ul.my_delivery {
     position: relative;
     border-bottom: 1px solid #f2f2f2;
 }
+
 .my_delivery .d_item {
     padding: 3px 12px;
 }
+
 .my_delivery .d_job {
     margin: 0;
     padding: 5px 0;
@@ -162,10 +183,12 @@ a.d_job_link {
     font-size: 16px;
     color: #0d9572;
 }
+
 .my_delivery .d_company {
     margin: 5px 0;
     font-size: 16px;
 }
+
 .my_delivery .d_company a {
     color: #555;
 }
@@ -174,20 +197,23 @@ a.d_job_link {
     margin: 5px 0;
     color: #999;
 }
+
 .my_delivery .d_resume_type {
     color: #333;
 }
+
 .btn_showprogress {
     width: 110px;
     text-align: right;
     position: absolute;
-    top: 80px;
-    right: 20px;
+    top: 20px;
+    right: 0;
     margin-left: 5px;
     padding-right: 15px;
     font-size: 14px;
     color: #555;
 }
+
 .btn_showprogress i {
     position: absolute;
     top: 8px;
@@ -205,6 +231,7 @@ a.d_job_link {
     -ms-transition: all .4s ease 0s;
     transition: all .4s ease 0s;
 }
+
 .btn_showprogress i.transform {
     position: relative !important;
     top: -3px;
@@ -217,35 +244,12 @@ a.d_job_link {
     -ms-transition: all .4s ease 0s;
     transition: all .4s ease 0s;
 }
+
 .my_delivery .d_time {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 120px;
     color: #999;
-}
-
-.d_company {
-    position: relative;
-}
-
-.d_company > img {
-    padding: 5px;
-    background-color: #f8f8f8;
-    border: 1px solid #f2f2f2;
-}
-
-.d_company > a {
-    position: absolute;
-    top: 30px;
-    left: 75px;
-    font-size: 14px;
-}
-
-.d_company > span {
-    float: right;
-    font-size: 14px;
-    cursor: pointer;
-    position: relative;
 }
 
 .progress_status {
@@ -259,10 +263,12 @@ a.d_job_link {
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
 .progress_status ul {
     padding-top: 10px;
     list-style: none;
 }
+
 .status_steps .status_1 {
     margin-left: 20px;
 }
@@ -281,30 +287,37 @@ a.d_job_link {
     line-height: 28px;
     margin-bottom: 0;
 }
+
 .status_steps .status_line {
     width: 120px;
     margin-top: 12px;
 }
+
 .status_steps .status_line_done span {
     display: block;
     height: 4px;
     background: #019875;
 }
+
 .status_steps .status_line_grey span {
     display: block;
     height: 4px;
     background: #dadada;
 }
+
 .status_list .list_body div {
     color: #888;
     overflow: auto;
 }
+
 .status_list .list_body span {
     color: #333;
 }
+
 .status_list .top1 h3 {
     color: #019875;
 }
+
 .d_item .go-review {
     display: block;
     color: #fff;
@@ -314,6 +327,7 @@ a.d_job_link {
     padding: 3px 10px;
     margin-top: 10px;
 }
+
 .d_item .confirm-receive {
     display: block;
     color: #D32F2F;
@@ -322,11 +336,13 @@ a.d_job_link {
     margin-top: 10px;
     cursor: pointer;
 }
+
 .progress_status .status_text {
     position: relative;
     margin-bottom: 30px;
     height: 30px;
 }
+
 .status_text li {
     position: absolute;
     width: 148px;
@@ -336,32 +352,40 @@ a.d_job_link {
     font-size: 16px;
     line-height: 28px;
 }
+
 .status_text .status_text_2 {
     left: 104px;
 }
+
 .status_text .status_text_3 {
     left: 256px;
 }
+
 .status_text .status_text_4 {
     left: 405px;
 }
+
 .status_steps .status_grey {
     width: 28px;
     height: 28px;
     background: url(../images/status_bg.png) left bottom no-repeat;
 }
+
 .status_list li {
     margin: 0;
 }
+
 .status_list .list_time {
     font-size: 12.5px;
     color: #999;
     padding-left: 20px;
     position: relative;
 }
+
 .status_list .top1 .list_time em {
     background-position: left top;
 }
+
 .status_list .list_time em {
     position: absolute;
     left: 0;
@@ -370,12 +394,15 @@ a.d_job_link {
     height: 11px;
     background: url(../images/status_dot.png) left bottom no-repeat;
 }
+
 .status_list .top1 .list_body {
     border-left: 0;
 }
+
 .status_list .bottom .list_body {
     border-left: 0;
 }
+
 .status_list .list_body {
     color: #555;
     border-left: 2px solid #d0d0d0;
@@ -384,18 +411,22 @@ a.d_job_link {
     font-size: 16px;
     line-height: 28px;
 }
+
 .status_list .top1 .list_body {
     border-left: 3px solid #019875;
 }
-.status_list .top1 .list_body>img, .status_list .top1 .list_body>img {
+
+.status_list .top1 .list_body > img, .status_list .top1 .list_body > img {
     height: 60px;
     width: 60px;
 }
+
 .status_list h3 {
     margin: 0 0 10px;
     font-size: 18px;
     color: #555;
 }
+
 .btn_closeprogress {
     position: absolute;
     right: 35px;
@@ -404,21 +435,26 @@ a.d_job_link {
     height: 44px;
     background: url(../images/progress_close.png) no-repeat;
 }
+
 .content_r {
     float: left;
     width: 282px;
     margin-left: 42px;
 }
+
 .mr_r_nav {
     margin-bottom: 18px;
 }
+
 .mr_r_nav ul, .mr_r_nav ol {
     list-style: none;
     padding: 0;
 }
+
 .mr_r_nav ul {
     margin-top: 0;
 }
+
 .mr_r_nav li {
     float: left;
     width: 66px;
@@ -429,6 +465,7 @@ a.d_job_link {
     -webkit-border-radius: 3px;
     border-radius: 3px;
 }
+
 .mr_r_nav li a {
     position: relative;
     display: block;
@@ -437,9 +474,11 @@ a.d_job_link {
     text-align: center;
     background-color: #fafafa;
 }
+
 .mr_r_nav li a .td {
     background-position: 0 -316px;
 }
+
 .mr_r_nav li a i {
     position: absolute;
     left: 50%;
@@ -449,6 +488,7 @@ a.d_job_link {
     height: 25px;
     background: url(../images/icons_mr.png) no-repeat;
 }
+
 .mr_r_nav li a em.count1 {
     width: 18px;
     background-position: -173px -190px;
@@ -464,6 +504,7 @@ a.d_job_link {
     color: #fff;
     font-size: 12px;
 }
+
 .mr_r_nav li a .yq {
     background-position: -101px -316px;
 }
@@ -477,12 +518,14 @@ a.d_job_link {
     height: 25px;
     background: url(../images/icons_mr.png) no-repeat;
 }
+
 .position_head {
     list-style-type: none;
     border-bottom: 2px solid #e9e9e9;
     padding: 0;
     margin: 1em 0;
 }
+
 .position_head li {
     display: inline-block;
     padding: 0 10px 7px;
@@ -498,32 +541,39 @@ a.d_job_link {
     border-bottom: 2px solid #D32F2F;
     color: #333;
 }
+
 .position_detail_content .guess_like {
     width: 280px;
     margin-top: -12px;
 }
+
 .guess_like_list_item {
     width: 280px;
     vertical-align: top;
     border-bottom: 1px dashed #e5e5e5;
     position: relative;
 }
+
 .guess_like_list_item a {
     display: block;
     width: 280px;
     margin: 12px 0 12px 12px;
 }
+
 .guess_like_list_item_logo {
     margin-right: 12px;
     border: 2px solid #f2f2f2;
 }
+
 .guess_like_list_item_logo, .guess_like_list_item_pos {
     float: left;
 }
+
 .guess_like_list_item_logo img {
     vertical-align: middle;
     display: block;
 }
+
 .guess_like_list_item_pos h2 {
     width: 160px;
     text-overflow: ellipsis;
@@ -538,12 +588,14 @@ a.d_job_link {
     padding: 0;
     font-size: 16px;
 }
+
 .guess_like_list_item_pos p {
     color: #e6775c;
     margin: -2px 0 0 0;
     padding: 0;
     font-size: 16px;
 }
+
 .guess_like_list_item_pos .company_name {
     font-size: 12px;
     color: #999;
@@ -555,6 +607,7 @@ a.d_job_link {
     padding: 5px 0;
     font-size: 16px;
 }
+
 .guess_like_list_item_pos .company_name .company_name_span {
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
@@ -564,10 +617,12 @@ a.d_job_link {
     display: block;
     float: left;
 }
+
 .guess_like_list_item_pos .company_name .company_position_span {
     position: absolute;
     right: 0;
 }
+
 .similar_position_footer {
     display: block;
     color: #555;

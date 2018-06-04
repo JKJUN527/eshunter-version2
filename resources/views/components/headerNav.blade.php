@@ -1,7 +1,10 @@
 <div id="es_tbar">
     <div class="inner">
         <div class="es_tbar_l">
-            <span class="iconfont icon-shouji"></span>
+            <a class="" style="margin-right: 1rem" target="_blank" href="https://weibo.com/u/1892843895?nick=%B5%E7%BE%BA%C1%D4%C8%CBeshunter&noscript=1&is_hot=1" rel="nofollow">
+                <span class="iconfont icon-weibo"></span>
+            </a>
+            <span class="iconfont icon-unfold"></span>
             <a class="es_app" id="change_to_app"  style="display: none;" href="/m" rel="nofollow">切换到手机版 |</a>
             <a class="es_app" href="/searchcompany" rel="nofollow">电竞黄页</a>
             {{--@if($type == 1)--}}
@@ -28,8 +31,8 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="/position/publishList" style="border-left:none;">已发布职位</a></li>
-                    <li><a href="/position/deliverList">收到简历记录</a></li>
+                    <li><a href="/position/publishList" style="border-left:none;">职位管理</a></li>
+                    <li><a href="/position/deliverList">简历管理</a></li>
                     <li class="user_dropdown">
                         <a href="/account">{{$personInfo['username']}}<span></span></a>
                         <ul>

@@ -17,6 +17,9 @@
                                 <span class="about_left"><a title="" href="/about?page=tab3">联系我们</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab4">网站地图</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab5">免责申明</a></span>
+                                <a class="" style="margin-right: 1rem;color: coral;" target="_blank" href="https://weibo.com/u/1892843895?nick=%B5%E7%BE%BA%C1%D4%C8%CBeshunter&noscript=1&is_hot=1" rel="nofollow">
+                                    <span class="iconfont icon-weibo"></span>
+                                </a>
                                 <!-- <span class="about_left"><a title="" href="http://weibo.com/neipin2013" rel="nofollow" >微博</a></span>
                                 <span class="about_left wx_pos">
                                     <a title="" href="javascript:void(0)">微信服务号</a>

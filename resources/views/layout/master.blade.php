@@ -11,8 +11,8 @@
     <link media="all" href="{{asset('style/pub.css?v=2.33')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('style/webindex.css?v=2.35')}}" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('style/icon-fonts.css')}}">
-    
-    <link rel="stylesheet" type="text/css" href="{{asset('style/iconfont.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('style/icon-font/iconfont.css')}}"/>
+
     <link href="{{asset('style/animation.css?v=2.32')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/style.css?v=2.43')}}" type="text/css" rel="stylesheet">
     <link href="{{asset('style/base.css?v=2.39')}}" type="text/css" rel="stylesheet">
@@ -45,13 +45,14 @@
         }
         nav#page_tools ul li a,nav#page_tools ul li span{
             display: inline-block;
-            padding: 15px;
+            padding: 8px 13px;
         }
         nav#page_tools ul li {
             display:inline-block;
             margin-bottom: 0px;
             cursor: pointer;
-            border: 1px solid darkgray;
+            background: #e5e5e5;
+            /*border: 1px solid darkgray;*/
         }
         nav#page_tools{
             margin: 20px auto;
