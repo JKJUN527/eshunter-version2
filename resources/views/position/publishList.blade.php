@@ -213,7 +213,7 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="">
-                    <a><i class="iconfont icon-homepage"></i>
+                    <a href="/account"><i class="iconfont icon-homepage"></i>
                         <span>帐户中心</span>
                     </a>
                 </li>
@@ -321,13 +321,14 @@
                                                     </div>
                                                     <div class="lebel">
                                                         <div class="lebel_item" style="width: 100%;">
-                                                            @if($position->tag ==="" || $position->tag ===null)
-                                                                <span class="wordCut">无标签</span>
-                                                            @else
-                                                                @foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)
-                                                                    <span class="wordCut">{{$tag}}</span>
-                                                                @endforeach
-                                                            @endif
+                                                            <span class="wordCut">{{$position->name}}</span>
+                                                            {{--@if($position->tag ==="" || $position->tag ===null)--}}
+                                                                {{--<span class="wordCut">无标签</span>--}}
+                                                            {{--@else--}}
+                                                                {{--@foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)--}}
+                                                                    {{--<span class="wordCut">{{$tag}}</span>--}}
+                                                                {{--@endforeach--}}
+                                                            {{--@endif--}}
                                                         </div>
                                                     </div>
                                                     <div class="lebel">

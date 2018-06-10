@@ -67,7 +67,7 @@ class PersonCenterController extends Controller {
             $data['positionNum'] = $this->getPositionNum($eid['eid']);
             $data['applyList'] = $this->getApplyList($eid['eid']);
             $data['industry'] = Industry::all();
-            //return $data;
+//            return $data;
             return view('account.entindex', ['data' => $data]);
         }
     }
