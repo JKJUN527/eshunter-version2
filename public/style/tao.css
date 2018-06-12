@@ -139,7 +139,11 @@
     overflow: hidden;
     background: #fff;
     padding-bottom: 16px;}
-.jieshao_list li{width: 32.16%;
+
+.jieshao_list li {
+    /*width: 300px;*/
+    /*height: 200px;*/
+    width: 31%;
     height: 200px;
     box-sizing: border-box;
     float: left;

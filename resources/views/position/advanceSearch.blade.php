@@ -53,26 +53,6 @@
     #publish-position:hover{
         background: #6F6969;
     }
-    nav#page_tools ul li:hover,nav#page_tools ul li.active{
-      background-color: #03A9F4;
-      color: #fff!important;
-    }
-    nav#page_tools ul li:hover a{
-      color: #fff!important;
-    }
-    nav#page_tools ul li a,nav#page_tools ul li span{
-        display: inline-block;
-        padding: 15px;
-    }
-    nav#page_tools ul li {
-      display:inline-block;
-          margin-bottom: 0px;
-          cursor: pointer;
-    }
-    nav#page_tools{
-      margin: 20px auto;
-      text-align: center;
-    }
     .gs_rank_item span.active {
       background: none;
       color: #D32F2F;

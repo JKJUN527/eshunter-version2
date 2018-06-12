@@ -85,6 +85,10 @@ Route::post('resume/addEducation', ['uses' => 'ResumeController@addEducation']);
 Route::post('resume/addGame', ['uses' => 'ResumeController@addEgamexpr']);
 Route::post('resume/addWorkexp', ['uses' => 'ResumeController@addWorkexp']);
 Route::post('resume/addProjectexp', ['uses' => 'ResumeController@addProjectexp']);
+
+Route::post('/resume/changePhoto', ['uses' => 'ResumeController@changePhoto']);
+Route::post('/resume/changePersoninfo', ['uses' => 'ResumeController@changePersoninfo']);
+
 //选手简历信息新增
 Route::post('resume/addPlayerResumeExp', ['uses' => 'ResumeController@addPlayerResumeExp']);
 Route::post('resume/addPlayerBaseinfoResume', ['uses' => 'ResumeController@addPlayerBaseinfoResume']);
@@ -104,6 +108,8 @@ Route::post('resume/getworkinfo', ['uses' => 'ResumeController@getworkinfo']);
 Route::post('resume/getegameinfo', ['uses' => 'ResumeController@getegameinfo']);
 Route::post('resume/getprojectinfo', ['uses' => 'ResumeController@getprojectinfo']);
 Route::post('resume/getPlayerResumeinfo', ['uses' => 'ResumeController@getPlayerResumeinfo']);
+//增加简历下载次数
+Route::post('resume/download_resume', ['uses' => 'ResumeController@downloadResume']);
 
 //Route::any('resume/advanceSearch', ['uses' => 'ResumeController@advanceIndex']);
 

@@ -78,7 +78,7 @@
             width: 300px;
             display: inline-block;
             float: left;
-            border: 1px solid #D32F2F;
+            /*border: 1px solid #D32F2F;*/
             border-right: 0px;
         }
 
@@ -121,9 +121,10 @@
         }
 
         .jieshao_list li {
-            width: 48.16%;
+            width: 45%;
             height: auto;
             padding: 20px 18px 8px;
+            margin-left: 2rem;
         }
 
         .lebel {
@@ -158,7 +159,7 @@
             /*border: 1px solid #ddd;*/
             border-radius: 3px;
             text-align: center;
-            background-color: #27c24c;
+            background-color: #5bc0de;
             animation: all 0.4s;
         }
 
@@ -168,31 +169,6 @@
 
         .option {
             cursor: pointer;
-        }
-
-        nav#page_tools ul li:hover, nav#page_tools ul li.active {
-            background-color: #03A9F4;
-            color: #fff !important;
-        }
-
-        nav#page_tools ul li:hover a {
-            color: #fff !important;
-        }
-
-        nav#page_tools ul li a, nav#page_tools ul li span {
-            display: inline-block;
-            padding: 15px;
-        }
-
-        nav#page_tools ul li {
-            display: inline-block;
-            margin-bottom: 0px;
-            cursor: pointer;
-        }
-
-        nav#page_tools {
-            margin: 20px auto;
-            text-align: center;
         }
 
         .position-empty {
@@ -236,13 +212,27 @@
     <div class="containter">
         <div class="info_left info_panel" style="background: white;">
             <ul>
-                <li>
-                    <a to="/account"><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                <li class="">
+                    <a href="/account"><i class="iconfont icon-homepage"></i>
+                        <span>帐户中心</span>
+                    </a>
                 </li>
                 <li class="active">
                     <a href="/position/publishList">
-                        <i class="iconfont icon-jianli"></i>
-                        <span>职位管理 ({{count($data['position'])}})</span>
+                        <i class="iconfont icon-createtask_fill"></i>
+                        <span>职位管理</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/position/deliverList">
+                        <i class="iconfont icon-businesscard"></i>
+                        <span>简历管理</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/message">
+                        <i class="iconfont icon-message_fill"></i>
+                        <span>站内信({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>
             </ul>
@@ -331,13 +321,14 @@
                                                     </div>
                                                     <div class="lebel">
                                                         <div class="lebel_item" style="width: 100%;">
-                                                            @if($position->tag ==="" || $position->tag ===null)
-                                                                <span class="wordCut">无标签</span>
-                                                            @else
-                                                                @foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)
-                                                                    <span class="wordCut">{{$tag}}</span>
-                                                                @endforeach
-                                                            @endif
+                                                            <span class="wordCut">{{$position->name}}</span>
+                                                            {{--@if($position->tag ==="" || $position->tag ===null)--}}
+                                                                {{--<span class="wordCut">无标签</span>--}}
+                                                            {{--@else--}}
+                                                                {{--@foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)--}}
+                                                                    {{--<span class="wordCut">{{$tag}}</span>--}}
+                                                                {{--@endforeach--}}
+                                                            {{--@endif--}}
                                                         </div>
                                                     </div>
                                                     <div class="lebel">

@@ -102,8 +102,9 @@ class NewsController extends Controller {
         //取6条最热新闻
         $data = array();
         $data = News::where('type',$type)
+            ->where('created_at','>=',date('Y-m-d H:i:s', strtotime('-60 day')))
             ->orderBy('view_count', 'desc')
-            ->take(6)
+            ->take(11)
             ->get();
         return $data;
     }

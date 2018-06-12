@@ -847,7 +847,7 @@
                         </form>
                     </div>
                     <div style="text-align: left;margin-top: 12px;">
-                        <a class="btn btn-primary " id="download_resume">下载简历</a>
+                        <a class="btn btn-primary " id="download_resume" data-content="{{$data['rid']}}">下载简历</a>
                     </div>
                 </div>
             @else
@@ -968,6 +968,23 @@
             * Create the PDF file
             */
             doc.create();
+
+          //发送简历下载到服务器，修改对应简历下载次数
+          var rid = $('#download_resume').attr('data-content');
+          var formData = new FormData();
+          formData.append('rid', rid);
+          $.ajax({
+              url: '/resume/download_resume',
+              type: 'post',
+              dataType: 'text',
+              cache: false,
+              contentType: false,
+              processData: false,
+              data: formData,
+              success: function (data) {
+                  console.log(data);
+              }
+          })
         }
 
         

@@ -4,78 +4,9 @@
     <link media="all" href="{{asset('../style/myhome.css')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('../style/tao.css')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('../style/delivery.css')}}" type="text/css" rel="stylesheet">
+    <link media="all" rel="stylesheet" href="{{asset('../style/personal_account.css')}}" type="text/css">
 
     <style>
-        body {
-            background: #EEEEEE;
-        }
-
-        .containter {
-            width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 15px;
-            margin-top: 36px;
-        }
-
-        .info_left, .info_right {
-            display: inline-block;
-            vertical-align: top;
-            background: #fff;
-        }
-
-        .info_left {
-            width: 210px;
-        }
-
-        .info_right {
-            width: 965px;
-            min-height: 400px;
-            float: right;
-        }
-
-        .info_left ul {
-            float: left;
-            width: 214px;
-            background: #FFFFFF;
-        }
-
-        .info_left ul li {
-            width: 210px;
-            height: 58px;
-            line-height: 58px;
-            border-left: 4px #ffffff solid;
-            border-bottom: #E6E6E6 1px solid;
-            overflow: hidden;
-            vertical-align: middle;
-        }
-
-        .info_left ul li.active {
-            width: 210px;
-            border-left: 4px #00b38a solid !important;
-            background: #F7F7F7;
-        }
-
-        .info_left ul li:hover {
-            width: 210px;
-            border-left: 4px #00b38a solid !important;
-            background: #F7F7F7;
-        }
-
-        .info_left ul li a {
-            cursor: pointer;
-            display: inline-block;
-            width: 210px;
-            height: 58px;
-        }
-
-        .info_left ul li a i {
-            width: 17px;
-            height: 17px;
-            margin-top: 20px;
-            margin-left: 20px;
-            margin-right: 16px;
-        }
-
         .top_info {
             margin: 28px;
             padding-bottom: 28px;
@@ -148,6 +79,16 @@
         li.edit_emp_info a {
             color: #00b38a !important;
         }
+        .company_intro_text p{
+            font-size: 15px;
+            line-height: 2;
+        }
+        .jieshao_list li{
+            height: 150px !important;
+        }
+        .verified, .verified i,.verified span {
+            color: #4CAF50 !important;
+        }
 
     </style>
 @endsection
@@ -156,12 +97,26 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="active">
-                    <a><i class="iconfont icon-home"></i><span>帐户中心</span></a>
+                    <a href="/account"><i class="iconfont icon-homepage"></i>
+                        <span>帐户中心</span>
+                    </a>
                 </li>
                 <li class="">
                     <a href="/position/publishList">
-                        <i class="iconfont icon-jianli"></i>
-                        <span>职位管理 ({{$data['positionNum']}})</span>
+                        <i class="iconfont icon-createtask_fill"></i>
+                        <span>职位管理</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/position/deliverList">
+                        <i class="iconfont icon-businesscard"></i>
+                        <span>简历管理</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/message">
+                        <i class="iconfont icon-message_fill"></i>
+                        <span>站内信({{$data['username']['messageNum']}})</span>
                     </a>
                 </li>
             </ul>
@@ -184,13 +139,16 @@
                                     {{$data['enterpriseInfo']->ename}}
                                 </a>
                             </dt>
+                            <dd>电话&nbsp;
+                                {{$data['enterpriseInfo']['etel'] or "未填写"}}
+                            </dd>
                             <dd>邮箱&nbsp;
                                 {{$data['enterpriseInfo']['email'] or "未填写"}}
                             </dd>
                         </dl>
 
                         <ul>
-                            <li class="identification">
+                            <li class="identification @if($data['enterpriseInfo']->is_verification === 1) verified @endif">
                                 <a>
                                     <i class="material-icons">verified_user</i>
                                     @if($data['enterpriseInfo']->is_verification === 1)
@@ -277,7 +235,7 @@
                         <span class="item_ropera item_add disabled add_btn_wrap" to="/position/publish"
                               style="display: block;">
                                     <em class="item_ropeiconp"></em>
-                                    <span class="item_ropetext add_one">新增</span>
+                                    <span class="item_ropetext add_one">发布职位</span>
                                 </span>
 
                         <div class="item_content item_content_one" style="display: block;">
@@ -296,7 +254,7 @@
                                                                         {{mb_substr($position->title,0,5)}}
                                                                     </a>
                                                                 </h2>
-                                                                <span class="create_time">&ensp;[{{substr($position->updated_at,0,10)}}
+                                                                <span class="create_time">&ensp;[{{substr($position->created_at,0,10)}}
                                                                     ]&ensp;</span>
                                                             </div>
                                                             <span class="salary right">
@@ -422,11 +380,13 @@
                         <div class="item_ltitle">公司介绍</div>
                         <div class="item_content item_content_two" style="display: block;">
                             <div class="company_intro_text" style="display: block;">
+                                <p>
                                 @if($data['enterpriseInfo']->ebrief == "" ||$data['enterpriseInfo']->ebrief == null)
-                                    该公司尚未添加公司介绍
+                                    对公司详尽又生动的介绍，是吸引应聘者的最佳利器。
                                 @else
                                     {!! $data['enterpriseInfo']->ebrief !!}
                                 @endif
+                                </p>
                             </div>
 
                         </div>
