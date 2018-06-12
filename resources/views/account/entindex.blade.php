@@ -97,7 +97,7 @@
         <div class="info_left info_panel" style="background: white;">
             <ul>
                 <li class="active">
-                    <a><i class="iconfont icon-homepage"></i>
+                    <a href="/account"><i class="iconfont icon-homepage"></i>
                         <span>帐户中心</span>
                     </a>
                 </li>

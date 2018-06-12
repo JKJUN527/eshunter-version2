@@ -493,10 +493,12 @@ class PositionController extends Controller {
 //            $temp_pos->save();
 //        }
 
-        $data['position'] = Position::where('eid', '=', $eid[0]['eid'])
+        $data['position'] = DB::table('jobs_position')
+            ->leftjoin('jobs_region','jobs_region.id','=','jobs_position.region')
+            ->where('eid', '=', $eid[0]['eid'])
             ->where('position_status', '!=', 3)
             //select('pid', 'title', 'tag', 'salary', 'region', 'work_nature', 'total_num')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('jobs_position.created_at', 'desc')
             ->paginate(15);
 
         //查询每一个职位对应的投递次数
@@ -504,14 +506,15 @@ class PositionController extends Controller {
         //获取每一个职位对应的pid，查询其被投递次数
         $dcount = array();
         foreach ($data['position'] as $item) {
-            // var_dump($item['attributes']['pid']);
-            $pid = $item['attributes']['pid'];
+             var_dump($item->pid);
+//            return;
+            $pid = $item->pid;
             $dcount[$pid] = Delivered::where('pid', '=', $pid)
                 ->count();
         }
         $data['dcount'] = $dcount;
 
-        //return $data;
+//        return $data;
         return view('position.publishList', ['data' => $data]);
         //return $position;
     }
