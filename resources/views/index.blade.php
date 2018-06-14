@@ -82,9 +82,11 @@
 
         .tuwen li a b {
             display: inline-block;
-            max-width: 295px;
+            max-width: 275px;
             height: 32px;
             overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             font-weight: normal;
             color: #333;
             font-size: 14px;
