@@ -586,6 +586,7 @@
                                     游戏ID：<span>{{$playerResume->game_id}}</span>
                                     游戏名称：<span>{{$playerResume->egame}}</span>
                                     选手位置：<span>{{$playerResume->place}}</span>
+                                    <br>
                                     服务器：<span>{{$playerResume->service}}</span>
                                     最高排位：<span>{{$playerResume->best_result}}</span>
                                     胜率：<span>{{$playerResume->probability*10}}%~{{($playerResume->probability+1)*10}}
