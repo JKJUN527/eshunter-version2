@@ -8,7 +8,8 @@
             /*width: 97% !important;*/
         }
         .containter{
-            width: 1000px;
+            /*width: 1000px;*/
+            margin-top: 20px;
         }
         .news-image img{
             max-width:100%;
@@ -21,6 +22,55 @@
         .comment-content p{
             display: inline-block;
         }
+        .floatRight{
+            width: 75%;
+            margin-right: 20px;
+            float: right;
+        }
+        .floatLeft{
+            width: 20%;
+            margin-left: 20px;
+            float: left;
+        }
+        .news-list{
+            padding: 5px 8px 15px 8px;
+            border-top: 2px solid #ff5454;
+        }
+        .news-list dd{
+            height: 20px;
+            line-height: 20px;
+            margin-top: 10px;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+        }
+        .news-list dd:hover{
+            background-color: #ff5454;
+        }
+        .news-list dd a:hover{
+            color: #ffffff;
+        }
+        .news-list dd::before{
+            content: " ";
+            width: 2px;
+            height: 12px;
+            background: #ff5454;
+            position: absolute;
+            left: 0;
+            top: 4px;
+        }
+        .news-list dd a{
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            margin-left: 10px;
+            color: #707c87;
+            max-width: 285px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
     </style>
 @endsection
 
@@ -33,7 +83,7 @@
 @endsection
 
 @section('content')
-<div class="containter" style="margin-top: 20px;">
+<div class="containter floatRight">
                 <div class="info-panel">
                     <div class="mdl-card mdl-shadow--2dp info-card news-detail">
                         <div class="mdl-card__title">
@@ -108,6 +158,20 @@
                         </div>
                     </div>
                 </div>
+    </div>
+    <div class="containter floatLeft">
+        <div class="info-panel">
+            <div class="mdl-card mdl-shadow--2dp info-card news-detail">
+                    <dl class="news-list">
+                        @foreach($data['newest'] as $item)
+                            <dd>
+                                <a href="/news/detail?nid={{$item->nid}}" title="{{$item->title}}">{{$item->title}}</a>
+                            </dd>
+                        @endforeach
+                    </dl>
+            </div>
+        </div>
+    </div>
 @endsection
 
 

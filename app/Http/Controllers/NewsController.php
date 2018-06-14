@@ -28,6 +28,11 @@ class NewsController extends Controller {
 
         if ($request->has('nid')) {
             $nid = $request->input('nid');
+            //查询最近15条新闻
+            $data['newest'] = News::select('nid','title')
+                ->orderby('created_at','desc')
+                ->take(15)
+                ->get();
 
             $news = News::find($nid);
             $data['news'] = $news;
