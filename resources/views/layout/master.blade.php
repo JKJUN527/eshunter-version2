@@ -93,6 +93,9 @@
             text-shadow:0 0 0.05em #f87,
             -0 -0 0.05em #f87;
         }
+        .collect-star{
+            color: #f4d03e;
+        }
     </style>
 
 @section('custom-style')

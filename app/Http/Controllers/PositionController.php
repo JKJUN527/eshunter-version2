@@ -12,6 +12,7 @@ use App\Adverts;
 use App\Backup;
 use App\Delivered;
 use App\Enprinfo;
+use App\Favoriteposition;
 use App\Industry;
 use App\Occupation;
 use App\Personinfo;
@@ -899,6 +900,40 @@ class PositionController extends Controller {
                 "data" => $data,
                 "searchResult" => $searchResult
             ]);
+    }
+
+    //收藏职位
+    public function collection(Request $request){
+        $data = array();
+        $uid = AuthController::getUid();
+        if($uid == 0){
+            $data['status'] = 400;
+            $data['msg'] = "请先登录";
+        }
+        if($request->has('pid')){
+            $pid = $request->input('pid');
+            $count = Favoriteposition::where('uid',$uid)->where('pid',$pid)->first();
+            if($count){
+                if($count->status ==0) $count->status = 1;
+                else $count->status = 0;
+                if($count->save()){
+                    $data['status'] = 200;
+                    return $data;
+                }
+            }
+            $new = new Favoriteposition();
+            $new->uid = $uid;
+            $new->pid = $pid;
+            if($new->save()){
+                $data['status'] = 200;
+                return $data;
+            }
+        }else{
+            $data['status'] = 400;
+            $data['msg'] = "参数错误";
+        }
+        return $data;
+
     }
 
     public function test1(Request $request) {

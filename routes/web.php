@@ -175,6 +175,8 @@ Route::get('/business', ['uses' => 'CooperationController@index']);
 Route::get('/business/publish', ['uses' => 'CooperationController@publishIndex']);
 Route::post('/business/publish/upload', ['uses' => 'CooperationController@publishCooperation']);
 
+//收藏工作、资讯
+Route::get('/collection/jobs', ['uses' => 'PositionController@collection']);//收藏公司
 
 
 //网站后台

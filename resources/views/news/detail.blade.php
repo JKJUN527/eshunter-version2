@@ -95,6 +95,16 @@
         .recently li a {
             margin-left: 5px;
         }
+        .love-lable{
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            margin-left: 1rem;
+            width: 6rem;
+            height: 2.5rem;
+        }
+        .love-lable span{
+            padding: 0.5rem 0.5rem;
+            display: flex;
+        }
         /*.news-list{*/
             /*padding: 5px 8px 15px 8px;*/
             /*border-top: 2px solid #ff5454;*/
@@ -153,6 +163,11 @@
                             <h5 class="mdl-card__title-text" data-content="{{$data['news']->nid}}">
                                 {{$data['news']->title}}
                             </h5>
+                            <div class="love-lable">
+                                <span>
+                                    <i class="material-icons collect-star">star</i>收藏
+                                </span>
+                            </div>
                         </div>
     
                         <div class="mdl-card__actions mdl-card--border base-info--panel">

@@ -122,8 +122,8 @@
 @endsection
 
 @section('content')
-<div class="position-head" data-companyid="304142">
-    <div class="position-content ">
+<div class="position-head">
+    <div class="position-content" data-content="{{$data['detail']->pid}}">
         <div class="position-content-l">
             <div class="job-name" title="{{$data['detail']->title}}">
                 <div class="company">{{$data['enprinfo'][0]->ename}}招聘</div>
@@ -211,9 +211,10 @@
                     @endif
                 </div>
                 <!--收藏按钮-->
-                {{--<div class="jd_collection  job-collection " data-lg-tj-id="9500" data-lg-tj-no="0001" data-lg-tj-cid="idnull">--}}
-                    {{--<i class="iconfont icon-star"> </i>收藏--}}
-                {{--</div>--}}
+                <div class="jd_collection  job-collection ">
+                    {{--<i class="iconfont icon-star"> </i>--}}
+                    <i class="material-icons">star</i>收藏
+                </div>
             </div>
 
         </div>
@@ -659,6 +660,25 @@
                     }
                 });
             }
-
+        $(".job-collection").click(function () {
+            var pid = $(".position-content").attr('data-content');
+            var formData = new FormData();
+            formData.append('pid', pid);
+            $.ajax({
+                url: "/collection/jobs",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    if(result.status === 200){
+                        window.location.reload();
+                    }
+                }
+            })
+        });
     </script>
 @endsection
