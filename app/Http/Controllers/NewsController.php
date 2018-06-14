@@ -29,10 +29,12 @@ class NewsController extends Controller {
         if ($request->has('nid')) {
             $nid = $request->input('nid');
             //查询最近15条新闻
-            $data['newest'] = News::select('nid','title')
+            $data['newest'] = News::select('nid','title','type')
                 ->orderby('created_at','desc')
                 ->take(15)
                 ->get();
+            //查询最热新闻
+            $data['hottest'] = NewsController::searchHottest(-1);//最热新闻
 
             $news = News::find($nid);
             $data['news'] = $news;
@@ -106,11 +108,18 @@ class NewsController extends Controller {
     public function searchHottest($type) {
         //取6条最热新闻
         $data = array();
-        $data = News::where('type',$type)
-            ->where('created_at','>=',date('Y-m-d H:i:s', strtotime('-60 day')))
-            ->orderBy('view_count', 'desc')
-            ->take(11)
-            ->get();
+        if($type == -1){
+            $data = News::where('created_at','>=',date('Y-m-d H:i:s', strtotime('-60 day')))
+                ->orderBy('view_count', 'desc')
+                ->take(11)
+                ->get();
+        }else{
+            $data = News::where('type',$type)
+                ->where('created_at','>=',date('Y-m-d H:i:s', strtotime('-60 day')))
+                ->orderBy('view_count', 'desc')
+                ->take(11)
+                ->get();
+        }
         return $data;
     }
 

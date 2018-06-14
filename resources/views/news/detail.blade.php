@@ -23,53 +23,116 @@
             display: inline-block;
         }
         .floatRight{
-            width: 75%;
+            width: 20%;
             margin-right: 20px;
             float: right;
         }
         .floatLeft{
-            width: 20%;
+            width: 75%;
             margin-left: 20px;
             float: left;
         }
-        .news-list{
-            padding: 5px 8px 15px 8px;
-            border-top: 2px solid #ff5454;
+        .module_title{
+            display: block;
+            margin-top: 20px;
         }
-        .news-list dd{
-            height: 20px;
+        .module_title h2 p.chinese {
+            font-size: 24px;
+            color: #474747;
+            line-height: 30px;
+        }
+        .module_title h2 p.english {
+            font-size: 12px;
+            color: #aeaead;
             line-height: 20px;
-            margin-top: 10px;
-            color: #fff;
-            cursor: pointer;
-            position: relative;
+            margin-bottom: 10px;
+            font-weight: normal;
         }
-        .news-list dd:hover{
-            background-color: #ff5454;
+        .module_title h2 span.mark_line {
+            display: block;
+            width: 35px;
+            height: 2px;
+            background: #474747;
         }
-        .news-list dd a:hover{
-            color: #ffffff;
+        .Hot_news_list {
+            margin-top: 34px;
         }
-        .news-list dd::before{
-            content: " ";
-            width: 2px;
-            height: 12px;
-            background: #ff5454;
-            position: absolute;
-            left: 0;
-            top: 4px;
-        }
-        .news-list dd a{
-            display: inline-block;
-            height: 20px;
+        .Hot_news_list li {
             line-height: 20px;
-            margin-left: 10px;
-            color: #707c87;
-            max-width: 285px;
+            height: 20px;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
+            font-size: 14px;
+            margin-bottom: 24px;
         }
+        .Hot_news_list li i.first {
+            background: #D32F2F;
+            color: #fff;
+        }
+        .Hot_news_list li i.secend {
+            background: #f0ad4e;
+            color: #fff;
+        }
+        .Hot_news_list li i.thrid {
+            background: #474747;
+            color: #fff;
+        }
+        .Hot_news_list li i {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #f3f3f3;
+            color: #b1b1b1;
+            text-align: center;
+            float: left;
+            margin-right: 15px;
+            font-style: normal;
+        }
+        .Hot_news_list li a:hover {
+            color: #D32F2F;;
+        }
+        .recently li a {
+            margin-left: 5px;
+        }
+        /*.news-list{*/
+            /*padding: 5px 8px 15px 8px;*/
+            /*border-top: 2px solid #ff5454;*/
+        /*}*/
+        /*.news-list dd{*/
+            /*height: 20px;*/
+            /*line-height: 20px;*/
+            /*margin-top: 10px;*/
+            /*color: #fff;*/
+            /*cursor: pointer;*/
+            /*position: relative;*/
+        /*}*/
+        /*.news-list dd:hover{*/
+            /*background-color: #ff5454;*/
+        /*}*/
+        /*.news-list dd a:hover{*/
+            /*color: #ffffff;*/
+        /*}*/
+        /*.news-list dd::before{*/
+            /*content: " ";*/
+            /*width: 2px;*/
+            /*height: 12px;*/
+            /*background: #ff5454;*/
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top: 4px;*/
+        /*}*/
+        /*.news-list dd a{*/
+            /*display: inline-block;*/
+            /*height: 20px;*/
+            /*line-height: 20px;*/
+            /*margin-left: 10px;*/
+            /*color: #707c87;*/
+            /*max-width: 285px;*/
+            /*overflow: hidden;*/
+            /*text-overflow: ellipsis;*/
+            /*white-space: nowrap;*/
+        /*}*/
 
     </style>
 @endsection
@@ -83,7 +146,7 @@
 @endsection
 
 @section('content')
-<div class="containter floatRight">
+<div class="containter floatLeft">
                 <div class="info-panel">
                     <div class="mdl-card mdl-shadow--2dp info-card news-detail">
                         <div class="mdl-card__title">
@@ -159,19 +222,80 @@
                     </div>
                 </div>
     </div>
-    <div class="containter floatLeft">
-        <div class="info-panel">
-            <div class="mdl-card mdl-shadow--2dp info-card news-detail">
-                    <dl class="news-list">
-                        @foreach($data['newest'] as $item)
-                            <dd>
-                                <a href="/news/detail?nid={{$item->nid}}" title="{{$item->title}}">{{$item->title}}</a>
-                            </dd>
-                        @endforeach
-                    </dl>
-            </div>
+    <div class="containter floatRight">
+        <div class="module_title">
+            <h2>
+                <p class="chinese">热门资讯</p>
+                <p class="english">HOT NEWS</p>
+                <span class="mark_line"></span>
+            </h2>
+        </div>
+        <div class="Hot_news_list">
+            <ul>
+                <?php $i=1;?>
+                @foreach($data['hottest'] as $item)
+                    <li>
+                        <i
+                                @if($i ==1 )
+                                    class="first"
+                                @elseif($i ==2 )
+                                    class="secend"
+                                @elseif($i ==3 )
+                                    class="thrid"
+                                @endif
+                        >{{$i++}}</i>
+                        <a href="/news/detail?nid={{$item->nid}}">{{$item->title}}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="module_title">
+            <h2>
+                <p class="chinese">最新资讯</p>
+                <p class="english">RECENTLY NEWS</p>
+                <span class="mark_line"></span>
+            </h2>
+        </div>
+        <div class="Hot_news_list recently">
+            <ul>
+                @foreach($data['newest'] as $item)
+                    <li>
+                        @if($item->type ==1)
+                            <span class="label label-warning">综合</span>
+                        @elseif($item->type ==2)
+                            <span class="label label-info">趣闻</span>
+                        @elseif($item->type ==3)
+                            <span class="label label-default">赛事</span>
+                        @elseif($item->type ==4)
+                            <span class="label label-success">游戏</span>
+                        @elseif($item->type ==5)
+                            <span class="label label-primary">职场</span>
+                        @endif
+                        <a href="/news/detail?nid={{$item->nid}}" >{{$item->title}}</a>
+                    </li>
+                @endforeach
+
+            </ul>
         </div>
     </div>
+    {{--<div class="containter floatRight">--}}
+        {{--<div class="info-panel">--}}
+            {{--<div class="mdl-card mdl-shadow--2dp info-card news-detail">--}}
+                {{--<div class="mdl-card__title">--}}
+                    {{--<h5 class="mdl-card__title-text">--}}
+                        {{--最新 最热--}}
+                    {{--</h5>--}}
+                {{--</div>--}}
+                    {{--<dl class="news-list">--}}
+                        {{--@foreach($data['newest'] as $item)--}}
+                            {{--<dd>--}}
+                                {{--<a href="/news/detail?nid={{$item->nid}}" title="{{$item->title}}">{{$item->title}}</a>--}}
+                            {{--</dd>--}}
+                        {{--@endforeach--}}
+                    {{--</dl>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 @endsection
 
 
