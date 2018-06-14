@@ -24,12 +24,12 @@
         }
         .floatRight{
             width: 20%;
-            margin-right: 20px;
+            margin-right: 6%;
             float: right;
         }
         .floatLeft{
-            width: 75%;
-            margin-left: 20px;
+            width: 65%;
+            margin-left: 6%;
             float: left;
         }
         .module_title{
