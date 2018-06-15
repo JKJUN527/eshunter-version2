@@ -666,6 +666,15 @@ class PositionController extends Controller {
         //根据pid号返回职位信息
         if ($request->has('pid')) {
             $pid = $request->input('pid');//获取前台传来的pid
+            //查看是否收藏职位
+            $is_favorite = Favoriteposition::where('uid',$data['uid'])->where('pid',$pid)
+                ->where('status',1)
+                ->count();
+            if($is_favorite >=1){
+                $data['isfavorite'] = 1;
+            }else
+                $data['isfavorite'] = 0;
+            //查询职位详情
             $detail1 = Position::find($pid);
             $detail1->view_count += 1;
             $detail1->save();
@@ -909,6 +918,7 @@ class PositionController extends Controller {
         if($uid == 0){
             $data['status'] = 400;
             $data['msg'] = "请先登录";
+            return $data;
         }
         if($request->has('pid')){
             $pid = $request->input('pid');

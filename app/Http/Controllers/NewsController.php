@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Favoritenews;
 use App\News;
 use App\Review;
 use Illuminate\Http\Request;
@@ -28,6 +29,14 @@ class NewsController extends Controller {
 
         if ($request->has('nid')) {
             $nid = $request->input('nid');
+            //查看是否收藏职位
+            $is_favorite = Favoritenews::where('uid',$data['uid'])->where('nid',$nid)
+                ->where('status',1)
+                ->count();
+            if($is_favorite >=1){
+                $data['isfavorite'] = 1;
+            }else
+                $data['isfavorite'] = 0;
             //查询最近15条新闻
             $data['newest'] = News::select('nid','title','type')
                 ->orderby('created_at','desc')
@@ -157,6 +166,40 @@ class NewsController extends Controller {
             $data['msg'] = "评论失败";
         }
 
+        return $data;
+    }
+
+    //收藏新闻
+    public function collection(Request $request){
+        $data = array();
+        $uid = AuthController::getUid();
+        if($uid == 0){
+            $data['status'] = 400;
+            $data['msg'] = "请先登录";
+            return $data;
+        }
+        if($request->has('nid')){
+            $nid = $request->input('nid');
+            $count = Favoritenews::where('uid',$uid)->where('nid',$nid)->first();
+            if($count){
+                if($count->status ==0) $count->status = 1;
+                else $count->status = 0;
+                if($count->save()){
+                    $data['status'] = 200;
+                    return $data;
+                }
+            }
+            $new = new Favoritenews();
+            $new->uid = $uid;
+            $new->nid = $nid;
+            if($new->save()){
+                $data['status'] = 200;
+                return $data;
+            }
+        }else{
+            $data['status'] = 400;
+            $data['msg'] = "参数错误";
+        }
         return $data;
     }
 }

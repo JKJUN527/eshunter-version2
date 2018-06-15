@@ -213,7 +213,11 @@
                 <!--收藏按钮-->
                 <div class="jd_collection  job-collection ">
                     {{--<i class="iconfont icon-star"> </i>--}}
-                    <i class="material-icons">star</i>收藏
+                    @if($data['isfavorite'] == 0)
+                        <i class="material-icons">star</i>收藏
+                    @else
+                        <i class="material-icons collect-star">star</i>已收藏
+                    @endif
                 </div>
             </div>
 
@@ -674,8 +678,12 @@
                 data: formData,
                 success: function (data) {
                     var result = JSON.parse(data);
+                    console.log(result.status);
                     if(result.status === 200){
                         window.location.reload();
+                    }else{
+                        swal("",result.msg,"error");
+                        return;
                     }
                 }
             })

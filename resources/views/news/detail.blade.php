@@ -98,7 +98,7 @@
         .love-lable{
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
             margin-left: 1rem;
-            width: 6rem;
+            width: 6.5rem;
             height: 2.5rem;
         }
         .love-lable span{
@@ -165,7 +165,11 @@
                             </h5>
                             <div class="love-lable">
                                 <span>
-                                    <i class="material-icons collect-star">star</i>收藏
+                                    @if($data['isfavorite'] == 0)
+                                        <i class="material-icons">star</i>收藏
+                                    @else
+                                        <i class="material-icons collect-star">star</i>已收藏
+                                    @endif
                                 </span>
                             </div>
                         </div>
@@ -412,5 +416,29 @@
             })
 
         })
+        $(".love-lable").click(function () {
+            var nid = $(".mdl-card__title-text").attr("data-content");
+            var formData = new FormData();
+            formData.append('nid', nid);
+            $.ajax({
+                url: "/collection/news",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    console.log(result.status);
+                    if(result.status === 200){
+                        window.location.reload();
+                    }else{
+                        swal("",result.msg,"error");
+                        return;
+                    }
+                }
+            })
+        });
     </script>
 @endsection
