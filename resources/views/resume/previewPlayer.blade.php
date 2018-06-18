@@ -615,7 +615,7 @@
                                     您还没有填写过选手基本信息，点击右上角进行填写
                                 </div>
                             @else
-                                <p>是否职业选手：
+                                <p>是否曾是职业选手：
                                     <span>
                                     @if($data['resume']->professional == 0)
                                             否
