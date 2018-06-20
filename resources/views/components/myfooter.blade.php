@@ -1,4 +1,4 @@
-<a style="display:none;margin-left: 1340px;" class="back_to_top" title="" href="#"></a>
+<a style="display:none;margin-left: 98%;" class="back_to_top" title="" href="#"></a>
 <div class="footer">
                 <div class="footer_con">
                     <div class="footer_top">
