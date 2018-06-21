@@ -324,6 +324,12 @@
             } else {
                 removeError(ebrief, 'ebrief');
             }
+//            // 将content中的换行 "\r\n" 或者 "\n" 换成 <br>
+//            // '\s'空格替换成"&nbsp;"
+//            // 这样可以保持新闻内容的编辑格式
+            var newsContent = ebrief.val().replace(/\r\n/g, '<br>');
+            newsContent = newsContent.replace(/\n/g, '<br>');
+            newsContent = newsContent.replace(/\s/g, '&nbsp;');
 
             var formData = new FormData();
 
@@ -340,7 +346,7 @@
             formData.append("industry", industry.val());
             formData.append("escale", escale.val());
             formData.append("enature", enature.val());
-            formData.append("ebrief", testContent);
+            formData.append("ebrief", newsContent);
             formData.append("home_page", home_page.val());
             formData.append("address", address.val());
 
