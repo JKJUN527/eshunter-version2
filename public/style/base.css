@@ -166,8 +166,8 @@ em.msg_amount {
 /*ie 提示*/
 .bsie{width:100%; height:50px; line-height:50px; font-size:18px; color:#b94a48; background:#f2dede; text-align:center; display: none;}
 /*返回顶部小火箭*/
-.back_to_top{ width: 28px; height: 64px; overflow: hidden; background: url(../images/backtop.png) 0px 0px no-repeat; position: fixed; z-index: 100; bottom: 30px; margin-left: 1240px; -moz-transition:color 1s; -webkit-transition:color 1s; -o-transition:color 1s;}
-.back_to_top:hover{ background: url(../images/backtop.png) -28px 0px no-repeat; }
+.back_to_top{ width: 28px; height: 64px; overflow: hidden; background: url(../images/backtop2.png) 0px 0px no-repeat; position: fixed; z-index: 100; bottom: 30px; margin-left: 1240px; -moz-transition:color 1s; -webkit-transition:color 1s; -o-transition:color 1s;}
+.back_to_top:hover{ background: url(../images/backtop2.png) -28px 0px no-repeat; }
 /*活动按钮*/
 .activity_icon{ width: 100px; height: 100px;overflow: hidden; background: url(../images/active.png); display: block;}
 .a_box{ width: 100px; height:100px; position: fixed; top: 50%; margin-top: -40px; right: 10px; z-index: 10;}

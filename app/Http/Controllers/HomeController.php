@@ -94,7 +94,7 @@ class HomeController extends Controller {
             ->leftjoin('jobs_enprinfo', 'jobs_position.eid', '=', 'jobs_enprinfo.eid')
             ->select('pid', 'title','tag','salary','salary_max','work_nature','education','jobs_enprinfo.eid','ename','elogo', 'byname','escale','enature','jobs_enprinfo.industry','jobs_position.created_at')
             //            ->where('vaildity', '>=', date('Y-m-d H-i-s'))
-            ->where('jobs_position.updated_at','>=',date('Y-m-d H:i:s', strtotime('-60 day')))
+            ->where('jobs_position.created_at','>=',date('Y-m-d H:i:s', strtotime('-180 day')))
             ->where(function ($query){//职位状态
                 $query->where('position_status',1)
                     ->orwhere('position_status',4);

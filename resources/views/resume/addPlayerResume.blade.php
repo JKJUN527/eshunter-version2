@@ -1325,7 +1325,7 @@
                 </div>
 
                 <div class="mdl-card__actions mdl-card--border baseinfo-panel-update">
-                    <label for="baseinfo-professional">是否职业选手</label>
+                    <label for="baseinfo-professional">是否曾是职业选手</label>
                     <div class="form-group">
                         {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                         <select class="form-control show-tick selectpicker" id="baseinfo-professional"
