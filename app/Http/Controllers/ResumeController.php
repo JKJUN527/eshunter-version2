@@ -715,6 +715,9 @@ class ResumeController extends Controller {
         $playerexp->service = $input['service'];
         $playerexp->best_result = $input['best_result'];
         $playerexp->probability = $input['probability'];
+        $playerexp->has_event = $input['event'];
+        $playerexp->event_name = $input['event_name'];
+        $playerexp->event_ranking = $input['event_ranking'];
 
         if ($playerexp->save()) {
             $data['status'] = 200;

@@ -698,9 +698,17 @@
                                                 游戏ID：<span>{{$playerResume[0]}}</span>
                                                 游戏名称：<span>{{$playerResume[1]}}</span>
                                                 选手位置：<span>{{$playerResume[2]}}</span>
+                                                <br>
                                                 服务器：<span>{{$playerResume[3]}}</span>
                                                 最高排位：<span>{{$playerResume[4]}}</span>
                                                 胜率：<span>{{$playerResume[5]*10}}%~{{($playerResume[5]+1)*10}}%</span>
+                                                <br>
+                                                @if($playerResume[6] == "")
+                                                    无赛事经历
+                                                @else
+                                                    赛事名称：<span>{{$playerResume[6]}}</span>
+                                                    赛事排名：<span>{{$playerResume[7]}}</span>
+                                                @endif
                                             </p>
                                         @empty
                                             <div class="mdl-card__supporting-text">
