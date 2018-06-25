@@ -178,6 +178,7 @@ Route::post('/business/publish/upload', ['uses' => 'CooperationController@publis
 //收藏工作、资讯
 Route::post('/collection/jobs', ['uses' => 'PositionController@collection']);//收藏公司
 Route::post('/collection/news', ['uses' => 'NewsController@collection']);//收藏新闻
+Route::get('/collection/index', ['uses' => 'PersonCenterController@collectionIndex']);//收藏夹
 
 
 //网站后台

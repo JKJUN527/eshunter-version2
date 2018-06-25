@@ -324,7 +324,7 @@
             } else {
                 removeError(ebrief, 'ebrief');
             }
-//            // 将content中的换行 "\r\n" 或者 "\n" 换成 <br>
+            //            // 将content中的换行 "\r\n" 或者 "\n" 换成 <br>
 //            // '\s'空格替换成"&nbsp;"
 //            // 这样可以保持新闻内容的编辑格式
             var newsContent = ebrief.val().replace(/\r\n/g, '<br>');

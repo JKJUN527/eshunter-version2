@@ -243,6 +243,12 @@
                         <span>查找职位</span>
                     </a>
                 </li>
+                <li class="">
+                    <a href="/collection/index">
+                        <i class="iconfont icon-praise"></i>
+                        <span>收藏夹</span>
+                    </a>
+                </li>
             </ul>
         </div>
 

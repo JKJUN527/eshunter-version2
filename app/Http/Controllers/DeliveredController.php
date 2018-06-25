@@ -327,9 +327,9 @@ class DeliveredController extends Controller {
                     $player = "";
                     foreach ($playerexp as $item) {
                         if($player == "")
-                            $player = $item['game_id'] . '@' .$item['egame'] . '@' .$item['place']. '@' .$item['service']. '@' .$item['best_result']. '@' .$item['probability'];
+                            $player = $item['game_id'] . '@' .$item['egame'] . '@' .$item['place']. '@' .$item['service']. '@' .$item['best_result']. '@' .$item['probability']. '@' .$item['event_name']. '@' .$item['event_ranking'];
                         else
-                            $player = $player . ';' . $item['game_id'] . '@' .$item['egame'] . '@' .$item['place']. '@' .$item['service']. '@' .$item['best_result']. '@' .$item['probability'];
+                            $player = $player . ';' . $item['game_id'] . '@' .$item['egame'] . '@' .$item['place']. '@' .$item['service']. '@' .$item['best_result']. '@' .$item['probability']. '@' .$item['event_name']. '@' .$item['event_ranking'];
                     }
                     $back_up->playerexp = $player;
                 }

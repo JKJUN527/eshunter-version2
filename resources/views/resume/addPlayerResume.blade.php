@@ -1161,6 +1161,13 @@
                             最高排位：<span>{{$playerResume->best_result}}</span>
                             胜率：<span>{{$playerResume->probability*10}}%~{{($playerResume->probability+1)*10}}
                                 %</span>
+                            <br>
+                            @if($playerResume->has_event == 0)
+                                无赛事经历
+                            @else
+                                赛事名称：<span>{{$playerResume->event_name}}</span>
+                                赛事排名：<span>{{$playerResume->event_ranking}}</span>
+                            @endif
                             <i class="material-icons playerResume-delete playerResume-item"
                                data-content="{{$playerResume->id}}">close</i>
                         </p>
@@ -1246,6 +1253,26 @@
                             <option value="9">90~100%</option>
                         </select>
                     </div>
+                    <label for="PlayerResume-event">赛事经历</label>
+                    <div class="form-group">
+                        <select class="form-control show-tick selectpicker" id="PlayerResume-event"
+                                name="PlayerResume-event">
+                            <option value="0">无赛事经历</option>
+                            <option value="1">有赛事经历</option>
+                        </select>
+                        <div class="form-line">
+                            <input  style="display: none;" type="text" id="PlayerResume-eventname" name="PlayerResume-eventname"
+                                   class="form-control"
+                                   placeholder="赛事名称">
+                            <label class="error" for="PlayerResume-eventname"></label>
+                        </div>
+                        <div class="form-line">
+                            <input style="display: none;" type="text" id="PlayerResume-eventranking" name="PlayerResume-eventranking"
+                                   class="form-control"
+                                   placeholder="赛事排名">
+                            <label class="error" for="PlayerResume-eventranking"></label>
+                        </div>
+                    </div>
 
                     <div class="button-panel">
                         <button class="mdl-button mdl-js-button mdl-js-ripple-effect cancel">
@@ -1325,7 +1352,7 @@
                 </div>
 
                 <div class="mdl-card__actions mdl-card--border baseinfo-panel-update">
-                    <label for="baseinfo-professional">是否职业选手</label>
+                    <label for="baseinfo-professional">是否曾是职业选手</label>
                     <div class="form-group">
                         {{--如果想要添加动态查找，向select中添加属性：data-live-search="true"--}}
                         <select class="form-control show-tick selectpicker" id="baseinfo-professional"
@@ -1779,6 +1806,19 @@
                 $("#citylabel").css("display", "none");
             }
         });
+        //关联赛事经历
+        $('#PlayerResume-event').change(function () {
+            var event_name = $("#PlayerResume-eventname");
+            var event_ranking = $("#PlayerResume-eventranking");
+            if($(this).val() == 0){
+//                alert($(this).val());
+                event_name.fadeOut();
+                event_ranking.fadeOut();
+            }else{
+                event_name.fadeIn();
+                event_ranking.fadeIn();
+            }
+        });
         $("#resume-name--change").click(function () {
 
             var rid = $("input[name='rid']");
@@ -1880,6 +1920,10 @@
             var grade = $("input[name='PlayerResume-grade']");
             var probability = $("select[name='PlayerResume-probability']");
 
+            var event = $("#PlayerResume-event");
+            var event_name = $("#PlayerResume-eventname");
+            var event_ranking = $("#PlayerResume-eventranking");
+
 
             if (gameid.val() === "") {
                 setError(gameid, "gameID", "不能为空");
@@ -1908,6 +1952,20 @@
             } else {
                 removeError(grade, "PlayerResume-grade");
             }
+            if(event.val() == 1 && event_name.val() === ""){
+                setError(event_name, "PlayerResume-eventname", "不能为空");
+                return;
+            }
+            else {
+                removeError(event_name, "PlayerResume-eventname");
+            }
+            if(event.val() == 1 && event_ranking.val() === ""){
+                setError(event_ranking, "PlayerResume-eventranking", "不能为空");
+                return;
+            }
+            else {
+                removeError(event_ranking, "PlayerResume-eventranking");
+            }
 
             var formData = new FormData();
             if (playerID.val() != -1) {
@@ -1919,6 +1977,9 @@
             formData.append('service', service.val());
             formData.append('best_result', grade.val());
             formData.append('probability', probability.val());
+            formData.append('event', event.val());
+            formData.append('event_name', event_name.val());
+            formData.append('event_ranking', event_ranking.val());
 
             $.ajax({
                 url: "/resume/addPlayerResumeExp",

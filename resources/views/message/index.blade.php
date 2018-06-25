@@ -42,6 +42,12 @@
                             <span>查找职位</span>
                         </a>
                     </li>
+                    <li class="">
+                        <a href="/collection/index">
+                            <i class="iconfont icon-praise"></i>
+                            <span>收藏夹</span>
+                        </a>
+                    </li>
                 @elseif($data["type"] == 2)
                     <li class="">
                         <a href="/position/publishList">
@@ -59,6 +65,12 @@
                         <a href="/message">
                             <i class="iconfont icon-message_fill"></i>
                             <span>站内信({{$data['username']['messageNum']}})</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/collection/index">
+                            <i class="iconfont icon-praise"></i>
+                            <span>收藏夹</span>
                         </a>
                     </li>
                 @endif

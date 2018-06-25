@@ -11,11 +11,14 @@ namespace App\Http\Controllers;
 use App\Backup;
 use App\Delivered;
 use App\Enprinfo;
+use App\Favoritenews;
+use App\Favoriteposition;
 use App\Industry;
 use App\Message;
 use App\Personinfo;
 use App\Position;
 use Faker\Provider\lv_LV\Person;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PersonCenterController extends Controller {
@@ -414,5 +417,33 @@ class PersonCenterController extends Controller {
         $message->content = "您投递的" . $enterpriseName . $position_title . "的简历已被公司查阅";
         $message->save();
         return $result;
+    }
+    //收藏夹
+    public function collectionIndex(Request $request){
+        $data = array();
+        $data['uid'] = AuthController::getUid();
+        $data['username'] = InfoController::getUsername();
+        $data['type'] = AuthController::getType();
+
+        if (AuthController::getUid() == 0 || ($data['type'] != 1 && $data['type'] != 2)) {
+            return view("/account/login",['data'=>$data]);
+        }
+        $data['collectionNews'] = DB::table('jobs_news')
+            ->leftjoin('jobs_favorite_news','jobs_favorite_news.nid','jobs_news.nid')
+            ->where('jobs_favorite_news.uid',$data['uid'])
+            ->orderBy('jobs_favorite_news.created_at', 'desc')
+            ->get();
+        $data['collectionPosition'] = DB::table('jobs_favorite_position')
+            ->leftjoin('jobs_position','jobs_favorite_position.pid','jobs_position.pid')
+            ->where('uid',$data['uid'])
+            ->select('jobs_position.pid', 'title','tag','salary','salary_max','work_nature','education','jobs_position.created_at')
+            ->where(function ($query){//职位状态
+                $query->where('position_status',1)
+                    ->orwhere('position_status',4);
+            })
+            ->orderBy('jobs_favorite_position.created_at', 'desc')//热门程度
+            ->get();
+
+        return view('account.collection',['data'=>$data]);
     }
 }

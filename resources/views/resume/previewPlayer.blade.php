@@ -591,6 +591,13 @@
                                     最高排位：<span>{{$playerResume->best_result}}</span>
                                     胜率：<span>{{$playerResume->probability*10}}%~{{($playerResume->probability+1)*10}}
                                         %</span>
+                                    <br>
+                                    @if($playerResume->has_event == 0)
+                                        无赛事经历
+                                    @else
+                                        赛事名称：<span>{{$playerResume->event_name}}</span>
+                                        赛事排名：<span>{{$playerResume->event_ranking}}</span>
+                                    @endif
                                 </p>
                                 <div class="divider"></div>
                             @empty
@@ -615,7 +622,7 @@
                                     您还没有填写过选手基本信息，点击右上角进行填写
                                 </div>
                             @else
-                                <p>是否职业选手：
+                                <p>是否曾是职业选手：
                                     <span>
                                     @if($data['resume']->professional == 0)
                                             否
