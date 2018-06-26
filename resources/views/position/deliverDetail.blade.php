@@ -688,11 +688,12 @@
                                         <i class="fa fa-graduation-cap fa-2" aria-hidden="true"></i><h5 class="mdl-card__title-text">选手经历</h5>
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border PlayerResume-panel">
+                                        @if($data["intention"]->playerexp != null)
                                         <?php
                                             $playerResumes = explode(';',$data["intention"]->playerexp);
                                         ?>
 
-                                        @forelse($playerResumes as $item)
+                                        @foreach($playerResumes as $item)
                                             <?php $playerResume = explode('@',$item);?>
                                             <p id="playerResume_info" name="playerResume_info" data-content="">
                                                 游戏ID：<span>{{$playerResume[0]}}</span>
@@ -710,11 +711,12 @@
                                                     赛事排名：<span>{{$playerResume[7]}}</span>
                                                 @endif
                                             </p>
-                                        @empty
+                                        @endforeach
+                                            @else
                                             <div class="mdl-card__supporting-text">
-                                                您还没有填写过选手经历，点击右上角进行填写
+                                                没有填写过选手经历
                                             </div>
-                                        @endforelse
+                                            @endif
                                     </div>
                                 </div>
                             {{--选手基本信息--}}
