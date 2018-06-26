@@ -100,6 +100,11 @@
             margin-left: 1rem;
             width: 6.5rem;
             height: 2.5rem;
+            float: right;
+            cursor:pointer
+        }
+        .love-lable:hover{
+            color: #f4d03e;
         }
         .love-lable span{
             padding: 0.5rem 0.5rem;

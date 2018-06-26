@@ -200,10 +200,10 @@
     -ms-flex-align: center;
     align-items: center;
     color: rgb(0, 0, 0);
-    display: block;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: inline-block;
+    /*display: -webkit-flex;*/
+    /*display: -ms-flexbox;*/
+    /*display: flex;*/
     line-height: normal;
     padding: 16px 16px;
     -webkit-perspective-origin: 165px 56px;
@@ -211,6 +211,7 @@
     -webkit-transform-origin: 165px 56px;
     transform-origin: 165px 56px;
     box-sizing: border-box;
+    width: 100%;
 }
 .mdl-card__title-text {
     -webkit-align-self: flex-end;
@@ -224,7 +225,7 @@
     overflow: hidden;
     -webkit-transform-origin: 149px 48px;
     transform-origin: 149px 48px;
-    margin-top: 1.5rem;
+    /*margin-top: 1.5rem;*/
     font-size: 24px !important;
     font-weight: 500 !important;
 }

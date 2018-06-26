@@ -510,11 +510,9 @@
                                 </li>
                             @endforeach
                           </ul>
-                          {{--<div class="Page" id="pagination">--}}
                               <nav id="page_tools">
                                   {!! $data['result']['position']->appends($data['condition'])->render() !!}
                               </nav>
-                          {{--</div>--}}
                         </div>
                     </div>
                 </div>

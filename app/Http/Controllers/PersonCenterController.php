@@ -15,7 +15,9 @@ use App\Favoritenews;
 use App\Favoriteposition;
 use App\Industry;
 use App\Message;
+use App\Occupation;
 use App\Personinfo;
+use App\Place;
 use App\Position;
 use Faker\Provider\lv_LV\Person;
 use Illuminate\Http\Request;
@@ -432,18 +434,23 @@ class PersonCenterController extends Controller {
             ->leftjoin('jobs_favorite_news','jobs_favorite_news.nid','jobs_news.nid')
             ->where('jobs_favorite_news.uid',$data['uid'])
             ->orderBy('jobs_favorite_news.created_at', 'desc')
-            ->get();
+            ->paginate(20);
         $data['collectionPosition'] = DB::table('jobs_favorite_position')
             ->leftjoin('jobs_position','jobs_favorite_position.pid','jobs_position.pid')
-            ->where('uid',$data['uid'])
-            ->select('jobs_position.pid', 'title','tag','salary','salary_max','work_nature','education','jobs_position.created_at')
+            ->select('jobs_position.pid', 'title','tag','jobs_position.industry as jobindustry','occupation','place','jobs_position.eid','elogo','ename','byname','escale','enature','jobs_enprinfo.industry as eindustry','salary','salary_max','jobs_region.name','position_status','jobs_position.created_at')
+            ->leftjoin('jobs_enprinfo', 'jobs_enprinfo.eid', '=', 'jobs_position.eid')
+            ->leftjoin('jobs_region', 'jobs_region.id', '=', 'jobs_position.region')
+            ->where('jobs_favorite_position.uid',$data['uid'])
             ->where(function ($query){//职位状态
                 $query->where('position_status',1)
                     ->orwhere('position_status',4);
             })
             ->orderBy('jobs_favorite_position.created_at', 'desc')//热门程度
-            ->get();
+            ->paginate(14);
 
+        $data['industry'] = Industry::all();
+        $data['occupation'] = Occupation::all();
+        $data['place'] = Place::all();
         return view('account.collection',['data'=>$data]);
     }
 }

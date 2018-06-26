@@ -4,9 +4,11 @@
 @section('custom-style')
     {{--<link media="all" href="{{asset('../style/delivery.css')}}" type="text/css" rel="stylesheet">--}}
     <link media="all" href="{{asset('../style/news.css')}}" type="text/css" rel="stylesheet">
-    <link media="all" href="{{asset('../style/tao.css')}}" type="text/css" rel="stylesheet">
+    <link media="all" href="{{asset('style/tao_company.css')}}" type="text/css" rel="stylesheet">
+    {{--<link media="all" href="{{asset('../style/tao.css')}}" type="text/css" rel="stylesheet">--}}
     <link media="all" href="{{asset('../style/apply.css')}}" type="text/css" rel="stylesheet">
     <link media="all" rel="stylesheet" href="{{asset('../style/personal_account.css')}}" type="text/css">
+    <link media="all" href="{{asset('../style/advanceSearch.css')}}" type="text/css" rel="stylesheet">
     <style>
         .QQ_each{
             margin-left: 1260px;
@@ -36,6 +38,130 @@
         }
         .info-card{
             padding: 10px;
+        }
+
+        .companydiv li {
+            /*border-bottom: none;*/
+            margin-bottom: 16px;
+        }
+        .containter{
+            width: 1080px;
+        }
+        .companydiv li>div{
+            float: left;
+        }
+        .companydiv li {
+            float: left;
+            border: 1px solid #dcdcdc;
+            margin: 11px 6px;
+            width: 96%;
+        }
+        /*冲突解决*/
+        .info_panel {
+            margin: 0 !important;
+        }
+
+        .gsdiv {
+            width: 42%;
+
+        }
+        #publish-position{
+            width: 104px;
+            overflow: hidden;
+            height: 38px;
+            float: left;
+            -webkit-border-top-right-radius: 4px;
+            -moz-border-top-right-radius: 4px;
+            border-top-right-radius: 4px;
+            -moz-border-bottom-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            line-height: 38px;
+            background: #D32F2F;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-family: 'Microsoft Yahei';
+            cursor: pointer;
+        }
+        #publish-position:hover{
+            background: #6F6969;
+        }
+        .gs_rank_item span.active {
+            background: none;
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .gsdiv .brif .toujianli{
+            /* float: right; */
+            padding: 10px 40px;
+            /* margin-right: -87px; */
+            background-color: #03A9F4;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+        .gs_rank_item {
+            padding: 6px 17px;
+            background: #919191;
+            overflow: hidden;
+            font-size: 15px;
+        }
+        .resume-list {
+            width: 100%;
+            display: block;
+        }
+
+        .resume-item {
+            border: 1px solid #ebebeb;
+            display: block;
+            padding: 8px 16px;
+            margin-bottom: 16px;
+            -webkit-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .resume-item:hover {
+            background-color: #03A9F4;
+            color: #ffffff;
+        }
+
+        .resume-item p {
+            margin: 0;
+        }
+        .gsdiv .div_s {
+            /*height: 64px;*/
+            padding: 10px 0;
+        }
+        #page_tools li{
+            padding: 0;
+        }
+        .major-list li{
+            width: 116px;
+            height: 92px;
+        }
+        .major-list li a{
+            width: 116px;
+            height: 92px;
+        }
+
+        .gsdiv .div_s span {
+            margin-right: 3px;
+            word-break: initial;
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+            border-radius: 3px;
+            line-height: 32px;
+        }
+        .jieshao_list li:hover{box-shadow: 2px 2px 2px #ebebeb;}
+        .region{
+            color: #00b38a;
+        }
+        .companydiv li .company-all {
+            margin-left: 30px !important;
         }
     </style>
 @endsection
@@ -128,80 +254,162 @@
                     <div class="delivery_tabs">
                         <ul class="reset">
                             <li class="current li_one">
-                                <a class="all_border tabs_all">收藏职位</a>
+                                <a class="all_border tabs_all">职位</a>
                             </li>
                             <li class="li_two">
-                                <a class="tabs_delivery_success">收藏新闻</a>
+                                <a class="tabs_delivery_success">资讯</a>
                             </li>
                         </ul>
                     </div>
                     <form id="deliveryForm" class="deliveryAll" style="display: block;">
-                        <ul class="jieshao_list hotjobs" style="display: block;">
+                        <ul class="jieshao_list companydiv">
                             @foreach($data['collectionPosition'] as $position)
                                 <li>
-                                    <div class="jieshao_list_left left">
-                                        <div class="list_top">
-                                            <div class="clearfix pli_top">
-                                                <div class="position_name left">
-                                                    <h2 class="dib"><a
-                                                                href="/position/detail?pid={{$position->pid}}">{{mb_substr($position->title,0,11,'utf-8')}}</a>
-                                                    </h2>
-                                                    <br>
-                                                    <span class="create_time">&ensp;[{{substr($position->created_at,0,10)}}
-                                                        ]&ensp;</span>
-                                                </div>
-                                                <span class="salary right">
-                                        @if($position->salary <= 0)
-                                                        月薪面议
-                                                    @else
-                                                        {{$position->salary/1000}}k-
-                                                        @if($position->salary_max ==0) 无上限
-                                                        @else {{$position->salary_max/1000}}k
-                                                        @endif
-                                                        元/月
+                                    <div class="gsdiv">
+                                        <p class="b7">
+                                            <a href="/position/detail?pid={{$position->pid}}" target="_blank" class="zw_name">
+                                                @if(empty($position->title))
+                                                    没有填写职位名称
+                                                @else
+                                                    {{mb_substr($position->title, 0, 15, 'utf-8')}}
+                                                @endif
+                                            </a>
+                                            <span class="region">[{{$position->name}}]</span>
+                                            <?php
+                                            $time_now = time();
+                                            $created_time = strtotime($position->created_at);
+                                            $sub_time = ceil(($time_now - $created_time)/86400);
+                                            ?>
+                                            @if($sub_time == 1)
+                                                {{mb_substr($position->created_at,11,5,'utf-8')}}发布
+                                            @elseif($sub_time >1 && $sub_time <=2)
+                                                1天前发布
+                                            @elseif($sub_time >2 && $sub_time <=5)
+                                                2天前发布
+                                            @else
+                                                {{substr($position->created_at,0,10)}}发布
+                                            @endif
+                                            {{--{{substr($position->created_at,0,10)}}发布--}}
+                                        </p>
+                                        <div class="brif">
+                                            <font style="color: #fd5f39;font-size: 15px">
+                                                @if($position->salary <= 0)
+                                                    月薪面议
+                                                @else
+                                                    {{$position->salary/1000}}k-
+                                                    @if($position->salary_max ==0) 无上限
+                                                    @else {{$position->salary_max/1000}}k
                                                     @endif
-                                    </span>
-                                            </div>
-                                            <div class="position_main_info">
-                                    <span>
-                                        @if($position->work_nature == 0)
-                                            兼职
-                                        @elseif($position->work_nature == 1)
-                                            实习
-                                        @else
-                                            全职
-                                        @endif
-                                    </span>
-                                                <span>
-                                        @if($position->education == -1)
-                                                        无学历要求
-                                                    @elseif($position->education == 0)
-                                                        高中及以上
-                                                    @elseif($position->education == 3)
-                                                        专科及以上
-                                                    @elseif($position->education == 1)
-                                                        本科及以上
-                                                    @elseif($position->education == 2)
-                                                        研究生及以上
-                                                    @endif
-                                    </span>
-                                            </div>
-                                            <div class="lebel">
-                                                <div class="lebel_item">
-                                                    @if($position->tag ==="" || $position->tag ===null)
-                                                        <span class="wordCut">无标签</span>
-                                                    @else
-                                                        @foreach(preg_split("/(,| |、|;|，)/",$position->tag) as $tag)
-                                                            <span class="wordCut">{{$tag}}</span>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
+                                                    元/月
+                                                @endif
+                                            </font >
+                                            {{--                                            <span>|</span>{{mb_substr($position->ebrief, 0, 15, 'utf-8')}}--}}
+                                            <span>|</span>{{$position->byname}}
+
                                         </div>
+                                        <div class="div_s">
+                                            {{--行业--}}
+                                            @foreach($data['industry'] as $industry)
+                                                @if($position->jobindustry == $industry->id)
+                                                    <span>{{$industry->name}}</span>
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                            {{--游戏--}}
+                                            @foreach($data['occupation'] as $occupation)
+                                                @if($position->occupation == $occupation->id)
+                                                    <span>{{$occupation->name}}</span>
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                            {{--职位--}}
+                                            @foreach($data['place'] as $place)
+                                                @if($position->place == $place->id)
+                                                    <span>{{$place->name}}</span>
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        {{--关闭投递简历按钮--}}
+                                        {{--<div class="brif">--}}
+                                        {{--@if($data['type']==0)--}}
+                                        {{--<button class="deliver-resume toujianli" to="/account/login">投个简历</button>--}}
+                                        {{--@elseif($position->position_status==1 ||$position->position_status==4)--}}
+                                        {{--<button class="deliver-resume toujianli"--}}
+                                        {{--data-content="{{$position->pid}}"--}}
+                                        {{--data-toggle="modal" data-target="#chooseResumeModal">投个简历</button>--}}
+                                        {{--@else--}}
+                                        {{--<button class="deliver-resume toujianli">无法投递</button>--}}
+                                        {{--@endif--}}
+                                        {{--</div>--}}
+                                    </div>
+                                    <div class="company-all">
+                                        <p class="company-name" style="cursor:pointer;" to="/company?eid={{$position->eid}}">
+                                            <span class="name">{{$position->ename}}</span>
+                                            <i class="material-icons">verified_user</i>
+                                        </p>
+                                        <p class="company-feature">
+                                            @foreach($data['industry'] as $industry)
+                                                @if($industry->id == $position->eindustry)
+                                                    {{$industry->name}}/
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                            @if($position->enature == null || $position->enature == 0)
+                                                企业类型未知/
+                                            @elseif($position->enature == 1)
+                                                国有企业/
+                                            @elseif($position->enature == 2)
+                                                民营企业/
+                                            @elseif($position->enature == 3)
+                                                中外合资企业/
+                                            @elseif($position->enature == 4)
+                                                外资企业/
+                                            @elseif($position->enature == 5)
+                                                社会团体/
+                                            @endif
+
+                                            @if($position->escale == null)
+                                                规模未知/
+                                            @elseif($position->escale == 0)
+                                                10人以下/
+                                            @elseif($position->escale == 1)
+                                                10～50人/
+                                            @elseif($position->escale == 2)
+                                                50～100人/
+                                            @elseif($position->escale == 3)
+                                                100～500人/
+                                            @elseif($position->escale == 4)
+                                                500～1000人/
+                                            @elseif($position->escale == 5)
+                                                1000人以上/
+                                            @endif
+                                        </p>
+                                        <p class="company-bunefits">
+
+                                            @if($position->tag ==="" || $position->tag ===null)
+                                                <span>无标签</span>
+                                            @else
+                                                {{$position->tag}}
+                                                {{--@foreach(preg_split("/(,| |、)/",$position->tag) as $tag)--}}
+                                                {{--<span>{{$tag}}</span>--}}
+                                                {{--@endforeach--}}
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div class="company-logo">
+                                        @if($position->elogo == null)
+                                            <img src="../images/1.gif"/>
+                                        @else
+                                            <img src="{{$position->elogo}}"/>
+                                        @endif
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
+                        <nav id="page_tools">
+                            {!! $data['collectionPosition']->render() !!}
+                        </nav>
                     </form>
 
                     <form id="deliveryForm" class="deliverySuccess" style="display: none;">
@@ -235,6 +443,9 @@
                                 </div>
                             @endforeach
                         </div>
+                        <nav id="page_tools">
+                            {!! $data['collectionNews']->render() !!}
+                        </nav>
                     </form>
                 </dd>
             </dl>
