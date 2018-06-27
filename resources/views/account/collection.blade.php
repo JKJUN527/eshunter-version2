@@ -163,6 +163,26 @@
         .companydiv li .company-all {
             margin-left: 30px !important;
         }
+        /*收藏标签*/
+        .love-lable{
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            /*margin-left: 1rem;*/
+            width: 6.5rem;
+            height: 2.5rem;
+            /*float: right;*/
+            cursor:pointer;
+            margin-top: 4rem;
+        }
+        .love-lable:hover{
+            color: #f4d03e;
+        }
+        .love-lable span{
+            padding: 0.5rem 0.5rem;
+            display: flex;
+        }
+        .collect-news{
+            float: right;
+        }
     </style>
 @endsection
 
@@ -265,7 +285,7 @@
                         <ul class="jieshao_list companydiv">
                             @foreach($data['collectionPosition'] as $position)
                                 <li>
-                                    <div class="gsdiv">
+                                    <div class="gsdiv position-content" data-content="{{$position->pid}}">
                                         <p class="b7">
                                             <a href="/position/detail?pid={{$position->pid}}" target="_blank" class="zw_name">
                                                 @if(empty($position->title))
@@ -403,6 +423,12 @@
                                         @else
                                             <img src="{{$position->elogo}}"/>
                                         @endif
+                                        <div class="love-lable collect-position">
+                                            <span>
+                                                <i class="material-icons collect-star">star</i>
+                                                已收藏
+                                            </span>
+                                        </div>
                                     </div>
                                 </li>
                             @endforeach
@@ -427,7 +453,7 @@
                                             <img src="{{$baseurl}}{{$imagepath}}" />
                                         </div>
                                     @else
-                                        <div class="news-aside">
+                                        <div class="hot-news-aside">
                                             <img src="{{asset('images/lamian.jpg')}}"/>
                                         </div>
                                     @endif
@@ -440,6 +466,12 @@
                                         <small class="content-appendix">
                                             <span>发布时间: {{mb_substr($news->created_at,0,10,'utf-8')}}</span></small>
                                     </div>
+                                        <div class="love-lable collect-news">
+                                            <span>
+                                                <i class="material-icons collect-star">star</i>
+                                                已收藏
+                                            </span>
+                                        </div>
                                 </div>
                             @endforeach
                         </div>
@@ -492,8 +524,61 @@
             $(".li_two").addClass("current");
         });
     });
-    $(".hot-news-body").click(function () {
-        window.open("/news/detail?nid=" + $(this).attr('data-content'));
+    $(".hot-news-content").click(function () {
+        var nid = $(".hot-news-body").attr("data-content");
+        window.open("/news/detail?nid=" + nid);
+    });
+    $(".hot-news-aside").click(function () {
+        var nid = $(".hot-news-body").attr("data-content");
+        window.open("/news/detail?nid=" + nid);
+    });
+    $(".collect-position").click(function () {
+        var pid = $(".position-content").attr('data-content');
+        var formData = new FormData();
+        formData.append('pid', pid);
+        $.ajax({
+            url: "/collection/jobs",
+            type: "post",
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+                var result = JSON.parse(data);
+                console.log(result.status);
+                if(result.status === 200){
+                    window.location.reload();
+                }else{
+                    swal("",result.msg,"error");
+                    return;
+                }
+            }
+        })
+    });
+    $(".collect-news").click(function () {
+        var nid = $(".hot-news-body").attr("data-content");
+        var formData = new FormData();
+        formData.append('nid', nid);
+        $.ajax({
+            url: "/collection/news",
+            type: "post",
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+                var result = JSON.parse(data);
+                console.log(result.status);
+                if(result.status === 200){
+                    window.location.reload();
+                }else{
+                    swal("",result.msg,"error");
+                    return;
+                }
+            }
+        })
     });
 </script>
 @endsection

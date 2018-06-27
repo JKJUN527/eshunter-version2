@@ -433,6 +433,7 @@ class PersonCenterController extends Controller {
         $data['collectionNews'] = DB::table('jobs_news')
             ->leftjoin('jobs_favorite_news','jobs_favorite_news.nid','jobs_news.nid')
             ->where('jobs_favorite_news.uid',$data['uid'])
+            ->where('jobs_favorite_news.status',1)
             ->orderBy('jobs_favorite_news.created_at', 'desc')
             ->paginate(20);
         $data['collectionPosition'] = DB::table('jobs_favorite_position')
@@ -440,6 +441,7 @@ class PersonCenterController extends Controller {
             ->select('jobs_position.pid', 'title','tag','jobs_position.industry as jobindustry','occupation','place','jobs_position.eid','elogo','ename','byname','escale','enature','jobs_enprinfo.industry as eindustry','salary','salary_max','jobs_region.name','position_status','jobs_position.created_at')
             ->leftjoin('jobs_enprinfo', 'jobs_enprinfo.eid', '=', 'jobs_position.eid')
             ->leftjoin('jobs_region', 'jobs_region.id', '=', 'jobs_position.region')
+            ->where('jobs_favorite_position.status',1)
             ->where('jobs_favorite_position.uid',$data['uid'])
             ->where(function ($query){//职位状态
                 $query->where('position_status',1)
