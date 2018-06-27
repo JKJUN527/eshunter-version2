@@ -273,15 +273,15 @@
                 <dd>
                     <div class="delivery_tabs">
                         <ul class="reset">
-                            <li class="current li_one">
+                            <li class="@if($data['tab'] ==0 ) current @endif li_one">
                                 <a class="all_border tabs_all">职位</a>
                             </li>
-                            <li class="li_two">
+                            <li class="@if($data['tab'] ==1 ) current @endif li_two">
                                 <a class="tabs_delivery_success">资讯</a>
                             </li>
                         </ul>
                     </div>
-                    <form id="deliveryForm" class="deliveryAll" style="display: block;">
+                    <form id="deliveryForm" class="deliveryAll" style="@if($data['tab'] ==0 ) display: block; @else display: none; @endif">
                         <ul class="jieshao_list companydiv">
                             @foreach($data['collectionPosition'] as $position)
                                 <li>
@@ -434,11 +434,11 @@
                             @endforeach
                         </ul>
                         <nav id="page_tools">
-                            {!! $data['collectionPosition']->render() !!}
+                            {!! $data['collectionPosition']->appends(['tab'=>0])->render() !!}
                         </nav>
                     </form>
 
-                    <form id="deliveryForm" class="deliverySuccess" style="display: none;">
+                    <form id="deliveryForm" class="deliverySuccess" style="@if($data['tab'] ==1 ) display: block; @else display: none; @endif">
                         <div class="mdl-card info-card">
                             @foreach($data['collectionNews'] as $news)
                                 <div class="hot-news-body" data-content="{{$news->nid}}">
@@ -476,7 +476,7 @@
                             @endforeach
                         </div>
                         <nav id="page_tools">
-                            {!! $data['collectionNews']->render() !!}
+                            {!! $data['collectionNews']->appends(['tab'=>1])->render() !!}
                         </nav>
                     </form>
                 </dd>

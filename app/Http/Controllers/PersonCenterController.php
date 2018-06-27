@@ -430,12 +430,16 @@ class PersonCenterController extends Controller {
         if (AuthController::getUid() == 0 || ($data['type'] != 1 && $data['type'] != 2)) {
             return view("/account/login",['data'=>$data]);
         }
+        if($request->has('tab')){
+            $data['tab'] = $request->input('tab');
+        }else
+            $data['tab'] = 0;
         $data['collectionNews'] = DB::table('jobs_news')
             ->leftjoin('jobs_favorite_news','jobs_favorite_news.nid','jobs_news.nid')
             ->where('jobs_favorite_news.uid',$data['uid'])
             ->where('jobs_favorite_news.status',1)
             ->orderBy('jobs_favorite_news.created_at', 'desc')
-            ->paginate(20);
+            ->paginate(15,['*'],'newpage');
         $data['collectionPosition'] = DB::table('jobs_favorite_position')
             ->leftjoin('jobs_position','jobs_favorite_position.pid','jobs_position.pid')
             ->select('jobs_position.pid', 'title','tag','jobs_position.industry as jobindustry','occupation','place','jobs_position.eid','elogo','ename','byname','escale','enature','jobs_enprinfo.industry as eindustry','salary','salary_max','jobs_region.name','position_status','jobs_position.created_at')
@@ -448,7 +452,7 @@ class PersonCenterController extends Controller {
                     ->orwhere('position_status',4);
             })
             ->orderBy('jobs_favorite_position.created_at', 'desc')//热门程度
-            ->paginate(14);
+            ->paginate(15,['*'],'pospage');
 
         $data['industry'] = Industry::all();
         $data['occupation'] = Occupation::all();
