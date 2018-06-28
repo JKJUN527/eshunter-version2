@@ -171,7 +171,7 @@
                             <div class="love-lable">
                                 <span>
                                     @if($data['isfavorite'] == 0)
-                                        <i class="material-icons">star</i>收藏
+                                        <i class="material-icons">star_outline</i>收藏
                                     @else
                                         <i class="material-icons collect-star">star</i>已收藏
                                     @endif

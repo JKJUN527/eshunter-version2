@@ -411,9 +411,9 @@
                                                 <span>无标签</span>
                                             @else
                                                 {{$position->tag}}
-                                                {{--@foreach(preg_split("/(,| |、)/",$position->tag) as $tag)--}}
-                                                {{--<span>{{$tag}}</span>--}}
-                                                {{--@endforeach--}}
+                                                @foreach(preg_split("/(,| |、)/",$position->tag) as $tag)
+                                                <span>{{$tag}}</span>
+                                                @endforeach
                                             @endif
                                         </p>
                                     </div>
