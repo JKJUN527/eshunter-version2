@@ -58,7 +58,7 @@ em.msg_amount {
 .header{ min-width: 1200px; height: 77px; background: #f1f1f1; display: inline-block; 
 	width: 100%; box-shadow: 2px 2px 2px #ebebeb;}
 .header_con{width: 1200px; height: 77px; /*overflow: hidden;*/ zoom:1; margin: 0 auto;}
-.logo-con{ float: left; margin-top: 10px;}
+.logo-con{ float: left; margin-top: 20px;}
 .beta{ position: absolute; top: 0px; right: 0px;}
 .nav_ul{overflow: hidden;  float: right; font-size: 18px; height: 100%; }
 .nav_ul li{ float: left; height: 100%; overflow: hidden; }
