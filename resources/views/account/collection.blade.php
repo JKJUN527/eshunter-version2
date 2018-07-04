@@ -405,17 +405,17 @@
                                                 1000人以上/
                                             @endif
                                         </p>
-                                        <p class="company-bunefits">
+                                        {{--<p class="company-bunefits">--}}
 
-                                            @if($position->tag ==="" || $position->tag ===null)
-                                                <span>无标签</span>
-                                            @else
-                                                {{$position->tag}}
-                                                @foreach(preg_split("/(,| |、)/",$position->tag) as $tag)
-                                                <span>{{$tag}}</span>
-                                                @endforeach
-                                            @endif
-                                        </p>
+                                            {{--@if($position->tag ==="" || $position->tag ===null)--}}
+                                                {{--<span>无标签</span>--}}
+                                            {{--@else--}}
+                                                {{--{{$position->tag}}--}}
+                                                {{--@foreach(preg_split("/(,| |、)/",$position->tag) as $tag)--}}
+                                                {{--<span>{{$tag}}</span>--}}
+                                                {{--@endforeach--}}
+                                            {{--@endif--}}
+                                        {{--</p>--}}
                                     </div>
                                     <div class="company-logo">
                                         @if($position->elogo == null)
