@@ -45,6 +45,16 @@ class HomeController extends Controller {
             ->orderBy('location', 'asc')
 //            ->take(10)
             ->get();
+        //获取对应企业发布的职位个数
+        foreach ($ad0 as $item){
+            $data['positionNum'][$item->eid] = Position::where('eid', $item->eid)
+//                ->where('vaildity', '>=', date('Y-m-d H-i-s'))
+                ->where(function ($query){
+                    $query->where('position_status',1)
+                        ->orwhere('position_status',4);
+                })
+                ->count();
+        }
 //        $ad00 = Adverts::where('validity', '>=', date('Y-m-d H-i-s'))
 //            ->where('type', '=', '0')
 //            ->where('location', '>=', 13)

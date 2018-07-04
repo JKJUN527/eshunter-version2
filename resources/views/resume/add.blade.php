@@ -69,7 +69,8 @@
         .education-panel p,
         .work-panel p {
             display: block !important;
-            border: 1px dashed #00B38A;
+            /*border: 1px dashed #00B38A;*/
+            border: 1px solid #f5f5f5;
             margin: 16px;
             vertical-align: middle;
         }

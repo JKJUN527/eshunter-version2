@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '新闻详情')
+@section('title', $data['news']->title)
 
 @section('custom-style')
  <link media="all" href="{{asset('../style/news.css')}}" type="text/css" rel="stylesheet">
