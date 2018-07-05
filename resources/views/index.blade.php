@@ -583,7 +583,7 @@
                                 <span>{{$ad_big->content}}</span>
                             </p>
                             <p class="company-name wordCut ad_footer">
-                                <a href="/company?eid={{$ad_big->eid}}" target="_blank">共有<span style="color: #00acc1">{{$data['ad']['positionNum'][$ad_big->eid]}}</span>个岗位再招</a>
+                                <a href="/company?eid={{$ad_big->eid}}" target="_blank">共有<span style="color: #00acc1">{{$data['ad']['positionNum'][$ad_big->eid]}}</span>个职位在招</a>
                             </p>
                         </div>
                     </li>
