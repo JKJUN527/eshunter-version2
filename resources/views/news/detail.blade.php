@@ -437,7 +437,16 @@
                     var result = JSON.parse(data);
                     console.log(result.status);
                     if(result.status === 200){
-                        window.location.reload();
+                        var job_collection = $('.love-lable ');
+                        var start = $('.love-lable .material-icons ');
+                        if(start.hasClass('collect-star')){
+                            start.removeClass('collect-star');
+                            job_collection.html(job_collection.html().replace("已收藏","收藏"));
+                        }else{
+                            start.addClass('collect-star');
+                            job_collection.html(job_collection.html().replace("收藏","已收藏"));
+                        }
+//                        window.location.reload();
                     }else{
                         swal("",result.msg,"error");
                         return;

@@ -27,7 +27,7 @@
             color: #0d9572;
         }
         .jieshao_list li {
-            height:150px;
+            height:120px;
             margin: 25px 10px 0 12px;
         }
         .position_main_info{
@@ -171,7 +171,7 @@
             height: 2.5rem;
             /*float: right;*/
             cursor:pointer;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
         .love-lable:hover{
             color: #f4d03e;
@@ -179,9 +179,13 @@
         .love-lable span{
             padding: 0.5rem 0.5rem;
             display: flex;
+            font-size: 1.2rem;
         }
         .collect-news{
             float: right;
+        }
+        .hot-news-content{
+            width: auto !important;
         }
     </style>
 @endsection
@@ -458,7 +462,7 @@
                                         </div>
                                     @endif
                                     <div class="hot-news-content">
-                                        <h3><b>{{mb_substr($news->title, 0, 8)}}</b></h3>
+                                        <h3><b>{{$news->title}}</b></h3>
                                         <p class="content-body" style="margin-bottom: 0px;">
                                             {{--{{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 35)}}--}}
                                             {{mb_substr(str_replace(array("[图片1]","[图片2]"),"",strip_tags($news->content)), 0, 35)}}
