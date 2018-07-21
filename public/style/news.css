@@ -93,13 +93,14 @@
 }
 .news-aside {
     display: inline-block;
-    width: 180px;
-    margin-right: 24px;
+    width: 150px;
+    margin-right: 25px;
     float: left;
     vertical-align: middle;
     position: relative;
     top: 0;
     bottom: 12px;
+    margin-left: 20px;
 }
 .news-aside img {
     width: 100%;
@@ -161,12 +162,13 @@
 }
 .hot-news-aside {
     display: inline-block;
-    width: 120px;
+    width: 110px;
     margin-right: 16px;
     float: left;
     vertical-align: middle;
     position: relative;
     top: 12px;
+    margin-left: 10px;
 }
 .hot-news-aside img {
     width: 100%;

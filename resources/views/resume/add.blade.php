@@ -58,6 +58,7 @@
 
         .intention-panel p,
         .education-panel p,
+        .project-panel p,
         .work-panel p {
             padding: 5px 10px;
             display: inline-block;
@@ -80,7 +81,8 @@
             color: #333333;
             font-size: 16px;
             display: block !important;
-            border: 1px dashed #00B38A;
+            /*border: 1px dashed #00B38A;*/
+            border: 1px solid #f5f5f5;
             margin: 16px;
             vertical-align: middle;
         }

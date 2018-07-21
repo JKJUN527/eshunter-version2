@@ -131,6 +131,11 @@
             width: 80%;
             margin-left: 10%;
         }
+        .indus-stage{
+            border-bottom: 1px dashed #E0E0E0;
+            width: 80%;
+            margin-left: 10%;
+        }
     </style>
 @endsection
 
@@ -585,7 +590,7 @@
                             <p class="indus-stage wordCut">
                                 <span>{{$ad_big->content}}</span>
                             </p>
-                            <p class="company-name wordCut ad_footer pli_btm">
+                            <p class="company-name wordCut ad_footer">
                                 <a href="/company?eid={{$ad_big->eid}}" target="_blank">共有<span style="color: #00acc1">{{$data['ad']['positionNum'][$ad_big->eid]}}</span>个职位在招</a>
                             </p>
                         </div>

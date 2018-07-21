@@ -123,6 +123,7 @@
             white-space: nowrap;
             display: inline-block;
             text-overflow: ellipsis;
+            min-width: 9rem;
         }
 
         .project-panel p span {
@@ -728,6 +729,12 @@
         .affix {
             width: 260px;
         }
+        .mini-title{
+            color: #333333 !important;
+            font-size: 16px !important;
+            min-width:6rem !important;
+            margin-right: 0 !important;
+        }
 
     </style>
 @endsection
@@ -1153,14 +1160,14 @@
 
                     @forelse($data['playerResume'] as $playerResume)
                         <p id="playerResume_info" name="playerResume_info" data-content="{{$playerResume->id}}">
-                            游戏ID：<span>{{$playerResume->game_id}}</span>
-                            游戏名称：<span>{{$playerResume->egame}}</span>
-                            选手位置：<span>{{$playerResume->place}}</span>
+                            <span class="mini-title">游戏ID：</span><span>{{$playerResume->game_id}}</span>
+                            <span class="mini-title">游戏名称：</span><span>{{$playerResume->egame}}</span>
+                            <span class="mini-title">选手位置：</span><span>{{$playerResume->place}}</span>
                             <br>
-                            服务器：<span>{{$playerResume->service}}</span>
-                            最高排位：<span>{{$playerResume->best_result}}</span>
-                            胜率：<span>{{$playerResume->probability*10}}%~{{($playerResume->probability+1)*10}}
+                            <span class="mini-title">服务器：</span><span>{{$playerResume->service}}</span>
+                            <span class="mini-title">胜率：</span><span>{{$playerResume->probability*10}}%~{{($playerResume->probability+1)*10}}
                                 %</span>
+                            <span class="mini-title">最高排位：</span><span>{{$playerResume->best_result}}</span>
                             <br>
                             @if($playerResume->has_event == 0)
                                 无赛事经历
