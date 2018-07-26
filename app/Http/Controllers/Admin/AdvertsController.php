@@ -31,11 +31,15 @@ class AdvertsController extends Controller {
         $data = DashboardController::getLoginInfo();
         if ($request->has('type')) {
             $type = $request->input('type');
+            $data['ad']['type'] = $type;
+
             $data['adlist'] = Adverts::where('type', '=', $type)
-                ->orderBy('updated_at', 'desc')
+                ->orderBy('location', 'desc')
                 ->paginate(20);
         } else {
-            $data['adlist'] = Adverts::orderBy('updated_at', 'desc')
+            $data['ad']['type'] = 0;
+            $data['adlist'] = Adverts::where('type', '=', 0)
+                ->orderBy('location', 'desc')
                 ->paginate(20);
         }
 

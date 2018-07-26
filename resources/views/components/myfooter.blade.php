@@ -11,6 +11,7 @@
                         </div>
                         <div class="foot_list">
                             <div class="foot_list_item">
+                                <span class="about_left"><a title="" href="/">首页</a></span>
                                 <span class="about_left"><a title="" href="/searchcompany">电竞黄页</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab1">简历指导</a></span>
                                 <span class="about_left"><a title="" href="/about?page=tab2">关于我们</a></span>
@@ -28,14 +29,22 @@
                             
                             </div>
                             <p style="margin-top:10px;" class="seap">
-                    <span style="color:#939393">沪ICP备17037845号-1</span>
-                    <a  href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010102004612" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-                    <img src="http://www.eshunter.com/images/police.png" style="float:left;">
-                    <span style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">沪公网安备 31010102004612号</span>
-                    <span style="padding-left:15px;color:#939393"> ©2017电竞猎人 | E-sport Hunter版权所有</span>
-                </a>
-                </p>
-                        </div> 
+                                <span style="color:#939393">沪ICP备17037845号-1</span>
+                                <a  href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010102004612" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                                    <img src="http://www.eshunter.com/images/police.png" style="float:left;">
+                                    <span style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">沪公网安备 31010102004612号</span>
+                                    <span style="padding-left:15px;color:#939393"> ©2017电竞猎人 | E-sport Hunter版权所有</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="footer_bottom">
+                        <div class="title">友情链接:
+                            <span><a href="http://www.dianjingquan.cn/" target="_blank">电竞圈</a></span>
+                            <span><a href="http://dj.sina.com.cn/" target="_blank">新浪电竞</a></span>
+                            <span><a href="https://egame.qq.com/" target="_blank">企鹅电竞</a></span>
+                            <span><a href="http://www.5asj.com/" target="_blank">中国电竞网</a></span>
+                        </div>
                     </div>
                 </div>
                 

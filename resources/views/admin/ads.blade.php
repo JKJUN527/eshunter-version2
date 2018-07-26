@@ -31,6 +31,15 @@
                 <div class="header">
                     <h2>
                         广告列表
+                        <p>查询条件</p>
+                        <select class="form-control show-tick selectpicker" id="ad_type" name="scale">
+                            <option value="0" @if(isset($data['ad']['type']) && $data['ad']['type'] == 0) selected @endif>
+                                大图广告
+                            </option>
+                            <option value="1" @if(isset($data['ad']['type']) && $data['ad']['type'] == 1) selected @endif>
+                                小图广告
+                            </option>
+                        </select>
                     </h2>
                     <div class="mdl-card__menu">
 
@@ -56,6 +65,7 @@
                             <th>链接</th>
                             <th>截至日期</th>
                             <th>类型</th>
+                            <th>广告位置</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -74,7 +84,7 @@
                                 @elseif($ad->type == 2)
                                     <td>文字</td>
                                 @endif
-
+                                <td>{{$ad->location}}</td>
                                 <td>
                                     <i class="material-icons delete" data-content="{{$ad->adid}}">delete</i>
                                 </td>
@@ -124,5 +134,9 @@
                 })
             });
         })
+        $('#ad_type').change(function () {
+            var type = $(this).val();
+            window.location.href='/admin/ads?type=' + type;
+        });
     </script>
 @show
