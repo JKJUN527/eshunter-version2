@@ -40,10 +40,10 @@
                     </div>
                     <div class="footer_bottom">
                         <div class="title">友情链接:
-                            <span><a href="http://www.dianjingquan.cn/" target="_blank">电竞圈</a></span>
-                            <span><a href="http://dj.sina.com.cn/" target="_blank">新浪电竞</a></span>
-                            <span><a href="https://egame.qq.com/" target="_blank">企鹅电竞</a></span>
-                            <span><a href="http://www.5asj.com/" target="_blank">中国电竞网</a></span>
+                            {{--<span><a href="http://www.dianjingquan.cn/" target="_blank">电竞圈</a></span>--}}
+                            {{--<span><a href="http://dj.sina.com.cn/" target="_blank">新浪电竞</a></span>--}}
+                            {{--<span><a href="https://egame.qq.com/" target="_blank">企鹅电竞</a></span>--}}
+                            {{--<span><a href="http://www.5asj.com/" target="_blank">中国电竞网</a></span>--}}
                         </div>
                     </div>
                 </div>
