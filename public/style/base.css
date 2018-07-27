@@ -137,7 +137,7 @@ em.msg_amount {
     font-size: 12px;
     padding: 10px 0;
     margin-top: 10px;}
-.footer_con{ width: 960px;  margin: 0 auto; padding: 10px 0 0; display:table;}
+.footer_con{ width: 1200px;  margin: 0 auto; padding: 10px 0 0; display:table;}
 .footer_top{ width: 100%;  display:inline-block;}
 .footer_bottom{ width: 100%;  display:inline-block;}
 .footer_bottom .title{
@@ -146,8 +146,8 @@ em.msg_amount {
     color: #fff;
     position: relative;
     padding-left: 14px;
-    margin-bottom: 12px;
-    margin-top: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     font-size: 14px;
 }
 .footer_bottom .title::after {
@@ -179,7 +179,7 @@ em.msg_amount {
 .about_left a:hover{color: #fff;
     text-decoration: underline;}
 .about_Us span{ float: left;}
-.foot_list{ float: left; display: inline-block; text-align: center;}
+.foot_list{ float: right; display: inline-block; text-align: center;}
 .foot_list_item{width: 100%;margin: 0 0 0 58px;}
 .aboutUs_link{ width: 1030px; line-height: 28px; margin-top: 8px;}
 .aboutUs_link,.aboutUs_link a,.about_Us span.phone,.about_Us span.mail,.about_Us span.ma_img{ color: #989898;}

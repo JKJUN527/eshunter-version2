@@ -473,19 +473,19 @@
                                           @endif
 
                                               @if($position->escale == null)
-                                                  规模未知/
+                                                  规模未知
                                               @elseif($position->escale == 0)
-                                                  10人以下/
+                                                  10人以下
                                               @elseif($position->escale == 1)
-                                                  10～50人/
+                                                  10～50人
                                               @elseif($position->escale == 2)
-                                                  50～100人/
+                                                  50～100人
                                               @elseif($position->escale == 3)
-                                                  100～500人/
+                                                  100～500人
                                               @elseif($position->escale == 4)
-                                                  500～1000人/
+                                                  500～1000人
                                               @elseif($position->escale == 5)
-                                                  1000人以上/
+                                                  1000人以上
                                               @endif
                                       </p>
                                       <p class="company-bunefits">

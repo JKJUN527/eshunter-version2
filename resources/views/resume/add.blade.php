@@ -21,11 +21,6 @@
             text-decoration: none;
         }
 
-        .logo-con {
-            float: left;
-            margin-top: 5px;
-        }
-
         .resume-card {
             width: 99.52%;
             margin: 50px 0 20px 0;
@@ -367,7 +362,7 @@
         .resume_header {
             width: 835px;
             height: 200px;
-            background: url({{asset("images/resume/resume_header1.jpg")}});
+            background: url({{asset("images/resume/resume_header.jpg")}});
             border-radius: 5px;
             position: relative;
         }

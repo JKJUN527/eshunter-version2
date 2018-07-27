@@ -90,6 +90,7 @@
         <p>邮箱：{{$data['about']->email}}</p>
         <p>招聘事宜：{{$data['about']->recruit}}</p>
         <p>商务合作：{{$data['about']->cooperation}}</p>
+        <p>友链互换：QQ 499917121</p>
         </div>
     </div>
     <div class="sales-board @if($data['tab'] == 'tab4') active @endif">

@@ -21,11 +21,6 @@
             text-decoration: none;
         }
 
-        .logo-con {
-            float: left;
-            margin-top: 5px;
-        }
-
         .resume-card {
             width: 99.52%;
             margin: 50px 0 20px 0;
@@ -102,7 +97,6 @@
         .intention-panel p span {
             color: #737373;
             font-size: 14px;
-
         }
 
         .baseinfo-panel p span {
@@ -124,6 +118,8 @@
             display: inline-block;
             text-overflow: ellipsis;
             min-width: 9rem;
+            max-width: 15rem;
+            overflow: hidden;
         }
 
         .project-panel p span {
@@ -338,7 +334,7 @@
         .resume_header {
             width: 835px;
             height: 200px;
-            background: url({{asset("images/resume/resume_header1.jpg")}});
+            background: url({{asset("images/resume/resume_header.jpg")}});
             border-radius: 5px;
             position: relative;
         }

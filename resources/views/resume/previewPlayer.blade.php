@@ -343,7 +343,7 @@
                     .resume_header {
                         width: 900px;
                         height: 200px;
-                        background: url({{asset("images/resume/resume_header1.jpg")}});
+                        background: url({{asset("images/resume/resume_header.jpg")}});
                         border-radius: 5px;
                         position: relative;
                     }
