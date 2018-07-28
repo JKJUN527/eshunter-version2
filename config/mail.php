@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.qq.com'),
+    'host' => env('MAIL_HOST', 'smtp.aliyun.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => '404138362@qq.com',
+        'address' => 'jobs@hr.eshunter.com',
         'name' => '电竞招聘网',
     ],
 

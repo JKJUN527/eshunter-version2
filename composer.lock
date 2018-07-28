@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "content-hash": "aebb9008f05e30aa1ae2f7472d74a268",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -151,6 +151,50 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "hyancat/aliyun-direct-mail",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HyanCat/aliyun-direct-mail.git",
+                "reference": "fb80aad203db9f0a7418bb04af3f469b46e0409c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HyanCat/aliyun-direct-mail/zipball/fb80aad203db9f0a7418bb04af3f469b46e0409c",
+                "reference": "fb80aad203db9f0a7418bb04af3f469b46e0409c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "HyanCat\\DirectMail\\AliyunDirectMailServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HyanCat\\DirectMail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HyanCat",
+                    "email": "hyancat@live.cn"
+                }
+            ],
+            "description": "阿里云邮件推送 for Laravel.",
+            "time": "2017-10-08T13:56:01+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3490,7 +3534,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "hyancat/aliyun-direct-mail": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
