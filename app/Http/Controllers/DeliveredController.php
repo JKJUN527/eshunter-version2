@@ -256,7 +256,7 @@ class DeliveredController extends Controller {
                     }
                     //发送简历邮件到企业端
                     if ($this->sendresumetomail($request, $toid['eid'])) {
-                        $data['msg'] = "发送邮件到企业失败";
+                        $data['msg'] = "发送邮件到企业成功";
                     }
                     $data['status'] = 200;
                 } else {
@@ -399,7 +399,7 @@ class DeliveredController extends Controller {
 
 
         $e3_email = new E3Email();
-        $e3_email->from = "404138362@qq.com";
+        $e3_email->from = "jobs@hr.eshunter.com";
         $e3_email->to = $enprinfo->email;
         $e3_email->toname = $enprinfo->ename;
         $e3_email->subject = "电竞招聘网提醒您，有人投递了贵公司的职位";
